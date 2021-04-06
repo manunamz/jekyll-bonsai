@@ -1,0 +1,14 @@
+{
+	"version": 3,
+	"file": "styles.css",
+	"sources": [
+		"styles.scss",
+		"_sass/main.scss"
+	],
+	"sourcesContent": [
+		"@import \"main\";\n",
+		".current {\n  color: green;\n}\n\n"
+	],
+	"names": [],
+	"mappings": "ACAA,AAAA,QAAQ,AAAC,CACP,KAAK,CAAE,KAAK,CACb"
+}
