@@ -92,8 +92,10 @@ class GraphDataGenerator < Jekyll::Generator
   
         # Nodes: Graph
         graph_nodes << {
-          id: note_id_from_note(current_note),
-          path: "#{site.baseurl}#{current_note.data['id']}#{link_extension}",
+          # id: note_id_from_note(current_note),
+          # path: "#{site.baseurl}#{current_note.data['id']}#{link_extension}",
+          id: current_note.data['id'],
+          # path: current_note.data['id'],
           label: current_note.data['title'],
         } unless current_note.path.include?('_notes/index.html')
         
@@ -111,7 +113,7 @@ class GraphDataGenerator < Jekyll::Generator
         end
       end
   
-      File.write('_includes/notes_graph.json', JSON.dump({
+      File.write('assets/notes_graph.json', JSON.dump({
         links: graph_links,
         nodes: graph_nodes,
       }))
