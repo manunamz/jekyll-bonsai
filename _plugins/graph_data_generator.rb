@@ -6,6 +6,12 @@
 # frozen_string_literal: true
 class GraphDataGenerator < Jekyll::Generator
     def generate(site)
+      # from: https://stackoverflow.com/questions/16235601/what-are-the-steps-to-getting-this-custom-permalink-scheme-in-jekyll
+      # Until Jekyll allows me to use :id, I have to resort to this
+      site.collections['notes'].docs.each do |note|
+        note.data['permalink'] = '/' + note.data['id'] + '/'
+      end
+
       graph_nodes = []
       graph_links = []
   
@@ -15,9 +21,9 @@ class GraphDataGenerator < Jekyll::Generator
       all_docs = all_notes + all_pages
   
       link_extension = !!site.config["use_html_extension"] ? '.html' : ''
-  
+
       # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! #
-      # Convert [[internal links]] to <a class='ineternal-link' href='note.url'>\\1</a> #
+      # Convert [[internal links]] to <a class='ineternal-link' href='note.data['id']'>\\1</a> #
       # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! #
 
       # Convert all Wiki/Roam-style double-bracket link syntax to plain HTML
@@ -29,33 +35,34 @@ class GraphDataGenerator < Jekyll::Generator
             File.extname(note_potentially_linked_to.basename)
           ).gsub('_', ' ').gsub('-', ' ').capitalize
   
-          # Replace double-bracketed links with label using note title
-          # [[A note about cats|this is a link to the note about cats]]
-          current_note.content = current_note.content.gsub(
-            /\[\[#{title_from_filename}\|(.+?)(?=\])\]\]/i,
-            "<a class='internal-link' href='#{site.baseurl}#{note_potentially_linked_to.url}#{link_extension}'>\\1</a>"
-          )
+          # # Replace double-bracketed links with label using note title
+          # # [[A note about cats|this is a link to the note about cats]]
+          # current_note.content = current_note.content.gsub(
+          #   /\[\[#{title_from_filename}\|(.+?)(?=\])\]\]/i,
+          #   "<a class='internal-link' href='#{site.baseurl}#{note_potentially_linked_to.data['permalink']}#{link_extension}'>\\1</a>"
+          # )
   
-          # Replace double-bracketed links with label using note filename
-          # [[cats|this is a link to the note about cats]]
-          current_note.content = current_note.content.gsub(
-            /\[\[#{note_potentially_linked_to.data['title']}\|(.+?)(?=\])\]\]/i,
-            "<a class='internal-link' href='#{site.baseurl}#{note_potentially_linked_to.url}#{link_extension}'>\\1</a>"
-          )
+          # # Replace double-bracketed links with label using note filename
+          # # [[cats|this is a link to the note about cats]]
+          # current_note.content = current_note.content.gsub(
+          #   /\[\[#{note_potentially_linked_to.data['title']}\|(.+?)(?=\])\]\]/i,
+          #   "<a class='internal-link' href='#{site.baseurl}#{note_potentially_linked_to.data['permalink']}#{link_extension}'>\\1</a>"
+          # )
   
-          # Replace double-bracketed links using note title
-          # [[a note about cats]]
-          current_note.content = current_note.content.gsub(
-            /\[\[(#{note_potentially_linked_to.data['title']})\]\]/i,
-            "<a class='internal-link' href='#{site.baseurl}#{note_potentially_linked_to.url}#{link_extension}'>\\1</a>"
-          )
+          # # Replace double-bracketed links using note title
+          # # [[a note about cats]]
+          # current_note.content = current_note.content.gsub(
+          #   /\[\[(#{note_potentially_linked_to.data['title']})\]\]/i,
+          #   "<a class='internal-link' href='#{site.baseurl}#{note_potentially_linked_to.data['permalink']}#{link_extension}'>\\1</a>"
+          # )
   
           # Replace double-bracketed links using note filename
           # [[cats]]
           current_note.content = current_note.content.gsub(
             /\[\[(#{title_from_filename})\]\]/i,
-            "<a class='internal-link' href='#{site.baseurl}#{note_potentially_linked_to.url}#{link_extension}'>\\1</a>"
+            "<a class='internal-link' href='#{site.baseurl}#{note_potentially_linked_to.data['permalink']}#{link_extension}'>\\1</a>"
           )
+
         end
   
         # At this point, all remaining double-bracket-wrapped words are
@@ -80,24 +87,26 @@ class GraphDataGenerator < Jekyll::Generator
       all_notes.each do |current_note|
         # Nodes: Jekyll
         notes_linking_to_current_note = all_notes.filter do |e|
-          e.content.include?(current_note.url)
+          e.content.include?(current_note.data['id'])
         end
   
         # Nodes: Graph
         graph_nodes << {
           id: note_id_from_note(current_note),
-          path: "#{site.baseurl}#{current_note.url}#{link_extension}",
+          path: "#{site.baseurl}#{current_note.data['id']}#{link_extension}",
           label: current_note.data['title'],
         } unless current_note.path.include?('_notes/index.html')
-  
+        
         # Links: Jekyll
         current_note.data['backlinks'] = notes_linking_to_current_note
   
         # Links: Graph
         notes_linking_to_current_note.each do |n|
           graph_links << {
-            source: note_id_from_note(n),
-            target: note_id_from_note(current_note),
+            # source: note_id_from_note(n),
+            # target: note_id_from_note(current_note),
+            source: n.data['id'],
+            target: current_note.data['id'],
           }
         end
       end
