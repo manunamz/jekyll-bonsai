@@ -3,7 +3,7 @@ description: a jekyll theme for digital gardeners.
 # baseurl: ''
 # url: ''
 
-# permalink: pretty
+permalink: pretty
 # relative_permalinks: false
 include: ['_pages']
 exclude: ["node_modules/", "*.gemspec", "*.gem", "Gemfile", "Gemfile.lock", "package.json", "package-lock.json",  "script/", "LICENSE.txt", "lib/", "bin/", "README.md", "Rakefile"]
