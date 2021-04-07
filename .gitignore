@@ -1,12 +1,10 @@
-# Generated website directory
-_site/
-
 # Sass cache
 .sass-cache/
 
 # Jekyll cache & metadata
 .jekyll-cache/
 .jekyll-metadata
+_site/
 
 # Dendron
 node_modules
@@ -19,3 +17,6 @@ obsidian.css
 
 # macos
 .DS_Store
+
+# d3 data
+notes_graph.json
