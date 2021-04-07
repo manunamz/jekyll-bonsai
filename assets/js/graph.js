@@ -397,7 +397,7 @@ initializeSimulation(simulation, graph, forceProperties);
 // set up the simulation and event to update locations after each tick
 function initializeSimulation(simulation, graph, forceProperties) {
   simulation.nodes(graph.nodes);
-  initializeForces(forceProperties);
+  initializeForces(simulation, forceProperties);
   simulation.on("tick", ticked);
 }
 
@@ -437,7 +437,7 @@ function initializeSimulation(simulation, graph, forceProperties) {
 // }
 
 // add forces to the simulation
-function initializeForces(forceProperties) {
+function initializeForces(simulation, forceProperties) {
     // add forces and associate each with a name
     simulation
         .force("link", d3.forceLink())
@@ -447,11 +447,11 @@ function initializeForces(forceProperties) {
         .force("forceX", d3.forceX())
         .force("forceY", d3.forceY());
     // apply properties to each of the forces
-    updateForces(forceProperties);
+    updateForces(simulation, forceProperties);
 }
 
 // apply new force properties
-function updateForces(forceProperties) {
+function updateForces(simulation, forceProperties) {
     // get each force by name and update the properties
     simulation.force("center")
         .x(width * forceProperties.center.x)
@@ -542,32 +542,33 @@ function ticked() {
 
 //////////// UI EVENTS ////////////
 
-function dragstarted(d) {
-  if (!d3.event.active) simulation.alphaTarget(0.3).restart();
-  d.fx = d.x;
-  d.fy = d.y;
+
+function dragstarted(event) {
+    if (!event.active) simulation.alphaTarget(0.3).restart();
+    event.subject.fx = event.subject.x;
+    event.subject.fy = event.subject.y;
 }
 
-function dragged(d) {
-  d.fx = d3.event.x;
-  d.fy = d3.event.y;
+function dragged(event) {
+    event.subject.fx = event.x;
+    event.subject.fy = event.y;
 }
 
-function dragended(d) {
-  if (!d3.event.active) simulation.alphaTarget(0.0001);
-  d.fx = null;
-  d.fy = null;
+function dragended(event) {
+    if (!event.active) simulation.alphaTarget(0);
+    event.subject.fx = null;
+    event.subject.fy = null;
 }
 
 // update size-related forces
 d3.select(window).on("resize", function(){
     width = +svg.node().getBoundingClientRect().width;
     height = +svg.node().getBoundingClientRect().height;
-    updateForces();
+    updateForces(simulation, forceProperties);
 });
 
 // convenience function to update everything (run after UI input)
-function updateAll(forceProperties) {
-    updateForces(forceProperties);
+function updateAll(simulation, forceProperties) {
+    updateForces(simulation, forceProperties);
     updateDisplay(forceProperties);
 }
