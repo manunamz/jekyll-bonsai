@@ -17,6 +17,9 @@ kramdown:
   math_engine: mathjax
 
 collections:
+  pages:
+    output: true
+    permalink: /:path
   notes: 
     output: true
     permalink: /:slug
@@ -28,20 +31,6 @@ defaults:
       path: "_notes/**/*.md"
     values:
       layout: "note"
-  - scope:
-      path: ""
-      type: "authors"
-    values:
-      layout: "author"
-  - scope:
-      path: ""
-      type: "posts"
-    values:
-      layout: "post"
-  - scope:
-      path: ""
-    values:
-      layout: "default"
 
 # Google Analytics Tracking (optional)
 # e.g, UA-1234567-89
