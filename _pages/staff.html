@@ -1,6 +1,7 @@
 ---
 layout: default
 title: Staff
+permalink: /staff
 ---
 <h1>Staff</h1>
 
