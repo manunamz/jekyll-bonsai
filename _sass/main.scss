@@ -2,3 +2,63 @@
   color: green;
 }
 
+.sidenav {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 200px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  left: 0;
+  //overflow-x: hidden; /* Disable horizontal scroll */
+  overflow: auto;
+  padding-top: 20px;
+}
+
+//
+
+.leftpane {
+    width: 12.5%;
+    height: 100%;
+    float: left;
+    border-collapse: collapse;
+}
+
+//
+
+.with-sidebar {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.sidebar {
+  flex-basis: 10rem;
+  flex-grow: 1;
+}
+
+.content {
+  flex-basis: 0;
+  flex-grow: 999;
+}
+
+//
+
+.vertical-menu {
+  width: 200px;
+}
+
+.vertical-menu a {
+  background-color: #eee;
+  color: black;
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+}
+
+.vertical-menu a:hover {
+  background-color: #ccc;
+}
+
+.vertical-menu a.active {
+  background-color: #4CAF50;
+  color: white;
+}
