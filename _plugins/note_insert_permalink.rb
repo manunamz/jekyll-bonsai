@@ -1,4 +1,4 @@
-# # from: https://stackoverflow.com/questions/16235601/what-are-the-steps-to-getting-this-custom-permalink-scheme-in-jekyll
+# from: https://stackoverflow.com/questions/16235601/what-are-the-steps-to-getting-this-custom-permalink-scheme-in-jekyll
 
 # module Jekyll
 #     class NoteInsertPermalink < Generator
