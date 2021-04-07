@@ -8,6 +8,11 @@ _site/
 .jekyll-cache/
 .jekyll-metadata
 
+# Dendron
+node_modules
+.dendron.*
+build
+
 # Obsidian config
 .obsidian/
 obsidian.css
