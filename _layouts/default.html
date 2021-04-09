@@ -9,8 +9,12 @@
     <script src="https://d3js.org/d3.v6.min.js"></script>
   </head>
   <body>
-    {% include nav.html %}
-    {% include graph.html %}
-    {{ content }}
+    <div class="sidenav">
+      {% include graph.html %}
+    </div>
+    <div class="main">
+      {% include nav.html %}
+      {{ content }}
+    </div>
   </body>
 </html>
