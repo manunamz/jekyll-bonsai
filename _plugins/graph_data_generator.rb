@@ -3,6 +3,21 @@
 #   - network: from [[bidirectional, wiki links]].
 #   - tree: dendron flavored dot.style.notation.md or directory structure.
 
+class Node
+  attr_accessor :id, :children, :namespace, :title
+
+  def initialize(id, namespace, title)
+    @id = id
+    @children = []
+    @namespace = namespace
+    @title = title
+  end
+
+  def to_s
+    "namespace: #{@namespace}, title: #{@title}, id: #{@id}"
+  end
+end
+
 # frozen_string_literal: true
 class GraphDataGenerator < Jekyll::Generator
     def generate(site)
@@ -22,9 +37,85 @@ class GraphDataGenerator < Jekyll::Generator
   
       link_extension = !!site.config["use_html_extension"] ? '.html' : ''
 
-      # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! #
+      # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! #
       # Convert [[internal links]] to <a class='ineternal-link' href='note.data['id']'>\\1</a> #
-      # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! #
+      # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! #
+      
+      # add unique path for the given note 
+      def add_path(node, note, depth=1)
+        chunked_namespace = note.data['slug'].split(/\s|\./)
+        puts 'Current depth: ' + depth.to_s
+        puts 'Current chunk length: ' + chunked_namespace.length.to_s
+        # if the given node was not root and we are at depth, handle note
+        if depth == chunked_namespace.length
+          cur_nd_namespace = 'root' + '.' + note.data['slug']
+          cur_nd_id = note.data['id']
+          cur_nd_title = note.data['title']
+          # if one does not exist, create node
+          puts 'Create note with title: ' + note.data['title']
+          puts 'Parent node whose children will include new node: ' + node.to_s
+          unless node.children.any?{ |c| c.namespace == cur_nd_namespace }
+            new_node = Node.new(cur_nd_id, cur_nd_namespace, cur_nd_title)
+            node.children << new_node
+          # if one already exists, fill-in node
+          else
+            puts 'ARE WE EVER GETTING IN HERE???'
+            cur_node = node.children.detect {|c| c.namespace == cur_nd_namespace }
+            puts depth
+            puts note.data['title']
+            puts cur_node
+            cur_node.id = cur_nd_id
+            cur_node.title = cur_nd_title
+          end
+          return
+        # create temp node and recurse
+        else
+          cur_namespace = 'root' + '.' + chunked_namespace[0..(depth - 1)].join('.')
+          puts 'Current namespace, before creating new_node: ' + cur_namespace
+          unless node.children.any?{ |c| c.namespace == cur_namespace }
+            new_node = Node.new('', cur_namespace, '')
+            node.children << new_node
+          else
+            new_node = node.children.detect {|c| c.namespace == cur_namespace }
+          end
+        end
+        puts 'Before recursing...'
+        puts 'Current note title: ' + note.data['title']
+        puts 'Parent node: ' + node.to_s
+        puts 'New node to send into recurse: ' + new_node.to_s
+        add_path(new_node, note, depth + 1)
+      end
+
+      root = Node.new('', 'root', 'Root')
+      
+      # set root node
+      root_note = all_docs.detect {|note| note.data['slug'] == 'root' }
+      root.id = root_note.data['id']
+
+      # build tree
+      all_docs.each do |cur_note|
+        if cur_note.data['slug'].nil? or cur_note.data['slug'] == 'root'
+          next
+        else
+          puts '**** CURRENT NOTE ****'
+          puts cur_note.data['title']
+          add_path(root, cur_note)
+        end
+      end
+
+      def print_tree(node)
+        puts 'title: '
+        puts node.title
+        puts node.namespace
+        puts 'children:'
+        puts node.children
+        node.children.each do |child|
+          print_tree(child)
+        end
+      end
+
+      puts 'PRINT ME A TREE SON'
+      print_tree(root)
 
       # Convert all Wiki/Roam-style double-bracket link syntax to plain HTML
       # anchor tag elements (<a>) with "internal-link" CSS class
@@ -34,27 +125,27 @@ class GraphDataGenerator < Jekyll::Generator
             note_potentially_linked_to.basename,
             File.extname(note_potentially_linked_to.basename)
           ).gsub('_', ' ').gsub('-', ' ').capitalize
+
+          # Replace double-bracketed links with label using note title
+          # [[A note about cats|this is a link to the note about cats]]
+          current_note.content = current_note.content.gsub(
+            /\[\[#{title_from_filename}\|(.+?)(?=\])\]\]/i,
+            "<a class='internal-link' href='#{site.baseurl}#{note_potentially_linked_to.data['permalink']}#{link_extension}'>\\1</a>"
+          )
   
-          # # Replace double-bracketed links with label using note title
-          # # [[A note about cats|this is a link to the note about cats]]
-          # current_note.content = current_note.content.gsub(
-          #   /\[\[#{title_from_filename}\|(.+?)(?=\])\]\]/i,
-          #   "<a class='internal-link' href='#{site.baseurl}#{note_potentially_linked_to.data['permalink']}#{link_extension}'>\\1</a>"
-          # )
+          # Replace double-bracketed links with label using note filename
+          # [[cats|this is a link to the note about cats]]
+          current_note.content = current_note.content.gsub(
+            /\[\[#{note_potentially_linked_to.data['title']}\|(.+?)(?=\])\]\]/i,
+            "<a class='internal-link' href='#{site.baseurl}#{note_potentially_linked_to.data['permalink']}#{link_extension}'>\\1</a>"
+          )
   
-          # # Replace double-bracketed links with label using note filename
-          # # [[cats|this is a link to the note about cats]]
-          # current_note.content = current_note.content.gsub(
-          #   /\[\[#{note_potentially_linked_to.data['title']}\|(.+?)(?=\])\]\]/i,
-          #   "<a class='internal-link' href='#{site.baseurl}#{note_potentially_linked_to.data['permalink']}#{link_extension}'>\\1</a>"
-          # )
-  
-          # # Replace double-bracketed links using note title
-          # # [[a note about cats]]
-          # current_note.content = current_note.content.gsub(
-          #   /\[\[(#{note_potentially_linked_to.data['title']})\]\]/i,
-          #   "<a class='internal-link' href='#{site.baseurl}#{note_potentially_linked_to.data['permalink']}#{link_extension}'>\\1</a>"
-          # )
+          # Replace double-bracketed links using note title
+          # [[a note about cats]]
+          current_note.content = current_note.content.gsub(
+            /\[\[(#{note_potentially_linked_to.data['title']})\]\]/i,
+            "<a class='internal-link' href='#{site.baseurl}#{note_potentially_linked_to.data['permalink']}#{link_extension}'>\\1</a>"
+          )
   
           # Replace double-bracketed links using note filename
           # [[cats]]
@@ -90,6 +181,8 @@ class GraphDataGenerator < Jekyll::Generator
           e.content.include?(current_note.data['id'])
         end
   
+        # ADD CHILDREN TO graph_node HERE! (access from tree)
+
         # Nodes: Graph
         graph_nodes << {
           # id: note_id_from_note(current_note),
