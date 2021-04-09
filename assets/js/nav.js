@@ -14,7 +14,7 @@ import drawGraph from './graph.js';
         changeGraphType();
     }, false);
 
-    drawGraph();
+    drawTree();
  })();
 
 // how to checkbox: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_display_checkbox_text
