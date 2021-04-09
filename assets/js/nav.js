@@ -22,8 +22,10 @@ function changeGraphType() {
   console.log('i got clicked!');
   var graphTypeCheckBox = document.getElementById('graphType');
   console.log(graphTypeCheckBox);
+  // destroy old chart   
   const svgWrapper = document.getElementById('svg-nav');
   d3.select(svgWrapper).selectAll('*').remove();
+  // redraw new one  
   if (graphTypeCheckBox.checked == true) {
     drawTree();
   } else {
