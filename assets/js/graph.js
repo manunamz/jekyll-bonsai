@@ -1,20 +1,20 @@
-// code.js
-function redraw () {console.log('hey there!')};
-
+// graph.js
+export default function drawGraph () {
+  // d3.json has been async'd: https://stackoverflow.com/questions/49768165/code-within-d3-json-callback-is-not-executed 
   d3.json("/assets/notes_graph.json")
     .then(function(data) {
         // console.log('d3 is building a graph');
         // console.log(graph);
-        const graphWrapper = document.getElementById('graph-wrapper');
-        var svg = d3.select(graphWrapper),
+        const svgWrapper = document.getElementById('svg-nav');
+        var svg = d3.select(svgWrapper),
             width = +svg.node().getBoundingClientRect().width,
             height = +svg.node().getBoundingClientRect().height;
         
-        graph = data;
+        var graph = data;
         // svg objects
         var link, node;    
-        
-        forceProperties = {
+        // values for all forces
+        var forceProperties = {
             center: {
                 x: 0.5,
                 y: 0.5
@@ -47,100 +47,19 @@ function redraw () {console.log('hey there!')};
                 iterations: 1
             }
         }
+        // force simulator
         var simulation = d3.forceSimulation();
         initializeDisplay();
         initializeSimulation();
 
-        // d3.json("/assets/notes_graph.json", function(error, _graph) {
-        //     if (error) throw error;
-        //     graph = _graph;
-        //     // initializeDisplay();
-        //     // initializeSimulation();
-        //     // values for all forces
-        //     forceProperties = {
-        //         center: {
-        //             x: 0.5,
-        //             y: 0.5
-        //         },
-        //         charge: {
-        //             enabled: true,
-        //             strength: -30,
-        //             distanceMin: 1,
-        //             distanceMax: 2000
-        //         },
-        //         collide: {
-        //             enabled: true,
-        //             strength: .7,
-        //             iterations: 1,
-        //             radius: 5
-        //         },
-        //         forceX: {
-        //             enabled: false,
-        //             strength: .1,
-        //             x: .5
-        //         },
-        //         forceY: {
-        //             enabled: false,
-        //             strength: .1,
-        //             y: .5
-        //         },
-        //         link: {
-        //             enabled: true,
-        //             distance: 30,
-        //             iterations: 1
-        //         }
-        //     }
-        //     var simulation = d3.forcesimulation();
-        //     initializeDisplay(forceProperties);
-        //     initializeSimulation(simulation, graph, forceProperties);
-        // });
-
         //////////// FORCE simulation //////////// 
-
-        // // force simulator
-        // var simulation = d3.forcesimulation();
 
         // set up the simulation and event to update locations after each tick
         function initializeSimulation() {
-        simulation.nodes(graph.nodes);
-        initializeForces();
-        simulation.on("tick", ticked);
+            simulation.nodes(graph.nodes);
+            initializeForces();
+            simulation.on("tick", ticked);
         }
-
-        // // values for all forces
-        // forceProperties = {
-        //     center: {
-        //         x: 0.5,
-        //         y: 0.5
-        //     },
-        //     charge: {
-        //         enabled: true,
-        //         strength: -30,
-        //         distanceMin: 1,
-        //         distanceMax: 2000
-        //     },
-        //     collide: {
-        //         enabled: true,
-        //         strength: .7,
-        //         iterations: 1,
-        //         radius: 5
-        //     },
-        //     forceX: {
-        //         enabled: false,
-        //         strength: .1,
-        //         x: .5
-        //     },
-        //     forceY: {
-        //         enabled: false,
-        //         strength: .1,
-        //         y: .5
-        //     },
-        //     link: {
-        //         enabled: true,
-        //         distance: 30,
-        //         iterations: 1
-        //     }
-        // }
 
         // add forces to the simulation
         function initializeForces() {
@@ -220,7 +139,7 @@ function redraw () {console.log('hey there!')};
         function updateDisplay() {
             node
                 .attr("r", forceProperties.collide.radius)
-                .attr("stroke", forceProperties.charge.strength > 0 ? "blue" : "red")
+                .attr("stroke", forceProperties.charge.strength > 0 ? "blue" : "#31AF31")
                 .attr("stroke-width", forceProperties.charge.enabled==false ? 0 : Math.abs(forceProperties.charge.strength)/15);
 
             link
@@ -280,3 +199,4 @@ function redraw () {console.log('hey there!')};
     .catch(function(error) {
         console.log(error);
     });
+}
