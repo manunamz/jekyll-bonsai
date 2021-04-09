@@ -7,6 +7,8 @@
     {% feed_meta %}
     {% seo %}
     <script src="https://d3js.org/d3.v6.min.js"></script>
+    <!-- modules: https://stackoverflow.com/questions/58211880/uncaught-syntaxerror-cannot-use-import-statement-outside-a-module-when-import -->
+    <script type="module" src="{{ '/assets/js/nav.js' | relative_url }}"></script>
   </head>
   <body>
     <div class="sidenav">
@@ -18,3 +20,5 @@
     </div>
   </body>
 </html>
+
+
