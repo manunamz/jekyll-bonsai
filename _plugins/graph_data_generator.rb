@@ -2,6 +2,7 @@
 # build graph data: 
 #   - network: from [[bidirectional, wiki links]].
 #   - tree: dendron flavored dot.style.notation.md or directory structure.
+require 'json'
 
 class Node
   attr_accessor :id, :children, :namespace, :title
@@ -14,7 +15,7 @@ class Node
   end
 
   def to_s
-    "namespace: #{@namespace}, title: #{@title}, id: #{@id}"
+    "namespace: #{@namespace}"
   end
 end
 
@@ -44,26 +45,18 @@ class GraphDataGenerator < Jekyll::Generator
       # add unique path for the given note 
       def add_path(node, note, depth=1)
         chunked_namespace = note.data['slug'].split(/\s|\./)
-        puts 'Current depth: ' + depth.to_s
-        puts 'Current chunk length: ' + chunked_namespace.length.to_s
         # if the given node was not root and we are at depth, handle note
         if depth == chunked_namespace.length
           cur_nd_namespace = 'root' + '.' + note.data['slug']
           cur_nd_id = note.data['id']
           cur_nd_title = note.data['title']
           # if one does not exist, create node
-          puts 'Create note with title: ' + note.data['title']
-          puts 'Parent node whose children will include new node: ' + node.to_s
           unless node.children.any?{ |c| c.namespace == cur_nd_namespace }
             new_node = Node.new(cur_nd_id, cur_nd_namespace, cur_nd_title)
             node.children << new_node
           # if one already exists, fill-in node
           else
-            puts 'ARE WE EVER GETTING IN HERE???'
             cur_node = node.children.detect {|c| c.namespace == cur_nd_namespace }
-            puts depth
-            puts note.data['title']
-            puts cur_node
             cur_node.id = cur_nd_id
             cur_node.title = cur_nd_title
           end
@@ -71,7 +64,6 @@ class GraphDataGenerator < Jekyll::Generator
         # create temp node and recurse
         else
           cur_namespace = 'root' + '.' + chunked_namespace[0..(depth - 1)].join('.')
-          puts 'Current namespace, before creating new_node: ' + cur_namespace
           unless node.children.any?{ |c| c.namespace == cur_namespace }
             new_node = Node.new('', cur_namespace, '')
             node.children << new_node
@@ -79,10 +71,6 @@ class GraphDataGenerator < Jekyll::Generator
             new_node = node.children.detect {|c| c.namespace == cur_namespace }
           end
         end
-        puts 'Before recursing...'
-        puts 'Current note title: ' + note.data['title']
-        puts 'Parent node: ' + node.to_s
-        puts 'New node to send into recurse: ' + new_node.to_s
         add_path(new_node, note, depth + 1)
       end
 
@@ -97,25 +85,36 @@ class GraphDataGenerator < Jekyll::Generator
         if cur_note.data['slug'].nil? or cur_note.data['slug'] == 'root'
           next
         else
-          puts '**** CURRENT NOTE ****'
-          puts cur_note.data['title']
           add_path(root, cur_note)
         end
       end
 
-      def print_tree(node)
-        puts 'title: '
-        puts node.title
-        puts node.namespace
-        puts 'children:'
-        puts node.children
-        node.children.each do |child|
-          print_tree(child)
+      def tree_to_json(node, json_node={}, missing=[])
+        if node.id.empty?
+          missing << node.namespace
         end
+        json_children = []
+        missing_children = []
+        node.children.each do |child|
+          new_child, new_missing_children = tree_to_json(child, missing)
+          json_children.append(new_child)
+          missing_children += new_missing_children
+        end
+        json_node = {
+          "id": node.id,
+          "namespace": node.namespace,
+          "title": node.title,
+          "children": json_children
+        }
+        return json_node, missing + missing_children
       end
 
-      puts 'PRINT ME A TREE SON'
-      print_tree(root)
+      json_formatted_tree, missing_children = tree_to_json(root)
+      puts "***** There are missing nodes *****"
+      puts missing_children
+      File.open('assets/notes_tree.json', 'w') do |f|
+        f.puts json_formatted_tree.to_json
+      end
 
       # Convert all Wiki/Roam-style double-bracket link syntax to plain HTML
       # anchor tag elements (<a>) with "internal-link" CSS class
