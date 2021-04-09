@@ -103,7 +103,7 @@ class GraphDataGenerator < Jekyll::Generator
         json_node = {
           "id": node.id,
           "namespace": node.namespace,
-          "title": node.title,
+          "name": node.title, # change 'title' -> 'name' for d3
           "children": json_children
         }
         return json_node, missing + missing_children
