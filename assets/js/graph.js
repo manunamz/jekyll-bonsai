@@ -130,7 +130,7 @@ export default function drawGraph () {
 
         // node tooltip
         node.append("title")
-            .text(function(d) { return d.id; });
+            .text(function(d) { return d.label; });
         // visualize the graph
         updateDisplay();
         }
