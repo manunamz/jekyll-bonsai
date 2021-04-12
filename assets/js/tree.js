@@ -44,6 +44,8 @@ export default function drawTree () {
             .enter()
             .append("circle")
             .attr("r", radius)
+            .attr("active", (d) => isCurrentNote(d.data.id) ? true : null)
+            .attr("class", (d) => d.data.id === "" ? "missing" : null)
             .on("click", goToNoteFromTree)
             .call(d3.drag()
                 .on("start", dragstarted)
@@ -76,9 +78,19 @@ export default function drawTree () {
                 
         });
 
+        function isCurrentNote(noteId) {
+            var isMissingNote = noteId === "";
+            return !isMissingNote && window.location.pathname.includes(noteId);
+        }
+
         function goToNoteFromTree(e, d) {
-            // i have no idea why this needs the preceeding '/'
-            window.location = `/${d.data.id}`;
+            var isMissingNote = d.data.id === "";
+            if (!isMissingNote) {
+                // i have no idea why this needs the preceeding '/'
+                window.location = `/${d.data.id}`;
+            } else {
+                return null;
+            }
         };
 
         function dragstarted(event, d) {
