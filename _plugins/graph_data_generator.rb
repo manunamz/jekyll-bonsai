@@ -120,37 +120,40 @@ class GraphDataGenerator < Jekyll::Generator
       # anchor tag elements (<a>) with "internal-link" CSS class
       all_docs.each do |current_note|
         all_docs.each do |note_potentially_linked_to|
-          title_from_filename = File.basename(
+          namespace_from_filename = File.basename(
             note_potentially_linked_to.basename,
             File.extname(note_potentially_linked_to.basename)
-          ).gsub('_', ' ').gsub('-', ' ').capitalize
+          )
+          # regex: extract note name from the end of the string to the first occurring '.'
+          # ex: 'garden.lifecycle.bamboo' -> 'bamboo'
+          name_from_namespace = namespace_from_filename.match('([^.]*$)')
 
-          # Replace double-bracketed links with label using note title
-          # [[A note about cats|this is a link to the note about cats]]
-          current_note.content = current_note.content.gsub(
-            /\[\[#{title_from_filename}\|(.+?)(?=\])\]\]/i,
-            "<a class='internal-link' href='#{site.baseurl}#{note_potentially_linked_to.data['permalink']}#{link_extension}'>\\1</a>"
-          )
+          # # Replace double-bracketed links with label using note title
+          # # [[A note about cats|this is a link to the note about cats]]
+          # current_note.content = current_note.content.gsub(
+          #   /\[\[#{namespace_from_filename}\|(.+?)(?=\])\]\]/i,
+          #   "<a class='internal-link' href='#{site.baseurl}#{note_potentially_linked_to.data['permalink']}#{link_extension}'>#{name_from_namespace}</a>"
+          # )
   
-          # Replace double-bracketed links with label using note filename
-          # [[cats|this is a link to the note about cats]]
-          current_note.content = current_note.content.gsub(
-            /\[\[#{note_potentially_linked_to.data['title']}\|(.+?)(?=\])\]\]/i,
-            "<a class='internal-link' href='#{site.baseurl}#{note_potentially_linked_to.data['permalink']}#{link_extension}'>\\1</a>"
-          )
+          # # Replace double-bracketed links with label using note filename
+          # # [[cats|this is a link to the note about cats]]
+          # current_note.content = current_note.content.gsub(
+          #   /\[\[#{note_potentially_linked_to.data['title']}\|(.+?)(?=\])\]\]/i,
+          #   "<a class='internal-link' href='#{site.baseurl}#{note_potentially_linked_to.data['permalink']}#{link_extension}'>#{name_from_namespace}</a>"
+          # )
   
-          # Replace double-bracketed links using note title
-          # [[a note about cats]]
-          current_note.content = current_note.content.gsub(
-            /\[\[(#{note_potentially_linked_to.data['title']})\]\]/i,
-            "<a class='internal-link' href='#{site.baseurl}#{note_potentially_linked_to.data['permalink']}#{link_extension}'>\\1</a>"
-          )
+          # # Replace double-bracketed links using note title
+          # # [[a note about cats]]
+          # current_note.content = current_note.content.gsub(
+          #   /\[\[(#{note_potentially_linked_to.data['title']})\]\]/i,
+          #   "<a class='internal-link' href='#{site.baseurl}#{note_potentially_linked_to.data['permalink']}#{link_extension}'>#{name_from_namespace}</a>"
+          # )
   
           # Replace double-bracketed links using note filename
           # [[cats]]
           current_note.content = current_note.content.gsub(
-            /\[\[(#{title_from_filename})\]\]/i,
-            "<a class='internal-link' href='#{site.baseurl}#{note_potentially_linked_to.data['permalink']}#{link_extension}'>\\1</a>"
+            /\[\[(#{namespace_from_filename})\]\]/i,
+            "<a class='internal-link' href='#{site.baseurl}#{note_potentially_linked_to.data['permalink']}#{link_extension}'>#{name_from_namespace}</a>"
           )
 
         end
