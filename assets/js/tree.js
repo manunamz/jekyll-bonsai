@@ -41,8 +41,10 @@ export default function drawTree () {
             .attr("class", "nodes")
             .selectAll("circle")
             .data(nodes)
-            .join("circle")
+            .enter()
+            .append("circle")
             .attr("r", radius)
+            .on("click", goToNoteFromTree)
             .call(d3.drag()
                 .on("start", dragstarted)
                 .on("drag", dragged)
@@ -74,9 +76,10 @@ export default function drawTree () {
                 
         });
 
-        // invalidation.then(() => simulation.stop());
-
-        // return svg.node();
+        function goToNoteFromTree(e, d) {
+            // i have no idea why this needs the preceeding '/'
+            window.location = `/${d.data.id}`;
+        };
 
         function dragstarted(event, d) {
             if (!event.active) simulation.alphaTarget(0.3).restart();

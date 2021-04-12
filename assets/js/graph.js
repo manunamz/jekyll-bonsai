@@ -3,7 +3,7 @@
 export default function drawGraph () {
   // d3.json has been async'd: https://stackoverflow.com/questions/49768165/code-within-d3-json-callback-is-not-executed 
   d3.json("/assets/notes_graph.json")
-    .then(function(data) {
+    .then(function(data) {       
         // console.log('d3 is building a tree');
         // console.log(data);
         const svgWrapper = document.getElementById('svg-nav');
@@ -43,8 +43,10 @@ export default function drawGraph () {
                 .attr("class", "nodes")
                 .selectAll("circle")
                 .data(data.nodes)
-                .enter().append("circle")
+                .enter()
+                .append("circle")
                 .attr("r", radius)
+                .on("click", goToNoteFromGraph)
                 .call(d3.drag()
                     .on("start", dragstarted)
                     .on("drag", dragged)
@@ -65,6 +67,15 @@ export default function drawGraph () {
                 .attr("cx", function(d) { return d.x; })
                 .attr("cy", function(d) { return d.y; });
         });
+
+        // function isCurrentNote(noteId) {
+        //     return window.location.pathname.includes(noteId)
+        //   }
+
+        function goToNoteFromGraph (e, d) {
+            // i have no idea why this needs the preceeding '/'
+            window.location = `/${d.id}`;
+        };
 
         function dragstarted(event) {
             if (!event.active) simulation.alphaTarget(0.3).restart();
