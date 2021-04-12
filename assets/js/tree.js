@@ -44,7 +44,8 @@ export default function drawTree () {
             .enter()
             .append("circle")
             .attr("r", radius)
-            .attr("active", (d) => isCurrentNote(d.data.id) ? true : null)
+            .attr("active", (d) => isCurrentNoteInTree(d.data.id) ? true : null)
+            // tree-only
             .attr("class", (d) => d.data.id === "" ? "missing" : null)
             .on("click", goToNoteFromTree)
             .call(d3.drag()
@@ -78,7 +79,7 @@ export default function drawTree () {
                 
         });
 
-        function isCurrentNote(noteId) {
+        function isCurrentNoteInTree(noteId) {
             var isMissingNote = noteId === "";
             return !isMissingNote && window.location.pathname.includes(noteId);
         }
