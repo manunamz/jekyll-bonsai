@@ -46,7 +46,7 @@ export default function drawGraph () {
                 .enter()
                 .append("circle")
                 .attr("r", radius)
-                .attr("active", (d) => isCurrentNote(d.id) ? true : null)
+                .attr("active", (d) => isCurrentNoteInGraph(d.id) ? true : null)
                 .on("click", goToNoteFromGraph)
                 .call(d3.drag()
                     .on("start", dragstarted)
@@ -69,7 +69,7 @@ export default function drawGraph () {
                 .attr("cy", function(d) { return d.y; });
         });
 
-        function isCurrentNote(noteId) {
+        function isCurrentNoteInGraph(noteId) {
             return window.location.pathname.includes(noteId);
         }
 
