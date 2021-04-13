@@ -32,48 +32,16 @@ class GraphDataGenerator < Jekyll::Generator
       graph_links = []
   
       all_notes = site.collections['notes'].docs
-      all_pages = site.pages
+      # all_pages = site.pages
   
-      all_docs = all_notes + all_pages
+      all_docs = all_notes # + all_pages
   
       link_extension = !!site.config["use_html_extension"] ? '.html' : ''
 
-      # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! #
-      # Convert [[internal links]] to <a class='ineternal-link' href='note.data['id']'>\\1</a> #
-      # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! #
+      # !!!!!!!!!!!! #
+      #  build tree  #
+      # !!!!!!!!!!!! #
       
-      # add unique path for the given note 
-      def add_path(node, note, depth=1)
-        chunked_namespace = note.data['slug'].split(/\s|\./)
-        # if the given node was not root and we are at depth, handle note
-        if depth == chunked_namespace.length
-          cur_nd_namespace = 'root' + '.' + note.data['slug']
-          cur_nd_id = note.data['id']
-          cur_nd_title = note.data['title']
-          # if one does not exist, create node
-          unless node.children.any?{ |c| c.namespace == cur_nd_namespace }
-            new_node = Node.new(cur_nd_id, cur_nd_namespace, cur_nd_title)
-            node.children << new_node
-          # if one already exists, fill-in node
-          else
-            cur_node = node.children.detect {|c| c.namespace == cur_nd_namespace }
-            cur_node.id = cur_nd_id
-            cur_node.title = cur_nd_title
-          end
-          return
-        # create temp node and recurse
-        else
-          cur_namespace = 'root' + '.' + chunked_namespace[0..(depth - 1)].join('.')
-          unless node.children.any?{ |c| c.namespace == cur_namespace }
-            new_node = Node.new('', cur_namespace, '')
-            node.children << new_node
-          else
-            new_node = node.children.detect {|c| c.namespace == cur_namespace }
-          end
-        end
-        add_path(new_node, note, depth + 1)
-      end
-
       root = Node.new('', 'root', 'Root')
       
       # set root node
@@ -89,32 +57,16 @@ class GraphDataGenerator < Jekyll::Generator
         end
       end
 
-      def tree_to_json(node, json_node={}, missing=[])
-        if node.id.empty?
-          missing << node.namespace
-        end
-        json_children = []
-        missing_children = []
-        node.children.each do |child|
-          new_child, new_missing_children = tree_to_json(child, missing)
-          json_children.append(new_child)
-          missing_children += new_missing_children
-        end
-        json_node = {
-          "id": node.id,
-          "namespace": node.namespace,
-          "name": node.title, # change 'title' -> 'name' for d3
-          "children": json_children
-        }
-        return json_node, missing + missing_children
-      end
-
       json_formatted_tree, missing_children = tree_to_json(root)
       puts "***** There are missing nodes *****"
       puts missing_children
       File.open('assets/notes_tree.json', 'w') do |f|
         f.puts json_formatted_tree.to_json
       end
+
+      # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! #
+      #  Convert [[internal links]] to <a class='ineternal-link' href='note.data['id']'>\\1</a> #
+      # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! #
 
       # Convert all Wiki/Roam-style double-bracket link syntax to plain HTML
       # anchor tag elements (<a>) with "internal-link" CSS class
@@ -190,10 +142,11 @@ class GraphDataGenerator < Jekyll::Generator
           # id: note_id_from_note(current_note),
           # path: "#{site.baseurl}#{current_note.data['id']}#{link_extension}",
           id: current_note.data['id'],
+          # permalink: "#{site.baseurl}#{current_note.data['id']}#{link_extension}",
           # path: current_note.data['id'],
           label: current_note.data['title'],
         } unless current_note.path.include?('_notes/index.html')
-        
+
         # Links: Jekyll
         current_note.data['backlinks'] = notes_linking_to_current_note
   
@@ -213,14 +166,62 @@ class GraphDataGenerator < Jekyll::Generator
         nodes: graph_nodes,
       }))
     end
-  
-    def note_id_from_note(note)
-      note.data['title']
-        .dup
-        .gsub(/\W+/, ' ')
-        .delete(' ')
-        .to_i(36)
-        .to_s
+
+    # !!!!!!!!!!!!!!!! #
+    # Helper functions #
+    # !!!!!!!!!!!!!!!! #
+
+    # add unique path for the given note 
+    def add_path(node, note, depth=1)
+      chunked_namespace = note.data['slug'].split(/\s|\./)
+      # if the given node was not root and we are at depth, handle note
+      if depth == chunked_namespace.length
+        cur_nd_namespace = 'root' + '.' + note.data['slug']
+        cur_nd_id = note.data['id']
+        cur_nd_title = note.data['title']
+        # if one does not exist, create node
+        unless node.children.any?{ |c| c.namespace == cur_nd_namespace }
+          new_node = Node.new(cur_nd_id, cur_nd_namespace, cur_nd_title)
+          node.children << new_node
+        # if one already exists, fill-in node
+        else
+          cur_node = node.children.detect {|c| c.namespace == cur_nd_namespace }
+          cur_node.id = cur_nd_id
+          cur_node.title = cur_nd_title
+        end
+        return
+      # create temp node and recurse
+      else
+        cur_namespace = 'root' + '.' + chunked_namespace[0..(depth - 1)].join('.')
+        unless node.children.any?{ |c| c.namespace == cur_namespace }
+          new_node = Node.new('', cur_namespace, '')
+          node.children << new_node
+        else
+          new_node = node.children.detect {|c| c.namespace == cur_namespace }
+        end
+      end
+      add_path(new_node, note, depth + 1)
+    end
+
+    # convert tree-class to json
+    def tree_to_json(node, json_node={}, missing=[])
+      if node.id.empty?
+        missing << node.namespace
+      end
+      json_children = []
+      missing_children = []
+      node.children.each do |child|
+        new_child, new_missing_children = tree_to_json(child, missing)
+        json_children.append(new_child)
+        missing_children += new_missing_children
+      end
+      json_node = {
+        "id": node.id,
+        "namespace": node.namespace,
+        "label": node.title,
+        "children": json_children
+      }
+      return json_node, missing + missing_children
     end
 
   end

@@ -2,4 +2,9 @@
 layout: default
 title: Home
 ---
-<h1>{{ "Hello World!" | downcase }}</h1>
+
+{% for note in site.notes %}
+    {% if note.title == "Short2things" %}
+        {{ note.content }}
+    {% endif %}
+{% endfor %}
