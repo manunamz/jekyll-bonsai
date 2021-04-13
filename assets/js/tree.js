@@ -84,6 +84,8 @@ export default function drawTree () {
             return !isMissingNote && window.location.pathname.includes(noteId);
         }
 
+        // from: https://stackoverflow.com/questions/63693132/unable-to-get-node-datum-on-mouseover-in-d3-v6
+        // d6 now passes events in vanilla javascript fashion
         function goToNoteFromTree(e, d) {
             var isMissingNote = d.data.id === "";
             if (!isMissingNote) {

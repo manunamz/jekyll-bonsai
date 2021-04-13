@@ -72,7 +72,9 @@ export default function drawGraph () {
         function isCurrentNoteInGraph(noteId) {
             return window.location.pathname.includes(noteId);
         }
-
+        
+        // from: https://stackoverflow.com/questions/63693132/unable-to-get-node-datum-on-mouseover-in-d3-v6
+        // d6 now passes events in vanilla javascript fashion
         function goToNoteFromGraph (e, d) {
             // i have no idea why this needs the preceeding '/'
             window.location = `/${d.id}`;
