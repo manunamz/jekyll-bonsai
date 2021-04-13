@@ -39,33 +39,47 @@ export default function drawGraph () {
             .data(data.links)
             .enter().append("line");
 
-        const node = svg.append("g")
-                .attr("class", "nodes")
-                .selectAll("circle")
-                .data(data.nodes)
-                .enter()
-                .append("circle")
-                .attr("r", radius)
-                .attr("active", (d) => isCurrentNoteInGraph(d.id) ? true : null)
-                .on("click", goToNoteFromGraph)
-                .call(d3.drag()
-                    .on("start", dragstarted)
-                    .on("drag", dragged)
-                    .on("end", dragended));
+        // complete node
+        const node = svg.selectAll('.nodes')
+            .data(data.nodes)
+            .enter().append('g')
+            .attr('class', 'nodes')
+            .attr("active", (d) => isCurrentNoteInGraph(d.id) ? true : null)
 
-        // node tooltip
+        // node's circle
+        node.append('circle')
+            .attr("r", radius)
+            .on("click", goToNoteFromGraph)
+            .call(d3.drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended))
+            
+        // node's label
+        // labels need to be nested in a 'g' object alongside the node circle.
+        //  docs: https://bl.ocks.org/mbostock/950642
+        //  so post: https://stackoverflow.com/questions/49443933/node-labelling-not-working-d3-v5
+        //    plnkr: http://plnkr.co/edit/6GqleTU89bSrd9hFQgI2?preview
+        node.append("text")
+            .attr("dx", 5)
+            .attr("dy", ".05em")
+            .attr("font-size", "20%")
+            .attr("fill", "#fff")
+            .text(function (d) { return d.label });
+
+        // node's tooltip
         node.append("title")
             .text(function(d) { return d.label; });
 
         simulation.on("tick", () => {
+            // node.attr('transform', d => `translate(${d.x},${d.y})`); 
             link
                 .attr("x1", function(d) { return d.source.x; })
                 .attr("y1", function(d) { return d.source.y; })
                 .attr("x2", function(d) { return d.target.x; })
                 .attr("y2", function(d) { return d.target.y; });
             node
-                .attr("cx", function(d) { return d.x; })
-                .attr("cy", function(d) { return d.y; });   
+                .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
         });
 
         function isCurrentNoteInGraph(noteId) {
