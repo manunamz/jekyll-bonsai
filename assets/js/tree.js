@@ -14,7 +14,7 @@ export default function drawTree () {
         var svg = d3.select(svgWrapper)
             .attr("viewBox", [-width / 2, -height / 2, width, height]);
   
-        const radius = 3.5;
+        const radius = 3;
 
         const root = d3.hierarchy(data);
         const links = root.links();
@@ -27,9 +27,13 @@ export default function drawTree () {
             .force("collide", d3.forceCollide())
             .force("center", d3.forceCenter())
             // see: https://stackoverflow.com/questions/9573178/d3-force-directed-layout-with-bounding-box?answertab=votes#tab-top
-            // 'center of gravity'
-            .force("forceX", d3.forceX())
-            .force("forceY", d3.forceY());
+            // 'center of gravity'            
+            .force("forceX", d3.forceX()
+                .strength(.5)
+                .x(.9))
+            .force("forceY", d3.forceY()
+                .strength(.1)
+                .y(.9));;
   
         const link = svg.append("g")
             .attr("class", "links")
@@ -41,10 +45,9 @@ export default function drawTree () {
             .attr("class", "nodes")
             .selectAll("circle")
             .data(nodes)
-            .enter()
-            .append("circle")
+            .enter().append("circle")
             .attr("r", radius)
-            .attr("active", (d) => isCurrentNoteInTree(d.data.id) ? true : null)
+            .attr("active", (d) => isCurrentNoteInTree(d.data.id) ? true : null)            
             // tree-only
             .attr("class", (d) => d.data.id === "" ? "missing" : null)
             .on("click", goToNoteFromTree)
@@ -52,11 +55,11 @@ export default function drawTree () {
                 .on("start", dragstarted)
                 .on("drag", dragged)
                 .on("end", dragended));
-        
+
         // node tooltip
         node.append("title")
-            .text(function(d) { return d.data.name });
-
+            .text(function(d) { return d.data.label });
+        
         simulation.on("tick", () => {
             // from: https://mbostock.github.io/d3/talk/20110921/parent-foci.html
             // preserve hierarchical shape via link positioning
@@ -64,7 +67,7 @@ export default function drawTree () {
             var ky = 1.2 * simulation.alpha();
             links.forEach(function(d, i) {
               d.target.x += (d.source.x - d.target.x) * kx;
-              d.target.y += (d.source.y + 40 - d.target.y) * ky;
+              d.target.y += (d.source.y + (height * .5) - d.target.y) * ky;
             });
 
             link
@@ -72,11 +75,9 @@ export default function drawTree () {
                 .attr("y1", d => d.source.y)
                 .attr("x2", d => d.target.x)
                 .attr("y2", d => d.target.y);
-
             node
                 .attr("cx", function(d) { return d.x; })
-                .attr("cy", function(d) { return d.y; });
-                
+                .attr("cy", function(d) { return d.y; });     
         });
 
         function isCurrentNoteInTree(noteId) {
