@@ -41,20 +41,35 @@ export default function drawTree () {
             .data(links)
             .join("line");
 
-        const node = svg.append("g")
-            .attr("class", "nodes")
-            .selectAll("circle")
+        // complete node
+        const node = svg.selectAll('.nodes')
             .data(nodes)
-            .enter().append("circle")
+            .enter().append('g')
+            .attr('class', 'nodes')
+
+        // node's circle
+        node.append('circle')
             .attr("r", radius)
-            .attr("active", (d) => isCurrentNoteInTree(d.data.id) ? true : null)            
+            .attr("active", (d) => isCurrentNoteInTree(d.data.id) ? true : null)
             // tree-only
             .attr("class", (d) => d.data.id === "" ? "missing" : null)
             .on("click", goToNoteFromTree)
             .call(d3.drag()
                 .on("start", dragstarted)
                 .on("drag", dragged)
-                .on("end", dragended));
+                .on("end", dragended))
+
+        // node's label
+        // labels need to be nested in a 'g' object alongside the node circle.
+        //  docs: https://bl.ocks.org/mbostock/950642
+        //  so post: https://stackoverflow.com/questions/49443933/node-labelling-not-working-d3-v5
+        //    plnkr: http://plnkr.co/edit/6GqleTU89bSrd9hFQgI2?preview
+        node.append("text")
+            .attr("dx", 5)
+            .attr("dy", ".05em")
+            .attr("font-size", "20%")
+            .attr("fill", "#fff")
+            .text(function (d) { return d.data.label });
 
         // node tooltip
         node.append("title")
@@ -76,12 +91,12 @@ export default function drawTree () {
                 .attr("x2", d => d.target.x)
                 .attr("y2", d => d.target.y);
             node
-                .attr("cx", function(d) { return d.x; })
-                .attr("cy", function(d) { return d.y; });     
+                .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });  
         });
 
         function isCurrentNoteInTree(noteId) {
             var isMissingNote = noteId === "";
+            console.log(!isMissingNote && window.location.pathname.includes(noteId));
             return !isMissingNote && window.location.pathname.includes(noteId);
         }
 
