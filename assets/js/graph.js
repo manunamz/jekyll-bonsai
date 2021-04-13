@@ -12,7 +12,7 @@ export default function drawGraph () {
         var svg = d3.select(svgWrapper)
             .attr("viewBox", [-width / 2, -height / 2, width, height]);
         
-        const radius = 3.5;
+        const radius = 3;
 
         const simulation = d3.forceSimulation()
             .nodes(data.nodes)
@@ -21,7 +21,7 @@ export default function drawGraph () {
                 .distance(30)
                 .iterations(1)
                 .links(data.links))
-            .force("charge", d3.forceManyBody())
+            .force("charge", d3.forceManyBody().strength(-50))
             .force("collide", d3.forceCollide())
             .force("center", d3.forceCenter())
             // see: https://stackoverflow.com/questions/9573178/d3-force-directed-layout-with-bounding-box?answertab=votes#tab-top
@@ -56,17 +56,16 @@ export default function drawGraph () {
         // node tooltip
         node.append("title")
             .text(function(d) { return d.label; });
-        
+
         simulation.on("tick", () => {
             link
                 .attr("x1", function(d) { return d.source.x; })
                 .attr("y1", function(d) { return d.source.y; })
                 .attr("x2", function(d) { return d.target.x; })
                 .attr("y2", function(d) { return d.target.y; });
-
             node
                 .attr("cx", function(d) { return d.x; })
-                .attr("cy", function(d) { return d.y; });
+                .attr("cy", function(d) { return d.y; });   
         });
 
         function isCurrentNoteInGraph(noteId) {
