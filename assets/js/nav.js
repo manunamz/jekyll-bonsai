@@ -19,9 +19,7 @@ import drawGraph from './graph.js';
 
 // how to checkbox: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_display_checkbox_text
 function changeGraphType() {
-  console.log('i got clicked!');
   var graphTypeCheckBox = document.getElementById('graphType');
-  console.log(graphTypeCheckBox);
   // destroy old chart   
   const svgWrapper = document.getElementById('svg-nav');
   d3.select(svgWrapper).selectAll('*').remove();
