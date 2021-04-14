@@ -1,14 +1,23 @@
 <!doctype html>
 <html>
   <head>
+
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+
     <title>{{ page.title }}</title>
+    
     <link rel="stylesheet" href="/assets/css/styles.css">
+    <!-- <link rel="stylesheet"
+          href="/assets/font/Cutive_Mono/CutiveMono-Regular.ttf"> -->
+    
     {% feed_meta %}
     {% seo %}
+    
     <script src="https://d3js.org/d3.v6.min.js"></script>
     <!-- modules: https://stackoverflow.com/questions/58211880/uncaught-syntaxerror-cannot-use-import-statement-outside-a-module-when-import -->
     <script type="module" src="{{ '/assets/js/nav.js' | relative_url }}"></script>
+  
   </head>
   <body>
     <div class="sidenav">
@@ -16,6 +25,7 @@
     </div>
     <div class="main">
       <!-- {% include nav.html %} -->
+      <!-- {% include garden-bed.html %} -->
       {{ content }}
     </div>
   </body>
