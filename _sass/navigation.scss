@@ -154,15 +154,15 @@
   }
 }
 
-// Aux nav
+// garden bed nav
 
-.aux-nav {
+.garden-bed-nav {
   height: 110%;
   overflow-x: auto;
   overflow-y: visible;
   @include fs-8;
 
-  .aux-nav-list {
+  .garden-bed-nav-list {
     display: flex;
     height: 100%;
     padding: 0;
@@ -171,7 +171,7 @@
     overflow-y: visible;
   }
 
-  .aux-nav-list-item {
+  .garden-bed-list-item {
     display: inline-block;
     margin-top: 0;
     margin-right: $sp-2;

@@ -1,6 +1,6 @@
-<nav class="aux-nav-list">
+<nav class="garden-bed-nav-list">
   {% for plant in site.data.nav-bed %}
-    <a class="aux-nav-list-item" href="{{ plant.link }}" {% if page.url == plant.link %}style="background-color: brown;"{% endif %}>
+    <a class="garden-bed-list-item" href="{{ plant.link }}" {% if page.url == plant.link %}style="background-color: brown;"{% endif %}>
       {{ plant.name }}
     </a>
   {% endfor %}
