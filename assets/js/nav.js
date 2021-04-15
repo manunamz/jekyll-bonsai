@@ -20,13 +20,16 @@ import drawGraph from './graph.js';
 // how to checkbox: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_display_checkbox_text
 function changeGraphType() {
   var graphTypeCheckBox = document.getElementById('graphType');
+  var graphTypeCheckBoxLabel = document.getElementById('graphTypeEmojiSpan');
   // destroy old chart   
   const svgWrapper = document.getElementById('svg-nav');
   d3.select(svgWrapper).selectAll('*').remove();
-  // redraw new one  
+  // redraw new chart and set label text
   if (graphTypeCheckBox.checked == true) {
+    graphTypeCheckBoxLabel.innerHTML = "🕸";
     drawTree();
   } else {
+    graphTypeCheckBoxLabel.innerHTML = "🌳";
     drawGraph();
   }
 }

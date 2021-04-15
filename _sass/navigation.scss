@@ -161,6 +161,7 @@
   padding-top: $sp-2;
   overflow-x: auto;
   @include fs-8;
+  user-select: none;
 
   .garden-bed-nav-list {
     display: flex;
@@ -178,8 +179,8 @@
   
       &:hover {
         overflow-x: auto;
-        transform: scale(1.5);
-        filter: drop-shadow(0 6mm 2mm rgba(6, 240, 103, 0.753));
+        transform: scale(1.5); 
+        filter: drop-shadow(0 6mm 2mm rgba(146, 102, 7, 0.753));
       }
   }
 
