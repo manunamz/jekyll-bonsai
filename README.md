@@ -8,6 +8,7 @@ Notes require yaml frontmatter with an `id`.
 - note with the title 'Root' displays as the home page (see index.html).
 
 ## refactorable
+- `graph-type-selector` and `wiki-link-nav-selector` could easily become a widget that are fed in different data (for example, the span text).
 - empty strings for `id` and `title` of missing nodes in hierarchical structure signify a missing node. this might be too much cognitive load to pass around -- maybe make a `missing` attribute or something that is a boolean...or have `missing` be calculated from the empty `id` and `title` attributes.
 
 ## d3 refs:
