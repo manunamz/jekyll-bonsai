@@ -12,8 +12,6 @@
     position: fixed;
     width: $nav-width-md;
     height: 100%;
-    // flex-direction: column;
-    // align-items: flex-end;
   }
 
   @include mq(lg) {
