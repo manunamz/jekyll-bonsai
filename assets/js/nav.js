@@ -9,13 +9,13 @@ import drawGraph from './graph.js';
     // don't use 'onclick' in html: https://stackoverflow.com/questions/17378199/uncaught-referenceerror-function-is-not-defined-with-onclick
     // prefer explicit registration of event listeners: https://stackoverflow.com/questions/12627443/jquery-click-vs-onclick/12627478#12627478
     // attach event listener to graphTypeCheckbox
-    var graphTypeCheckBox = document.getElementById('graphType');
+    const graphTypeCheckBox = document.getElementById('graph-type-checkbox');
     graphTypeCheckBox.addEventListener('click', function(event) {
       drawD3Nav();
       changeGraphType();
     }, false);
 
-    var wikiNavCheckBox = document.getElementById('wiki-link-nav-checkbox');
+    const wikiNavCheckBox = document.getElementById('wiki-link-nav-checkbox');
     wikiNavCheckBox.addEventListener('click', function(event) {
       expandGraphNav();
       drawD3Nav();
@@ -25,39 +25,35 @@ import drawGraph from './graph.js';
  })();
 
 function changeGraphType () {
-  var graphTypeCheckBox = document.getElementById('graphType');
-  var graphTypeCheckBoxLabel = document.getElementById('graphTypeEmojiSpan');
+  const graphTypeCheckBox = document.getElementById('graph-type-checkbox');
+  const graphTypeEmojiSpan = document.getElementById('graph-type-emoji-span');
   if (graphTypeCheckBox.checked) {
-    graphTypeCheckBoxLabel.innerHTML = "🕸";
+    graphTypeEmojiSpan.innerHTML = "🕸";
   } else {
-    graphTypeCheckBoxLabel.innerHTML = "🌳";
+    graphTypeEmojiSpan.innerHTML = "🌳";
   }
 }
 
 // how to checkbox: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_display_checkbox_text
 function drawD3Nav() {
-  var graphTypeCheckBox = document.getElementById('graphType');
-  // var graphTypeCheckBoxLabel = document.getElementById('graphTypeEmojiSpan');
-  // destroy old chart   
+  const graphTypeCheckBox = document.getElementById('graph-type-checkbox'); 
   const svgWrapper = document.getElementById('svg-nav');
+  // destroy old chart   
   d3.select(svgWrapper).selectAll('*').remove();
+  
   // redraw new chart and set label text
   if (graphTypeCheckBox.checked) {
-    // graphTypeCheckBoxLabel.innerHTML = "🕸";
     drawTree();
   } else {
-    // graphTypeCheckBoxLabel.innerHTML = "🌳";
     drawGraph();
   }
 }
 
 function expandGraphNav() {
-  // e.preventDefault();
-
   const mainHeader = document.getElementById('main-header');
   const siteNav = document.getElementById('graph-nav');
   const wikiLinkCheckBox = document.getElementById('wiki-link-nav-checkbox');
-  const wikiLinkNavSpan = document.getElementById('wiki-link-nav-span');
+  // const wikiLinkNavSpan = document.getElementById('wiki-link-nav-span');
   
   if (wikiLinkCheckBox.checked) {
     siteNav.classList.add('nav-open');
