@@ -19,15 +19,20 @@
   </head>
   <body>
     <div class="side-bar">
-      <div class="site-header">
-        The Secret Bamboo Garden
-      </div>
-      <nav role="navigation" aria-label="Main" id="site-nav" class="site-nav"></nav>
+      <!-- <div class="site-header">
+      </div> -->
+      <!-- <nav role="navigation" aria-label="Main" id="site-nav" class="site-nav"></nav> -->
         {% include graph.html %}
-      </nav>
-      <footer class="site-footer">
-        Powered by jekyll-bonsai.
-      </footer>
+        <label class="graph-type-selector">
+          <input id="graphType" type="checkbox" checked="checked">
+          <span id="graphTypeEmojiSpan">🕸</span>
+        </label>
+      <!-- </nav> -->
+      <!-- <footer class="site-footer">
+        <label>
+          Grown from a jekyll-bonsai 🪴
+        </label>
+      </footer> -->
     </div>
     <div class="main" id="top">
       <!-- {% include nav.html %} -->

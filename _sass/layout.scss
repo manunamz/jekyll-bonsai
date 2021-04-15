@@ -48,24 +48,22 @@
 }
 
 .main-header {
-  display: none;
+  // display: none;
   background-color: $sidebar-color;
   margin-bottom: $sp-5;
 
-  @include mq(md) {
-    display: flex;
-    justify-content: space-between;
-    height: $header-height;
-    background-color: $body-background-color;
-  }
+  display: flex;
+  justify-content: space-between;
+  height: $header-height;
+  background-color: $body-background-color;
 
-  &.nav-open {
-    display: block;
+  // &.nav-open {
+  //   display: block;
 
-    @include mq(md) {
-      display: flex;
-    }
-  }
+  //   @include mq(md) {
+  //     display: flex;
+  //   }
+  // }
 }
 
 .site-nav,
@@ -73,9 +71,9 @@
 .site-footer {
   width: 100%;
 
-  @include mq(lg) {
-    width: $nav-width;
-  }
+  // @include mq(lg) {
+  //   width: $nav-width;
+  // }
 }
 
 .site-nav {
@@ -87,8 +85,8 @@
 
   @include mq(md) {
     display: block;
-    padding-top: $sp-8;
-    padding-bottom: $gutter-spacing-sm;
+    // padding-top: $sp-8;
+    // padding-bottom: $gutter-spacing-sm;
     overflow-y: auto;
     flex: 1 1 auto;
   }
@@ -184,10 +182,11 @@ body {
   position: absolute;
   bottom: 0;
   left: 0;
-  padding-top: $sp-4;
-  padding-bottom: $sp-4;
+  padding-top: $sp-2;
+  padding-bottom: $sp-2;
   color: $grey-dk-000;
   @include fs-2;
+  // background-color: transparent;
 
   @include mq(md) {
     position: static;
