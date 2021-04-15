@@ -1,25 +1,38 @@
-.current {
-  color: green;
-}
+// html {
+//   line-height: 1.15; /* 1 */
+//   -webkit-text-size-adjust: 100%; /* 2 */
+//   // font-family: $monospace;
+//   // font-family: 'exo2';
+//   // font-family: 'Julius Sans One', sans-serif;
+//   // font-family: 'Libre Baskerville', sans-serif;
+//   // font-family: 'Tangerine';
+//   background-color: #e4f3ea;
+// }
 
-.sidenav {
-  height: 100%;
-  width: 15%;
-  position: fixed;
-  z-index: 1;
-  top: 0;
-  left: 0;
-  // background-color: #FFEA9F;
-  background: #232322;
-  overflow-x: hidden;
-  padding-top: 20px;
-}
+// body {
+//   margin: 0;
+//   // background-color: #fffff8;
+//   background-color: #e4f3ea;
+// }
 
-.main {
-  margin-left: 15%; /* Same as the width of the sidenav */
-  font-size: 28px; /* Increased text to enable scrolling */
-  padding: 0px 10px;
-}
+// .sidenav {
+//   height: 100%;
+//   width: 15%;
+//   position: fixed;
+//   z-index: 1;
+//   top: 0;
+//   left: 0;
+//   // background-color: #FFEA9F;
+//   // background: #232322;
+//   background-color: #e4f3ea;
+//   overflow-x: hidden;
+// }
+
+// .main {
+//   margin-left: 15%; /* Same as the width of the sidenav */
+//   font-size: 28px; /* Increased text to enable scrolling */
+//   padding: 0px 10px;
+// }
 
 /* The container */
 .container {
