@@ -17,7 +17,6 @@ import drawGraph from './graph.js';
 
     var wikiNavCheckBox = document.getElementById('wiki-link-nav-checkbox');
     wikiNavCheckBox.addEventListener('click', function(event) {
-      console.log('i clicked a thing!');  
       expandGraphNav();
       drawD3Nav();
     }, false);
@@ -56,16 +55,14 @@ function expandGraphNav() {
   // e.preventDefault();
 
   const mainHeader = document.getElementById('main-header');
-  const siteNav = document.getElementById('site-nav');
+  const siteNav = document.getElementById('graph-nav');
   const wikiLinkCheckBox = document.getElementById('wiki-link-nav-checkbox');
   const wikiLinkNavSpan = document.getElementById('wiki-link-nav-span');
   
   if (wikiLinkCheckBox.checked) {
-    console.log('check!');
     siteNav.classList.add('nav-open');
     mainHeader.classList.add('nav-open');
   } else {
-    console.log('no check fo u!')
     siteNav.classList.remove('nav-open');
     mainHeader.classList.remove('nav-open');
   }
