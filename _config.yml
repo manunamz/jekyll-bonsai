@@ -16,6 +16,8 @@ sass:
   sass_dir:          _sass
   style:            :compressed
 
+color: nil
+
 enable_mathjax: true
 kramdown:
   math_engine: mathjax
@@ -27,8 +29,6 @@ collections:
   notes: 
     output: true
     # permalink: /:slug
-  authors:
-    output: true
 
 defaults:
   - scope:

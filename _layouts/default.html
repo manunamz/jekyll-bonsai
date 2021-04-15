@@ -18,14 +18,40 @@
   
   </head>
   <body>
-    <div class="sidenav">
-      {% include graph.html %}
+    <div class="side-bar">
+      <div class="site-header">
+        The Secret Bamboo Garden
+      </div>
+      <nav role="navigation" aria-label="Main" id="site-nav" class="site-nav"></nav>
+        {% include graph.html %}
+      </nav>
+      <footer class="site-footer">
+        Powered by jekyll-bonsai.
+      </footer>
     </div>
-    <div class="main">
+    <div class="main" id="top">
       <!-- {% include nav.html %} -->
-      {{ content }}
+      <div id="main-header" class="main-header">
+        <div class="aux-nav">
+          {% include nav-bed.html %}
+        </div>
+      </div>
+      <div id="main-content-wrap" class="main-content-wrap">
+        <nav aria-label="Breadcrumb" class="breadcrumb-nav">
+          <ol class="breadcrumb-nav-list">
+            {% if page.grand_parent %}
+              <li class="breadcrumb-nav-list-item"><a href="{{ first_level_url }}">{{ page.grand_parent }}</a></li>
+              <li class="breadcrumb-nav-list-item"><a href="{{ second_level_url }}">{{ page.parent }}</a></li>
+            {% else %}
+              <li class="breadcrumb-nav-list-item"><a href="{{ first_level_url }}">{{ page.parent }}</a></li>
+            {% endif %}
+            <li class="breadcrumb-nav-list-item"><span>{{ page.title }}</span></li>
+          </ol>
+        </nav>
+        <div id="main-content" class="main-content" role="main">
+          {{ content }}
+        </div>
+      </div>
     </div>
   </body>
 </html>
-
-
