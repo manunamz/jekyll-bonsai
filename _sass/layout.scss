@@ -48,7 +48,6 @@
 }
 
 .main-header {
-  // display: none;
   background-color: $sidebar-color;
   margin-bottom: $sp-5;
 
@@ -56,30 +55,11 @@
   justify-content: space-between;
   height: $header-height;
   background-color: $body-background-color;
-
-  // &.nav-open {
-  //   // display: flex;
-  //   // display: block;
-
-  //   @include mq(lg) {
-  //     overflow-x: auto;
-  //   }
-  // }
 }
 
-.site-nav,
-.site-header,
-.site-footer {
-  width: 100%;
-
-  // @include mq(lg) {
-  //   width: $nav-width;
-  // }
-}
-
-.site-nav {
+.graph-nav {
   display: none;
-  // position: relative;
+  width: 100%;
 
   &.nav-open {
     display: flex;
@@ -89,36 +69,7 @@
 
   @include mq(md) {
     display: block;
-    // padding-top: $sp-8;
-    // padding-bottom: $gutter-spacing-sm;
     overflow-y: auto;
     flex: 1 1 auto;
   }
-}
-
-// stylelint-enable selector-max-type
-
-.site-footer {
-  // @include container;
-  // position: absolute;
-  // bottom: 0;
-  // left: 0;
-  // padding-top: $sp-2;
-  // padding-bottom: $sp-2;
-  display: flex;
-  justify-content: space-between;
-  z-index: 10;
-  color: $grey-dk-000;
-  @include fs-2;
-
-  @include mq(md) {
-    position: static;
-    justify-self: end;
-  }
-}
-
-.icon {
-  width: $sp-5;
-  height: $sp-5;
-  color: $link-color;
 }
