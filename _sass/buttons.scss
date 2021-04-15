@@ -5,22 +5,16 @@
 /* graph type container */
 .graph-type-selector {
   z-index: 2;
-  // display: block;
-  // position: absolute;
   left: $sp-2;
   bottom: $sp-2;
   position: absolute;
   cursor: pointer;
-  // -webkit-user-select: none;
-  // -moz-user-select: none;
-  // -ms-user-select: none;
   user-select: none;
   font-size: $font-size-6;
   filter: drop-shadow(0 0 0.7mm rgba(6, 240, 103, 0.753));
 
   /* Hide the browser's default checkbox */
   input {
-    // position: absolute;
     opacity: 0;
     cursor: pointer;
     height: 0;
@@ -35,16 +29,12 @@
   right: $sp-2;
   bottom: $sp-2;
   cursor: pointer;
-  // -webkit-user-select: none;
-  // -moz-user-select: none;
-  // -ms-user-select: none;
   user-select: none;
   font-size: $font-size-6;
   filter: drop-shadow(0 0 0.7mm rgba(6, 240, 103, 0.753));
 
   /* Hide the browser's default checkbox */
   input {
-    // position: absolute;
     opacity: 0;
     cursor: pointer;
     height: 0;
