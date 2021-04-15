@@ -11,26 +11,63 @@ import drawGraph from './graph.js';
     // attach event listener to graphTypeCheckbox
     var graphTypeCheckBox = document.getElementById('graphType');
     graphTypeCheckBox.addEventListener('click', function(event) {
-        changeGraphType();
+      drawD3Nav();
+      changeGraphType();
+    }, false);
+
+    var wikiNavCheckBox = document.getElementById('wiki-link-nav-checkbox');
+    wikiNavCheckBox.addEventListener('click', function(event) {
+      console.log('i clicked a thing!');  
+      expandGraphNav();
+      drawD3Nav();
     }, false);
 
     drawTree();
  })();
 
-// how to checkbox: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_display_checkbox_text
-function changeGraphType() {
+function changeGraphType () {
   var graphTypeCheckBox = document.getElementById('graphType');
   var graphTypeCheckBoxLabel = document.getElementById('graphTypeEmojiSpan');
+  if (graphTypeCheckBox.checked) {
+    graphTypeCheckBoxLabel.innerHTML = "🕸";
+  } else {
+    graphTypeCheckBoxLabel.innerHTML = "🌳";
+  }
+}
+
+// how to checkbox: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_display_checkbox_text
+function drawD3Nav() {
+  var graphTypeCheckBox = document.getElementById('graphType');
+  // var graphTypeCheckBoxLabel = document.getElementById('graphTypeEmojiSpan');
   // destroy old chart   
   const svgWrapper = document.getElementById('svg-nav');
   d3.select(svgWrapper).selectAll('*').remove();
   // redraw new chart and set label text
-  if (graphTypeCheckBox.checked == true) {
-    graphTypeCheckBoxLabel.innerHTML = "🕸";
+  if (graphTypeCheckBox.checked) {
+    // graphTypeCheckBoxLabel.innerHTML = "🕸";
     drawTree();
   } else {
-    graphTypeCheckBoxLabel.innerHTML = "🌳";
+    // graphTypeCheckBoxLabel.innerHTML = "🌳";
     drawGraph();
+  }
+}
+
+function expandGraphNav() {
+  // e.preventDefault();
+
+  const mainHeader = document.getElementById('main-header');
+  const siteNav = document.getElementById('site-nav');
+  const wikiLinkCheckBox = document.getElementById('wiki-link-nav-checkbox');
+  const wikiLinkNavSpan = document.getElementById('wiki-link-nav-span');
+  
+  if (wikiLinkCheckBox.checked) {
+    console.log('check!');
+    siteNav.classList.add('nav-open');
+    mainHeader.classList.add('nav-open');
+  } else {
+    console.log('no check fo u!')
+    siteNav.classList.remove('nav-open');
+    mainHeader.classList.remove('nav-open');
   }
 }
 
