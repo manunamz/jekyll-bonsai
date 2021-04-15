@@ -157,18 +157,16 @@
 // garden bed nav
 
 .garden-bed-nav {
-  height: 110%;
+  margin-bottom: -$sp-8;
+  padding-top: $sp-2;
   overflow-x: auto;
-  overflow-y: visible;
   @include fs-8;
 
   .garden-bed-nav-list {
     display: flex;
     height: 100%;
-    padding: 0;
-    margin: $sp-2;
+    margin: $sp-4;
     list-style: none;
-    overflow-y: visible;
   }
 
   .garden-bed-list-item {
@@ -177,7 +175,6 @@
     margin-right: $sp-2;
     margin-left: $sp-2;
     transition: all .2s ease-in-out;
-    overflow-y: visible;
   
       &:hover {
         overflow-x: auto;
