@@ -19,20 +19,13 @@
   </head>
   <body>
     <div class="side-bar">
-      <!-- <div class="site-header">
-      </div> -->
-      <!-- <nav role="navigation" aria-label="Main" id="site-nav" class="site-nav"></nav> -->
+      <nav role="navigation" aria-label="Main" id="site-nav" class="site-nav">
         {% include graph.html %}
         <label class="graph-type-selector">
           <input id="graphType" type="checkbox" checked="checked">
           <span id="graphTypeEmojiSpan">🕸</span>
         </label>
-      <!-- </nav> -->
-      <!-- <footer class="site-footer">
-        <label>
-          Grown from a jekyll-bonsai 🪴
-        </label>
-      </footer> -->
+      </nav>
     </div>
     <div class="main" id="top">
       <!-- {% include nav.html %} -->
@@ -58,5 +51,9 @@
         </div>
       </div>
     </div>
+    <label class="wiki-link-nav-selector">
+      <input id="wiki-link-nav-checkbox" type="checkbox">
+      <span id="wiki-link-nav-span">[[ ]]</span>
+    </label>
   </body>
 </html>

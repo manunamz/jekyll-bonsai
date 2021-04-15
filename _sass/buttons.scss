@@ -5,31 +5,55 @@
 /* graph type container */
 .graph-type-selector {
   z-index: 2;
-  display: block;
-  position: absolute;
+  // display: block;
+  // position: absolute;
   left: $sp-2;
-  bottom: 0;
+  bottom: $sp-2;
+  position: absolute;
   cursor: pointer;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
+  // -webkit-user-select: none;
+  // -moz-user-select: none;
+  // -ms-user-select: none;
   user-select: none;
-  font-size: $font-size-9;
+  font-size: $font-size-6;
   filter: drop-shadow(0 0 0.7mm rgba(6, 240, 103, 0.753));
 
   /* Hide the browser's default checkbox */
   input {
-    position: absolute;
+    // position: absolute;
     opacity: 0;
     cursor: pointer;
     height: 0;
     width: 0;
   }
+}
 
-  span {
-    display: inline-block;
-    border-color: $grey-dk-000;
+.wiki-link-nav-selector {
+  z-index: 2;
+  display: block;
+  position: fixed;
+  right: $sp-2;
+  bottom: $sp-2;
+  cursor: pointer;
+  // -webkit-user-select: none;
+  // -moz-user-select: none;
+  // -ms-user-select: none;
+  user-select: none;
+  font-size: $font-size-6;
+  filter: drop-shadow(0 0 0.7mm rgba(6, 240, 103, 0.753));
+
+  /* Hide the browser's default checkbox */
+  input {
+    // position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
   }
+}
+
+.wiki-link-nav-span {
+  color: #fff;
 }
 
 // stylelint-disable color-named
