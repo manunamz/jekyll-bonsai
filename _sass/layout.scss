@@ -50,6 +50,7 @@
 .main-header {
   display: none;
   background-color: $sidebar-color;
+  margin-bottom: $sp-5;
 
   @include mq(md) {
     display: flex;
