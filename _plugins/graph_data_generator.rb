@@ -281,7 +281,6 @@ class GraphDataGenerator < Jekyll::Generator
     def check_for_newlines(notes)
       notes_missing_newline = []
       notes.each do |cur_note|
-        puts cur_note.content[-1]
         if cur_note.content[-1] != "\n"
           notes_missing_newline << cur_note
         end
@@ -316,7 +315,7 @@ class GraphDataGenerator < Jekyll::Generator
       end
       # process sidenotes
       sidenotes = note.content.scan(sidenote_def_regex)
-      note.content.slice!(sidenote_def_regex) # rm sidenote defs from original note.
+      note.content.gsub!(sidenote_def_regex, '') # rm sidenote defs from original note.
       i = 0
       sidenotes.each do |sidenote|
         i += 1
@@ -324,7 +323,7 @@ class GraphDataGenerator < Jekyll::Generator
         definition = sidenote[1]
         note.content = note.content.gsub(
           /\[#{sn_regex}(#{mark})\]/i,
-          "<label for=\"#{css_class}-#{i}\" class=\"sidenote-toggle #{css_class}-number\"></label><input type=\"checkbox\" id=\"#{css_class}-#{i}\" class=\"sidenote-toggle\"><span class=\"#{css_class}\">#{definition}</span>"
+          "<label for=\"#{css_class}-#{i}\" class=\"sidenote-toggle sidenote-number\"></label><input type=\"checkbox\" id=\"#{css_class}-#{i}\" class=\"sidenote-toggle\"><span class=\"#{css_class}\">#{definition}</span>"
         )
       end
     end
