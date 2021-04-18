@@ -361,7 +361,8 @@ label.sidenote-toggle:not(.sidenote-number) {
   left: $sp-1;
 }
 
-.sidenote:before {
+.rsn:before,
+.lsn:before {
   content: counter(sidenote-counter) " ";
   font-size: $font-size-2;
   top: -$sp-2;
