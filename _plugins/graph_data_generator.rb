@@ -178,7 +178,7 @@ class GraphDataGenerator < Jekyll::Generator
           # [[cats]]
           current_note.content = current_note.content.gsub(
             /\[\[(#{namespace_from_filename})\]\]/i,
-            "<a class='internal-link' href='#{site.baseurl}#{note_potentially_linked_to.data['permalink']}#{link_extension}'>#{name_from_namespace}</a>"
+            "<a class='wiki-link' href='#{site.baseurl}#{note_potentially_linked_to.data['permalink']}#{link_extension}'>#{name_from_namespace}</a>"
           )
 
         end
