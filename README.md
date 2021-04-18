@@ -31,6 +31,8 @@ Notes require yaml frontmatter with an `id`.
     - i wonder if that means i have to switch from d3 svg to canvas...and if that would be painful or not...
 
 # lrn
+- light/dark theme button from [https://github.com/mathieudutour/gatsby-digital-garden](https://codepen.io/aaroniker/pen/KGpXZo).
+- css transitions: https://thoughtbot.com/blog/transitions-and-transforms
 
 ## d3 refs:
 - [d3-force testing ground](https://bl.ocks.org/steveharoz/8c3e2524079a8c440df60c1ab72b5d03)
