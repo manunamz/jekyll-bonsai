@@ -5,11 +5,32 @@
 Notes require yaml frontmatter with an `id`.
 
 ## notable
+- all metanote types increment in isolation -- so there could be up to three 1's if you have a \[\^footnote], \[\<right-sidenote], and \[\>left-sidenote].
 - note with the title 'Root' displays as the home page (see index.html).
+- graph viz does not include tree connections.
+
+## known issues
+- broken \[\[wiki links]] break footnotes.
+    - does this mean that local plugins are run **before** the kramdown parser??
+- \[\[wiki links]] break charts.
+
+## wants
+- sort of want to abandon the 'mobile first' approach (see `layout.scss`) and make the scss more explicit about what screen the logic is targetting.
+    - this mostly means applying `@include mq(sm)` where 'default' behavior is set to only really make sense on mobile.
+    - see: https://css-tricks.com/snippets/css/media-queries-for-standard-devices/
+- typescript with d3: https://www.npmjs.com/package/@types/d3
 
 ## refactorable
+- `.rsn` and `.lsn` are basically the same class except for their margin offset direction.
+- make _plugin parts into a module and turn the `generate()` function into an order-of-operations-machine of sorts.
 - `graph-type-selector` and `wiki-link-nav-selector` could easily become a widget that are fed in different data (for example, the span text).
 - empty strings for `id` and `title` of missing nodes in hierarchical structure signify a missing node. this might be too much cognitive load to pass around -- maybe make a `missing` attribute or something that is a boolean...or have `missing` be calculated from the empty `id` and `title` attributes.
+
+## optimize
+- apparently use pixix.js to optimize d3? -> https://graphaware.com/visualization/2019/09/05/scale-up-your-d3-graph-visualisation-webgl-canvas-with-pixi-js.html
+    - i wonder if that means i have to switch from d3 svg to canvas...and if that would be painful or not...
+
+# lrn
 
 ## d3 refs:
 - [d3-force testing ground](https://bl.ocks.org/steveharoz/8c3e2524079a8c440df60c1ab72b5d03)
