@@ -5,7 +5,7 @@
 Notes require yaml frontmatter with an `id`.
 
 ## notable
-- all metanote types increment in isolation -- so there could be up to three 1's if you have a \[\^footnote], \[\<right-sidenote], and \[\>left-sidenote].
+- sidenotes increment together, but separately from footnotes. so, for example, it's possible for there to be a '1' for both a \[\^footnote] and a \[\<right-sidenote] or \[\>left-sidenote].
 - note with the title 'Root' displays as the home page (see index.html).
 - graph viz does not include tree connections.
 
