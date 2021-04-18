@@ -5,13 +5,32 @@
 /* graph type container */
 .graph-type-selector {
   z-index: 2;
-  left: $sp-2;
-  bottom: $sp-2;
+  top: $sp-2;
   position: absolute;
   cursor: pointer;
   user-select: none;
   font-size: $font-size-6;
   filter: drop-shadow(0 0 0.7mm rgba(6, 240, 103, 0.753));
+  right: $sp-2;
+
+  /* Hide the browser's default checkbox */
+  input {
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+}
+
+.colors-selector {
+  z-index: 2;
+  top: $sp-2;
+  position: absolute;
+  cursor: pointer;
+  user-select: none;
+  font-size: $font-size-6;
+  filter: drop-shadow(0 0 0.7mm rgba(228, 225, 31, 0.753));
+  left: $sp-2;
 
   /* Hide the browser's default checkbox */
   input {
