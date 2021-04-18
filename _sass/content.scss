@@ -285,17 +285,6 @@
   }
 }
 
-.sidenote-toggle:checked + .rsn {
-  display: block;
-  float: left;
-  left: 1rem;
-  clear: both;
-  width: 95%;
-  margin: 1rem 2.5%;
-  vertical-align: baseline;
-  position: relative;
-}
-
 /*****************
  * left sidenote *
  *****************/
@@ -321,6 +310,11 @@
   }
 }
 
+/********************
+ * general sidenote *
+ ********************/
+
+.sidenote-toggle:checked + .rsn,
 .sidenote-toggle:checked + .lsn {
   display: block;
   float: left;
@@ -331,10 +325,6 @@
   vertical-align: baseline;
   position: relative;
 }
-
-/********************
- * general sidenote *
- ********************/
 
 label.sidenote-toggle:not(.sidenote-number) {
   display: inline;
@@ -359,7 +349,7 @@ label.sidenote-toggle:not(.sidenote-number) {
 .sidenote-number:after,
 .rsn:before,
 .lsn:before {
-  font-family: et-book-roman-old-style;
+  // font-family: et-book-roman-old-style;
   position: relative;
   vertical-align: baseline;
 }
@@ -470,7 +460,7 @@ blockquote .lsn {
 //   height: 100%;
 // }
 
-@media (max-width: 760px) {
+// @media (max-width: 760px) {
   // body {
   //     width: 84%;
   //     padding-left: 8%;
@@ -547,5 +537,5 @@ blockquote .lsn {
   // img {
   //     width: 100%;
   // }
-  }
+  // }
 }
