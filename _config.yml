@@ -18,6 +18,8 @@ sass:
 
 # may be 'dark' or 'light'
 theme_colors: "dark"
+# may be 'tree' or 'graph'
+graph_type: "tree"
 
 enable_mathjax: true
 kramdown:
