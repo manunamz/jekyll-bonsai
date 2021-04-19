@@ -16,7 +16,8 @@ sass:
   sass_dir:          _sass
   style:            :compressed
 
-color: nil
+# may be 'dark' or 'light'
+theme_colors: "dark"
 
 enable_mathjax: true
 kramdown:
