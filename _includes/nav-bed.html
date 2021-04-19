@@ -1,8 +1,0 @@
-{% assign plants = site.gbed | sort: "order"  %}
-<nav class="garden-bed-nav-list">
-  {% for plant in plants %}
-    <a class="garden-bed-list-item" href="{{ plant.url }}" {% if page.url == plant.link %}style="filter: drop-shadow(0 6mm 2mm rgba(6, 240, 103, 0.753));"{% endif %}>
-      {{ plant.emoji }}
-    </a>
-  {% endfor %}
-</nav>
