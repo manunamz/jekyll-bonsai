@@ -313,11 +313,11 @@
     }
   }
 
-  .main-header {
-    padding-top: $sp-10;
+  // .main-header {
+  //   padding-top: $sp-10;
 
-    @include mq(md) {
-      padding-top: 0;
-    }
-  }
+  //   @include mq(md) {
+  //     padding-top: 0;
+  //   }
+  // }
 }

@@ -8,9 +8,9 @@
   flex-wrap: wrap;
 
   @include mq(md) {
+    width: $nav-width-md;
     flex-wrap: nowrap;
     position: fixed;
-    width: $nav-width-md;
     height: 100%;
   }
 
@@ -42,15 +42,15 @@
   }
 }
 
-.main-header {
-  background-color: $sidebar-color;
-  margin-bottom: $sp-5;
+// .main-header {
+//   background-color: $sidebar-color;
+//   margin-bottom: $sp-5;
 
-  display: flex;
-  justify-content: space-between;
-  height: $header-height;
-  background-color: $body-background-color;
-}
+//   display: flex;
+//   justify-content: space-between;
+//   height: $header-height;
+//   background-color: $body-background-color;
+// }
 
 .graph-nav {
   display: none;
