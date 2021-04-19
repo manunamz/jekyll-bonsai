@@ -22,6 +22,7 @@ Notes require yaml frontmatter with an `id`.
 - typescript with d3: https://www.npmjs.com/package/@types/d3
 
 ## refactorable
+- use typescript with d3? https://medium.com/react-courses/first-steps-d3-with-react-typescript-part-i-setting-up-your-first-project-d29802e6f6b3
 - populate `gbed`-related data from notes themselves -- this would allow for dynamic site layout spec definition while edited one's notes.
 - `.rsn` and `.lsn` are basically the same class except for their margin offset direction.
 - make _plugin parts into a module and turn the `generate()` function into an order-of-operations-machine of sorts.
