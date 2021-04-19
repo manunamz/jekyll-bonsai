@@ -26,11 +26,20 @@ collections:
   pages:
     output: true
     permalink: /:path
+  gbed:
+    output: true
+    permalink: /:title
   notes: 
     output: true
     # permalink: /:slug
 
 defaults:
+  - scope:
+      # path: ""
+      path: "_gbed/**/*.md"
+      type: "gbed"
+    values:
+      layout: "gbed-type"
   - scope:
       path: "_notes/**/*.md"
     values:
@@ -40,6 +49,7 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
+  
 
 # Google Analytics Tracking (optional)
 # e.g, UA-1234567-89
