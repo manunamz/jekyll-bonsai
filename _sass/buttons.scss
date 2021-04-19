@@ -23,7 +23,7 @@
 }
 
 .wiki-link-nav-selector {
-  z-index: 2;
+  z-index: 3;
   display: block;
   position: fixed;
   right: $sp-2;
@@ -40,10 +40,6 @@
     height: 0;
     width: 0;
   }
-}
-
-.wiki-link-nav-span {
-  color: #fff;
 }
 
 // stylelint-disable color-named
