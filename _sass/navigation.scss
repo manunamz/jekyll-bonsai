@@ -188,6 +188,10 @@
     margin-left: $sp-2;
     transition: all .2s ease-in-out;
   
+      + .active {
+        filter: drop-shadow(0 4mm 2mm rgba(6, 240, 103, 0.753));
+      }
+
       &:hover {
         overflow-x: auto;
         transform: scale(1.5); 

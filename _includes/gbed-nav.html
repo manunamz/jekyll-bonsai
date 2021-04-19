@@ -1,7 +1,7 @@
 {% assign plants = site.gbed | sort: "order"  %}
 <nav class="gbed-nav-list">
   {% for plant in plants %}
-    <a class="gbed-list-item" href="{{ plant.url }}" {% if page.url == plant.link %}style="filter: drop-shadow(0 6mm 2mm rgba(6, 240, 103, 0.753));"{% endif %}>
+    <a class="gbed-list-item {% if page.url contains plant.title %}active{% endif %}" href="{{ plant.url }}">
       {{ plant.emoji }}
     </a>
   {% endfor %}
