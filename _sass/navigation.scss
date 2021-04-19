@@ -157,20 +157,20 @@
 
 // garden bed nav
 
-.garden-bed-nav {
+.gbed-nav {
   margin-bottom: -$sp-8;
   padding-top: $sp-2;
   overflow-x: auto;
   @include fs-8;
   user-select: none;
 
-  .garden-bed-nav-list {
+  .gbed-nav-list {
     display: flex;
     margin: $sp-4;
     list-style: none;
   }
 
-  .garden-bed-list-item {
+  .gbed-list-item {
     display: inline-block;
     margin-top: 0;
     margin-right: $sp-2;

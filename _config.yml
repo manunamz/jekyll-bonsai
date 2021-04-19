@@ -39,7 +39,7 @@ defaults:
       path: "_gbed/**/*.md"
       type: "gbed"
     values:
-      layout: "gbed-type"
+      layout: "gbed-plant"
   - scope:
       path: "_notes/**/*.md"
     values:
