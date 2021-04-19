@@ -50,17 +50,17 @@ function drawD3Nav() {
 }
 
 function expandGraphNav() {
-  const mainHeader = document.getElementById('main-header');
+  // const mainHeader = document.getElementById('main-header');
   const siteNav = document.getElementById('graph-nav');
   const wikiLinkCheckBox = document.getElementById('wiki-link-nav-checkbox');
   // const wikiLinkNavSpan = document.getElementById('wiki-link-nav-span');
   
   if (wikiLinkCheckBox.checked) {
     siteNav.classList.add('nav-open');
-    mainHeader.classList.add('nav-open');
+    // mainHeader.classList.add('nav-open');
   } else {
     siteNav.classList.remove('nav-open');
-    mainHeader.classList.remove('nav-open');
+    // mainHeader.classList.remove('nav-open');
   }
 }
 
