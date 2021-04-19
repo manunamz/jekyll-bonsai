@@ -44,14 +44,14 @@ function changeColors () {
   const cssFile = document.querySelector('[rel="stylesheet"]');
   const colorsCheckBox = document.getElementById('colors-checkbox');
   const colorsEmojiSpan = document.getElementById('colors-emoji-span');
-  console.log('checked!');
+
   var theme_colors = "dark";
   if (colorsCheckBox.checked) {
-    colorsEmojiSpan.innerHTML = "🌘";
-    theme_colors = "light";
-  } else {
     colorsEmojiSpan.innerHTML = "☀️";
     theme_colors = "dark";
+  } else {
+    colorsEmojiSpan.innerHTML = "🌘";
+    theme_colors = "light";
   }
   cssFile.setAttribute('href', '{{ "assets/css/styles-" | absolute_url }}' + theme_colors + '.scss');
 }
