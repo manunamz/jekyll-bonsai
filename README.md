@@ -46,3 +46,21 @@ Notes require yaml frontmatter with an `id`.
 - [mbostock's so account -- check out his answers](https://stackoverflow.com/users/365814/mbostock)
 - [a talk mbostock gave with tons of useful examples (v4)...](https://mbostock.github.io/d3/talk/20110921/#0)
 - [..and the corresponding so answer](https://stackoverflow.com/questions/9712516/how-can-i-construct-a-tree-using-d3-and-its-force-layout)
+
+## influences
+- [digital garden jekyll template](https://github.com/maximevaillancourt/digital-garden-jekyll-template)
+    - d3 graph.
+    - bidirectional links plugin.
+- [simply jekyll](https://github.com/raghuveerdotnet/simply-jekyll)
+    - referenced for sidenote implementation.
+    - referenced hover popups.
+- [tufte css](https://github.com/edwardtufte/tufte-css)
+    - sidenotes.
+- [gwern.net](https://github.com/gwern/gwern.net)
+    - referenced sidenote comparisons.
+- [just the docs](https://github.com/pmarsceill/just-the-docs)
+    - started with their .scss as a base. 
+    - breadcrumbs.
+
+## private garden
+- this site will likely gel best with private gardens grown with obsidian or dendron, but aims to be friendly with any note taking system that uses markdown and \[\[wiki links]].
