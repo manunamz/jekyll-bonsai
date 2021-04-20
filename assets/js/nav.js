@@ -41,7 +41,7 @@ import drawGraph from './graph.js';
  })();
 
 function changeColors () {
-  const cssFile = document.querySelector('[rel="stylesheet"]');
+  var cssFile = document.querySelector('[rel="stylesheet"]');
   const colorsCheckBox = document.getElementById('colors-checkbox');
   const colorsEmojiSpan = document.getElementById('colors-emoji-span');
 
@@ -53,7 +53,8 @@ function changeColors () {
     colorsEmojiSpan.innerHTML = "🌘";
     theme_colors = "light";
   }
-  cssFile.setAttribute('href', '{{ "assets/css/styles-" | absolute_url }}' + theme_colors + '.scss');
+  const yesThisReallyIsSupposedToBeCSSNotSCSS = '.css'
+  cssFile.setAttribute('href', '{{ "assets/css/styles-" | absolute_url }}' + theme_colors + yesThisReallyIsSupposedToBeCSSNotSCSS);
 }
 
 function changeGraphType () {
