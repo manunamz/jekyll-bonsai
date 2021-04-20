@@ -1,8 +1,8 @@
 // import { dragstarted, dragged, dragended } from "./drag.js";
 
-export default function drawGraph () {
+export default function drawNetWeb () {
   // d3.json has been async'd: https://stackoverflow.com/questions/49768165/code-within-d3-json-callback-is-not-executed 
-  d3.json("/assets/notes_graph.json")
+  d3.json("/assets/notes_net_web.json")
     .then(function(data) {       
         // console.log('d3 is building a tree');
         // console.log(data);
@@ -42,11 +42,11 @@ export default function drawGraph () {
             .data(data.nodes)
             .enter().append('g')
             .attr('class', 'nodes')
-            .attr("active", (d) => isCurrentNoteInGraph(d.id) ? true : null)
+            .attr("active", (d) => isCurrentNoteInNetWeb(d.id) ? true : null)
         // node's circle
         node.append('circle')
-            .attr("active", (d) => isCurrentNoteInGraph(d.id) ? true : null)
-            .on("click", goToNoteFromGraph)
+            .attr("active", (d) => isCurrentNoteInNetWeb(d.id) ? true : null)
+            .on("click", goToNoteFromNetWeb)
             .call(d3.drag()
                 .on("start", dragstarted)
                 .on("drag", dragged)
@@ -68,9 +68,9 @@ export default function drawGraph () {
         // use filtering to deal with specific nodes
         // from: https://codepen.io/blackjacques/pen/BaaqKpO
         // add node pulse on the current node
-        node.filter( function(d,i) { return isCurrentNoteInGraph(d.id); })
+        node.filter( function(d,i) { return isCurrentNoteInNetWeb(d.id); })
             .append("circle")
-            .classed("pulse", (d) => isCurrentNoteInGraph(d.id) ? true : null);
+            .classed("pulse", (d) => isCurrentNoteInNetWeb(d.id) ? true : null);
         
         simulation.on("tick", () => {
             // node.attr('transform', d => `translate(${d.x},${d.y})`); 
@@ -83,13 +83,13 @@ export default function drawGraph () {
                 .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
         });
 
-        function isCurrentNoteInGraph(noteId) {
+        function isCurrentNoteInNetWeb(noteId) {
             return window.location.pathname.includes(noteId);
         }
         
         // from: https://stackoverflow.com/questions/63693132/unable-to-get-node-datum-on-mouseover-in-d3-v6
         // d6 now passes events in vanilla javascript fashion
-        function goToNoteFromGraph (e, d) {
+        function goToNoteFromNetWeb (e, d) {
             // i have no idea why this needs the preceeding '/'
             window.location = `/${d.id}`;
         };

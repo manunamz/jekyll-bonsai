@@ -1,6 +1,6 @@
 # from: https://github.com/maximevaillancourt/digital-garden-jekyll-template/blob/master/_plugins/bidirectional_links_generator.rb
 # build graph data: 
-#   - network: from [[bidirectional, wiki links]].
+#   - net-web: from [[bidirectional, wiki links]].
 #   - tree: dendron flavored dot.style.notation.md or directory structure.
 require 'json'
 
@@ -212,11 +212,7 @@ class GraphDataGenerator < Jekyll::Generator
 
         # Nodes: Graph
         graph_nodes << {
-          # id: note_id_from_note(current_note),
-          # path: "#{site.baseurl}#{current_note.data['id']}#{link_extension}",
           id: current_note.data['id'],
-          # permalink: "#{site.baseurl}#{current_note.data['id']}#{link_extension}",
-          # path: current_note.data['id'],
           label: current_note.data['title'],
         } unless current_note.path.include?('_notes/index.html')
 
@@ -226,15 +222,13 @@ class GraphDataGenerator < Jekyll::Generator
         # Links: Graph
         notes_linking_to_current_note.each do |n|
           graph_links << {
-            # source: note_id_from_note(n),
-            # target: note_id_from_note(current_note),
             source: n.data['id'],
             target: current_note.data['id'],
           }
         end
       end
   
-      File.write('assets/notes_graph.json', JSON.dump({
+      File.write('assets/notes_net_web.json', JSON.dump({
         links: graph_links,
         nodes: graph_nodes,
       }))

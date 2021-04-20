@@ -1,7 +1,7 @@
 ---
 ---
 import drawTree from './tree.js';
-import drawGraph from './graph.js';
+import drawNetWeb from './net-web.js';
 
  //
 // go
@@ -97,7 +97,7 @@ function drawD3Nav() {
   if (graphTypeCheckBox.checked) {
     drawTree();
   } else {
-    drawGraph();
+    drawNetWeb();
   }
 }
 
