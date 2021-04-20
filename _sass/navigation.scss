@@ -155,6 +155,26 @@
 //   }
 // }
 
+// garden (site) nav -- which houses the 'svg-graph'
+
+.garden-nav {
+  display: none;
+  width: 100%;
+
+  &.nav-open {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  @include mq(md) {
+    display: block;
+    overflow-y: auto;
+    flex: 1 1 auto;
+  }
+}
+
+
 // garden bed nav
 
 .gbed-nav {

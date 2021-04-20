@@ -51,20 +51,3 @@
 //   height: $header-height;
 //   background-color: $body-background-color;
 // }
-
-.garden-nav {
-  display: none;
-  width: 100%;
-
-  &.nav-open {
-    display: flex;
-    height: 100vh;
-    width: 100vw;
-  }
-
-  @include mq(md) {
-    display: block;
-    overflow-y: auto;
-    flex: 1 1 auto;
-  }
-}
