@@ -141,6 +141,8 @@ class GraphDataGenerator < Jekyll::Generator
       #  Convert [[internal links]] to <a class='ineternal-link' href='note.data['id']'>\\1</a> #
       # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! #
 
+      # some regex taken from vscode-markdown-notes: https://github.com/kortina/vscode-markdown-notes/blob/master/syntaxes/notes.tmLanguage.json   
+
       # Convert all Wiki/Roam-style double-bracket link syntax to plain HTML
       # anchor tag elements (<a>) with "internal-link" CSS class
       all_docs.each do |current_note|
@@ -150,34 +152,30 @@ class GraphDataGenerator < Jekyll::Generator
             File.extname(note_potentially_linked_to.basename)
           )
           # regex: extract note name from the end of the string to the first occurring '.'
-          # ex: 'garden.lifecycle.bamboo' -> 'bamboo'
-          name_from_namespace = namespace_from_filename.match('([^.]*$)')
+          # ex: 'garden.lifecycle.bamboo-shoot' -> 'bamboo shoot'
+          name_from_namespace = namespace_from_filename.match('([^.]*$)')[0].gsub('-', ' ')
 
-          # # Replace double-bracketed links with label using note title
-          # # [[A note about cats|this is a link to the note about cats]]
-          # current_note.content = current_note.content.gsub(
-          #   /\[\[#{namespace_from_filename}\|(.+?)(?=\])\]\]/i,
-          #   "<a class='internal-link' href='#{site.baseurl}#{note_potentially_linked_to.data['permalink']}#{link_extension}'>#{name_from_namespace}</a>"
-          # )
-  
-          # # Replace double-bracketed links with label using note filename
-          # # [[cats|this is a link to the note about cats]]
-          # current_note.content = current_note.content.gsub(
-          #   /\[\[#{note_potentially_linked_to.data['title']}\|(.+?)(?=\])\]\]/i,
-          #   "<a class='internal-link' href='#{site.baseurl}#{note_potentially_linked_to.data['permalink']}#{link_extension}'>#{name_from_namespace}</a>"
-          # )
-  
-          # # Replace double-bracketed links using note title
-          # # [[a note about cats]]
-          # current_note.content = current_note.content.gsub(
-          #   /\[\[(#{note_potentially_linked_to.data['title']})\]\]/i,
-          #   "<a class='internal-link' href='#{site.baseurl}#{note_potentially_linked_to.data['permalink']}#{link_extension}'>#{name_from_namespace}</a>"
-          # )
-  
-          # Replace double-bracketed links using note filename
-          # [[cats]]
+          # Replace double-bracketed links with alias (right) using note title
+          # [[feline.cats|this is a link to the note about cats]]
+          # ✅ vscode-markdown-notes version: (\[\[)([^\]\|]+)(\|)([^\]]+)(\]\])
           current_note.content = current_note.content.gsub(
-            /\[\[(#{namespace_from_filename})\]\]/i,
+            /(\[\[)(#{namespace_from_filename})(\|)([^\]]+)(\]\])/i,
+            "<a class='wiki-link' href='#{site.baseurl}#{note_potentially_linked_to.data['permalink']}#{link_extension}'>\\4</a>"
+          )
+
+          # Replace double-bracketed links with alias (left) using note title
+          # [[this is a link to the note about cats|feline.cats]]
+          # ✅ vscode-markdown-notes version: (\[\[)([^\]\|]+)(\|)([^\]]+)(\]\])
+          current_note.content = current_note.content.gsub(
+            /(\[\[)([^\]\|]+)(\|)(#{namespace_from_filename})(\]\])/i,
+            "<a class='wiki-link' href='#{site.baseurl}#{note_potentially_linked_to.data['permalink']}#{link_extension}'>\\2</a>"
+          )
+          
+          # Replace double-bracketed links using note filename
+          # [[feline.cats]]
+          # ⬜️ vscode-markdown-notes version: (\[\[)([^\|\]]+)(\]\])
+          current_note.content = current_note.content.gsub(
+            /\[\[#{namespace_from_filename}\]\]/i,
             "<a class='wiki-link' href='#{site.baseurl}#{note_potentially_linked_to.data['permalink']}#{link_extension}'>#{name_from_namespace}</a>"
           )
 
@@ -190,9 +188,9 @@ class GraphDataGenerator < Jekyll::Generator
           /\[\[(.*)\]\]/i, # match on the remaining double-bracket links
           <<~HTML.chomp    # replace with this HTML (\\1 is what was inside the brackets)
             <span title='There is no note that matches this link.' class='invalid-link'>
-              <span class='invalid-link-brackets'>[[</span>
+              <span class='invalid-wiki-link'>[[</span>
               \\1
-              <span class='invalid-link-brackets'>]]</span></span>
+              <span class='invalid-wiki-link'>]]</span></span>
           HTML
         )
       end
