@@ -89,7 +89,7 @@ function updateGraphTypeEmoji () {
 // how to checkbox: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_display_checkbox_text
 function drawD3Nav() {
   const graphTypeCheckBox = document.getElementById('graph-type-checkbox'); 
-  const svgWrapper = document.getElementById('svg-nav');
+  const svgWrapper = document.getElementById('svg-graph');
   // destroy old chart   
   d3.select(svgWrapper).selectAll('*').remove();
   
