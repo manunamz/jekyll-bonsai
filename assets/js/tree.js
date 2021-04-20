@@ -1,12 +1,17 @@
 // import { dragstarted, dragged, dragended } from "./drag.js";
 
-export default function drawTree (svg, height, width) { 
+export default function drawTree () { 
   // d3.json has been async'd: https://stackoverflow.com/questions/49768165/code-within-d3-json-callback-is-not-executed 
   d3.json("/assets/notes_tree.json")
     .then(function(data) {
         // console.log('d3 is building a net-web');
         // console.log(data);
-  
+        const svgWrapper = document.getElementById('svg-graph');
+        const width = +svgWrapper.getBoundingClientRect().width / 2;
+        const height = +svgWrapper.getBoundingClientRect().height / 2;
+        const svg = d3.select(svgWrapper)
+            .attr("viewBox", [-width / 2, -height / 2, width, height]);
+        
         const root = d3.hierarchy(data);
         const links = root.links();
         // flatten(root);
@@ -91,8 +96,7 @@ export default function drawTree (svg, height, width) {
          //
 
         function isCurrentNoteInTree(noteId) {
-            var isMissingNote = noteId === "";
-            console.log(!isMissingNote && window.location.pathname.includes(noteId));
+            var isMissingNote = (noteId === "");
             return !isMissingNote && window.location.pathname.includes(noteId);
         }
 
