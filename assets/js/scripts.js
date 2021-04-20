@@ -90,24 +90,25 @@ function updateGraphTypeEmoji () {
 function drawD3Nav() {
   const graphTypeCheckBox = document.getElementById('graph-type-checkbox'); 
   const svgWrapper = document.getElementById('svg-graph');
-  // destroy old chart   
-  d3.select(svgWrapper).selectAll('*').remove();
+  const width = +svgWrapper.getBoundingClientRect().width / 2;
+  const height = +svgWrapper.getBoundingClientRect().height / 2;
+  const svg = d3.select(svgWrapper)
+      .attr("viewBox", [-width / 2, -height / 2, width, height]);
   
+      // destroy old chart   
+  d3.select(svgWrapper).selectAll('*').remove();
   // redraw new chart and set label text
   if (graphTypeCheckBox.checked) {
-    drawTree();
+    drawTree(svg, height, width);
   } else {
-    drawNetWeb();
+    drawNetWeb(svg, height, width);
   }
 }
 
 function expandGraphNav() {
-  // const mainHeader = document.getElementById('main-header');
   const siteNav = document.getElementById('garden-nav');
-  const wikiLinkCheckBox = document.getElementById('wiki-link-nav-checkbox');
-  // const wikiLinkNavSpan = document.getElementById('wiki-link-nav-span');
   
-  if (wikiLinkCheckBox.checked) {
+  if (document.getElementById('wiki-link-nav-checkbox').checked) {
     siteNav.classList.add('nav-open');
     // mainHeader.classList.add('nav-open');
   } else {
