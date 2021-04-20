@@ -22,5 +22,5 @@ obsidian.css
 .DS_Store
 
 # d3 data
-notes_graph.json
+notes_net_web.json
 notes_tree.json
