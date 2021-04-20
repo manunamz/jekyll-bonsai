@@ -90,18 +90,15 @@ function updateGraphTypeEmoji () {
 function drawD3Nav() {
   const graphTypeCheckBox = document.getElementById('graph-type-checkbox'); 
   const svgWrapper = document.getElementById('svg-graph');
-  const width = +svgWrapper.getBoundingClientRect().width / 2;
-  const height = +svgWrapper.getBoundingClientRect().height / 2;
-  const svg = d3.select(svgWrapper)
-      .attr("viewBox", [-width / 2, -height / 2, width, height]);
   
-      // destroy old chart   
+  // destroy old chart   
   d3.select(svgWrapper).selectAll('*').remove();
+  
   // redraw new chart and set label text
   if (graphTypeCheckBox.checked) {
-    drawTree(svg, height, width);
+    drawTree();
   } else {
-    drawNetWeb(svg, height, width);
+    drawNetWeb();
   }
 }
 
