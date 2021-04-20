@@ -189,13 +189,13 @@
     transition: all .2s ease-in-out;
   
       + .active {
-        filter: drop-shadow(0 4mm 2mm rgba(6, 240, 103, 0.753));
+        filter: drop-shadow(0 4mm 2mm $drop-shadow-green);
       }
 
       &:hover {
         overflow-x: auto;
         transform: scale(1.5); 
-        filter: drop-shadow(0 6mm 2mm rgba(146, 102, 7, 0.753));
+        filter: drop-shadow(0 6mm 2mm $drop-shadow-brown);
       }
   }
 

@@ -10,7 +10,7 @@
   cursor: pointer;
   user-select: none;
   font-size: $font-size-6;
-  filter: drop-shadow(0 0 0.7mm rgba(6, 240, 103, 0.753));
+  filter: drop-shadow(0 0 0.7mm $drop-shadow-green);
   right: $sp-2;
 
   /* Hide the browser's default checkbox */
@@ -29,7 +29,7 @@
   cursor: pointer;
   user-select: none;
   font-size: $font-size-6;
-  filter: drop-shadow(0 0 0.7mm rgba(228, 225, 31, 0.753));
+  filter: drop-shadow(0 0 0.7mm $drop-shadow-yellow);
   left: $sp-2;
 
   /* Hide the browser's default checkbox */
@@ -50,7 +50,7 @@
   cursor: pointer;
   user-select: none;
   font-size: $font-size-6;
-  filter: drop-shadow(0 0 0.7mm rgba(6, 240, 103, 0.753));
+  filter: drop-shadow(0 0 0.7mm $drop-shadow-green);
 
   /* Hide the browser's default checkbox */
   input {
