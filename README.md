@@ -5,6 +5,7 @@
 Notes require yaml frontmatter with an `id`.
 
 ## notable
+- terms: `graph` refers to any type of graph of which there are two types: a hierarchical `tree` and a `net-web`.
 - `gbed` refers to `garden bed`.
 - sidenotes increment together, but separately from footnotes. so, for example, it's possible for there to be a '1' for both a \[\^footnote] and a \[\<right-sidenote] or \[\>left-sidenote].
 - note with the title 'Root' displays as the home page (see index.html).
