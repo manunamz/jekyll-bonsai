@@ -12,8 +12,6 @@ export default function drawGraph () {
         var svg = d3.select(svgWrapper)
             .attr("viewBox", [-width / 2, -height / 2, width, height]);
         
-        const radius = 3;
-
         const simulation = d3.forceSimulation()
             .nodes(data.nodes)
             .force("link", d3.forceLink()
@@ -45,16 +43,14 @@ export default function drawGraph () {
             .enter().append('g')
             .attr('class', 'nodes')
             .attr("active", (d) => isCurrentNoteInGraph(d.id) ? true : null)
-
         // node's circle
         node.append('circle')
-            .attr("r", radius)
+            .attr("active", (d) => isCurrentNoteInGraph(d.id) ? true : null)
             .on("click", goToNoteFromGraph)
             .call(d3.drag()
                 .on("start", dragstarted)
                 .on("drag", dragged)
                 .on("end", dragended))
-            
         // node's label
         // labels need to be nested in a 'g' object alongside the node circle.
         //  docs: https://bl.ocks.org/mbostock/950642
@@ -64,13 +60,18 @@ export default function drawGraph () {
             .attr("dx", 5)
             .attr("dy", ".05em")
             .attr("font-size", "20%")
-            .attr("fill", "#fff")
             .text(function (d) { return d.label });
-
         // node's tooltip
         node.append("title")
             .text(function(d) { return d.label; });
-
+        // from: https://stackoverflow.com/questions/28415005/d3-js-selection-conditional-rendering
+        // use filtering to deal with specific nodes
+        // from: https://codepen.io/blackjacques/pen/BaaqKpO
+        // add node pulse on the current node
+        node.filter( function(d,i) { return isCurrentNoteInGraph(d.id); })
+            .append("circle")
+            .classed("pulse", (d) => isCurrentNoteInGraph(d.id) ? true : null);
+        
         simulation.on("tick", () => {
             // node.attr('transform', d => `translate(${d.x},${d.y})`); 
             link
