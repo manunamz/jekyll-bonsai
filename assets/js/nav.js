@@ -103,7 +103,7 @@ function drawD3Nav() {
 
 function expandGraphNav() {
   // const mainHeader = document.getElementById('main-header');
-  const siteNav = document.getElementById('graph-nav');
+  const siteNav = document.getElementById('garden-nav');
   const wikiLinkCheckBox = document.getElementById('wiki-link-nav-checkbox');
   // const wikiLinkNavSpan = document.getElementById('wiki-link-nav-span');
   
