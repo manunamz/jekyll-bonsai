@@ -11,6 +11,27 @@ Notes require yaml frontmatter with an `id`.
 - note with the title 'Root' displays as the home page (see index.html).
 - graph viz does not include tree connections.
 
+## private garden
+- this site will likely work best with private gardens grown with obsidian or dendron, but aims to be friendly with any note taking system that uses markdown and \[\[wiki links]].
+
+## proposals
+- include support in jekyll, kramdown, and/or markdown spec for the following:
+    - potential responsibility overlap between jekyll/kramdown (and you can't assign urls in css, which makes things tricky...):
+        - \[\[wiki link]] 
+        - \!\[\[note transclusion/embed]]
+    - \[\>right-sidenote], \[\<left-sidenote]
+- a proposal on note structures for docs: imagine finding the relevant doc, but it doesn't make sense. you're lacking prior knowledge, context, or some fundamental that's blocking you from understanding how the thing works. imagine all of a node's children are representative of the needed prior knowledge. now, all you have to do is glance down the list of children and visit whichever ones you don't understand to fully understand the current one. keep digging until you've got it all down.
+
+## gotchas worth writing about
+- 'filter' when i was googling for "conditionally add circle d3": https://stackoverflow.com/questions/28415005/d3-js-selection-conditional-rendering
+	- this is such a good example of why search is not enough -- even one wrong word can completely hide info from you.
+- light/dark theme scss for jekyll.
+- emoji url gotcha -- better unicode support.
+- jekyll inability to create page from single data entry.
+- sidenote syntax ([<right-sidenote], [>left-sidenote])
+- jekyll's lack of \[\[wiki link]] support.
+- jekyll collections and lack of `notes` support.
+
 ## known issues
 - if current note is root note, its node in the graph doesn't highlight. (see `isCurrentNoteIn(Graph/Tree)` to fix).
 - broken \[\[wiki links]] break footnotes.
@@ -64,6 +85,4 @@ Notes require yaml frontmatter with an `id`.
 - [just the docs](https://github.com/pmarsceill/just-the-docs)
     - started with their .scss as a base. 
     - breadcrumbs.
-
-## private garden
-- this site will likely work best with private gardens grown with obsidian or dendron, but aims to be friendly with any note taking system that uses markdown and \[\[wiki links]].
+- and, of course, the jekyll step-by-step: https://jekyllrb.com/docs/step-by-step/01-setup/
