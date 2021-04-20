@@ -1,18 +1,11 @@
 // import { dragstarted, dragged, dragended } from "./drag.js";
 
-export default function drawTree () { 
+export default function drawTree (svg, height, width) { 
   // d3.json has been async'd: https://stackoverflow.com/questions/49768165/code-within-d3-json-callback-is-not-executed 
   d3.json("/assets/notes_tree.json")
     .then(function(data) {
-        // console.log('d3 is building a graph');
+        // console.log('d3 is building a net-web');
         // console.log(data);
-        const svgWrapper = document.getElementById('svg-graph');
-        
-        var width = +svgWrapper.getBoundingClientRect().width / 2;
-        var height = +svgWrapper.getBoundingClientRect().height / 2;
-        
-        var svg = d3.select(svgWrapper)
-            .attr("viewBox", [-width / 2, -height / 2, width, height]);
   
         const root = d3.hierarchy(data);
         const links = root.links();
