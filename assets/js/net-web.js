@@ -6,7 +6,7 @@ export default function drawNetWeb () {
     .then(function(data) {       
         // console.log('d3 is building a tree');
         // console.log(data);
-        const svgWrapper = document.getElementById('svg-nav');
+        const svgWrapper = document.getElementById('svg-graph');
         var width = +svgWrapper.getBoundingClientRect().width / 2;
         var height = +svgWrapper.getBoundingClientRect().height / 2;
         var svg = d3.select(svgWrapper)

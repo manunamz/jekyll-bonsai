@@ -6,7 +6,7 @@ export default function drawTree () {
     .then(function(data) {
         // console.log('d3 is building a graph');
         // console.log(data);
-        const svgWrapper = document.getElementById('svg-nav');
+        const svgWrapper = document.getElementById('svg-graph');
         
         var width = +svgWrapper.getBoundingClientRect().width / 2;
         var height = +svgWrapper.getBoundingClientRect().height / 2;
