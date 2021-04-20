@@ -11,6 +11,7 @@ Notes require yaml frontmatter with an `id`.
 - graph viz does not include tree connections.
 
 ## known issues
+- if current note is root note, its node in the graph doesn't highlight. (see `isCurrentNoteIn(Graph/Tree)` to fix).
 - broken \[\[wiki links]] break footnotes.
     - does this mean that local plugins are run **before** the kramdown parser??
 - \[\[wiki links]] break charts.
@@ -22,6 +23,7 @@ Notes require yaml frontmatter with an `id`.
 - typescript with d3: https://www.npmjs.com/package/@types/d3
 
 ## refactorable
+- could stand to flesh out color pallettes in the manner 'just the docs' did for _variables.scss.
 - use typescript with d3? https://medium.com/react-courses/first-steps-d3-with-react-typescript-part-i-setting-up-your-first-project-d29802e6f6b3
 - populate `gbed`-related data from notes themselves -- this would allow for dynamic site layout spec definition while edited one's notes.
 - `.rsn` and `.lsn` are basically the same class except for their margin offset direction.
@@ -63,4 +65,4 @@ Notes require yaml frontmatter with an `id`.
     - breadcrumbs.
 
 ## private garden
-- this site will likely gel best with private gardens grown with obsidian or dendron, but aims to be friendly with any note taking system that uses markdown and \[\[wiki links]].
+- this site will likely work best with private gardens grown with obsidian or dendron, but aims to be friendly with any note taking system that uses markdown and \[\[wiki links]].

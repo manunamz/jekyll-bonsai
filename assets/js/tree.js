@@ -2,7 +2,7 @@
 
 export default function drawTree () { 
   // d3.json has been async'd: https://stackoverflow.com/questions/49768165/code-within-d3-json-callback-is-not-executed 
-    d3.json("/assets/notes_tree.json")
+  d3.json("/assets/notes_tree.json")
     .then(function(data) {
         // console.log('d3 is building a graph');
         // console.log(data);
@@ -14,8 +14,6 @@ export default function drawTree () {
         var svg = d3.select(svgWrapper)
             .attr("viewBox", [-width / 2, -height / 2, width, height]);
   
-        const radius = 3;
-
         const root = d3.hierarchy(data);
         const links = root.links();
         // flatten(root);
@@ -45,11 +43,9 @@ export default function drawTree () {
         const node = svg.selectAll('.nodes')
             .data(nodes)
             .enter().append('g')
-            .attr('class', 'nodes')
-
+            .attr('class', 'nodes')               
         // node's circle
-        node.append('circle')
-            .attr("r", radius)
+        node.append("circle")
             .attr("active", (d) => isCurrentNoteInTree(d.data.id) ? true : null)
             // tree-only
             .attr("class", (d) => d.data.id === "" ? "missing" : null)
@@ -58,7 +54,6 @@ export default function drawTree () {
                 .on("start", dragstarted)
                 .on("drag", dragged)
                 .on("end", dragended))
-
         // node's label
         // labels need to be nested in a 'g' object alongside the node circle.
         //  docs: https://bl.ocks.org/mbostock/950642
@@ -68,13 +63,17 @@ export default function drawTree () {
             .attr("dx", 5)
             .attr("dy", ".05em")
             .attr("font-size", "20%")
-            .attr("fill", "#fff")
             .text(function (d) { return d.data.label });
-
         // node tooltip
         node.append("title")
             .text(function(d) { return d.data.label });
-        
+        // from: https://stackoverflow.com/questions/28415005/d3-js-selection-conditional-rendering
+        // use filtering to deal with specific nodes
+        // from: https://codepen.io/blackjacques/pen/BaaqKpO
+        // add node pulse on the current node
+        node.filter( function(d,i) { return isCurrentNoteInTree(d.data.id); })
+            .append("circle")
+            .classed("pulse", (d) => isCurrentNoteInTree(d.data.id) ? true : null);
         simulation.on("tick", () => {
             // from: https://mbostock.github.io/d3/talk/20110921/parent-foci.html
             // preserve hierarchical shape via link positioning
