@@ -78,6 +78,10 @@ export default function drawNetWeb (svg, height, width) {
                 .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
         });
 
+         //
+        // helpers
+         //
+
         function isCurrentNoteInNetWeb(noteId) {
             return window.location.pathname.includes(noteId);
         }
