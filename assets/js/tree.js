@@ -86,6 +86,10 @@ export default function drawTree (svg, height, width) {
                 .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });  
         });
 
+         //
+        // helpers
+         //
+
         function isCurrentNoteInTree(noteId) {
             var isMissingNote = noteId === "";
             console.log(!isMissingNote && window.location.pathname.includes(noteId));
