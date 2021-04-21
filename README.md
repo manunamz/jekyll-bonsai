@@ -5,9 +5,11 @@
 Notes require yaml frontmatter with an `id`.
 
 ## notable
+- 'missing nodes' show up in tree view, but not net-web view.
 - terms: `graph` refers to any type of graph of which there are two types: a hierarchical `tree` and a `net-web`.
 - `gbed` refers to `garden bed`.
 - sidenotes increment together, but separately from footnotes. so, for example, it's possible for there to be a '1' for both a \[\^footnote] and a \[\<right-sidenote] or \[\>left-sidenote].
+- sidenotes require a \n after each definition; there is a check for a \n at eof just in case sidenotes are at the bottom fo the file -- if any files don't end with a newline the local plugin will print to the terminal about it.
 - note with the title 'Root' displays as the home page (see index.html).
 - graph viz does not include tree connections.
 
@@ -18,6 +20,8 @@ Notes require yaml frontmatter with an `id`.
 - include support in jekyll, kramdown, and/or markdown spec for the following:
     - potential responsibility overlap between jekyll/kramdown (and you can't assign urls in css, which makes things tricky...):
         - \[\[wiki link]] 
+        - \[\[wiki link#header]]
+        - \[\[wiki link#^block]]
         - \!\[\[note transclusion/embed]]
     - \[\>right-sidenote], \[\<left-sidenote]
 - a proposal on note structures for docs: imagine finding the relevant doc, but it doesn't make sense. you're lacking prior knowledge, context, or some fundamental that's blocking you from understanding how the thing works. imagine all of a node's children are representative of the needed prior knowledge. now, all you have to do is glance down the list of children and visit whichever ones you don't understand to fully understand the current one. keep digging until you've got it all down.
@@ -72,6 +76,9 @@ Notes require yaml frontmatter with an `id`.
 - [..and the corresponding so answer](https://stackoverflow.com/questions/9712516/how-can-i-construct-a-tree-using-d3-and-its-force-layout)
 
 ## influences
+- blockquote decoration
+    - https://codepen.io/jimmycow/pen/LmjVaz
+    - https://codepen.io/JoeHastings/pen/MOdRVm
 - [digital garden jekyll template](https://github.com/maximevaillancourt/digital-garden-jekyll-template)
     - d3 graph.
     - bidirectional links plugin.
@@ -85,4 +92,4 @@ Notes require yaml frontmatter with an `id`.
 - [just the docs](https://github.com/pmarsceill/just-the-docs)
     - started with their .scss as a base. 
     - breadcrumbs.
-- and, of course, the jekyll step-by-step: https://jekyllrb.com/docs/step-by-step/01-setup/
+- and, of course, the [jekyll step-by-step](https://jekyllrb.com/docs/step-by-step/01-setup/).
