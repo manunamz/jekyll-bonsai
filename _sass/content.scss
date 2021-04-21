@@ -233,6 +233,66 @@
       margin-top: 0;
     }
   }
+  
+  /**************
+  * blockquotes *
+  ***************/
+
+  blockquote {
+    @include fs-3;
+    font-family: 'Special Elite', cursive;
+    max-width: $content-width;
+    // line-height: 1.4;
+    position: relative;
+    margin: 0;
+    padding: $sp-2;
+
+    border-left: $sp-1 solid $blockquote-border-color;
+
+    & p {
+      padding-left: $sp-6;
+    }
+  }
+
+  // blockquote:after, 
+  blockquote:before {
+    @include fs-10;
+    font-family: 'Special Elite', cursive;
+    position: absolute;
+    color: $blockquote-quote-color;
+    // font-size: 8rem;
+    width: 4rem;
+    height: 4rem;
+  }
+  
+  // .otro-blockquote::before{
+  //   font-family:Arial;
+  //   content: "\201C";
+  //   color:#78C0A8;
+  //   font-size:4em;
+  //   position: absolute;
+  //   left: 10px;
+  //   top:-10px;
+  // }
+
+  blockquote:before {
+    font-family: 'Special Elite', cursive;
+    content: '“';
+    // left: -$sp-2;
+    // top: -2rem;
+  }
+  
+  // blockquote:after {
+  //   font-family: 'Special Elite', cursive;
+  //   content: '”';
+  //   right: 0;
+  //   bottom: 1rem;
+  // }
+  
+  // cite {
+  //   line-height: 3;
+  //   text-align: left;
+  // }
 
   .footnotes {
     border-top: double $link-line-stroke-color;

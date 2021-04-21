@@ -34,3 +34,7 @@ $node-stroke-width: 0;
 $node-active-color: $yellow-300;
 $node-missing-color: $brown-00;
 $node-missing-radius: 1.5;
+
+// blockquote  
+$blockquote-border-color: rgba($link-line-stroke-color, 0.33) !default;
+$blockquote-quote-color: rgba($link-line-stroke-color, .5) !default;
