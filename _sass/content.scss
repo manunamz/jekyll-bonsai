@@ -100,8 +100,12 @@
     margin-right: 0.6em;
   }
 
-  hr + * {
-    margin-top: 0;
+  hr {
+    background-color: $link-line-stroke-color;
+
+    + * {
+      margin-top: 0;
+    }
   }
 
   h1:first-of-type {
@@ -230,9 +234,13 @@
     }
   }
 
-/*************
-* wiki-link *
-*************/
+  .footnotes {
+    border-top: double $link-line-stroke-color;
+  }
+
+  /*************
+  * wiki-link *
+  *************/
 
  .wiki-link { 
     color: $wiki-link-color;
@@ -243,33 +251,33 @@
     cursor: help;
   }
 
-/* Sidenotes, margin notes, figures, captions */
-// this is great, i was wondering what some other layout options were (these are sidenote-speicific): https://www.gwern.net/Sidenotes
+  /* Sidenotes, margin notes, figures, captions */
+  // this is great, i was wondering what some other layout options were (these are sidenote-speicific): https://www.gwern.net/Sidenotes
 
-// img {
-//   max-width: 100%;
-// }
+  // img {
+  //   max-width: 100%;
+  // }
 
-// label.sidenote-toggle:not(.sidenote-number) {
-//   display: inline;
-// }
+  // label.sidenote-toggle:not(.sidenote-number) {
+  //   display: inline;
+  // }
 
-// .rsn,
-// .lsn {
-//   display: none;
-// }
+  // .rsn,
+  // .lsn {
+  //   display: none;
+  // }
 
-// .sidenote-toggle:checked + .rsn,
-// .sidenote-toggle:checked + .lsn {
-//   display: block;
-//   float: left;
-//   left: 1rem;
-//   clear: both;
-//   width: 95%;
-//   margin: 1rem 2.5%;
-//   vertical-align: baseline;
-//   position: relative;
-// }
+  // .sidenote-toggle:checked + .rsn,
+  // .sidenote-toggle:checked + .lsn {
+  //   display: block;
+  //   float: left;
+  //   left: 1rem;
+  //   clear: both;
+  //   width: 95%;
+  //   margin: 1rem 2.5%;
+  //   vertical-align: baseline;
+  //   position: relative;
+  // }
 
   /******************
   * right sidenote *
