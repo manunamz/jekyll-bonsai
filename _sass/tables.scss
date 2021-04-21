@@ -5,8 +5,8 @@
 
 .table-wrapper {
   display: block;
-  width: 100%;
-  max-width: 100%;
+  max-width: $content-width + $content-sidenote-width;
+  margin-right: -$content-sidenote-width;
   margin-bottom: $sp-5;
   overflow-x: auto;
   border-radius: $border-radius;
