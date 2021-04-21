@@ -4,6 +4,7 @@
 
 $transparent: #00000000 !default;
 
+$black: #000 !default;
 $white: #fff !default;
 
 $grey-dk-000: #959396 !default;
@@ -55,9 +56,10 @@ $drop-shadow-yellow: rgba(228, 225, 31, 0.853) !default;
 // Typography
 //
 
-$body-font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
-  Roboto, "Helvetica Neue", Arial, sans-serif !default;
+$body-font-family: Georgia, serif !default;
 $mono-font-family: "SFMono-Regular", Menlo, Consolas, Monospace !default;
+$table-font-family: 'Trebuchet MS', sans-serif !default; 
+
 $root-font-size: 16px !default; // Base font-size for rems
 $body-line-height: 1.4 !default;
 $content-line-height: 1.6 !default;

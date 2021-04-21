@@ -5,18 +5,21 @@
 
 .table-wrapper {
   display: block;
+  min-width: $content-width;
   max-width: $content-width + $content-sidenote-width;
   margin-right: -$content-sidenote-width;
   margin-bottom: $sp-5;
   overflow-x: auto;
   border-radius: $border-radius;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12), 0 3px 10px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 1px 2px rgba($table-shadow-color, 0.12), 0 3px 10px rgba($table-shadow-color, 0.08);
+  font-family: $table-font-family; 
 }
 
 table {
   display: table;
-  min-width: $content-width;
-  max-width: 100%;
+  // min-width: $content-width;
+  // max-width: 100%;
+  width: 100%;
   border-collapse: separate;
 }
 
