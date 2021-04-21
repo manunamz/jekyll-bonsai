@@ -70,8 +70,12 @@ export default function drawNetWeb () {
         // add node pulse on the current node
         node.filter( function(d,i) { return isCurrentNoteInNetWeb(d.id); })
             .append("circle")
-            .classed("pulse", (d) => isCurrentNoteInNetWeb(d.id) ? true : null);
-        
+            .classed("pulse", (d) => isCurrentNoteInNetWeb(d.id) ? true : null)
+            .call(d3.drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended));
+
         simulation.on("tick", () => {
             // node.attr('transform', d => `translate(${d.x},${d.y})`); 
             link
