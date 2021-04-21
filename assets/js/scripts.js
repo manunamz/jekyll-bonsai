@@ -13,6 +13,7 @@ import drawNetWeb from './net-web.js';
     // the DOM will be available here
     initListeners();
     initDefaults();
+    document.querySelectorAll('{{ include.wrapperQuerySelector }} a').forEach(setupListeners);
  })();
 
  //
