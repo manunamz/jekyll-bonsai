@@ -127,6 +127,7 @@ $header-height: 60px !default;
 $gutter-spacing: $sp-6 !default;
 $gutter-spacing-sm: $sp-4 !default;
 $content-width: 700px !default;
+$content-sidenote-width: .375 * $content-width;
 $nav-width: 264px !default;
 $nav-width-md: 248px !default;
 $nav-width-lg: calc((100% - #{$nav-width + $content-width}) / 2 + (.6 * #{$nav-width})) !default;
