@@ -71,7 +71,11 @@ export default function drawTree () {
         // add node pulse on the current node
         node.filter( function(d,i) { return isCurrentNoteInTree(d.data.id); })
             .append("circle")
-            .classed("pulse", (d) => isCurrentNoteInTree(d.data.id) ? true : null);
+            .classed("pulse", (d) => isCurrentNoteInTree(d.data.id) ? true : null)
+            .call(d3.drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended));
         simulation.on("tick", () => {
             // from: https://mbostock.github.io/d3/talk/20110921/parent-foci.html
             // preserve hierarchical shape via link positioning
