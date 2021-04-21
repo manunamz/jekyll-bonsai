@@ -230,14 +230,25 @@
     }
   }
 
+/*************
+* wiki-link *
+*************/
+
+ .wiki-link { 
+    color: $wiki-link-color;
+  }
+
+  .invalid-wiki-link {
+    color: $body-text-color;
+    cursor: help;
+  }
+
 /* Sidenotes, margin notes, figures, captions */
 // this is great, i was wondering what some other layout options were (these are sidenote-speicific): https://www.gwern.net/Sidenotes
 
 // img {
 //   max-width: 100%;
 // }
-
-// TODO: have separate counters for right and left side.
 
 // label.sidenote-toggle:not(.sidenote-number) {
 //   display: inline;
@@ -260,295 +271,282 @@
 //   position: relative;
 // }
 
-/*************
- * wiki-link *
- *************/
+  /******************
+  * right sidenote *
+  ******************/
+  
+  .rsn {
+    @include sidenote-container;
+    display: none;
+    word-wrap: break-word;
 
-.wiki-link { 
-  color: $wiki-link-color;
-}
+    @include mq(lg) {
+      display: block;
+      float: right;
+      clear: right;
 
-.invalid-wiki-link {
-  color: $body-text-color;
-  cursor: help;
-}
-
-/******************
- * right sidenote *
- ******************/
- 
-.rsn {
-  @include sidenote-container;
-  display: none;
-  word-wrap: break-word;
-
-  @include mq(lg) {
-    display: block;
-    float: right;
-    clear: right;
-
-    margin-right: -(.75 * ($content-width * (1/2)));
-    width: .75 * ($content-width / 2);
-    margin-top: $sp-1;
-    margin-bottom: 0;
-    font-size: $font-size-2;
-    // line-height: 1.3;
-    vertical-align: baseline;
-    position: relative;
+      margin-right: -$content-sidenote-width;
+      width: $content-sidenote-width;
+      margin-top: $sp-1;
+      margin-bottom: 0;
+      font-size: $font-size-2;
+      // line-height: 1.3;
+      vertical-align: baseline;
+      position: relative;
+    }
   }
-}
 
-/*****************
- * left sidenote *
- *****************/
+  /*****************
+  * left sidenote *
+  *****************/
 
-.lsn {
-  @include sidenote-container;
-  display: none;
-  word-wrap: break-word;
+  .lsn {
+    @include sidenote-container;
+    display: none;
+    word-wrap: break-word;
 
-  @include mq(lg) {
+    @include mq(lg) {
+      display: block;
+      float: left;
+      clear: left;
+
+      margin-left: -$content-sidenote-width;
+      width: $content-sidenote-width;
+      margin-top: $sp-1;
+      margin-bottom: 0;
+      font-size: $font-size-2;
+      // line-height: 1.3;
+      vertical-align: baseline;
+      position: relative;
+    }
+  }
+
+  /********************
+  * general sidenote *
+  ********************/
+
+  .sidenote-toggle:checked + .rsn,
+  .sidenote-toggle:checked + .lsn {
     display: block;
     float: left;
-    clear: left;
-
-    margin-left: -(.75 * ($content-width * (1/2)));
-    width: .75 * ($content-width / 2);
-    margin-top: $sp-1;
-    margin-bottom: 0;
-    font-size: $font-size-2;
-    // line-height: 1.3;
+    left: 1rem;
+    clear: both;
+    width: 95%;
+    margin: 1rem 2.5%;
     vertical-align: baseline;
     position: relative;
   }
-}
 
-/********************
- * general sidenote *
- ********************/
+  label.sidenote-toggle:not(.sidenote-number) {
+    display: inline;
+  }
 
-.sidenote-toggle:checked + .rsn,
-.sidenote-toggle:checked + .lsn {
-  display: block;
-  float: left;
-  left: 1rem;
-  clear: both;
-  width: 95%;
-  margin: 1rem 2.5%;
-  vertical-align: baseline;
-  position: relative;
-}
+  .sidenote-number {
+    counter-increment: sidenote-counter;
+  }
 
-label.sidenote-toggle:not(.sidenote-number) {
-  display: inline;
-}
+  input.sidenote-toggle {
+    display: none;
+  }
 
-.sidenote-number {
-  counter-increment: sidenote-counter;
-}
+  label.sidenote-number {
+    display: inline;
+  }
 
-input.sidenote-toggle {
-  display: none;
-}
+  label.sidenote-toggle:not(.sidenote-number) {
+    display: none;
+  }
 
-label.sidenote-number {
-  display: inline;
-}
+  .sidenote-number:after,
+  .rsn:before,
+  .lsn:before {
+    position: relative;
+    vertical-align: baseline;
+  }
 
-label.sidenote-toggle:not(.sidenote-number) {
-  display: none;
-}
+  .sidenote-number:after {
+    content: counter(sidenote-counter);
+    font-size: $font-size-2;
+    top: -$sp-3;
+    left: $sp-1;
+  }
 
-.sidenote-number:after,
-.rsn:before,
-.lsn:before {
-  position: relative;
-  vertical-align: baseline;
-}
+  .rsn:before,
+  .lsn:before {
+    content: counter(sidenote-counter) " ";
+    font-size: $font-size-2;
+    top: -$sp-2;
+  }
 
-.sidenote-number:after {
-  content: counter(sidenote-counter);
-  font-size: $font-size-2;
-  top: -$sp-3;
-  left: $sp-1;
-}
+  blockquote .rsn,
+  blockquote .lsn {
+    margin-right: -82%;
+    min-width: 59%;
+    text-align: left;
+  }
 
-.rsn:before,
-.lsn:before {
-  content: counter(sidenote-counter) " ";
-  font-size: $font-size-2;
-  top: -$sp-2;
-}
-
-blockquote .rsn,
-blockquote .lsn {
-  margin-right: -82%;
-  min-width: 59%;
-  text-align: left;
-}
-
-// div.fullwidth,
-// table.fullwidth {
-//   width: 100%;
-// }
-
-// div.table-wrapper {
-//   overflow-y: auto;
-//   font-family: "Trebuchet MS", "Gill Sans", "Gill Sans MT", sans-serif;
-// }
-
-// .sans {
-//   font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
-//   letter-spacing: .03em;
-// }
-
-// code, pre > code {
-//   font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-//   font-size: 1.0rem;
-//   line-height: 1.42;
-//   -webkit-text-size-adjust: 100%; /* Prevent adjustments of font size after orientation changes in iOS. See https://github.com/edwardtufte/tufte-css/issues/81#issuecomment-261953409 */
-// }
-
-// .sans > code {
-//   font-size: 1.2rem;
-// }
-
-// h1 > code,
-// h2 > code,
-// h3 > code {
-//   font-size: 0.80em;
-// }
-
-.rsn > code,
-.lsn > code {
-  font-size: 1rem;
-}
-
-// pre > code {
-//   font-size: 0.9rem;
-//   width: 52.5%;
-//   margin-left: 2.5%;
-//   overflow-y: auto;
-//   display: block;
-// }
-
-// pre.fullwidth > code {
-//   width: 90%;
-// }
-
-// .fullwidth {
-//   max-width: 90%;
-//   clear:both;
-// }
-
-// span.newthought {
-//   font-variant: small-caps;
-//   font-size: 1.2em;
-// }
-
-// input.sidenote-toggle {
-//   display: none;
-// }
-
-// label.sidenote-number {
-//   display: inline;
-// }
-
-// label.sidenote-toggle:not(.sidenote-number) {
-//   display: none;
-// }
-
-// .iframe-wrapper {
-//   position: relative;
-//   padding-bottom: 56.25%; /* 16:9 */
-//   padding-top: 25px;
-//   height: 0;
-// }
-
-// .iframe-wrapper iframe {
-//   position: absolute;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 100%;
-// }
-
-// @media (max-width: 760px) {
-  // body {
-  //     width: 84%;
-  //     padding-left: 8%;
-  //     padding-right: 8%;
+  // div.fullwidth,
+  // table.fullwidth {
+  //   width: 100%;
   // }
 
-  // hr,
-  // section > p,
-  // section > footer,
-  // section > table {
-  //     width: 100%;
+  // div.table-wrapper {
+  //   overflow-y: auto;
+  //   font-family: "Trebuchet MS", "Gill Sans", "Gill Sans MT", sans-serif;
   // }
+
+  // .sans {
+  //   font-family: "Gill Sans", "Gill Sans MT", Calibri, sans-serif;
+  //   letter-spacing: .03em;
+  // }
+
+  // code, pre > code {
+  //   font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+  //   font-size: 1.0rem;
+  //   line-height: 1.42;
+  //   -webkit-text-size-adjust: 100%; /* Prevent adjustments of font size after orientation changes in iOS. See https://github.com/edwardtufte/tufte-css/issues/81#issuecomment-261953409 */
+  // }
+
+  // .sans > code {
+  //   font-size: 1.2rem;
+  // }
+
+  // h1 > code,
+  // h2 > code,
+  // h3 > code {
+  //   font-size: 0.80em;
+  // }
+
+  .rsn > code,
+  .lsn > code {
+    font-size: 1rem;
+  }
 
   // pre > code {
-  //     width: 97%;
+  //   font-size: 0.9rem;
+  //   width: 52.5%;
+  //   margin-left: 2.5%;
+  //   overflow-y: auto;
+  //   display: block;
   // }
 
-  // section > dl,
-  // section > ol,
-  // section > ul {
-  //     width: 90%;
+  // pre.fullwidth > code {
+  //   width: 90%;
   // }
 
-  // figure {
-  //     max-width: 90%;
+  // .fullwidth {
+  //   max-width: 90%;
+  //   clear:both;
   // }
 
-  // figcaption,
-  // figure.fullwidth figcaption {
-  //     margin-right: 0%;
-  //     max-width: none;
+  // span.newthought {
+  //   font-variant: small-caps;
+  //   font-size: 1.2em;
   // }
 
-  // blockquote {
-  //     margin-left: 1.5em;
-  //     margin-right: 0em;
+  // input.sidenote-toggle {
+  //   display: none;
   // }
 
-  // blockquote p,
-  // blockquote footer {
-  //     width: 100%;
+  // label.sidenote-number {
+  //   display: inline;
   // }
 
   // label.sidenote-toggle:not(.sidenote-number) {
-  //     display: inline;
+  //   display: none;
   // }
 
-  // .rsn,
-  // .lsn {
-  //     display: none;
+  // .iframe-wrapper {
+  //   position: relative;
+  //   padding-bottom: 56.25%; /* 16:9 */
+  //   padding-top: 25px;
+  //   height: 0;
   // }
 
-  // .sidenote-toggle:checked + .rsn,
-  // .sidenote-toggle:checked + .lsn {
-  //     display: block;
-  //     float: left;
-  //     left: 1rem;
-  //     clear: both;
-  //     width: 95%;
-  //     margin: 1rem 2.5%;
-  //     vertical-align: baseline;
-  //     position: relative;
+  // .iframe-wrapper iframe {
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   width: 100%;
+  //   height: 100%;
   // }
 
-  // label {
-  //     cursor: pointer;
-  // }
+  // @media (max-width: 760px) {
+    // body {
+    //     width: 84%;
+    //     padding-left: 8%;
+    //     padding-right: 8%;
+    // }
 
-  // div.table-wrapper,
-  // table {
-  //     width: 85%;
-  // }
+    // hr,
+    // section > p,
+    // section > footer,
+    // section > table {
+    //     width: 100%;
+    // }
 
-  // img {
-  //     width: 100%;
-  // }
-  // }
+    // pre > code {
+    //     width: 97%;
+    // }
+
+    // section > dl,
+    // section > ol,
+    // section > ul {
+    //     width: 90%;
+    // }
+
+    // figure {
+    //     max-width: 90%;
+    // }
+
+    // figcaption,
+    // figure.fullwidth figcaption {
+    //     margin-right: 0%;
+    //     max-width: none;
+    // }
+
+    // blockquote {
+    //     margin-left: 1.5em;
+    //     margin-right: 0em;
+    // }
+
+    // blockquote p,
+    // blockquote footer {
+    //     width: 100%;
+    // }
+
+    // label.sidenote-toggle:not(.sidenote-number) {
+    //     display: inline;
+    // }
+
+    // .rsn,
+    // .lsn {
+    //     display: none;
+    // }
+
+    // .sidenote-toggle:checked + .rsn,
+    // .sidenote-toggle:checked + .lsn {
+    //     display: block;
+    //     float: left;
+    //     left: 1rem;
+    //     clear: both;
+    //     width: 95%;
+    //     margin: 1rem 2.5%;
+    //     vertical-align: baseline;
+    //     position: relative;
+    // }
+
+    // label {
+    //     cursor: pointer;
+    // }
+
+    // div.table-wrapper,
+    // table {
+    //     width: 85%;
+    // }
+
+    // img {
+    //     width: 100%;
+    // }
+    // }
 }
