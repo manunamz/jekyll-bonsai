@@ -45,7 +45,6 @@ export default function drawNetWeb () {
             .attr("active", (d) => isCurrentNoteInNetWeb(d.id) ? true : null)
         // node's circle
         node.append('circle')
-            .attr("active", (d) => isCurrentNoteInNetWeb(d.id) ? true : null)
             .on("click", goToNoteFromNetWeb)
             .call(d3.drag()
                 .on("start", dragstarted)

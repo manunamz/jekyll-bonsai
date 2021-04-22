@@ -44,7 +44,6 @@ export default function drawTree () {
             .attr('class', 'nodes')               
         // node's circle
         node.append("circle")
-            .attr("active", (d) => isCurrentNoteInTree(d.data.id) ? true : null)
             // tree-only
             .attr("class", (d) => d.data.id === "" ? "missing" : null)
             .on("click", goToNoteFromTree)
