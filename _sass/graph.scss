@@ -15,10 +15,8 @@
     fill: $body-text-color;
   }
 
-  &[active] {
-    fill: $node-active-color;
-  }
   &.pulse {
+    fill: $node-active-color;
     -webkit-animation: pulse 2s linear infinite;
   }
   &.missing {
