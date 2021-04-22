@@ -41,6 +41,25 @@
   }
 }
 
+.plant-tag-selector {
+  z-index: 2;
+  right: $sp-2;
+  bottom: $sp-2;
+  position: absolute;
+  cursor: pointer;
+  user-select: none;
+  font-size: $font-size-6;
+  filter: drop-shadow(0 0 0.7mm $drop-shadow-brown);
+
+  /* Hide the browser's default checkbox */
+  input {
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+}
+
 .wiki-link-nav-selector {
   z-index: 3;
   display: block;
