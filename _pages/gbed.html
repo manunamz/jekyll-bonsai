@@ -1,0 +1,19 @@
+---
+layout: default
+title: Garden Bed
+---
+{% assign plants = site.plants | sort: "order"  %}
+
+<h1>🔖 Plant Tags In This Garden</h1>
+<p style="color: #959396; font-size: 12px;">Descriptions only reflect the spirit of this garden. Click <a href="https://emojipedia.org/bookmark/">here</a> for the official emoji description.</p>
+<p>
+  The following list of tags are for the types of foliage, fauna, and fruit in this garden. 
+  They reflect the spirit of note lifecycle tagging, where the tag represents the status of a 
+  <a href="https://github.com/BryanJenksCommunity/FAQ/discussions/12">note's maturity</a> and perhaps its
+  <a href="https://www.gwern.net/About#confidence-tags">epistemic status</a>.
+</p>
+
+{% for plant in plants %}
+  <h2>{{ plant.emoji }} <a href="{{ plant.url }}" class="plant-tag">{{ plant.title }}</a></h2>
+  <p>{{ plant.content | markdownify }}</p>
+{% endfor %}

@@ -1,4 +1,5 @@
-{% assign plants = site.gbed | sort: "order"  %}
+{% assign plants = site.plants | sort: "order"  %}
+
 <nav class="gbed-nav-list">
   {% for plant in plants %}
     <a class="gbed-list-item {% if page.url contains plant.title %}active{% endif %}" href="{{ plant.url }}">

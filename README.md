@@ -5,6 +5,7 @@
 Notes require yaml frontmatter with an `id`.
 
 ## notable
+- garden bed nav items have explicit ordering in their frontmatter.
 - 'missing nodes' show up in tree view, but not net-web view.
 - terms: `graph` refers to any type of graph of which there are two types: a hierarchical `tree` and a `net-web`.
 - `gbed` refers to `garden bed`.
@@ -49,6 +50,7 @@ Notes require yaml frontmatter with an `id`.
 - typescript with d3: https://www.npmjs.com/package/@types/d3
 
 ## refactorable
+- `plant-tag` in `content.scss` exists because pages aren't currently run through the 
 - could stand to flesh out color pallettes in the manner 'just the docs' did for _variables.scss.
 - use typescript with d3? https://medium.com/react-courses/first-steps-d3-with-react-typescript-part-i-setting-up-your-first-project-d29802e6f6b3
 - populate `gbed`-related data from notes themselves -- this would allow for dynamic site layout spec definition while edited one's notes.

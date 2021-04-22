@@ -4,8 +4,14 @@ layout: default
 <!-- page == plant (from gbed-nav) -->
 {% assign notes_with_plant = site.notes | where: 'tags', page.emoji %}
 
-<h1>{{ page.emoji }}</h1>
+<div class="gbed-nav">
+  {% include gbed-nav.html %}
+</div>
+
+<h1>{{ page.emoji }} {{ page.title }}</h1>
 {{ content }}
+<p style="color: #959396; font-size: 12px; margin-bottom: 0px;">Descriptions only reflect the spirit of this garden.</p>
+<p style="color: #959396; font-size: 12px; margin-top: 0px;">Click <a href="{{ page.emojipedia }}">here</a> for the official emoji description.</p>
 <hr>
 <ul>
   {% for note in notes_with_plant %}
@@ -17,7 +23,3 @@ layout: default
   {% endfor %}
 </ul>
 <hr>
-<foot>
-    <p style="color: #959396; font-size: 12px; margin-bottom: 0px;">Descriptions only reflect the spirit of this garden.</p>
-    <p style="color: #959396; font-size: 12px; margin-top: 0px;">Click <a href="{{ page.emojipedia }}">here</a> for the official emoji description.</p>
-</foot>

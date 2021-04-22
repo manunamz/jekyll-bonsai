@@ -29,9 +29,9 @@ collections:
   pages:
     output: true
     permalink: /:path
-  gbed:
+  plants:
     output: true
-    permalink: /:title
+    permalink: /plant/:title
   notes: 
     output: true
     # permalink: /:slug
@@ -39,10 +39,10 @@ collections:
 defaults:
   - scope:
       # path: ""
-      path: "_gbed/**/*.md"
-      type: "gbed"
+      path: "_plants/**/*.md"
+      type: "plants"
     values:
-      layout: "gbed-plant"
+      layout: "plant"
   - scope:
       path: "_notes/**/*.md"
     values:
