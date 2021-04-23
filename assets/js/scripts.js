@@ -20,11 +20,15 @@ import drawNetWeb from './net-web.js';
 // init
  //
 function initDefaults () {
+  // open external links in new window; wiki-links in current window.
+  document.querySelectorAll("a:not(.wiki-link):not(.plant-link)").forEach(setupLinkOpen);
+  // load 'theme_colors' default from config.
   if ('{{ site.theme_colors }}' === "dark") { 
     document.getElementById('theme-colors-checkbox').checked = true; 
   } else {
     document.getElementById('theme-colors-checkbox').checked = false; 
   }
+  // load 'graph_type' default from config.
   if ('{{ site.graph_type }}' === "tree") { 
     document.getElementById('graph-type-checkbox').checked = true;
   } else {
@@ -33,6 +37,11 @@ function initDefaults () {
   updateColors();
   updateGraphTypeEmoji();
   drawD3Nav();
+}
+
+function setupLinkOpen (link) {
+  link.setAttribute("target", "_blank");
+  link.setAttribute("rel", "noopener");  // for security: https://css-tricks.com/use-target_blank/#correct-html
 }
 
 function initListeners () {
