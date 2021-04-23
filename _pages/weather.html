@@ -1,0 +1,28 @@
+---
+layout: default
+---
+<h1>🌦 Weather "Back"cast</h1>
+<p>
+  Instead of a 'forecast' looking into the future, these are 'backcasts' peering into recent history. 
+  It's a feed, but without infinite scroll. It's releases, with a chance of storms.
+</p>
+<p>
+  Weather statuses are as follows:
+</p>
+<ul>
+  <li>🌤 Created</li>
+  <li>🌧 Updated</li>
+  <li style="color: grey;"><em>🌩 Deleted (Currently not active)</em></li>
+</ul>
+
+<hr>
+
+{% assign recent_notes = site.notes | recent: site.recent %}
+<ul>
+  {% for note in recent_notes %}
+    <li>
+      <span><a class="plant-tag" href="{{ note.permalink }}">{{ note.weather }} {{ note.title }}</a></span>
+      <span style="color: grey; float: right;">{{ note.updated | date: "%Y-%m-%d" }}</span>
+    </li>
+  {% endfor %}
+</ul>

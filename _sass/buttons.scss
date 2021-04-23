@@ -41,6 +41,25 @@
   }
 }
 
+.weather-selector {
+  z-index: 2;
+  left: $sp-2;
+  bottom: $sp-2;
+  position: absolute;
+  cursor: pointer;
+  user-select: none;
+  font-size: $font-size-6;
+  filter: drop-shadow(0 0 0.7mm $drop-shadow-blue);
+
+  /* Hide the browser's default checkbox */
+  input {
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+}
+
 .plant-tag-selector {
   z-index: 2;
   right: $sp-2;
@@ -90,11 +109,11 @@
   padding-bottom: 0.3em;
   padding-left: 1em;
   margin: 0;
-  font-family: inherit;
+  font-family: $table-font-family;
   font-size: inherit;
   font-weight: 500;
   line-height: 1.5;
-  color: $link-color;
+  color: $wiki-link-color;
   text-decoration: none;
   vertical-align: baseline;
   cursor: pointer;
@@ -117,7 +136,7 @@
 
   &:hover,
   &.zeroclipboard-is-hover {
-    color: darken($link-color, 2%);
+    color: darken($wiki-link-color, 2%);
   }
 
   &:hover,
