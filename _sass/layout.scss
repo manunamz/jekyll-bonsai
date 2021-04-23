@@ -51,18 +51,3 @@
 //   height: $header-height;
 //   background-color: $body-background-color;
 // }
-
-.main-footer {
-  @include container;
-  position: absolute;
-  bottom: 0;
-  padding-top: $sp-4;
-  padding-bottom: $sp-4;
-  color: $grey-dk-000;
-  @include fs-2;
-
-  @include mq(md) {
-    position: static;
-    justify-self: end;
-  }
-}

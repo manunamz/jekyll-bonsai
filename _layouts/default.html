@@ -26,23 +26,30 @@ layout: table-wrappers
 
     <div class="side-bar">
       <nav role="navigation" aria-label="Main" id="garden-nav" class="garden-nav">
+        <header>
+          <span>
+            <label class="colors-selector">
+              <input id="theme-colors-checkbox" type="checkbox" checked="checked">
+              <span id="colors-emoji-span"></span>
+            </label>
+            <label class="graph-type-selector">
+              <input id="graph-type-checkbox" type="checkbox" checked="checked">
+              <span id="graph-type-emoji-span"></span>
+            </label>
+          </span>
+          <span>
+            <label class="plant-tag-selector">
+              <input id="plant-tag-checkbox" type="checkbox" checked="checked">
+              <span id="plant-tag-emoji-span">🔖</span>
+            </label>
+            <label class="weather-selector">
+              <input id="weather-checkbox" type="checkbox" checked="checked">
+              <span id="weather-emoji-span">🌦</span>
+            </label>
+          </span>
+        </header>
         <svg id="svg-graph" height="100%" width="100%"></svg>
-        <label class="weather-selector">
-          <input id="weather-checkbox" type="checkbox" checked="checked">
-          <span id="weather-emoji-span">🌦</span>
-        </label>
-        <label class="plant-tag-selector">
-          <input id="plant-tag-checkbox" type="checkbox" checked="checked">
-          <span id="plant-tag-emoji-span">🔖</span>
-        </label>
-        <label class="graph-type-selector">
-          <input id="graph-type-checkbox" type="checkbox" checked="checked">
-          <span id="graph-type-emoji-span"></span>
-        </label>
-        <label class="colors-selector">
-          <input id="theme-colors-checkbox" type="checkbox" checked="checked">
-          <span id="colors-emoji-span"></span>
-        </label>
+        <footer>{% include footer.html %}</footer>
       </nav>
     </div>
     
@@ -54,7 +61,6 @@ layout: table-wrappers
           {{ content }}
         </div>
       </div>
-      <footer class="main-footer">{% include footer.html %}</footer>
     </div>
 
     <label class="wiki-link-nav-selector">
