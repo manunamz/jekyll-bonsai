@@ -9,20 +9,17 @@ layout: default
 <p>
   Weather statuses are as follows:
 </p>
-<ul>
-  <li>🌤 Created</li>
-  <li>🌧 Updated</li>
-  <li style="color: grey;"><em>🌩 Deleted (Currently not active)</em></li>
+  <p style="line-height: 1;">🌤 Created</p>
+  <p style="line-height: 1;">🌧 Updated</p>
+  <p style="line-height: 1; color: grey;"><em>🌩 Deleted (Currently not active)</em></p>
 </ul>
 
 <hr>
 
 {% assign recent_notes = site.notes | recent: site.recent %}
-<ul>
-  {% for note in recent_notes %}
-    <li>
-      <span><a class="plant-tag" href="{{ note.permalink }}">{{ note.weather }} {{ note.title }}</a></span>
-      <span style="color: grey; float: right;">{{ note.updated | date: "%Y-%m-%d" }}</span>
-    </li>
-  {% endfor %}
-</ul>
+{% for note in recent_notes %}
+  <p style="display: flex; justify-content: space-between;">
+    <a class="plant-tag" href="{{ note.permalink }}">{{ note.weather }} {{ note.title }}</a>
+    <span style="color: grey; float: right;">{{ note.updated | date: "%Y-%m-%d" }}</span>
+  </p>
+{% endfor %}

@@ -13,13 +13,10 @@ layout: default
 <p style="color: #959396; font-size: 12px; margin-bottom: 0px;">Descriptions only reflect the spirit of this garden.</p>
 <p style="color: #959396; font-size: 12px; margin-top: 0px;">Click <a href="{{ page.emojipedia }}">here</a> for the official emoji description.</p>
 <hr>
-<ul>
-  {% for note in notes_with_plant %}
-    {% if note.tags contains page.emoji %}
-      <li>{{ page.emoji }} <a class="wiki-link" href="{{ site.baseurl }}{{ note.url }}">{{ note.title }}</a></li>
-    {% endif %}
-  {% else %}
-    There are currently no {{ page.emoji }}s.
-  {% endfor %}
-</ul>
-<hr>
+{% for note in notes_with_plant %}
+  {% if note.tags contains page.emoji %}
+    <p>{{ page.emoji }} <a class="wiki-link" href="{{ site.baseurl }}{{ note.url }}">{{ note.title }}</a></p>
+  {% endif %}
+{% else %}
+  There are currently no {{ page.emoji }}s.
+{% endfor %}
