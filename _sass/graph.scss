@@ -9,7 +9,6 @@
   fill: $node-color;
   stroke: $node-stroke-color;
   stroke-width: $node-stroke-width;
-  r: $node-radius;
 
   + text {
     fill: $body-text-color;
@@ -25,7 +24,6 @@
   }
   
   &.missing {
-    r: $node-missing-radius;
     fill: $node-missing-color;
   }
 }

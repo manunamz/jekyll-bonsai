@@ -1,6 +1,6 @@
 // import { dragstarted, dragged, dragended } from "./drag.js";
 
-export default function drawTree () { 
+export default function drawTree (theme_attrs) { 
   // d3.json has been async'd: https://stackoverflow.com/questions/49768165/code-within-d3-json-callback-is-not-executed 
   d3.json("/assets/notes_tree.json")
     .then(function(data) {
@@ -44,6 +44,9 @@ export default function drawTree () {
             .attr('class', 'nodes')               
         // node's circle
         node.append("circle")
+            //svg 2.0 not well-supported: https://stackoverflow.com/questions/47381187/svg-not-working-in-firefox
+            // add attributes in javascript instead of css.
+            .attr("r",  (d) => d.data.id !== "" ? theme_attrs["radius"] : theme_attrs["missing-radius"])
             // tree-only
             .attr("class", (d) => d.data.id === "" ? "missing" : null)
             .on("click", goToNoteFromTree)
@@ -75,6 +78,7 @@ export default function drawTree () {
                 .on("start", dragstarted)
                 .on("drag", dragged)
                 .on("end", dragended));
+
         simulation.on("tick", () => {
             // from: https://mbostock.github.io/d3/talk/20110921/parent-foci.html
             // preserve hierarchical shape via link positioning

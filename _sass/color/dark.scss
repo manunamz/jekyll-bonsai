@@ -22,6 +22,7 @@ $link-color: $blue-100;
 $wiki-link-color: $green-100;
 
 // graph variables
+// (graph attributes had to be set in scripts.js because of poor svg 2.0 support)
 
 $link-line-stroke-color: $grey-dk-200;
 $link-line-stroke-width: 0.5;
@@ -29,12 +30,10 @@ $link-line-dash-val: 0;
 
 $node-color: $green-05;
 $node-stroke-color: $grey-dk-200;
-$node-radius: 2.5;
 $node-stroke-width: 1;
 
 $node-active-color: $yellow-200;
 $node-missing-color: $transparent;
-$node-missing-radius: 2.5;
 
 // blockquote decoration
 $blockquote-border-color: rgba($link-line-stroke-color, 0.33);

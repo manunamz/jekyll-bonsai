@@ -113,12 +113,28 @@ function drawD3Nav() {
   
   // destroy old chart   
   d3.select(svgWrapper).selectAll('*').remove();
-  
+
+  let theme_attrs = {};
+  // set theme-dependent graph attributes.
+  if (document.getElementById('theme-colors-checkbox').checked) {
+    theme_attrs = {
+      "name": "dark",
+      "radius": 2.5,
+      "missing-radius": 2.5,
+    }
+  } else {
+      theme_attrs = {
+      "name": "light",
+      "radius": 3,
+      "missing-radius": 1.5,
+    }
+  }
+
   // redraw new chart and set label text
   if (graphTypeCheckBox.checked) {
-    drawTree();
+    drawTree(theme_attrs);
   } else {
-    drawNetWeb();
+    drawNetWeb(theme_attrs);
   }
 }
 
