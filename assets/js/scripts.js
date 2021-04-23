@@ -153,8 +153,3 @@ function expandGraphNav() {
     // mainHeader.classList.remove('nav-open');
   }
 }
-
-// todo 👇
-// for drag events on mobile: https://stackoverflow.com/questions/56226001/drag-event-not-fired-on-mobile-devices
-// d3.select("svg").on("touchstart", yourFunction);
-// d3.select("svg").on("touchmove", yourFunction);
