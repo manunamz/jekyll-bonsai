@@ -4,7 +4,7 @@ export default function drawTree () {
   // d3.json has been async'd: https://stackoverflow.com/questions/49768165/code-within-d3-json-callback-is-not-executed 
   d3.json("/assets/notes_tree.json")
     .then(function(data) {
-        // console.log('d3 is building a net-web');
+        // console.log('d3 is building a tree');
         // console.log(data);
         const svgWrapper = document.getElementById('svg-graph');
         const width = +svgWrapper.getBoundingClientRect().width / 2;
@@ -106,10 +106,10 @@ export default function drawTree () {
         // from: https://stackoverflow.com/questions/63693132/unable-to-get-node-datum-on-mouseover-in-d3-v6
         // d6 now passes events in vanilla javascript fashion
         function goToNoteFromTree(e, d) {
-            var isMissingNote = d.data.id === "";
+            var isMissingNote = (d.data.id === "");
             if (!isMissingNote) {
                 // i have no idea why this needs the preceeding '/'
-                window.location = `/${d.data.id}`;
+                window.location = `/note/${d.data.id}`;
             } else {
                 return null;
             }
