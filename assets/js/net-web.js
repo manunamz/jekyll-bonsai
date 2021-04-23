@@ -1,6 +1,6 @@
 // import { dragstarted, dragged, dragended } from "./drag.js";
 
-export default function drawNetWeb () {
+export default function drawNetWeb (theme_attrs) {
   // d3.json has been async'd: https://stackoverflow.com/questions/49768165/code-within-d3-json-callback-is-not-executed 
   d3.json("/assets/notes_net_web.json")
     .then(function(data) {       
@@ -45,6 +45,9 @@ export default function drawNetWeb () {
             .attr("active", (d) => isCurrentNoteInNetWeb(d.id) ? true : null)
         // node's circle
         node.append('circle')
+            //svg 2.0 not well-supported: https://stackoverflow.com/questions/47381187/svg-not-working-in-firefox
+            // add attributes in javascript instead of css.
+            .attr("r", theme_attrs["radius"])
             .on("click", goToNoteFromNetWeb)
             .call(d3.drag()
                 .on("start", dragstarted)
