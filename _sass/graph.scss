@@ -15,10 +15,15 @@
     fill: $body-text-color;
   }
 
+  &:hover {
+    cursor: pointer;
+  }
+
   &.pulse {
     fill: $node-active-color;
     -webkit-animation: pulse 2s linear infinite;
   }
+  
   &.missing {
     r: $node-missing-radius;
     fill: $node-missing-color;
