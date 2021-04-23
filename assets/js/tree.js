@@ -79,10 +79,10 @@ export default function drawTree () {
             // from: https://mbostock.github.io/d3/talk/20110921/parent-foci.html
             // preserve hierarchical shape via link positioning
             var kx = .2 * simulation.alpha();
-            var ky = 1.2 * simulation.alpha();
+            var ky = 1.3 * simulation.alpha();
             links.forEach(function(d, i) {
               d.target.x += (d.source.x - d.target.x) * kx;
-              d.target.y += (d.source.y + (height * .5) - d.target.y) * ky;
+              d.target.y += (d.source.y + (height * .35) - d.target.y) * ky;
             });
 
             link
