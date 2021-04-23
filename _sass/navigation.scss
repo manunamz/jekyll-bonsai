@@ -172,6 +172,32 @@
     overflow-y: auto;
     flex: 1 1 auto;
   }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    // left: 0;
+    padding: $sp-1;
+    color: $grey-dk-000;
+    @include fs-4;
+    z-index: 5;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: $sp-3;
+    color: $grey-dk-000;
+    @include fs-2;
+    z-index: 5;
+  }
 }
 
 

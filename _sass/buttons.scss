@@ -4,14 +4,9 @@
 
 /* graph type container */
 .graph-type-selector {
-  z-index: 2;
-  top: $sp-2;
-  position: absolute;
   cursor: pointer;
   user-select: none;
-  font-size: $font-size-6;
   filter: drop-shadow(0 0 0.7mm $drop-shadow-green);
-  right: $sp-2;
 
   /* Hide the browser's default checkbox */
   input {
@@ -23,14 +18,9 @@
 }
 
 .colors-selector {
-  z-index: 2;
-  top: $sp-2;
-  position: absolute;
   cursor: pointer;
   user-select: none;
-  font-size: $font-size-6;
   filter: drop-shadow(0 0 0.7mm $drop-shadow-yellow);
-  left: $sp-2;
 
   /* Hide the browser's default checkbox */
   input {
@@ -42,13 +32,8 @@
 }
 
 .weather-selector {
-  z-index: 2;
-  left: $sp-2;
-  bottom: $sp-2;
-  position: absolute;
   cursor: pointer;
   user-select: none;
-  font-size: $font-size-6;
   filter: drop-shadow(0 0 0.7mm $drop-shadow-blue);
 
   /* Hide the browser's default checkbox */
@@ -61,13 +46,8 @@
 }
 
 .plant-tag-selector {
-  z-index: 2;
-  right: $sp-2;
-  bottom: $sp-2;
-  position: absolute;
   cursor: pointer;
   user-select: none;
-  font-size: $font-size-6;
   filter: drop-shadow(0 0 0.7mm $drop-shadow-brown);
 
   /* Hide the browser's default checkbox */
