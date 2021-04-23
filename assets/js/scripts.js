@@ -54,8 +54,12 @@ function initListeners () {
     // todo: this is hacky, make it a proper button with this styling instead of a checkbox
     document.getElementById('plant-tag-checkbox')
       .addEventListener('click', function(event) {
-        goToGardenBed();
+        goTo('{{ site.baseurl }}/gbed');
       }, false);
+    document.getElementById('weather-checkbox')
+    .addEventListener('click', function(event) {
+      goTo('{{ site.baseurl }}/weather');
+    }, false);
 
     document.getElementById('wiki-link-nav-checkbox')
       .addEventListener('click', function(event) {
@@ -109,8 +113,8 @@ function drawD3Nav() {
   }
 }
 
-function goToGardenBed () {
-  window.location.href = '{{ site.baseurl }}/gbed';
+function goTo (location) {
+  window.location.href = location;
 }
 
 function expandGraphNav() {

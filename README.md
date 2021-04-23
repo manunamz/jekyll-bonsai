@@ -5,6 +5,7 @@
 Notes require yaml frontmatter with an `id`.
 
 ## notable
+- `created` and `updated` timestamps read from note frontmatter are epoch-style timestamps. other timestamps won't register with the weather page.
 - garden bed nav items have explicit ordering in their frontmatter.
 - 'missing nodes' show up in tree view, but not net-web view.
 - terms: `graph` refers to any type of graph of which there are two types: a hierarchical `tree` and a `net-web`.
@@ -28,6 +29,7 @@ Notes require yaml frontmatter with an `id`.
 - a proposal on note structures for docs: imagine finding the relevant doc, but it doesn't make sense. you're lacking prior knowledge, context, or some fundamental that's blocking you from understanding how the thing works. imagine all of a node's children are representative of the needed prior knowledge. now, all you have to do is glance down the list of children and visit whichever ones you don't understand to fully understand the current one. keep digging until you've got it all down.
 
 ## gotchas worth writing about
+- writing a custom liquid template filter.
 - 'filter' when i was googling for "conditionally add circle d3": https://stackoverflow.com/questions/28415005/d3-js-selection-conditional-rendering
 	- this is such a good example of why search is not enough -- even one wrong word can completely hide info from you.
 - light/dark theme scss for jekyll.

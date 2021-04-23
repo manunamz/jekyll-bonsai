@@ -20,6 +20,8 @@ sass:
 theme_colors: "dark"
 # may be 'tree' or 'net-web'
 graph_type: "tree"
+# set number of notes to display in weather page.
+recent: 10 
 
 enable_mathjax: true
 kramdown:

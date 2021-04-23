@@ -3,6 +3,7 @@
 #   - net-web: from [[bidirectional, wiki links]].
 #   - tree: dendron flavored dot.style.notation.md or directory structure.
 require 'json'
+require 'time'
 
 ##
 # external constants
@@ -146,6 +147,7 @@ class GraphDataGenerator < Jekyll::Generator
       # Convert all Wiki/Roam-style double-bracket link syntax to plain HTML
       # anchor tag elements (<a>) with "internal-link" CSS class
       all_docs.each do |current_note|
+        remove_milliseconds(current_note)
         all_docs.each do |note_potentially_linked_to|
           namespace_from_filename = File.basename(
             note_potentially_linked_to.basename,
@@ -230,6 +232,12 @@ class GraphDataGenerator < Jekyll::Generator
         links: graph_links,
         nodes: graph_nodes,
       }))
+
+      # !!!!!!!!!!!!!!!!! #
+      # Index The Weather #
+      # !!!!!!!!!!!!!!!!! #
+
+      # index_weather(all_docs)
     end
 
     # !!!!!!!!!!!!!!!! #
@@ -284,6 +292,11 @@ class GraphDataGenerator < Jekyll::Generator
           puts "Title: " + cur_note.data['title'], "ID: " + cur_note.data['id']
         end
       end
+    end
+
+    def remove_milliseconds(note)
+      note.data['created'] = Time.at(note.data['created'].to_s[0..-4].to_i)
+      note.data['updated'] = Time.at(note.data['updated'].to_s[0..-4].to_i)
     end
 
     # tag -> [<right-sidenote], [<right-sidenote]:
