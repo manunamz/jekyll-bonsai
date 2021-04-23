@@ -23,6 +23,15 @@
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    
+    &:not(.wiki-link):not(.plant-tag):after {
+      @include fs-1;
+      font-family: $mono-font-family;
+      position: relative;
+      top: -$sp-1;
+      content: "↗";
+      color: #aaaaaa;
+    }
   }
 
   ul,
