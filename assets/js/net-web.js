@@ -52,7 +52,8 @@ export default function drawNetWeb (theme_attrs) {
             .call(d3.drag()
                 .on("start", dragstarted)
                 .on("drag", dragged)
-                .on("end", dragended))
+                .on("end", dragended)
+                .touchable(true))
         // node's label
         // labels need to be nested in a 'g' object alongside the node circle.
         //  docs: https://bl.ocks.org/mbostock/950642
@@ -76,7 +77,8 @@ export default function drawNetWeb (theme_attrs) {
             .call(d3.drag()
                 .on("start", dragstarted)
                 .on("drag", dragged)
-                .on("end", dragended));
+                .on("end", dragended)
+                .touchable(true));
 
         simulation.on("tick", () => {
             // node.attr('transform', d => `translate(${d.x},${d.y})`); 
