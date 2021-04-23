@@ -86,7 +86,7 @@ class GraphDataGenerator < Jekyll::Generator
       # from: https://stackoverflow.com/questions/16235601/what-are-the-steps-to-getting-this-custom-permalink-scheme-in-jekyll
       # Until Jekyll allows me to use :id, I have to resort to this
       site.collections['notes'].docs.each do |note|
-        note.data['permalink'] = '/' + note.data['id'] + '/'
+        note.data['permalink'] = '/note/' + note.data['id'] + '/'
       end
 
       graph_nodes = []

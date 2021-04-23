@@ -98,7 +98,7 @@ export default function drawNetWeb () {
         // d6 now passes events in vanilla javascript fashion
         function goToNoteFromNetWeb (e, d) {
             // i have no idea why this needs the preceeding '/'
-            window.location = `/${d.id}`;
+            window.location = `/note/${d.id}`;
         };
 
         function dragstarted(event) {
