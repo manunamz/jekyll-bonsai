@@ -43,6 +43,11 @@ h6,
   color: $grey-dk-200;
 }
 
+.small-descr {
+  @include fs-2;
+  color: $grey-dk-000;
+}
+
 .text-small {
   @include fs-2;
 }
