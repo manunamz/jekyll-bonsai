@@ -20,6 +20,7 @@ $feedback-color: darken($sidebar-color, 3%) !default;
 
 $link-color: $blue-200 !default;
 $wiki-link-color: $green-200 !default;
+$invalid-wiki-link-color: $grey-lt-300;
 
 // graph variables
 // (graph attributes had to be set in scripts.js because of poor svg 2.0 support)
