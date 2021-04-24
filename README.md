@@ -71,6 +71,7 @@ Notes require yaml frontmatter with an `id`.
 - css transitions: https://thoughtbot.com/blog/transitions-and-transforms
 
 ## d3 refs:
+- [so answer on enter/update/exit](https://stackoverflow.com/questions/46147231/selecting-null-what-is-the-reason-behind-selectallnull-in-d3)
 - [d3-force testing ground](https://bl.ocks.org/steveharoz/8c3e2524079a8c440df60c1ab72b5d03)
 - [force directed graph](https://observablehq.com/@d3/force-directed-graph)
 - [force directed tree](https://observablehq.com/@d3/force-directed-tree)
