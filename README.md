@@ -9,7 +9,6 @@ Notes require yaml frontmatter with an `id`.
 - garden bed nav items have explicit ordering in their frontmatter.
 - 'missing nodes' show up in tree view, but not net-web view.
 - terms: `graph` refers to any type of graph of which there are two types: a hierarchical `tree` and a `net-web`.
-- `gbed` refers to `garden bed`.
 - sidenotes increment together, but separately from footnotes. so, for example, it's possible for there to be a '1' for both a \[\^footnote] and a \[\<right-sidenote] or \[\>left-sidenote].
 - sidenotes require a \n after each definition; there is a check for a \n at eof just in case sidenotes are at the bottom fo the file -- if any files don't end with a newline the local plugin will print to the terminal about it.
 - note with the title 'Root' displays as the home page (see index.html).
@@ -56,7 +55,7 @@ Notes require yaml frontmatter with an `id`.
 - `plant-tag` in `content.scss` exists because pages aren't currently run through the 
 - could stand to flesh out color pallettes in the manner 'just the docs' did for _variables.scss.
 - use typescript with d3? https://medium.com/react-courses/first-steps-d3-with-react-typescript-part-i-setting-up-your-first-project-d29802e6f6b3
-- populate `gbed`-related data from notes themselves -- this would allow for dynamic site layout spec definition while edited one's notes.
+- populate `plant`-related data from notes themselves -- this would allow for dynamic site layout spec definition while edited one's notes.
 - `.rsn` and `.lsn` are basically the same class except for their margin offset direction.
 - make _plugin parts into a module and turn the `generate()` function into an order-of-operations-machine of sorts.
 - `graph-type-selector` and `wiki-link-nav-selector` could easily become a widget that are fed in different data (for example, the span text).
