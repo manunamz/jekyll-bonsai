@@ -73,6 +73,7 @@ export default function drawNetWeb (theme_attrs) {
         // add node pulse on the current node
         node.filter( function(d,i) { return isCurrentNoteInNetWeb(d.id); })
             .append("circle")
+            .attr("r", theme_attrs["radius"])
             .classed("pulse", (d) => isCurrentNoteInNetWeb(d.id) ? true : null)
             .call(d3.drag()
                 .on("start", dragstarted)

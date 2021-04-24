@@ -74,6 +74,7 @@ export default function drawTree (theme_attrs) {
         // add node pulse on the current node
         node.filter( function(d,i) { return isCurrentNoteInTree(d.data.id); })
             .append("circle")
+            .attr("r",  (d) => d.data.id !== "" ? theme_attrs["radius"] : theme_attrs["missing-radius"])
             .classed("pulse", (d) => isCurrentNoteInTree(d.data.id) ? true : null)
             .call(d3.drag()
                 .on("start", dragstarted)
