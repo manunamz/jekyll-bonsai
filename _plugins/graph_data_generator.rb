@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # from: https://github.com/maximevaillancourt/digital-garden-jekyll-template/blob/master/_plugins/bidirectional_links_generator.rb
 # build graph data: 
 #   - net-web: from [[bidirectional, wiki links]].
@@ -80,7 +82,6 @@ class Node
 end
 
 
-# frozen_string_literal: true
 class GraphDataGenerator < Jekyll::Generator
     def generate(site)
       # from: https://stackoverflow.com/questions/16235601/what-are-the-steps-to-getting-this-custom-permalink-scheme-in-jekyll
