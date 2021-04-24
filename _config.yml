@@ -3,6 +3,20 @@ description: a jekyll theme for digital gardeners.
 baseurl: ''
 # url: 'localhost:4000'
 
+
+# color
+## may be 'dark' or 'light'
+theme_colors: "dark"
+
+# graph
+## may be 'tree' or 'net-web'
+graph_type: "tree"
+
+# weather
+## set number of notes to display on weather page.
+recent: 10 
+
+
 # logo: "/assets/images/logo.png"
 # exclude: [ "node_modules/", "*.gemspec", "*.gem", "Gemfile", "Gemfile.lock", "package.json", "package-lock.json",  "script/", "LICENSE.txt", "lib/", "bin/", "README.md", "Rakefile", "*/dendron.template.release.md"
 # ]
@@ -15,13 +29,6 @@ exclude: ["node_modules/", "*.gemspec", "*.gem", "Gemfile", "Gemfile.lock", "pac
 sass:
   sass_dir:          _sass
   style:            :compressed
-
-# may be 'dark' or 'light'
-theme_colors: "dark"
-# may be 'tree' or 'net-web'
-graph_type: "tree"
-# set number of notes to display in weather page.
-recent: 10 
 
 enable_mathjax: true
 kramdown:
