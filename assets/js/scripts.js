@@ -21,7 +21,7 @@ import drawNetWeb from './net-web.js';
  //
 function initDefaults () {
   // open external links in new window; wiki-links in current window.
-  document.querySelectorAll("a:not(.wiki-link):not(.plant-tag):not(.plant-list-item)").forEach(setupLinkOpen);
+  document.querySelectorAll("a:not(.wiki-link):not(.plant-list-item)").forEach(setupLinkOpen);
   // load 'theme_colors' default from config.
   if ('{{ site.theme_colors }}' === "dark") { 
     document.getElementById('theme-colors-checkbox').checked = true; 

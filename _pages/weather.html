@@ -19,7 +19,7 @@ layout: default
 {% assign recent_notes = site.notes | recent: site.recent %}
 {% for note in recent_notes %}
   <p style="display: flex; justify-content: space-between;">
-    <a class="plant-tag" href="{{ note.permalink }}">{{ note.weather }} {{ note.title }}</a>
+    <a class="wiki-link" href="{{ note.permalink }}">{{ note.weather }} {{ note.title }}</a>
     <span style="color: grey; float: right;">{{ note.updated | date: "%Y-%m-%d" }}</span>
   </p>
 {% endfor %}
