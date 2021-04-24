@@ -99,14 +99,18 @@ class GraphDataGenerator < Jekyll::Generator
   
       link_extension = !!site.config["use_html_extension"] ? '.html' : ''
 
+      all_docs.each do |cur_note|
+        prep_notes(cur_note)
+      end
+
       # !!!!!!!!!!!!!!!!! #
       #  parse sidenotes  #
       # !!!!!!!!!!!!!!!!! #
       # just get tufte-style sidenotes working for now...
       # if there's time, emulate gwern's method: https://github.com/gwern/gwern.net/blob/9e6893033ec63248b1f0b29df119c40d39a7dcef/css/default.css#L1223
 
-      puts "***** EXTRACT SIDENOTES *****"
-      check_for_newlines(all_docs) # kramdown can handle footnotes with no newline, but the regex i'm getting requires a newline after the last footnote to find it.
+      # puts "***** EXTRACT SIDENOTES *****"
+      # check_for_newlines(all_docs) # kramdown can handle footnotes with no newline, but the regex i'm getting requires a newline after the last footnote to find it.
       all_docs.each do |cur_note|
         parse_sidenote(cur_note, "right")
         parse_sidenote(cur_note, "left")
@@ -147,7 +151,6 @@ class GraphDataGenerator < Jekyll::Generator
       # Convert all Wiki/Roam-style double-bracket link syntax to plain HTML
       # anchor tag elements (<a>) with "internal-link" CSS class
       all_docs.each do |current_note|
-        remove_milliseconds(current_note)
         all_docs.each do |note_potentially_linked_to|
           namespace_from_filename = File.basename(
             note_potentially_linked_to.basename,
@@ -232,73 +235,31 @@ class GraphDataGenerator < Jekyll::Generator
         links: graph_links,
         nodes: graph_nodes,
       }))
-
-      # !!!!!!!!!!!!!!!!! #
-      # Index The Weather #
-      # !!!!!!!!!!!!!!!!! #
-
-      # index_weather(all_docs)
     end
 
     # !!!!!!!!!!!!!!!! #
     # Helper functions #
     # !!!!!!!!!!!!!!!! #
 
-    # add unique path for the given note 
-    def add_path(node, note, depth=1)
-      chunked_namespace = note.data['slug'].split(/\s|\./)
-      # if the given node was not root and we are at depth, handle note
-      if depth == chunked_namespace.length
-        cur_nd_namespace = 'root' + '.' + note.data['slug']
-        cur_nd_id = note.data['id']
-        cur_nd_title = note.data['title']
-        # if one does not exist, create node
-        unless node.children.any?{ |c| c.namespace == cur_nd_namespace }
-          new_node = Node.new(cur_nd_id, cur_nd_namespace, cur_nd_title)
-          node.children << new_node
-        # if one already exists, fill-in node
-        else
-          cur_node = node.children.detect {|c| c.namespace == cur_nd_namespace }
-          cur_node.id = cur_nd_id
-          cur_node.title = cur_nd_title
-        end
-        return
-      # create temp node and recurse
-      else
-        cur_namespace = 'root' + '.' + chunked_namespace[0..(depth - 1)].join('.')
-        unless node.children.any?{ |c| c.namespace == cur_namespace }
-          new_node = Node.new('', cur_namespace, '')
-          node.children << new_node
-        else
-          new_node = node.children.detect {|c| c.namespace == cur_namespace }
-        end
-      end
-      add_path(new_node, note, depth + 1)
-    end
+    ##############
+    # prep notes #
+    ##############
 
     # verify all notes end with a "\n" so sidenotes works 
     #   (sidenotes don't detect the last definition if there is no ending "\n").
-    def check_for_newlines(notes)
-      notes_missing_newline = []
-      notes.each do |cur_note|
-        if cur_note.content[-1] != "\n"
-          notes_missing_newline << cur_note
-        end
+    def prep_notes(note)
+      if note.content[-1] != "\n"
+        puts note.title + " missing newline at end of file."
       end
-      if notes_missing_newline.length > 0
-        puts "***** There are notes missing newlines at eof, this could break sidenote definitions *****"
-        notes_missing_newline.each do |cur_note|
-          puts "Note"
-          puts "Title: " + cur_note.data['title'], "ID: " + cur_note.data['id']
-        end
-      end
-    end
-
-    def remove_milliseconds(note)
+      # sanitize timestamps: remove milliseconds from epoch time
       note.data['created'] = Time.at(note.data['created'].to_s[0..-4].to_i)
       note.data['updated'] = Time.at(note.data['updated'].to_s[0..-4].to_i)
     end
 
+    #################
+    # extra parsing #
+    #################
+    
     # tag -> [<right-sidenote], [<right-sidenote]:
     # def -> [>left-sidenote], [>left-sidenote]:
     # `side` is 'right' or 'left'
@@ -331,6 +292,42 @@ class GraphDataGenerator < Jekyll::Generator
           "<label for=\"#{css_class}-#{i}\" class=\"sidenote-toggle sidenote-number\"></label><input type=\"checkbox\" id=\"#{css_class}-#{i}\" class=\"sidenote-toggle\"><span class=\"#{css_class}\">#{definition}</span>"
         )
       end
+    end
+    
+    #########
+    # graph #
+    #########
+
+    # add unique path for the given note 
+    def add_path(node, note, depth=1)
+      chunked_namespace = note.data['slug'].split(/\s|\./)
+      # if the given node was not root and we are at depth, handle note
+      if depth == chunked_namespace.length
+        cur_nd_namespace = 'root' + '.' + note.data['slug']
+        cur_nd_id = note.data['id']
+        cur_nd_title = note.data['title']
+        # if one does not exist, create node
+        unless node.children.any?{ |c| c.namespace == cur_nd_namespace }
+          new_node = Node.new(cur_nd_id, cur_nd_namespace, cur_nd_title)
+          node.children << new_node
+        # if one already exists, fill-in node
+        else
+          cur_node = node.children.detect {|c| c.namespace == cur_nd_namespace }
+          cur_node.id = cur_nd_id
+          cur_node.title = cur_nd_title
+        end
+        return
+      # create temp node and recurse
+      else
+        cur_namespace = 'root' + '.' + chunked_namespace[0..(depth - 1)].join('.')
+        unless node.children.any?{ |c| c.namespace == cur_namespace }
+          new_node = Node.new('', cur_namespace, '')
+          node.children << new_node
+        else
+          new_node = node.children.detect {|c| c.namespace == cur_namespace }
+        end
+      end
+      add_path(new_node, note, depth + 1)
     end
 
     # convert tree-class to json
