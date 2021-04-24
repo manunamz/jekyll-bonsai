@@ -316,7 +316,8 @@
   }
 
   .invalid-wiki-link {
-    color: $body-text-color;
+    color: $grey-dk-000;
+    background: $invalid-wiki-link-color;
     cursor: help;
   }
 

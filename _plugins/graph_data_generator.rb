@@ -240,17 +240,17 @@ class GraphDataGenerator < Jekyll::Generator
         "<a class='wiki-link' href='#{site.baseurl}#{note_potentially_linked_to.data['permalink']}#{link_extension}'>#{name_from_namespace}</a>"
       )
     end
-
     # At this point, all remaining double-bracket-wrapped words are
     # pointing to non-existing pages, so let's turn them into disabled
     # links by greying them out and changing the cursor
     note.content = note.content.gsub(
       /\[\[(.*)\]\]/i, # match on the remaining double-bracket links
       <<~HTML.chomp    # replace with this HTML (\\1 is what was inside the brackets)
-        <span title='There is no note that matches this link.' class='invalid-link'>
-          <span class='invalid-wiki-link'>[[</span>
+        <span title='There is no note that matches this link.' class='invalid-wiki-link'>
+          <span>[[</span>
           \\1
-          <span class='invalid-wiki-link'>]]</span></span>
+          <span>]]</span>
+        </span>
       HTML
     )
   end
