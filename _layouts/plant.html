@@ -23,7 +23,7 @@ layout: default
   </p>
   {% for plant in plants %}
     {% if plant.title != "tags" %}
-      <h2>{{ plant.emoji }} <a href="{{ plant.url }}" class="plant-tag">{{ plant.title }}</a></h2>
+      <h2>{{ plant.emoji }} <a href="{{ plant.url }}" class="wiki-link">{{ plant.title }}</a></h2>
       <p>{{ plant.content | markdownify }}</p>
     {% endif %}
   {% endfor %}

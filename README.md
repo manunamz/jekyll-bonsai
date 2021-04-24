@@ -52,7 +52,8 @@ Notes require yaml frontmatter with an `id`.
 - typescript with d3: https://www.npmjs.com/package/@types/d3
 
 ## refactorable
-- `plant-tag` in `content.scss` exists because pages aren't currently run through the 
+- there are some `:not`s used around the css and javascript with regard to `plant-list-item` and differentiating between `wiki-link` and vanilla external links...this logic could be better consolidated...
+- `wiki-link` is hard-coded in the weather page and on the plant layout.
 - could stand to flesh out color pallettes in the manner 'just the docs' did for _variables.scss.
 - use typescript with d3? https://medium.com/react-courses/first-steps-d3-with-react-typescript-part-i-setting-up-your-first-project-d29802e6f6b3
 - populate `plant`-related data from notes themselves -- this would allow for dynamic site layout spec definition while edited one's notes.

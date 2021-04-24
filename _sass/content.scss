@@ -24,7 +24,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     
-    &:not(.wiki-link):not(.plant-tag):not(.plant-list-item):after {
+    &:not(.wiki-link):not(.plant-list-item):after {
       @include fs-1;
       font-family: $mono-font-family;
       position: relative;
@@ -318,11 +318,6 @@
   .invalid-wiki-link {
     color: $body-text-color;
     cursor: help;
-  }
-
-  .plant-tag {
-    font-family: $click-font-family;
-    color: $wiki-link-color;
   }
 
   /* Sidenotes, margin notes, figures, captions */
