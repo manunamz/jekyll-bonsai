@@ -24,7 +24,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     
-    &:not(.wiki-link):not(.plant-tag):after {
+    &:not(.wiki-link):not(.plant-tag):not(.plant-list-item):after {
       @include fs-1;
       font-family: $mono-font-family;
       position: relative;

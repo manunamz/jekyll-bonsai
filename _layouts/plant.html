@@ -3,10 +3,10 @@ layout: default
 ---
 {% assign plants = site.plants | sort: "order"  %}
 
-<div class="gbed-nav">
-  <nav class="gbed-nav-list">
+<div class="plant-nav">
+  <nav class="plant-nav-list">
     {% for plant in plants %}
-      <a class="gbed-list-item {% if page.url contains plant.title %}active{% endif %}" href="{{ plant.url }}">
+      <a href="{{ plant.url }}" class="plant-list-item {% if page.url contains plant.title %}active{% endif %}">
         {{ plant.emoji }}
       </a>
     {% endfor %}
@@ -29,7 +29,7 @@ layout: default
   {% endfor %}
 <!-- individual tags -->
 {% else %}
-  <!-- page == plant (from gbed-nav) -->
+  <!-- page == plant (from plant-nav) -->
   {% assign notes_with_plant = site.notes | where: 'tags', page.emoji %}
   <h1>{{ page.emoji }} {{ page.title }}</h1>
   {{ content }}
@@ -40,7 +40,7 @@ layout: default
   <hr>
   {% for note in notes_with_plant %}
     {% if note.tags contains page.emoji %}
-      <p>{{ page.emoji }} <a class="wiki-link" href="{{ site.baseurl }}{{ note.url }}">{{ note.title }}</a></p>
+      <p>{{ page.emoji }} <a href="{{ site.baseurl }}{{ note.url }}" class="wiki-link">{{ note.title }}</a></p>
     {% endif %}
   {% else %}
     There are currently no {{ page.emoji }}s.
