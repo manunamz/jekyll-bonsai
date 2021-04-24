@@ -101,20 +101,12 @@ class GraphDataGenerator < Jekyll::Generator
       link_extension = !!site.config["use_html_extension"] ? '.html' : ''
 
       all_docs.each do |cur_note|
+        # note prep
         prep_notes(cur_note)
-      end
-
-      # !!!!!!!!!!!!!!!!! #
-      #  parse sidenotes  #
-      # !!!!!!!!!!!!!!!!! #
-      # just get tufte-style sidenotes working for now...
-      # if there's time, emulate gwern's method: https://github.com/gwern/gwern.net/blob/9e6893033ec63248b1f0b29df119c40d39a7dcef/css/default.css#L1223
-
-      # puts "***** EXTRACT SIDENOTES *****"
-      # check_for_newlines(all_docs) # kramdown can handle footnotes with no newline, but the regex i'm getting requires a newline after the last footnote to find it.
-      all_docs.each do |cur_note|
+        # extra parsing
         parse_sidenote(cur_note, "right")
         parse_sidenote(cur_note, "left")
+        parse_wiki_links(site, all_docs, cur_note, link_extension)
       end
 
       # !!!!!!!!!!!! #
@@ -141,64 +133,6 @@ class GraphDataGenerator < Jekyll::Generator
       puts missing_children
       File.open('assets/notes_tree.json', 'w') do |f|
         f.puts json_formatted_tree.to_json
-      end
-
-      # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! #
-      #  Convert [[internal links]] to <a class='ineternal-link' href='note.data['id']'>\\1</a> #
-      # !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! #
-
-      # some regex taken from vscode-markdown-notes: https://github.com/kortina/vscode-markdown-notes/blob/master/syntaxes/notes.tmLanguage.json   
-
-      # Convert all Wiki/Roam-style double-bracket link syntax to plain HTML
-      # anchor tag elements (<a>) with "internal-link" CSS class
-      all_docs.each do |current_note|
-        all_docs.each do |note_potentially_linked_to|
-          namespace_from_filename = File.basename(
-            note_potentially_linked_to.basename,
-            File.extname(note_potentially_linked_to.basename)
-          )
-          # regex: extract note name from the end of the string to the first occurring '.'
-          # ex: 'garden.lifecycle.bamboo-shoot' -> 'bamboo shoot'
-          name_from_namespace = namespace_from_filename.match('([^.]*$)')[0].gsub('-', ' ')
-
-          # Replace double-bracketed links with alias (right) using note title
-          # [[feline.cats|this is a link to the note about cats]]
-          # ✅ vscode-markdown-notes version: (\[\[)([^\]\|]+)(\|)([^\]]+)(\]\])
-          current_note.content = current_note.content.gsub(
-            /(\[\[)(#{namespace_from_filename})(\|)([^\]]+)(\]\])/i,
-            "<a class='wiki-link' href='#{site.baseurl}#{note_potentially_linked_to.data['permalink']}#{link_extension}'>\\4</a>"
-          )
-
-          # Replace double-bracketed links with alias (left) using note title
-          # [[this is a link to the note about cats|feline.cats]]
-          # ✅ vscode-markdown-notes version: (\[\[)([^\]\|]+)(\|)([^\]]+)(\]\])
-          current_note.content = current_note.content.gsub(
-            /(\[\[)([^\]\|]+)(\|)(#{namespace_from_filename})(\]\])/i,
-            "<a class='wiki-link' href='#{site.baseurl}#{note_potentially_linked_to.data['permalink']}#{link_extension}'>\\2</a>"
-          )
-          
-          # Replace double-bracketed links using note filename
-          # [[feline.cats]]
-          # ⬜️ vscode-markdown-notes version: (\[\[)([^\|\]]+)(\]\])
-          current_note.content = current_note.content.gsub(
-            /\[\[#{namespace_from_filename}\]\]/i,
-            "<a class='wiki-link' href='#{site.baseurl}#{note_potentially_linked_to.data['permalink']}#{link_extension}'>#{name_from_namespace}</a>"
-          )
-
-        end
-  
-        # At this point, all remaining double-bracket-wrapped words are
-        # pointing to non-existing pages, so let's turn them into disabled
-        # links by greying them out and changing the cursor
-        current_note.content = current_note.content.gsub(
-          /\[\[(.*)\]\]/i, # match on the remaining double-bracket links
-          <<~HTML.chomp    # replace with this HTML (\\1 is what was inside the brackets)
-            <span title='There is no note that matches this link.' class='invalid-link'>
-              <span class='invalid-wiki-link'>[[</span>
-              \\1
-              <span class='invalid-wiki-link'>]]</span></span>
-          HTML
-        )
       end
   
       # !!!!!!!!!!! #
@@ -249,8 +183,10 @@ class GraphDataGenerator < Jekyll::Generator
     # verify all notes end with a "\n" so sidenotes works 
     #   (sidenotes don't detect the last definition if there is no ending "\n").
     def prep_notes(note)
+      # check for newlines @ eof.
+      #   (kramdown can handle footnotes with no newline, but the regex i'm getting requires a newline after the last footnote to find it.)
       if note.content[-1] != "\n"
-        puts note.title + " missing newline at end of file."
+        puts "WARN: " + note.data['title'] + " missing newline at end of file -- this could break the weather page."
       end
       # sanitize timestamps: remove milliseconds from epoch time
       note.data['created'] = Time.at(note.data['created'].to_s[0..-4].to_i)
@@ -260,6 +196,9 @@ class GraphDataGenerator < Jekyll::Generator
     #################
     # extra parsing #
     #################
+    
+    # just get tufte-style sidenotes working for now...
+    # if there's time, emulate gwern's method: https://github.com/gwern/gwern.net/blob/9e6893033ec63248b1f0b29df119c40d39a7dcef/css/default.css#L1223
     
     # tag -> [<right-sidenote], [<right-sidenote]:
     # def -> [>left-sidenote], [>left-sidenote]:
@@ -295,6 +234,59 @@ class GraphDataGenerator < Jekyll::Generator
       end
     end
     
+    def parse_wiki_links(site, all_notes, note, link_extension)
+      # some regex taken from vscode-markdown-notes: https://github.com/kortina/vscode-markdown-notes/blob/master/syntaxes/notes.tmLanguage.json   
+      # Convert all Wiki/Roam-style double-bracket link syntax to plain HTML
+      # anchor tag elements (<a>) with "internal-link" CSS class
+      all_notes.each do |note_potentially_linked_to|
+        namespace_from_filename = File.basename(
+          note_potentially_linked_to.basename,
+          File.extname(note_potentially_linked_to.basename)
+        )
+        # regex: extract note name from the end of the string to the first occurring '.'
+        # ex: 'garden.lifecycle.bamboo-shoot' -> 'bamboo shoot'
+        name_from_namespace = namespace_from_filename.match('([^.]*$)')[0].gsub('-', ' ')
+
+        # Replace double-bracketed links with alias (right) using note title
+        # [[feline.cats|this is a link to the note about cats]]
+        # ✅ vscode-markdown-notes version: (\[\[)([^\]\|]+)(\|)([^\]]+)(\]\])
+        note.content = note.content.gsub(
+          /(\[\[)(#{namespace_from_filename})(\|)([^\]]+)(\]\])/i,
+          "<a class='wiki-link' href='#{site.baseurl}#{note_potentially_linked_to.data['permalink']}#{link_extension}'>\\4</a>"
+        )
+
+        # Replace double-bracketed links with alias (left) using note title
+        # [[this is a link to the note about cats|feline.cats]]
+        # ✅ vscode-markdown-notes version: (\[\[)([^\]\|]+)(\|)([^\]]+)(\]\])
+        note.content = note.content.gsub(
+          /(\[\[)([^\]\|]+)(\|)(#{namespace_from_filename})(\]\])/i,
+          "<a class='wiki-link' href='#{site.baseurl}#{note_potentially_linked_to.data['permalink']}#{link_extension}'>\\2</a>"
+        )
+        
+        # Replace double-bracketed links using note filename
+        # [[feline.cats]]
+        # ⬜️ vscode-markdown-notes version: (\[\[)([^\|\]]+)(\]\])
+        note.content = note.content.gsub(
+          /\[\[#{namespace_from_filename}\]\]/i,
+          "<a class='wiki-link' href='#{site.baseurl}#{note_potentially_linked_to.data['permalink']}#{link_extension}'>#{name_from_namespace}</a>"
+        )
+
+      end
+
+      # At this point, all remaining double-bracket-wrapped words are
+      # pointing to non-existing pages, so let's turn them into disabled
+      # links by greying them out and changing the cursor
+      note.content = note.content.gsub(
+        /\[\[(.*)\]\]/i, # match on the remaining double-bracket links
+        <<~HTML.chomp    # replace with this HTML (\\1 is what was inside the brackets)
+          <span title='There is no note that matches this link.' class='invalid-link'>
+            <span class='invalid-wiki-link'>[[</span>
+            \\1
+            <span class='invalid-wiki-link'>]]</span></span>
+        HTML
+      )
+    end
+
     #########
     # graph #
     #########
