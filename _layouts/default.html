@@ -24,35 +24,11 @@ layout: table-wrappers
 
     <div class="side-bar">
       <nav role="navigation" aria-label="Main" id="garden-nav" class="garden-nav">
-        <header>
-          <span>
-            <label class="colors-selector">
-              <input id="theme-colors-checkbox" type="checkbox" checked="checked">
-              <span id="colors-emoji-span"></span>
-            </label>
-            <label class="graph-type-selector">
-              <input id="graph-type-checkbox" type="checkbox" checked="checked">
-              <span id="graph-type-emoji-span"></span>
-            </label>
-          </span>
-          <span>
-            <label class="plant-tag-selector">
-              <input id="plant-tag-checkbox" type="checkbox" checked="checked">
-              <span id="plant-tag-emoji-span">🔖</span>
-            </label>
-            <label class="weather-selector">
-              <input id="weather-checkbox" type="checkbox" checked="checked">
-              <span id="weather-emoji-span">🌦</span>
-            </label>
-          </span>
-        </header>
-        <svg id="svg-graph" height="100%" width="100%"></svg>
-        <footer>{% include footer.html %}</footer>
+        {% include garden-nav.html %}
       </nav>
     </div>
     
     <div class="main" id="top">
-      <!-- {% include nav.html %} -->
       <div id="main-content-wrap" class="main-content-wrap">
         <!-- {% include breadcrumb.html %} -->
         <div id="main-content" class="main-content" role="main">
