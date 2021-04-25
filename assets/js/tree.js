@@ -46,9 +46,8 @@ export default function drawTree (theme_attrs) {
         node.append("circle")
             //svg 2.0 not well-supported: https://stackoverflow.com/questions/47381187/svg-not-working-in-firefox
             // add attributes in javascript instead of css.
-            .attr("r",  (d) => d.data.id !== "" ? theme_attrs["radius"] : theme_attrs["missing-radius"])
-            // tree-only
-            .attr("class", (d) => d.data.id === "" ? "missing" : null)
+            .attr("r",  (d) => isMissingNote(d.data.id) ? theme_attrs["missing-radius"] : theme_attrs["radius"])
+            .attr("class", (d) => isMissingNote(d.data.id) ? "missing" : null)
             .on("click", goToNoteFromTree)
             .call(d3.drag()
                 .on("start", dragstarted)
@@ -74,8 +73,8 @@ export default function drawTree (theme_attrs) {
         // add node pulse on the current node
         node.filter( function(d,i) { return isCurrentNoteInTree(d.data.id); })
             .append("circle")
-            .attr("r",  (d) => d.data.id !== "" ? theme_attrs["radius"] : theme_attrs["missing-radius"])
-            .classed("pulse", (d) => isCurrentNoteInTree(d.data.id) ? true : null)
+            .attr("r",  (d) => theme_attrs["radius"])
+            .classed("pulse", true)
             .call(d3.drag()
                 .on("start", dragstarted)
                 .on("drag", dragged)
@@ -106,15 +105,17 @@ export default function drawTree (theme_attrs) {
          //
 
         function isCurrentNoteInTree(noteId) {
-            var isMissingNote = (noteId === "");
-            return !isMissingNote && window.location.pathname.includes(noteId);
+            return !isMissingNote(noteId) && window.location.pathname.includes(noteId);
+        }
+
+        function isMissingNote(nodeId) {
+            return nodeId === ""
         }
 
         // from: https://stackoverflow.com/questions/63693132/unable-to-get-node-datum-on-mouseover-in-d3-v6
         // d6 now passes events in vanilla javascript fashion
         function goToNoteFromTree(e, d) {
-            var isMissingNote = (d.data.id === "");
-            if (!isMissingNote) {
+            if (!isMissingNote(d.data.id)) {
                 // i have no idea why this needs the preceeding '/'
                 window.location = `/note/${d.data.id}`;
             } else {

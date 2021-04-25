@@ -117,17 +117,12 @@ class GraphDataGenerator < Jekyll::Generator
         add_path(root, cur_note)
       end
       # add backlinks for net-web
-      add_backlinks(all_docs, cur_note, graph_nodes, graph_links)
+      add_backlinks_json(all_docs, cur_note, graph_nodes, graph_links)
     end
+    json_formatted_tree = tree_to_json(root)
      #
     # generate graphs
      #
-    # tree
-    json_formatted_tree, missing_children = tree_to_json(root)
-    if missing_children.length != 0
-      puts "***** There are missing nodes *****"
-      puts missing_children
-    end
     File.write('assets/notes_tree.json', JSON.dump(
       json_formatted_tree
     ))
@@ -155,7 +150,7 @@ class GraphDataGenerator < Jekyll::Generator
     # check for newlines @ eof.
     #   (kramdown can handle footnotes with no newline, but the regex i'm getting requires a newline after the last footnote to find it.)
     if note.content[-1] != "\n"
-      puts "WARN: " + note.data['title'] + " missing newline at end of file -- this could break the weather page."
+      Jekyll.logger.warn "Missing newline at end of file -- this could break sidenotes: ", note.data['title']
     end
     # sanitize timestamps: remove milliseconds from epoch time
     note.data['created'] = Time.at(note.data['created'].to_s[0..-4].to_i)
@@ -204,6 +199,7 @@ class GraphDataGenerator < Jekyll::Generator
   end
   
   def parse_wiki_links(site, all_notes, note, link_extension)
+    missing = []
     # some regex taken from vscode-markdown-notes: https://github.com/kortina/vscode-markdown-notes/blob/master/syntaxes/notes.tmLanguage.json   
     # Convert all Wiki/Roam-style double-bracket link syntax to plain HTML
     # anchor tag elements (<a>) with "internal-link" CSS class
@@ -247,9 +243,7 @@ class GraphDataGenerator < Jekyll::Generator
       /\[\[(.*)\]\]/i, # match on the remaining double-bracket links
       <<~HTML.chomp    # replace with this HTML (\\1 is what was inside the brackets)
         <span title='There is no note that matches this link.' class='invalid-wiki-link'>
-          <span>[[</span>
-          \\1
-          <span>]]</span>
+          [[\\1]]
         </span>
       HTML
     )
@@ -258,12 +252,38 @@ class GraphDataGenerator < Jekyll::Generator
   #########
   # graph #
   #########
-  def add_backlinks(all_notes, note, graph_nodes, graph_links)
+  def add_backlinks_json(all_notes, note, graph_nodes, graph_links)
     # net-web: Identify note backlinks and add them to each note
     # Jekyll
     #   nodes 
-    backlinks = all_notes.filter do |e|
-      e.content.include?(note.data['id'])
+    # backlinks = all_notes.filter do |e|
+    #   e.content.include?(note.data['id'])
+    # end
+    # 'invalid-wiki-link'>[[\\1]]
+    backlinks = []
+    all_notes.each do |backlinked_note|
+      if backlinked_note.content.include?(note.data['id'])
+        backlinks << backlinked_note
+      end
+      # identify missing links by .invalid-wiki-link class and nested note-name.
+      missing_node_names = note.content.match(/invalid-wiki-link[^\]]+\[\[([^\]]+)\]\]/i)
+      if !missing_node_names.nil?
+        missing_no_namespace = missing_node_names[1]
+        # add missing nodes
+        if graph_nodes.none? { |node| node[:id] == missing_no_namespace }
+          Jekyll.logger.warn "Net-Web node missing: ", missing_no_namespace
+          Jekyll.logger.warn " in: ", note.data['slug']  
+          graph_nodes << {
+            id: missing_no_namespace,
+            label: missing_no_namespace,
+          }
+        end
+          # add missing links
+          graph_links << {
+            source: note.data['id'],
+            target: missing_no_namespace,
+          }
+      end
     end
     #   links
     note.data['backlinks'] = backlinks
@@ -315,16 +335,14 @@ class GraphDataGenerator < Jekyll::Generator
   end
 
   # convert tree-class to json
-  def tree_to_json(node, json_node={}, missing=[])
+  def tree_to_json(node, json_node={})
     if node.id.empty?
-      missing << node.namespace
+      Jekyll.logger.warn "Tree node missing: ", node.namespace
     end
     json_children = []
-    missing_children = []
     node.children.each do |child|
-      new_child, new_missing_children = tree_to_json(child, missing)
+      new_child = tree_to_json(child)
       json_children.append(new_child)
-      missing_children += new_missing_children
     end
     json_node = {
       "id": node.id,
@@ -332,7 +350,7 @@ class GraphDataGenerator < Jekyll::Generator
       "label": node.title,
       "children": json_children
     }
-    return json_node, missing + missing_children
+    return json_node
   end
 end
   
