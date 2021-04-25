@@ -47,7 +47,8 @@ export default function drawNetWeb (theme_attrs) {
         node.append('circle')
             //svg 2.0 not well-supported: https://stackoverflow.com/questions/47381187/svg-not-working-in-firefox
             // add attributes in javascript instead of css.
-            .attr("r", theme_attrs["radius"])
+            .attr("r",  (d) => isMissingNote(d) ? theme_attrs["missing-radius"] : theme_attrs["radius"])
+            .attr("class", (d) => isMissingNote(d) ? "missing" : null)
             .on("click", goToNoteFromNetWeb)
             .call(d3.drag()
                 .on("start", dragstarted)
@@ -100,6 +101,10 @@ export default function drawNetWeb (theme_attrs) {
             return window.location.pathname.includes(noteId);
         }
         
+        function isMissingNote(node) {
+            return node.id === node.label
+        }
+
         // from: https://stackoverflow.com/questions/63693132/unable-to-get-node-datum-on-mouseover-in-d3-v6
         // d6 now passes events in vanilla javascript fashion
         function goToNoteFromNetWeb (e, d) {
