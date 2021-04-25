@@ -43,7 +43,7 @@ collections:
     permalink: /plant/:title
   notes: 
     output: true
-    # permalink: /:slug
+    # permalinks are manually generated -- see plugins.
 
 defaults:
   - scope:
