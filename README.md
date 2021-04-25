@@ -5,6 +5,7 @@
 Notes require yaml frontmatter with an `id`.
 
 ## notable
+- case is ignored in \[\[WiKi liNKs]].
 - `created` and `updated` timestamps read from note frontmatter are epoch-style timestamps. other timestamps won't register with the weather page.
 - garden bed nav items have explicit ordering in their frontmatter.
 - 'missing nodes' show up in tree view, but not net-web view.
