@@ -10,11 +10,13 @@ $search-background-color: $white !default;
 $btn-primary-color: $green-200 !default;
 $base-button-color: $green-02 !default;
 
-$code-background-color: $grey-lt-000 !default;
+$code-background-color: $green-02 !default;
 $search-result-preview-color: $grey-dk-000 !default;
 $table-background-color: $white !default;
 $table-shadow-color: $black !default;
 $feedback-color: darken($sidebar-color, 3%) !default;
+
+$fork-nav-color: $brown-02;
 
 // link variables
 
@@ -25,7 +27,7 @@ $invalid-wiki-link-color: $grey-lt-300;
 // graph variables
 // (graph attributes had to be set in scripts.js because of poor svg 2.0 support)
 
-$link-line-stroke-color: $brown-00;
+$link-line-stroke-color: $brown-02;
 $link-line-stroke-width: 0.5;
 $link-line-dash-val: 0;
 
@@ -34,7 +36,7 @@ $node-stroke-color: $transparent;
 $node-stroke-width: 0;
 
 $node-active-color: $yellow-300;
-$node-missing-color: $brown-00;
+$node-missing-color: $brown-02;
 
 // blockquote  
 $blockquote-border-color: rgba($link-line-stroke-color, 0.33) !default;

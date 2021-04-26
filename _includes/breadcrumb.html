@@ -1,11 +1,18 @@
-<nav aria-label="Breadcrumb" class="breadcrumb-nav">
-    <ol class="breadcrumb-nav-list">
-      {% if page.grand_parent %}
-        <li class="breadcrumb-nav-list-item"><a href="{{ first_level_url }}">{{ page.grand_parent }}</a></li>
-        <li class="breadcrumb-nav-list-item"><a href="{{ second_level_url }}">{{ page.parent }}</a></li>
+<nav role="navigation" aria-label="breadcrumb" class="breadcrumb-nav">
+  <ol class="breadcrumb-nav-list">
+    {% for ancestor in page.ancestors %}
+      {% if ancestor.first %}
+      <li class="breadcrumb-nav-list-item">
+        <a class="wiki-link" href="{{ ancestor.url }}">{{ ancestor.title }}</a>
+      </li>
       {% else %}
-        <li class="breadcrumb-nav-list-item"><a href="{{ first_level_url }}">{{ page.parent }}</a></li>
+        <li class="breadcrumb-nav-list-item missing-note-txt">
+          {{ ancestor }}
+        </li>
       {% endif %}
-      <li class="breadcrumb-nav-list-item"><span>{{ page.title }}</span></li>
-    </ol>
-  </nav>
+    {% endfor %}
+    <li class="breadcrumb-nav-list-item">
+      <span>{{ page.title }}</span>
+    </li>
+  </ol>
+</nav>

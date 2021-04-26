@@ -66,13 +66,14 @@ LEFT_SIDENOTE_DEFINITION_START = /^#{OPT_SPACE}\[\>(#{ALD_ID_NAME})\]:\s*?(.*?\n
 LEFT_SIDENOTE_MARKER_START = /\[\>(#{ALD_ID_NAME})\]/
 
 class Node
-  attr_accessor :id, :children, :namespace, :title
+  attr_accessor :id, :namespace, :title, :children, :note
 
-  def initialize(id, namespace, title)
+  def initialize(id, namespace, title, note)
     @id = id
     @children = []
     @namespace = namespace
     @title = title
+    @note = note
   end
 
   def to_s
@@ -83,12 +84,15 @@ end
 
 class GraphDataGenerator < Jekyll::Generator
   def generate(site)
+     #  
     # init jekyll vars
+     #
     all_notes = site.collections['notes'].docs
     # all_pages = site.pages
     all_docs = all_notes # + all_pages
     link_extension = !!site.config["use_html_extension"] ? '.html' : ''
-     #
+    
+    #
     # note prep
      #
     all_docs.each do |cur_note|
@@ -99,15 +103,16 @@ class GraphDataGenerator < Jekyll::Generator
       parse_sidenote(cur_note, "left")
       parse_wiki_links(site, all_docs, cur_note, link_extension)
     end
+
      #
     # init graphs
      #
     # for tree: set root node
-    root = Node.new('', 'root', 'Root')
     root_note = all_docs.detect {|note| note.data['slug'] == 'root' }
-    root.id = root_note.data['id']
+    root = Node.new(root_note.data['id'], 'root', 'Root', root_note)
     # for net-web: set nodes'n'links
     graph_nodes, graph_links = [], []
+
      #
     # build graphs
      #
@@ -117,7 +122,14 @@ class GraphDataGenerator < Jekyll::Generator
         add_path(root, cur_note)
       end
       # add backlinks for net-web
-      add_backlinks_json(all_docs, cur_note, graph_nodes, graph_links)
+      # add data to graph_nodes and graph_links
+      # set backlinks metadata for note
+      cur_note.data['backlinks'] = add_backlinks_json(all_docs, cur_note, graph_nodes, graph_links)
+    end
+    # print_tree(root)
+    # once tree is finished building, attach metadata to each note
+    all_docs.each do |cur_note|
+      cur_note.data['ancestors'], cur_note.data['children'] = find_note_family_tree(cur_note, root, all_docs)
     end
     json_formatted_tree = tree_to_json(root)
      #
@@ -126,7 +138,6 @@ class GraphDataGenerator < Jekyll::Generator
     File.write('assets/notes_tree.json', JSON.dump(
       json_formatted_tree
     ))
-    # net-web
     File.write('assets/notes_net_web.json', JSON.dump({
       links: graph_links,
       nodes: graph_nodes,
@@ -256,10 +267,6 @@ class GraphDataGenerator < Jekyll::Generator
     # net-web: Identify note backlinks and add them to each note
     # Jekyll
     #   nodes 
-    # backlinks = all_notes.filter do |e|
-    #   e.content.include?(note.data['id'])
-    # end
-    # 'invalid-wiki-link'>[[\\1]]
     backlinks = []
     all_notes.each do |backlinked_note|
       if backlinked_note.content.include?(note.data['id'])
@@ -285,8 +292,6 @@ class GraphDataGenerator < Jekyll::Generator
           }
       end
     end
-    #   links
-    note.data['backlinks'] = backlinks
     # graph
     #   nodes
     graph_nodes << {
@@ -300,6 +305,7 @@ class GraphDataGenerator < Jekyll::Generator
         target: note.data['id'],
       }
     end
+    return backlinks
   end 
 
   # add unique path for the given note 
@@ -312,20 +318,21 @@ class GraphDataGenerator < Jekyll::Generator
       cur_nd_title = note.data['title']
       # if one does not exist, create node
       unless node.children.any?{ |c| c.namespace == cur_nd_namespace }
-        new_node = Node.new(cur_nd_id, cur_nd_namespace, cur_nd_title)
+        new_node = Node.new(cur_nd_id, cur_nd_namespace, cur_nd_title, note)
         node.children << new_node
       # if one already exists, fill-in node
       else
         cur_node = node.children.detect {|c| c.namespace == cur_nd_namespace }
         cur_node.id = cur_nd_id
         cur_node.title = cur_nd_title
+        cur_node.note = note
       end
       return
     # create temp node and recurse
     else
       cur_namespace = 'root' + '.' + chunked_namespace[0..(depth - 1)].join('.')
       unless node.children.any?{ |c| c.namespace == cur_namespace }
-        new_node = Node.new('', cur_namespace, '')
+        new_node = Node.new('', cur_namespace, '', '')
         node.children << new_node
       else
         new_node = node.children.detect {|c| c.namespace == cur_namespace }
@@ -338,6 +345,9 @@ class GraphDataGenerator < Jekyll::Generator
   def tree_to_json(node, json_node={})
     if node.id.empty?
       Jekyll.logger.warn "Tree node missing: ", node.namespace
+      label = node.namespace.match('([^.]*$)')[0].gsub('-', ' ')
+    else
+      label = node.title
     end
     json_children = []
     node.children.each do |child|
@@ -347,10 +357,42 @@ class GraphDataGenerator < Jekyll::Generator
     json_node = {
       "id": node.id,
       "namespace": node.namespace,
-      "label": node.title,
+      "label": label,
       "children": json_children
     }
     return json_node
+  end
+
+  def find_note_family_tree(target_note, node, all_notes, ancestors=[])
+    if target_note.data['id'] == node.id
+      children = []
+      node.children.each do |child|
+        children << child.note
+      end
+      return ancestors, children
+    else
+      if node.id == ''
+        ancestors << node.namespace.match('([^.]*$)')[0].gsub('-', ' ')
+      else
+        ancestors << node.note
+      end
+      results = []
+      node.children.each do |child_node|
+        results.concat find_note_family_tree(target_note, child_node, all_notes, ancestors.clone)
+      end
+      return results.select { |r| !r.nil? }
+    end
+  end
+
+  # helper function for testing
+  def print_tree(node, ancestors=[])
+    Jekyll.logger.warn "Ancestors: ", ancestors.length
+    Jekyll.logger.warn node
+    Jekyll.logger.warn "Children: ", node.children
+    ancestors.append(node.id)
+    node.children.each do |child_node|
+      print_tree(child_node, ancestors.clone)
+    end
   end
 end
   
