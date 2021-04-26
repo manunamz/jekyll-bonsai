@@ -39,12 +39,7 @@
     if (event.target.host === window.location.host) {
         iframe.src = event.target.href;
         iframe.onload = function() {
-        tooltipContentHtml = '';
-        tooltipContentHtml += '<div style="font-weight: bold;">' + iframe.contentWindow.document.querySelector('h1').innerHTML + '</div>';
-        tooltipContentHtml += iframe.contentWindow.document.querySelector('.main-content').innerHTML;
-                            
-        tooltipContent.innerHTML = tooltipContentHtml;
-
+        tooltipContent.innerHTML = iframe.contentWindow.document.querySelector('.main-content').innerHTML;
         tooltipWrapper.style.display = 'block';
         setTimeout(function() {
             tooltipWrapper.style.opacity = 1;
