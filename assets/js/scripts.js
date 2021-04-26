@@ -14,6 +14,9 @@ import drawNetWeb from './net-web.js';
     initListeners();
     initDefaults();
     document.querySelectorAll('{{ include.wrapperQuerySelector }} a:not(.plant-list-item)').forEach(setupListeners);
+    if (document.getElementById('fork-checkbox')) {
+      initFork();
+    }
  })();
 
  //
@@ -33,7 +36,7 @@ function initDefaults () {
     document.getElementById('graph-type-checkbox').checked = true;
   } else {
     document.getElementById('graph-type-checkbox').checked = false;
-  }
+  }  
   updateColors();
   updateGraphTypeEmoji();
   drawD3Nav();
@@ -80,6 +83,20 @@ function initListeners () {
  //
 // helpers
  //
+function goTo (location) {
+  window.location.href = location;
+}
+
+function initFork () {
+  // setup listeners
+  document.getElementById('fork-checkbox')
+    .addEventListener('click', function(event) {
+      toggleForkCollapse();
+    }, false);
+  // set defaults
+  document.getElementById('fork-checkbox').checked = false;
+  toggleForkCollapse();
+}
 
 function updateColors () {
   var cssFile = document.querySelector('[rel="stylesheet"]');
@@ -138,10 +155,6 @@ function drawD3Nav() {
   }
 }
 
-function goTo (location) {
-  window.location.href = location;
-}
-
 function expandGraphNav() {
   const siteNav = document.getElementById('garden-nav');
   
@@ -153,3 +166,14 @@ function expandGraphNav() {
     // mainHeader.classList.remove('nav-open');
   }
 }
+
+function toggleForkCollapse () {
+  // from: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_collapsible
+  var collapsibleEl = document.getElementsByClassName("fork-nav")[0];
+
+  if (document.getElementById('fork-checkbox').checked) {
+    collapsibleEl.style.display = "flex";
+  } else {
+    collapsibleEl.style.display = "none";
+  }
+} 
