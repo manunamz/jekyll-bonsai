@@ -53,6 +53,7 @@ Notes require yaml frontmatter with an `id`.
 - typescript with d3: https://www.npmjs.com/package/@types/d3
 
 ## refactorable
+- in plugin: `namespace.match('([^.]*$)')[0].gsub('-', ' ')`...
 - there are some `:not`s used around the css and javascript with regard to `plant-list-item` and differentiating between `wiki-link` and vanilla external links...this logic could be better consolidated...
 - `wiki-link` is hard-coded in the weather page and on the plant layout.
 - could stand to flesh out color pallettes in the manner 'just the docs' did for _variables.scss.
