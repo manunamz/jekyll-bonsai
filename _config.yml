@@ -4,17 +4,22 @@ baseurl: ''
 # url: 'localhost:4000'
 
 
-# color
+# ((todo: theme_colors is currently not in use))
+# color: default theme colors.
 ## may be 'dark' or 'light'
-theme_colors: "dark"
+# theme_colors: "dark"
 
-# graph
+# graph: default graph type in side bar.
 ## may be 'tree' or 'net-web'
 graph_type: "tree"
 
-# weather
-## set number of notes to display on weather page.
+# weather: set number of notes to display on weather page.
+## may be an integer
 recent: 10 
+
+# fork: set default status of fork footer
+## may be 'open' or 'closed'
+fork_status: "closed"
 
 
 # logo: "/assets/images/logo.png"
