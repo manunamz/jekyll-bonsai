@@ -24,7 +24,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     
-    &:not(.wiki-link):not(.plant-list-item):after {
+    &:not(.wiki-link):not(.plant-list-item):not(.footnote):not(.reversefootnote):after {
       @include fs-1;
       font-family: $mono-font-family;
       position: relative;
@@ -305,6 +305,10 @@
 
   .footnotes {
     border-top: double $link-line-stroke-color;
+  }
+
+  .footnote, .reversefootnote {
+    color: $wiki-link-color;
   }
 
   /*************
