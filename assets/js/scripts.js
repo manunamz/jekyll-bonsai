@@ -6,7 +6,6 @@ import drawNetWeb from './net-web.js';
  //
 // go
  //
-
 // from: https://stackoverflow.com/questions/9899372/pure-javascript-equivalent-of-jquerys-ready-how-to-call-a-function-when-t
 (function() {
     // your page initialization code here
@@ -22,9 +21,9 @@ import drawNetWeb from './net-web.js';
     }
  })();
 
-  //
+ //
 // init
-  //
+ //
 function initDefaults () {
   // theme-colors
   var theme = localStorage.getItem("theme-colors");
@@ -51,7 +50,7 @@ function initDefaults () {
 
 function initListeners () {
   // open external links in new window; wiki-links in current window.
-  document.querySelectorAll("a:not(.wiki-link):not(.plant-list-item)").forEach(setupLinkOpen);
+  document.querySelectorAll("a:not(.wiki-link):not(.plant-list-item):not(.footnote):not(.reversefootnote)").forEach(setupLinkOpen);
   // init note-preview.html listeners.
   document.querySelectorAll('{{ include.wrapperQuerySelector }} a:not(.plant-list-item)').forEach(setupListeners);
 
