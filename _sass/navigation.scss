@@ -241,12 +241,13 @@
   @include mq(md) {
     margin-top: -$sp-4;
   }
+  overflow-x: scroll;
+  white-space: nowrap;  
 
   .breadcrumb-nav-list {
     padding-left: 0 !important;
     margin-bottom: $sp-3;
     list-style: none;
-    overflow-x: auto;
   
     .breadcrumb-nav-list-item {
       display: table-cell;
