@@ -92,12 +92,18 @@ class GraphDataGenerator < Jekyll::Generator
     all_docs = all_notes # + all_pages
     link_extension = !!site.config["use_html_extension"] ? '.html' : ''
     
-    #
+     #
     # note prep
      #
     all_docs.each do |cur_note|
       # validation and sanitization
       prep_notes(cur_note)
+    end
+
+     #
+    # extra parsing
+     #
+    all_docs.each do |cur_note|
       # extra parsing
       parse_sidenote(cur_note, "right")
       parse_sidenote(cur_note, "left")
@@ -219,9 +225,17 @@ class GraphDataGenerator < Jekyll::Generator
         note_potentially_linked_to.basename,
         File.extname(note_potentially_linked_to.basename)
       )
+
       # regex: extract note name from the end of the string to the first occurring '.'
       # ex: 'garden.lifecycle.bamboo-shoot' -> 'bamboo shoot'
       name_from_namespace = namespace_from_filename.match('([^.]*$)')[0].gsub('-', ' ')
+      # Replace double-bracketed links using note filename
+      # [[feline.cats]]
+      # ⬜️ vscode-markdown-notes version: (\[\[)([^\|\]]+)(\]\])
+      note.content = note.content.gsub(
+        /\[\[#{namespace_from_filename}\]\]/i,
+        "<a class='wiki-link' href='#{site.baseurl}#{note_potentially_linked_to.data['permalink']}#{link_extension}'>#{name_from_namespace}</a>"
+      )
 
       # Replace double-bracketed links with alias (right) using note title
       # [[feline.cats|this is a link to the note about cats]]
@@ -238,15 +252,8 @@ class GraphDataGenerator < Jekyll::Generator
         /(\[\[)([^\]\|]+)(\|)(#{namespace_from_filename})(\]\])/i,
         "<a class='wiki-link' href='#{site.baseurl}#{note_potentially_linked_to.data['permalink']}#{link_extension}'>\\2</a>"
       )
-      
-      # Replace double-bracketed links using note filename
-      # [[feline.cats]]
-      # ⬜️ vscode-markdown-notes version: (\[\[)([^\|\]]+)(\]\])
-      note.content = note.content.gsub(
-        /\[\[#{namespace_from_filename}\]\]/i,
-        "<a class='wiki-link' href='#{site.baseurl}#{note_potentially_linked_to.data['permalink']}#{link_extension}'>#{name_from_namespace}</a>"
-      )
     end
+
     # At this point, all remaining double-bracket-wrapped words are
     # pointing to non-existing pages, so let's turn them into disabled
     # links by greying them out and changing the cursor
