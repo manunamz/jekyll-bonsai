@@ -92,17 +92,17 @@ class GraphDataGenerator < Jekyll::Generator
     all_docs = all_notes # + all_pages
     link_extension = !!site.config["use_html_extension"] ? '.html' : ''
     
-     #
-    # note prep
-     #
+    ##############
+    # prep notes #
+    ##############
     all_docs.each do |cur_note|
       # validation and sanitization
       prep_notes(cur_note)
     end
 
-     #
-    # extra parsing
-     #
+    #################
+    # extra parsing #
+    #################
     all_docs.each do |cur_note|
       # extra parsing
       parse_sidenote(cur_note, "right")
@@ -110,18 +110,20 @@ class GraphDataGenerator < Jekyll::Generator
       parse_wiki_links(site, all_docs, cur_note, link_extension)
     end
 
-     #
-    # init graphs
-     #
+    #########
+    # graph #
+    #########
+    # 
+    # graph:init
+    # 
     # for tree: set root node
     root_note = all_docs.detect {|note| note.data['slug'] == 'root' }
     root = Node.new(root_note.data['id'], 'root', 'Root', root_note)
     # for net-web: set nodes'n'links
     graph_nodes, graph_links = [], []
-
-     #
-    # build graphs
-     #
+    # 
+    # graph:build
+    # 
     all_docs.each do |cur_note|
       # add path to tree
       if !cur_note.data['slug'].nil? and cur_note.data['slug'] != 'root'
@@ -138,9 +140,9 @@ class GraphDataGenerator < Jekyll::Generator
       cur_note.data['ancestors'], cur_note.data['children'] = find_note_family_tree(cur_note, root, all_docs)
     end
     json_formatted_tree = tree_to_json(root)
-     #
-    # generate graphs
-     #
+    #
+    # graph:generate
+    #
     File.write('assets/notes_tree.json', JSON.dump(
       json_formatted_tree
     ))
@@ -402,4 +404,3 @@ class GraphDataGenerator < Jekyll::Generator
     end
   end
 end
-  
