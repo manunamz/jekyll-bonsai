@@ -14,7 +14,7 @@ baseurl: ''
 graph_type: "tree"
 
 # weather: set number of notes to display on weather page.
-## may be an integer
+## may be an integer (defaults to 10)
 recent: 10 
 
 # fork: set default status of fork footer
