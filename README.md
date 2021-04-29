@@ -40,6 +40,7 @@ Notes require yaml frontmatter with an `id`.
 - jekyll collections and lack of `notes` support.
 
 ## known issues
+- graph sometimes renders as super tiny.
 - firefox (and safari) don't support svg 2.0 -- [an so answer on that](https://stackoverflow.com/questions/51551729/styling-of-svg-circle-doesn%C2%B4t-work-in-firefox-browser-removes-radius-property).
 - if current note is root note, its node in the graph doesn't highlight. (see `isCurrentNoteIn(Graph/Tree)` to fix).
 - broken \[\[wiki links]] break footnotes.
