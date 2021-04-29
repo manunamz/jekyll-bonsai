@@ -282,6 +282,7 @@
   display: flex;
   flex-direction: column;
   padding: $sp-3;
+  margin-top: $sp-3;
 
   .fork-nav-title {
     @include fs-4;
@@ -321,4 +322,44 @@
       }
     }
   }
+}
+
+// user-trail nav
+
+.user-trail-nav {
+  @include mq(md) {
+    margin-top: -$sp-4;
+  }
+  overflow-x: scroll;
+  white-space: nowrap;  
+  margin-bottom: $sp-3;
+
+  .user-trail-nav-list {
+    padding-left: 0 !important;
+    margin-bottom: $sp-3;
+    list-style: none;
+  
+    .user-trail-nav-list-item {
+      display: table-cell;
+      @include fs-2;
+    
+      &::before {
+        display: none;
+        content: "🥾";
+      }
+    
+      &::after {
+        display: inline-block;
+        margin-right: $sp-2;
+        margin-left: $sp-2;
+        content: "🧹";
+      }
+    
+      &:last-child {
+        &::after {
+          content: "";
+        }
+      }
+    }
+  } 
 }

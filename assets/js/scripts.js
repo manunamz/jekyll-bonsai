@@ -10,17 +10,40 @@ import drawNetWeb from './net-web.js';
 (function() {
     // your page initialization code here
     // the DOM will be available here
+    updateVisitedNotes();
     initListeners();
     initDefaults();
-    // go
-    updateColors();
-    updateGraphTypeEmoji();
-    drawD3Nav();
-    if (document.getElementById('fork-checkbox')) {
-      toggleForkCollapse();
-    }
+    draw();
  })();
+ function updateVisitedNotes () {
+  var visited = JSON.parse(localStorage.getItem('visited-notes'));
+  if (!visited) {
+    visited = [];
+  } else {
+    console.log('{{ site }}');
+    visited.push({ title: '{{ page.title }}', url: '{{ page.url }}' });
+    buildTrail(visited);
+  }
+  localStorage.setItem('visited-notes', JSON.stringify(visited));
+  console.log(visited);
+}
 
+function buildTrail (trail) {
+  var userTrailNav = document.getElementById('user-trail-nav');
+  var userTrailList = document.createElement('ol');
+  userTrailList.classList.add('user-trail-nav-list');
+  userTrailNav.appendChild(userTrailList);
+  for (var i = 0; i < trail.length; i++) {
+    const step = trail[i];
+    var trailStepListItem = document.createElement('li');
+    trailStepListItem.classList.add('user-trail-nav-list-item');
+    var trailStepLink = document.createElement('a');
+    trailStepLink.setAttribute('href', step['url']);
+    trailStepLink.classList.add('wiki-link');
+    trailStepLink.innerHTML = step['title'];
+    userTrailList.appendChild(trailStepListItem);
+  }
+}
  //
 // init
  //
@@ -102,6 +125,15 @@ function goTo (location) {
 function setupLinkOpen (link) {
   link.setAttribute("target", "_blank");
   link.setAttribute("rel", "noopener");  // for security: https://css-tricks.com/use-target_blank/#correct-html
+}
+
+function draw () {
+  updateColors();
+  updateGraphTypeEmoji();
+  drawD3Nav();
+  if (document.getElementById('fork-checkbox')) {
+    toggleForkCollapse();
+  }
 }
 
 function updateColors () {
