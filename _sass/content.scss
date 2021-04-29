@@ -117,10 +117,6 @@
     }
   }
 
-  h1:first-of-type {
-    margin-top: 0.5em;
-  }
-
   dl {
     display: grid;
     grid-template: auto / 10em 1fr;
@@ -224,7 +220,7 @@
   h5,
   h6 {
     position: relative;
-    margin-top: 1.5em;
+    margin-top: 0.25em;
     margin-bottom: 0.25em;
 
     &:first-child {
