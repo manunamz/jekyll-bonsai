@@ -322,3 +322,52 @@
     }
   }
 }
+
+// stream nav
+
+.stream-nav {
+  background-color: $code-background-color;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  padding: $sp-3;
+
+  .stream-nav-title {
+    @include fs-4;
+    color: $stream-nav-color;
+    padding: $sp-2;
+  }
+
+  .stream-nav-subtitle {
+    @include fs-2;
+    color: $stream-nav-color;
+  }
+
+  // .stream-nav-forks {
+  //   display: flex;
+  //   justify-content: space-around;
+  //   padding-left: $sp-2;
+  //   padding-right: $sp-2;
+
+    // .stream-nav-list {
+    //   display: block; // columns require block
+    //   column-count: 2;
+    //   column-width: $content-width / 6;
+    //   padding-left: 0;
+    //   list-style: none;
+  
+    //   .stream-nav-list-item {
+    //     border-radius: 16px;
+    //     padding: $sp-1;
+    //     max-width: $content-width / 4;
+    //     overflow: hidden;
+    //     white-space: nowrap;
+    //     text-overflow: ellipsis;
+  
+    //     &::before {
+    //       display: none;
+    //     }
+    //   }
+    // }
+  // }
+}

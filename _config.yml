@@ -20,6 +20,9 @@ recent: 10
 # fork: set default status of fork footer
 ## may be 'open' or 'closed'
 fork_status: "closed"
+# stream: set default status of stream footer
+## may be 'open' or 'closed'
+stream_status: "closed"
 
 
 # logo: "/assets/images/logo.png"
@@ -66,7 +69,14 @@ plugins:
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
-  
+    
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  startings: []
+  blank_lines: false
+  profile: false 
 
 # Google Analytics Tracking (optional)
 # e.g, UA-1234567-89
@@ -82,10 +92,13 @@ ga_tracking_anonymize_ip: true # Use GDPR compliant Google Analytics settings (t
 # author:
 #   twitter: dendronhq
 
-compress_html:
-  clippings: all
-  comments: all
-  endings: all
-  startings: []
-  blank_lines: false
-  profile: false 
+webmentions:
+  username: YOUR_USERNAME
+  # Use my own cache folder
+  cache_folder: .cache
+  # skip bad URLs for 5 days
+  cache_bad_uris_for: 5
+  # I moved to www and then to https, so…
+  # legacy_domains:
+  #   - http://aaron-gustafson.com
+  #   - http://www.aaron-gustafson.com

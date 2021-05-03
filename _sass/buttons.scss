@@ -33,6 +33,22 @@
   }
 }
 
+.stream-selector {
+  @include fs-6;
+  cursor: pointer;
+  user-select: none;
+  filter: drop-shadow(0 0 0.7mm $drop-shadow-blue);
+  padding-bottom: $sp-3;
+
+  /* Hide the browser's default checkbox */
+  input {
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+}
+
 .colors-selector {
   cursor: pointer;
   user-select: none;
