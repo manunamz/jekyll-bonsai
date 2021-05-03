@@ -19,6 +19,9 @@ import drawNetWeb from './net-web.js';
     if (document.getElementById('fork-checkbox')) {
       toggleForkCollapse();
     }
+    if (document.getElementById('stream-checkbox')) {
+      toggleStreamCollapse();
+    }
  })();
 
  //
@@ -68,10 +71,15 @@ function initListeners () {
       drawD3Nav();
     }, false);
   if (document.getElementById('fork-checkbox')) {
-    // setup listeners
     document.getElementById('fork-checkbox')
     .addEventListener('click', function(event) {
       toggleForkCollapse();
+    }, false);
+  }
+  if (document.getElementById('stream-checkbox')) {
+    document.getElementById('stream-checkbox')
+    .addEventListener('click', function(event) {
+      toggleStreamCollapse();
     }, false);
   }
 
@@ -189,4 +197,18 @@ function toggleForkCollapse () {
     forkStatus = "open";
   }
   window.localStorage.setItem('fork-status', forkStatus);
+} 
+
+function toggleStreamCollapse () {
+  // from: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_collapsible
+  var collapsibleEl = document.getElementsByClassName("stream-nav")[0];
+  var streamStatus = '{{ site.stream_status }}';
+  if (document.getElementById('stream-checkbox').checked) {
+    collapsibleEl.style.display = "none";
+    streamStatus = "closed";
+  } else {
+    collapsibleEl.style.display = "flex";
+    streamStatus = "open";
+  }
+  window.localStorage.setItem('stream-status', streamStatus);
 } 
