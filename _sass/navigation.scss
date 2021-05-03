@@ -235,21 +235,21 @@
 }
 
 
-// Breadcrumb nav
+// path nav
 
-.breadcrumb-nav {
+.path-nav {
   @include mq(md) {
     margin-top: -$sp-4;
   }
   overflow-x: scroll;
   white-space: nowrap;  
 
-  .breadcrumb-nav-list {
+  .path-nav-list {
     padding-left: 0 !important;
     margin-bottom: $sp-3;
     list-style: none;
   
-    .breadcrumb-nav-list-item {
+    .path-nav-list-item {
       display: table-cell;
       @include fs-2;
     
