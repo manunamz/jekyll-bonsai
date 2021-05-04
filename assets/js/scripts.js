@@ -143,7 +143,7 @@ function drawD3Nav() {
   const svgWrapper = document.getElementById('svg-graph');
   
   // destroy old chart   
-  d3.select(svgWrapper).selectAll('*').remove();
+  d3.select(svgWrapper).selectAll('svg > *').remove();
 
   let theme_attrs = {};
   // set theme-dependent graph attributes.
