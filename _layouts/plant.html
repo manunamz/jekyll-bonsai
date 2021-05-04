@@ -6,7 +6,7 @@ layout: default
 <div class="plant-nav">
   <nav class="plant-nav-list">
     {% for plant in plants %}
-      <a href="{{ plant.url }}" class="plant-list-item {% if page.url contains plant.title %}active{% endif %}">
+      <a href="{{ plant.url }}" class="plant-list-item {% if page.url == plant.url %}active{% endif %}">
         {{ plant.emoji }}
       </a>
     {% endfor %}
