@@ -76,8 +76,8 @@ module Jekyll
       all_docs.each do |cur_note|
         # check for newlines @ eof.
         #   (kramdown can handle footnotes with no newline, but the regex i'm getting requires a newline after the last footnote to find it.)
-        if note.content[-1] != "\n"
-          Jekyll.logger.warn "Missing newline at end of file -- this could break sidenotes: ", note.data['title']
+        if cur_note.content[-1] != "\n"
+          Jekyll.logger.warn "Missing newline at end of file -- this could break sidenotes: ", cur_note.data['title']
         end    
         parse_sidenote(cur_note, "left")
         parse_sidenote(cur_note, "right")
