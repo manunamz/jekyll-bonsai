@@ -28,16 +28,51 @@ Notes require yaml frontmatter with an `id`.
     - \[\>right-sidenote], \[\<left-sidenote]
 - a proposal on note structures for docs: imagine finding the relevant doc, but it doesn't make sense. you're lacking prior knowledge, context, or some fundamental that's blocking you from understanding how the thing works. imagine all of a node's children are representative of the needed prior knowledge. now, all you have to do is glance down the list of children and visit whichever ones you don't understand to fully understand the current one. keep digging until you've got it all down.
 
-## gotchas worth writing about
+## worth writing about
+- setting up testing for jekyll plugins -- esp. configs...
+    - a [blog post](https://ayastreb.me/writing-a-jekyll-plugin/) on best practice.
+- github pages [doesn't support custom plugins](https://jekyllrb.com/docs/plugins/installation/)...so deploying this as a template people can simply set in their configs won't work.
+- breaking up plugin into multiple gems and testing.
+    - [an so post](https://stackoverflow.com/questions/12416841/multiple-converters-generators-in-jekyll) on mixing several generators, which points to [this repo](https://github.com/matthewowen/jekyll-slideshow/blob/master/_plugins/jekyll_slideshow.rb) as an example case. (altho i think i'm opting to sep)
+    - [a plugin tutorial](https://zinovyev.net/blog/creating-a-jekyll-plugin#start-to-build-the-plugin)
+    - [examples](https://jekyllrb.com/docs/plugins/your-first-plugin/) from the jekyll docs.
+    - [the bundler gem tutorial](https://bundler.io/guides/creating_gem.html).
+    - [the gem tutorial](https://guides.rubygems.org/make-your-own-gem/) -- which links to the bundler tutorial inside.
+    - [a post](https://humanwhocodes.com/blog/2019/04/jekyll-hooks-output-markdown/) about hooks and timing.
+- pushing jekyll's limits with variable interoperability.
+    - [a post](https://brentryanjohnson.com/jekyll-leaflet-variables/) on intermingling liquid and javascript variables...tho i'd rather not do this (and thus haven't...yet? might be worth venturing into hotwire territory, which would render this unecessary...i think).
+- hover preview buggy on my template -- doesn't seem buggy on `digital garden theme jekyll`'s template tho...investigating alternatives:
+    - want to attach behavior directly to `a` element's [`:hover` attribute](https://developer.mozilla.org/en-US/docs/Web/CSS/:hover)
+    - it's about displaying images, but [this jekyll discussion](https://talk.jekyllrb.com/t/hover-and-show-image-at-mouse-location/2647) with [this jsfiddle](https://jsfiddle.net/ke1ojtnh/2/) hint at a more robust solution.
+    - [an so post](https://stackoverflow.com/questions/2117046/how-to-show-live-preview-in-a-small-popup-of-linked-page-on-mouse-over-on-link/16625709) on hover preview for external links.
+    - [another so post](https://stackoverflow.com/questions/23251569/preview-page-on-link-hover) that also uses mouse events to dynamically attach "hover" behavior for external link previews (codepen doesn't work tho).
 - writing a custom liquid template filter.
 - 'filter' when i was googling for "conditionally add circle d3": https://stackoverflow.com/questions/28415005/d3-js-selection-conditional-rendering
 	- this is such a good example of why search is not enough -- even one wrong word can completely hide info from you.
-- light/dark theme scss for jekyll.
+- light/dark theme scss for jekyll: this was a freaking odyssey.
+    - [this](https://medium.com/@katiemctigue/how-to-create-a-dark-mode-in-sass-609f131a3995) is much [cleaner](https://github.com/kaitlinmctigue/kaitlinmctigue.github.io/blob/source/src/styles/_color-themes.scss) and would allow for transitions, but requires syntactic sugar wherever theme variables are mentioned. 
+	- there is also this [pseudo-fork](https://github.com/hadalin/dark-mode-sass) [here](https://codepen.io/hadalin/project/editor/XGWKex) that makes this scss approach work for jekyll-like sites (e.g. static generators?). same pluses and minuses apply.
+    - there was [this pull request](https://github.com/pdmosses/just-the-docs/commit/f0408bdd15d662b9ad2f08871f3e201a9d7e2d46) on just-the-docs, which i largely pulled from in the end. ([demo here](https://pdmosses.github.io/just-the-docs/))
+    - that pull request builds on [this blog post](https://derekkedziora.com/blog/dark-mode) with [this repo](https://github.com/derekkedziora/jekyll-demo)...it was [updated here](https://derekkedziora.com/blog/dark-mode-revisited), but i don't use much of it, i think...
+    - there is also [this blog post](https://francisoliver.dev/blog/dark-mode-in-jekyll), which mentioned `turbolinks` and sent me down the `hotwire` rabbit hole...that looks like something i might want to check out later.
+    - there was also this [css tricks article](https://css-tricks.com/dark-modes-with-css/) which talks about the `prefers-color-scheme` media query and introduces css variables.
+    - related to css variables, [this guy](https://dev.to/zetareticoli/dark-mode-with-sass-and-css-variables-4f9b) does something similar to the first article in this lineup, but with css `var()`s instead of `scssFunc()s` -- he then toggles via adding/removing a `dark` css class (or whatever the theme name is). ([this](https://codepen.io/zetareticoli/pen/MROMZE) is the codepen)
+    - then there is [this woman](https://dev.to/ananyaneogi/create-a-dark-light-mode-switch-with-css-variables-34l8) who has a similar solution, but toggles via the html `data-theme` attribute instead of messing with classes.
+    - here's a [random SO post](https://stackoverflow.com/questions/56300132/how-to-override-css-prefers-color-scheme-setting) on toggling color-schemes. (method similar to previous blog post)
+    - i was hoping to make [max bock's themeswitcher](https://mxb.dev/blog/color-theme-switcher/#h-get-creative) work originally, but backed off when i found out that it [relies on json](https://github.com/maxboeck/mxb/blob/master/src/data/themes.json) to define the color hex values.
+    - i found this [minimal mistakes discussion](https://github.com/mmistakes/minimal-mistakes/discussions/2033) on dark mode interesting -- [the maintainer doesn't want to implement it](https://github.com/mmistakes/minimal-mistakes/discussions/2033#discussioncomment-172674) --- but [someone did it anyway](https://trungk18.com/experience/dark-theme-jekyll/).
 - emoji url gotcha -- better unicode support.
 - jekyll inability to create page from single data entry.
-- sidenote syntax ([<right-sidenote], [>left-sidenote])
+    - which led me to [jekyll-datapage_gen](https://github.com/avillafiorita/jekyll-datapage_gen)...but i didn't use it due to my lack of understanding or bugs.
+- sidenote syntax ([>right-sidenote], [<left-sidenote])
+    - [gwern's summary of sidenote solutions](https://www.gwern.net/Sidenotes)
+    - tufte css (included above)
 - jekyll's lack of \[\[wiki link]] support.
 - jekyll collections and lack of `notes` support.
+    - [walking through collection items and counting tags](https://talk.jekyllrb.com/t/count-for-tagged-items-in-a-collection/291)
+    - [commentor's working example on his blog](https://dieghernan.github.io/tags/)
+    - [related SO question](https://stackoverflow.com/questions/36479756/counting-collection-tags-in-jekyll)
+    - [SO profile](https://stackoverflow.com/users/569306/jason-heppler) and [github profile](https://github.com/hepplerj) of someone who seems to be doing a lot of the same stuff
 
 ## known issues
 - graph sometimes renders as super tiny.
