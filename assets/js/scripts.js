@@ -46,6 +46,7 @@ function initDefaults () {
     }
     document.getElementById('fork-checkbox').checked = (forkStatus === "closed"); 
   }
+  // wiki-bonsai defaults to closed -- see default.html.
 }
 
 function initListeners () {
@@ -106,13 +107,16 @@ function setupLinkOpen (link) {
 
 function updateColors () {
   var theme_colors = localStorage.getItem("theme-colors");
+  var wiki_bonsai = document.getElementById('wiki-bonsai');
   const colorsEmojiSpan = document.getElementById('colors-emoji-span');
   if (document.getElementById('theme-colors-checkbox').checked) {
     colorsEmojiSpan.innerHTML = "☀️";
     theme_colors = "dark";
+    wiki_bonsai.src = "{{site.baseurl}}/assets/img/bonsai-dark.png";
   } else {
     colorsEmojiSpan.innerHTML = "🌘";
     theme_colors = "light";
+    wiki_bonsai.src = "{{site.baseurl}}/assets/img/bonsai-light.png";
   }
   var cssFile = document.querySelector('[rel="stylesheet"]');
   const yesThisReallyIsSupposedToBeCSSNotSCSS = '.css'
@@ -167,12 +171,15 @@ function drawD3Nav() {
 
 function expandGraphNav() {
   const siteNav = document.getElementById('garden-nav');
+  var wikiBonsai = document.getElementById('wiki-bonsai');
   
   if (document.getElementById('wiki-link-nav-checkbox').checked) {
     siteNav.classList.add('nav-open');
+    wikiBonsai.hidden = false;
     // mainHeader.classList.add('nav-open');
   } else {
     siteNav.classList.remove('nav-open');
+    wikiBonsai.hidden = true;
     // mainHeader.classList.remove('nav-open');
   }
 }

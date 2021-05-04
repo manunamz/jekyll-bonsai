@@ -81,9 +81,12 @@
   position: fixed;
   right: $sp-2;
   bottom: $sp-2;
+  display: flex;
+  flex-direction: column;
   cursor: pointer;
   user-select: none;
   font-size: $font-size-6;
+  text-align: center;
   filter: drop-shadow(0 0 0.7mm $drop-shadow-green);
 
   /* Hide the browser's default checkbox */
@@ -92,6 +95,10 @@
     cursor: pointer;
     height: 0;
     width: 0;
+  }
+
+  & #wiki-link-nav-span {
+    margin-top: -6px;
   }
 }
 
