@@ -43,24 +43,24 @@ collections:
   pages:
     output: true
     permalink: /:path
-  note_tags:
-    output: true
-    permalink: /tag/:title
   notes: 
     output: true
     # permalinks are manually generated -- see plugins.
+  note_tags:
+    output: true
+    permalink: /tag/:title
 
 defaults:
+  - scope:
+      path: "_notes/**/*.md"
+      type: "notes"
+    values:
+      layout: "note"
   - scope:
       path: "_note_tags/**/*.md"
       type: "note_tags"
     values:
       layout: "tag"
-  - scope:
-      path: "_notes/**/*.md"
-      # type: "notes"
-    values:
-      layout: "note"
 
 plugins:
   - jekyll-feed
