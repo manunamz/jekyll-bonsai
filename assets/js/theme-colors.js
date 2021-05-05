@@ -4,6 +4,9 @@
 export default class ThemeColors {
   constructor() {
     // this.theme set in initThemeColors();
+    this.cssFile = document.querySelector('[rel="stylesheet"]');
+    this.favicon = document.querySelector('[rel="icon"]');
+    this.wikiBonsai = document.getElementById('wiki-bonsai');
     this.themeColorsCheckbox = document.getElementById('theme-colors-checkbox');
     this.themeColorsEmojiSpan = document.getElementById('colors-emoji-span');
     this.init();
@@ -22,6 +25,7 @@ export default class ThemeColors {
   }
 
   initThemeColors() {
+    this.theme = localStorage.getItem("theme-colors");
     if (this.theme !== "dark" && this.theme !== "light") {
       this.theme = getComputedStyle(document.documentElement).getPropertyValue('content');	
     }
@@ -31,20 +35,20 @@ export default class ThemeColors {
   }
 
   updateThemeColors () {
-    var theme_colors = localStorage.getItem("theme-colors");
-    var wiki_bonsai = document.getElementById('wiki-bonsai');
+    // toggle theme colors
     if (this.themeColorsCheckbox.checked) {
       this.themeColorsEmojiSpan.innerHTML = "☀️";
-      theme_colors = "dark";
-      wiki_bonsai.src = "{{site.baseurl}}/assets/img/bonsai-dark.png";
+      this.theme = "dark";
     } else {
       this.themeColorsEmojiSpan.innerHTML = "🌘";
-      theme_colors = "light";
-      wiki_bonsai.src = "{{site.baseurl}}/assets/img/bonsai-light.png";
+      this.theme = "light";
     }
-    var cssFile = document.querySelector('[rel="stylesheet"]');
+    // update css file
     const yesThisReallyIsSupposedToBeCSSNotSCSS = '.css'
-    cssFile.setAttribute('href', '{{ "assets/css/styles-" | absolute_url }}' + theme_colors + yesThisReallyIsSupposedToBeCSSNotSCSS);
-    window.localStorage.setItem("theme-colors", theme_colors);
+    this.cssFile.setAttribute('href', '{{ "assets/css/styles-" | absolute_url }}' + this.theme + yesThisReallyIsSupposedToBeCSSNotSCSS);
+    // update icons and images
+    this.favicon.setAttribute('href', "{{site.baseurl}}/assets/img/favicon-" + this.theme + ".png");
+    this.wikiBonsai.setAttribute('src', "{{site.baseurl}}/assets/img/bonsai-" + this.theme + ".png");
+    window.localStorage.setItem('theme-colors', this.theme);
   }
 }
