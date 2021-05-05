@@ -83,21 +83,21 @@
 }
 
 
-// path nav
+// note-breadcrumb nav
 
-.path-nav {
+.note-breadcrumb-nav {
   @include mq(md) {
     margin-top: -$sp-4;
   }
   overflow-x: scroll;
   white-space: nowrap;  
 
-  .path-nav-list {
+  .note-breadcrumb-nav-list {
     padding-left: 0 !important;
     margin-bottom: $sp-3;
     list-style: none;
   
-    .path-nav-list-item {
+    .note-breadcrumb-nav-list-item {
       display: table-cell;
       @include fs-2;
     
