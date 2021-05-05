@@ -10,6 +10,7 @@ layout: table-wrappers
 
     <title>{{ page.title }}</title>
     
+    <link rel="icon" type="image/png">    
     <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
 
     {% feed_meta %}
@@ -23,9 +24,7 @@ layout: table-wrappers
   <body>
 
     <div class="side-bar">
-      <nav role="navigation" aria-label="main" id="garden-nav" class="garden-nav">
-        {% include garden-nav.html %}
-      </nav>
+      {% include site-nav.html %}
     </div>
     
     <div class="main" id="top">
@@ -38,6 +37,7 @@ layout: table-wrappers
 
     <label class="wiki-link-nav-selector">
       <input id="wiki-link-nav-checkbox" type="checkbox">
+      <img id="wiki-bonsai" height="25" width="50" hidden></img>
       <span id="wiki-link-nav-span">[[ ]]</span>
     </label>
 

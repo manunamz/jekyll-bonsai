@@ -13,13 +13,13 @@ baseurl: ''
 ## may be 'tree' or 'net-web'
 graph_type: "tree"
 
-# weather: set number of notes to display on weather page.
+# recent (weather): set number of notes to display on recent (weather) page.
 ## may be an integer (defaults to 10)
 recent: 10 
 
-# fork: set default status of fork footer
+# note-foot: set default status of note-foot (fork)
 ## may be 'open' or 'closed'
-fork_status: "closed"
+note_foot_status: "closed"
 
 
 # logo: "/assets/images/logo.png"
@@ -43,24 +43,24 @@ collections:
   pages:
     output: true
     permalink: /:path
-  plants:
-    output: true
-    permalink: /plant/:title
   notes: 
     output: true
     # permalinks are manually generated -- see plugins.
+  note_tags:
+    output: true
+    permalink: /tag/:title
 
 defaults:
   - scope:
-      # path: ""
-      path: "_plants/**/*.md"
-      type: "plants"
-    values:
-      layout: "plant"
-  - scope:
       path: "_notes/**/*.md"
+      type: "notes"
     values:
       layout: "note"
+  - scope:
+      path: "_note_tags/**/*.md"
+      type: "note_tags"
+    values:
+      layout: "tag"
 
 plugins:
   - jekyll-feed
