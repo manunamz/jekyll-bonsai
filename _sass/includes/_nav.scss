@@ -85,19 +85,19 @@
 
 // note-breadcrumb nav
 
-.note-breadcrumb-nav {
+.note-head-nav {
   @include mq(md) {
     margin-top: -$sp-4;
   }
   overflow-x: scroll;
   white-space: nowrap;  
 
-  .note-breadcrumb-nav-list {
+  .note-head-breadcrumbs {
     padding-left: 0 !important;
     margin-bottom: $sp-3;
     list-style: none;
   
-    .note-breadcrumb-nav-list-item {
+    .note-head-breadcrumb {
       display: table-cell;
       @include fs-2;
     
