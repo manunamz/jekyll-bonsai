@@ -122,40 +122,40 @@
   } 
 }
 
-// fork nav
+// note-foot nav
 
-.fork-nav {
+.note-foot-nav {
   background-color: $code-background-color;
   border-radius: 16px;
   display: flex;
   flex-direction: column;
   padding: $sp-3;
 
-  .fork-nav-title {
+  .note-foot-nav-title {
     @include fs-4;
-    color: $fork-nav-color;
+    color: $note-foot-nav-color;
     padding: $sp-2;
   }
 
-  .fork-nav-subtitle {
+  .note-foot-nav-subtitle {
     @include fs-2;
-    color: $fork-nav-color;
+    color: $note-foot-nav-color;
   }
 
-  .fork-nav-forks {
+  .note-foot-nav-note-foots {
     display: flex;
     justify-content: space-around;
     padding-left: $sp-2;
     padding-right: $sp-2;
 
-    .fork-nav-list {
+    .note-foot-nav-list {
       display: block; // columns require block
       column-count: 2;
       column-width: $content-width / 6;
       padding-left: 0;
       list-style: none;
   
-      .fork-nav-list-item {
+      .note-foot-nav-list-item {
         border-radius: 16px;
         padding: $sp-1;
         max-width: $content-width / 4;

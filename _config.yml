@@ -17,9 +17,9 @@ graph_type: "tree"
 ## may be an integer (defaults to 10)
 recent: 10 
 
-# fork: set default status of fork footer
+# note-foot: set default status of note-foot (fork)
 ## may be 'open' or 'closed'
-fork_status: "closed"
+note_foot_status: "closed"
 
 
 # logo: "/assets/images/logo.png"
