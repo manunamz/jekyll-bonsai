@@ -41,7 +41,7 @@ function initListeners () {
   document.getElementById('wiki-link-nav-checkbox')
     .addEventListener('click', function(event) {
       expandGraphNav();
-      drawD3Nav();
+      document.getElementById('svg-graph').dispatchEvent(new Event('draw')); // tell graph to redraw itself
     }, false);
 }
 
