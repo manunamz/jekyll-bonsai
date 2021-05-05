@@ -2,7 +2,7 @@
 ---
 import GraphNav from './graph-nav.js';
 import ThemeColors from './theme-colors.js';
-import ForkController from './fork.js';
+import NoteFootController from './note-foot.js';
 
  //
 // go
@@ -14,8 +14,8 @@ import ForkController from './fork.js';
     initListeners();
     new ThemeColors();
     new GraphNav();
-    if (document.getElementById('fork-checkbox')) {
-      new ForkController();
+    if (document.getElementById('note-foot-checkbox')) {
+      new NoteFootController();
     }
  })();
 
