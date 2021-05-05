@@ -24,14 +24,14 @@ import NoteFootController from './note-foot.js';
  //
 function initListeners () {
   // open external links in new window; wiki-links in current window.
-  document.querySelectorAll("a:not(.wiki-link):not(.plant-list-item):not(.footnote):not(.reversefootnote)").forEach(setupLinkOpen);
+  document.querySelectorAll("a:not(.wiki-link):not(.tags-list-item):not(.footnote):not(.reversefootnote)").forEach(setupLinkOpen);
   // init note-preview.html listeners.
-  document.querySelectorAll('{{ include.wrapperQuerySelector }} a:not(.plant-list-item)').forEach(setupListeners);
+  document.querySelectorAll('{{ include.wrapperQuerySelector }} a:not(.tags-list-item)').forEach(setupListeners);
 
   // todo: this is hacky, make it a proper button with this styling instead of a checkbox
-  document.getElementById('plant-tag-checkbox')
+  document.getElementById('tags-checkbox')
     .addEventListener('click', function(event) {
-      goTo('{{ site.baseurl }}/plant/tags');
+      goTo('{{ site.baseurl }}/tag/tags');
     }, false);
   document.getElementById('weather-checkbox')
     .addEventListener('click', function(event) {

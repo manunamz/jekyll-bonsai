@@ -24,7 +24,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     
-    &:not(.wiki-link):not(.plant-list-item):not(.footnote):not(.reversefootnote):after {
+    &:not(.wiki-link):not(.tags-list-item):not(.footnote):not(.reversefootnote):after {
       @include fs-1;
       font-family: $mono-font-family;
       position: relative;

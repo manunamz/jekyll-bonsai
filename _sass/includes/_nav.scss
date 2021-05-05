@@ -45,7 +45,7 @@
   }
 }
 
-.plant-nav {
+.tags-nav {
   @include fs-6;
   width: 100%;
   z-index: 2;
@@ -53,13 +53,13 @@
   user-select: none;
   display: flex;
   
-  .plant-nav-list {
+  .tags-nav-list {
     overflow-x: scroll;
     white-space: nowrap;
     padding-left: $sp-2;
   }
 
-  .plant-list-item {
+  .tags-list-item {
     display: inline-block;
     margin-right: $sp-3;
     margin-left: $sp-3;
