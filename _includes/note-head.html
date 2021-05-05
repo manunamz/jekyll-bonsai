@@ -1,17 +1,18 @@
-<nav class="path-nav" role="navigation" aria-label="path">
-  <ol class="path-nav-list">
+<!-- the PATH from root to leaf -->
+<nav class="note-head-nav" role="navigation" aria-label="breadcrumb">
+  <ol class="note-head-breadcrumbs">
     {% for ancestor in page.ancestors %}
       {% if ancestor.first %}
-      <li class="path-nav-list-item">
+      <li class="note-head-breadcrumb">
         <a class="wiki-link" href="{{ ancestor.url }}">{{ ancestor.title }}</a>
       </li>
       {% else %}
-        <li class="path-nav-list-item missing-note-txt">
+        <li class="note-head-breadcrumb missing-note-txt">
           {{ ancestor }}
         </li>
       {% endif %}
     {% endfor %}
-    <li class="path-nav-list-item">
+    <li class="note-head-breadcrumb">
       <span>{{ page.title }}</span>
     </li>
   </ol>

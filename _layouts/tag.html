@@ -1,13 +1,13 @@
 ---
 layout: default
 ---
-{% assign plants = site.plants | sort: "order"  %}
+{% assign tags = site.note_tags | sort: "order"  %}
 
-<div class="plant-nav">
-  <nav class="plant-nav-list">
-    {% for plant in plants %}
-      <a href="{{ plant.url }}" class="plant-list-item {% if page.url contains plant.title %}active{% endif %}">
-        {{ plant.emoji }}
+<div class="tags-nav">
+  <nav class="tags-nav-list">
+    {% for tag in tags %}
+      <a href="{{ tag.url }}" class="tags-list-item {% if page.url == tag.url %}active{% endif %}">
+        {{ tag.emoji }}
       </a>
     {% endfor %}
   </nav>
@@ -21,16 +21,16 @@ layout: default
     Descriptions only reflect the spirit of this garden. 
     Click <a href="{{ page.emojipedia }}">here</a> for the official emoji description.
   </p>
-  {% for plant in plants %}
-    {% if plant.title != "tags" %}
-      <h2>{{ plant.emoji }} <a href="{{ plant.url }}" class="wiki-link">{{ plant.title }}</a></h2>
-      <p>{{ plant.content | markdownify }}</p>
+  {% for tag in tags %}
+    {% if tag.title != "tags" %}
+      <h2>{{ tag.emoji }} <a href="{{ tag.url }}" class="wiki-link">{{ tag.title }}</a></h2>
+      <p>{{ tag.content | markdownify }}</p>
     {% endif %}
   {% endfor %}
 <!-- individual tags -->
 {% else %}
-  <!-- page == plant (from plant-nav) -->
-  {% assign notes_with_plant = site.notes | where: 'tags', page.emoji %}
+  <!-- page == tag (from tag-nav) -->
+  {% assign notes_with_tag = site.notes | where: 'tags', page.emoji %}
   <h1>{{ page.emoji }} {{ page.title }}</h1>
   {{ content }}
   <p style="color: #959396; font-size: 12px; margin-bottom: 0px;">
@@ -38,7 +38,7 @@ layout: default
     Click <a href="{{ page.emojipedia }}">here</a> for the official emoji description.
   </p>
   <hr>
-  {% for note in notes_with_plant %}
+  {% for note in notes_with_tag %}
     {% if note.tags contains page.emoji %}
       <p>{{ page.emoji }} <a href="{{ site.baseurl }}{{ note.url }}" class="wiki-link">{{ note.title }}</a></p>
     {% endif %}

@@ -1,0 +1,103 @@
+//
+// Buttons and things that look like buttons
+//
+
+/* graph type container */
+.graph-type-selector {
+  cursor: pointer;
+  user-select: none;
+  filter: drop-shadow(0 0 0.7mm $drop-shadow-green);
+
+  /* Hide the browser's default checkbox */
+  input {
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+}
+
+.note-foot-selector {
+  @include fs-6;
+  cursor: pointer;
+  user-select: none;
+  filter: drop-shadow(0 0 0.7mm $drop-shadow-brown);
+  padding-bottom: $sp-3;
+
+  /* Hide the browser's default checkbox */
+  input {
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+}
+
+.colors-selector {
+  cursor: pointer;
+  user-select: none;
+  filter: drop-shadow(0 0 0.7mm $drop-shadow-yellow);
+
+  /* Hide the browser's default checkbox */
+  input {
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+}
+
+.recent-selector {
+  cursor: pointer;
+  user-select: none;
+  filter: drop-shadow(0 0 0.7mm $drop-shadow-blue);
+
+  /* Hide the browser's default checkbox */
+  input {
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+}
+
+.tags-selector {
+  cursor: pointer;
+  user-select: none;
+  filter: drop-shadow(0 0 0.7mm $drop-shadow-brown);
+
+  /* Hide the browser's default checkbox */
+  input {
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+}
+
+.wiki-link-nav-selector {
+  z-index: 5;
+  display: block;
+  position: fixed;
+  right: $sp-2;
+  bottom: $sp-2;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  user-select: none;
+  font-size: $font-size-6;
+  text-align: center;
+  filter: drop-shadow(0 0 0.7mm $drop-shadow-green);
+
+  /* Hide the browser's default checkbox */
+  input {
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  & #wiki-link-nav-span {
+    margin-top: -6px;
+  }
+}
