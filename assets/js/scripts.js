@@ -58,7 +58,7 @@ function setupLinkOpen (link) {
 }
 
 function expandGraphNav() {
-  var siteNav = document.getElementById('garden-nav');
+  var siteNav = document.getElementById('site-nav');
   var wikiBonsai = document.getElementById('wiki-bonsai');
   
   if (document.getElementById('wiki-link-nav-checkbox').checked) {
