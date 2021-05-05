@@ -33,9 +33,9 @@ function initListeners () {
     .addEventListener('click', function(event) {
       goTo('{{ site.baseurl }}/tag/tags');
     }, false);
-  document.getElementById('weather-checkbox')
+  document.getElementById('recent-checkbox')
     .addEventListener('click', function(event) {
-      goTo('{{ site.baseurl }}/weather');
+      goTo('{{ site.baseurl }}/recent');
     }, false);
 
   document.getElementById('wiki-link-nav-checkbox')
