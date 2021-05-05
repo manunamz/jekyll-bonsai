@@ -20,7 +20,7 @@ export default class ThemeColors {
   bindEvents() {
     this.themeColorsCheckbox.addEventListener('click', () => {
       this.updateThemeColors();
-      // drawD3Nav();
+      document.getElementById('svg-graph').dispatchEvent(new Event('draw')); // tell graph to redraw itself
     });
   }
 

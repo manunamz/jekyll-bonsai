@@ -20,18 +20,15 @@ export default class GraphNav {
   }
   
   bindEvents() {
+    // listen for draw event (esp. from theme colors)
+    this.svgWrapper.addEventListener('draw', () => {
+      this.updateGraphTypeEmoji();
+      this.drawD3Nav();
+    });
     this.graphTypeCheckBox.addEventListener('click', () => {
       this.updateGraphTypeEmoji();
       this.drawD3Nav();
     });
-  }
-
-  initGraphType() {
-    if (this.graphType !== "tree" && this.graphType !== "net-web") {
-      this.graphType = '{{ site.graph_type }}';	
-    }
-    this.graphTypeCheckBox.checked = (this.graphType === "tree");
-    this.updateGraphTypeEmoji();
   }
   
   // how to checkbox: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_display_checkbox_text
@@ -62,6 +59,14 @@ export default class GraphNav {
     }
   }
   
+  initGraphType() {
+    if (this.graphType !== "tree" && this.graphType !== "net-web") {
+      this.graphType = '{{ site.graph_type }}';	
+    }
+    this.graphTypeCheckBox.checked = (this.graphType === "tree");
+    this.updateGraphTypeEmoji();
+  }
+
   updateGraphTypeEmoji() {
     if (this.graphTypeCheckBox.checked) {
       this.graphTypeEmojiSpan.innerHTML = "🕸";
