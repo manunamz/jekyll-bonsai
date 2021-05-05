@@ -1,6 +1,6 @@
 ---
 ---
-import GraphNav from './graph-nav.js';
+import GraphNav from './graph.js';
 import ThemeColors from './theme-colors.js';
 import NoteFootController from './note-foot.js';
 
