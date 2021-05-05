@@ -43,22 +43,22 @@ collections:
   pages:
     output: true
     permalink: /:path
-  plants:
+  note_tags:
     output: true
-    permalink: /plant/:title
+    permalink: /tag/:title
   notes: 
     output: true
     # permalinks are manually generated -- see plugins.
 
 defaults:
   - scope:
-      # path: ""
-      path: "_plants/**/*.md"
-      type: "plants"
+      path: "_note_tags/**/*.md"
+      type: "note_tags"
     values:
-      layout: "plant"
+      layout: "tag"
   - scope:
       path: "_notes/**/*.md"
+      # type: "notes"
     values:
       layout: "note"
 
