@@ -66,9 +66,7 @@ class WikiLinkGenerator < Jekyll::Generator
     note.content = note.content.gsub(
       /\[\[(.*)\]\]/i, # match on the remaining double-bracket links
       <<~HTML.chomp    # replace with this HTML (\\1 is what was inside the brackets)
-        <span title='There is no note that matches this link.' class='invalid-wiki-link'>
-          [[\\1]]
-        </span>
+        <span title='There is no note that matches this link.' class='invalid-wiki-link'>[[\\1]]</span>
       HTML
     )
   end
