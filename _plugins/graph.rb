@@ -41,7 +41,7 @@ class GraphDataGenerator < Jekyll::Generator
     # 
     # for tree: set root node
     root_note = all_docs.detect {|note| note.data['slug'] == 'root' }
-    root = Node.new(root_note.data['id'], 'root', 'Root', root_note)
+    root = Node.new(root_note.data['id'], 'root', site.config['index_note_title'], root_note)
     # for net-web: set nodes'n'links
     graph_nodes, graph_links = [], []
 

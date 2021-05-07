@@ -8,6 +8,7 @@ baseurl: ''
 
 # jekyll-bonsai configs
 
+index_note_title: "Jekyll-Bonsai"
 # graph: default graph type in side bar.
 ## may be 'tree' or 'net-web'
 graph_type: "tree"

@@ -118,7 +118,7 @@ export default class GraphNav {
               .data(data.nodes)
               .enter().append('g')
               .attr('class', 'nodes')
-              .attr("active", (d) => isCurrentNoteInNetWeb(d.id) ? true : null)
+              .attr("active", (d) => isCurrentNoteInNetWeb(d) ? true : null)
           // node's circle
           node.append('circle')
               //svg 2.0 not well-supported: https://stackoverflow.com/questions/47381187/svg-not-working-in-firefox
@@ -148,10 +148,10 @@ export default class GraphNav {
           // use filtering to deal with specific nodes
           // from: https://codepen.io/blackjacques/pen/BaaqKpO
           // add node pulse on the current node
-          node.filter( function(d,i) { return isCurrentNoteInNetWeb(d.id); })
+          node.filter( function(d,i) { return isCurrentNoteInNetWeb(d); })
               .append("circle")
               .attr("r", theme_attrs["radius"])
-              .classed("pulse", (d) => isCurrentNoteInNetWeb(d.id) ? true : null)
+              .classed("pulse", (d) => isCurrentNoteInNetWeb(d) ? true : null)
               .call(d3.drag()
                   .on("start", dragstarted)
                   .on("drag", dragged)
@@ -173,19 +173,31 @@ export default class GraphNav {
           // helpers
            //
   
-          function isCurrentNoteInNetWeb(noteId) {
-              return window.location.pathname.includes(noteId);
+          function isCurrentNoteInNetWeb(note) {
+            if (window.location.pathname == "/") {
+              return !isMissingNote(note.id) && note.label === "{{ site.index_note_title }}";
+            } else {
+              return !isMissingNote(note.id) && window.location.pathname.includes(note.id);
+            }
           }
           
           function isMissingNote(node) {
-              return node.id === node.label
+            return node.id === node.label;
           }
   
           // from: https://stackoverflow.com/questions/63693132/unable-to-get-node-datum-on-mouseover-in-d3-v6
           // d6 now passes events in vanilla javascript fashion
           function goToNoteFromNetWeb (e, d) {
-              // i have no idea why this needs the preceeding '/'
-              window.location = `/note/${d.id}`;
+            if (!isMissingNote(d.id)) {
+              if (d.label == '{{ site.index_note_title }}') {
+                window.location = '/';
+              } else {
+                // i have no idea why this needs the preceeding '/'
+                window.location = `/note/${d.id}`;
+              }
+            } else {
+              return null;
+            }
           };
   
           function dragstarted(event, d) {
@@ -281,7 +293,7 @@ export default class GraphNav {
           // use filtering to deal with specific nodes
           // from: https://codepen.io/blackjacques/pen/BaaqKpO
           // add node pulse on the current node
-          node.filter( function(d,i) { return isCurrentNoteInTree(d.data.id); })
+          node.filter( function(d,i) { return isCurrentNoteInTree(d); })
               .append("circle")
               .attr("r",  (d) => theme_attrs["radius"])
               .classed("pulse", true)
@@ -314,20 +326,28 @@ export default class GraphNav {
           // helpers
            //
   
-          function isCurrentNoteInTree(noteId) {
-              return !isMissingNote(noteId) && window.location.pathname.includes(noteId);
+          function isCurrentNoteInTree(note) {
+            if (window.location.pathname == "/") {
+              return !isMissingNote(note.data.id) && note.data.label === "{{ site.index_note_title }}";
+            } else {
+              return !isMissingNote(note.data.id) && window.location.pathname.includes(note.data.id);
+            }
           }
   
           function isMissingNote(nodeId) {
-              return nodeId === ""
+            return nodeId === "";
           }
   
           // from: https://stackoverflow.com/questions/63693132/unable-to-get-node-datum-on-mouseover-in-d3-v6
           // d6 now passes events in vanilla javascript fashion
           function goToNoteFromTree(e, d) {
               if (!isMissingNote(d.data.id)) {
+                if (d.data.label == '{{ site.index_note_title }}') {
+                  window.location = '/';
+                } else {
                   // i have no idea why this needs the preceeding '/'
                   window.location = `/note/${d.data.id}`;
+                }
               } else {
                   return null;
               }
