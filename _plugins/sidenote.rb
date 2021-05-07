@@ -58,11 +58,11 @@ module Jekyll
     # constants for local use
     ##
     # right
-    RIGHT_SIDENOTE_DEFINITION_START = /^#{OPT_SPACE}\[\<(#{ALD_ID_NAME})\]:\s*?(.*?\n#{CODEBLOCK_MATCH})/
-    RIGHT_SIDENOTE_MARKER_START = /\[\<(#{ALD_ID_NAME})\]/
+    RIGHT_SIDENOTE_DEFINITION_START = /^#{OPT_SPACE}\[\>(#{ALD_ID_NAME})\]:\s*?(.*?\n#{CODEBLOCK_MATCH})/
+    RIGHT_SIDENOTE_MARKER_START = /\[\>(#{ALD_ID_NAME})\]/
     # left
-    LEFT_SIDENOTE_DEFINITION_START = /^#{OPT_SPACE}\[\>(#{ALD_ID_NAME})\]:\s*?(.*?\n#{CODEBLOCK_MATCH})/
-    LEFT_SIDENOTE_MARKER_START = /\[\>(#{ALD_ID_NAME})\]/
+    LEFT_SIDENOTE_DEFINITION_START = /^#{OPT_SPACE}\[\<(#{ALD_ID_NAME})\]:\s*?(.*?\n#{CODEBLOCK_MATCH})/
+    LEFT_SIDENOTE_MARKER_START = /\[\<(#{ALD_ID_NAME})\]/
 
     def generate(site)
        #  
