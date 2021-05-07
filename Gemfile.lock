@@ -40,6 +40,7 @@ GEM
       jekyll (>= 3.7, < 5.0)
     jekyll-watch (2.2.1)
       listen (~> 3.0)
+    jekyll-wikilinks (0.0.1)
     kramdown (2.3.1)
       rexml
     kramdown-parser-gfm (1.1.0)
@@ -86,8 +87,9 @@ DEPENDENCIES
   jekyll-feed
   jekyll-seo-tag
   jekyll-sitemap
+  jekyll-wikilinks
   rspec
   webrick (~> 1.7)
 
 BUNDLED WITH
-   2.2.15
+   2.2.17
