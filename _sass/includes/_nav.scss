@@ -89,11 +89,12 @@
   @include mq(md) {
     margin-top: -$sp-4;
   }
+  display: flex;
   overflow-x: scroll;
   white-space: nowrap;  
 
   .note-head-breadcrumbs {
-    padding-left: 0 !important;
+    padding-left: $sp-2 !important;
     margin-bottom: $sp-3;
     list-style: none;
   
@@ -112,7 +113,7 @@
         color: $grey-dk-000;
         content: ">";
       }
-    
+
       &:last-child {
         &::after {
           content: "";
