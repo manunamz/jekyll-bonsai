@@ -378,8 +378,8 @@
   .sidenote-number:after {
     content: counter(sidenote-counter);
     font-size: $font-size-2;
-    top: -$sp-3;
-    left: $sp-1;
+    top: -$sp-1-75;
+    left: $sp-0-75;
   }
 
   .rsn:before,
