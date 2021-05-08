@@ -94,7 +94,9 @@ $spacing-unit: 1rem; // 1rem == 16px
 
 $spacers: (
   sp-0: 0,
-  sp-1: $spacing-unit * 0.25,
+  sp-0-75: $spacing-unit * 0.15,
+  sp-1-: $spacing-unit * 0.25,
+  sp-1-75: $spacing-unit * 0.4,
   sp-2: $spacing-unit * 0.5,
   sp-3: $spacing-unit * 0.75,
   sp-4: $spacing-unit,
@@ -106,7 +108,9 @@ $spacers: (
   sp-10: $spacing-unit * 4,
 ) !default;
 
+$sp-0-75: map-get($spacers, sp-0-75) !default; // 0.15 rem == 2.4px
 $sp-1: map-get($spacers, sp-1) !default; // 0.25 rem == 4px
+$sp-1-75: map-get($spacers, sp-1-75) !default; // 0.25 rem == 4px
 $sp-2: map-get($spacers, sp-2) !default; // 0.5  rem == 8px
 $sp-3: map-get($spacers, sp-3) !default; // 0.75 rem == 12px
 $sp-4: map-get($spacers, sp-4) !default; // 1    rem == 16px
