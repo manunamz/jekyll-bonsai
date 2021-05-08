@@ -2,7 +2,7 @@
 ---
 import GraphNav from './graph.js';
 import ThemeColors from './theme-colors.js';
-import NoteFootController from './note-foot.js';
+import NoteController from './note.js';
 
  //
 // go
@@ -14,8 +14,8 @@ import NoteFootController from './note-foot.js';
   initListeners();
   new ThemeColors();
   new GraphNav();
-  if (document.getElementById('note-foot-checkbox')) {
-    new NoteFootController();
+  if (document.getElementById('note')) {
+    new NoteController();
   }
  })();
 
