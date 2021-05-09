@@ -51,7 +51,7 @@ export default class ThemeColors {
     this.favicon.setAttribute('href', "{{site.baseurl}}/assets/img/favicon-" + this.theme + ".png");
     this.wikiLinkNavBonsai.setAttribute('src', "{{site.baseurl}}/assets/img/bonsai-" + this.theme + ".svg");
     if (this.homeBonsaiLogo) {
-      this.homeBonsaiLogo.setAttribute('src', "{{site.baseurl}}/assets/img/logo-bonsai-" + this.theme + ".svg")
+      this.homeBonsaiLogo.setAttribute('src', "{{site.baseurl}}/assets/img/logo-bonsai-" + this.theme + ".svg");
     }
     window.localStorage.setItem('theme-colors', this.theme);
   }
