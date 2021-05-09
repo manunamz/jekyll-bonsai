@@ -3,9 +3,7 @@ layout: default
 ---
 
 <div id="note">
-  <header>
-    {% include note-head.html %}
-  </header>
+  {% include note-head.html %}
 
   <div class="note-body">
     <h1>{{ page.title }}</h1>
@@ -21,7 +19,5 @@ layout: default
     {{ content }}
   </div>
 
-  <footer>
-    {% include note-foot.html %}
-  </footer>
+  {% include note-foot.html %}
 </div>

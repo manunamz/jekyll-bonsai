@@ -163,7 +163,7 @@ class GraphDataGenerator < Jekyll::Generator
   def tree_to_json(node, json_node={})
     if node.id.empty?
       Jekyll.logger.warn "Tree node missing: ", node.namespace
-      label = ""
+      label = node.namespace.match('([^.]*$)')[0].gsub('-', ' ')
     else
       label = node.title
     end
@@ -182,16 +182,27 @@ class GraphDataGenerator < Jekyll::Generator
   end
 
   # find the parent and children of the 'target_note'.
+  # ('node' as in the current node, which first is root.)
   def find_note_immediate_relatives(target_note, node, all_notes, ancestors=[])
     if target_note.data['id'] == node.id
       children = []
       node.children.each do |child|
-        children << child.note
+        if child.id == ''
+          children << { 
+            'id' => '',
+            'title' => child.namespace.match('([^.]*$)')[0].gsub('-', ' ')
+          }
+        else
+          children << child.note
+        end
       end
       return ancestors, children
     else
       if node.id == ''
-        ancestors << node.namespace.match('([^.]*$)')[0].gsub('-', ' ')
+        ancestors << { 
+          'id' => '',
+          'title' => node.namespace.match('([^.]*$)')[0].gsub('-', ' ')
+        }
       else
         ancestors << node.note
       end

@@ -57,6 +57,7 @@ export default class GraphNav {
   }
   
   initGraphType() {
+    this.graphType = localStorage.getItem('graph-type');
     if (this.graphType !== "tree" && this.graphType !== "net-web") {
       this.graphType = '{{ site.graph_type }}';	
     }
@@ -175,14 +176,14 @@ export default class GraphNav {
   
           function isCurrentNoteInNetWeb(node) {
             if (window.location.pathname == "/") {
-              return !isMissingNote(node.id) && node.label === "{{ site.index_note_title }}";
+              return !isMissingNote(node) && node.label === "{{ site.index_note_title }}";
             } else {
-              return !isMissingNote(node.id) && window.location.pathname.includes(node.id);
+              return !isMissingNote(node) && window.location.pathname.includes(node.id);
             }
           }
           
-          function isMissingNote(nodeId) {
-            return nodeId === "";
+          function isMissingNote(node) {
+            return node.id === node.label;
           }
   
           // from: https://stackoverflow.com/questions/63693132/unable-to-get-node-datum-on-mouseover-in-d3-v6
