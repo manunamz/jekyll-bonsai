@@ -163,7 +163,7 @@ class GraphDataGenerator < Jekyll::Generator
   def tree_to_json(node, json_node={})
     if node.id.empty?
       Jekyll.logger.warn "Tree node missing: ", node.namespace
-      label = node.namespace.match('([^.]*$)')[0].gsub('-', ' ')
+      label = ""
     else
       label = node.title
     end
