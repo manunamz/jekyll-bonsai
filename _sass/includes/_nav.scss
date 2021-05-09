@@ -22,14 +22,14 @@
   }
 
   header {
+    @include fs-5;
     display: flex;
     justify-content: space-between;
     width: 100%;
     position: absolute;
     top: 0;
-    padding: $sp-1;
+    padding: $sp-2;
     color: $grey-dk-000;
-    @include fs-4;
     z-index: 4;
     cursor: pointer;
     user-select: none;
@@ -95,7 +95,7 @@
 
   .note-head-breadcrumbs {
     padding-left: $sp-2 !important;
-    margin-bottom: $sp-3;
+    // margin-bottom: $sp-3;
     list-style: none;
   
     .note-head-breadcrumb {
