@@ -45,7 +45,8 @@
 
 .missing-note-txt {
   @include fs-2;
-  color: $grey-dk-000;
+  color: $grey-dk-000 !important;
+  pointer-events: none;
 }
 
 .small-descr {

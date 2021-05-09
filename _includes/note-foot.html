@@ -1,46 +1,39 @@
 <!-- FORKs on the path -->
-<div style="float: right;">
-  <label class="note-foot-selector">
-    <input id="note-foot-checkbox" type="checkbox">
-    <span id="note-foot-emoji-span">🚏</span>
-  </label>
-</div>
-<nav role="navigation" aria-label="" class="note-foot-nav">
-  <span class="note-foot-nav-title">
-    Forks On The Path
-  </span>
-  <div class="note-foot-nav-note-foots">
-    <div>
-      <h4 class="note-foot-nav-subtitle">Children</h4>
-      <ul class="note-foot-nav-list">
-        {% for child in page.children %}
-          {% if child.first %}
-          <li class="note-foot-nav-list-item">
-            <a class="wiki-link" href="{{ child.url }}">{{ child.title }}</a>
-          </li>
-          {% else %}
-            <li class="note-foot-nav-list-item missing-note-txt">
-              {{ child }}
-            </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
-    </div>
-    <div>
-      <h4 class="note-foot-nav-subtitle">Backlinks</h4>
-      <ul class="note-foot-nav-list">
-        {% for blink in page.backlinks %}
-          {% if blink.first %}
-          <li class="note-foot-nav-list-item">
-            <a class="wiki-link" href="{{ blink.url }}">{{ blink.title }}</a>
-          </li>
-          {% else %}
-            <li class="note-foot-nav-list-item missing-note-txt">
-              {{ blink }}
-            </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
-    </div>
+<footer>
+  <div style="float: right;">
+    <label class="note-foot-selector">
+      <input id="note-foot-checkbox" type="checkbox">
+      <span id="note-foot-emoji-span">🚏</span>
+    </label>
   </div>
-</nav>
+  <nav role="navigation" aria-label="" class="note-foot-nav">
+    <span class="note-foot-nav-title">
+      Forks On The Path
+    </span>
+    <div class="note-foot-nav-note-foots">
+      <div>
+        <h4 class="note-foot-nav-subtitle">Children</h4>
+        <ul class="note-foot-nav-list">
+          {% for child in page.children %}
+            <li class="note-foot-nav-list-item">
+              <a class="wiki-link {% if child.id == '' %}missing-note-txt{% endif %}" href="{{ child.url }}">
+                {{ child.title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+      <div>
+        <h4 class="note-foot-nav-subtitle">Backlinks</h4>
+        <ul class="note-foot-nav-list">
+          {% for blink in page.backlinks %}
+            <li class="note-foot-nav-list-item">
+              <a class="wiki-link" href="{{ blink.url }}">{{ blink.title }}</a>
+            </li>
+            <!-- can't have a missing backlink because backlinks are defined by note content: if there's no note there's no content. -->
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </nav>
+</footer>
