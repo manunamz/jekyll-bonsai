@@ -126,11 +126,14 @@
 // note-foot nav
 
 .note-foot-nav {
-  background-color: $code-background-color;
   border-radius: 16px;
   display: flex;
   flex-direction: column;
   padding: $sp-3;
+  // blur box edges
+  // from: https://stackoverflow.com/questions/15775365/how-to-blur-div-edges
+  background-color: $note-foot-background-color;
+  box-shadow: 0 0 5px 10px $note-foot-background-color;
 
   .note-foot-nav-title {
     @include fs-4;
