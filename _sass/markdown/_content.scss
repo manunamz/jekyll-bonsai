@@ -120,7 +120,7 @@
   }
 
   hr {
-    background-color: $link-line-stroke-color;
+    background-color: $separator-color;
 
     + * {
       margin-top: 0;
@@ -281,7 +281,7 @@
   }
 
   .footnotes {
-    border-top: double $link-line-stroke-color;
+    border-top: double $separator-color;
   }
 
   .footnote, .reversefootnote {
