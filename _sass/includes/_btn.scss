@@ -37,7 +37,8 @@
   cursor: pointer;
   user-select: none;
   filter: drop-shadow(0 0 0.7mm $drop-shadow-brown);
-  padding-bottom: $sp-3;
+  float: left;
+  padding-right: $sp-3;
 
   /* Hide the browser's default checkbox */
   input {
