@@ -1,1 +1,12 @@
-/Users/manoonam/code/bonsai/dendron/vault/features.themes.dark.md
+---
+id: 7dd6b87c-f3cb-4155-8283-ced28ac7b0cd
+title: Dark
+desc: ''
+updated: 1620503325237
+created: 1620503325237
+tags: 🌱
+---
+
+🌘 A [tron](https://www.google.com/search?q=tron+style&tbm=isch&ved=2ahUKEwiNlMq77brwAhVRRlMKHZ5_DYcQ2-cCegQIABAA&oq=tron+style&gs_lcp=CgNpbWcQAzICCAAyAggAMgIIADICCAAyAggAMgIIADICCAAyAggAMgIIADICCAA6BwgAELEDEEM6BAgAEENQsL1rWJbKa2Cjy2toAHAAeACAAasBiAH9BJIBAzQuMpgBAKABAaoBC2d3cy13aXotaW1nwAEB&sclient=img&ei=ReuWYM3dE9GMzQKe_7W4CA&bih=1005&biw=1920)-inspired[>graph] dark theme.
+
+[>graph]: Which mostly manifests as the iconic lines'n'dots in the [[features.graph]] and drop-shadows on clickable emojis.
