@@ -144,7 +144,7 @@ export default class GraphNav {
               .text(function (d) { return d.label });
           // node's tooltip
           node.append("title")
-              .text(function(d) { return d.label; });
+              .text((d) => isMissingNoteInNetWeb(d) ? "Missing Note" : d.label);
           // from: https://stackoverflow.com/questions/28415005/d3-js-selection-conditional-rendering
           // use filtering to deal with specific nodes
           // from: https://codepen.io/blackjacques/pen/BaaqKpO
@@ -288,9 +288,9 @@ export default class GraphNav {
               .attr("dy", ".05em")
               .attr("font-size", "20%")
               .text(function (d) { return d.data.label });
-          // node tooltip
+          // node's tooltip
           node.append("title")
-              .text(function(d) { return d.data.label });
+              .text((d) => isMissingNoteInTree(d.data.id) ? "Missing Note" : d.data.label);
           // from: https://stackoverflow.com/questions/28415005/d3-js-selection-conditional-rendering
           // use filtering to deal with specific nodes
           // from: https://codepen.io/blackjacques/pen/BaaqKpO
