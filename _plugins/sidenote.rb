@@ -3,7 +3,6 @@
 module Jekyll
   class SideNoteGenerator < Generator
     safe true
-    priority :normal
 
     ##
     # parser constants
@@ -94,12 +93,12 @@ module Jekyll
       # left v right setup
       if side == "right"
         sidenote_def_regex = RIGHT_SIDENOTE_DEFINITION_START
-        sidenote_mark_regex = RIGHT_SIDENOTE_MARKER_START
+        # sidenote_mark_regex = RIGHT_SIDENOTE_MARKER_START
         css_class = "rsn"
         sn_regex = /\>/
       elsif side == "left"
         sidenote_def_regex = LEFT_SIDENOTE_DEFINITION_START
-        sidenote_mark_regex = LEFT_SIDENOTE_MARKER_START
+        # sidenote_mark_regex = LEFT_SIDENOTE_MARKER_START
         css_class = "lsn"
         sn_regex = /\</
       else
