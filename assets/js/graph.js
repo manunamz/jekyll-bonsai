@@ -124,8 +124,8 @@ export default class GraphNav {
           node.append('circle')
               //svg 2.0 not well-supported: https://stackoverflow.com/questions/47381187/svg-not-working-in-firefox
               // add attributes in javascript instead of css.
-              .attr("r",  (d) => isMissingNote(d) ? theme_attrs["missing-radius"] : theme_attrs["radius"])
-              .attr("class", (d) => isMissingNote(d) ? "missing" : null)
+              .attr("r",  (d) => isMissingNoteInNetWeb(d) ? theme_attrs["missing-radius"] : theme_attrs["radius"])
+              .attr("class", (d) => isMissingNoteInNetWeb(d) ? "missing" : null)
               .on("click", goToNoteFromNetWeb)
               .call(d3.drag()
                   .on("start", dragstarted)
@@ -173,23 +173,24 @@ export default class GraphNav {
            //
           // helpers
            //
-  
+
           function isCurrentNoteInNetWeb(node) {
             if (window.location.pathname == "/") {
-              return !isMissingNote(node) && node.label === "{{ site.index_note_title }}";
+              return !isMissingNoteInNetWeb(node) && node.label === "{{ site.index_note_title }}";
             } else {
-              return !isMissingNote(node) && window.location.pathname.includes(node.id);
+              return !isMissingNoteInNetWeb(node) && window.location.pathname.includes(node.id);
             }
           }
           
-          function isMissingNote(node) {
+          function isMissingNoteInNetWeb(node) {
             return node.id === node.label;
           }
   
           // from: https://stackoverflow.com/questions/63693132/unable-to-get-node-datum-on-mouseover-in-d3-v6
           // d6 now passes events in vanilla javascript fashion
           function goToNoteFromNetWeb (e, d) {
-            if (!isMissingNote(d.id)) {
+            console.log(d);
+            if (!isMissingNoteInNetWeb(d)) {
               if (d.label == '{{ site.index_note_title }}') {
                 window.location = '/';
               } else {
@@ -269,8 +270,8 @@ export default class GraphNav {
           node.append("circle")
               //svg 2.0 not well-supported: https://stackoverflow.com/questions/47381187/svg-not-working-in-firefox
               // add attributes in javascript instead of css.
-              .attr("r",  (d) => isMissingNote(d.data.id) ? theme_attrs["missing-radius"] : theme_attrs["radius"])
-              .attr("class", (d) => isMissingNote(d.data.id) ? "missing" : null)
+              .attr("r",  (d) => isMissingNoteInTree(d.data.id) ? theme_attrs["missing-radius"] : theme_attrs["radius"])
+              .attr("class", (d) => isMissingNoteInTree(d.data.id) ? "missing" : null)
               .on("click", goToNoteFromTree)
               .call(d3.drag()
                   .on("start", dragstarted)
@@ -329,20 +330,20 @@ export default class GraphNav {
   
           function isCurrentNoteInTree(node) {
             if (window.location.pathname == "/") {
-              return !isMissingNote(node.data.id) && node.data.label === "{{ site.index_note_title }}";
+              return !isMissingNoteInTree(node.data.id) && node.data.label === "{{ site.index_note_title }}";
             } else {
-              return !isMissingNote(node.data.id) && window.location.pathname.includes(node.data.id);
+              return !isMissingNoteInTree(node.data.id) && window.location.pathname.includes(node.data.id);
             }
           }
   
-          function isMissingNote(nodeId) {
+          function isMissingNoteInTree(nodeId) {
             return nodeId === "";
           }
   
           // from: https://stackoverflow.com/questions/63693132/unable-to-get-node-datum-on-mouseover-in-d3-v6
           // d6 now passes events in vanilla javascript fashion
           function goToNoteFromTree(e, d) {
-              if (!isMissingNote(d.data.id)) {
+              if (!isMissingNoteInTree(d.data.id)) {
                 if (d.data.label == '{{ site.index_note_title }}') {
                   window.location = '/';
                 } else {
