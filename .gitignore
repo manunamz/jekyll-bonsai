@@ -23,4 +23,4 @@ notes_net_web.json
 notes_tree.json
 
 # ignore files meant for local testing
-_plugins/wikilink.rb
+_plugins/wikilinks.rb
