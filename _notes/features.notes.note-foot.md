@@ -1,0 +1,1 @@
+/Users/manoonam/code/bonsai/dendron/vault/features.notes.note-foot.md
