@@ -6,7 +6,7 @@
       <span id="note-foot-emoji-span" title="Toggle Forks">🚏</span>
     </label>
   </div>
-  <nav role="navigation" aria-label="" class="note-foot-nav">
+  <nav id="note-foot-nav" class="note-foot-nav" role="navigation" aria-label="">
     <span class="note-foot-nav-title">
       Forks On The Trail
     </span>
@@ -30,7 +30,16 @@
             <li class="note-foot-nav-list-item">
               <a class="wiki-link" href="{{ blink.url }}">{{ blink.title }}</a>
             </li>
-            <!-- can't have a missing backlink because backlinks are defined by note content: if there's no note there's no content. -->
+          {% endfor %}
+        </ul>
+      </div>
+      <div>
+        <h4 class="note-foot-nav-subtitle">Posts</h4>
+        <ul class="note-foot-nav-list">
+          {% for post in page.backlinkposts %}
+            <li class="note-foot-nav-list-item">
+              <a class="wiki-link" href="{{ post.url }}">{{ post.title }}</a>
+            </li>
           {% endfor %}
         </ul>
       </div>
