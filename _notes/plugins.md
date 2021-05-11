@@ -1,0 +1,1 @@
+/Users/manoonam/code/bonsai/dendron/vault/plugins.md
