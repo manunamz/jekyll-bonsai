@@ -36,9 +36,6 @@ kramdown:
   math_engine: mathjax
 
 collections:
-  pages:
-    output: true
-    permalink: /:path
   notes: 
     output: true
     # permalinks are manually generated -- see plugins.
