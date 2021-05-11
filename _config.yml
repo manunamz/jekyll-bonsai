@@ -8,6 +8,7 @@ baseurl: ''
 
 # jekyll-bonsai configs
 
+# dendron forces the root note-title to be 'root.md' -- this is the replacement name for 'root'.
 index_note_title: "Jekyll-Bonsai"
 # graph: default graph type in side bar.
 ## may be 'tree' or 'net-web'
@@ -21,8 +22,7 @@ note_foot_status: "closed"
 
 
 # logo: "/assets/images/logo.png"
-# exclude: [ "node_modules/", "*.gemspec", "*.gem", "Gemfile", "Gemfile.lock", "package.json", "package-lock.json",  "script/", "LICENSE.txt", "lib/", "bin/", "README.md", "Rakefile", "*/dendron.template.release.md"
-# ]
+exclude: [ "node_modules/", "*.gemspec", "*.gem", "Gemfile", "Gemfile.lock", "package.json", "package-lock.json",  "script/", "LICENSE.txt", "lib/", "bin/", "README.md", "Rakefile", "*/dendron.template.release.md"]
 
 permalink: pretty
 # relative_permalinks: false
