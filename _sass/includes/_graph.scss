@@ -29,6 +29,7 @@
   
   &.missing {
     fill: $node-missing-color;
+    cursor: help;
   }
 }
 
