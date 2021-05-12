@@ -2,6 +2,40 @@
 // two column layout
 //
 
+.home-seed-body {
+  background-color: $green-01;
+
+  .home-seed-wrap {
+    @include fs-6;
+    color: $grey-dk-100;
+    height: 100vh;
+    width: 100vw;
+
+    .home-seed-left-txt {
+      position: absolute;
+      top: 35%;
+      left: 35%;
+    }
+
+    .home-seed {
+      @include fs-10;
+      color: $wiki-link-color;
+
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      margin-top: -25px;
+      margin-left: -50px;  
+    }
+
+    .home-seed-right-txt {
+      position: absolute;
+      bottom: 35%;
+      right: 32%; 
+    }
+  }
+}
+
 .side-bar {
   z-index: 1;
   display: flex;

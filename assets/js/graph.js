@@ -191,12 +191,8 @@ export default class GraphNav {
           function goToNoteFromNetWeb (e, d) {
             console.log(d);
             if (!isMissingNoteInNetWeb(d)) {
-              if (d.label == '{{ site.index_note_title }}') {
-                window.location = '/';
-              } else {
-                // i have no idea why this needs the preceeding '/'
-                window.location = `{{ site.baseurl }}/note/${d.id}`;
-              }
+              // i have no idea why this needs the preceeding '/'
+              window.location = `{{ site.baseurl }}/note/${d.id}/`;
             } else {
               return null;
             }
@@ -344,12 +340,8 @@ export default class GraphNav {
           // d6 now passes events in vanilla javascript fashion
           function goToNoteFromTree(e, d) {
               if (!isMissingNoteInTree(d.data.id)) {
-                if (d.data.label == '{{ site.index_note_title }}') {
-                  window.location = '/';
-                } else {
-                  // i have no idea why this needs the preceeding '/'
-                  window.location = `{{ site.baseurl }}/note/${d.data.id}`;
-                }
+                // i have no idea why this needs the preceeding '/'
+                window.location = `{{ site.baseurl }}/note/${d.data.id}/`;
               } else {
                   return null;
               }
