@@ -1,6 +1,6 @@
 title: jekyll-bonsai
 description: a jekyll theme for digital gardeners.
-baseurl: ''
+baseurl: '/jekyll-bonsai'
 # url: 'localhost:4000'
 
 # jekyll-wikilinks config
