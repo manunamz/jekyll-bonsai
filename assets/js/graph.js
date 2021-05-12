@@ -195,7 +195,7 @@ export default class GraphNav {
                 window.location = '/';
               } else {
                 // i have no idea why this needs the preceeding '/'
-                window.location = `/note/${d.id}`;
+                window.location = `{{ site.baseurl }}/note/${d.id}`;
               }
             } else {
               return null;
@@ -348,7 +348,7 @@ export default class GraphNav {
                   window.location = '/';
                 } else {
                   // i have no idea why this needs the preceeding '/'
-                  window.location = `/note/${d.data.id}`;
+                  window.location = `{{ site.baseurl }}/note/${d.data.id}`;
                 }
               } else {
                   return null;
