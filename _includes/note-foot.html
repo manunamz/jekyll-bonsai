@@ -16,7 +16,7 @@
         <ul class="note-foot-nav-list">
           {% for child in page.children %}
             <li class="note-foot-nav-list-item">
-              <a class="wiki-link {% if child.id == '' %}missing-note-txt{% endif %}" href="{{ child.url }}">
+              <a class="wiki-link {% if child.id == '' %}missing-note-txt{% endif %}" href="{{ child.url | relative_url }}">
                 {{ child.title }}
               </a>
             </li>
@@ -28,7 +28,7 @@
         <ul class="note-foot-nav-list">
           {% for blink in page.backlinks %}
             <li class="note-foot-nav-list-item">
-              <a class="wiki-link" href="{{ blink.url }}">{{ blink.title }}</a>
+              <a class="wiki-link" href="{{ blink.url | relative_url }}">{{ blink.title }}</a>
             </li>
             <!-- can't have a missing backlink because backlinks are defined by note content: if there's no note there's no content. -->
           {% endfor %}

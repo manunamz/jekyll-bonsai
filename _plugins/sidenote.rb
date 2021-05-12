@@ -69,9 +69,8 @@ module Jekyll
        #
       all_notes = site.collections['notes'].docs
       # all_pages = site.pages
-      index_page = site.pages.select { |p| p.path == "index.md" }
+      all_docs = all_notes # + all_pages
 
-      all_docs = all_notes + index_page # + all_pages
       link_extension = !!site.config["use_html_extension"] ? '.html' : ''
    
       all_docs.each do |cur_note|
