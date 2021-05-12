@@ -6,7 +6,8 @@
   <body class="home-seed-body">
     <div class="home-seed-wrap">
       <p class="home-seed-left-txt">Click...</p>
-      <a class="wiki-link home-seed" title="💭 🪴" href="{{ '/note/1de1694a-8ad0-40d0-9e97-195807015a88' | relative_url }}">
+      {% assign index_note = site.notes | where: 'title', site.index_note_title %}
+      <a class="wiki-link home-seed" title="💭 🪴" href="{{ index_note.url | relative_url }}">
         [[ 🌰 ]]
       </a>
       <p class="home-seed-right-txt" style="float: right;">...to plant.</p>
