@@ -1,5 +1,6 @@
 ---
 layout: default
+title: Jekyll-Bonsai
 ---
 
 🦊 Welcome to Jekyll-Bonsai.
