@@ -7,4 +7,4 @@ created: 1620695624628
 tags: 🌸
 ---
 
-Found a 🐛? Want to see something new 🪴? [Let me know.](https://github.com/short25h0r7/jekyll-bonsai)
+Found a 🐛? Want to see something new 🪴? [Let me know.](https://github.com/shorty25h0r7/jekyll-bonsai)

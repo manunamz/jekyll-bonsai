@@ -21,7 +21,7 @@ It's about cleaning up this mess we've made and to make something beautiful out 
 
 PS Check out the [github repo](https://github.com/short25h0r7/jekyll-bonsai) to start sifting through code.
 
-PPS This was my first time learning scss, ruby, jekyll, and d3. Code quality may vary.
+PPS This was my first project diving into scss, ruby, jekyll, and d3. Code quality may vary.
 
 
 [>all]: Not _all_ features are implemented yet... 😉
