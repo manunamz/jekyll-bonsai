@@ -18,7 +18,7 @@ graph_type: "tree"
 recent: 10 
 # note-foot: set default status of note-foot (fork)
 ## may be 'open' or 'closed'
-note_foot_status: "closed"
+note_foot_status: "open"
 
 # logo: "/assets/images/logo.png"
 
