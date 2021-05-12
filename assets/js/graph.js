@@ -79,7 +79,7 @@ export default class GraphNav {
   // d3
   drawNetWeb (theme_attrs, funcs) {
     // d3.json has been async'd: https://stackoverflow.com/questions/49768165/code-within-d3-json-callback-is-not-executed 
-    d3.json("/assets/notes_net_web.json")
+    d3.json("{{ site.baseurl }}/assets/notes_net_web.json")
       .then(function(data) {       
           // console.log('d3 is building a tree');
           // console.log(data);      
@@ -226,7 +226,7 @@ export default class GraphNav {
   
   drawTree (theme_attrs) { 
     // d3.json has been async'd: https://stackoverflow.com/questions/49768165/code-within-d3-json-callback-is-not-executed 
-    d3.json("/assets/notes_tree.json")
+    d3.json("{{ site.baseurl }}/assets/notes_tree.json")
       .then(function(data) {
           // console.log('d3 is building a tree');
           // console.log(data);
