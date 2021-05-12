@@ -6,7 +6,7 @@ layout: default
 <div class="tags-nav">
   <nav class="tags-nav-list">
     {% for tag in tags %}
-      <a href="{{ tag.url }}" class="tags-list-item {% if page.url == tag.url %}active{% endif %}">
+      <a href="{{ tag.url | relative_url }}" class="tags-list-item {% if page.url == tag.url %}active{% endif %}">
         {{ tag.emoji }}
       </a>
     {% endfor %}
@@ -23,7 +23,7 @@ layout: default
   </p>
   {% for tag in tags %}
     {% if tag.title != "tags" %}
-      <h2>{{ tag.emoji }} <a href="{{ tag.url }}" class="wiki-link">{{ tag.title }}</a></h2>
+      <h2>{{ tag.emoji }} <a href="{{ tag.url | relative_url }}" class="wiki-link">{{ tag.title }}</a></h2>
       <p>{{ tag.content | markdownify }}</p>
     {% endif %}
   {% endfor %}
@@ -40,7 +40,7 @@ layout: default
   <hr>
   {% for note in notes_with_tag %}
     {% if note.tags contains page.emoji %}
-      <p>{{ page.emoji }} <a href="{{ site.baseurl }}{{ note.url }}" class="wiki-link">{{ note.title }}</a></p>
+      <p>{{ page.emoji }} <a href="{{ note.url | relative_url }}" class="wiki-link">{{ note.title }}</a></p>
     {% endif %}
   {% else %}
     There are currently no {{ page.emoji }}s.
