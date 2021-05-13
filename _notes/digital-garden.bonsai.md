@@ -2,7 +2,7 @@
 id: be26a899-34ce-4d0c-8144-1bc9cdc61091
 title: Bonsai
 desc: ''
-updated: 1620493859775
+updated: 1620915403162
 created: 1620493859775
 tags: 🎋
 ---
@@ -23,7 +23,7 @@ Bonsai, literally "tray planting", is the art of recreating a realistic picture 
 
 The various steps of the process are still under experimentation and being discovered, but you can learn more by reading about about the [[plant types|digital-garden.plants]] that grow in this garden.
 
-And because of the wonders of technology, this bonsai can be displayed for [[people.visitors]]' who experience the creation as a digital garden that has been lovingly tended and which they may traverse at their leisure.
+And because of the wonders of technology, this bonsai can be displayed for [[people.visitors]]. From their perspective, the creation is experienced as a digital garden which they may traverse at their leisure.
 
 [>i]: read as: the internet.
 
