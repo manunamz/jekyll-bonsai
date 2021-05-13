@@ -88,7 +88,7 @@ export default class GraphNav {
           const height = +svgWrapper.getBoundingClientRect().height / 2;
           const svg = d3.select(svgWrapper)
               .attr("viewBox", [-width / 2, -height / 2, width, height]);
-          
+
           const simulation = d3.forceSimulation()
               .nodes(data.nodes)
               .force("link", d3.forceLink()
@@ -102,7 +102,7 @@ export default class GraphNav {
               // see: https://stackoverflow.com/questions/9573178/d3-force-directed-layout-with-bounding-box?answertab=votes#tab-top
               // 'center of gravity'
               .force("forceX", d3.forceX()
-                  .strength(.5)
+                  .strength(.3)
                   .x(.75))
               .force("forceY", d3.forceY()
                   .strength(.1)
@@ -131,7 +131,7 @@ export default class GraphNav {
                   .on("start", dragstarted)
                   .on("drag", dragged)
                   .on("end", dragended)
-                  .touchable(true))
+                  .touchable(true));
           // node's label
           // labels need to be nested in a 'g' object alongside the node circle.
           //  docs: https://bl.ocks.org/mbostock/950642
@@ -175,11 +175,7 @@ export default class GraphNav {
            //
 
           function isCurrentNoteInNetWeb(node) {
-            if (window.location.pathname == "/") {
-              return !isMissingNoteInNetWeb(node) && node.label === "{{ site.index_note_title }}";
-            } else {
-              return !isMissingNoteInNetWeb(node) && window.location.pathname.includes(node.id);
-            }
+            return !isMissingNoteInNetWeb(node) && window.location.pathname.includes(node.id);
           }
           
           function isMissingNoteInNetWeb(node) {
@@ -189,30 +185,28 @@ export default class GraphNav {
           // from: https://stackoverflow.com/questions/63693132/unable-to-get-node-datum-on-mouseover-in-d3-v6
           // d6 now passes events in vanilla javascript fashion
           function goToNoteFromNetWeb (e, d) {
-            console.log(d);
             if (!isMissingNoteInNetWeb(d)) {
-              // i have no idea why this needs the preceeding '/'
               window.location = `{{ site.baseurl }}/note/${d.id}/`;
             } else {
               return null;
             }
           };
-  
+
           function dragstarted(event, d) {
             if (!event.active) simulation.alphaTarget(0.3).restart();
-              d.fx = d.x;
-              d.fy = d.y;
+            d.fx = d.x;
+            d.fy = d.y;
           }
 
           function dragged(event, d) {
-              d.fx = event.x;
-              d.fy = event.y;
+            d.fx = event.x;
+            d.fy = event.y;
           }
 
           function dragended(event, d) {
-              if (!event.active) simulation.alphaTarget(0);
-              d.fx = null;
-              d.fy = null;
+            if (!event.active) simulation.alphaTarget(0);
+            d.fx = null;
+            d.fy = null;
           }
       })
       .catch(function(error) {
@@ -245,18 +239,18 @@ export default class GraphNav {
               // see: https://stackoverflow.com/questions/9573178/d3-force-directed-layout-with-bounding-box?answertab=votes#tab-top
               // 'center of gravity'            
               .force("forceX", d3.forceX()
-                  .strength(.5)
+                  .strength(.3)
                   .x(.9))
               .force("forceY", d3.forceY()
                   .strength(.1)
                   .y(.9));
-    
+
           const link = svg.append("g")
               .attr("class", "links")
               .selectAll("line")
               .data(links)
               .join("line");
-  
+        
           // complete node
           const node = svg.selectAll('.nodes')
               .data(nodes)
@@ -296,10 +290,10 @@ export default class GraphNav {
               .attr("r",  (d) => theme_attrs["radius"])
               .classed("pulse", true)
               .call(d3.drag()
-                  .on("start", dragstarted)
-                  .on("drag", dragged)
-                  .on("end", dragended)
-                  .touchable(true));
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended)
+                .touchable(true));
   
           simulation.on("tick", () => {
               // from: https://mbostock.github.io/d3/talk/20110921/parent-foci.html
@@ -310,7 +304,7 @@ export default class GraphNav {
                 d.target.x += (d.source.x - d.target.x) * kx;
                 d.target.y += (d.source.y + (height * .35) - d.target.y) * ky;
               });
-  
+
               link
                   .attr("x1", d => d.source.x)
                   .attr("y1", d => d.source.y)
@@ -323,13 +317,8 @@ export default class GraphNav {
            //
           // helpers
            //
-  
           function isCurrentNoteInTree(node) {
-            if (window.location.pathname == "/") {
-              return !isMissingNoteInTree(node.data.id) && node.data.label === "{{ site.index_note_title }}";
-            } else {
-              return !isMissingNoteInTree(node.data.id) && window.location.pathname.includes(node.data.id);
-            }
+            return !isMissingNoteInTree(node.data.id) && window.location.pathname.includes(node.data.id);
           }
   
           function isMissingNoteInTree(nodeId) {
@@ -339,30 +328,30 @@ export default class GraphNav {
           // from: https://stackoverflow.com/questions/63693132/unable-to-get-node-datum-on-mouseover-in-d3-v6
           // d6 now passes events in vanilla javascript fashion
           function goToNoteFromTree(e, d) {
-              if (!isMissingNoteInTree(d.data.id)) {
-                // i have no idea why this needs the preceeding '/'
-                window.location = `{{ site.baseurl }}/note/${d.data.id}/`;
-              } else {
-                  return null;
-              }
-          };
-  
+            if (!isMissingNoteInTree(d.data.id)) {
+              window.location = `{{ site.baseurl }}/note/${d.data.id}/`;
+              return true;
+            } else {
+              return false;
+            }
+          };          
+
           function dragstarted(event, d) {
-              if (!event.active) simulation.alphaTarget(0.3).restart();
-              d.fx = d.x;
-              d.fy = d.y;
+            if (!event.active) simulation.alphaTarget(0.3).restart();
+            d.fx = d.x;
+            d.fy = d.y;
           }
   
           function dragged(event, d) {
-              d.fx = event.x;
-              d.fy = event.y;
+            d.fx = event.x;
+            d.fy = event.y;
           }
   
           function dragended(event, d) {
-              if (!event.active) simulation.alphaTarget(0);
-              d.fx = null;
-              d.fy = null;
-          }
+            if (!event.active) simulation.alphaTarget(0);
+            d.fx = null;
+            d.fy = null;
+          }  
       })
       .catch(function(error) {
           console.log(error);
