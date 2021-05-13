@@ -56,6 +56,7 @@ defaults:
       layout: "tag"
 
 plugins:
+  - jekyll-wikilinks
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag
