@@ -1,6 +1,3 @@
----
----
-
 export default class ThemeColors {
   constructor() {
     // this.theme set in initThemeColors();
@@ -46,12 +43,12 @@ export default class ThemeColors {
     }
     // update css file
     const yesThisReallyIsSupposedToBeCSSNotSCSS = '.css'
-    this.cssFile.setAttribute('href', '{{ "assets/css/styles-" | absolute_url }}' + this.theme + yesThisReallyIsSupposedToBeCSSNotSCSS);
+    this.cssFile.setAttribute('href', '/jekyll-bonsai/assets/css/styles-' + this.theme + yesThisReallyIsSupposedToBeCSSNotSCSS);
     // update icons and images
-    this.favicon.setAttribute('href', "{{site.baseurl}}/assets/img/favicon-" + this.theme + ".png");
-    this.wikiLinkNavBonsai.setAttribute('src', "{{site.baseurl}}/assets/img/bonsai-" + this.theme + ".svg");
+    this.favicon.setAttribute('href', "/jekyll-bonsai/assets/img/favicon-" + this.theme + ".png");
+    this.wikiLinkNavBonsai.setAttribute('src', "/jekyll-bonsai/assets/img/bonsai-" + this.theme + ".svg");
     if (this.homeBonsaiLogo) {
-      this.homeBonsaiLogo.setAttribute('src', "{{site.baseurl}}/assets/img/logo-bonsai-" + this.theme + ".svg");
+      this.homeBonsaiLogo.setAttribute('src', "/jekyll-bonsai/assets/img/logo-bonsai-" + this.theme + ".svg");
     }
     window.localStorage.setItem('theme-colors', this.theme);
   }

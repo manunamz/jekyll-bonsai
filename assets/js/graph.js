@@ -1,5 +1,3 @@
----
----
 export default class GraphNav {
 
   constructor() {
@@ -59,7 +57,7 @@ export default class GraphNav {
   initGraphType() {
     this.graphType = localStorage.getItem('graph-type');
     if (this.graphType !== "tree" && this.graphType !== "net-web") {
-      this.graphType = '{{ site.graph_type }}';	
+      this.graphType = 'tree';	
     }
     this.graphTypeCheckBox.checked = (this.graphType === "tree");
     this.updateGraphTypeEmoji();
@@ -79,7 +77,7 @@ export default class GraphNav {
   // d3
   drawNetWeb (theme_attrs, funcs) {
     // d3.json has been async'd: https://stackoverflow.com/questions/49768165/code-within-d3-json-callback-is-not-executed 
-    d3.json("{{ site.baseurl }}/assets/notes_net_web.json")
+    d3.json("/jekyll-bonsai/assets/notes_net_web.json")
       .then(function(data) {       
           // console.log('d3 is building a tree');
           // console.log(data);      
@@ -186,7 +184,7 @@ export default class GraphNav {
           // d6 now passes events in vanilla javascript fashion
           function goToNoteFromNetWeb (e, d) {
             if (!isMissingNoteInNetWeb(d)) {
-              window.location = `{{ site.baseurl }}/note/${d.id}/`;
+              window.location = `/jekyll-bonsai/note/${d.id}/`;
             } else {
               return null;
             }
@@ -216,7 +214,7 @@ export default class GraphNav {
   
   drawTree (theme_attrs) { 
     // d3.json has been async'd: https://stackoverflow.com/questions/49768165/code-within-d3-json-callback-is-not-executed 
-    d3.json("{{ site.baseurl }}/assets/notes_tree.json")
+    d3.json("/jekyll-bonsai/assets/notes_tree.json")
       .then(function(data) {
           // console.log('d3 is building a tree');
           // console.log(data);
@@ -330,7 +328,7 @@ export default class GraphNav {
           // d6 now passes events in vanilla javascript fashion
           function goToNoteFromTree(e, d) {
             if (!isMissingNoteInTree(d.data.id)) {
-              window.location = `{{ site.baseurl }}/note/${d.data.id}/`;
+              window.location = `/jekyll-bonsai/note/${d.data.id}/`;
               return true;
             } else {
               return false;

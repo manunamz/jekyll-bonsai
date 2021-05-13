@@ -1,5 +1,3 @@
----
----
 export default class NoteController {
   constructor() {
     // this.noteFootStatus set in initNoteFootStatus();
@@ -27,14 +25,14 @@ export default class NoteController {
     // foot
     this.noteFootStatus = localStorage.getItem('note-foot-status');
     if (this.noteFootStatus !== "open" && this.noteFootStatus !== "closed") {
-      this.noteFootStatus = '{{ site.note_foot_status }}';	
+      this.noteFootStatus = 'open';	
     }
     this.noteFootCheckbox.checked = (this.noteFootStatus === "closed"); 
     this.toggleNoteFootCollapse();
     // head
     this.noteHeadStatus = localStorage.getItem('note-head-status');
     if (this.noteHeadStatus !== "open" && this.noteHeadStatus !== "closed") {
-      this.noteHeadStatus = '{{ site.note_head_status }}';	
+      this.noteHeadStatus = '';	
     }
     this.noteHeadCheckbox.checked = (this.noteHeadStatus === "closed"); 
     this.toggleNoteHeadCollapse();

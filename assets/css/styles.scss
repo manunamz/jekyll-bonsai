@@ -1,8 +1,0 @@
----
----
-{% if site.theme_colors and site.theme_colors != "nil" %}
-  {% assign theme_colors = site.theme_colors %}
-{% else %}
-  {% assign theme_colors = "dark" %}
-{% endif %}
-{% include styles.scss.liquid theme_colors=theme_colors %}

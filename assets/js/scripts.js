@@ -1,5 +1,3 @@
----
----
 import GraphNav from './graph.js';
 import ThemeColors from './theme-colors.js';
 import NoteController from './note.js';
@@ -26,16 +24,16 @@ function initListeners () {
   // open external links in new window; wiki-links in current window.
   document.querySelectorAll("a:not(.wiki-link):not(.tags-list-item):not(.footnote):not(.reversefootnote)").forEach(setupLinkOpen);
   // init note-preview.html listeners.
-  document.querySelectorAll('{{ include.wrapperQuerySelector }} a:not(.tags-list-item)').forEach(setupListeners);
+  document.querySelectorAll(' a:not(.tags-list-item)').forEach(setupListeners);
 
   // todo: this is hacky, make it a proper button with this styling instead of a checkbox
   document.getElementById('tags-checkbox')
     .addEventListener('click', function(event) {
-      goTo('{{ site.baseurl }}/tag/tags');
+      goTo('/jekyll-bonsai/tag/tags');
     }, false);
   document.getElementById('recent-checkbox')
     .addEventListener('click', function(event) {
-      goTo('{{ site.baseurl }}/recent');
+      goTo('/jekyll-bonsai/recent');
     }, false);
 
   document.getElementById('wiki-link-nav-checkbox')

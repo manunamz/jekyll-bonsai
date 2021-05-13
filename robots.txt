@@ -1,0 +1,1 @@
+Sitemap: /jekyll-bonsai/sitemap.xml
