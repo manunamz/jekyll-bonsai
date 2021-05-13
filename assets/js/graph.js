@@ -225,10 +225,10 @@ export default class GraphNav {
           const height = +svgWrapper.getBoundingClientRect().height / 2;
           const svg = d3.select(svgWrapper)
               .attr("viewBox", [-width / 2, -height / 2, width, height]);
-          
+
           const root = d3.hierarchy(data);
           const links = root.links();
-          // flatten(root);
+          flatten(root);
           const nodes = root.descendants();
   
           const simulation = d3.forceSimulation(nodes)
@@ -263,11 +263,12 @@ export default class GraphNav {
               .attr("r",  (d) => isMissingNoteInTree(d.data.id) ? theme_attrs["missing-radius"] : theme_attrs["radius"])
               .attr("class", (d) => isMissingNoteInTree(d.data.id) ? "missing" : null)
               .on("click", goToNoteFromTree)
-              .call(d3.drag()
-                  .on("start", dragstarted)
-                  .on("drag", dragged)
-                  .on("end", dragended)
-                  .touchable(true))
+              // 🐛 bug: this does not work -- it overtakes clicks (extra lines in "tick" are related).
+              // .call(d3.drag()
+              //     .on("start", dragstarted)
+              //     .on("drag", dragged)
+              //     .on("end", dragended)
+              //     .touchable(true));;
           // node's label
           // labels need to be nested in a 'g' object alongside the node circle.
           //  docs: https://bl.ocks.org/mbostock/950642
@@ -334,7 +335,7 @@ export default class GraphNav {
             } else {
               return false;
             }
-          };          
+          };    
 
           function dragstarted(event, d) {
             if (!event.active) simulation.alphaTarget(0.3).restart();
@@ -351,7 +352,17 @@ export default class GraphNav {
             if (!event.active) simulation.alphaTarget(0);
             d.fx = null;
             d.fy = null;
-          }  
+          }
+                            
+          function flatten(root) {
+            var nodes = [];
+            function recurse(node) {
+              if (node.descendents) node.descendents.forEach(recurse);
+              nodes.push(node);
+            }
+            recurse(root);
+            return nodes;
+          }
       })
       .catch(function(error) {
           console.log(error);
