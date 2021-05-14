@@ -3,20 +3,20 @@ require 'time'
 
 module Jekyll
   module CustomFilters
-    # returns most recently created/updated notes up to the defined 'num'ber of notes.
+    # returns most recently created/updated docs (note or post) up to the defined 'num'ber.
     # adds a 'weather' data attribute to render on the page.
-    def recent(notes, num=10)
-      return if notes.nil?
+    def recent(docs, num=10)
+      return if docs.nil?
       num = self.to_integer(num)
       # sort notes by most recently updated
-      recent_notes = notes.sort_by { |note| note.data['updated'] }.reverse[0..(num - 1)]
+      recent_docs = docs.sort_by { |d| d.data['updated'] }.reverse[0..(num - 1)]
       # assign weather attribute: if 'created' and 'updated' happened on the same day, presume creation status.
-      recent_notes.each do |note|
-        day_created = Time.at(note.data['created']).to_date
-        day_updated = Time.at(note.data['updated']).to_date
-        note.data['weather'] = day_created === day_updated ? "🌤" : "🌧"
+      recent_docs.each do |docs|
+        day_created = Time.at(docs.data['created']).to_date
+        day_updated = Time.at(docs.data['updated']).to_date
+        docs.data['weather'] = day_created === day_updated ? "🌤" : "🌧"
       end
-      return recent_notes
+      return recent_docs
     end
 
     # from: https://github.com/Shopify/liquid/blob/eab13a07d9861a38d993d2749ae25f06ff76426b/lib/liquid/utils.rb#L38
