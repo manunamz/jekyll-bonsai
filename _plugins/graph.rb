@@ -56,14 +56,14 @@ class GraphDataGenerator < Jekyll::Generator
       # add backlinks for net-web
       # add data to graph_nodes and graph_links
       # set backlinks metadata for note
-      cur_note.data['backlinks'] = add_backlinks_json(all_docs, cur_note, graph_nodes, graph_links)
+      cur_note.data['backlinks'] = add_backlinks_json(site.baseurl, link_extension, all_docs, cur_note, graph_nodes, graph_links)
     end
     # print_tree(root)
     # once tree is finished building, attach metadata to each note
     all_docs.each do |cur_note|
       cur_note.data['ancestors'], cur_note.data['children'] = find_note_immediate_relatives(cur_note, root, all_docs)
     end
-    json_formatted_tree = tree_to_json(root)
+    json_formatted_tree = tree_to_json(site.baseurl, link_extension, root)
  
     #
     # graph:generate
@@ -81,41 +81,43 @@ class GraphDataGenerator < Jekyll::Generator
   # Helper functions #
   # !!!!!!!!!!!!!!!! #
 
-  def add_backlinks_json(all_notes, note, graph_nodes, graph_links)
-    # net-web: Identify note backlinks and add them to each note
-    # Jekyll
-    #   nodes 
+  def add_backlinks_json(baseurl, link_extension, all_notes, note, graph_nodes, graph_links)
+    # net-web: Identify note backlinks
     backlinks = []
     all_notes.each do |backlinked_note|
       if backlinked_note.content.include?(note.data['id'])
         backlinks << backlinked_note
       end
-      # identify missing links by .invalid-wiki-link class and nested note-name.
-      missing_node_names = note.content.match(/invalid-wiki-link[^\]]+\[\[([^\]]+)\]\]/i)
-      if !missing_node_names.nil?
-        missing_no_namespace = missing_node_names[1]
+    end
+    # identify missing links in note via .invalid-wiki-link class and nested note-name.
+    missing_node_names = note.content.scan(/invalid-wiki-link[^\]]+\[\[([^\]]+)\]\]/i)
+    if !missing_node_names.nil?
+      missing_node_names.each do |missing_no_name_in_array| 
+        missing_no_namespace = missing_no_name_in_array[0]
         # add missing nodes
         if graph_nodes.none? { |node| node[:id] == missing_no_namespace }
           Jekyll.logger.warn "Net-Web node missing: ", missing_no_namespace
           Jekyll.logger.warn " in: ", note.data['slug']  
           graph_nodes << {
             id: missing_no_namespace,
+            url: '',
             label: missing_no_namespace,
           }
         end
-          # add missing links
-          graph_links << {
-            source: note.data['id'],
-            target: missing_no_namespace,
-          }
+        # add missing links
+        graph_links << {
+          source: note.data['id'],
+          target: missing_no_namespace,
+        }
       end
     end
     # graph
     #   nodes
     graph_nodes << {
       id: note.data['id'],
+      url: "#{baseurl}#{note.url}#{link_extension}",
       label: note.data['title'],
-    } unless note.path.include?('_notes/index.html')
+    }
     #   links
     backlinks.each do |b|
       graph_links << {
@@ -160,23 +162,26 @@ class GraphDataGenerator < Jekyll::Generator
   end
 
   # convert tree (node-class) to json
-  def tree_to_json(node, json_node={})
+  def tree_to_json(baseurl, link_extension, node, json_node={})
     if node.id.empty?
       Jekyll.logger.warn "Tree node missing: ", node.namespace
       label = node.namespace.match('([^.]*$)')[0].gsub('-', ' ')
+      node_url = ''
     else
       label = node.title
+      node_url = "#{baseurl}#{node.note.url}#{link_extension}"
     end
     json_children = []
     node.children.each do |child|
-      new_child = tree_to_json(child)
+      new_child = tree_to_json(baseurl, link_extension, child)
       json_children.append(new_child)
     end
     json_node = {
       "id": node.id,
       "namespace": node.namespace,
       "label": label,
-      "children": json_children
+      "children": json_children,
+      "url": node_url,
     }
     return json_node
   end
