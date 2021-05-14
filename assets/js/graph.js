@@ -179,14 +179,14 @@ export default class GraphNav {
           }
           
           function isMissingNoteInNetWeb(node) {
-            return node.id === node.label;
+            return node.url === '';
           }
   
           // from: https://stackoverflow.com/questions/63693132/unable-to-get-node-datum-on-mouseover-in-d3-v6
           // d6 now passes events in vanilla javascript fashion
           function goToNoteFromNetWeb (e, d) {
             if (!isMissingNoteInNetWeb(d)) {
-              window.location = `{{ site.baseurl }}/note/${d.id}/`;
+              window.location = d.url;
             } else {
               return null;
             }
@@ -268,7 +268,7 @@ export default class GraphNav {
               //     .on("start", dragstarted)
               //     .on("drag", dragged)
               //     .on("end", dragended)
-              //     .touchable(true));;
+              //     .touchable(true));
           // node's label
           // labels need to be nested in a 'g' object alongside the node circle.
           //  docs: https://bl.ocks.org/mbostock/950642
@@ -330,7 +330,7 @@ export default class GraphNav {
           // d6 now passes events in vanilla javascript fashion
           function goToNoteFromTree(e, d) {
             if (!isMissingNoteInTree(d.data.id)) {
-              window.location = `{{ site.baseurl }}/note/${d.data.id}/`;
+              window.location = d.data.url;
               return true;
             } else {
               return false;
