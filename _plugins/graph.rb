@@ -57,6 +57,10 @@ class GraphDataGenerator < Jekyll::Generator
       # add data to graph_nodes and graph_links
       # set backlinks metadata for note
       cur_note.data['backlinks'] = add_backlinks_json(site.baseurl, link_extension, all_docs, cur_note, graph_nodes, graph_links)
+      cur_note.data['backlinkposts'] = get_backlinkposts(site.posts, cur_note)
+      if cur_note.data['title'] == "Jekyll-Bonsai"
+        puts cur_note.data['backlinkposts']
+      end
     end
     # print_tree(root)
     # once tree is finished building, attach metadata to each note
@@ -80,9 +84,20 @@ class GraphDataGenerator < Jekyll::Generator
   # !!!!!!!!!!!!!!!! #
   # Helper functions #
   # !!!!!!!!!!!!!!!! #
+  def get_backlinkposts(all_posts, note)
+    backlinkposts = []
+    all_posts.docs.each do |post|
+      if post.content.include?(note.data['id'])
+        backlinkposts << post
+      end
+    end
+    return backlinkposts
+  end
 
   def add_backlinks_json(baseurl, link_extension, all_notes, note, graph_nodes, graph_links)
-    # net-web: Identify note backlinks
+    # net-web: Identify note backlinks and add them to each note
+    # Jekyll
+    #   nodes 
     backlinks = []
     all_notes.each do |backlinked_note|
       if backlinked_note.content.include?(note.data['id'])
