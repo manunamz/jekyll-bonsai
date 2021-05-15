@@ -14,28 +14,23 @@ permalink: /recent/
 <p style="line-height: 1;">🌧 Updated</p>
 <p style="line-height: 1; color: grey;"><em>🌩 Deleted (Currently not active)</em></p>
 
-<hr>
 
-<h3 style="padding-bottom: 12px;">Posts</h3>
+<h2 style="text-align: center; padding-bottom: 24px; padding-top: 24px;">Posts</h2>
 {% assign recent_posts = site.posts | recent: site.recent %}
 {% for post in recent_posts %}
   <p style="display: flex; justify-content: space-between;">
     <!-- note.weather is a 'recent'-specific data attribute -->
-    <a class="wiki-link" href="{{ post.permalink }}">{{ post.weather }} {{ post.title }}</a>
+    <a class="wiki-link" href="{{ post.url | relative_url }}">{{ post.weather }} {{ post.title }}</a>
     <span style="color: grey; float: right;">{{ post.updated | date: "%Y-%m-%d" }}</span>
   </p>
 {% endfor %}
 
-<hr>
-
-<h3 style="padding-bottom: 12px;">Notes</h3>
+<h2 style="text-align: center; padding-bottom: 12px;">Notes</h2>
 {% assign recent_notes = site.notes | recent: site.recent %}
 {% for note in recent_notes %}
   <p style="display: flex; justify-content: space-between;">
     <!-- note.weather is a 'recent'-specific data attribute -->
-    <a class="wiki-link" href="{{ note.permalink }}">{{ note.weather }} {{ note.title }}</a>
+    <a class="wiki-link" href="{{ note.url | relative_url }}">{{ note.weather }} {{ note.title }}</a>
     <span style="color: grey; float: right;">{{ note.updated | date: "%Y-%m-%d" }}</span>
   </p>
 {% endfor %}
-
-<hr>
