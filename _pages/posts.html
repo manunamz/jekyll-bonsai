@@ -9,7 +9,7 @@ permalink: /posts/
   <ul class="posts-list">
     {% for post in site.posts %}
       <li class="posts-list-item">
-        <a class="wiki-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <a class="wiki-link" href="{{ post.url | relative_url }}">📄 {{ post.title }}</a>
         <span class="date-updated">{{ post.updated | date: "%Y-%m-%d" }}</span>
       </li>
     {% endfor %}
