@@ -16,7 +16,7 @@ index_note_title: "Jekyll-Bonsai"
 graph_type: "tree"
 # recent (weather): set number of notes to display on recent (weather) page.
 ## may be an integer (defaults to 10)
-recent: 10 
+recent_num: 10 
 # local note-nav component defaults
 ## may be 'open' or 'closed'
 note_head_status: "open"

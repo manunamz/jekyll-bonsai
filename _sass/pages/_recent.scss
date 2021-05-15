@@ -1,0 +1,42 @@
+//
+// scss for recent page
+//
+
+.date-updated {
+  float: right;
+  color: grey;
+}
+
+.recent-list {
+  padding: $sp-4;
+  
+  .recent-list-item {
+    display: flex; 
+    justify-content: space-between;
+    list-style-type: none !important;
+    
+    &::before {
+      content: "" !important;
+    }
+  }
+}
+
+.leader {
+  margin-bottom: $sp-10;
+}
+
+.infobox {
+  @include fs-2;
+  float: right;
+  margin-left: $sp-2;
+  margin-right: $sp-2;
+  padding-left: $sp-3;
+  padding-right: $sp-3;
+  border: 1px solid $separator-color;
+  border-radius: 15px;
+  // box-shadow: 0 1px 2px rgba($table-shadow-color, 0.12), 0 3px 10px rgba($table-shadow-color, 0.08);
+
+  .title {
+    color: $infobox-color;
+  }
+}

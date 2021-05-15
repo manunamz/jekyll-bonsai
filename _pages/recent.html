@@ -2,35 +2,46 @@
 layout: default
 permalink: /recent/
 ---
-<h1>🌦 Recent Weather</h1>
-<p>
-  Instead of a 'forecast' looking into the future, these are 'backcasts' peering into recent history. 
-  It's featured posts, but version controlled. It's a feed, without infinite scroll. It's releases, with a chance of rain.
-</p>
-<p>
-  Weather statuses are as follows:
-</p>
-<p style="line-height: 1;">🌤 Created</p>
-<p style="line-height: 1;">🌧 Updated</p>
-<p style="line-height: 1; color: grey;"><em>🌩 Deleted (Currently not active)</em></p>
+<div id="recent">
 
+  <div>
+    <h1>🌦 Recent Weather</h1>
+    <div class="leader">
+      <div class="infobox">
+        <p class="title">Weather Statuses</p>
+        <p>🌤 Created</p>
+        <p>🌧 Updated</p>
+        <p style="color: grey;"><em>🌩 Deleted (Currently not active)</em></p>
+      </div>
+      <p>
+        Instead of a 'forecast' looking into the future, these are 'backcasts' peering into recent history. 
+        It's featured posts, but version controlled. It's a feed, without infinite scroll. It's releases, with a chance of rain.
+      </p>
+    </div>
+  </div>
 
-<h2 style="text-align: center; padding-bottom: 24px; padding-top: 24px;">Posts</h2>
-{% assign recent_posts = site.posts | recent: site.recent %}
-{% for post in recent_posts %}
-  <p style="display: flex; justify-content: space-between;">
-    <!-- note.weather is a 'recent'-specific data attribute -->
-    <a class="wiki-link" href="{{ post.url | relative_url }}">{{ post.weather }} {{ post.title }}</a>
-    <span style="color: grey; float: right;">{{ post.updated | date: "%Y-%m-%d" }}</span>
-  </p>
-{% endfor %}
+  <div>
+    <h2 style="text-align: center; padding-bottom: 24px; padding-top: 24px;">Posts</h2>
+    {% assign recent_posts = site.posts | recent: site.recent_num %}
+    <ul class="recent-list">
+      {% for post in recent_posts %}
+        <li class="recent-list-item">
+          <a class="wiki-link" href="{{ post.url | relative_url }}">{{ post | weather }} {{ post.title }}</a>
+          <span class="date-updated">{{ post.updated | date: "%Y-%m-%d" }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+    
+    <h2 style="text-align: center; padding-bottom: 12px;">Notes</h2>
+    {% assign recent_notes = site.notes | recent: site.recent_num %}
+    <ul class="recent-list">
+      {% for note in recent_notes %}
+        <li class="recent-list-item">
+            <a class="wiki-link" href="{{ note.url | relative_url }}">{{ note | weather }} {{ note.title }}</a>
+            <span class="date-updated">{{ note.updated | date: "%Y-%m-%d" }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
 
-<h2 style="text-align: center; padding-bottom: 12px;">Notes</h2>
-{% assign recent_notes = site.notes | recent: site.recent %}
-{% for note in recent_notes %}
-  <p style="display: flex; justify-content: space-between;">
-    <!-- note.weather is a 'recent'-specific data attribute -->
-    <a class="wiki-link" href="{{ note.url | relative_url }}">{{ note.weather }} {{ note.title }}</a>
-    <span style="color: grey; float: right;">{{ note.updated | date: "%Y-%m-%d" }}</span>
-  </p>
-{% endfor %}
+</div>

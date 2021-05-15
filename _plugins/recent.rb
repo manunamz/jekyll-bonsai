@@ -14,9 +14,14 @@ module Jekyll
       recent_docs.each do |docs|
         day_created = Time.at(docs.data['created']).to_date
         day_updated = Time.at(docs.data['updated']).to_date
-        docs.data['weather'] = day_created === day_updated ? "🌤" : "🌧"
       end
       return recent_docs
+    end
+
+    def weather(doc)
+      day_created = Time.at(doc['created']).to_date
+      day_updated = Time.at(doc['updated']).to_date
+      return day_created === day_updated ? "🌤" : "🌧"
     end
 
     # from: https://github.com/Shopify/liquid/blob/eab13a07d9861a38d993d2749ae25f06ff76426b/lib/liquid/utils.rb#L38
