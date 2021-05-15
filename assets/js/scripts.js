@@ -33,6 +33,10 @@ function initListeners () {
     .addEventListener('click', function(event) {
       goTo('{{ site.baseurl }}/tag/tags');
     }, false);
+  document.getElementById('posts-checkbox')
+    .addEventListener('click', function(event) {
+      goTo('{{ site.baseurl }}/posts');
+    }, false);
   document.getElementById('recent-checkbox')
     .addEventListener('click', function(event) {
       goTo('{{ site.baseurl }}/recent');

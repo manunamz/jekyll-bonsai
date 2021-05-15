@@ -1,0 +1,18 @@
+---
+layout: default
+permalink: /posts/
+---
+<div id="posts">
+
+  <h1>📓 Field bLogs</h1>
+
+  <ul class="posts-list">
+    {% for post in site.posts %}
+      <li class="posts-list-item">
+        <a class="wiki-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        <span class="date-updated">{{ post.updated | date: "%Y-%m-%d" }}</span>
+      </li>
+    {% endfor %}
+  </ul>
+
+</div>
