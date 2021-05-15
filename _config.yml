@@ -8,7 +8,8 @@ baseurl: '/jekyll-bonsai'
 
 # jekyll-bonsai configs
 
-# dendron forces the root note-title to be 'root.md' -- this is the replacement name for 'root'.
+# dendron forces the root note-title to be 'root.md' -- this is the replacement title for 'root'
+# (make sure you change the title in root.md file as well)
 index_note_title: "Jekyll-Bonsai"
 # graph: default graph type in side bar.
 ## may be 'tree' or 'net-web'
@@ -16,9 +17,12 @@ graph_type: "tree"
 # recent (weather): set number of notes to display on recent (weather) page.
 ## may be an integer (defaults to 10)
 recent: 10 
-# note-foot: set default status of note-foot (fork)
+# local note-nav component defaults
 ## may be 'open' or 'closed'
-note_foot_status: "open"
+note_head_status: "open"
+note_foot_links_status: "open"
+note_foot_posts_status: "open"
+
 
 # logo: "/assets/images/logo.png"
 
