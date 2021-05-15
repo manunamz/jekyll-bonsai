@@ -50,7 +50,7 @@
         <ul class="note-foot-nav-list">
           {% for post in page.backlinkposts %}
             <li class="note-foot-nav-list-item">
-              <a class="wiki-link" href="{{ post.url }}">{{ post.title }}</a>
+              <a class="wiki-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
             </li>
           {% endfor %}
         </ul>
