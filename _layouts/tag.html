@@ -37,12 +37,18 @@ layout: default
     Descriptions only reflect the spirit of this garden. 
     Click <a href="{{ page.emojipedia }}">here</a> for the official emoji description.
   </p>
-  <hr>
-  {% for note in notes_with_tag %}
-    {% if note.tags contains page.emoji %}
-      <p>{{ page.emoji }} <a href="{{ note.url | relative_url }}" class="wiki-link">{{ note.title }}</a></p>
-    {% endif %}
+
+  {% if notes_with_tag.size == 0 %}
+    <div class="none-for-tag">
+      There are currently no {{ page.emoji }}s.
+    </div>
   {% else %}
-    There are currently no {{ page.emoji }}s.
-  {% endfor %}
+    <ul class="tag-list">
+      {% for note in notes_with_tag %}
+        <li class="tag-list-item">
+          {{ page.emoji }} <a href="{{ note.url | relative_url }}" class="wiki-link">{{ note.title }}</a>
+        </li>
+      {% endfor %}  
+    </ul>
+    {% endif %}
 {% endif %}
