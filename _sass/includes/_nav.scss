@@ -125,32 +125,41 @@
 
 // note-foot nav
 
-.note-foot-nav {
-  border-radius: 16px;
+.note-foot-wrapper {
+  margin-top: $sp-6;
+  margin-bottom: $sp-6;
   display: flex;
-  flex-direction: column;
-  padding: $sp-3;
-  // blur box edges
-  // from: https://stackoverflow.com/questions/15775365/how-to-blur-div-edges
-  background-color: $note-foot-background-color;
-  box-shadow: 0 0 5px 10px $note-foot-background-color;
 
-  .note-foot-nav-title {
-    @include fs-4;
-    color: $note-foot-nav-color;
-    padding: $sp-2;
-  }
-
-  .note-foot-nav-subtitle {
-    @include fs-2;
-    color: $note-foot-nav-color;
-  }
-
-  .note-foot-nav-note-foots {
+  .note-foot-nav {
     display: flex;
-    justify-content: space-around;
-    padding-left: $sp-2;
-    padding-right: $sp-2;
+    flex-direction: column;
+    width: 80%;
+    padding: $sp-3;
+    border-radius: 16px;
+    background-color: $note-foot-background-color;
+    // blur box edges
+    // from: https://stackoverflow.com/questions/15775365/how-to-blur-div-edges
+    box-shadow: 0 0 5px 10px $note-foot-background-color;
+
+    .note-foot-nav-sections {
+      display: flex;
+    }
+    
+    .note-foot-nav-section {
+      padding-left: $sp-2;
+      padding-right: $sp-2;
+    }
+
+    .note-foot-nav-title {
+      @include fs-4;
+      color: $note-foot-nav-color;
+      padding: $sp-2;
+    }
+  
+    .note-foot-nav-subtitle {
+      @include fs-2;
+      color: $note-foot-nav-color;
+    }
 
     .note-foot-nav-list {
       display: block; // columns require block
@@ -172,5 +181,5 @@
         }
       }
     }
-  }
+  }  
 }

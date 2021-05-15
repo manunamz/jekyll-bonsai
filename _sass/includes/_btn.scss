@@ -36,9 +36,9 @@
   @include fs-6;
   cursor: pointer;
   user-select: none;
-  filter: drop-shadow(0 0 0.7mm $drop-shadow-brown);
-  float: left;
   padding-right: $sp-3;
+  display: block;
+  filter: drop-shadow(0 0 0.7mm $drop-shadow-brown);
 
   /* Hide the browser's default checkbox */
   input {

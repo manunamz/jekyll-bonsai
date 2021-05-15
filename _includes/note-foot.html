@@ -1,39 +1,51 @@
-<!-- FORKs on the trail -->
 <footer>
-  <div>
+  <!-- Forks on the trail -->
+  <div class="note-foot-wrapper">
     <label class="note-foot-selector">
-      <input id="note-foot-checkbox" type="checkbox">
+      <input id="note-foot-links-checkbox" type="checkbox">
       <span id="note-foot-emoji-span" title="Toggle Forks">🚏</span>
     </label>
+    <nav id="note-foot-links-nav" class="note-foot-nav" role="navigation" aria-label="">
+      <span class="note-foot-nav-title">
+        Forks On The Trail
+      </span>
+      <div class="note-foot-nav-sections">
+        <div class="note-foot-nav-section">
+          <h4 class="note-foot-nav-subtitle">Children</h4>
+          <ul class="note-foot-nav-list">
+            {% for child in page.children %}
+              <li class="note-foot-nav-list-item">
+                <a class="wiki-link {% if child.id == '' %}missing-note-txt{% endif %}" href="{{ child.url | relative_url }}">
+                  {{ child.title }}
+                </a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="note-foot-nav-section">
+          <h4 class="note-foot-nav-subtitle">Backlinks</h4>
+          <ul class="note-foot-nav-list">
+            {% for blink in page.backlinks %}
+              <li class="note-foot-nav-list-item">
+                <a class="wiki-link" href="{{ blink.url | relative_url }}">{{ blink.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </nav>
   </div>
-  <nav id="note-foot-nav" class="note-foot-nav" role="navigation" aria-label="">
-    <span class="note-foot-nav-title">
-      Forks On The Trail
-    </span>
-    <div class="note-foot-nav-note-foots">
-      <div>
-        <h4 class="note-foot-nav-subtitle">Children</h4>
-        <ul class="note-foot-nav-list">
-          {% for child in page.children %}
-            <li class="note-foot-nav-list-item">
-              <a class="wiki-link {% if child.id == '' %}missing-note-txt{% endif %}" href="{{ child.url | relative_url }}">
-                {{ child.title }}
-              </a>
-            </li>
-          {% endfor %}
-        </ul>
-      </div>
-      <div>
-        <h4 class="note-foot-nav-subtitle">Backlinks</h4>
-        <ul class="note-foot-nav-list">
-          {% for blink in page.backlinks %}
-            <li class="note-foot-nav-list-item">
-              <a class="wiki-link" href="{{ blink.url | relative_url }}">{{ blink.title }}</a>
-            </li>
-          {% endfor %}
-        </ul>
-      </div>
-      <div>
+  <!-- Field bLogs -->
+  <div class="note-foot-wrapper">
+    <label class="note-foot-selector">
+      <input id="note-foot-posts-checkbox" type="checkbox">
+      <span id="note-foot-emoji-span" title="Toggle Field bLogs">📓</span>
+    </label>
+    <nav id="note-foot-posts-nav" class="note-foot-nav" role="navigation" aria-label="">
+      <span class="note-foot-nav-title">
+        Field bLogs
+      </span>
+      <div class="note-foot-nav-section">
         <h4 class="note-foot-nav-subtitle">Posts</h4>
         <ul class="note-foot-nav-list">
           {% for post in page.backlinkposts %}
@@ -43,6 +55,6 @@
           {% endfor %}
         </ul>
       </div>
-    </div>
-  </nav>
+    </nav>
+  </div>
 </footer>
