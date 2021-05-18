@@ -38,7 +38,18 @@
   user-select: none;
   padding-right: $sp-3;
   display: block;
-  filter: drop-shadow(0 0 0.7mm $drop-shadow-brown);
+
+  &.links {
+    filter: drop-shadow(0 0 0.7mm $drop-shadow-brown);
+  }
+
+  &.field-blogs {
+    filter: drop-shadow(0 0 0.7mm $drop-shadow-purple);
+  }
+
+  &.webmentions {
+    filter: drop-shadow(0 0 0.7mm $drop-shadow-blue);
+  }
 
   /* Hide the browser's default checkbox */
   input {

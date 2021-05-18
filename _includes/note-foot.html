@@ -1,7 +1,29 @@
 <footer>
+  <!-- Field bLogs -->
+  <div class="note-foot-wrapper">
+    <label class="note-foot-selector field-blogs">
+      <input id="note-foot-posts-checkbox" type="checkbox">
+      <span id="note-foot-emoji-span" title="Toggle Field bLogs">📓</span>
+    </label>
+    <nav id="note-foot-posts-nav" class="note-foot-nav" role="navigation" aria-label="">
+      <span class="note-foot-nav-title">
+        Field bLogs
+      </span>
+      <div class="note-foot-nav-section">
+        <h4 class="note-foot-nav-subtitle">Posts</h4>
+        <ul class="note-foot-nav-list">
+          {% for post in page.backlinkposts %}
+            <li class="note-foot-nav-list-item">
+              <a class="wiki-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </nav>
+  </div>
   <!-- Forks on the trail -->
   <div class="note-foot-wrapper">
-    <label class="note-foot-selector">
+    <label class="note-foot-selector links">
       <input id="note-foot-links-checkbox" type="checkbox">
       <span id="note-foot-emoji-span" title="Toggle Forks">🚏</span>
     </label>
@@ -35,31 +57,9 @@
       </div>
     </nav>
   </div>
-  <!-- Field bLogs -->
-  <div class="note-foot-wrapper">
-    <label class="note-foot-selector">
-      <input id="note-foot-posts-checkbox" type="checkbox">
-      <span id="note-foot-emoji-span" title="Toggle Field bLogs">📓</span>
-    </label>
-    <nav id="note-foot-posts-nav" class="note-foot-nav" role="navigation" aria-label="">
-      <span class="note-foot-nav-title">
-        Field bLogs
-      </span>
-      <div class="note-foot-nav-section">
-        <h4 class="note-foot-nav-subtitle">Posts</h4>
-        <ul class="note-foot-nav-list">
-          {% for post in page.backlinkposts %}
-            <li class="note-foot-nav-list-item">
-              <a class="wiki-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-            </li>
-          {% endfor %}
-        </ul>
-      </div>
-    </nav>
-  </div>
   <!-- webmentions -->
   <div class="note-foot-wrapper">
-    <label class="note-foot-selector">
+    <label class="note-foot-selector webmentions">
       <input id="note-foot-webmentions-checkbox" type="checkbox">
       <span id="note-foot-webmentions-emoji-span">🌊</span>
     </label>
