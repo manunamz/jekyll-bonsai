@@ -1,10 +1,15 @@
 ---
-layout: default
-title: Home
 ---
-
-{% for note in site.notes %}
-    {% if note.title == "Root" %}
-        {{ note.content }}
-    {% endif %}
-{% endfor %}
+<!doctype html>
+<html>
+  {% include head.html %}
+  <body class="home-seed-body">
+    <div class="home-seed-wrap">
+      <p class="home-seed-left-txt">Click...</p>
+      <a class="wiki-link home-seed" title="💭 🪴" href="{{ '/note/1de1694a-8ad0-40d0-9e97-195807015a88' | relative_url }}">
+        [[ 🌰 ]]
+      </a>
+      <p class="home-seed-right-txt" style="float: right;">...to grow.</p>
+    </div>
+  </body>
+</html>

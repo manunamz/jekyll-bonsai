@@ -1,0 +1,21 @@
+<!-- the TRAIL from root to leaf -->
+<header>
+  <nav class="note-head-nav" role="navigation" aria-label="breadcrumb">
+    <label class="note-head-selector">
+      <input id="note-head-checkbox" type="checkbox">
+      <span id="note-head-emoji-span" title="Toggle Trail">🛤</span>
+    </label>
+    <ol class="note-head-breadcrumbs">
+      {% for ancestor in page.ancestors %}
+        <li class="note-head-breadcrumb">
+          <a class="wiki-link {% if ancestor.id == '' %}missing-note-txt{% endif %} " href="{{ ancestor.url | relative_url }}">
+            {{ ancestor.title }}
+          </a>
+        </li>
+      {% endfor %}
+      <li class="note-head-breadcrumb">
+        <span>{{ page.title }}</span>
+      </li>
+    </ol>
+  </nav>
+</header>

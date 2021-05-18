@@ -1,0 +1,54 @@
+---
+layout: default
+---
+{% assign tags = site.note_tags | sort: "order"  %}
+
+<div class="tags-nav">
+  <nav class="tags-nav-list">
+    {% for tag in tags %}
+      <a href="{{ tag.url | relative_url }}" class="tags-list-item {% if page.url == tag.url %}active{% endif %}">
+        {{ tag.emoji }}
+      </a>
+    {% endfor %}
+  </nav>
+</div>
+
+<!-- all tags -->
+{% if page.title == "tags" %}
+  <h1>🔖 Plant Tags In This Garden</h1>
+  {{ content }}
+  <p class="small-descr">
+    Descriptions only reflect the spirit of this garden. 
+    Click <a href="{{ page.emojipedia }}">here</a> for the official emoji description.
+  </p>
+  {% for tag in tags %}
+    {% if tag.title != "tags" %}
+      <h2>{{ tag.emoji }} <a href="{{ tag.url | relative_url }}" class="wiki-link">{{ tag.title }}</a></h2>
+      <p>{{ tag.content | markdownify }}</p>
+    {% endif %}
+  {% endfor %}
+<!-- individual tags -->
+{% else %}
+  <!-- page == tag (from tag-nav) -->
+  {% assign notes_with_tag = site.notes | where: 'tags', page.emoji %}
+  <h1>{{ page.emoji }} {{ page.title }}</h1>
+  {{ content }}
+  <p class="small-descr">
+    Descriptions only reflect the spirit of this garden. 
+    Click <a href="{{ page.emojipedia }}">here</a> for the official emoji description.
+  </p>
+
+  {% if notes_with_tag.size == 0 %}
+    <div class="none-for-tag">
+      There are currently no {{ page.emoji }}s.
+    </div>
+  {% else %}
+    <ul class="tag-list">
+      {% for note in notes_with_tag %}
+        <li class="tag-list-item">
+          {{ page.emoji }} <a href="{{ note.url | relative_url }}" class="wiki-link">{{ note.title }}</a>
+        </li>
+      {% endfor %}  
+    </ul>
+    {% endif %}
+{% endif %}

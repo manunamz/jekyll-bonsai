@@ -1,33 +1,31 @@
 title: jekyll-bonsai
 description: a jekyll theme for digital gardeners.
-baseurl: ''
+baseurl: '/jekyll-bonsai'
 # url: 'localhost:4000'
 
+# jekyll-wikilinks config
+# wikilinks_collection: "notes"
 
-# ((todo: theme_colors is currently not in use))
-# color: default theme colors.
-## may be 'dark' or 'light'
-# theme_colors: "dark"
+# jekyll-bonsai configs
 
+# dendron forces the root note-title to be 'root.md' -- this is the replacement title for 'root'
+# (make sure you change the title in root.md file as well)
+index_note_title: "Jekyll-Bonsai"
 # graph: default graph type in side bar.
 ## may be 'tree' or 'net-web'
 graph_type: "tree"
-
-# weather: set number of notes to display on weather page.
+# recent (weather): set number of notes to display on recent (weather) page.
 ## may be an integer (defaults to 10)
-recent: 10 
-
-# fork: set default status of fork footer
+recent_num: 10 
+# local note-nav component defaults
 ## may be 'open' or 'closed'
-fork_status: "closed"
-# stream: set default status of stream footer
-## may be 'open' or 'closed'
-stream_status: "closed"
+note_head_status: "open"
+note_foot_links_status: "open"
+note_foot_posts_status: "open"
+note_foot_webmentions_status: "open"
 
 
 # logo: "/assets/images/logo.png"
-# exclude: [ "node_modules/", "*.gemspec", "*.gem", "Gemfile", "Gemfile.lock", "package.json", "package-lock.json",  "script/", "LICENSE.txt", "lib/", "bin/", "README.md", "Rakefile", "*/dendron.template.release.md"
-# ]
 
 permalink: pretty
 # relative_permalinks: false
@@ -43,29 +41,27 @@ kramdown:
   math_engine: mathjax
 
 collections:
-  pages:
-    output: true
-    permalink: /:path
-  plants:
-    output: true
-    permalink: /plant/:title
   notes: 
     output: true
     # permalinks are manually generated -- see plugins.
+  note_tags:
+    output: true
+    permalink: /tag/:title
 
 defaults:
   - scope:
-      # path: ""
-      path: "_plants/**/*.md"
-      type: "plants"
-    values:
-      layout: "plant"
-  - scope:
       path: "_notes/**/*.md"
+      type: "notes"
     values:
       layout: "note"
+  - scope:
+      path: "_note_tags/**/*.md"
+      type: "note_tags"
+    values:
+      layout: "tag"
 
 plugins:
+  - jekyll-wikilinks
   - jekyll-feed
   - jekyll-sitemap
   - jekyll-seo-tag

@@ -1,0 +1,22 @@
+// 
+// scss for posts page
+// 
+
+.date-updated {
+  float: right;
+  color: grey;
+}
+
+.posts-list {
+  padding: $sp-4;
+
+  .posts-list-item {
+    display: flex; 
+    justify-content: space-between;
+    list-style-type: none !important;
+    
+    &::before {
+      content: "" !important;
+    }
+  }
+}

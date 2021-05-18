@@ -8,17 +8,7 @@
 //
 // Modules
 //
-@import './graph';
-@import "./base";
-@import "./layout";
-@import "./content";
-@import "./navigation";
-@import "./typography";
-@import "./labels";
-@import "./buttons";
-@import "./search";
-@import "./tables";
-@import "./code";
-@import "./tooltip";
-@import "./utilities/utilities";
-@import "./print";
+@import "./base/base";
+@import "./pages/pages";
+@import "./markdown/markdown";
+@import "./includes/includes";
