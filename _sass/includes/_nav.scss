@@ -152,13 +152,13 @@
 
     .note-foot-nav-title {
       @include fs-4;
-      color: $note-foot-nav-color;
       padding: $sp-2;
+      color: $note-foot-text-color;
     }
   
     .note-foot-nav-subtitle {
       @include fs-2;
-      color: $note-foot-nav-color;
+      color: $note-foot-text-color;
     }
 
     .note-foot-nav-list {
