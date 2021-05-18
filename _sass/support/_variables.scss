@@ -29,6 +29,7 @@ $blue-200: #264caf !default;
 $blue-300: #183385 !default;
 
 $green-01: #E4f3EA !default;
+$green-01-05: #D5ECDE !default;
 $green-02: #C7E6D3 !default;
 $green-05: #31AF31 !default;
 $green-000: #41d693 !default;
@@ -50,6 +51,7 @@ $brown-00: #E7D6C5 !default;
 $brown-01: #CFAD8C !default;
 $brown-02: #8C6239 !default;
 
+$drop-shadow-purple: rgba(114, 83, 237, 0.853) !default; 
 $drop-shadow-blue: rgba(31, 141, 192, 0.853) !default;
 $drop-shadow-brown: rgba(146, 102, 7, 0.853) !default;
 $drop-shadow-green: rgba(6, 240, 103, 0.753) !default;
@@ -94,7 +96,9 @@ $spacing-unit: 1rem; // 1rem == 16px
 
 $spacers: (
   sp-0: 0,
-  sp-1: $spacing-unit * 0.25,
+  sp-0-75: $spacing-unit * 0.15,
+  sp-1-: $spacing-unit * 0.25,
+  sp-1-75: $spacing-unit * 0.4,
   sp-2: $spacing-unit * 0.5,
   sp-3: $spacing-unit * 0.75,
   sp-4: $spacing-unit,
@@ -106,7 +110,9 @@ $spacers: (
   sp-10: $spacing-unit * 4,
 ) !default;
 
+$sp-0-75: map-get($spacers, sp-0-75) !default; // 0.15 rem == 2.4px
 $sp-1: map-get($spacers, sp-1) !default; // 0.25 rem == 4px
+$sp-1-75: map-get($spacers, sp-1-75) !default; // 0.25 rem == 4px
 $sp-2: map-get($spacers, sp-2) !default; // 0.5  rem == 8px
 $sp-3: map-get($spacers, sp-3) !default; // 0.75 rem == 12px
 $sp-4: map-get($spacers, sp-4) !default; // 1    rem == 16px

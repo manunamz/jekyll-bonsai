@@ -3,35 +3,15 @@ layout: table-wrappers
 ---
 <!doctype html>
 <html>
-  <head>
-    
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-
-    <title>{{ page.title }}</title>
-    
-    <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
-
-    {% webmentions_head %}
-    {% feed_meta %}
-    {% seo %}
-    
-    <script src="https://d3js.org/d3.v6.min.js"></script>
-    <!-- modules: https://stackoverflow.com/questions/58211880/uncaught-syntaxerror-cannot-use-import-statement-outside-a-module-when-import -->
-    <script type="module" src="{{ '/assets/js/scripts.js' | relative_url }}"></script>
-
-  </head>
+  {% include head.html %}
   <body>
 
     <div class="side-bar">
-      <nav role="navigation" aria-label="main" id="garden-nav" class="garden-nav">
-        {% include garden-nav.html %}
-      </nav>
+      {% include site-nav.html %}
     </div>
     
     <div class="main" id="top">
       <div id="main-content-wrap" class="main-content-wrap">
-        <!-- {% include breadcrumb.html %} -->
         <div id="main-content" class="main-content" role="main">
           {{ content }}
         </div>
@@ -40,6 +20,7 @@ layout: table-wrappers
 
     <label class="wiki-link-nav-selector">
       <input id="wiki-link-nav-checkbox" type="checkbox">
+      <img id="wiki-link-nav-bonsai" height="25" width="50" hidden></img>
       <span id="wiki-link-nav-span">[[ ]]</span>
     </label>
 

@@ -2,20 +2,24 @@
 layout: default
 ---
 
-<header>
-  {% include breadcrumb.html %}
-</header>
+<div id="note">
+  
+  {% include note-head.html %}
 
-<h1>{{ page.title }}</h1>
-<div style="padding-bottom: 5px;">
-  <span>{{ page.tags }}</span>
-  <span class="small-descr">Last Updated: {{ page.updated | date: "%Y-%m-%d" }}; </span>
-  <span class="small-descr">Created: {{ page.created | date: "%Y-%m-%d" }}</span>
+  <div class="note-body">
+    <h1>{{ page.title }}</h1>
+    <div style="padding-bottom: 12px;">
+      <span>{{ page.tags }}</span>
+      <span class="small-descr">Last Updated: {{ page.updated | date: "%Y-%m-%d" }}</span>
+    </div>
+
+    {% if page.title == site.index_note_title %}
+      <img id="home-bonsai" style="float: right; padding: 12px;" height="35%" width="35%">
+    {% endif %}
+    
+    {{ content }}
+  </div>
+
+  {% include note-foot.html %}
+
 </div>
-
-{{ content }}
-
-<footer>
-  {% include fork.html %}
-  {% include stream.html %}
-</footer>

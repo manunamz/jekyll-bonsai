@@ -1,102 +1,51 @@
 ---
 ---
-import drawTree from './tree.js';
-import drawNetWeb from './net-web.js';
+import GraphNav from './graph.js';
+import ThemeColors from './theme-colors.js';
+import NoteController from './note.js';
 
  //
 // go
  //
 // from: https://stackoverflow.com/questions/9899372/pure-javascript-equivalent-of-jquerys-ready-how-to-call-a-function-when-t
 (function() {
-    // your page initialization code here
-    // the DOM will be available here
-    initListeners();
-    initDefaults();
-    // go
-    updateColors();
-    updateGraphTypeEmoji();
-    drawD3Nav();
-    if (document.getElementById('fork-checkbox')) {
-      toggleForkCollapse();
-    }
-    if (document.getElementById('stream-checkbox')) {
-      toggleStreamCollapse();
-    }
+  // your page initialization code here
+  // the DOM will be available here
+  initListeners();
+  new ThemeColors();
+  new GraphNav();
+  if (document.getElementById('note')) {
+    new NoteController();
+  }
  })();
 
  //
 // init
  //
-function initDefaults () {
-  // theme-colors
-  var theme = localStorage.getItem("theme-colors");
-  if (theme !== "dark" && theme !== "light") {
-    theme = getComputedStyle(document.documentElement).getPropertyValue('content');	
-  }
-  document.documentElement.setAttribute('data-theme', theme);
-  document.getElementById('theme-colors-checkbox').checked = (theme === "dark");
-  // graph-type
-  var graphType = localStorage.getItem('graph-type');
-  if (graphType !== "tree" && graphType !== "net-web") {
-    graphType = '{{ site.graph_type }}';	
-  }
-  document.getElementById('graph-type-checkbox').checked = (graphType === "tree");
-  // fork-status
-  if (document.getElementById('fork-checkbox')) {
-    var forkStatus = localStorage.getItem('fork-status');
-    if (forkStatus !== "open" && forkStatus !== "closed") {
-      forkStatus = '{{ site.fork_status }}';	
-    }
-    document.getElementById('fork-checkbox').checked = (forkStatus === "closed"); 
-  }
-}
-
 function initListeners () {
   // open external links in new window; wiki-links in current window.
-  document.querySelectorAll("a:not(.wiki-link):not(.plant-list-item):not(.footnote):not(.reversefootnote)").forEach(setupLinkOpen);
+  document.querySelectorAll("a:not(.wiki-link):not(.tags-list-item):not(.footnote):not(.reversefootnote)").forEach(setupLinkOpen);
   // init note-preview.html listeners.
-  document.querySelectorAll('{{ include.wrapperQuerySelector }} a:not(.plant-list-item)').forEach(setupListeners);
-
-  // don't use 'onclick' in html: https://stackoverflow.com/questions/17378199/uncaught-referenceerror-function-is-not-defined-with-onclick
-  // prefer explicit registration of event listeners: https://stackoverflow.com/questions/12627443/jquery-click-vs-onclick/12627478#12627478
-  // attach event listener to graphTypeCheckbox
-  document.getElementById('theme-colors-checkbox')
-    .addEventListener('click', function(event) {
-      updateColors();
-      drawD3Nav();
-    }, false);
-  document.getElementById('graph-type-checkbox')
-    .addEventListener('click', function(event) {
-      updateGraphTypeEmoji();
-      drawD3Nav();
-    }, false);
-  if (document.getElementById('fork-checkbox')) {
-    document.getElementById('fork-checkbox')
-    .addEventListener('click', function(event) {
-      toggleForkCollapse();
-    }, false);
-  }
-  if (document.getElementById('stream-checkbox')) {
-    document.getElementById('stream-checkbox')
-    .addEventListener('click', function(event) {
-      toggleStreamCollapse();
-    }, false);
-  }
+  document.querySelectorAll('{{ include.wrapperQuerySelector }} a:not(.tags-list-item)').forEach(setupListeners);
 
   // todo: this is hacky, make it a proper button with this styling instead of a checkbox
-  document.getElementById('plant-tag-checkbox')
+  document.getElementById('tags-checkbox')
     .addEventListener('click', function(event) {
-      goTo('{{ site.baseurl }}/plant/tags');
+      goTo('{{ site.baseurl }}/tag/tags');
     }, false);
-  document.getElementById('weather-checkbox')
-  .addEventListener('click', function(event) {
-    goTo('{{ site.baseurl }}/weather');
-  }, false);
+  document.getElementById('posts-checkbox')
+    .addEventListener('click', function(event) {
+      goTo('{{ site.baseurl }}/posts');
+    }, false);
+  document.getElementById('recent-checkbox')
+    .addEventListener('click', function(event) {
+      goTo('{{ site.baseurl }}/recent');
+    }, false);
 
   document.getElementById('wiki-link-nav-checkbox')
     .addEventListener('click', function(event) {
       expandGraphNav();
-      drawD3Nav();
+      document.getElementById('svg-graph').dispatchEvent(new Event('draw')); // tell graph to redraw itself
     }, false);
 }
 
@@ -112,103 +61,15 @@ function setupLinkOpen (link) {
   link.setAttribute("rel", "noopener");  // for security: https://css-tricks.com/use-target_blank/#correct-html
 }
 
-function updateColors () {
-  var theme_colors = localStorage.getItem("theme-colors");
-  const colorsEmojiSpan = document.getElementById('colors-emoji-span');
-  if (document.getElementById('theme-colors-checkbox').checked) {
-    colorsEmojiSpan.innerHTML = "☀️";
-    theme_colors = "dark";
-  } else {
-    colorsEmojiSpan.innerHTML = "🌘";
-    theme_colors = "light";
-  }
-  var cssFile = document.querySelector('[rel="stylesheet"]');
-  const yesThisReallyIsSupposedToBeCSSNotSCSS = '.css'
-  cssFile.setAttribute('href', '{{ "assets/css/styles-" | absolute_url }}' + theme_colors + yesThisReallyIsSupposedToBeCSSNotSCSS);
-  window.localStorage.setItem("theme-colors", theme_colors);
-}
-
-function updateGraphTypeEmoji () {
-  var graphType = localStorage.getItem("graph-type");
-  const graphTypeEmojiSpan = document.getElementById('graph-type-emoji-span');
-  if (document.getElementById('graph-type-checkbox').checked) {
-    graphTypeEmojiSpan.innerHTML = "🕸";
-    graphType = "tree";
-  } else {
-    graphTypeEmojiSpan.innerHTML = "🌳";
-    graphType = "net-web";
-  }
-  window.localStorage.setItem('graph-type', graphType);
-}
-
-// how to checkbox: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_display_checkbox_text
-function drawD3Nav() {
-  const graphTypeCheckBox = document.getElementById('graph-type-checkbox'); 
-  const svgWrapper = document.getElementById('svg-graph');
-  
-  // destroy old chart   
-  d3.select(svgWrapper).selectAll('*').remove();
-
-  let theme_attrs = {};
-  // set theme-dependent graph attributes.
-  if (document.getElementById('theme-colors-checkbox').checked) {
-    theme_attrs = {
-      "name": "dark",
-      "radius": 2.5,
-      "missing-radius": 2.5,
-    }
-  } else {
-      theme_attrs = {
-      "name": "light",
-      "radius": 3,
-      "missing-radius": 1.5,
-    }
-  }
-
-  // redraw new chart and set label text
-  if (graphTypeCheckBox.checked) {
-    drawTree(theme_attrs);
-  } else {
-    drawNetWeb(theme_attrs);
-  }
-}
-
 function expandGraphNav() {
-  const siteNav = document.getElementById('garden-nav');
+  var siteNav = document.getElementById('site-nav');
+  var wikiBonsai = document.getElementById('wiki-link-nav-bonsai');
   
   if (document.getElementById('wiki-link-nav-checkbox').checked) {
     siteNav.classList.add('nav-open');
-    // mainHeader.classList.add('nav-open');
+    wikiBonsai.hidden = false;
   } else {
     siteNav.classList.remove('nav-open');
-    // mainHeader.classList.remove('nav-open');
+    wikiBonsai.hidden = true;
   }
 }
-
-function toggleForkCollapse () {
-  // from: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_collapsible
-  var collapsibleEl = document.getElementsByClassName("fork-nav")[0];
-  var forkStatus = '{{ site.fork_status }}';
-  if (document.getElementById('fork-checkbox').checked) {
-    collapsibleEl.style.display = "none";
-    forkStatus = "closed";
-  } else {
-    collapsibleEl.style.display = "flex";
-    forkStatus = "open";
-  }
-  window.localStorage.setItem('fork-status', forkStatus);
-} 
-
-function toggleStreamCollapse () {
-  // from: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_collapsible
-  var collapsibleEl = document.getElementsByClassName("stream-nav")[0];
-  var streamStatus = '{{ site.stream_status }}';
-  if (document.getElementById('stream-checkbox').checked) {
-    collapsibleEl.style.display = "none";
-    streamStatus = "closed";
-  } else {
-    collapsibleEl.style.display = "flex";
-    streamStatus = "open";
-  }
-  window.localStorage.setItem('stream-status', streamStatus);
-} 

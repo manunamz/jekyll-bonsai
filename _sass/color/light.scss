@@ -7,6 +7,8 @@ $body-heading-color: $grey-dk-300 !default;
 $nav-child-link-color: $grey-dk-100 !default;
 $search-background-color: $white !default;
 
+$separator-color: $green-02 !default;
+
 $btn-primary-color: $green-200 !default;
 $base-button-color: $green-02 !default;
 
@@ -16,8 +18,11 @@ $table-background-color: $white !default;
 $table-shadow-color: $black !default;
 $feedback-color: darken($sidebar-color, 3%) !default;
 
-$fork-nav-color: $brown-02;
+$note-foot-nav-color: $brown-02;
+$note-foot-background-color: $green-01-05 !default;
 $stream-nav-color: $blue-200;
+
+$infobox-color: $blue-200 !default;
 
 // link variables
 
