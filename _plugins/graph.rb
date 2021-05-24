@@ -23,7 +23,6 @@ class Node
   end
 end
 
-
 class GraphDataGenerator < Jekyll::Generator
   priority :lowest
 
@@ -62,7 +61,7 @@ class GraphDataGenerator < Jekyll::Generator
     #
     # graph:generate
     #
-    File.write('assets/notes_tree.json', JSON.dump(
+    File.write('assets/graph-tree.json', JSON.dump(
       json_formatted_tree
     ))
   end
@@ -70,7 +69,7 @@ class GraphDataGenerator < Jekyll::Generator
   # !!!!!!!!!!!!!!!! #
   # Helper functions #
   # !!!!!!!!!!!!!!!! #
-  
+
   # add unique path for the given note to tree (node-class).
   def add_path(node, note, depth=1)
     chunked_namespace = note.data['slug'].split(/\s|\./)
