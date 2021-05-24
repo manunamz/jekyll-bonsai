@@ -67,10 +67,10 @@ export default class GraphNav {
 
   updateGraphTypeEmoji() {
     if (this.graphTypeCheckBox.checked) {
-      this.graphTypeEmojiSpan.innerHTML = "🕸";
+      this.graphTypeEmojiSpan.innerText = "🕸";
       this.graphType = "tree";
     } else {
-      this.graphTypeEmojiSpan.innerHTML = "🌳";
+      this.graphTypeEmojiSpan.innerText = "🌳";
       this.graphType = "net-web";
     }
     window.localStorage.setItem('graph-type', this.graphType);
