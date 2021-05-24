@@ -1,10 +1,19 @@
 title: jekyll-bonsai
 description: a jekyll theme for digital gardeners.
 baseurl: '/jekyll-bonsai'
-# url: 'localhost:4000'
+# url: 'https://shorty25h0r7.github.io'
 
-# jekyll-wikilinks config
-# wikilinks_collection: "notes"
+wikilinks:
+  # enabled: true
+  exclude:
+      - "pages"
+      - "note_tags"
+d3_graph_data:
+  # enabled: true
+  exclude:
+    - "pages"
+    - "posts"
+    - "note_tags"
 
 # jekyll-bonsai configs
 

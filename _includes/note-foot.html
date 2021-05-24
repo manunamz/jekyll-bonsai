@@ -12,9 +12,10 @@
       <div class="note-foot-nav-section">
         <h4 class="note-foot-nav-subtitle">Posts</h4>
         <ul class="note-foot-nav-list">
-          {% for post in page.backlinkposts %}
+          {% assign post_backlinks = page.backlinks | backlink_type: "posts" %}
+          {% for blink in post_backlinks %}
             <li class="note-foot-nav-list-item">
-              <a class="wiki-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+              <a class="wiki-link" href="{{ blink.url | relative_url }}">{{ blink.title }}</a>
             </li>
           {% endfor %}
         </ul>
@@ -47,7 +48,8 @@
         <div class="note-foot-nav-section">
           <h4 class="note-foot-nav-subtitle">Backlinks</h4>
           <ul class="note-foot-nav-list">
-            {% for blink in page.backlinks %}
+            {% assign note_backlinks = page.backlinks | backlink_type: "notes" %}
+            {% for blink in note_backlinks %}
               <li class="note-foot-nav-list-item">
                 <a class="wiki-link" href="{{ blink.url | relative_url }}">{{ blink.title }}</a>
               </li>

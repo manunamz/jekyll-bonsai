@@ -42,8 +42,6 @@ class GraphDataGenerator < Jekyll::Generator
     # for tree: set root node
     root_note = all_docs.detect {|note| note.data['slug'] == 'root' }
     root = Node.new(root_note.data['id'], 'root', site.config['index_note_title'], root_note)
-    # for net-web: set nodes'n'links
-    graph_nodes, graph_links = [], []
 
     # 
     # graph:build
@@ -52,14 +50,6 @@ class GraphDataGenerator < Jekyll::Generator
       # add path to tree
       if !cur_note.data['slug'].nil? and cur_note.data['slug'] != 'root'
         add_path(root, cur_note)
-      end
-      # add backlinks for net-web
-      # add data to graph_nodes and graph_links
-      # set backlinks metadata for note
-      cur_note.data['backlinks'] = add_backlinks_json(site.baseurl, link_extension, all_docs, cur_note, graph_nodes, graph_links)
-      cur_note.data['backlinkposts'] = get_backlinkposts(site.posts, cur_note)
-      if cur_note.data['title'] == "Jekyll-Bonsai"
-        puts cur_note.data['backlinkposts']
       end
     end
     # print_tree(root)
@@ -75,74 +65,12 @@ class GraphDataGenerator < Jekyll::Generator
     File.write('assets/notes_tree.json', JSON.dump(
       json_formatted_tree
     ))
-    File.write('assets/notes_net_web.json', JSON.dump({
-      links: graph_links,
-      nodes: graph_nodes,
-    }))
   end
 
   # !!!!!!!!!!!!!!!! #
   # Helper functions #
   # !!!!!!!!!!!!!!!! #
-  def get_backlinkposts(all_posts, note)
-    backlinkposts = []
-    all_posts.docs.each do |post|
-      if post.content.include?(note.data['id'])
-        backlinkposts << post
-      end
-    end
-    return backlinkposts
-  end
-
-  def add_backlinks_json(baseurl, link_extension, all_notes, note, graph_nodes, graph_links)
-    # net-web: Identify note backlinks and add them to each note
-    # Jekyll
-    #   nodes 
-    backlinks = []
-    all_notes.each do |backlinked_note|
-      if backlinked_note.content.include?(note.data['id'])
-        backlinks << backlinked_note
-      end
-    end
-    # identify missing links in note via .invalid-wiki-link class and nested note-name.
-    missing_node_names = note.content.scan(/invalid-wiki-link[^\]]+\[\[([^\]]+)\]\]/i)
-    if !missing_node_names.nil?
-      missing_node_names.each do |missing_no_name_in_array| 
-        missing_no_namespace = missing_no_name_in_array[0]
-        # add missing nodes
-        if graph_nodes.none? { |node| node[:id] == missing_no_namespace }
-          Jekyll.logger.warn "Net-Web node missing: ", missing_no_namespace
-          Jekyll.logger.warn " in: ", note.data['slug']  
-          graph_nodes << {
-            id: missing_no_namespace,
-            url: '',
-            label: missing_no_namespace,
-          }
-        end
-        # add missing links
-        graph_links << {
-          source: note.data['id'],
-          target: missing_no_namespace,
-        }
-      end
-    end
-    # graph
-    #   nodes
-    graph_nodes << {
-      id: note.data['id'],
-      url: "#{baseurl}#{note.url}#{link_extension}",
-      label: note.data['title'],
-    }
-    #   links
-    backlinks.each do |b|
-      graph_links << {
-        source: b.data['id'],
-        target: note.data['id'],
-      }
-    end
-    return backlinks
-  end 
-
+  
   # add unique path for the given note to tree (node-class).
   def add_path(node, note, depth=1)
     chunked_namespace = note.data['slug'].split(/\s|\./)
