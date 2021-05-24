@@ -2,11 +2,40 @@
 // Buttons and things that look like buttons
 //
 
-/* graph type container */
-.graph-type-selector {
+.site-nav-btn {
+  @include fs-6;
+  // padding: 0;
+  border: none;
+  background: none;
   cursor: pointer;
-  user-select: none;
-  filter: drop-shadow(0 0 0.7mm $drop-shadow-green);
+  transition: all .2s ease-in-out;    
+  
+  &:hover {
+    transform: scale(1.5); 
+  }
+
+  #tags-emoji-span {
+    filter: drop-shadow(0 0 0.8mm $drop-shadow-brown);
+  }
+
+  #posts-emoji-span {
+    filter: drop-shadow(0 0 0.8mm $drop-shadow-purple);
+  }
+
+  #recent-emoji-span {
+    filter: drop-shadow(0 0 0.8mm $drop-shadow-blue);
+  }
+}
+
+.btn-selector {
+  @include fs-6;
+  cursor: pointer;
+  user-select: none;    
+  transition: all .2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.5); 
+  }
 
   /* Hide the browser's default checkbox */
   input {
@@ -15,20 +44,17 @@
     height: 0;
     width: 0;
   }
-}
 
-.note-head-selector {
-  @include fs-6;
-  cursor: pointer;
-  user-select: none;
-  filter: drop-shadow(0 0 0.7mm $drop-shadow-brown);
+  #theme-colors-emoji-span {
+    filter: drop-shadow(0 0 0.7mm $drop-shadow-yellow);
+  }
 
-  /* Hide the browser's default checkbox */
-  input {
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
+  #graph-type-emoji-span {
+    filter: drop-shadow(0 0 0.7mm $drop-shadow-green);
+  }
+
+  #note-head-emoji-span {  
+    filter: drop-shadow(0 0 0.7mm $drop-shadow-brown);  
   }
 }
 
@@ -38,81 +64,30 @@
   user-select: none;
   padding-right: $sp-3;
   display: block;
+  transition: all .2s ease-in-out;
 
-  &.links {
+  &:hover {
+    transform: scale(1.5); 
+  }
+
+  /* Hide the browser's default checkbox */
+  input {
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  #note-foot-posts-emoji-span {
+    filter: drop-shadow(0 0 0.7mm $drop-shadow-purple);  
+  }
+
+  #note-foot-link-emoji-span {
     filter: drop-shadow(0 0 0.7mm $drop-shadow-brown);
   }
 
-  &.field-blogs {
-    filter: drop-shadow(0 0 0.7mm $drop-shadow-purple);
-  }
-
-  &.webmentions {
+  #note-foot-webmentions-emoji-span {
     filter: drop-shadow(0 0 0.7mm $drop-shadow-blue);
-  }
-
-  /* Hide the browser's default checkbox */
-  input {
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-  }
-}
-
-.colors-selector {
-  cursor: pointer;
-  user-select: none;
-  filter: drop-shadow(0 0 0.7mm $drop-shadow-yellow);
-
-  /* Hide the browser's default checkbox */
-  input {
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-  }
-}
-
-.recent-selector {
-  cursor: pointer;
-  user-select: none;
-  filter: drop-shadow(0 0 0.7mm $drop-shadow-blue);
-
-  /* Hide the browser's default checkbox */
-  input {
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-  }
-}
-
-.tags-selector {
-  cursor: pointer;
-  user-select: none;
-  filter: drop-shadow(0 0 0.7mm $drop-shadow-brown);
-
-  /* Hide the browser's default checkbox */
-  input {
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
-  }
-}
-
-.posts-selector {
-  cursor: pointer;
-  user-select: none;
-  filter: drop-shadow(0 0 0.7mm $drop-shadow-purple);
-
-  /* Hide the browser's default checkbox */
-  input {
-    opacity: 0;
-    cursor: pointer;
-    height: 0;
-    width: 0;
   }
 }
 

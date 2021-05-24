@@ -8,7 +8,7 @@ export default class ThemeColors {
     this.favicon = document.querySelector('[rel="icon"]');
     this.wikiLinkNavBonsai = document.getElementById('wiki-link-nav-bonsai');
     this.themeColorsCheckbox = document.getElementById('theme-colors-checkbox');
-    this.themeColorsEmojiSpan = document.getElementById('colors-emoji-span');
+    this.themeColorsEmojiSpan = document.getElementById('theme-colors-emoji-span');
     // home-page logo
     this.homeBonsaiLogo = document.getElementById('home-bonsai');
     this.init();
