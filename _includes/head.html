@@ -2,6 +2,8 @@
     
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <!-- from: https://turbo.hotwire.dev/handbook/drive#setting-a-root-location -->
+  <meta name="turbo-root" content="{{ site.baseurl }}">
 
   <title>{{ page.title }}</title>
   
@@ -12,6 +14,12 @@
   {% feed_meta %}
   {% seo %}
   
+  <!-- from: https://cdn.skypack.dev/@hotwired/turbo -->
+  <!-- <script src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.0.0-beta.5-LhgiwOUjafYu3bb8VbTv/mode=imports,min/optimized/@hotwired/turbo.js"></script> -->
+  <script type="module">
+    import hotwiredTurbo from 'https://cdn.skypack.dev/@hotwired/turbo';
+  </script>
+  <script src="https://unpkg.com/stimulus/dist/stimulus.umd.js"></script>
   <script src="https://d3js.org/d3.v6.min.js"></script>
   <!-- modules: https://stackoverflow.com/questions/58211880/uncaught-syntaxerror-cannot-use-import-statement-outside-a-module-when-import -->
   <script type="module" src="{{ '/assets/js/scripts.js' | relative_url }}"></script>

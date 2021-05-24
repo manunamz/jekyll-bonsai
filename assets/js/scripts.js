@@ -3,12 +3,16 @@
 import GraphNav from './graph.js';
 import ThemeColors from './theme-colors.js';
 import NoteController from './note.js';
+import PageNavController from './page-nav-controller.js';
 
  //
 // go
  //
 // from: https://stackoverflow.com/questions/9899372/pure-javascript-equivalent-of-jquerys-ready-how-to-call-a-function-when-t
-(function() {
+(() => {
+  const application = Stimulus.Application.start();
+  application.register("page-nav", PageNavController);
+
   // your page initialization code here
   // the DOM will be available here
   initListeners();
@@ -28,20 +32,6 @@ function initListeners () {
   // init note-preview.html listeners.
   document.querySelectorAll('{{ include.wrapperQuerySelector }} a:not(.tags-list-item)').forEach(setupListeners);
 
-  // todo: this is hacky, make it a proper button with this styling instead of a checkbox
-  document.getElementById('tags-checkbox')
-    .addEventListener('click', function(event) {
-      goTo('{{ site.baseurl }}/tag/tags');
-    }, false);
-  document.getElementById('posts-checkbox')
-    .addEventListener('click', function(event) {
-      goTo('{{ site.baseurl }}/posts');
-    }, false);
-  document.getElementById('recent-checkbox')
-    .addEventListener('click', function(event) {
-      goTo('{{ site.baseurl }}/recent');
-    }, false);
-
   document.getElementById('wiki-link-nav-checkbox')
     .addEventListener('click', function(event) {
       expandGraphNav();
@@ -52,9 +42,6 @@ function initListeners () {
  //
 // helpers
  //
-function goTo (location) {
-  window.location.href = location;
-}
 
 function setupLinkOpen (link) {
   link.setAttribute("target", "_blank");
