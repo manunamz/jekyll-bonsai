@@ -10,19 +10,16 @@
         <span id="graph-type-emoji-span" title="Toggle Graph Type"></span>
       </label>
     </span>
-    <span>
-      <label class="tags-selector">
-        <input id="tags-checkbox" type="checkbox" checked="checked">
-        <span id="tags-emoji-span" title="Go To Plant Tags">🔖</span>
-      </label>
-      <label class="posts-selector">
-        <input id="posts-checkbox" type="checkbox" checked="checked">
-        <span id="posts-emoji-span" title="Go To Field bLogs">📓</span>
-      </label>
-      <label class="recent-selector">
-        <input id="recent-checkbox" type="checkbox" checked="checked">
-        <span id="weather-emoji-span" title="Go To Recent Weather">🌦</span>
-      </label>
+    <span data-controller="page-nav">
+      <button class="site-nav-btn" data-action="click->page-nav#goToTags" title="Go To Plant Tags">
+        <span id="tags-emoji-span">🔖</span>
+      </button>
+      <button class="site-nav-btn" data-action="click->page-nav#goToPosts" title="Go To Field bLogs">
+        <span id="posts-emoji-span">📓</span>
+      </button>
+      <button class="site-nav-btn" data-action="click->page-nav#goToRecent" title="Go To Recent Weather">
+        <span id="recent-emoji-span">🌦</span>
+      </button>
     </span>
   </header>
 
