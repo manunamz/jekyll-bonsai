@@ -17,7 +17,6 @@
 
   @include mq(md) {
     display: block;
-    overflow-y: auto;
     flex: 1 1 auto;
   }
 
