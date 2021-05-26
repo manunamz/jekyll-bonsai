@@ -44,9 +44,9 @@
   }
 }
 
-// user-trail nav
+// visited nav (user-path)
 
-.user-trail-nav {
+.visited-nav {
   @include mq(md) {
     margin-top: -$sp-4;
   }
@@ -54,12 +54,12 @@
   white-space: nowrap;  
   margin-bottom: $sp-3;
 
-  .user-trail-nav-list {
+  .visited-nav-list {
     padding-left: 0 !important;
     margin-bottom: $sp-3;
     list-style: none;
   
-    .user-trail-nav-list-item {
+    .visited-nav-list-item {
       display: table-cell;
       @include fs-2;
     
