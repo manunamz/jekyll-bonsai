@@ -1,7 +1,7 @@
 ---
 ---
 // this file is a monstrosity!
-export default class NoteController {
+export default class Note {
   constructor() {
     // head
     // this.noteHeadStatus set in initNoteStatus();
