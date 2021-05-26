@@ -8,7 +8,7 @@
     <ol class="note-head-breadcrumbs">
       {% for ancestor in page.ancestors %}
         <li class="note-head-breadcrumb">
-          <a class="wiki-link {% if ancestor.id == '' %}missing-note-txt{% endif %} " href="{{ ancestor.url | relative_url }}">
+          <a class="wiki-link {% if ancestor.id == '' %}missing-note-txt{% endif %} " href="{{ ancestor.url | relative_url }}" data-action='click->note-ctrl#visit'>
             {{ ancestor.title }}
           </a>
         </li>

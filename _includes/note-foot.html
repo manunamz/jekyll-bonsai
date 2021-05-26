@@ -13,9 +13,11 @@
         <h4 class="note-foot-nav-subtitle">Posts</h4>
         <ul class="note-foot-nav-list">
           {% assign post_backlinks = page.backlinks | backlink_type: "posts" %}
-          {% for blink in post_backlinks %}
+          {% for post in post_backlinks %}
             <li class="note-foot-nav-list-item">
-              <a class="wiki-link" href="{{ blink.url | relative_url }}">{{ blink.title }}</a>
+              <a class="wiki-link" href="{{ post.url | relative_url }}" data-action='click->note-ctrl#visit'>
+                {{ post.title }}
+              </a>
             </li>
           {% endfor %}
         </ul>
@@ -36,10 +38,10 @@
         <div class="note-foot-nav-section">
           <h4 class="note-foot-nav-subtitle">Children</h4>
           <ul class="note-foot-nav-list">
-            {% for child in page.children %}
+            {% for note in page.children %}
               <li class="note-foot-nav-list-item">
-                <a class="wiki-link {% if child.id == '' %}missing-note-txt{% endif %}" href="{{ child.url | relative_url }}">
-                  {{ child.title }}
+                <a class="wiki-link {% if note.id == '' %}missing-note-txt{% endif %}" href="{{ note.url | relative_url }}" data-action='click->note-ctrl#visit'>
+                  {{ note.title }}
                 </a>
               </li>
             {% endfor %}
@@ -49,9 +51,11 @@
           <h4 class="note-foot-nav-subtitle">Backlinks</h4>
           <ul class="note-foot-nav-list">
             {% assign note_backlinks = page.backlinks | backlink_type: "notes" %}
-            {% for blink in note_backlinks %}
+            {% for note in note_backlinks %}
               <li class="note-foot-nav-list-item">
-                <a class="wiki-link" href="{{ blink.url | relative_url }}">{{ blink.title }}</a>
+                <a class="wiki-link" href="{{ note.url | relative_url }}" data-action='click->note-ctrl#visit'>
+                  {{ note.title }}
+                </a>
               </li>
             {% endfor %}
           </ul>

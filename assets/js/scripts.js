@@ -4,6 +4,7 @@ import GraphNav from './graph.js';
 import ThemeColors from './theme-colors.js';
 import NoteController from './note.js';
 import PageNavController from './page-nav-controller.js';
+import VisitedNavController from './visited-nav-controller.js';
 
  //
 // go
@@ -12,6 +13,8 @@ import PageNavController from './page-nav-controller.js';
 (() => {
   const application = Stimulus.Application.start();
   application.register("page-nav", PageNavController);
+  application.register("visited-nav", VisitedNavController);
+  application.register("note-ctrl", NoteController);
 
   // your page initialization code here
   // the DOM will be available here
