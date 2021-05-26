@@ -21,36 +21,36 @@ import PageNavController from './page-nav-controller.js';
   if (document.getElementById('note')) {
     new NoteController();
   }
-  updateVisitedNotes();
+  updateVisited();
 })();
 
- function updateVisitedNotes () {
-  var visited = JSON.parse(localStorage.getItem('visited-notes'));
+function updateVisited () {
+  var visited = JSON.parse(localStorage.getItem('visited'));
   if (!visited) {
     visited = [];
   } else {
     console.log('{{ site }}');
     visited.push({ title: '{{ page.title }}', url: '{{ page.url }}' });
-    buildTrail(visited);
+    buildBreadcrumbs(visited);
   }
-  localStorage.setItem('visited-notes', JSON.stringify(visited));
+  localStorage.setItem('visited', JSON.stringify(visited));
   console.log(visited);
 }
 
-function buildTrail (trail) {
-  var userTrailNav = document.getElementById('user-trail-nav');
-  var userTrailList = document.createElement('ol');
-  userTrailList.classList.add('user-trail-nav-list');
-  userTrailNav.appendChild(userTrailList);
-  for (var i = 0; i < trail.length; i++) {
-    const step = trail[i];
-    var trailStepListItem = document.createElement('li');
-    trailStepListItem.classList.add('user-trail-nav-list-item');
-    var trailStepLink = document.createElement('a');
-    trailStepLink.setAttribute('href', step['url']);
-    trailStepLink.classList.add('wiki-link');
-    trailStepLink.innerHTML = step['title'];
-    userTrailList.appendChild(trailStepListItem);
+function buildBreadcrumbs (visited) {
+  var visitedNav = document.getElementById('visited-nav');
+  var visitedNavList = document.createElement('ol');
+  visitedNavList.classList.add('visited-nav-list');
+  visitedNav.appendChild(visitedNavList);
+  for (var i = 0; i < visited.length; i++) {
+    const visitedTab = visited[i];
+    var visitedNavListItem = document.createElement('li');
+    visitedNavListItem.classList.add('visited-nav-list-item');
+    var visitedNavLink = document.createElement('a');
+    visitedNavLink.setAttribute('href', visitedTab['url']);
+    visitedNavLink.classList.add('wiki-link');
+    visitedNavLink.innerHTML = visitedTab['title'];
+    visitedNavList.appendChild(visitedNavListItem);
   }
 }
  //
