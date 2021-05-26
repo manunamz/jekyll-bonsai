@@ -175,7 +175,7 @@ export default class GraphNav {
            //
 
           function isCurrentNoteInNetWeb(node) {
-            return !isMissingNoteInNetWeb(node) && window.location.pathname.includes(node.id);
+            return !isMissingNoteInNetWeb(node) && window.location.pathname.includes(node.url);
           }
           
           function isMissingNoteInNetWeb(node) {
@@ -186,7 +186,7 @@ export default class GraphNav {
           // d6 now passes events in vanilla javascript fashion
           function goToNoteFromNetWeb (e, d) {
             if (!isMissingNoteInNetWeb(d)) {
-              window.location = d.url;
+              window.location.href = d.url;
             } else {
               return null;
             }
@@ -319,7 +319,7 @@ export default class GraphNav {
           // helpers
            //
           function isCurrentNoteInTree(node) {
-            return !isMissingNoteInTree(node.data.id) && window.location.pathname.includes(node.data.id);
+            return !isMissingNoteInTree(node.data.id) && window.location.pathname.includes(node.data.url);
           }
   
           function isMissingNoteInTree(nodeId) {
@@ -330,7 +330,7 @@ export default class GraphNav {
           // d6 now passes events in vanilla javascript fashion
           function goToNoteFromTree(e, d) {
             if (!isMissingNoteInTree(d.data.id)) {
-              window.location = d.data.url;
+              window.location.href = d.data.url;
               return true;
             } else {
               return false;
