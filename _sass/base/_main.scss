@@ -106,3 +106,13 @@ hr {
   background-color: $border-color;
   border: 0;
 }
+
+.wiki-link { 
+  color: $wiki-link-color;
+}
+
+.invalid-wiki-link {
+  color: $grey-dk-000;
+  background: $invalid-wiki-link-color;
+  cursor: help;
+}

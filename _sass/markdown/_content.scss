@@ -34,16 +34,6 @@
     }
   }
 
-  .wiki-link { 
-    color: $wiki-link-color;
-  }
-
-  .invalid-wiki-link {
-    color: $grey-dk-000;
-    background: $invalid-wiki-link-color;
-    cursor: help;
-  }
-
   ul,
   ol {
     padding-left: 1.5em;
