@@ -1,6 +1,7 @@
 // site (bonsai/garden) nav -- which houses the 'svg-graph'
 
 .site-nav {
+  display: none;
   width: 100%;
 
   &.nav-open {
