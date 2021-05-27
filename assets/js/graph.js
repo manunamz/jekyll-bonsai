@@ -19,11 +19,11 @@ export default class GraphNav {
   bindEvents() {
     // listen for draw event (esp. from theme colors)
     this.svgWrapper.addEventListener('draw', () => {
-      this.updateGraphTypeEmoji();
+      this.updateGraphType();
       this.drawD3Nav();
     });
     this.graphTypeCheckBox.addEventListener('click', () => {
-      this.updateGraphTypeEmoji();
+      this.updateGraphType();
       this.drawD3Nav();
     });
   }
@@ -62,10 +62,10 @@ export default class GraphNav {
       this.graphType = '{{ site.graph_type }}';	
     }
     this.graphTypeCheckBox.checked = (this.graphType === "tree");
-    this.updateGraphTypeEmoji();
+    this.updateGraphType();
   }
 
-  updateGraphTypeEmoji() {
+  updateGraphType() {
     if (this.graphTypeCheckBox.checked) {
       this.graphTypeEmojiSpan.innerText = "🕸";
       this.graphType = "tree";
