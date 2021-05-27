@@ -1,5 +1,5 @@
 ---
-title: sprout
+title: Sprout Tag Page
 emoji: 🌱
 order: 2
 emojipedia: 'https://emojipedia.org/seedling/'

@@ -1,5 +1,5 @@
 ---
-title: seed
+title: Seed Tag Page
 emoji: 🌰
 order: 8
 emojipedia: 'https://emojipedia.org/chestnut/'

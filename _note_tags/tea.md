@@ -1,5 +1,5 @@
 ---
-title: tea
+title: Tea Tag Page
 emoji: 🍵
 order: 9
 emojipedia: 'https://emojipedia.org/teacup-without-handle/'

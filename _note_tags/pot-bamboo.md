@@ -1,5 +1,5 @@
 ---
-title: pot-bamboo
+title: Pot-Bamboo Tag Page
 emoji: 🎍
 order: 10
 emojipedia: 'https://emojipedia.org/pine-decoration/'

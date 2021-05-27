@@ -1,5 +1,5 @@
 ---
-title: berry
+title: Berry Tag Page
 emoji: 🫐
 order: 7
 emojipedia: 'https://emojipedia.org/blueberries/'

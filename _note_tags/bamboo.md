@@ -1,5 +1,5 @@
 ---
-title: bamboo
+title: Bamboo Tag Page
 emoji: 🎋
 order: 4
 emojipedia: 'https://emojipedia.org/tanabata-tree/'

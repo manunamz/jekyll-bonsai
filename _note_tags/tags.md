@@ -1,5 +1,5 @@
 ---
-title: tags
+title: Tags Page
 emoji: 🔖
 order: 0
 emojipedia: 'https://emojipedia.org/bookmark/'

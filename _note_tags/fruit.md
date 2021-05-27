@@ -1,5 +1,5 @@
 ---
-title: fruit
+title: Fruit Tag Page
 emoji: 🥭
 order: 6
 emojipedia: 'https://emojipedia.org/mango/'

@@ -1,5 +1,5 @@
 ---
-title: wisp
+title: Wisp Tag Page
 emoji: 🍃
 order: 1
 emojipedia: 'https://emojipedia.org/chestnut/'
