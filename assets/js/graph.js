@@ -73,7 +73,7 @@ export default class GraphNav {
       this.graphTypeEmojiSpan.innerText = "🌳";
       this.graphType = "net-web";
     }
-    window.localStorage.setItem('graph-type', this.graphType);
+    localStorage.setItem('graph-type', this.graphType);
   } 
 
   // d3

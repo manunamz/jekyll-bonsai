@@ -82,7 +82,7 @@ export default class Note {
       collapsibleEl.style.display = "flex";
       this.noteHeadStatus = "open";
     }
-    window.localStorage.setItem('note-head-status', this.noteHeadStatus);
+    localStorage.setItem('note-head-status', this.noteHeadStatus);
   } 
 
   toggleNoteFootLinksCollapse () {
@@ -95,7 +95,7 @@ export default class Note {
       collapsibleEl.style.display = "flex";
       this.noteFootLinksStatus = "open";
     }
-    window.localStorage.setItem('note-foot-links-status', this.noteFootLinksStatus);
+    localStorage.setItem('note-foot-links-status', this.noteFootLinksStatus);
   }
 
   toggleNoteFootPostsCollapse () {
@@ -108,7 +108,7 @@ export default class Note {
       collapsibleEl.style.display = "flex";
       this.noteFootPostsStatus = "open";
     }
-    window.localStorage.setItem('note-foot-posts-status', this.noteFootPostsStatus);
+    localStorage.setItem('note-foot-posts-status', this.noteFootPostsStatus);
   } 
 
   toggleNoteFootWebmentionsCollapse () {
@@ -122,6 +122,6 @@ export default class Note {
       collapsibleEl.style.display = "flex";
       this.noteFootWebmentionsStatus = "open";
     }
-    window.localStorage.setItem('note-foot-webmentions-status', streamStatus);
+    localStorage.setItem('note-foot-webmentions-status', streamStatus);
   } 
 }
