@@ -3,6 +3,7 @@
 import GraphNav from './graph.js';
 import ThemeColors from './theme-colors.js';
 import Note from './note.js';
+import SiteNav from './site-nav.js';
 
  //
 // go
@@ -13,42 +14,13 @@ import Note from './note.js';
   // the DOM will be available here
   initListeners();
   new ThemeColors();
+  new SiteNav();
   new GraphNav();
   if (document.getElementById('note')) {
     new Note();
   }
-  updateVisited();
 })();
 
-function updateVisited () {
-  var visited = JSON.parse(localStorage.getItem('visited'));
-  if (!visited) {
-    visited = [];
-  } else {
-    console.log('{{ site }}');
-    visited.push({ title: '{{ page.title }}', url: '{{ page.url }}' });
-    buildBreadcrumbs(visited);
-  }
-  localStorage.setItem('visited', JSON.stringify(visited));
-  console.log(visited);
-}
-
-function buildBreadcrumbs (visited) {
-  var visitedNav = document.getElementById('visited-nav');
-  var visitedNavList = document.createElement('ol');
-  visitedNavList.classList.add('visited-nav-list');
-  visitedNav.appendChild(visitedNavList);
-  for (var i = 0; i < visited.length; i++) {
-    const visitedTab = visited[i];
-    var visitedNavListItem = document.createElement('li');
-    visitedNavListItem.classList.add('visited-nav-list-item');
-    var visitedNavLink = document.createElement('a');
-    visitedNavLink.setAttribute('href', visitedTab['url']);
-    visitedNavLink.classList.add('wiki-link');
-    visitedNavLink.innerHTML = visitedTab['title'];
-    visitedNavList.appendChild(visitedNavListItem);
-  }
-}
  //
 // init
  //
@@ -70,7 +42,6 @@ function initListeners () {
     .addEventListener('click', function(event) {
       goTo('{{ site.baseurl }}/recent');
     }, false);
-
 
   document.getElementById('wiki-link-nav-checkbox')
     .addEventListener('click', function(event) {

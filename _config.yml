@@ -23,6 +23,9 @@ index_note_title: "Jekyll-Bonsai"
 # graph: default graph type in side bar.
 ## may be 'tree' or 'net-web'
 graph_type: "tree"
+# nav: default nav type in side bar.
+## may be 'tabs' (visited/path) or graph (bonsai)
+nav_type: "graph"
 # recent (weather): set number of notes to display on recent (weather) page.
 ## may be an integer (defaults to 10)
 recent_num: 10 

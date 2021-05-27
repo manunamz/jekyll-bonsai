@@ -1,0 +1,160 @@
+// site (bonsai/garden) nav -- which houses the 'svg-graph'
+
+.site-nav {
+  width: 100%;
+
+  &.nav-open {
+    display: flex;
+    height: 100vh;
+    width: 100vw;
+  }
+
+  @include mq(md) {
+    display: block;
+    flex: 1 1 auto;
+  }
+
+  header {
+    @include fs-5;
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    padding: $sp-2;
+    color: $grey-dk-000;
+    z-index: 4;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  footer {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: $sp-3;
+    z-index: 4;
+  }
+}
+
+.site-nav-btn {
+  @include fs-6;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: all .2s ease-in-out;    
+  padding: $sp-2;
+  
+  &:hover {
+    transform: scale(1.5); 
+  }
+
+  #tags-emoji-span {
+    filter: drop-shadow(0 0 0.8mm $drop-shadow-brown);
+  }
+
+  #posts-emoji-span {
+    filter: drop-shadow(0 0 0.8mm $drop-shadow-purple);
+  }
+
+  #recent-emoji-span {
+    filter: drop-shadow(0 0 0.8mm $drop-shadow-blue);
+  }
+
+  #visited-emoji-span {
+    filter: drop-shadow(0 0 0.8mm $drop-shadow-orange);
+  }
+
+  #search-emoji-span {
+    filter: drop-shadow(0 0 0.8mm $drop-shadow-brown);
+  }
+
+  #delete-emoji-span {
+    filter: drop-shadow(0 0 0.8mm $drop-shadow-red);
+  }
+}
+
+// visited nav (user-path)
+
+.visited-nav {  
+  z-index: 3;
+  position:relative;
+  height: 100%;
+  width: 100%;
+  padding-top: $sp-10;
+  padding-bottom: $sp-10;
+  overflow-y: scroll;
+
+  .visited-nav-list {
+    padding-left: $sp-1 !important;
+    list-style: none;
+    
+    .visited-nav-list-item {
+      @include fs-4;
+      display: flex;
+      width: 80%;
+      padding: $sp-3;
+      margin-top: $sp-4;
+      margin-bottom: $sp-4;
+      border-radius: 16px;
+      background-color: $visited-color;
+      // blur box edges
+      // from: https://stackoverflow.com/questions/15775365/how-to-blur-div-edges
+      box-shadow: 0 0 5px 4px $visited-color;
+      // both animation and transform rely on this transition setting (according to: https://stackoverflow.com/a/20903041)
+      transition: all 0.15s ease-in-out;
+      
+      &:hover {
+        transform: scale(1.1); 
+      }
+      
+      &::before {
+        content: "🥾";
+      }
+
+      button {
+        justify-content: flex-end;
+      }
+    }
+  } 
+}
+
+.hide {
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+
+  animation-name: animateShow;
+  animation-duration: 100ms;
+  animation-timing-function: ease-in-out;
+}
+
+@keyframes animateHide {
+  0% {
+    opacity: 1;
+  }
+  
+  100% {
+    opacity: 0;
+  }
+}
+
+.show {
+  animation-name: animateShow;
+  animation-duration: 250ms;
+  animation-delay: calc(var(--animation-show-order) * 100ms);
+  animation-fill-mode: both;
+  animation-timing-function: ease-in-out;
+}
+
+// from: https://css-tricks.com/different-approaches-for-creating-a-staggered-animation/#how-about-custom-properties
+@keyframes animateShow {
+  0% {
+    opacity: 0;
+  }
+  
+  100% {
+    opacity: 1;
+  }
+}

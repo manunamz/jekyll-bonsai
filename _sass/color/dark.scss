@@ -20,6 +20,7 @@ $feedback-color: darken($sidebar-color, 3%);
 
 $note-foot-background-color: $grey-dk-250;
 $note-foot-text-color: $grey-dk-000;
+$visited-color: $grey-dk-250;
 
 $infobox-color: $blue-100;
 
@@ -36,12 +37,13 @@ $link-line-stroke-color: $grey-dk-200;
 $link-line-stroke-width: 0.5;
 $link-line-dash-val: 0;
 
-$node-color: $green-05;
+$node-unvisited-color: $green-300;
 $node-stroke-color: $grey-dk-200;
 $node-stroke-width: 1;
 
 $node-active-color: $yellow-200;
 $node-missing-color: $transparent;
+$node-visited-color: $green-05;
 
 // blockquote decoration
 $blockquote-border-color: rgba($link-line-stroke-color, 0.33);

@@ -125,7 +125,7 @@ export default class GraphNav {
               //svg 2.0 not well-supported: https://stackoverflow.com/questions/47381187/svg-not-working-in-firefox
               // add attributes in javascript instead of css.
               .attr("r",  (d) => isMissingNoteInNetWeb(d) ? theme_attrs["missing-radius"] : theme_attrs["radius"])
-              .attr("class", (d) => isMissingNoteInNetWeb(d) ? "missing" : null)
+              .attr("class", nodeTypeInNetWeb)
               .on("click", goToNoteFromNetWeb)
               .call(d3.drag()
                   .on("start", dragstarted)
@@ -176,6 +176,31 @@ export default class GraphNav {
 
           function isCurrentNoteInNetWeb(node) {
             return !isMissingNoteInNetWeb(node) && window.location.pathname.includes(node.url);
+          }
+
+          function nodeTypeInNetWeb(node) {
+            const isVisited = isVisitedNoteInNetWeb(node);
+            const isMissing = isMissingNoteInNetWeb(node);            
+            if (isVisited) {
+              return "visited";
+            } else if (!isVisited && !isMissing) {
+              return "unvisited";
+            } else if (isMissing) {
+              return "missing";
+            } else {
+              console.log("WARN: Not a valid node type.");
+              return null;
+            }
+          }
+
+          function isVisitedNoteInNetWeb(node) {
+            if (!isMissingNoteInNetWeb(node)) {
+              var visited = JSON.parse(localStorage.getItem('visited'));
+              for (let i = 0; i < visited.length; i++) {
+                if (visited[i]['url'] === node.url) return true;
+              }
+            }
+            return false;
           }
           
           function isMissingNoteInNetWeb(node) {
@@ -261,7 +286,7 @@ export default class GraphNav {
               //svg 2.0 not well-supported: https://stackoverflow.com/questions/47381187/svg-not-working-in-firefox
               // add attributes in javascript instead of css.
               .attr("r",  (d) => isMissingNoteInTree(d.data.id) ? theme_attrs["missing-radius"] : theme_attrs["radius"])
-              .attr("class", (d) => isMissingNoteInTree(d.data.id) ? "missing" : null)
+              .attr("class", nodeTypeInTree)
               .on("click", goToNoteFromTree)
               // 🐛 bug: this does not work -- it overtakes clicks (extra lines in "tick" are related).
               // .call(d3.drag()
@@ -320,6 +345,31 @@ export default class GraphNav {
            //
           function isCurrentNoteInTree(node) {
             return !isMissingNoteInTree(node.data.id) && window.location.pathname.includes(node.data.url);
+          }
+
+          function nodeTypeInTree(node) {
+            const isVisited = isVisitedNoteInTree(node);
+            const isMissing = isMissingNoteInTree(node.data.id);            
+            if (isVisited) {
+              return "visited";
+            } else if (!isVisited && !isMissing) {
+              return "unvisited";
+            } else if (isMissing) {
+              return "missing";
+            } else {
+              console.log("WARN: Not a valid node type.");
+              return null;
+            }
+          }
+
+          function isVisitedNoteInTree(node) {
+            var visited = JSON.parse(localStorage.getItem('visited'));
+            for (let i = 0; i < visited.length; i++) {
+              if (visited[i]['url'] === node.data.url) {
+                return true;
+              }
+            }
+            return false;
           }
   
           function isMissingNoteInTree(nodeId) {

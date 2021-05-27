@@ -10,9 +10,9 @@
 
 .nodes circle {
   pointer-events: all;
-  fill: $node-color;
   stroke: $node-stroke-color;
   stroke-width: $node-stroke-width;
+  fill: $node-unvisited-color;
 
   + text {
     fill: $body-text-color;
@@ -24,16 +24,24 @@
 
   &.pulse {
     fill: $node-active-color;
-    -webkit-animation: pulse 2s linear infinite;
+    animation: pulse 2s linear infinite;
   }
   
   &.missing {
-    fill: $node-missing-color;
+    fill: $node-missing-color !important;
     cursor: help;
+  }
+
+  // &.unvisited {
+  //   fill: $node-unvisited-color;
+  // }
+
+  &.visited {
+    fill: $node-visited-color;
   }
 }
 
-@-webkit-keyframes pulse {       
-  0% {-webkit-transform: scale(1.0); opacity: 1;}
-  100% {-webkit-transform: scale(2); opacity: 0;}
+@keyframes pulse {       
+  0% {transform: scale(1.0); opacity: 1;}
+  100% {transform: scale(2); opacity: 0;}
 }

@@ -2,35 +2,12 @@
 // Buttons and things that look like buttons
 //
 
-.site-nav-btn {
-  @include fs-6;
-  border: none;
-  background: none;
-  cursor: pointer;
-  transition: all .2s ease-in-out;    
-  
-  &:hover {
-    transform: scale(1.5); 
-  }
-
-  #tags-emoji-span {
-    filter: drop-shadow(0 0 0.8mm $drop-shadow-brown);
-  }
-
-  #posts-emoji-span {
-    filter: drop-shadow(0 0 0.8mm $drop-shadow-purple);
-  }
-
-  #recent-emoji-span {
-    filter: drop-shadow(0 0 0.8mm $drop-shadow-blue);
-  }
-}
-
 .btn-selector {
   @include fs-6;
   display: inline-block; // transform animation breaks without this on theme-colors and graph-type...
   cursor: pointer;
   user-select: none;
+  padding: $sp-2;
   transition: all .2s ease-in-out;
 
   &:hover {
@@ -53,13 +30,17 @@
     filter: drop-shadow(0 0 0.7mm $drop-shadow-green);
   }
 
+  #nav-type-emoji-span {
+    filter: drop-shadow(0 0 0.7mm $drop-shadow-orange);
+  }
+
   #note-head-emoji-span {  
     filter: drop-shadow(0 0 0.7mm $drop-shadow-brown);  
   }
 }
 
 .note-foot-selector {
-  @include fs-6;
+  @include fs-5;
   display: block;
   cursor: pointer;
   user-select: none;

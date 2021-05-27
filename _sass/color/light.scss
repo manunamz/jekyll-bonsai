@@ -18,8 +18,9 @@ $table-background-color: $white !default;
 $table-shadow-color: $black !default;
 $feedback-color: darken($sidebar-color, 3%) !default;
 
-$note-foot-background-color: $green-01-05 !default;
+$note-foot-background-color: $green-01-03 !default;
 $note-foot-text-color: $brown-02;
+$visited-color: $green-yellow-05 !default;
 
 $infobox-color: $blue-200 !default;
 
@@ -36,9 +37,10 @@ $link-line-stroke-color: $brown-02;
 $link-line-stroke-width: 0.5;
 $link-line-dash-val: 0;
 
-$node-color: $green-05;
+$node-unvisited-color: $green-03;
 $node-stroke-color: $transparent;
 $node-stroke-width: 0;
+$node-visited-color: $green-05;
 
 $node-active-color: $yellow-300;
 $node-missing-color: $brown-02;
