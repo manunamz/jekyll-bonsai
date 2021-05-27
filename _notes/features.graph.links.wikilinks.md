@@ -2,7 +2,7 @@
 id: f9df170e-d793-48e7-946c-aaa4ab145a15
 title: Wikilinks
 desc: ''
-updated: 1620491050379
+updated: 1622146749078
 created: 1620408415248
 tags: 🎋
 ---
@@ -23,6 +23,6 @@ tags: 🎋
 
 - Would [jekyll](https://talk.jekyllrb.com/t/introducing-jekyll-wikilinks/6013) or kramdown be interested in integrating this plugin?
 
-[>names]: "wikilink" actually goes by many names: "[bidirectional link](https://www.roamtips.com/home/what-are-bi-directional-links-and-tags-in-roam-research#:~:text=Bi%2Ddirectional%20links%20are%20created,K%20(Ctrl%2DK).)", "[wikitext linking](https://tiddlywiki.com/#Linking%20in%20WikiText)", "internal link", "[humble double bracket internal link](https://web.archive.org/web/20200128113356/http://takingnotenow.blogspot.com/2018/12/it-needs-wiki-like-superpower.html)", to name only a few...
+[>names]: "wikilink" actually goes by many names: "[bidirectional link](https://www.roamtips.com/home/what-are-bi-directional-links-and-tags-in-roam-research#:~:text=Bi%2Ddirectional%20links%20are%20created,K%20(Ctrl%2DK).)", "[wikitext linking](https://tiddlywiki.com/#Linking%20in%20WikiText)", "[internal link](https://help.obsidian.md/How+to/Internal+link)", "[humble double bracket internal link](https://web.archive.org/web/20200128113356/http://takingnotenow.blogspot.com/2018/12/it-needs-wiki-like-superpower.html)", to name only a few...
 
 [>blue]: As opposed to blue external links.
