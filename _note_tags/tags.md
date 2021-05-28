@@ -1,5 +1,5 @@
 ---
-title: Tags Page
+title: Plant Tags Page
 emoji: 🔖
 order: 0
 emojipedia: 'https://emojipedia.org/bookmark/'

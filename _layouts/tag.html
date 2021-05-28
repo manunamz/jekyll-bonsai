@@ -2,6 +2,7 @@
 layout: default
 ---
 {% assign tags = site.note_tags | sort: "order"  %}
+{% assign tags_page_title = "Plant Tags Page" %}
 
 <div class="tags-nav">
   <nav class="tags-nav-list">
@@ -14,7 +15,7 @@ layout: default
 </div>
 
 <!-- all tags -->
-{% if page.title == "Tags Page" %}
+{% if page.title == tags_page_title %}
   <h1>🔖 Plant Tags In This Garden</h1>
   {{ content }}
   <p class="small-descr">
@@ -22,7 +23,7 @@ layout: default
     Click <a href="{{ page.emojipedia }}">here</a> for the official emoji description.
   </p>
   {% for tag in tags %}
-    {% if tag.title != "tags" %}
+    {% if tag.title != tags_page_title %}
       <h2>{{ tag.emoji }} <a href="{{ tag.url | relative_url }}" class="wiki-link">{{ tag.title }}</a></h2>
       <p>{{ tag.content | markdownify }}</p>
     {% endif %}
