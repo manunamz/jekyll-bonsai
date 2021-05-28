@@ -47,14 +47,16 @@
   padding: $sp-2;
   transition: all .2s ease-in-out;
   border: none;
-  background: none;    
+  background: none; 
+  display: table-cell;
+  vertical-align: middle;
   
   &:hover {
     transform: scale(1.5); 
   }
 
-  #tags-emoji-span {
-    filter: drop-shadow(0 0 0.8mm $drop-shadow-brown);
+  #delete-emoji-span {
+    filter: drop-shadow(0 0 0.8mm $drop-shadow-red);
   }
 
   #posts-emoji-span {
@@ -65,16 +67,16 @@
     filter: drop-shadow(0 0 0.8mm $drop-shadow-blue);
   }
 
-  #visited-emoji-span {
-    filter: drop-shadow(0 0 0.8mm $drop-shadow-orange);
-  }
-
   #search-emoji-span {
     filter: drop-shadow(0 0 0.8mm $drop-shadow-brown);
   }
 
-  #delete-emoji-span {
-    filter: drop-shadow(0 0 0.8mm $drop-shadow-red);
+  #tags-emoji-span {
+    filter: drop-shadow(0 0 0.8mm $drop-shadow-brown);
+  }
+
+  #visited-emoji-span {
+    filter: drop-shadow(0 0 0.8mm $drop-shadow-orange);
   }
 }
 

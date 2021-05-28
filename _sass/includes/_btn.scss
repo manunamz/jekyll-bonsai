@@ -22,10 +22,6 @@
     width: 0;
   }
 
-  #theme-colors-emoji-span {
-    filter: drop-shadow(0 0 0.7mm $drop-shadow-yellow);
-  }
-
   #graph-type-emoji-span {
     filter: drop-shadow(0 0 0.7mm $drop-shadow-green);
   }
@@ -36,6 +32,10 @@
 
   #note-head-emoji-span {  
     filter: drop-shadow(0 0 0.7mm $drop-shadow-brown);  
+  }
+
+  #theme-colors-emoji-span {
+    filter: drop-shadow(0 0 0.7mm $drop-shadow-yellow);
   }
 }
 
