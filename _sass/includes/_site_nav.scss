@@ -39,6 +39,62 @@
   }
 }
 
+.dropdown {
+  border: none;
+  background: none; 
+}
+
+.dropdown:hover .dropdown-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown-content {
+  display: none;
+}
+
+.dropdown-btn {
+  @include fs-6;
+  display: flex;
+  cursor: pointer;
+  user-select: none;
+  padding: $sp-2;
+  border: none;
+  background: none; 
+  display: table-cell;
+  vertical-align: middle;
+  filter: drop-shadow(0 0 0.8mm $drop-shadow-blue);
+}
+
+.dropbtn {
+  @include fs-6;
+  cursor: pointer;
+  user-select: none;
+  padding: $sp-2;
+  transition: all .2s ease-in-out;
+  border: none;
+  background: none; 
+  display: table-cell;
+  vertical-align: middle;
+  transition: all .2s ease-in-out;
+  
+  &:hover {
+    transform: scale(1.5); 
+  }
+
+  #posts-emoji-span {
+    filter: drop-shadow(0 0 0.8mm $drop-shadow-purple);
+  }
+
+  #recent-emoji-span {
+    filter: drop-shadow(0 0 0.8mm $drop-shadow-blue);
+  }
+
+  #status-tags-emoji-span {
+    filter: drop-shadow(0 0 0.8mm $drop-shadow-brown);
+  }
+}
+
 .site-nav-btn {
   @include fs-6;
   display: flex;
@@ -59,19 +115,7 @@
     filter: drop-shadow(0 0 0.8mm $drop-shadow-red);
   }
 
-  #posts-emoji-span {
-    filter: drop-shadow(0 0 0.8mm $drop-shadow-purple);
-  }
-
-  #recent-emoji-span {
-    filter: drop-shadow(0 0 0.8mm $drop-shadow-blue);
-  }
-
   #search-emoji-span {
-    filter: drop-shadow(0 0 0.8mm $drop-shadow-brown);
-  }
-
-  #tags-emoji-span {
     filter: drop-shadow(0 0 0.8mm $drop-shadow-brown);
   }
 

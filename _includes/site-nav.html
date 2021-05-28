@@ -4,35 +4,42 @@
       <input id="theme-colors-checkbox" type="checkbox" checked="checked">
       <span id="theme-colors-emoji-span" title="Toggle Colors"></span>
     </label>
-    <button id="tags-btn" class="site-nav-btn" title="Go To Plant Tags">
-      <span id="tags-emoji-span">🔖</span>
-    </button>
-    <button id="posts-btn" class="site-nav-btn" title="Go To Field bLogs">
-      <span id="posts-emoji-span">📓</span>
-    </button>
-    <button id="recent-btn" class="site-nav-btn" title="Go To Recent Weather">
-      <span id="recent-emoji-span">🌦</span>
-    </button>
-    <label class="btn-selector">
-      <input id="graph-type-checkbox" type="checkbox" checked="checked">
-      <span id="graph-type-emoji-span" title="Toggle Graph Type"></span>
-    </label>
     <label class="btn-selector">
       <input id="nav-type-checkbox" type="checkbox" checked="checked">
       <span id="nav-type-emoji-span" title="Toggle Nav Type"></span>
     </label>
+    <label class="btn-selector">
+      <input id="graph-type-checkbox" type="checkbox" checked="checked">
+      <span id="graph-type-emoji-span" title="Toggle Graph Type"></span>
+    </label>
+    <span class="dropdown">
+      <button id="pages-btn" class="dropdown-btn">
+        <span id="pages-emoji-span">🗺</span>
+      </button>
+      <div class="dropdown-content">
+        <button id="status-tags-btn" class="dropbtn drop-1" title="Go To Plant Tags">
+          <span id="status-tags-emoji-span">🔖</span>
+        </button>
+        <button id="posts-btn" class="dropbtn drop-2" title="Go To Field bLogs">
+          <span id="posts-emoji-span">📓</span>
+        </button>
+        <button id="recent-btn" class="dropbtn drop-3" title="Go To Recent Weather">
+          <span id="recent-emoji-span">🌦</span>
+        </button>
+      </div>
+    </span>
     <!-- <button id="search-btn" class="site-nav-btn" title="Search">
       <span id="search-emoji-span">🔍</span>
     </button> -->
-    <button id="delete-btn" class="site-nav-btn" title="Search">
-      <span id="delete-emoji-span" title="Delete Visited Info">🧹</span>
-    </button>
   </header>
 
   <nav id="visited-nav" class="visited-nav"></nav>
   <svg id="svg-graph" height="100%" width="100%"></svg>
   
-  <footer class="small-descr">
-    Grown 🪴 with 💚 from a <a href="https://github.com/shorty25h0r7/jekyll-bonsai/">jekyll-bonsai</a>.
+  <footer>
+    <button id="delete-btn" class="site-nav-btn" title="Search">
+      <span id="delete-emoji-span" title="Delete Visited Info">🧹</span>
+    </button>
+    <span class="small-descr">Grown 🪴 with 💚 from a <a href="https://github.com/shorty25h0r7/jekyll-bonsai/">jekyll-bonsai</a>.</span>
   </footer>
 </nav>
