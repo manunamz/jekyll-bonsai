@@ -66,7 +66,7 @@ export default class SiteNav {
 
   addVisited() {
     if (this.visited) {
-      // remove duplicates to current
+      // remove duplicates to current (since json and !SortedSet)
       // step backward so splicing doesn't change indeces as tabs are removed
       for (var i = this.visited.length - 1; i > -1; i--) {
         let aTab = this.visited[i];
