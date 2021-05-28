@@ -19,33 +19,35 @@
     @include fs-5;
     display: flex;
     justify-content: flex-start;
-    width: 100%;
     position: absolute;
     top: 0;
+    width: 100%;
+    z-index: 4;
     padding: $sp-2;
     color: $grey-dk-000;
-    z-index: 4;
     cursor: pointer;
     user-select: none;
   }
 
   footer {
-    width: 100%;
     position: absolute;
+    width: 100%;
+    z-index: 4;
     bottom: 0;
     left: 0;
     padding: $sp-3;
-    z-index: 4;
   }
 }
 
 .site-nav-btn {
   @include fs-6;
-  border: none;
-  background: none;
+  display: flex;
   cursor: pointer;
-  transition: all .2s ease-in-out;    
+  user-select: none;
   padding: $sp-2;
+  transition: all .2s ease-in-out;
+  border: none;
+  background: none;    
   
   &:hover {
     transform: scale(1.5); 
