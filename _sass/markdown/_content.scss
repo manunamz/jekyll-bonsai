@@ -25,10 +25,10 @@
     white-space: nowrap;
     
     &:not(.wiki-link):not(.status-tag):not(.footnote):not(.reversefootnote):after {
-      @include fs-1;
+      @include fs-3;
       font-family: $mono-font-family;
       position: relative;
-      top: -$sp-1;
+      top: -0.5em; // sass variable not working here
       content: "↗";
       color: #aaaaaa;
     }
