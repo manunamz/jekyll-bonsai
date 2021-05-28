@@ -3,44 +3,6 @@
 //
 // stylelint-disable selector-no-type, max-nesting-depth, selector-max-compound-selectors, selector-max-type, selector-max-specificity
 
-
-.tags-nav {
-  @include fs-6;
-  width: 100%;
-  z-index: 2;
-  position: relative;
-  user-select: none;
-  display: flex;
-  
-  .tags-nav-list {
-    overflow-x: scroll;
-    white-space: nowrap;
-    padding-left: $sp-2;
-  }
-
-  .tags-list-item {
-    display: inline-block;
-    margin-right: $sp-3;
-    margin-left: $sp-3;
-    padding-top: $sp-4;
-    padding-bottom: $sp-5;
-    transition: all .2s ease-in-out;
-  
-    &.active {
-      filter: drop-shadow(0 2mm 2mm $drop-shadow-green);
-    }
-
-    &:hover {
-      transform: scale(1.5); 
-      filter: drop-shadow(0 2mm 2mm $drop-shadow-brown);
-    }
-  }
-
-  @include mq(md) {
-    padding-right: $gutter-spacing-sm;
-  }
-}
-
 // note-breadcrumb nav
 
 .note-head-nav {

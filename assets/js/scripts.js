@@ -26,9 +26,9 @@ import SiteNav from './site-nav.js';
  //
 function initListeners () {
   // open external links in new window; wiki-links in current window.
-  document.querySelectorAll("a:not(.wiki-link):not(.tags-list-item):not(.footnote):not(.reversefootnote)").forEach(setupLinkOpen);
+  document.querySelectorAll("a:not(.wiki-link):not(.status-tag):not(.footnote):not(.reversefootnote)").forEach(setupLinkOpen);
   // init note-preview.html listeners.
-  document.querySelectorAll('{{ include.wrapperQuerySelector }} a:not(.tags-list-item)').forEach(setupListeners);
+  document.querySelectorAll('{{ include.wrapperQuerySelector }} a:not(.status-tag)').forEach(setupListeners);
 
   document.getElementById('tags-btn')
     .addEventListener('click', function(event) {

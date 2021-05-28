@@ -2,6 +2,53 @@
 // scss for tag page
 // 
 
+.tags-nav {
+  @include fs-6;
+  display: flex;
+  position: absolute;
+  width: 100%;
+  z-index: 2;
+  top: 0;
+  user-select: none;
+  
+  .tags-nav-list {
+    overflow-x: scroll;
+    white-space: nowrap;
+    padding-left: 0 !important;
+  }
+
+  .tags-list-item {
+    display: inline-block;
+    margin-right: $sp-3;
+    margin-left: $sp-3;
+    margin-top: 0;
+    padding-top: $sp-2;
+    padding-bottom: $sp-5;
+    transition: all .2s ease-in-out;
+  
+    &::before {
+      content: "";
+    }
+
+    &.active {
+      filter: drop-shadow(0 2mm 2mm $drop-shadow-green);
+    }
+
+    &:hover {
+      transform: scale(1.5); 
+      filter: drop-shadow(0 2mm 2mm $drop-shadow-brown);
+    }
+  }
+
+  @include mq(md) {
+    padding-right: $gutter-spacing-sm;
+  }
+}
+
+.plant-tags-page {
+  padding-top: $sp-10;
+}
+
 .tag-list {
   padding: $sp-4;
   display: block; // columns require block
