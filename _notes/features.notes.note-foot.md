@@ -7,4 +7,4 @@ created: 1620411728364
 tags: 🌿
 ---
 
-🛤 The [[digital-garden.fork]] in the [[digital-garden.trail]] is the [[note's foot|features.notes.note-foot]]. 
+🛤 The [[digital-garden.fork]] in the [[digital-garden.path]] is the [[note's foot|features.notes.note-foot]]. 

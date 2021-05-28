@@ -7,4 +7,4 @@ created: 1620432252168
 tags: 🌿
 ---
 
-The [breadcrumb](https://en.wikipedia.org/wiki/Breadcrumb_navigation) [[digital-garden.trail]] at the top of each note displays all ancestors of the [[features.graph.current-note]], as defined by the note's [[features.graph.links.namespacing]].
+The [breadcrumb](https://en.wikipedia.org/wiki/Breadcrumb_navigation) [[digital-garden.path]] at the top of each note displays all ancestors of the [[features.graph.current-note]], as defined by the note's [[features.graph.links.namespacing]].

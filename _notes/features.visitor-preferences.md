@@ -16,5 +16,5 @@ Some navigational and display preferences are saved in the visitor's browser to 
   - 🌳 [[features.graph.type.tree]]
   - 🕸 [[features.graph.type.net-web]]
 - Hide/Show [[note|features.notes]]-local navigation:
-  - 🛤 The [[features.notes.note-head]]'s [[digital-garden.trail]].
+  - 🛤 The [[features.notes.note-head]]'s [[digital-garden.path]].
   - 🚏 The [[features.notes.note-foot]]'s [[digital-garden.fork]].
