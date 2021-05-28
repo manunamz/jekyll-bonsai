@@ -7,13 +7,13 @@ wikilinks:
   # enabled: true
   exclude:
       - "pages"
-      - "note_tags"
+      - "status_tags"
 d3_graph_data:
   # enabled: true
   exclude:
     - "pages"
     - "posts"
-    - "note_tags"
+    - "status_tags"
 
 # jekyll-bonsai configs
 
@@ -56,9 +56,9 @@ collections:
   notes: 
     output: true
     # permalinks are manually generated -- see plugins.
-  note_tags:
+  status_tags:
     output: true
-    permalink: /tag/:title
+    permalink: /status-tag/:title
 
 defaults:
   - scope:
@@ -67,10 +67,10 @@ defaults:
     values:
       layout: "note"
   - scope:
-      path: "_note_tags/**/*.md"
-      type: "note_tags"
+      path: "_status_tags/**/*.md"
+      type: "status_tags"
     values:
-      layout: "tag"
+      layout: "status-tag"
 
 plugins:
   - jekyll-wikilinks

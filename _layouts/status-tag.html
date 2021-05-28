@@ -1,13 +1,13 @@
 ---
 layout: default
 ---
-{% assign tags = site.note_tags | sort: "order"  %}
+{% assign tags = site.status_tags | sort: "order"  %}
 {% assign tags_page_title = "Plant Tags Page" %}
 
-<nav class="tags-nav">
-  <ul class="tags-nav-list">
+<nav class="status-tags-nav">
+  <ul class="status-tags-nav-list">
     {% for tag in tags %}
-      <li class="tags-list-item {% if page.url == tag.url %}active{% endif %}">
+      <li class="status-tags-list-item {% if page.url == tag.url %}active{% endif %}">
         <a href="{{ tag.url | relative_url }}" class="status-tag">
           {{ tag.emoji }}
         </a>
@@ -16,7 +16,7 @@ layout: default
   </ul>
 </nav>
 
-<div id="plant-tags" class="plant-tags-page">
+<div id="plant-tags" class="plant-status-tags-page">
   <!-- all tags -->
   {% if page.title == tags_page_title %}
     <h1>🔖 Plant Tags In This Garden</h1>
@@ -43,13 +43,13 @@ layout: default
     </p>
 
     {% if notes_with_tag.size == 0 %}
-      <div class="none-for-tag">
+      <div class="no-results">
         There are currently no {{ page.emoji }}s.
       </div>
     {% else %}
-      <ul class="tag-list">
+      <ul class="status-tags-list">
         {% for note in notes_with_tag %}
-          <li class="tag-list-item">
+          <li class="status-tags-list-item">
             {{ page.emoji }} <a href="{{ note.url | relative_url }}" class="wiki-link">{{ note.title }}</a>
           </li>
         {% endfor %}  

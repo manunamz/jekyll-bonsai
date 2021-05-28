@@ -30,9 +30,9 @@ function initListeners () {
   // init note-preview.html listeners.
   document.querySelectorAll('{{ include.wrapperQuerySelector }} a:not(.status-tag)').forEach(setupListeners);
 
-  document.getElementById('tags-btn')
+  document.getElementById('status-tags-btn')
     .addEventListener('click', function(event) {
-      goTo('{{ site.baseurl }}/tag/tags');
+      goTo('{{ site.baseurl }}/status-tag/tags');
     }, false);
   document.getElementById('posts-btn')
     .addEventListener('click', function(event) {
