@@ -4,7 +4,7 @@
 
 .btn-selector {
   @include fs-6;
-  display: inline-block; // transform animation breaks without this on theme-colors and graph-type...
+  display: flex; // transform animation breaks without this on theme-colors and graph-type...
   cursor: pointer;
   user-select: none;
   padding: $sp-2;
