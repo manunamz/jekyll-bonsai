@@ -12,9 +12,9 @@ layout: table-wrappers
     
     <div class="main" id="top">
       <div id="main-content-wrap" class="main-content-wrap">
-        <div id="main-content" class="main-content" role="main">
+        <turbo-frame id="main-content" class="main-content" role="main">
           {{ content }}
-        </div>
+        </turbo-frame>
       </div>
     </div>
 
@@ -24,6 +24,11 @@ layout: table-wrappers
       <span id="wiki-link-nav-span">[[ ]]</span>
     </label>
 
+    <!-- from: https://cdn.skypack.dev/@hotwired/turbo -->
+    <!-- <script src="https://cdn.skypack.dev/pin/@hotwired/turbo@v7.0.0-beta.5-LhgiwOUjafYu3bb8VbTv/mode=imports,min/optimized/@hotwired/turbo.js"></script> -->
+    <script type="module">
+      import hotwiredTurbo from 'https://cdn.skypack.dev/@hotwired/turbo';
+    </script>
     <script src="https://d3js.org/d3.v6.min.js"></script>
     {% webmentions_js %}
     {% include note-preview.html wrapperQuerySelector="content" %}
