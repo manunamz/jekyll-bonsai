@@ -74,7 +74,7 @@ export default class Note {
 
   toggleNoteHeadCollapse () {
     // from: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_collapsible
-    var collapsibleEl = document.getElementsByClassName('note-head-breadcrumbs')[0];
+    var collapsibleEl = document.getElementById('note-head-breadcrumbs');
     if (this.noteHeadCheckbox.checked) {
       collapsibleEl.style.display = "none";
       this.noteHeadStatus = "closed";
