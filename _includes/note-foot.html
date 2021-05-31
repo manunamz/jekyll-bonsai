@@ -1,29 +1,4 @@
 <footer>
-  <!-- Field bLogs -->
-  <div class="note-foot-wrapper">
-    <div> <!-- extra div so 'note-foot-selector' animation only effects the emoji label-->
-      <label class="note-foot-selector field-blogs">
-        <input id="note-foot-posts-checkbox" type="checkbox">
-        <span id="note-foot-posts-emoji-span" title="Toggle Field bLogs">📓</span>
-      </label>
-    </div>
-    <nav id="note-foot-posts-nav" class="note-foot-nav" role="navigation" aria-label="">
-      <span class="note-foot-nav-title">
-        Field bLogs
-      </span>
-      <div class="note-foot-nav-section">
-        <h4 class="note-foot-nav-subtitle">Posts</h4>
-        <ul class="note-foot-nav-list">
-          {% assign post_backlinks = page.backlinks | backlink_type: "posts" %}
-          {% for blink in post_backlinks %}
-            <li class="note-foot-nav-list-item">
-              <a class="wiki-link" href="{{ blink.url | relative_url }}">{{ blink.title }}</a>
-            </li>
-          {% endfor %}
-        </ul>
-      </div>
-    </nav>
-  </div>
   <!-- Forks on the path -->
   <div class="note-foot-wrapper">
     <div> <!-- extra div so 'note-foot-selector' animation only effects the emoji label-->
@@ -60,6 +35,31 @@
             {% endfor %}
           </ul>
         </div>
+      </div>
+    </nav>
+  </div>
+  <!-- Field bLogs -->
+  <div class="note-foot-wrapper">
+    <div> <!-- extra div so 'note-foot-selector' animation only effects the emoji label-->
+      <label class="note-foot-selector field-blogs">
+        <input id="note-foot-posts-checkbox" type="checkbox">
+        <span id="note-foot-posts-emoji-span" title="Toggle Field bLogs">📓</span>
+      </label>
+    </div>
+    <nav id="note-foot-posts-nav" class="note-foot-nav" role="navigation" aria-label="">
+      <span class="note-foot-nav-title">
+        Field bLogs
+      </span>
+      <div class="note-foot-nav-section">
+        <h4 class="note-foot-nav-subtitle">Posts</h4>
+        <ul class="note-foot-nav-list">
+          {% assign post_backlinks = page.backlinks | backlink_type: "posts" %}
+          {% for blink in post_backlinks %}
+            <li class="note-foot-nav-list-item">
+              <a class="wiki-link" href="{{ blink.url | relative_url }}">{{ blink.title }}</a>
+            </li>
+          {% endfor %}
+        </ul>
       </div>
     </nav>
   </div>
