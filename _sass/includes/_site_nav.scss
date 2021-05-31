@@ -190,36 +190,36 @@
   top: -9999px !important;
   left: -9999px !important;
 
-  animation-name: animateShow;
-  animation-duration: 100ms;
-  animation-timing-function: ease-in-out;
+  // animation-name: animateShow;
+  // animation-duration: 100ms;
+  // animation-timing-function: ease-in-out;
 }
 
-@keyframes animateHide {
-  0% {
-    opacity: 1;
-  }
+// @keyframes animateHide {
+//   0% {
+//     opacity: 1;
+//   }
   
-  100% {
-    opacity: 0;
-  }
-}
+//   100% {
+//     opacity: 0;
+//   }
+// }
 
-.show {
-  animation-name: animateShow;
-  animation-duration: 250ms;
-  animation-delay: calc(var(--animation-show-order) * 100ms);
-  animation-fill-mode: both;
-  animation-timing-function: ease-in-out;
-}
+// .show {
+//   animation-name: animateShow;
+//   animation-duration: 250ms;
+//   animation-delay: calc(var(--animation-show-order) * 100ms);
+//   animation-fill-mode: both;
+//   animation-timing-function: ease-in-out;
+// }
 
-// from: https://css-tricks.com/different-approaches-for-creating-a-staggered-animation/#how-about-custom-properties
-@keyframes animateShow {
-  0% {
-    opacity: 0;
-  }
+// // from: https://css-tricks.com/different-approaches-for-creating-a-staggered-animation/#how-about-custom-properties
+// @keyframes animateShow {
+//   0% {
+//     opacity: 0;
+//   }
   
-  100% {
-    opacity: 1;
-  }
-}
+//   100% {
+//     opacity: 1;
+//   }
+// }
