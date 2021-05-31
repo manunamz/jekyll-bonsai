@@ -253,7 +253,8 @@ export default class GraphNav {
 
           const root = d3.hierarchy(data);
           const links = root.links();
-          flatten(root);
+          // flatten(root);
+          // d3.merge(root);
           const nodes = root.descendants();
   
           const simulation = d3.forceSimulation(nodes)
@@ -289,11 +290,11 @@ export default class GraphNav {
               .attr("class", nodeTypeInTree)
               .on("click", goToNoteFromTree)
               // 🐛 bug: this does not work -- it overtakes clicks (extra lines in "tick" are related).
-              // .call(d3.drag()
-              //     .on("start", dragstarted)
-              //     .on("drag", dragged)
-              //     .on("end", dragended)
-              //     .touchable(true));
+              .call(d3.drag()
+                  .on("start", dragstarted)
+                  .on("drag", dragged)
+                  .on("end", dragended)
+                  .touchable(true));
           // node's label
           // labels need to be nested in a 'g' object alongside the node circle.
           //  docs: https://bl.ocks.org/mbostock/950642
@@ -324,12 +325,12 @@ export default class GraphNav {
           simulation.on("tick", () => {
               // from: https://mbostock.github.io/d3/talk/20110921/parent-foci.html
               // preserve hierarchical shape via link positioning
-              var kx = .2 * simulation.alpha();
-              var ky = 1.3 * simulation.alpha();
-              links.forEach(function(d, i) {
-                d.target.x += (d.source.x - d.target.x) * kx;
-                d.target.y += (d.source.y + (height * .35) - d.target.y) * ky;
-              });
+              // var kx = .2 * simulation.alpha();
+              // var ky = 1.3 * simulation.alpha();
+              // links.forEach(function(d, i) {
+              //   d.target.x += (d.source.x - d.target.x) * kx;
+              //   d.target.y += (d.source.y + (height * .35) - d.target.y) * ky;
+              // });
 
               link
                   .attr("x1", d => d.source.x)
