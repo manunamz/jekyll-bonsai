@@ -111,16 +111,32 @@
     transform: scale(1.5); 
   }
 
-  #delete-emoji-span {
-    filter: drop-shadow(0 0 0.8mm $drop-shadow-red);
-  }
-
   #search-emoji-span {
     filter: drop-shadow(0 0 0.8mm $drop-shadow-brown);
   }
 
   #visited-emoji-span {
     filter: drop-shadow(0 0 0.8mm $drop-shadow-orange);
+  }
+}
+
+.delete-btn {
+  @include fs-3;
+  display: flex;
+  cursor: pointer;
+  user-select: none;
+  transition: all .2s ease-in-out;
+  border: none;
+  background: none; 
+  display: table-cell;
+  vertical-align: middle;
+  
+  &:hover {
+    transform: scale(1.5); 
+  }
+
+  #delete-emoji-span {
+    filter: drop-shadow(0 0 0.8mm $drop-shadow-red);
   }
 }
 

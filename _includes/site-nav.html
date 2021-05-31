@@ -1,17 +1,5 @@
 <nav id="site-nav" class="site-nav" role="navigation" aria-label="main">
   <header>
-    <label class="btn-selector">
-      <input id="theme-colors-checkbox" type="checkbox" checked="checked">
-      <span id="theme-colors-emoji-span" title="Toggle Colors"></span>
-    </label>
-    <label class="btn-selector">
-      <input id="nav-type-checkbox" type="checkbox" checked="checked">
-      <span id="nav-type-emoji-span" title="Toggle Nav Type"></span>
-    </label>
-    <label class="btn-selector">
-      <input id="graph-type-checkbox" type="checkbox" checked="checked">
-      <span id="graph-type-emoji-span" title="Toggle Graph Type"></span>
-    </label>
     <span class="dropdown">
       <button id="pages-btn" class="dropdown-btn">
         <span id="pages-emoji-span">🗺</span>
@@ -28,6 +16,18 @@
         </button>
       </div>
     </span>
+    <label class="btn-selector">
+      <input id="theme-colors-checkbox" type="checkbox" checked="checked">
+      <span id="theme-colors-emoji-span" title="Toggle Colors"></span>
+    </label>
+    <label class="btn-selector">
+      <input id="nav-type-checkbox" type="checkbox" checked="checked">
+      <span id="nav-type-emoji-span" title="Toggle Nav Type"></span>
+    </label>
+    <label class="btn-selector">
+      <input id="graph-type-checkbox" type="checkbox" checked="checked">
+      <span id="graph-type-emoji-span" title="Toggle Graph Type"></span>
+    </label>
     <!-- <button id="search-btn" class="site-nav-btn" title="Search">
       <span id="search-emoji-span">🔍</span>
     </button> -->
@@ -35,11 +35,11 @@
 
   <nav id="visited-nav" class="visited-nav"></nav>
   <svg id="svg-graph" height="100%" width="100%"></svg>
-  
+
   <footer>
-    <button id="delete-btn" class="site-nav-btn" title="Search">
+    <span class="small-descr">Grown 🪴 with 💚 from a <a href="https://github.com/shorty25h0r7/jekyll-bonsai/">jekyll-bonsai</a>.</span>
+    <button id="delete-btn" class="delete-btn" title="Delete Visited History">
       <span id="delete-emoji-span" title="Delete Visited Info">🧹</span>
     </button>
-    <span class="small-descr">Grown 🪴 with 💚 from a <a href="https://github.com/shorty25h0r7/jekyll-bonsai/">jekyll-bonsai</a>.</span>
   </footer>
 </nav>
