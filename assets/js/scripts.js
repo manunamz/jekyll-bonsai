@@ -1,5 +1,7 @@
 ---
 ---
+
+import URLCtrl from './url-ctrl.js';
 import GraphNav from './graph.js';
 import ThemeColors from './theme-colors.js';
 import Note from './note.js';
@@ -10,6 +12,8 @@ import SiteNav from './site-nav.js';
  //
 // from: https://stackoverflow.com/questions/9899372/pure-javascript-equivalent-of-jquerys-ready-how-to-call-a-function-when-t
 (() => {
+  const application = Stimulus.Application.start();
+  application.register("url-ctrl", URLCtrl);
   // your page initialization code here
   // the DOM will be available here
   initListeners();
