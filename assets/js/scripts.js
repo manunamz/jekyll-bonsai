@@ -5,7 +5,7 @@ import URLCtrl from './url-ctrl.js';
 import GraphNav from './graph.js';
 import ThemeColors from './theme-colors.js';
 import Note from './note.js';
-import SiteNav from './site-nav.js';
+import SiteNavCtrl from './site-nav-ctrl.js';
 
  //
 // go
@@ -13,12 +13,12 @@ import SiteNav from './site-nav.js';
 // from: https://stackoverflow.com/questions/9899372/pure-javascript-equivalent-of-jquerys-ready-how-to-call-a-function-when-t
 (() => {
   const application = Stimulus.Application.start();
-  application.register("url-ctrl", URLCtrl);
+  application.register('url-ctrl', URLCtrl);
+  application.register('site-nav-ctrl', SiteNavCtrl);
   // your page initialization code here
   // the DOM will be available here
   initListeners();
   new ThemeColors();
-  new SiteNav();
   new GraphNav();
   if (document.getElementById('note')) {
     new Note();

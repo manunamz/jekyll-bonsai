@@ -1,4 +1,4 @@
-<nav id="site-nav" class="site-nav" role="navigation" aria-label="main">
+<nav data-controller="site-nav-ctrl" id="site-nav" class="site-nav" role="navigation" aria-label="main">
   <header>
     <span class="dropdown">
       <button id="pages-btn" class="dropdown-btn">
@@ -17,15 +17,15 @@
       </div>
     </span>
     <label class="btn-selector">
-      <input id="theme-colors-checkbox" type="checkbox" checked="checked">
+      <input id="theme-colors-checkbox" type="checkbox">
       <span id="theme-colors-emoji-span" title="Toggle Colors"></span>
     </label>
     <label class="btn-selector">
-      <input id="nav-type-checkbox" type="checkbox" checked="checked">
-      <span id="nav-type-emoji-span" title="Toggle Nav Type"></span>
+      <input data-site-nav-ctrl-target="navTypeCheckbox" data-action="click->site-nav-ctrl#syncNavType" type="checkbox">
+      <span data-site-nav-ctrl-target="navTypeEmojiSpan" title="Toggle Nav Type"></span>
     </label>
     <label class="btn-selector">
-      <input id="graph-type-checkbox" type="checkbox" checked="checked">
+      <input id="graph-type-checkbox" type="checkbox">
       <span id="graph-type-emoji-span" title="Toggle Graph Type"></span>
     </label>
     <!-- <button id="search-btn" class="site-nav-btn" title="Search">
@@ -33,12 +33,14 @@
     </button> -->
   </header>
 
-  <nav id="visited-nav" class="visited-nav"></nav>
+  <nav data-site-nav-ctrl-target="visitedNav" data-action="url-ctrl:notifyVisitedAdd@window->site-nav-ctrl#addVisitFromEvent" id="visited-nav" class="visited-nav"></nav>
+  <!-- TODO: remember this is a hack to make the current functionailty work -- this should probably be in NoteCtrl and communicated to SiteNavCtrl somehow...  -->
+  <span data-site-nav-ctrl-target="title" hidden>{{ page.title }}</span>
   <svg id="svg-graph" height="100%" width="100%"></svg>
 
   <footer>
     <span class="small-descr">Grown 🪴 with 💚 from a <a href="https://github.com/shorty25h0r7/jekyll-bonsai/">jekyll-bonsai</a>.</span>
-    <button id="delete-btn" class="delete-btn" title="Delete Visited History">
+    <button id="delete-btn" class="delete-btn" data-action="click->site-nav-ctrl#deleteVisitedHistory" title="Delete Visited History">
       <span id="delete-emoji-span" title="Delete Visited Info">🧹</span>
     </button>
   </footer>
