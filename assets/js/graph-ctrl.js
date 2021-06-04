@@ -1,10 +1,15 @@
 ---
 ---
-export default class GraphNav {
+export default class GraphCtrl {
+  static targets = [ "svg" ];
+
+  connect() {
+    console.log("Hello, Stimulus GraphCtrl!", this.element);
+  }
 
   constructor() {
     // this.graphType set in initGraphType();
-    this.svgWrapper = document.getElementById('svg-graph');
+    // this.svgWrapper = document.getElementById('svg-graph');
     this.graphTypeCheckBox = document.getElementById('graph-type-checkbox');
     this.graphTypeEmojiSpan = document.getElementById('graph-type-emoji-span');
     this.init();
@@ -12,26 +17,31 @@ export default class GraphNav {
 
   init() {
     this.initGraphType();
-    this.bindEvents();
+    // this.bindEvents();
     this.drawD3Nav();
   }
   
-  bindEvents() {
-    // listen for draw event (esp. from theme colors)
-    this.svgWrapper.addEventListener('draw', () => {
-      this.updateGraphType();
-      this.drawD3Nav();
-    });
-    this.graphTypeCheckBox.addEventListener('click', () => {
-      this.updateGraphType();
-      this.drawD3Nav();
-    });
-  }
+  // bindEvents() {
+  //   // listen for draw event (esp. from theme colors)
+  //   this.svgTarget.addEventListener('draw', () => {
+  //     this.syncGraphType();
+  //     this.drawD3Nav();
+  //   });
+  //   this.graphTypeCheckBox.addEventListener('click', () => {
+  //     this.syncGraphType();
+  //     this.drawD3Nav();
+  //   });
+  // }
   
+  // syncGraph() {
+  //   this.syncGraphType();
+  //   this.drawD3Nav();
+  // }
+
   // how to checkbox: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_display_checkbox_text
   drawD3Nav() {   
     // destroy old chart   
-    d3.select(this.svgWrapper).selectAll('svg > *').remove();
+    d3.select(this.svgTarget).selectAll('svg > *').remove();
   
     let theme_attrs = {};
     // set theme-dependent graph attributes.
@@ -62,10 +72,10 @@ export default class GraphNav {
       this.graphType = '{{ site.graph_type }}';	
     }
     this.graphTypeCheckBox.checked = (this.graphType === "tree");
-    this.updateGraphType();
+    this.syncGraphType();
   }
 
-  updateGraphType() {
+  syncGraphType() {
     if (this.graphTypeCheckBox.checked) {
       this.graphTypeEmojiSpan.innerText = "🕸";
       this.graphType = "tree";
@@ -74,10 +84,11 @@ export default class GraphNav {
       this.graphType = "net-web";
     }
     localStorage.setItem('graph-type', this.graphType);
+    this.drawD3Nav();
   } 
 
   // d3
-  drawNetWeb (theme_attrs) {
+  drawNetWeb(theme_attrs) {
     // d3.json has been async'd: https://stackoverflow.com/questions/49768165/code-within-d3-json-callback-is-not-executed 
     d3.json("{{ site.baseurl }}/assets/graph-net-web.json")
       .then(function(data) {       
@@ -239,7 +250,7 @@ export default class GraphNav {
       });
   }
   
-  drawTree (theme_attrs) { 
+  drawTree(theme_attrs) { 
     // d3.json has been async'd: https://stackoverflow.com/questions/49768165/code-within-d3-json-callback-is-not-executed 
     d3.json("{{ site.baseurl }}/assets/graph-tree.json")
       .then(function(data) {

@@ -1,4 +1,4 @@
-<nav data-controller="site-nav-ctrl" id="site-nav" class="site-nav" role="navigation" aria-label="main">
+<nav id="site-nav" class="site-nav" data-controller="site-nav-ctrl" role="navigation" aria-label="main">
   <header>
     <span class="dropdown">
       <button id="pages-btn" class="dropdown-btn">
@@ -16,16 +16,16 @@
         </button>
       </div>
     </span>
-    <label class="btn-selector">
-      <input id="theme-colors-checkbox" type="checkbox">
-      <span id="theme-colors-emoji-span" title="Toggle Colors"></span>
+    <label class="btn-selector" data-controller="theme-colors-ctrl">
+      <input id="theme-colors-checkbox" data-theme-colors-ctrl-target="themeColorsCheckbox" data-action="click->theme-colors-ctrl#syncThemeColors" type="checkbox">
+      <span data-theme-colors-ctrl-target="themeColorsEmojiSpan" title="Toggle Colors"></span>
     </label>
-    <label class="btn-selector">
+    <!-- <label class="btn-selector">
       <input data-site-nav-ctrl-target="navTypeCheckbox" data-action="click->site-nav-ctrl#syncNavType" type="checkbox">
       <span data-site-nav-ctrl-target="navTypeEmojiSpan" title="Toggle Nav Type"></span>
-    </label>
+    </label> -->
     <label class="btn-selector">
-      <input id="graph-type-checkbox" type="checkbox">
+      <input id="graph-type-checkbox" data-action="click->graph-ctrl#syncGraphType" type="checkbox">
       <span id="graph-type-emoji-span" title="Toggle Graph Type"></span>
     </label>
     <!-- <button id="search-btn" class="site-nav-btn" title="Search">
@@ -33,10 +33,8 @@
     </button> -->
   </header>
 
-  <nav data-site-nav-ctrl-target="visitedNav" data-action="url-ctrl:notifyVisitedAdd@window->site-nav-ctrl#addVisitFromEvent" id="visited-nav" class="visited-nav"></nav>
-  <!-- TODO: remember this is a hack to make the current functionailty work -- this should probably be in NoteCtrl and communicated to SiteNavCtrl somehow...  -->
-  <span data-site-nav-ctrl-target="title" hidden>{{ page.title }}</span>
-  <svg id="svg-graph" height="100%" width="100%"></svg>
+  <!-- <nav id="visited-nav" class="visited-nav" data-site-nav-ctrl-target="visitedNav" data-action="url-ctrl:notifyVisitedAdd@window->site-nav-ctrl#addVisitFromEvent"></nav> -->
+  <svg id="svg-graph" data-graph-ctrl-target="svg" height="100%" width="100%"></svg>
 
   <footer>
     <span class="small-descr">Grown 🪴 with 💚 from a <a href="https://github.com/shorty25h0r7/jekyll-bonsai/">jekyll-bonsai</a>.</span>

@@ -2,7 +2,7 @@
 ---
 
 import URLCtrl from './url-ctrl.js';
-import GraphNav from './graph.js';
+import GraphCtrl from './graph-ctrl.js';
 import ThemeColorsCtrl from './theme-colors-ctrl.js';
 import NoteCtrl from './note-ctrl.js';
 import SiteNavCtrl from './site-nav-ctrl.js';
@@ -16,12 +16,12 @@ import SiteNavCtrl from './site-nav-ctrl.js';
   application.register('url-ctrl', URLCtrl);
   application.register('theme-colors-ctrl', ThemeColorsCtrl);
   application.register('site-nav-ctrl', SiteNavCtrl);
+  application.register('graph-ctrl', GraphCtrl);
   // only connects if there's a note
   application.register('note-ctrl', NoteCtrl);
   // your page initialization code here
   // the DOM will be available here
   initListeners();
-  new GraphNav();
 })();
 
  //
