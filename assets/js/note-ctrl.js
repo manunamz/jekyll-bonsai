@@ -1,81 +1,51 @@
 ---
 ---
 // this file is a monstrosity!
-export default class Note {
-  constructor() {
-    // head
-    // this.noteHeadStatus set in initNoteStatus();
-    this.noteHeadCheckbox = document.getElementById('note-head-checkbox');
-    
-    // foot
-    // this.noteFootLinksStatus set in initNoteStatus();
-    this.noteFootLinksCheckbox = document.getElementById('note-foot-links-checkbox');
-    // this.noteFootPostsStatus set in initNoteStatus();
-    this.noteFootPostsCheckbox = document.getElementById('note-foot-posts-checkbox');
-    // this.noteFootWebmentionsStatus set in initNoteStatus();
-    this.noteFootWebmentionsCheckbox = document.getElementById('note-foot-webmentions-checkbox');
+export default class NoteCtrl extends Stimulus.Controller {
+  static targets = [ "noteFootLinksCheckbox", "noteFootPostsCheckbox", "noteFootWebmentionsCheckbox", "noteHeadCheckbox" ];
+
+  connect() {
+    console.log("Hello, Stimulus NoteCtrl!", this.element);
 
     this.init();
   }
 
   init() {
-    this.initNoteStatus();
-    this.bindEvents();
-  }
-
-  bindEvents() {
-    // head
-    this.noteHeadCheckbox.addEventListener('click', () => {
-      this.toggleNoteHeadCollapse();
-    });
-    // foot
-    this.noteFootLinksCheckbox.addEventListener('click', () => {
-      this.toggleNoteFootLinksCollapse();
-    });
-    this.noteFootPostsCheckbox.addEventListener('click', () => {
-      this.toggleNoteFootPostsCollapse();
-    });
-    this.noteFootWebmentionsCheckbox.addEventListener('click', () => {
-      this.toggleNoteFootWebmentionsCollapse();
-    });
-  }
-
-  initNoteStatus() {
     // head
     this.noteHeadStatus = localStorage.getItem('note-head-status');
     if (this.noteHeadStatus !== "open" && this.noteHeadStatus !== "closed") {
       this.noteHeadStatus = '{{ site.note_head_status }}';	
     }
-    this.noteHeadCheckbox.checked = (this.noteHeadStatus === "closed"); 
-    this.toggleNoteHeadCollapse();
+    this.noteHeadCheckboxTarget.checked = (this.noteHeadStatus === "closed"); 
+    this.syncNoteHeadCollapse();
 
     // foot
     this.noteFootLinksStatus = localStorage.getItem('note-foot-links-status');
     if (this.noteFootLinksStatus !== "open" && this.noteFootLinksStatus !== "closed") {
       this.noteFootLinksStatus = '{{ site.note_foot_links_status }}';	
     }
-    this.noteFootLinksCheckbox.checked = (this.noteFootLinksStatus === "closed"); 
-    this.toggleNoteFootLinksCollapse();
+    this.noteFootLinksCheckboxTarget.checked = (this.noteFootLinksStatus === "closed"); 
+    this.syncNoteFootLinksCollapse();
 
     this.noteFootPostsStatus = localStorage.getItem('note-foot-posts-status');
     if (this.noteFootPostsStatus !== "open" && this.noteFootPostsStatus !== "closed") {
       this.noteFootPostsStatus = '{{ site.note_foot_posts_status }}';	
     }
-    this.noteFootPostsCheckbox.checked = (this.noteFootPostsStatus === "closed"); 
-    this.toggleNoteFootPostsCollapse();
+    this.noteFootPostsCheckboxTarget.checked = (this.noteFootPostsStatus === "closed"); 
+    this.syncNoteFootPostsCollapse();
 
     this.noteFootWebmentionsStatus = localStorage.getItem('note-foot-webmentions-status');
     if (this.noteFootWebmentionsStatus !== "open" && this.noteFootWebmentionsStatus !== "closed") {
       this.noteFootWebmentionsStatus = '{{ site.note_foot_webmentions_status }}';	
     }
-    this.noteFootWebmentionsCheckbox.checked = (this.noteFootWebmentionsStatus === "closed");
-    this.toggleNoteFootWebmentionsCollapse();
+    this.noteFootWebmentionsCheckboxTarget.checked = (this.noteFootWebmentionsStatus === "closed");
+    this.syncNoteFootWebmentionsCollapse();
   }
 
-  toggleNoteHeadCollapse () {
+  syncNoteHeadCollapse () {
     // from: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_collapsible
     var collapsibleEl = document.getElementById('note-head-breadcrumbs');
-    if (this.noteHeadCheckbox.checked) {
+    if (this.noteHeadCheckboxTarget.checked) {
       collapsibleEl.style.display = "none";
       this.noteHeadStatus = "closed";
     } else {
@@ -85,10 +55,10 @@ export default class Note {
     localStorage.setItem('note-head-status', this.noteHeadStatus);
   } 
 
-  toggleNoteFootLinksCollapse () {
+  syncNoteFootLinksCollapse () {
     // from: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_collapsible
     var collapsibleEl = document.getElementById('note-foot-links-nav');
-    if (this.noteFootLinksCheckbox.checked) {
+    if (this.noteFootLinksCheckboxTarget.checked) {
       collapsibleEl.style.display = "none";
       this.noteFootLinksStatus = "closed";
     } else {
@@ -98,10 +68,10 @@ export default class Note {
     localStorage.setItem('note-foot-links-status', this.noteFootLinksStatus);
   }
 
-  toggleNoteFootPostsCollapse () {
+  syncNoteFootPostsCollapse () {
     // from: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_collapsible
     var collapsibleEl = document.getElementById('note-foot-posts-nav');
-    if (this.noteFootPostsCheckbox.checked) {
+    if (this.noteFootPostsCheckboxTarget.checked) {
       collapsibleEl.style.display = "none";
       this.noteFootPostsStatus = "closed";
     } else {
@@ -111,17 +81,16 @@ export default class Note {
     localStorage.setItem('note-foot-posts-status', this.noteFootPostsStatus);
   } 
 
-  toggleNoteFootWebmentionsCollapse () {
+  syncNoteFootWebmentionsCollapse () {
     // from: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_collapsible
-    var collapsibleEl = document.getElementById("note-foot-webmentions-nav");
-    var streamStatus = '{{ site.stream_status }}';
-    if (this.noteFootWebmentionsCheckbox.checked) {
+    var collapsibleEl = document.getElementById('note-foot-webmentions-nav');
+    if (this.noteFootWebmentionsCheckboxTarget.checked) {
       collapsibleEl.style.display = "none";
       this.noteFootWebmentionsStatus = "closed";
     } else {
       collapsibleEl.style.display = "flex";
       this.noteFootWebmentionsStatus = "open";
     }
-    localStorage.setItem('note-foot-webmentions-status', streamStatus);
+    localStorage.setItem('note-foot-webmentions-status', this.noteFootWebmentionsStatus);
   } 
 }

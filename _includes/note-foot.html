@@ -3,7 +3,7 @@
   <div class="note-foot-wrapper">
     <div> <!-- extra div so 'note-foot-selector' animation only effects the emoji label-->
       <label class="note-foot-selector">
-        <input id="note-foot-links-checkbox" type="checkbox">
+        <input data-note-ctrl-target="noteFootLinksCheckbox" data-action="click->note-ctrl#syncNoteFootLinksCollapse" type="checkbox">
         <span id="note-foot-link-emoji-span" title="Toggle Forks">🚏</span>
       </label>
     </div>
@@ -42,7 +42,7 @@
   <div class="note-foot-wrapper">
     <div> <!-- extra div so 'note-foot-selector' animation only effects the emoji label-->
       <label class="note-foot-selector field-blogs">
-        <input id="note-foot-posts-checkbox" type="checkbox">
+        <input data-note-ctrl-target="noteFootPostsCheckbox" data-action="click->note-ctrl#syncNoteFootPostsCollapse" type="checkbox">
         <span id="note-foot-posts-emoji-span" title="Toggle Field bLogs">📓</span>
       </label>
     </div>
@@ -67,7 +67,7 @@
   <div class="note-foot-wrapper">
     <div> <!-- extra div so 'note-foot-selector' animation only effects the emoji label-->
       <label class="note-foot-selector webmentions">
-        <input id="note-foot-webmentions-checkbox" type="checkbox">
+        <input data-note-ctrl-target="noteFootWebmentionsCheckbox" data-action="click->note-ctrl#syncNoteFootWebmentionsCollapse" type="checkbox">
         <span id="note-foot-webmentions-emoji-span">🌊</span>
       </label>
     </div>

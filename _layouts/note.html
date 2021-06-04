@@ -2,8 +2,8 @@
 layout: default
 ---
 
-<div id="note">
-    
+<div id="note" data-controller="note-ctrl">
+
   {% include note-head.html %}
 
   <div class="note-body">
@@ -15,6 +15,7 @@ layout: default
       <span class="small-descr">Last Updated: {{ page.updated | date: "%Y-%m-%d" }}</span>
     </div>
 
+    <!-- TODO: trigger refresh after turbo-frame loads -->
     {% if page.title == site.index_note_title %}
       <img id="home-bonsai" style="float: right; padding: 12px;" height="35%" width="35%">
     {% endif %}

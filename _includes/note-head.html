@@ -2,8 +2,8 @@
 <header>
   <nav class="note-head-nav" role="navigation" aria-label="breadcrumb">
     <label class="btn-selector">
-      <input id="note-head-checkbox" type="checkbox">
-      <span id="note-head-emoji-span" title="Toggle Path">🛤</span>
+      <input data-note-ctrl-target="noteHeadCheckbox" data-action="click->note-ctrl#syncNoteHeadCollapse" type="checkbox">
+      <span title="Toggle Path">🛤</span>
     </label>
     <ol id="note-head-breadcrumbs" class="note-head-breadcrumbs">
       {% for ancestor in page.ancestors %}
