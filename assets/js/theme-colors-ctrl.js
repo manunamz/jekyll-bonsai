@@ -1,47 +1,39 @@
 ---
 ---
 
-export default class ThemeColors {
-  constructor() {
+export default class ThemeColorsCtrl extends Stimulus.Controller {
+  static targets = [ "themeColorsCheckbox", "themeColorsEmojiSpan" ];
+  
+  connect() {
+    console.log("Hello, Stimulus ThemeColorsCtrl!", this.element);
+
     // this.theme set in initThemeColors();
     this.cssFile = document.querySelector('[rel="stylesheet"]');
     this.favicon = document.querySelector('[rel="icon"]');
     this.wikiLinkNavBonsai = document.getElementById('wiki-link-nav-bonsai');
-    this.themeColorsCheckbox = document.getElementById('theme-colors-checkbox');
-    this.themeColorsEmojiSpan = document.getElementById('theme-colors-emoji-span');
+    // this.themeColorsCheckbox = document.getElementById('theme-colors-checkbox');
+    // this.themeColorsEmojiSpan = document.getElementById('theme-colors-emoji-span');
     // home-page logo
     this.homeBonsaiLogo = document.getElementById('home-bonsai');
     this.init();
   }
 
   init() {
-    this.initThemeColors();
-    this.bindEvents();
-  }
-
-  bindEvents() {
-    this.themeColorsCheckbox.addEventListener('click', () => {
-      this.updateThemeColors();
-      document.getElementById('svg-graph').dispatchEvent(new Event('draw')); // tell graph to redraw itself
-    });
-  }
-
-  initThemeColors() {
     this.theme = localStorage.getItem("theme-colors");
     if (this.theme !== "dark" && this.theme !== "light") {
       this.theme = getComputedStyle(document.documentElement).getPropertyValue('content');	
     }
-    this.themeColorsCheckbox.checked = (this.theme === "dark");
-    this.updateThemeColors();
+    this.themeColorsCheckboxTarget.checked = (this.theme === "dark");
+    this.syncThemeColors();
   }
 
-  updateThemeColors () {
+  syncThemeColors() {
     // toggle theme colors
-    if (this.themeColorsCheckbox.checked) {
-      this.themeColorsEmojiSpan.innerHTML = "☀️";
+    if (this.themeColorsCheckboxTarget.checked) {
+      this.themeColorsEmojiSpanTarget.innerHTML = "☀️";
       this.theme = "dark";
     } else {
-      this.themeColorsEmojiSpan.innerHTML = "🌘";
+      this.themeColorsEmojiSpanTarget.innerHTML = "🌘";
       this.theme = "light";
     }
     // update css file
@@ -55,4 +47,5 @@ export default class ThemeColors {
     }
     window.localStorage.setItem('theme-colors', this.theme);
   }
+  // document.getElementById('svg-graph').dispatchEvent(new Event('draw')); // tell graph to redraw itself
 }
