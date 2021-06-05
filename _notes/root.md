@@ -2,7 +2,7 @@
 id: 1de1694a-8ad0-40d0-9e97-195807015a88
 title: Jekyll-Bonsai
 desc: ''
-updated: 1620489639442
+updated: 1622910157458
 created: 1620408350557
 tags: 🥭
 ---
@@ -13,7 +13,7 @@ This template is about discovering new ways of structuring knowledge and navigat
 
 It's about discovering and crafting digital tools that are meant to help us, that wait patiently as we do our human thing. It's about leveraging the things we as people are good at, like visual navigation over walls of menu-text, or speaking in story and metaphor instead of trudging through countless bits of minutae.
 
-It's a [[digital-garden]] with [[features]][>all] meant to investigate how we might explore the internet differently: By organizing knowledge efficiently and humanizing digital interactions with other people.
+It's a [[digital-garden.bonsai]]. It's a [[digital-garden]]. The [[features]][>all] herein are meant to investigate how we might explore the internet differently: By organizing knowledge efficiently and humanizing digital interactions with other people.
 
 It's about cleaning up this mess we've made and to make something beautiful out of it.
 
@@ -21,7 +21,7 @@ It's about cleaning up this mess we've made and to make something beautiful out 
 
 PS Check out the [github repo](https://github.com/short25h0r7/jekyll-bonsai) to start sifting through code.
 
-PPS This was my first project diving into scss, ruby, jekyll, and d3. Code quality may vary.
+PPS This was my first time learning scss, ruby, jekyll, and d3. Code quality may vary.
 
 
 [>all]: Not _all_ features are implemented yet... 😉

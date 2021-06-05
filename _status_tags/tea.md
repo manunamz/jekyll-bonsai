@@ -1,7 +1,7 @@
 ---
 title: Tea Tag Page
 emoji: 🍵
-order: 9
+order: 10
 emojipedia: 'https://emojipedia.org/teacup-without-handle/'
 ---
 Similar to a seed, tea represents some external source. But unlike a seed, the content has been consumed and is being digested or brewed: A book or essay that has been read, a video that has been watched, or a podcast that has been heard. 

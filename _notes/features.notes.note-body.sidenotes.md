@@ -4,9 +4,8 @@ title: Sidenotes
 desc: ''
 updated: 1620490214782
 created: 1620408418339
-tags: 🌱
+tags: "\U0001F331"
 ---
-
 Special syntax for sidenotes is supported. Their syntax is reminiscent of traditional markdown footnotes. In markdown files, they look like this (without spaces around the left/right carrots):
 
 ```
@@ -18,11 +17,11 @@ This is what a right-sidenote[ < left] and a left-sidenote[ > right] look like.
 
 Which, once rendered, looks like:
 
----
+* * *
 
 This is what a right-sidenote[<left] and a left-sidenote[>right] look like.
 
----
+* * *
 
 On medium to small sized screens, you can click on sidenote superscripts to show or hide their content.
 
@@ -41,12 +40,13 @@ On medium to small sized screens, you can click on sidenote superscripts to show
 
 Would Kramdown be interested in integrating this functionality?
 
-[<left]: the syntax looks similar to...[^left-quirk]
+[<left]&#x3A; the syntax looks similar to...[^left-quirk]
 
-[>right]: ...regular markdown footnotes.
+[>right]&#x3A; ...regular markdown footnotes.
 
 [^foot]: A regular markdown footnote.
 
-[^left-quirk]: Left sidenotes are functional for completeness sake, but this theme is not optimized for them as their placement above the [[features.graph]] is rather awkward.
+[^left-quirk]: Left sidenotes are functional for completeness sake, but this theme is not optimized for them as their placement above the [[features.site-nav.graph]] is rather awkward.
 
 [^num]: Footnotes, however, increment separately and the superscripts are clickable on all sized screens, unlike sidenote superscripts, which are only clickable on medium and small sized screens.
+

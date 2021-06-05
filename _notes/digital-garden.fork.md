@@ -2,10 +2,9 @@
 id: f91c20a3-dcc4-4f4a-ac65-5d29f32ec763
 title: Fork
 desc: ''
-updated: 1620492740142
+updated: 1622903869435
 created: 1620492740142
-tags: 🌱
+tags: "\U0001F331"
 ---
-
-🚏 The [[features.notes.note-foot]] is a fork in the [[digital-garden.path]]. It's where [[people.visitors]] may decide where to go next: To either drill down deeper through the [[features.graph.type.tree]]'s children or hop around the [[features.graph.type.net-web]].
+🚏 The fork in the [[digital-garden.path]] is where [[people.visitors]] may decide where to go next: To either drill down deeper through the [[features.site-nav.graph.type.tree]]'s children or hop around the [[features.site-nav.graph.type.net-web]].
 

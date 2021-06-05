@@ -4,9 +4,9 @@ title: Note Body
 desc: ''
 updated: 1620505728158
 created: 1620505728158
-tags: 🌿
+tags: "\U0001F33F"
 ---
-
 The note body displays the note's title, [[plant|digital-garden.plants]] [[tag|features.tags]], and the time the note was last updated.
 
 Note content is rendered in markdown. Some extensions are listed in the children notes.
+

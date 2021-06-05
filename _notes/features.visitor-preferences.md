@@ -2,19 +2,26 @@
 id: d251851c-ba74-49a6-9625-bfd40cf26631
 title: Visitor Preferences
 desc: ''
-updated: 1620414560381
+updated: 1622910950098
 created: 1620414554904
-tags: 🌿
+tags: "\U0001F33F"
 ---
-
-Some navigational and display preferences are saved in the visitor's browser to keep the experience consistent across pages:
+Some navigational and display preferences are saved in the [[people.visitors]]' browser to keep the experience consistent across pages[>no-worries]:
 
 - Toggle [[features.themes]] colors: 
   - 🌘 [[features.themes.dark]]
   - ☀️ [[features.themes.light]]
-- Toggle [[features.graph]] type:
-  - 🌳 [[features.graph.type.tree]]
-  - 🕸 [[features.graph.type.net-web]]
+- Toggle [[features.site-nav.graph]] type:
+  - 🌳 [[features.site-nav.graph.type.tree]]
+  - 🕸 [[features.site-nav.graph.type.net-web]]
 - Hide/Show [[note|features.notes]]-local navigation:
-  - 🛤 The [[features.notes.note-head]]'s [[digital-garden.path]].
-  - 🚏 The [[features.notes.note-foot]]'s [[digital-garden.fork]].
+  - The [[features.notes.note-head]]'s:
+    - 🛤 [[features.notes.note-head]]
+  - Hide/Show the [[features.notes.note-foot]]'s: 
+    - 🚏 [[features.notes.note-foot.links]]
+    - 📓 [[features.notes.note-foot.posts]]
+    - 🌊 [[features.notes.note-foot.webmentions]]
+- Delete [[features.visited]] data:
+  - 🧹 [[features.visited.delete-data]]
+
+[>no-worries]: No data is collected or sent anywhere else. All data are only saved locally to the visitors' browser.

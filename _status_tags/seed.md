@@ -1,7 +1,7 @@
 ---
 title: Seed Tag Page
 emoji: 🌰
-order: 8
+order: 9
 emojipedia: 'https://emojipedia.org/chestnut/'
 ---
 Seeds lay around in the world waiting to be consumed and planted. They are sources external to myself, such as books, essays, videos, or podcasts.
