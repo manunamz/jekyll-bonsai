@@ -2,9 +2,9 @@
 id: 1de1694a-8ad0-40d0-9e97-195807015a88
 title: Jekyll-Bonsai
 desc: ''
-updated: 1622910157458
+updated: 1622912781430
 created: 1620408350557
-tags: 🥭
+tags: 🍈
 ---
 
 🦊 Welcome to Jekyll-Bonsai.
@@ -17,7 +17,7 @@ It's a [[digital-garden.bonsai]]. It's a [[digital-garden]]. The [[features]][>a
 
 It's about cleaning up this mess we've made and to make something beautiful out of it.
 
-🌱 shorty
+🌱 mnz
 
 PS Check out the [github repo](https://github.com/short25h0r7/jekyll-bonsai) to start sifting through code.
 
