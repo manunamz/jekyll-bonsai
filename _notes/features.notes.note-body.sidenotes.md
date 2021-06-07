@@ -40,9 +40,9 @@ On medium to small sized screens, you can click on sidenote superscripts to show
 
 Would Kramdown be interested in integrating this functionality?
 
-[<left]&#x3A; the syntax looks similar to...[^left-quirk]
+[<left]: the syntax looks similar to...[^left-quirk]
 
-[>right]&#x3A; ...regular markdown footnotes.
+[>right]: ...regular markdown footnotes.
 
 [^foot]: A regular markdown footnote.
 

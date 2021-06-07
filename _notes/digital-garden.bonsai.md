@@ -24,9 +24,9 @@ The various steps of the process are still under experimentation and being disco
 
 And because of the wonders of technology, this bonsai can be displayed for [[people.visitors]]. From their perspective, the creation is experienced as a digital garden which they may traverse at their leisure.
 
-[>i]&#x3A; read as: the internet.
+[>i]: read as: the internet.
 
-[>data]&#x3A; read as: "data" or "engagement".
+[>data]: read as: "data" or "engagement".
 
 [>seed]: 🌰
 

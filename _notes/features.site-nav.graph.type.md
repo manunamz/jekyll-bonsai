@@ -10,7 +10,7 @@ As [[features.site-nav.graph.links.wikilinks]], networked note-taking apps, and 
 
 This template leverages both [[features.site-nav.graph.type.tree]]s (hierarchies) and [[features.site-nav.graph.type.net-web]]s (networks) so you and your [[people.visitors]] may toggle the perspective and decide for yourselves what works well[>data-structure].
 
-[>data-structure]&#x3A; Of course, the final experience will depend both on the graphs' inherent natures _and_ how the notes themselves are structured...[^sidenotes]
+[>data-structure]: Of course, the final experience will depend both on the graphs' inherent natures _and_ how the notes themselves are structured...[^sidenotes]
 
 [^sidenotes]: Like the [[features.notes.note-body.sidenotes]]?
 

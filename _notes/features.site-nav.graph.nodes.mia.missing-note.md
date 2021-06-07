@@ -14,7 +14,7 @@ In the [[features.site-nav.graph.type.tree]], a missing note is when there are n
 
 In the [[features.site-nav.graph.type.net-web]], a missing note is when there is wikilinked text with no corresponding note. The text and wiklinks will print [[like-this]][>eg2].
 
-[>eg1]&#x3A; e.g. This note's title is `features.site-nav.graph.mia.missing-note.md` and there is no `features.site-nav.graph.mia.md` note. 
+[>eg1]: e.g. This note's title is `features.site-nav.graph.mia.missing-note.md` and there is no `features.site-nav.graph.mia.md` note. 
 
-[>eg2]&#x3A; e.g. There is no note titled `like-this.md`.
+[>eg2]: e.g. There is no note titled `like-this.md`.
 
