@@ -13,7 +13,7 @@ layout: table-wrappers
     <div class="main" id="top">
       <div id="main-content-wrap" class="main-content-wrap">
         <div id="main-content" class="main-content" role="main">
-          {{ content }}
+          {% include anchor-headings.html html=content anchorBody="<i class='anchor-tag'>🐝</i>" anchorClass="anchor-heading" %}
         </div>
       </div>
     </div>
