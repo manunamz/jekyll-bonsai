@@ -50,6 +50,7 @@ class GraphDataGenerator < Jekyll::Generator
       if !cur_note.data['slug'].nil? and cur_note.data['slug'] != 'root'
         add_path(root, cur_note)
       end
+      cur_note.data['namespace'] = cur_note.basename[0...-3]
     end
     # print_tree(root)
     # once tree is finished building, attach metadata to each note

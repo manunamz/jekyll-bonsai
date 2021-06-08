@@ -3,17 +3,19 @@ layout: default
 ---
 
 <div id="note">
-    
+
   {% include note-head.html %}
 
   <div class="note-body">
-    
+
     <h1>{{ page.title }}</h1>
-    {% include share.html %}
-    <div style="padding-bottom: 12px;">
-      <span>{{ page.tags }}</span>
-      <span class="small-descr">Last Tended: {{ page.updated | date: "%Y-%m-%d" }}</span>
-    </div>
+    <p class="small-descr">
+      {% assign status_tags = page.tags | status_tags %}
+      {% for status_tag in status_tags %}
+        <a class="status-tag" href="{{ status_tag.url | relative_url }}">{{ status_tag.emoji }}</a>
+      {% endfor %}
+      <span>Last Tended: {{ page.updated | date: "%Y-%m-%d" }}</span>
+    </p>
 
     {% if page.title == site.index_note_title %}
       <img id="home-bonsai" style="float: right; padding: 12px;" height="35%" width="35%">
@@ -21,6 +23,8 @@ layout: default
     
     {{ content }}
   </div>
+
+  {% include share.html %}
 
   {% include note-foot.html %}
 

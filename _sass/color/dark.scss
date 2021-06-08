@@ -37,13 +37,15 @@ $link-line-stroke-color: $grey-dk-200;
 $link-line-stroke-width: 0.5;
 $link-line-dash-val: 0;
 
-$node-unvisited-color: $green-400;
 $node-stroke-color: $grey-dk-200;
 $node-stroke-width: 1;
 
-$node-active-color: $yellow-200;
-$node-missing-color: $transparent;
+$node-unvisited-color: $green-400;
 $node-visited-color: $green-05;
+$node-missing-color: $transparent;
+
+$node-active-color: $yellow-200;
+$node-tagged-color: $orange-300;
 
 // blockquote decoration
 $blockquote-border-color: rgba($link-line-stroke-color, 0.33);

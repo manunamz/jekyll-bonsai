@@ -159,6 +159,16 @@ export default class GraphNav {
                   .on("end", dragended)
                   .touchable(true));
   
+          node.filter( function(d,i) { return isPostTaggedInNetWeb(d); })
+              .append("circle")
+              .attr("r", theme_attrs["radius"])
+              .classed("pulse-semantic-tag", (d) => isPostTaggedInNetWeb(d) ? true : null)
+              .call(d3.drag()
+                  .on("start", dragstarted)
+                  .on("drag", dragged)
+                  .on("end", dragended)
+                  .touchable(true));        
+
           simulation.on("tick", () => {
               // node.attr('transform', d => `translate(${d.x},${d.y})`); 
               link
@@ -176,6 +186,16 @@ export default class GraphNav {
 
           function isCurrentNoteInNetWeb(node) {
             return !isMissingNoteInNetWeb(node) && window.location.pathname.includes(node.url);
+          }
+
+          function isPostTaggedInNetWeb(node) {
+            // const isPostPage = window.location.pathname.includes("post");
+            // if (!isPostPage) return false;
+            const semanticTags = Array.from(document.getElementsByClassName("semantic-tag"));
+            const tagged = semanticTags.filter((semTag) => 
+              !isMissingNoteInNetWeb(node) && semTag.href.includes(node.url)
+            );
+            return tagged.length !== 0;
           }
 
           function nodeTypeInNetWeb(node) {
@@ -321,6 +341,16 @@ export default class GraphNav {
                 .on("end", dragended)
                 .touchable(true));
   
+          node.filter( function(d,i) { return isPostTaggedInTree(d); })
+              .append("circle")
+              .attr("r", theme_attrs["radius"])
+              .classed("pulse-semantic-tag", (d) => isPostTaggedInTree(d) ? true : null)
+              .call(d3.drag()
+                  .on("start", dragstarted)
+                  .on("drag", dragged)
+                  .on("end", dragended)
+                  .touchable(true));  
+
           simulation.on("tick", () => {
               // from: https://mbostock.github.io/d3/talk/20110921/parent-foci.html
               // preserve hierarchical shape via link positioning
@@ -345,6 +375,16 @@ export default class GraphNav {
            //
           function isCurrentNoteInTree(node) {
             return !isMissingNoteInTree(node.data.id) && window.location.pathname.includes(node.data.url);
+          }
+
+          function isPostTaggedInTree(node) {
+            // const isPostPage = window.location.pathname.includes("post");
+            // if (!isPostPage) return false;
+            const semanticTags = Array.from(document.getElementsByClassName("semantic-tag"));
+            const tagged = semanticTags.filter((semTag) => 
+              !isMissingNoteInTree(node.data.id) && semTag.href.includes(node.data.url)
+            );
+            return tagged.length !== 0;
           }
 
           function nodeTypeInTree(node) {

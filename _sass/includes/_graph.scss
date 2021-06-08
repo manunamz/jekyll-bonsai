@@ -26,6 +26,11 @@
     fill: $node-active-color;
     animation: pulse 2s linear infinite;
   }
+
+  &.pulse-semantic-tag {
+    fill: $node-tagged-color;
+    animation: pulse 2s linear infinite;
+  }
   
   &.missing {
     fill: $node-missing-color !important;

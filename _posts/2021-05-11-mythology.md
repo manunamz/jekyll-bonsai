@@ -6,7 +6,9 @@ desc: ''
 updated: 1620755157
 created: 1620755157
 permalink: /post/73afeb94-c353-4593-a92a-ace663f6ed8a/
-tags: 🥭
+tags: 
+  - 🥭
+  - digital-garden
 ---
 
 > Nothing vast enters the life of mortals without a curse.

@@ -53,10 +53,10 @@
       <div class="note-foot-nav-section">
         <h4 class="note-foot-nav-subtitle">Posts</h4>
         <ul class="note-foot-nav-list">
-          {% assign post_backlinks = page.backlinks | backlink_type: "posts" %}
-          {% for blink in post_backlinks %}
+          {% assign semantic_tagged_posts = page.namespace | semantic_tagged_posts %}
+          {% for post in semantic_tagged_posts %}
             <li class="note-foot-nav-list-item">
-              <a class="wiki-link" href="{{ blink.url | relative_url }}">{{ blink.title }}</a>
+              <a class="wiki-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
             </li>
           {% endfor %}
         </ul>

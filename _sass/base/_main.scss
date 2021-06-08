@@ -116,3 +116,19 @@ hr {
   background: $invalid-wiki-link-color;
   cursor: help;
 }
+
+.semantic-tag {
+  @include fs-2;
+  padding: $sp-2;
+  border: 1px solid $separator-color;
+  border-radius: 15px;
+  color: $wiki-link-color;
+
+  &:hover {
+    background-color: $base-button-color;
+  }
+}
+
+.status-tag {
+  filter: drop-shadow(0 0 0.2mm $drop-shadow-green);
+}

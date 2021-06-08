@@ -5,12 +5,22 @@ layout: default
 <div id="post">
 
   <h1>{{ page.title }}</h1>
-  {% include share.html %}
-  <div style="padding-bottom: 12px;">
-    <span>{{ page.tags }}</span>
-    <span class="small-descr">Last Tended: {{ page.updated | date: "%Y-%m-%d" }}</span>
-  </div>
+  <p>
+    {% assign semantic_tags = page.tags |  semantic_tags %}
+    {% for semantic_tag in semantic_tags %}
+      <a class="semantic-tag" href="{{ semantic_tag.url | relative_url }}">{{ semantic_tag.tag }}</a>
+    {% endfor %}
+  </p>
+  <p class="small-descr">
+    {% assign status_tags = page.tags | status_tags %}
+    {% for status_tag in status_tags %}
+      <a class="status-tag" href="{{ status_tag.url | relative_url }}">{{ status_tag.emoji }}</a>
+    {% endfor %}
+    <span>Last Tended: {{ page.updated | date: "%Y-%m-%d" }}</span>
+  </p>
 
   {{ content }}
+
+  {% include share.html %}
 
 </div>
