@@ -30,7 +30,6 @@ module Jekyll
           end
         end
       end
-      puts semantic_tagged_posts.size
       return semantic_tagged_posts
     end
 
