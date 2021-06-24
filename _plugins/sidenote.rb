@@ -87,9 +87,9 @@ module Jekyll
     # just get tufte-style sidenotes working for now...
     # if there's time, emulate gwern's method: https://github.com/gwern/gwern.net/blob/9e6893033ec63248b1f0b29df119c40d39a7dcef/css/default.css#L1223
 
-    # mark -> [>right-sidenote], [>right-sidenote]:
-    # def -> [<left-sidenote], [<left-sidenote]:
-    # `side` is 'right' or 'left'
+    # mark -> [<left-sidenote], [>right-sidenote]
+    # def -> [<left-sidenote]:, [>right-sidenote]:
+    # `side` should be 'right' or 'left'
     def parse_sidenote(note, side)
       # left v right setup
       if side == "right"
