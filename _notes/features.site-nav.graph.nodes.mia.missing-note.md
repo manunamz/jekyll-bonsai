@@ -2,11 +2,11 @@
 id: cbd6b1bf-7335-4303-8c58-65e8261837af
 title: Missing Note
 desc: ''
-updated: 1622910339232
+updated: 1623851513018
 created: 1620537158307
 tags: "\U0001F331"
 ---
-The [[features.site-nav.graph]] and [[note-local|features.notes]] navigation will properly handle missing links and notes:
+The [[features.site-nav.graph]] and [[features.notes|note-local]] navigation will properly handle missing links and notes:
 
 Both graph types will display empty nodes with a "Missing Note" tooltip.
 

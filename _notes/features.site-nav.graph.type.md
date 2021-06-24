@@ -2,7 +2,7 @@
 id: f450b076-c95b-4e78-bb84-65b442cfb64d
 title: Type
 desc: ''
-updated: 1620587309685
+updated: 1623851369547
 created: 1620587309685
 tags: "\U0001F33F"
 ---

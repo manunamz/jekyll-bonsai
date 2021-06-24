@@ -2,16 +2,16 @@
 id: f9df170e-d793-48e7-946c-aaa4ab145a15
 title: Wikilinks
 desc: ''
-updated: 1622228460060
+updated: 1623851278498
 created: 1620408415248
 tags: "\U0001F38B"
 ---
 
-\[\[Wikilinks]][>names] are are crucial part of the world of [[digital gardening|digital-garden]]. They are the basic building block of the interlinking accomplished in many gardens, including this one.
+\[\[Wikilinks]][>names] are are crucial part of the world of [[digital-garden|digital gardening]]. They are the basic building block of the interlinking accomplished in many gardens, including this one.
 
 ## Notable
 
-- Wikilinks are green[>blue] and may be [[previewed on hover|features.notes.hover-preview]].
+- Wikilinks are green[>blue] and may be [[features.notes.hover-preview|previewed on hover]].
 - This type of linking is what defines the links in the [[features.site-nav.graph.type.net-web]] graph type.
 - \[\[Wikilinks]] are rendered by the [[plugins.jekyll-wikilinks]] plugin.
 

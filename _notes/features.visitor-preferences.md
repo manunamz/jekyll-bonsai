@@ -2,7 +2,7 @@
 id: d251851c-ba74-49a6-9625-bfd40cf26631
 title: Visitor Preferences
 desc: ''
-updated: 1622910950098
+updated: 1623851544976
 created: 1620414554904
 tags: "\U0001F33F"
 ---
@@ -14,7 +14,7 @@ Some navigational and display preferences are saved in the [[people.visitors]]' 
 - Toggle [[features.site-nav.graph]] type:
   - 🌳 [[features.site-nav.graph.type.tree]]
   - 🕸 [[features.site-nav.graph.type.net-web]]
-- Hide/Show [[note|features.notes]]-local navigation:
+- Hide/Show [[features.notes|note]]-local navigation:
   - The [[features.notes.note-head]]'s:
     - 🛤 [[features.notes.note-head]]
   - Hide/Show the [[features.notes.note-foot]]'s: 

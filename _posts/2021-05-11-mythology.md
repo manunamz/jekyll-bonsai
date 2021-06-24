@@ -27,6 +27,6 @@ But, one day, a proclamation made it through the noise to many of us and the ter
 
 Many forsake the forrest and, though the growth is more limited, retreated to safer burrows. The warmth and safety enticed, while battles raged above between people and those who became enchanted with that which loomed in the dark.
 
-I don't know how long it had been, really, since the burrowing started...But recently I caught wind of people planning to re-establish a [[connection|people]]; to find a way to safely harvest what we need to know without succumbing to the weakest parts of ourselves. 
+I don't know how long it had been, really, since the burrowing started...But recently I caught wind of people planning to re-establish a [[people|connection]]; to find a way to safely harvest what we need to know without succumbing to the weakest parts of ourselves. 
 
 I started piecing together what I could find out about these strangers and their methods. From those pieces, I've begun studying and training in their ways and exploring the places they frequent. I do not know where these paths may lead, but I'm hoping there is a light at the end of this tunnel...

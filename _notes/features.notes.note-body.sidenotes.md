@@ -2,14 +2,14 @@
 id: 93f6820e-3915-41ae-9a81-ef132e6fc9d1
 title: Sidenotes
 desc: ''
-updated: 1620490214782
+updated: 1623851365957
 created: 1620408418339
 tags: "\U0001F331"
 ---
 Special syntax for sidenotes is supported. Their syntax is reminiscent of traditional markdown footnotes. In markdown files, they look like this (without spaces around the left/right carrots):
 
 ```
-This is what a right-sidenote[ < left] and a left-sidenote[ > right] look like.
+This is what a left-sidenote[ < left] and a right-sidenote[ > right] look like.
 
 [ < left]: the syntax looks similar to...
 [ > right]: ...regular markdown footnotes.
@@ -19,7 +19,7 @@ Which, once rendered, looks like:
 
 * * *
 
-This is what a right-sidenote[<left] and a left-sidenote[>right] look like.
+This is what a left-sidenote[<left] and a right-sidenote[>right] look like.
 
 * * *
 
