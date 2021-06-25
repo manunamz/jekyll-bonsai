@@ -24,18 +24,3 @@
 .leader {
   margin-bottom: $sp-10;
 }
-
-.infobox {
-  @include fs-2;
-  float: right;
-  margin-left: $sp-2;
-  margin-right: $sp-2;
-  padding-left: $sp-3;
-  padding-right: $sp-3;
-  border: 1px solid $separator-color;
-  border-radius: 15px;
-
-  .title {
-    color: $infobox-color;
-  }
-}

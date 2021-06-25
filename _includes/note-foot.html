@@ -27,10 +27,10 @@
         <div class="note-foot-nav-section">
           <h4 class="note-foot-nav-subtitle">Backlinks</h4>
           <ul class="note-foot-nav-list">
-            {% assign note_backlinks = page.backlinks | backlink_type: "notes" %}
-            {% for blink in note_backlinks %}
+            {% assign note_backlinks = page.backlinks | doc_type: "notes" %}
+            {% for backlink in note_backlinks %}
               <li class="note-foot-nav-list-item">
-                <a class="wiki-link" href="{{ blink.url | relative_url }}">{{ blink.title }}</a>
+                <a class="wiki-link" href="{{ backlink.doc.url | relative_url }}">{{ backlink.doc.title }}</a>
               </li>
             {% endfor %}
           </ul>

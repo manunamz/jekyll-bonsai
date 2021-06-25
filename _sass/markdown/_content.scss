@@ -24,7 +24,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     
-    &:not(.wiki-link):not(.semantic-tag):not(.status-tag):not(.anchor-heading):not(.footnote):not(.reversefootnote):after {
+    &:not(.wiki-link):not(.wiki-link-embed-link):not(.semantic-tag):not(.status-tag):not(.anchor-heading):not(.footnote):not(.reversefootnote):after {
       @include fs-3;
       font-family: $mono-font-family;
       position: relative;
@@ -372,6 +372,7 @@
     font-size: $font-size-2;
     top: -$sp-1-75;
     left: $sp-0-75;
+    padding-right: $sp-0-75;
   }
 
   .rsn:before,

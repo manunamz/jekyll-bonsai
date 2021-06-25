@@ -107,14 +107,52 @@ hr {
   border: 0;
 }
 
-.wiki-link { 
-  color: $wiki-link-color;
-}
+// wiki-link classes
 
 .invalid-wiki-link {
   color: $grey-dk-000;
   background: $invalid-wiki-link-color;
   cursor: help;
+}
+
+.wiki-link { 
+  color: $wiki-link-color;
+}
+
+.wiki-link-embed {
+  position: relative;
+  border: 1px solid $separator-color;
+  border-radius: 15px;
+  padding: $sp-3;
+
+  .wiki-link-embed-title {
+    @include fs-6;
+    padding-top: $sp-3;
+    padding-left: $sp-3;
+  }
+
+  .wiki-link-embed-content {
+    padding: $sp-3;
+  }
+  
+  .wiki-link-embed-link {
+    position: absolute;
+    top: 1em;
+    right: 1em;
+
+    &::before {
+      content: "🥾";
+    }
+
+    &:hover {
+      filter: drop-shadow(0 0 0.8mm $drop-shadow-brown);
+    }
+  }
+}
+
+.wiki-link-img {
+  width: 50px;
+  height: 50px;
 }
 
 .semantic-tag {
@@ -131,4 +169,35 @@ hr {
 
 .status-tag {
   filter: drop-shadow(0 0 0.2mm $drop-shadow-green);
+}
+
+.infobox {
+  @include fs-2;
+  float: right;
+  margin-left: $sp-2;
+  margin-right: $sp-2;
+  padding-left: $sp-3;
+  padding-right: $sp-3;
+  border: 1px solid $separator-color;
+  border-radius: 15px;
+
+  .title {
+    color: $infobox-color;
+    text-align: center;
+    margin-top: 0;
+  }
+
+  ul {
+    padding: 0 !important;
+    padding-left: $sp-2 !important;
+    padding-right: $sp-2 !important;
+
+    li {
+      list-style-type: none !important;
+  
+      &::before {
+        content: "" !important;
+      }
+    }  
+  }
 }
