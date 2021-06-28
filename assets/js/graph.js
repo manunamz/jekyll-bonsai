@@ -296,37 +296,25 @@ export default class GraphNav {
               .data(links)
               .join("line");
         
-          // complete node
-          const node = svg.selectAll('.nodes')
+          const node = svg.append('g')
+              .attr('class', 'nodes')
+              .selectAll('g')
               .data(nodes)
-              .enter().append('g')
-              .attr('class', 'nodes')               
-          // node's circle
-          node.append("circle")
-              //svg 2.0 not well-supported: https://stackoverflow.com/questions/47381187/svg-not-working-in-firefox
-              // add attributes in javascript instead of css.
-              .attr("r",  (d) => isMissingNoteInTree(d.data.id) ? theme_attrs["missing-radius"] : theme_attrs["radius"])
-              .attr("class", nodeTypeInTree)
-              .on("click", goToNoteFromTree)
-              // 🐛 bug: this does not work -- it overtakes clicks (extra lines in "tick" are related).
-              // .call(d3.drag()
-              //     .on("start", dragstarted)
-              //     .on("drag", dragged)
-              //     .on("end", dragended)
-              //     .touchable(true));
-          // node's label
-          // labels need to be nested in a 'g' object alongside the node circle.
-          //  docs: https://bl.ocks.org/mbostock/950642
-          //  so post: https://stackoverflow.com/questions/49443933/node-labelling-not-working-d3-v5
-          //    plnkr: http://plnkr.co/edit/6GqleTU89bSrd9hFQgI2?preview
-          node.append("text")
-              .attr("dx", 5)
-              .attr("dy", ".05em")
-              .attr("font-size", "20%")
-              .text(function (d) { return d.data.label });
-          // node's tooltip
-          node.append("title")
-              .text((d) => isMissingNoteInTree(d.data.id) ? "Missing Note" : d.data.label);
+              .join("g")
+
+          node.append('circle')
+                //svg 2.0 not well-supported: https://stackoverflow.com/questions/47381187/svg-not-working-in-firefox
+                // add attributes in javascript instead of css.
+                .attr("r",  (d) => isMissingNoteInTree(d.data.id) ? theme_attrs["missing-radius"] : theme_attrs["radius"])
+                .attr("class", nodeTypeInTree)
+                .on("click", goToNoteFromTree);
+                // 🐛 bug: this does not work -- it overtakes clicks (extra lines in "tick" are related).
+                // .call(d3.drag()
+                //     .on("start", dragstarted)
+                //     .on("drag", dragged)
+                //     .on("end", dragended)
+                //     .touchable(true));
+          
           // from: https://stackoverflow.com/questions/28415005/d3-js-selection-conditional-rendering
           // use filtering to deal with specific nodes
           // from: https://codepen.io/blackjacques/pen/BaaqKpO
@@ -368,6 +356,7 @@ export default class GraphNav {
                   .attr("y2", d => d.target.y);
               node
                   .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });  
+                  // .attr("cx", (d) => d.x).attr("cy", (d) => d.y);
           });
   
            //
