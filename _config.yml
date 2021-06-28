@@ -3,11 +3,15 @@ description: a jekyll theme for digital gardeners.
 baseurl: '/jekyll-bonsai'
 # url: 'https://manunamz.github.io'
 
+namespaces:
+  exclude:
+    - "pages"
+    - "status_tags"
 wikilinks:
   # enabled: true
   exclude:
-      - "pages"
-      - "status_tags"
+    - "pages"
+    - "status_tags"
 d3_graph_data:
   # enabled: true
   exclude:
