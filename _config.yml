@@ -3,22 +3,6 @@ description: a jekyll theme for digital gardeners.
 baseurl: '/jekyll-bonsai'
 # url: 'https://manunamz.github.io'
 
-namespaces:
-  exclude:
-    - "pages"
-    - "status_tags"
-wikilinks:
-  # enabled: true
-  exclude:
-    - "pages"
-    - "status_tags"
-d3_graph_data:
-  # enabled: true
-  exclude:
-    - "pages"
-    - "posts"
-    - "status_tags"
-
 # jekyll-bonsai configs
 
 # dendron forces the root note-title to be 'root.md' -- this is the replacement title for 'root'
@@ -40,6 +24,22 @@ note_foot_links_status: "open"
 note_foot_posts_status: "open"
 note_foot_webmentions_status: "open"
 
+# plugins
+namespaces:
+  exclude:
+    - "pages"
+    - "status_tags"
+wikilinks:
+  # enabled: true
+  exclude:
+    - "pages"
+    - "status_tags"
+d3_graph_data:
+  # enabled: true
+  exclude:
+    - "pages"
+    - "posts"
+    - "status_tags"
 
 # logo: "/assets/images/logo.png"
 
