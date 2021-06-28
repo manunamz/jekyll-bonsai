@@ -63,6 +63,20 @@ collections:
   status_tags:
     output: true
     permalink: /status-tag/:title
+    order:
+      - tags.md
+      - wisp.md
+      - sprout.md
+      - bud.md
+      - bamboo.md
+      - bloom.md
+      - berry.md
+      - fruit.md
+      - melon.md
+      - seed.md
+      - tea.md
+      - pot-bamboo.md
+
 
 defaults:
   - scope:

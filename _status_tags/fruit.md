@@ -1,7 +1,6 @@
 ---
 title: Fruit Tag Page
 emoji: 🥭
-order: 7
 emojipedia: 'https://emojipedia.org/mango/'
 ---
 Content that has been grown, curated, and produced for others become fruits. 

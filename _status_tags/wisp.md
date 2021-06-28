@@ -1,7 +1,6 @@
 ---
 title: Wisp Tag Page
 emoji: 🍃
-order: 1
 emojipedia: 'https://emojipedia.org/chestnut/'
 ---
 Like a [helicopter seed](https://en.wikipedia.org/wiki/Maple#Morphology) or a [samara fruit](https://en.wikipedia.org/wiki/Samara_(fruit)), wisps are tiny seedlings that one will find blowing about. 

@@ -1,7 +1,6 @@
 ---
 title: Bloom Tag Page
 emoji: 🌸
-order: 5
 emojipedia: 'https://emojipedia.org/cherry-blossom/'
 ---
 Blooms are beautiful and fleeting. They invite others to come take a sit and savor the time we have.
