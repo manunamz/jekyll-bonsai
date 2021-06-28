@@ -65,7 +65,6 @@ collections:
     permalink: /status-tag/:title
     order:
       - tags.md
-      - wisp.md
       - sprout.md
       - bud.md
       - bamboo.md
