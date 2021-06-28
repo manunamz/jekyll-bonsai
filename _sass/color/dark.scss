@@ -47,6 +47,8 @@ $node-missing-color: $transparent;
 $node-active-color: $yellow-200;
 $node-tagged-color: $orange-300;
 
+$hover-brightness: 50%;
+
 // blockquote decoration
 $blockquote-border-color: rgba($link-line-stroke-color, 0.33);
 $blockquote-quote-color: rgba($link-line-stroke-color, .75);

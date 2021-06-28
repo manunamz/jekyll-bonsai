@@ -300,20 +300,22 @@ export default class GraphNav {
               .attr('class', 'nodes')
               .selectAll('g')
               .data(nodes)
-              .join("g")
+              .join("g");
 
           node.append('circle')
                 //svg 2.0 not well-supported: https://stackoverflow.com/questions/47381187/svg-not-working-in-firefox
                 // add attributes in javascript instead of css.
                 .attr("r",  (d) => isMissingNoteInTree(d.data.id) ? theme_attrs["missing-radius"] : theme_attrs["radius"])
                 .attr("class", nodeTypeInTree)
-                .on("click", goToNoteFromTree);
+                .on("click", goToNoteFromTree)
+                .on("mouseover", onMouseover)
+                .on("mouseout", onMouseout)
                 // 🐛 bug: this does not work -- it overtakes clicks (extra lines in "tick" are related).
-                // .call(d3.drag()
-                //     .on("start", dragstarted)
-                //     .on("drag", dragged)
-                //     .on("end", dragended)
-                //     .touchable(true));
+                .call(d3.drag()
+                    .on("start", dragstarted)
+                    .on("drag", dragged)
+                    .on("end", dragended)
+                    .touchable(true));
           
           // from: https://stackoverflow.com/questions/28415005/d3-js-selection-conditional-rendering
           // use filtering to deal with specific nodes
@@ -323,6 +325,8 @@ export default class GraphNav {
               .append("circle")
               .attr("r",  (d) => theme_attrs["radius"])
               .classed("pulse", true)
+              .on("mouseover", onMouseover)
+              .on("mouseout", onMouseout)
               .call(d3.drag()
                 .on("start", dragstarted)
                 .on("drag", dragged)
@@ -333,11 +337,26 @@ export default class GraphNav {
               .append("circle")
               .attr("r", theme_attrs["radius"])
               .classed("pulse-semantic-tag", (d) => isPostTaggedInTree(d) ? true : null)
+              .on("click", goToNoteFromTree)
+              .on("mouseover", onMouseover)
+              .on("mouseout", onMouseout)
               .call(d3.drag()
                   .on("start", dragstarted)
                   .on("drag", dragged)
                   .on("end", dragended)
                   .touchable(true));  
+
+          const text = svg.append('g')
+                          .attr('class', 'text')
+                          .selectAll('text')
+                          .data(nodes)
+                          .join("text")
+                            .attr("font-size", "20%")
+                            .attr("dx", 5)
+                            .attr("dy", ".05em")
+                            .text((d) => isMissingNoteInTree(d.data.id) ? "Missing Note" : d.data.label)
+                            .on("mouseover", onMouseover)
+                            .on("mouseout", onMouseout);
 
           simulation.on("tick", () => {
               // from: https://mbostock.github.io/d3/talk/20110921/parent-foci.html
@@ -350,13 +369,14 @@ export default class GraphNav {
               });
 
               link
-                  .attr("x1", d => d.source.x)
-                  .attr("y1", d => d.source.y)
-                  .attr("x2", d => d.target.x)
-                  .attr("y2", d => d.target.y);
+                .attr("x1", d => d.source.x)
+                .attr("y1", d => d.source.y)
+                .attr("x2", d => d.target.x)
+                .attr("y2", d => d.target.y);
               node
-                  .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });  
-                  // .attr("cx", (d) => d.x).attr("cy", (d) => d.y);
+                .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });  
+              text
+                .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });  
           });
   
            //
@@ -415,6 +435,43 @@ export default class GraphNav {
               return false;
             }
           };    
+
+          function onMouseover(e, d) {
+            const linkedNodesSet = new Set();
+            links
+              .filter((n) => n.target.data.id == d.data.id || n.source.data.id == d.data.id)
+              .forEach((n) => {
+                linkedNodesSet.add(n.target.data.id);
+                linkedNodesSet.add(n.source.data.id);
+              });
+      
+            node.attr("class", (node_d) => {
+              if (node_d.data.id !== d.data.id && !linkedNodesSet.has(node_d.data.id)) {
+                return "inactive";
+              }
+              return "active";
+            });
+      
+            link.attr("class", (link_d) => {
+              if (link_d.source.data.id !== d.data.id && link_d.target.data.id !== d.data.id) {
+                return "inactive";
+              }
+              return "active";
+            });
+      
+            text.attr("class", (text_d) => {
+              if (text_d.data.id !== d.data.id) {
+                return "inactive";
+              }
+              return "active";
+            });
+          };
+      
+          function onMouseout(d) {
+            node.attr("class", "");
+            link.attr("class", "");
+            text.attr("class", "");
+          };
 
           function dragstarted(event, d) {
             if (!event.active) simulation.alphaTarget(0.3).restart();

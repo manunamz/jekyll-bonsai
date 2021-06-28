@@ -6,6 +6,10 @@
   stroke: $link-line-stroke-color;
   stroke-width: $link-line-stroke-width;
   stroke-dasharray: $link-line-dash-val;
+
+  .inactive {
+    filter: brightness(50%);
+  }
 }
 
 .nodes circle {
@@ -14,9 +18,9 @@
   stroke-width: $node-stroke-width;
   fill: $node-unvisited-color;
 
-  + text {
-    fill: $body-text-color;
-  }
+  // + text {
+  //   fill: $body-text-color;
+  // }
 
   &:hover {
     cursor: pointer;
@@ -44,6 +48,22 @@
   &.visited {
     fill: $node-visited-color;
   }
+}
+
+.text text {
+  fill: $body-text-color;
+}
+
+.active {
+  font-size: 50%;
+  z-index: 10;
+  transition: all 0.1s ease-in-out;
+}
+
+.inactive {
+  filter: brightness($hover-brightness);
+  z-index: 0;
+  transition: all 0.1s ease-in-out;
 }
 
 @keyframes pulse {       
