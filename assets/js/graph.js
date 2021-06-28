@@ -109,42 +109,32 @@ export default class GraphNav {
                   .y(.9));
   
           const link = svg.append("g")
-              .attr("class", "links")
-              .selectAll("line")
-              .data(data.links)
-              .enter().append("line");
-  
-          // complete node
-          const node = svg.selectAll('.nodes')
-              .data(data.nodes)
-              .enter().append('g')
-              .attr('class', 'nodes')
-              .attr("active", (d) => isCurrentNoteInNetWeb(d) ? true : null)
-          // node's circle
+                          .attr("class", "links")
+                          .selectAll("line")
+                          .data(data.links)
+                          .enter().append("line");
+
+          const node = svg.append('g')
+                          .attr('class', 'nodes')
+                          .selectAll('g')
+                          .data(data.nodes)
+                          .join("g");
+          // .attr("active", (d) => isCurrentNoteInNetWeb(d) ? true : null)
+
           node.append('circle')
               //svg 2.0 not well-supported: https://stackoverflow.com/questions/47381187/svg-not-working-in-firefox
               // add attributes in javascript instead of css.
-              .attr("r",  (d) => isMissingNoteInNetWeb(d) ? theme_attrs["missing-radius"] : theme_attrs["radius"])
+              .attr("r", (d) => isMissingNoteInNetWeb(d) ? theme_attrs["missing-radius"] : theme_attrs["radius"])
               .attr("class", nodeTypeInNetWeb)
               .on("click", goToNoteFromNetWeb)
+              .on("mouseover", onMouseover)
+              .on("mouseout", onMouseout)
               .call(d3.drag()
-                  .on("start", dragstarted)
-                  .on("drag", dragged)
-                  .on("end", dragended)
-                  .touchable(true));
-          // node's label
-          // labels need to be nested in a 'g' object alongside the node circle.
-          //  docs: https://bl.ocks.org/mbostock/950642
-          //  so post: https://stackoverflow.com/questions/49443933/node-labelling-not-working-d3-v5
-          //    plnkr: http://plnkr.co/edit/6GqleTU89bSrd9hFQgI2?preview
-          node.append("text")
-              .attr("dx", 5)
-              .attr("dy", ".05em")
-              .attr("font-size", "20%")
-              .text(function (d) { return d.label });
-          // node's tooltip
-          node.append("title")
-              .text((d) => isMissingNoteInNetWeb(d) ? "Missing Note" : d.label);
+                      .on("start", dragstarted)
+                      .on("drag", dragged)
+                      .on("end", dragended)
+                      .touchable(true));
+
           // from: https://stackoverflow.com/questions/28415005/d3-js-selection-conditional-rendering
           // use filtering to deal with specific nodes
           // from: https://codepen.io/blackjacques/pen/BaaqKpO
@@ -153,6 +143,8 @@ export default class GraphNav {
               .append("circle")
               .attr("r", theme_attrs["radius"])
               .classed("pulse", (d) => isCurrentNoteInNetWeb(d) ? true : null)
+              .on("mouseover", onMouseover)
+              .on("mouseout", onMouseout)
               .call(d3.drag()
                   .on("start", dragstarted)
                   .on("drag", dragged)
@@ -163,21 +155,36 @@ export default class GraphNav {
               .append("circle")
               .attr("r", theme_attrs["radius"])
               .classed("pulse-semantic-tag", (d) => isPostTaggedInNetWeb(d) ? true : null)
+              .on("mouseover", onMouseover)
+              .on("mouseout", onMouseout)
               .call(d3.drag()
                   .on("start", dragstarted)
                   .on("drag", dragged)
                   .on("end", dragended)
                   .touchable(true));        
 
+          const text = svg.append('g')
+                          .attr('class', 'text')
+                          .selectAll('text')
+                          .data(data.nodes)
+                          .join("text")
+                            .attr("font-size", "20%")
+                            .attr("dx", 5)
+                            .attr("dy", ".05em")
+                            .text((d) => isMissingNoteInNetWeb(d) ? "Missing Note" : d.label)
+                            .on("mouseover", onMouseover)
+                            .on("mouseout", onMouseout);
+    
           simulation.on("tick", () => {
-              // node.attr('transform', d => `translate(${d.x},${d.y})`); 
               link
-                  .attr("x1", function(d) { return d.source.x; })
-                  .attr("y1", function(d) { return d.source.y; })
-                  .attr("x2", function(d) { return d.target.x; })
-                  .attr("y2", function(d) { return d.target.y; });
+                .attr("x1", function(d) { return d.source.x; })
+                .attr("y1", function(d) { return d.source.y; })
+                .attr("x2", function(d) { return d.target.x; })
+                .attr("y2", function(d) { return d.target.y; });
               node
-                  .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+                .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
+              text
+                .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });  
           });
   
            //
@@ -235,6 +242,43 @@ export default class GraphNav {
             } else {
               return null;
             }
+          };
+
+          function onMouseover(e, d) {
+            const linkedNodesSet = new Set();
+            data.links
+              .filter((n) => n.target.id == d.id || n.source.id == d.id)
+              .forEach((n) => {
+                linkedNodesSet.add(n.target.id);
+                linkedNodesSet.add(n.source.id);
+              });
+      
+            node.attr("class", (node_d) => {
+              if (node_d.id !== d.id && !linkedNodesSet.has(node_d.id)) {
+                return "inactive";
+              }
+              return "active";
+            });
+      
+            link.attr("class", (link_d) => {
+              if (link_d.source.id !== d.id && link_d.target.id !== d.id) {
+                return "inactive";
+              }
+              return "active";
+            });
+      
+            text.attr("class", (text_d) => {
+              if (text_d.id !== d.id) {
+                return "inactive";
+              }
+              return "active";
+            });
+          };
+      
+          function onMouseout(d) {
+            node.attr("class", "");
+            link.attr("class", "");
+            text.attr("class", "");
           };
 
           function dragstarted(event, d) {
@@ -376,7 +420,7 @@ export default class GraphNav {
               node
                 .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });  
               text
-                .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });  
+                .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
           });
   
            //
