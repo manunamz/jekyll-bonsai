@@ -75,10 +75,10 @@ nav_type: "graph"
 recent_num: 10 
 # local note-nav component defaults
 ## may be 'open' or 'closed'
-sem_tag_head_status: "open"
-sem_tag_foot_links_status: "open"
-sem_tag_foot_posts_status: "open"
-sem_tag_foot_webmentions_status: "open"
+sem_doc_head_status: "open"
+sem_doc_foot_links_status: "open"
+sem_doc_foot_posts_status: "open"
+sem_doc_foot_webmentions_status: "open"
 
 # plugins
 namespaces:

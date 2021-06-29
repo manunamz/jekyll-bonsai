@@ -44,7 +44,7 @@ export default class SemTag {
     // head
     this.semTagHeadStatus = localStorage.getItem('sem-doc-head-status');
     if (this.semTagHeadStatus !== "open" && this.semTagHeadStatus !== "closed") {
-      this.semTagHeadStatus = '{{ site.sem_tag_head_status }}';	
+      this.semTagHeadStatus = '{{ site.stat_doc_head_status }}';	
     }
     this.semTagHeadCheckbox.checked = (this.semTagHeadStatus === "closed"); 
     this.toggleSemTagHeadCollapse();
@@ -52,21 +52,21 @@ export default class SemTag {
     // foot
     this.semTagFootLinksStatus = localStorage.getItem('sem-doc-foot-links-status');
     if (this.semTagFootLinksStatus !== "open" && this.semTagFootLinksStatus !== "closed") {
-      this.semTagFootLinksStatus = '{{ site.sem_tag_foot_links_status }}';	
+      this.semTagFootLinksStatus = '{{ site.stat_doc_foot_links_status }}';	
     }
     this.semTagFootLinksCheckbox.checked = (this.semTagFootLinksStatus === "closed"); 
     this.toggleSemTagFootLinksCollapse();
 
     this.semTagFootPostsStatus = localStorage.getItem('sem-doc-foot-posts-status');
     if (this.semTagFootPostsStatus !== "open" && this.semTagFootPostsStatus !== "closed") {
-      this.semTagFootPostsStatus = '{{ site.sem_tag_foot_posts_status }}';	
+      this.semTagFootPostsStatus = '{{ site.stat_doc_foot_posts_status }}';	
     }
     this.semTagFootPostsCheckbox.checked = (this.semTagFootPostsStatus === "closed"); 
     this.toggleSemTagFootPostsCollapse();
 
     this.semTagFootWebmentionsStatus = localStorage.getItem('sem-doc-foot-webmentions-status');
     if (this.semTagFootWebmentionsStatus !== "open" && this.semTagFootWebmentionsStatus !== "closed") {
-      this.semTagFootWebmentionsStatus = '{{ site.sem_tag_foot_webmentions_status }}';	
+      this.semTagFootWebmentionsStatus = '{{ site.stat_doc_foot_webmentions_status }}';	
     }
     this.semTagFootWebmentionsCheckbox.checked = (this.semTagFootWebmentionsStatus === "closed");
     this.toggleSemTagFootWebmentionsCollapse();
