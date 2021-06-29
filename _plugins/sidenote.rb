@@ -67,7 +67,7 @@ module Jekyll
        #  
       # init jekyll vars
        #
-      all_notes = site.collections['notes'].docs
+      all_notes = site.collections['sem_tags'].docs
       # all_pages = site.pages
       all_docs = all_notes # + all_pages
 
@@ -103,7 +103,7 @@ module Jekyll
         css_class = "lsn"
         sn_regex = /\</
       else
-          puts "ERROR: Can't process sidenote that is not either 'right' or 'left'."
+          Jekyll.logger.error "Can't process sidenote that is not either 'right' or 'left'."
           return
       end
       # process sidenotes

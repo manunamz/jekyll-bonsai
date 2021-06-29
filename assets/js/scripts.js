@@ -16,7 +16,7 @@ import SiteNav from './site-nav.js';
   new ThemeColors();
   new SiteNav();
   new GraphNav();
-  if (document.getElementById('note')) {
+  if (document.getElementById('sem-tag')) {
     new Note();
   }
 })();

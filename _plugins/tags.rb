@@ -5,7 +5,7 @@ module Jekyll
       return if tags.nil?
       site = @context.registers[:site]
       semantic_tags = []
-      site.collections['notes'].docs.each do |n|
+      site.collections['sem_tags'].docs.each do |n|
         tags.each do |t|
           if n['namespace'] == t
             semantic_tags << { 
@@ -23,7 +23,7 @@ module Jekyll
       return if namespace.nil?
       site = @context.registers[:site]
       semantic_tagged_posts = []
-      site.collections['notes'].docs.each do |n|
+      site.collections['sem_tags'].docs.each do |n|
         site.posts.docs.each do |post|
           if namespace == n['namespace'] && post['tags'].include?(n['namespace'])
             semantic_tagged_posts << post
@@ -33,18 +33,18 @@ module Jekyll
       return semantic_tagged_posts
     end
 
-    def status_tags(tags)
+    def stat_tags(tags)
       return if tags.nil?
       site = @context.registers[:site]
-      status_tags = []
-      site.collections['status_tags'].docs.each do |st|
+      stat_tags = []
+      site.collections['stat_tags'].docs.each do |st|
         tags.each do |t|
           if st['emoji'] == t
-            status_tags << { 'emoji' => st['emoji'], 'url' => st.url }
+            stat_tags << { 'emoji' => st['emoji'], 'url' => st.url }
           end
         end
       end
-      return status_tags
+      return stat_tags
     end
   end
 end

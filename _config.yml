@@ -1,13 +1,69 @@
+# jekyll configs
+
 title: jekyll-bonsai
 description: a jekyll theme for digital gardeners.
 baseurl: '/jekyll-bonsai'
 # url: 'https://manunamz.github.io'
 
+# logo: "/assets/images/logo.png"
+
+permalink: pretty
+# relative_permalinks: false
+include: ['_pages']
+exclude: ["node_modules/", "*.gemspec", "*.gem", "Gemfile", "Gemfile.lock", "package.json", "package-lock.json",  "script/", "LICENSE.txt", "lib/", "bin/", "README.md", "Rakefile"]
+
+collections:
+  sem_tags: 
+    output: true
+    # permalinks are manually generated -- see local 'prep_note' plugin.
+  stat_tags:
+    output: true
+    permalink: /status-tag/:title
+    order:
+      - tags.md
+      - sprout.md
+      - bud.md
+      - bamboo.md
+      - bloom.md
+      - berry.md
+      - fruit.md
+      - melon.md
+      - seed.md
+      - tea.md
+      - pot-bamboo.md
+
+defaults:
+  - scope:
+      path: "_sem_tags/**/*.md"
+      type: "sem_tags"
+    values:
+      layout: "sem-tag"
+  - scope:
+      path: "_stat_tags/**/*.md"
+      type: "stat_tags"
+    values:
+      layout: "stat-tag"
+
+sass:
+  sass_dir:          _sass
+  style:            :compressed
+
+enable_mathjax: true
+kramdown:
+  math_engine: mathjax
+
+plugins:
+  - jekyll-wikilinks
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
 # jekyll-bonsai configs
 
 # dendron forces the root note-title to be 'root.md' -- this is the replacement title for 'root'
 # (make sure you change the title in root.md file as well)
-index_note_title: "Jekyll-Bonsai"
+index_doc_title: "Jekyll-Bonsai"
+# index_doc_title: "Root"
 # graph: default graph type in side bar.
 ## may be 'tree' or 'net-web'
 graph_type: "tree"
@@ -28,73 +84,19 @@ note_foot_webmentions_status: "open"
 namespaces:
   exclude:
     - "pages"
-    - "status_tags"
+    - "stat_tags"
 wikilinks:
   # enabled: true
   exclude:
     - "pages"
-    - "status_tags"
+    - "stat_tags"
 d3_graph_data:
   # enabled: true
   exclude:
     - "pages"
     - "posts"
-    - "status_tags"
+    - "stat_tags"
 
-# logo: "/assets/images/logo.png"
-
-permalink: pretty
-# relative_permalinks: false
-include: ['_pages']
-exclude: ["node_modules/", "*.gemspec", "*.gem", "Gemfile", "Gemfile.lock", "package.json", "package-lock.json",  "script/", "LICENSE.txt", "lib/", "bin/", "README.md", "Rakefile"]
-
-sass:
-  sass_dir:          _sass
-  style:            :compressed
-
-enable_mathjax: true
-kramdown:
-  math_engine: mathjax
-
-collections:
-  notes: 
-    output: true
-    # permalinks are manually generated -- see plugins.
-  status_tags:
-    output: true
-    permalink: /status-tag/:title
-    order:
-      - tags.md
-      - sprout.md
-      - bud.md
-      - bamboo.md
-      - bloom.md
-      - berry.md
-      - fruit.md
-      - melon.md
-      - seed.md
-      - tea.md
-      - pot-bamboo.md
-
-
-defaults:
-  - scope:
-      path: "_notes/**/*.md"
-      type: "notes"
-    values:
-      layout: "note"
-  - scope:
-      path: "_status_tags/**/*.md"
-      type: "status_tags"
-    values:
-      layout: "status-tag"
-
-plugins:
-  - jekyll-wikilinks
-  - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-seo-tag
-    
 compress_html:
   clippings: all
   comments: all
@@ -128,4 +130,4 @@ webmentions:
   #   - http://aaron-gustafson.com
   #   - http://www.aaron-gustafson.com
   collections:
-    - notes
+    - sem_tags

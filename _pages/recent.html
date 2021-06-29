@@ -33,13 +33,13 @@ permalink: /recent/
       {% endfor %}
     </ul>
     
-    <h2 style="text-align: center; padding-bottom: 12px;">Notes</h2>
-    {% assign recent_notes = site.notes | recent: site.recent_num %}
+    <h2 style="text-align: center; padding-bottom: 12px;">Semantic Tags</h2>
+    {% assign recent_sem_tags = site.sem_tags | recent: site.recent_num %}
     <ul class="recent-list">
-      {% for note in recent_notes %}
+      {% for sem_tag in recent_sem_tags %}
         <li class="recent-list-item">
-            <a class="wiki-link" href="{{ note.url | relative_url }}">{{ note | weather }} {{ note.title }}</a>
-            <span class="date-updated">{{ note.updated | date: "%Y-%m-%d" }}</span>
+            <a class="wiki-link" href="{{ sem_tag.url | relative_url }}">{{ sem_tag | weather }} {{ sem_tag.title }}</a>
+            <span class="date-updated">{{ sem_tag.updated | date: "%Y-%m-%d" }}</span>
         </li>
       {% endfor %}
     </ul>

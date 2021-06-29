@@ -2,7 +2,7 @@
 id: 1de1694a-8ad0-40d0-9e97-195807015a88
 title: Jekyll-Bonsai
 desc: ''
-updated: 1622912781430
+updated: 1623247179192
 created: 1620408350557
 tags: 🍈
 ---
@@ -19,9 +19,8 @@ It's about cleaning up this mess we've made and to make something beautiful out 
 
 🌱 mnz
 
-PS Check out the [github repo](https://github.com/short25h0r7/jekyll-bonsai) to start sifting through code.
+PS Check out the [github repo](https://github.com/manunamz/jekyll-bonsai) to start sifting through code.
 
 PPS This was my first time learning scss, ruby, jekyll, and d3. Code quality may vary.
-
 
 [>all]: Not _all_ features are implemented yet... 😉
