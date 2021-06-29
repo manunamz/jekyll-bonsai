@@ -1,7 +1,7 @@
 ---
 ---
 // this file is a monstrosity!
-export default class Note {
+export default class SemTag {
   constructor() {
     // head
     // this.noteHeadStatus set in initNoteStatus();

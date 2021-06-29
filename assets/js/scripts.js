@@ -2,7 +2,7 @@
 ---
 import GraphNav from './graph.js';
 import ThemeColors from './theme-colors.js';
-import Note from './note.js';
+import SemTag from './sem-tag.js';
 import SiteNav from './site-nav.js';
 
  //
@@ -17,7 +17,7 @@ import SiteNav from './site-nav.js';
   new SiteNav();
   new GraphNav();
   if (document.getElementById('sem-tag')) {
-    new Note();
+    new SemTag();
   }
 })();
 
