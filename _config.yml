@@ -62,8 +62,8 @@ plugins:
 
 # dendron forces the root note-title to be 'root.md' -- this is the replacement title for 'root'
 # (make sure you change the title in root.md file as well)
-index_doc_title: "Jekyll-Bonsai"
-# index_doc_title: "Root"
+index_title: "Jekyll-Bonsai"
+# index_title: "Root"
 # graph: default graph type in side bar.
 ## may be 'tree' or 'net-web'
 graph_type: "tree"

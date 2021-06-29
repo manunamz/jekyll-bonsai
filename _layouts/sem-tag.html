@@ -5,7 +5,7 @@ layout: default
 <div id="sem-tag">
 
   <!-- the PATH from root to leaf -->
-  <header class="sem-tag-header">
+  <header id="sem-tag-header">
     <nav class="note-head-nav" role="navigation" aria-label="breadcrumb">
       <label class="btn-selector">
         <input id="note-head-checkbox" type="checkbox">
@@ -39,12 +39,12 @@ layout: default
 
     {% include sem-tag-attrs.html %}
 
-    {% if page.title == site.index_note_title %}
+    {% if page.title == site.index_title %}
       <img id="home-bonsai" style="float: right; padding: 12px;" height="35%" width="35%">
     {% endif %}
     
     {{ content }}
-    
+
   </div>
 
   {% include share.html %}
