@@ -25,103 +25,103 @@ export default class SemTag {
 
   bindEvents() {
     // head
-    this.noteHeadCheckbox.addEventListener('click', () => {
+    this.semTagHeadCheckbox.addEventListener('click', () => {
       this.toggleNoteHeadCollapse();
     });
     // foot
-    this.noteFootLinksCheckbox.addEventListener('click', () => {
+    this.semTagFootLinksCheckbox.addEventListener('click', () => {
       this.toggleNoteFootLinksCollapse();
     });
-    this.noteFootPostsCheckbox.addEventListener('click', () => {
+    this.semTagFootPostsCheckbox.addEventListener('click', () => {
       this.toggleNoteFootPostsCollapse();
     });
-    this.noteFootWebmentionsCheckbox.addEventListener('click', () => {
+    this.semTagFootWebmentionsCheckbox.addEventListener('click', () => {
       this.toggleNoteFootWebmentionsCollapse();
     });
   }
 
   initNoteStatus() {
     // head
-    this.noteHeadStatus = localStorage.getItem('note-head-status');
-    if (this.noteHeadStatus !== "open" && this.noteHeadStatus !== "closed") {
-      this.noteHeadStatus = '{{ site.note_head_status }}';	
+    this.semTagHeadStatus = localStorage.getItem('sem-tag-head-status');
+    if (this.semTagHeadStatus !== "open" && this.semTagHeadStatus !== "closed") {
+      this.semTagHeadStatus = '{{ site.sem_tag_head_status }}';	
     }
-    this.noteHeadCheckbox.checked = (this.noteHeadStatus === "closed"); 
+    this.semTagHeadCheckbox.checked = (this.semTagHeadStatus === "closed"); 
     this.toggleNoteHeadCollapse();
 
     // foot
-    this.noteFootLinksStatus = localStorage.getItem('note-foot-links-status');
-    if (this.noteFootLinksStatus !== "open" && this.noteFootLinksStatus !== "closed") {
-      this.noteFootLinksStatus = '{{ site.note_foot_links_status }}';	
+    this.semTagFootLinksStatus = localStorage.getItem('sem-tag-foot-links-status');
+    if (this.semTagFootLinksStatus !== "open" && this.semTagFootLinksStatus !== "closed") {
+      this.semTagFootLinksStatus = '{{ site.sem_tag_foot_links_status }}';	
     }
-    this.noteFootLinksCheckbox.checked = (this.noteFootLinksStatus === "closed"); 
+    this.semTagFootLinksCheckbox.checked = (this.semTagFootLinksStatus === "closed"); 
     this.toggleNoteFootLinksCollapse();
 
-    this.noteFootPostsStatus = localStorage.getItem('note-foot-posts-status');
-    if (this.noteFootPostsStatus !== "open" && this.noteFootPostsStatus !== "closed") {
-      this.noteFootPostsStatus = '{{ site.note_foot_posts_status }}';	
+    this.semTagFootPostsStatus = localStorage.getItem('sem-tag-foot-posts-status');
+    if (this.semTagFootPostsStatus !== "open" && this.semTagFootPostsStatus !== "closed") {
+      this.semTagFootPostsStatus = '{{ site.sem_tag_foot_posts_status }}';	
     }
-    this.noteFootPostsCheckbox.checked = (this.noteFootPostsStatus === "closed"); 
+    this.semTagFootPostsCheckbox.checked = (this.semTagFootPostsStatus === "closed"); 
     this.toggleNoteFootPostsCollapse();
 
-    this.noteFootWebmentionsStatus = localStorage.getItem('note-foot-webmentions-status');
-    if (this.noteFootWebmentionsStatus !== "open" && this.noteFootWebmentionsStatus !== "closed") {
-      this.noteFootWebmentionsStatus = '{{ site.note_foot_webmentions_status }}';	
+    this.semTagFootWebmentionsStatus = localStorage.getItem('sem-tag-foot-webmentions-status');
+    if (this.semTagFootWebmentionsStatus !== "open" && this.semTagFootWebmentionsStatus !== "closed") {
+      this.semTagFootWebmentionsStatus = '{{ site.sem_tag_foot_webmentions_status }}';	
     }
-    this.noteFootWebmentionsCheckbox.checked = (this.noteFootWebmentionsStatus === "closed");
+    this.semTagFootWebmentionsCheckbox.checked = (this.semTagFootWebmentionsStatus === "closed");
     this.toggleNoteFootWebmentionsCollapse();
   }
 
   toggleNoteHeadCollapse () {
     // from: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_collapsible
-    var collapsibleEl = document.getElementsByClassName('note-head-breadcrumbs')[0];
-    if (this.noteHeadCheckbox.checked) {
+    var collapsibleEl = document.getElementsByClassName('sem-tag-head-breadcrumbs')[0];
+    if (this.semTagHeadCheckbox.checked) {
       collapsibleEl.style.display = "none";
-      this.noteHeadStatus = "closed";
+      this.semTagHeadStatus = "closed";
     } else {
       collapsibleEl.style.display = "flex";
-      this.noteHeadStatus = "open";
+      this.semTagHeadStatus = "open";
     }
-    localStorage.setItem('note-head-status', this.noteHeadStatus);
+    localStorage.setItem('sem-tag-head-status', this.semTagHeadStatus);
   } 
 
   toggleNoteFootLinksCollapse () {
     // from: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_collapsible
-    var collapsibleEl = document.getElementById('note-foot-links-nav');
-    if (this.noteFootLinksCheckbox.checked) {
+    var collapsibleEl = document.getElementById('sem-tag-foot-links-nav');
+    if (this.semTagFootLinksCheckbox.checked) {
       collapsibleEl.style.display = "none";
-      this.noteFootLinksStatus = "closed";
+      this.semTagFootLinksStatus = "closed";
     } else {
       collapsibleEl.style.display = "flex";
-      this.noteFootLinksStatus = "open";
+      this.semTagFootLinksStatus = "open";
     }
-    localStorage.setItem('note-foot-links-status', this.noteFootLinksStatus);
+    localStorage.setItem('sem-tag-foot-links-status', this.semTagFootLinksStatus);
   }
 
   toggleNoteFootPostsCollapse () {
     // from: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_collapsible
-    var collapsibleEl = document.getElementById('note-foot-posts-nav');
-    if (this.noteFootPostsCheckbox.checked) {
+    var collapsibleEl = document.getElementById('sem-tag-foot-posts-nav');
+    if (this.semTagFootPostsCheckbox.checked) {
       collapsibleEl.style.display = "none";
-      this.noteFootPostsStatus = "closed";
+      this.semTagFootPostsStatus = "closed";
     } else {
       collapsibleEl.style.display = "flex";
-      this.noteFootPostsStatus = "open";
+      this.semTagFootPostsStatus = "open";
     }
-    localStorage.setItem('note-foot-posts-status', this.noteFootPostsStatus);
+    localStorage.setItem('sem-tag-foot-posts-status', this.semTagFootPostsStatus);
   } 
 
   toggleNoteFootWebmentionsCollapse () {
     // from: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_collapsible
-    var collapsibleEl = document.getElementById("note-foot-webmentions-nav");
+    var collapsibleEl = document.getElementById("sem-tag-foot-webmentions-nav");
     var streamStatus = '{{ site.stream_status }}';
-    if (this.noteFootWebmentionsCheckbox.checked) {
+    if (this.semTagFootWebmentionsCheckbox.checked) {
       collapsibleEl.style.display = "none";
-      this.noteFootWebmentionsStatus = "closed";
+      this.semTagFootWebmentionsStatus = "closed";
     } else {
       collapsibleEl.style.display = "flex";
-      this.noteFootWebmentionsStatus = "open";
+      this.semTagFootWebmentionsStatus = "open";
     }
-    localStorage.setItem('note-foot-webmentions-status', streamStatus);
+    localStorage.setItem('sem-tag-foot-webmentions-status', streamStatus);
   } 
 }
