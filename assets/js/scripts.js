@@ -27,7 +27,7 @@ import SiteNav from './site-nav.js';
 function initListeners () {
   // open external links in new window; wiki-links in current window.
   document.querySelectorAll("a:not(.wiki-link):not(.wiki-link-embed-link):not(.semantic-tag):not(.status-tag):not(.anchor-heading):not(.footnote):not(.reversefootnote)").forEach(setupLinkOpen);
-  // init note-preview.html listeners.
+  // init hover-preview.html listeners.
   document.querySelectorAll('{{ include.wrapperQuerySelector }} a:not(.wiki-link-embed-link):not(.status-tag):not(.anchor-heading)').forEach(setupListeners);
 
   document.getElementById('status-tags-btn')
