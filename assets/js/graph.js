@@ -154,7 +154,7 @@ export default class GraphNav {
           node.filter( function(d,i) { return isPostTaggedInNetWeb(d); })
               .append("circle")
               .attr("r", theme_attrs["radius"])
-              .classed("pulse-semantic-tag", (d) => isPostTaggedInNetWeb(d) ? true : null)
+              .classed("pulse-sem-tag", (d) => isPostTaggedInNetWeb(d) ? true : null)
               .on("mouseover", onMouseover)
               .on("mouseout", onMouseout)
               .call(d3.drag()
@@ -198,8 +198,8 @@ export default class GraphNav {
           function isPostTaggedInNetWeb(node) {
             // const isPostPage = window.location.pathname.includes("post");
             // if (!isPostPage) return false;
-            const semanticTags = Array.from(document.getElementsByClassName("semantic-tag"));
-            const tagged = semanticTags.filter((semTag) => 
+            const semTags = Array.from(document.getElementsByClassName("sem-tag"));
+            const tagged = semTags.filter((semTag) => 
               !isMissingSemDocInNetWeb(node) && semTag.href.includes(node.url)
             );
             return tagged.length !== 0;
@@ -380,7 +380,7 @@ export default class GraphNav {
           node.filter( function(d,i) { return isPostTaggedInTree(d); })
               .append("circle")
               .attr("r", theme_attrs["radius"])
-              .classed("pulse-semantic-tag", (d) => isPostTaggedInTree(d) ? true : null)
+              .classed("pulse-sem-tag", (d) => isPostTaggedInTree(d) ? true : null)
               .on("click", goToSemDocFromTree)
               .on("mouseover", onMouseover)
               .on("mouseout", onMouseout)
@@ -433,8 +433,8 @@ export default class GraphNav {
           function isPostTaggedInTree(node) {
             // const isPostPage = window.location.pathname.includes("post");
             // if (!isPostPage) return false;
-            const semanticTags = Array.from(document.getElementsByClassName("semantic-tag"));
-            const tagged = semanticTags.filter((semTag) => 
+            const semTags = Array.from(document.getElementsByClassName("sem-tag"));
+            const tagged = semTags.filter((semTag) => 
               !isMissingSemDocInTree(node.data.id) && semTag.href.includes(node.data.url)
             );
             return tagged.length !== 0;
