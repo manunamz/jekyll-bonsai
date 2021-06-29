@@ -18,7 +18,7 @@ collections:
     # permalinks are manually generated -- see local 'prep_note' plugin.
   stat_tags:
     output: true
-    permalink: /status-tag/:title
+    permalink: /stat-tag/:title
     order:
       - tags.md
       - sprout.md
