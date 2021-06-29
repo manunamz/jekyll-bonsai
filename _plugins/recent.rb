@@ -1,14 +1,14 @@
-# liquid template to filter for most recently created/edited notes
+# liquid template to filter for most recently created/edited docs
 require 'time'
 
 module Jekyll
   module RecentFilters
-    # returns most recently created/updated docs (note or post) up to the defined 'num'ber.
+    # returns most recently created/updated docs up to the defined 'num'ber.
     # adds a 'weather' data attribute to render on the page.
     def recent(docs, num=10)
       return if docs.nil?
       num = self.to_integer(num)
-      # sort notes by most recently updated
+      # sort docs by most recently updated
       recent_docs = docs.sort_by { |d| d.data['updated'] }.reverse[0..(num - 1)]
       # assign weather attribute: if 'created' and 'updated' happened on the same day, presume creation status.
       recent_docs.each do |docs|
