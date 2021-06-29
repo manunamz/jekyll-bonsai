@@ -26,11 +26,11 @@ import SiteNav from './site-nav.js';
  //
 function initListeners () {
   // open external links in new window; wiki-links in current window.
-  document.querySelectorAll("a:not(.wiki-link):not(.wiki-link-embed-link):not(.semantic-tag):not(.status-tag):not(.anchor-heading):not(.footnote):not(.reversefootnote)").forEach(setupLinkOpen);
+  document.querySelectorAll("a:not(.wiki-link):not(.wiki-link-embed-link):not(.semantic-tag):not(.stat-tag):not(.anchor-heading):not(.footnote):not(.reversefootnote)").forEach(setupLinkOpen);
   // init hover-preview.html listeners.
-  document.querySelectorAll('{{ include.wrapperQuerySelector }} a:not(.wiki-link-embed-link):not(.status-tag):not(.anchor-heading)').forEach(setupListeners);
+  document.querySelectorAll('{{ include.wrapperQuerySelector }} a:not(.wiki-link-embed-link):not(.stat-tag):not(.anchor-heading)').forEach(setupListeners);
 
-  document.getElementById('status-tags-btn')
+  document.getElementById('stat-tags-btn')
     .addEventListener('click', function(event) {
       goTo('{{ site.baseurl }}/stat-tag/tags');
     }, false);

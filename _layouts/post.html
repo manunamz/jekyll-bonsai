@@ -14,7 +14,7 @@ layout: default
   <p class="small-descr">
     {% assign stat_tags = page.tags | stat_tags %}
     {% for stat_tag in stat_tags %}
-      <a class="status-tag" href="{{ stat_tag.url | relative_url }}">{{ stat_tag.emoji }}</a>
+      <a class="stat-tag" href="{{ stat_tag.url | relative_url }}">{{ stat_tag.emoji }}</a>
     {% endfor %}
     <span>Last Tended: {{ page.updated | date: "%Y-%m-%d" }}</span>
   </p>

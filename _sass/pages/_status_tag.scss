@@ -2,7 +2,7 @@
 // scss for tag page
 // 
 
-.status-tags-nav {
+.stat-tags-nav {
   @include fs-6;
   display: flex;
   position: absolute;
@@ -11,13 +11,13 @@
   top: 0;
   user-select: none;
   
-  .status-tags-nav-list {
+  .stat-tags-nav-list {
     overflow-x: scroll;
     white-space: nowrap;
     padding-left: 0 !important;
   }
 
-  .status-tags-list-item {
+  .stat-tags-list-item {
     display: inline-block;
     margin-right: $sp-3;
     margin-left: $sp-3;
@@ -45,17 +45,17 @@
   }
 }
 
-.plant-status-tags-page {
+.stat-tags-page {
   padding-top: $sp-10;
 }
 
-.status-tags-list {
+.stat-tags-list {
   padding: $sp-4;
   display: block; // columns require block
   column-count: 2;
   column-width: $content-width / 6;
   
-  .status-tags-list-item {
+  .stat-tags-list-item {
     // display: flex; 
     list-style-type: none !important;
 
