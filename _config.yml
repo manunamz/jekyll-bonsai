@@ -16,9 +16,9 @@ collections:
   sem_docs: 
     output: true
     # permalinks are manually generated -- see local 'prep_note' plugin.
-  stat_tags:
+  stat_docs:
     output: true
-    permalink: /stat-tag/:title
+    permalink: /stat/:title
     order:
       - tags.md
       - sprout.md
@@ -39,10 +39,10 @@ defaults:
     values:
       layout: "sem-doc"
   - scope:
-      path: "_stat_tags/**/*.md"
-      type: "stat_tags"
+      path: "_stat_docs/**/*.md"
+      type: "stat_docs"
     values:
-      layout: "stat-tag"
+      layout: "stat-doc"
 
 sass:
   sass_dir:          _sass
@@ -85,18 +85,18 @@ namespaces:
   exclude:
     - "pages"
     - "posts"
-    - "stat_tags"
+    - "stat_docs"
 wikilinks:
   # enabled: true
   exclude:
     - "pages"
-    - "stat_tags"
+    - "stat_docs"
 d3_graph_data:
   # enabled: true
   exclude:
     - "pages"
     - "posts"
-    - "stat_tags"
+    - "stat_docs"
 
 compress_html:
   clippings: all

@@ -6,7 +6,7 @@ layout: default
 
   <h1>{{ page.title }}</h1>
   <p>
-    {% assign sem_tags = page.tags |  sem_tags %}
+    {% assign sem_tags = page.tags | sem_tags %}
     {% for sem_tag in sem_tags %}
       <a class="sem-tag" href="{{ sem_tag.url | relative_url }}">{{ sem_tag.tag }}</a>
     {% endfor %}

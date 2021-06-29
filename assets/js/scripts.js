@@ -32,7 +32,7 @@ function initListeners () {
 
   document.getElementById('stat-tags-btn')
     .addEventListener('click', function(event) {
-      goTo('{{ site.baseurl }}/stat-tag/tags');
+      goTo('{{ site.baseurl }}/stat/tags');
     }, false);
   document.getElementById('posts-btn')
     .addEventListener('click', function(event) {

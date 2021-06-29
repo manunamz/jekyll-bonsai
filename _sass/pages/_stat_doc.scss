@@ -2,7 +2,7 @@
 // scss for tag page
 // 
 
-.stat-tags-nav {
+.stat-docs-nav {
   @include fs-6;
   display: flex;
   position: absolute;
@@ -11,13 +11,13 @@
   top: 0;
   user-select: none;
   
-  .stat-tags-nav-list {
+  .stat-docs-nav-list {
     overflow-x: scroll;
     white-space: nowrap;
     padding-left: 0 !important;
   }
 
-  .stat-tags-list-item {
+  .stat-docs-list-item {
     display: inline-block;
     margin-right: $sp-3;
     margin-left: $sp-3;
@@ -45,17 +45,17 @@
   }
 }
 
-.stat-tags-page {
+.stat-docs-page {
   padding-top: $sp-10;
 }
 
-.stat-tags-list {
+.stat-docs-list {
   padding: $sp-4;
   display: block; // columns require block
   column-count: 2;
   column-width: $content-width / 6;
   
-  .stat-tags-list-item {
+  .stat-docs-list-item {
     // display: flex; 
     list-style-type: none !important;
 

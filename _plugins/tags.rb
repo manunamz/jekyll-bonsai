@@ -37,7 +37,7 @@ module Jekyll
       return if tags.nil?
       site = @context.registers[:site]
       stat_tags = []
-      site.collections['stat_tags'].docs.each do |st|
+      site.collections['stat_docs'].docs.each do |st|
         tags.each do |t|
           if st['emoji'] == t
             stat_tags << { 'emoji' => st['emoji'], 'url' => st.url }
