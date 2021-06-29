@@ -29,7 +29,7 @@
     filter: drop-shadow(0 0 0.7mm $drop-shadow-orange);
   }
 
-  #sem-tag-head-emoji-span {  
+  #sem-doc-head-emoji-span {  
     filter: drop-shadow(0 0 0.7mm $drop-shadow-brown);  
   }
 
@@ -38,7 +38,7 @@
   }
 }
 
-.sem-tag-foot-selector {
+.sem-doc-foot-selector {
   @include fs-6;
   display: block;
   cursor: pointer;
@@ -57,15 +57,15 @@
     width: 0;
   }
 
-  #sem-tag-foot-posts-emoji-span {
+  #sem-doc-foot-posts-emoji-span {
     filter: drop-shadow(0 0 0.7mm $drop-shadow-purple);  
   }
 
-  #sem-tag-foot-link-emoji-span {
+  #sem-doc-foot-link-emoji-span {
     filter: drop-shadow(0 0 0.7mm $drop-shadow-brown);
   }
 
-  #sem-tag-foot-webmentions-emoji-span {
+  #sem-doc-foot-webmentions-emoji-span {
     filter: drop-shadow(0 0 0.7mm $drop-shadow-blue);
   }
 }

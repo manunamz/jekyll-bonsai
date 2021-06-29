@@ -13,7 +13,7 @@ include: ['_pages']
 exclude: ["node_modules/", "*.gemspec", "*.gem", "Gemfile", "Gemfile.lock", "package.json", "package-lock.json",  "script/", "LICENSE.txt", "lib/", "bin/", "README.md", "Rakefile"]
 
 collections:
-  sem_tags: 
+  sem_docs: 
     output: true
     # permalinks are manually generated -- see local 'prep_note' plugin.
   stat_tags:
@@ -34,10 +34,10 @@ collections:
 
 defaults:
   - scope:
-      path: "_sem_tags/**/*.md"
-      type: "sem_tags"
+      path: "_sem_docs/**/*.md"
+      type: "sem_docs"
     values:
-      layout: "sem-tag"
+      layout: "sem-doc"
   - scope:
       path: "_stat_tags/**/*.md"
       type: "stat_tags"
@@ -84,6 +84,7 @@ sem_tag_foot_webmentions_status: "open"
 namespaces:
   exclude:
     - "pages"
+    - "posts"
     - "stat_tags"
 wikilinks:
   # enabled: true
@@ -130,4 +131,4 @@ webmentions:
   #   - http://aaron-gustafson.com
   #   - http://www.aaron-gustafson.com
   collections:
-    - sem_tags
+    - sem_docs

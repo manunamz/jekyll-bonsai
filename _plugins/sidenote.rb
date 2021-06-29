@@ -67,20 +67,20 @@ module Jekyll
        #  
       # init jekyll vars
        #
-      all_notes = site.collections['sem_tags'].docs
+      all_sem_docs = site.collections['sem_docs'].docs
       # all_pages = site.pages
-      all_docs = all_notes # + all_pages
+      all_docs = all_sem_docs # + all_pages
 
       link_extension = !!site.config["use_html_extension"] ? '.html' : ''
    
-      all_docs.each do |cur_note|
+      all_docs.each do |cur_doc|
         # check for newlines @ eof.
         #   (kramdown can handle footnotes with no newline, but the regex i'm getting requires a newline after the last footnote to find it.)
-        if cur_note.content[-1] != "\n"
+        if cur_doc.content[-1] != "\n"
           Jekyll.logger.warn "Missing newline at end of file -- this could break sidenotes: ", cur_note.data['title']
         end    
-        parse_sidenote(cur_note, "left")
-        parse_sidenote(cur_note, "right")
+        parse_sidenote(cur_doc, "left")
+        parse_sidenote(cur_doc, "right")
       end
     end
 
@@ -90,7 +90,7 @@ module Jekyll
     # mark -> [<left-sidenote], [>right-sidenote]
     # def -> [<left-sidenote]:, [>right-sidenote]:
     # `side` should be 'right' or 'left'
-    def parse_sidenote(note, side)
+    def parse_sidenote(doc, side)
       # left v right setup
       if side == "right"
         sidenote_def_regex = RIGHT_SIDENOTE_DEFINITION_START
@@ -107,14 +107,14 @@ module Jekyll
           return
       end
       # process sidenotes
-      sidenotes = note.content.scan(sidenote_def_regex)
-      note.content.gsub!(sidenote_def_regex, '') # rm sidenote defs from original note.
+      sidenotes = doc.content.scan(sidenote_def_regex)
+      doc.content.gsub!(sidenote_def_regex, '') # rm sidenote defs from original note.
       i = 0
       sidenotes.each do |sidenote|
         i += 1
         mark = sidenote[0]
         definition = sidenote[1]
-        note.content = note.content.gsub(
+        doc.content = doc.content.gsub(
           /\[#{sn_regex}(#{mark})\]/i,
           "<label for=\"#{css_class}-#{i}\" class=\"sidenote-toggle sidenote-number\"></label><input type=\"checkbox\" id=\"#{css_class}-#{i}\" class=\"sidenote-toggle\"><span class=\"#{css_class}\">#{definition}</span>"
         )

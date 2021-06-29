@@ -3,9 +3,9 @@
 //
 // stylelint-disable selector-no-type, max-nesting-depth, selector-max-compound-selectors, selector-max-type, selector-max-specificity
 
-// sem-tag-breadcrumb nav
+// sem-doc-breadcrumb nav
 
-.sem-tag-head-nav {
+.sem-doc-head-nav {
   @include mq(md) {
     margin-top: -$sp-4;
   }
@@ -13,14 +13,14 @@
   overflow-x: scroll;
   white-space: nowrap;  
 
-  .sem-tag-head-breadcrumbs {
+  .sem-doc-head-breadcrumbs {
     padding: $sp-2;
     margin-bottom: 0;
     margin-top: 0;
     align-self: center;
     list-style: none;
   
-    .sem-tag-head-breadcrumb {
+    .sem-doc-head-breadcrumb {
       @include fs-2;
       
       &::before {
@@ -43,52 +43,52 @@
   } 
 }
 
-// sem-tag-foot nav
+// sem-doc-foot nav
 
-.sem-tag-foot-wrapper {
+.sem-doc-foot-wrapper {
   margin-top: $sp-6;
   margin-bottom: $sp-6;
   display: flex;
 
-  .sem-tag-foot-nav {
+  .sem-doc-foot-nav {
     display: flex;
     flex-direction: column;
     width: 80%;
     padding: $sp-3;
     border-radius: 16px;
-    background-color: $sem-tag-foot-background-color;
+    background-color: $sem-doc-foot-background-color;
     // blur box edges
     // from: https://stackoverflow.com/questions/15775365/how-to-blur-div-edges
-    box-shadow: 0 0 5px 10px $sem-tag-foot-background-color;
+    box-shadow: 0 0 5px 10px $sem-doc-foot-background-color;
 
-    .sem-tag-foot-nav-sections {
+    .sem-doc-foot-nav-sections {
       display: flex;
     }
     
-    .sem-tag-foot-nav-section {
+    .sem-doc-foot-nav-section {
       padding-left: $sp-2;
       padding-right: $sp-2;
     }
 
-    .sem-tag-foot-nav-title {
+    .sem-doc-foot-nav-title {
       @include fs-4;
       padding: $sp-2;
-      color: $sem-tag-foot-text-color;
+      color: $sem-doc-foot-text-color;
     }
   
-    .sem-tag-foot-nav-subtitle {
+    .sem-doc-foot-nav-subtitle {
       @include fs-2;
-      color: $sem-tag-foot-text-color;
+      color: $sem-doc-foot-text-color;
     }
 
-    .sem-tag-foot-nav-list {
+    .sem-doc-foot-nav-list {
       display: block; // columns require block
       column-count: 2;
       column-width: $content-width / 6;
       padding-left: 0;
       list-style: none;
   
-      .sem-tag-foot-nav-list-item {
+      .sem-doc-foot-nav-list-item {
         border-radius: 16px;
         padding: $sp-1;
         max-width: $content-width / 4;
