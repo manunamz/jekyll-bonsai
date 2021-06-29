@@ -4,16 +4,16 @@
 export default class SemTag {
   constructor() {
     // head
-    // this.noteHeadStatus set in initNoteStatus();
-    this.noteHeadCheckbox = document.getElementById('note-head-checkbox');
+    // this.semTagHeadStatus set in initNoteStatus();
+    this.semTagHeadCheckbox = document.getElementById('sem-tag-head-checkbox');
     
     // foot
-    // this.noteFootLinksStatus set in initNoteStatus();
-    this.noteFootLinksCheckbox = document.getElementById('note-foot-links-checkbox');
-    // this.noteFootPostsStatus set in initNoteStatus();
-    this.noteFootPostsCheckbox = document.getElementById('note-foot-posts-checkbox');
-    // this.noteFootWebmentionsStatus set in initNoteStatus();
-    this.noteFootWebmentionsCheckbox = document.getElementById('note-foot-webmentions-checkbox');
+    // this.semTagFootLinksStatus set in initNoteStatus();
+    this.semTagFootLinksCheckbox = document.getElementById('sem-tag-foot-links-checkbox');
+    // this.semTagFootPostsStatus set in initNoteStatus();
+    this.semTagFootPostsCheckbox = document.getElementById('sem-tag-foot-posts-checkbox');
+    // this.semTagFootWebmentionsStatus set in initNoteStatus();
+    this.semTagFootWebmentionsCheckbox = document.getElementById('sem-tag-foot-webmentions-checkbox');
 
     this.init();
   }

@@ -29,7 +29,7 @@
     filter: drop-shadow(0 0 0.7mm $drop-shadow-orange);
   }
 
-  #note-head-emoji-span {  
+  #sem-tag-head-emoji-span {  
     filter: drop-shadow(0 0 0.7mm $drop-shadow-brown);  
   }
 
@@ -38,7 +38,7 @@
   }
 }
 
-.note-foot-selector {
+.sem-tag-foot-selector {
   @include fs-6;
   display: block;
   cursor: pointer;
@@ -57,15 +57,15 @@
     width: 0;
   }
 
-  #note-foot-posts-emoji-span {
+  #sem-tag-foot-posts-emoji-span {
     filter: drop-shadow(0 0 0.7mm $drop-shadow-purple);  
   }
 
-  #note-foot-link-emoji-span {
+  #sem-tag-foot-link-emoji-span {
     filter: drop-shadow(0 0 0.7mm $drop-shadow-brown);
   }
 
-  #note-foot-webmentions-emoji-span {
+  #sem-tag-foot-webmentions-emoji-span {
     filter: drop-shadow(0 0 0.7mm $drop-shadow-blue);
   }
 }
