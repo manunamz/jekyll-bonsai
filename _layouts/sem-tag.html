@@ -4,9 +4,29 @@ layout: default
 
 <div id="sem-tag">
 
-  {% include note-head.html %}
+  <!-- the PATH from root to leaf -->
+  <header class="sem-tag-header">
+    <nav class="note-head-nav" role="navigation" aria-label="breadcrumb">
+      <label class="btn-selector">
+        <input id="note-head-checkbox" type="checkbox">
+        <span id="note-head-emoji-span" title="Toggle Path">🛤</span>
+      </label>
+      <ol class="note-head-breadcrumbs">
+        {% for ancestor in page.ancestors %}
+          <li class="note-head-breadcrumb">
+            <a class="wiki-link {% if ancestor.id == '' %}missing-note-txt{% endif %} " href="{{ ancestor.url | relative_url }}">
+              {{ ancestor.title }}
+            </a>
+          </li>
+        {% endfor %}
+        <li class="note-head-breadcrumb">
+          <span>{{ page.title }}</span>
+        </li>
+      </ol>
+    </nav>
+  </header>
 
-  <div class="note-body">
+  <div class="sem-tag-body">
 
     <h1>{{ page.title }}</h1>
     <p class="small-descr">
@@ -24,10 +44,93 @@ layout: default
     {% endif %}
     
     {{ content }}
+    
   </div>
 
   {% include share.html %}
 
-  {% include note-foot.html %}
+  <footer class="sem-tag-footer">
+    <!-- Forks on the path -->
+    <div class="note-foot-wrapper">
+      <div> <!-- extra div so 'note-foot-selector' animation only effects the emoji label-->
+        <label class="note-foot-selector">
+          <input id="note-foot-links-checkbox" type="checkbox">
+          <span id="note-foot-link-emoji-span" title="Toggle Links">🚏</span>
+        </label>
+      </div>
+      <nav id="note-foot-links-nav" class="note-foot-nav" role="navigation" aria-label="">
+        <span class="note-foot-nav-title">
+          Forks On The Path
+        </span>
+        <div class="note-foot-nav-sections">
+          <div class="note-foot-nav-section">
+            <h4 class="note-foot-nav-subtitle">Children</h4>
+            <ul class="note-foot-nav-list">
+              {% for child in page.children %}
+                <li class="note-foot-nav-list-item">
+                  <a class="wiki-link {% if child.id == '' %}missing-note-txt{% endif %}" href="{{ child.url | relative_url }}">
+                    {{ child.title }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+          <div class="note-foot-nav-section">
+            <h4 class="note-foot-nav-subtitle">Backlinks</h4>
+            <ul class="note-foot-nav-list">
+              {% assign note_backlinks = page.backlinks | doc_type: "notes" %}
+              {% for backlink in note_backlinks %}
+                <li class="note-foot-nav-list-item">
+                  <a class="wiki-link" href="{{ backlink.doc.url | relative_url }}">{{ backlink.doc.title }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <!-- Field bLogs -->
+    <div class="note-foot-wrapper">
+      <div> <!-- extra div so 'note-foot-selector' animation only effects the emoji label-->
+        <label class="note-foot-selector field-blogs">
+          <input id="note-foot-posts-checkbox" type="checkbox">
+          <span id="note-foot-posts-emoji-span" title="Toggle Posts">📓</span>
+        </label>
+      </div>
+      <nav id="note-foot-posts-nav" class="note-foot-nav" role="navigation" aria-label="">
+        <span class="note-foot-nav-title">
+          Field bLogs
+        </span>
+        <div class="note-foot-nav-section">
+          <h4 class="note-foot-nav-subtitle">Posts</h4>
+          <ul class="note-foot-nav-list">
+            {% assign semantic_tagged_posts = page.namespace | semantic_tagged_posts %}
+            {% for post in semantic_tagged_posts %}
+              <li class="note-foot-nav-list-item">
+                <a class="wiki-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </nav>
+    </div>
+    <!-- webmentions -->
+    <div class="note-foot-wrapper">
+      <div> <!-- extra div so 'note-foot-selector' animation only effects the emoji label-->
+        <label class="note-foot-selector webmentions">
+          <input id="note-foot-webmentions-checkbox" type="checkbox">
+          <span id="note-foot-webmentions-emoji-span" title="Toggle Webmentions">🌊</span>
+        </label>
+      </div>
+      <nav id="note-foot-webmentions-nav" class="note-foot-nav" role="navigation" aria-label="" aria-label="">
+        <span class="note-foot-nav-title">
+          The Stream
+        </span>
+        <div class="note-foot-nav-section">
+          {% webmentions %}
+        </div>
+      </nav>
+    </div>
+  </footer>  
 
 </div>
