@@ -47,23 +47,17 @@ layout: default
 
   </div>
 
-  {% if site.social.enabled %}
-    {% include share.html %}
-  {% endif %}
-
   <footer class="sem-doc-footer">
     <!-- Forks on the path -->
     <div class="sem-doc-foot-wrapper">
-      <div> <!-- extra div so 'sem-doc-foot-selector' animation only effects the emoji label-->
+      <div style="display: flex;"> <!-- extra div so 'sem-doc-foot-selector' animation only effects the emoji label-->
         <label class="sem-doc-foot-selector">
           <input id="sem-doc-foot-links-checkbox" type="checkbox">
           <span id="sem-doc-foot-link-emoji-span" title="Toggle Links">🚏</span>
         </label>
+        <h3 class="sem-doc-foot-nav-title">Forks On The Path</h3>
       </div>
       <nav id="sem-doc-foot-links-nav" class="sem-doc-foot-nav" role="navigation" aria-label="">
-        <span class="sem-doc-foot-nav-title">
-          Forks On The Path
-        </span>
         <div class="sem-doc-foot-nav-sections">
           <div class="sem-doc-foot-nav-section">
             <h4 class="sem-doc-foot-nav-subtitle">Children</h4>
@@ -93,16 +87,14 @@ layout: default
     </div>
     <!-- Field bLogs -->
     <div class="sem-doc-foot-wrapper">
-      <div> <!-- extra div so 'sem-doc-foot-selector' animation only effects the emoji label-->
+      <div style="display: flex;"> <!-- extra div so 'sem-doc-foot-selector' animation only effects the emoji label-->
         <label class="sem-doc-foot-selector field-blogs">
           <input id="sem-doc-foot-posts-checkbox" type="checkbox">
           <span id="sem-doc-foot-posts-emoji-span" title="Toggle Posts">📓</span>
         </label>
+        <h3 class="sem-doc-foot-nav-title">Field bLogs</h3>
       </div>
       <nav id="sem-doc-foot-posts-nav" class="sem-doc-foot-nav" role="navigation" aria-label="">
-        <span class="sem-doc-foot-nav-title">
-          Field bLogs
-        </span>
         <div class="sem-doc-foot-nav-section">
           <h4 class="sem-doc-foot-nav-subtitle">Posts</h4>
           <ul class="sem-doc-foot-nav-list">
@@ -116,9 +108,10 @@ layout: default
         </div>
       </nav>
     </div>
-  </footer>  
+  </footer> 
 
   {% if site.social.enabled %}
+    {% include share.html %}
     {% include connect.html %}
   {% endif %}
 
