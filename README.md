@@ -1,6 +1,6 @@
 # Jekyll-Bonsai
 
-<img src="https://github.com/shorty25h0r7/jekyll-bonsai/blob/main/assets/img/logo-bonsai-light.svg" width="300" height="300"/>
+<img src="https://github.com/shorty25h0r7/jekyll-bonsai/blob/main/assets/img/bonsai-light.svg" width="300" height="300"/>
 
 ⚠️ This Is An Experimental Template ⚠️
 
