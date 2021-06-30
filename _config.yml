@@ -82,6 +82,7 @@ social:
   enabled: true
   connect:
     # facebook_url:
+    github_url: https://github.com/manunamz/
     # linkedin_url:
     # pinterest_url:
     twitter_url: https://twitter.com/manunamz/
