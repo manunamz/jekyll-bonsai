@@ -159,14 +159,10 @@
       @include fs-4;
       display: flex;
       width: 80%;
-      padding: $sp-3;
-      margin-top: $sp-4;
-      margin-bottom: $sp-4;
+      padding: $sp-2;
+      margin-top: $sp-2;
+      margin-bottom: $sp-2;
       border-radius: 16px;
-      background-color: $visited-color;
-      // blur box edges
-      // from: https://stackoverflow.com/questions/15775365/how-to-blur-div-edges
-      box-shadow: 0 0 5px 4px $visited-color;
       // both animation and transform rely on this transition setting (according to: https://stackoverflow.com/a/20903041)
       transition: all 0.15s ease-in-out;
       
