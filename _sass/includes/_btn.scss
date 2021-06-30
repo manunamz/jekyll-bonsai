@@ -70,7 +70,7 @@
   }
 }
 
-.wiki-link-nav-selector {
+.bonsai-burger {
   z-index: 5;
   display: block;
   position: fixed;
@@ -89,9 +89,5 @@
     opacity: 0;
     height: 0;
     width: 0;
-  }
-
-  & #wiki-link-nav-span {
-    margin-top: -6px;
   }
 }

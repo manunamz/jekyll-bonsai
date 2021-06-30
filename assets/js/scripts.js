@@ -64,7 +64,7 @@ function setupLinkOpen (link) {
 
 function expandGraphNav() {
   var siteNav = document.getElementById('site-nav');
-  var wikiBonsai = document.getElementById('wiki-link-nav-bonsai');
+  var wikiBonsai = document.getElementById('nav-bonsai');
   
   if (document.getElementById('wiki-link-nav-checkbox').checked) {
     siteNav.classList.add('nav-open');
