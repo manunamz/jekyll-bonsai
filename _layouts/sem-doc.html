@@ -47,7 +47,9 @@ layout: default
 
   </div>
 
-  {% include share.html %}
+  {% if site.social.enabled %}
+    {% include share.html %}
+  {% endif %}
 
   <footer class="sem-doc-footer">
     <!-- Forks on the path -->
@@ -114,6 +116,7 @@ layout: default
         </div>
       </nav>
     </div>
+
     <!-- webmentions -->
     <div class="sem-doc-foot-wrapper">
       <div> <!-- extra div so 'sem-doc-foot-selector' animation only effects the emoji label-->
@@ -123,8 +126,13 @@ layout: default
         </label>
       </div>
       <nav id="sem-doc-foot-webmentions-nav" class="sem-doc-foot-nav" role="navigation" aria-label="" aria-label="">
-        <span class="sem-doc-foot-nav-title">
-          The Stream
+        <span>
+          <span class="sem-doc-foot-nav-title">
+            The Stream
+          </span>
+          {% if site.social.enabled %}
+            {% include connect.html %}
+          {% endif %}
         </span>
         <div class="sem-doc-foot-nav-section">
           {% webmentions %}

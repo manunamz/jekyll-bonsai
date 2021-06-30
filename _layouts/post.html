@@ -21,6 +21,9 @@ layout: default
 
   {{ content }}
 
-  {% include share.html %}
+  {% if site.social.enabled %}
+    {% include share.html %}
+    {% include connect.html %}
+  {% endif %}
 
 </div>

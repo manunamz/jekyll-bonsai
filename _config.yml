@@ -80,6 +80,12 @@ sem_doc_foot_links_status: "open"
 sem_doc_foot_posts_status: "open"
 sem_doc_foot_webmentions_status: "open"
 social:
+  enabled: true
+  connect:
+    # facebook_url:
+    # linkedin_url:
+    # pinterest_url:
+    twitter_url: https://twitter.com/manunamz/
   share:
     - 'email'
     # - 'facebook'
