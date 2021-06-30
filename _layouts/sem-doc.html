@@ -49,7 +49,6 @@ layout: default
 
   {% if site.social.enabled %}
     {% include share.html %}
-    {% include connect.html %}
   {% endif %}
 
   <footer class="sem-doc-footer">
@@ -118,5 +117,9 @@ layout: default
       </nav>
     </div>
   </footer>  
+
+  {% if site.social.enabled %}
+    {% include connect.html %}
+  {% endif %}
 
 </div>

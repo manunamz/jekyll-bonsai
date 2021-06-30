@@ -22,7 +22,7 @@ permalink: /recent/
   </div>
 
   <div>
-    <h2 style="text-align: center; padding-bottom: 24px; padding-top: 24px;">Posts</h2>
+    <h2 style="text-align: left; padding-bottom: 24px; padding-top: 24px;">Posts</h2>
     {% assign recent_posts = site.posts | recent: site.recent_num %}
     <ul class="recent-list">
       {% for post in recent_posts %}
@@ -33,13 +33,13 @@ permalink: /recent/
       {% endfor %}
     </ul>
     
-    <h2 style="text-align: center; padding-bottom: 12px;">Semantic Tags</h2>
-    {% assign recent_sem_tags = site.sem_tags | recent: site.recent_num %}
+    <h2 style="text-align: left; padding-bottom: 12px;">Semantic Documents</h2>
+    {% assign recent_sem_docs = site.sem_docs | recent: site.recent_num %}
     <ul class="recent-list">
-      {% for sem_tag in recent_sem_tags %}
+      {% for sem_doc in recent_sem_docs %}
         <li class="recent-list-item">
-            <a class="wiki-link" href="{{ sem_tag.url | relative_url }}">{{ sem_tag | weather }} {{ sem_tag.title }}</a>
-            <span class="date-updated">{{ sem_tag.updated | date: "%Y-%m-%d" }}</span>
+            <a class="wiki-link" href="{{ sem_doc.url | relative_url }}">{{ sem_doc | weather }} {{ sem_doc.title }}</a>
+            <span class="date-updated">{{ sem_doc.updated | date: "%Y-%m-%d" }}</span>
         </li>
       {% endfor %}
     </ul>
