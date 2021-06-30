@@ -67,17 +67,14 @@
 }
 
 .bonsai-burger {
-  z-index: 5;
-  display: block;
+  display: flex;
+  flex-direction: column;
   position: fixed;
   right: $sp-2;
   bottom: $sp-2;
-  display: flex;
-  flex-direction: column;
+  z-index: 5;
   cursor: pointer;
   user-select: none;
-  font-size: $font-size-6;
-  text-align: center;
   filter: drop-shadow(0 0 0.7mm $drop-shadow-green);
 
   /* Hide the browser's default checkbox */
@@ -85,5 +82,14 @@
     opacity: 0;
     height: 0;
     width: 0;
+  }
+
+  #nav-base {
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  #nav-bonsai {
+    margin-left: 5px;
   }
 }
