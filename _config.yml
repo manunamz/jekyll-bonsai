@@ -123,15 +123,14 @@ compress_html:
 
 # Google Analytics Tracking (optional)
 # e.g, UA-1234567-89
-# ga_tracking: ...
+ga_tracking: UA-190413040-3
 ga_tracking_anonymize_ip: true # Use GDPR compliant Google Analytics settings (true/nil by default)
 
 # seo
-# tagline: "A better way to know"
-# description: "Dendron is a local-first, markdown based, hierarchical note taking tool. It is meant to help you create, organize, and collaborate on knowledge bases of any size."
+# tagline: ""
+# description: ""
 # twitter:
 #   card: summary
-#   username: dendronhq
+#   username: manunamz
 # author:
-#   twitter: dendronhq
-
+#   twitter: manunamz
