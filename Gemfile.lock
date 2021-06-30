@@ -58,7 +58,7 @@ GEM
       jekyll (>= 3.7, < 5.0)
     jekyll-watch (2.2.1)
       listen (~> 3.0)
-    jekyll-wikilinks (0.0.4)
+    jekyll-wikilinks (0.0.5)
     json (2.5.1)
     kramdown (2.3.1)
       rexml
@@ -121,7 +121,7 @@ DEPENDENCIES
   jekyll-seo-tag
   jekyll-sitemap
   jekyll-webmention_io!
-  jekyll-wikilinks (~> 0.0.4)
+  jekyll-wikilinks (~> 0.0.5)
   rspec
   webrick (~> 1.7)
 

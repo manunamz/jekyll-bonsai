@@ -100,10 +100,12 @@ wikilinks:
     - "stat_docs"
 d3_graph_data:
   # enabled: true
+  # path: "/assets"
   exclude:
     - "pages"
     - "posts"
     - "stat_docs"
+
 
 compress_html:
   clippings: all
