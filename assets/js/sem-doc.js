@@ -12,8 +12,6 @@ export default class SemTag {
     this.semTagFootLinksCheckbox = document.getElementById('sem-doc-foot-links-checkbox');
     // this.semTagFootPostsStatus set in initSemTagStatus();
     this.semTagFootPostsCheckbox = document.getElementById('sem-doc-foot-posts-checkbox');
-    // this.semTagFootWebmentionsStatus set in initSemTagStatus();
-    this.semTagFootWebmentionsCheckbox = document.getElementById('sem-doc-foot-webmentions-checkbox');
 
     this.init();
   }
@@ -34,9 +32,6 @@ export default class SemTag {
     });
     this.semTagFootPostsCheckbox.addEventListener('click', () => {
       this.toggleSemTagFootPostsCollapse();
-    });
-    this.semTagFootWebmentionsCheckbox.addEventListener('click', () => {
-      this.toggleSemTagFootWebmentionsCollapse();
     });
   }
 
@@ -63,13 +58,6 @@ export default class SemTag {
     }
     this.semTagFootPostsCheckbox.checked = (this.semTagFootPostsStatus === "closed"); 
     this.toggleSemTagFootPostsCollapse();
-
-    this.semTagFootWebmentionsStatus = localStorage.getItem('sem-doc-foot-webmentions-status');
-    if (this.semTagFootWebmentionsStatus !== "open" && this.semTagFootWebmentionsStatus !== "closed") {
-      this.semTagFootWebmentionsStatus = '{{ site.stat_doc_foot_webmentions_status }}';	
-    }
-    this.semTagFootWebmentionsCheckbox.checked = (this.semTagFootWebmentionsStatus === "closed");
-    this.toggleSemTagFootWebmentionsCollapse();
   }
 
   toggleSemTagHeadCollapse () {
@@ -109,18 +97,5 @@ export default class SemTag {
       this.semTagFootPostsStatus = "open";
     }
     localStorage.setItem('sem-doc-foot-posts-status', this.semTagFootPostsStatus);
-  } 
-
-  toggleSemTagFootWebmentionsCollapse () {
-    // from: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_collapsible
-    var collapsibleEl = document.getElementById("sem-doc-foot-webmentions-nav");
-    if (this.semTagFootWebmentionsCheckbox.checked) {
-      collapsibleEl.style.display = "none";
-      this.semTagFootWebmentionsStatus = "closed";
-    } else {
-      collapsibleEl.style.display = "flex";
-      this.semTagFootWebmentionsStatus = "open";
-    }
-    localStorage.setItem('sem-doc-foot-webmentions-status', this.semTagFootWebmentionsStatus);
   } 
 }

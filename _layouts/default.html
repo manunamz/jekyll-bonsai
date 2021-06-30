@@ -25,7 +25,6 @@ layout: table-wrappers
     </label>
 
     <script src="https://d3js.org/d3.v6.min.js"></script>
-    {% webmentions_js %}
     {% include hover-preview.html wrapperQuerySelector="content" %}
     <!-- modules: https://stackoverflow.com/questions/58211880/uncaught-syntaxerror-cannot-use-import-statement-outside-a-module-when-import -->
     <script type="module" src="{{ '/assets/js/scripts.js' | relative_url }}"></script> 

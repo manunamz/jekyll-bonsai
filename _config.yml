@@ -78,7 +78,6 @@ recent_num: 10
 sem_doc_head_status: "open"
 sem_doc_foot_links_status: "open"
 sem_doc_foot_posts_status: "open"
-sem_doc_foot_webmentions_status: "open"
 social:
   enabled: true
   connect:
@@ -135,15 +134,3 @@ ga_tracking_anonymize_ip: true # Use GDPR compliant Google Analytics settings (t
 # author:
 #   twitter: dendronhq
 
-webmentions:
-  username: YOUR_USERNAME
-  # Use my own cache folder
-  cache_folder: .cache
-  # skip bad URLs for 5 days
-  cache_bad_uris_for: 5
-  # I moved to www and then to https, so…
-  # legacy_domains:
-  #   - http://aaron-gustafson.com
-  #   - http://www.aaron-gustafson.com
-  collections:
-    - sem_docs

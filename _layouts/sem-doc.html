@@ -117,29 +117,6 @@ layout: default
         </div>
       </nav>
     </div>
-
-    <!-- webmentions -->
-    <div class="sem-doc-foot-wrapper">
-      <div> <!-- extra div so 'sem-doc-foot-selector' animation only effects the emoji label-->
-        <label class="sem-doc-foot-selector webmentions">
-          <input id="sem-doc-foot-webmentions-checkbox" type="checkbox">
-          <span id="sem-doc-foot-webmentions-emoji-span" title="Toggle Webmentions">🌊</span>
-        </label>
-      </div>
-      <nav id="sem-doc-foot-webmentions-nav" class="sem-doc-foot-nav" role="navigation" aria-label="" aria-label="">
-        <span>
-          <span class="sem-doc-foot-nav-title">
-            The Stream
-          </span>
-          {% if site.social.enabled %}
-            {% include connect.html %}
-          {% endif %}
-        </span>
-        <div class="sem-doc-foot-nav-section">
-          {% webmentions %}
-        </div>
-      </nav>
-    </div>
   </footer>  
 
 </div>
