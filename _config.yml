@@ -79,6 +79,13 @@ sem_doc_head_status: "open"
 sem_doc_foot_links_status: "open"
 sem_doc_foot_posts_status: "open"
 sem_doc_foot_webmentions_status: "open"
+social:
+  share:
+    - 'email'
+    # - 'facebook'
+    # - 'linkedin'
+    # - 'pinterest'
+    - 'twitter'
 
 # plugins
 namespaces:
