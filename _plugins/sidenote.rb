@@ -3,6 +3,7 @@
 module Jekyll
   class SideNoteGenerator < Generator
     safe true
+    attr_accessor :md_docs
 
     ##
     # parser constants
@@ -64,16 +65,14 @@ module Jekyll
     LEFT_SIDENOTE_MARKER_START = /\[\<(#{ALD_ID_NAME})\]/
 
     def generate(site)
-       #  
-      # init jekyll vars
-       #
-      all_entries = site.collections['entries'].docs
-      # all_pages = site.pages
-      all_docs = all_entries # + all_pages
 
+      # setup markdown docs
+			docs = site.pages + site.docs_to_write
+			@md_docs = docs.filter {|doc| site.find_converter_instance(Jekyll::Converters::Markdown).matches(doc.extname) }
+      
       link_extension = !!site.config["use_html_extension"] ? '.html' : ''
    
-      all_docs.each do |cur_doc|
+      @md_docs.each do |cur_doc|
         # check for newlines @ eof.
         #   (kramdown can handle footnotes with no newline, but the regex i'm getting requires a newline after the last footnote to find it.)
         if cur_doc.content[-1] != "\n"
