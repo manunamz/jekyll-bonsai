@@ -13,7 +13,7 @@ include: ['_pages']
 exclude: ["node_modules/", "*.gemspec", "*.gem", "Gemfile", "Gemfile.lock", "package.json", "package-lock.json",  "script/", "LICENSE.txt", "lib/", "bin/", "README.md", "Rakefile"]
 
 collections:
-  sem_docs: 
+  entries: 
     output: true
     # permalinks are manually generated -- see local 'prep_note' plugin.
   stat_docs:
@@ -34,10 +34,10 @@ collections:
 
 defaults:
   - scope:
-      path: "_sem_docs/**/*.md"
-      type: "sem_docs"
+      path: "_entries/**/*.md"
+      type: "entries"
     values:
-      layout: "sem-doc"
+      layout: "entry"
   - scope:
       path: "_stat_docs/**/*.md"
       type: "stat_docs"
@@ -75,9 +75,9 @@ nav_type: "graph"
 recent_num: 10 
 # local note-nav component defaults
 ## may be 'open' or 'closed'
-sem_doc_head_status: "open"
-sem_doc_foot_links_status: "open"
-sem_doc_foot_posts_status: "open"
+entry_head_status: "open"
+entry_foot_links_status: "open"
+entry_foot_posts_status: "open"
 social:
   enabled: true
   connect:

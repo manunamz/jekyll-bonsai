@@ -1,0 +1,118 @@
+---
+layout: default
+---
+
+<div id="entry">
+
+  <!-- the PATH from root to leaf -->
+  <header id="entry-header">
+    <nav class="entry-head-nav" role="navigation" aria-label="breadcrumb">
+      <label class="btn-selector">
+        <input id="entry-head-checkbox" type="checkbox">
+        <span id="entry-head-emoji-span" title="Toggle Path">🛤</span>
+      </label>
+      <ol class="entry-head-breadcrumbs">
+        {% for ancestor in page.ancestors %}
+          <li class="entry-head-breadcrumb">
+            <a class="wiki-link {% if ancestor.id == '' %}missing-entry-txt{% endif %} " href="{{ ancestor.url | relative_url }}">
+              {{ ancestor.title }}
+            </a>
+          </li>
+        {% endfor %}
+        <li class="entry-head-breadcrumb">
+          <span>{{ page.title }}</span>
+        </li>
+      </ol>
+    </nav>
+  </header>
+
+  <div class="entry-body">
+
+    <h1>{{ page.title }}</h1>
+    <p class="small-descr">
+      {% assign stat_tags = page.tags | stat_tags %}
+      {% for stat_tag in stat_tags %}
+        <a class="stat-tag" href="{{ stat_tag.url | relative_url }}">{{ stat_tag.emoji }}</a>
+      {% endfor %}
+      <span>Last Tended: {{ page.updated | date: "%Y-%m-%d" }}</span>
+    </p>
+
+    {% include entry-attrs.html %}
+
+    {% if page.title == site.index_title %}
+      <img id="home-bonsai" style="float: right; padding: 12px;" height="35%" width="35%">
+    {% endif %}
+    
+    {{ content }}
+
+  </div>
+
+  <footer class="entry-footer">
+    <!-- Forks on the path -->
+    <div class="entry-foot-wrapper">
+      <div style="display: flex;"> <!-- extra div so 'entry-foot-selector' animation only effects the emoji label-->
+        <label class="entry-foot-selector">
+          <input id="entry-foot-links-checkbox" type="checkbox">
+          <span id="entry-foot-link-emoji-span" title="Toggle Links">🚏</span>
+        </label>
+        <h3 class="entry-foot-nav-title">Forks On The Path</h3>
+      </div>
+      <nav id="entry-foot-links-nav" class="entry-foot-nav" role="navigation" aria-label="">
+        <div class="entry-foot-nav-sections">
+          <div class="entry-foot-nav-section">
+            <h4 class="entry-foot-nav-subtitle">Children</h4>
+            <ul class="entry-foot-nav-list">
+              {% for child in page.children %}
+                <li class="entry-foot-nav-list-item">
+                  <a class="wiki-link {% if child.id == '' %}missing-entry-txt{% endif %}" href="{{ child.url | relative_url }}">
+                    {{ child.title }}
+                  </a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+          <div class="entry-foot-nav-section">
+            <h4 class="entry-foot-nav-subtitle">Backlinks</h4>
+            <ul class="entry-foot-nav-list">
+              {% assign sem_tag_backlinks = page.backlinks | doc_type: "entries" %}
+              {% for backlink in sem_tag_backlinks %}
+                <li class="entry-foot-nav-list-item">
+                  <a class="wiki-link" href="{{ backlink.doc.url | relative_url }}">{{ backlink.doc.title }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <!-- Field bLogs -->
+    <div class="entry-foot-wrapper">
+      <div style="display: flex;"> <!-- extra div so 'entry-foot-selector' animation only effects the emoji label-->
+        <label class="entry-foot-selector field-blogs">
+          <input id="entry-foot-posts-checkbox" type="checkbox">
+          <span id="entry-foot-posts-emoji-span" title="Toggle Posts">📓</span>
+        </label>
+        <h3 class="entry-foot-nav-title">Field bLogs</h3>
+      </div>
+      <nav id="entry-foot-posts-nav" class="entry-foot-nav" role="navigation" aria-label="">
+        <div class="entry-foot-nav-section">
+          <h4 class="entry-foot-nav-subtitle">Posts</h4>
+          <ul class="entry-foot-nav-list">
+            {% assign semantic_tagged_posts = page.namespace | semantic_tagged_posts %}
+            {% for post in semantic_tagged_posts %}
+              <li class="entry-foot-nav-list-item">
+                <a class="wiki-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </footer> 
+
+  {% if site.social.enabled %}
+    {% include share.html %}
+    {% include connect.html %}
+  {% endif %}
+
+</div>

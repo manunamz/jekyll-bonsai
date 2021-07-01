@@ -3,9 +3,9 @@
 //
 // stylelint-disable selector-no-type, max-nesting-depth, selector-max-compound-selectors, selector-max-type, selector-max-specificity
 
-// sem-doc-breadcrumb nav
+// entry-breadcrumb nav
 
-.sem-doc-head-nav {
+.entry-head-nav {
   @include mq(md) {
     margin-top: -$sp-4;
   }
@@ -13,14 +13,14 @@
   overflow-x: scroll;
   white-space: nowrap;  
 
-  .sem-doc-head-breadcrumbs {
+  .entry-head-breadcrumbs {
     padding: $sp-2;
     margin-bottom: 0;
     margin-top: 0;
     align-self: center;
     list-style: none;
   
-    .sem-doc-head-breadcrumb {
+    .entry-head-breadcrumb {
       @include fs-2;
       
       &::before {
@@ -43,47 +43,47 @@
   } 
 }
 
-// sem-doc-foot nav
+// entry-foot nav
 
-.sem-doc-foot-wrapper {
+.entry-foot-wrapper {
   margin-top: $sp-6;
   margin-bottom: $sp-6;
   display: block;
 
-  .sem-doc-foot-nav-title {
+  .entry-foot-nav-title {
     @include fs-4;
-    color: $sem-doc-foot-text-color;
+    color: $entry-foot-text-color;
   }
 
-  .sem-doc-foot-nav-subtitle {
+  .entry-foot-nav-subtitle {
     @include fs-2;
-    color: $sem-doc-foot-text-color;
+    color: $entry-foot-text-color;
   }
 
-  .sem-doc-foot-nav {
+  .entry-foot-nav {
     display: flex;
     flex-direction: column;
     width: 80%;
     padding: $sp-3;
     border-radius: 16px;
 
-    .sem-doc-foot-nav-sections {
+    .entry-foot-nav-sections {
       display: flex;
     }
     
-    .sem-doc-foot-nav-section {
+    .entry-foot-nav-section {
       padding-left: $sp-2;
       padding-right: $sp-2;
     }
 
-    .sem-doc-foot-nav-list {
+    .entry-foot-nav-list {
       display: block; // columns require block
       column-count: 2;
       column-width: $content-width / 6;
       padding-left: 0;
       list-style: none;
   
-      .sem-doc-foot-nav-list-item {
+      .entry-foot-nav-list-item {
         border-radius: 16px;
         padding: $sp-1;
         max-width: $content-width / 4;

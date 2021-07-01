@@ -2,7 +2,7 @@
 ---
 import GraphNav from './graph.js';
 import ThemeColors from './theme-colors.js';
-import SemDoc from './sem-doc.js';
+import Entry from './entry.js';
 import SiteNav from './site-nav.js';
 
  //
@@ -16,8 +16,8 @@ import SiteNav from './site-nav.js';
   new ThemeColors();
   new SiteNav();
   new GraphNav();
-  if (document.getElementById('sem-doc')) {
-    new SemDoc();
+  if (document.getElementById('entry')) {
+    new Entry();
   }
 })();
 

@@ -34,12 +34,12 @@ permalink: /recent/
     </ul>
     
     <h2 style="text-align: left; padding-bottom: 12px;">Semantic Documents</h2>
-    {% assign recent_sem_docs = site.sem_docs | recent: site.recent_num %}
+    {% assign recent_entries = site.entries | recent: site.recent_num %}
     <ul class="recent-list">
-      {% for sem_doc in recent_sem_docs %}
+      {% for entry in recent_entries %}
         <li class="recent-list-item">
-            <a class="wiki-link" href="{{ sem_doc.url | relative_url }}">{{ sem_doc | weather }} {{ sem_doc.title }}</a>
-            <span class="date-updated">{{ sem_doc.updated | date: "%Y-%m-%d" }}</span>
+            <a class="wiki-link" href="{{ entry.url | relative_url }}">{{ entry | weather }} {{ entry.title }}</a>
+            <span class="date-updated">{{ entry.updated | date: "%Y-%m-%d" }}</span>
         </li>
       {% endfor %}
     </ul>

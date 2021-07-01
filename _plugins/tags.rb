@@ -5,7 +5,7 @@ module Jekyll
       return if tags.nil?
       site = @context.registers[:site]
       sem_tags = []
-      site.collections['sem_docs'].docs.each do |n|
+      site.collections['entries'].docs.each do |n|
         tags.each do |t|
           if n['namespace'] == t
             sem_tags << { 
@@ -23,7 +23,7 @@ module Jekyll
       return if namespace.nil?
       site = @context.registers[:site]
       sem_tagged_posts = []
-      site.collections['sem_docs'].docs.each do |n|
+      site.collections['entries'].docs.each do |n|
         site.posts.docs.each do |post|
           if namespace == n['namespace'] && post['tags'].include?(n['namespace'])
             sem_tagged_posts << post

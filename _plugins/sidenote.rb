@@ -67,9 +67,9 @@ module Jekyll
        #  
       # init jekyll vars
        #
-      all_sem_docs = site.collections['sem_docs'].docs
+      all_entries = site.collections['entries'].docs
       # all_pages = site.pages
-      all_docs = all_sem_docs # + all_pages
+      all_docs = all_entries # + all_pages
 
       link_extension = !!site.config["use_html_extension"] ? '.html' : ''
    
