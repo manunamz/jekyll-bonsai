@@ -40,7 +40,7 @@ export default class Entry {
     // head
     this.entryHeadStatus = localStorage.getItem('entry-head-status');
     if (this.entryHeadStatus !== "open" && this.entryHeadStatus !== "closed") {
-      this.entryHeadStatus = '{{ site.stat_doc_head_status }}';	
+      this.entryHeadStatus = '{{ site.state_head_status }}';	
     }
     this.entryHeadCheckbox.checked = (this.entryHeadStatus === "closed"); 
     this.toggleEntryHeadCollapse();
@@ -48,14 +48,14 @@ export default class Entry {
     // foot
     this.entryFootLinksStatus = localStorage.getItem('entry-foot-links-status');
     if (this.entryFootLinksStatus !== "open" && this.entryFootLinksStatus !== "closed") {
-      this.entryFootLinksStatus = '{{ site.stat_doc_foot_links_status }}';	
+      this.entryFootLinksStatus = '{{ site.state_foot_links_status }}';	
     }
     this.entryFootLinksCheckbox.checked = (this.entryFootLinksStatus === "closed"); 
     this.toggleEntryFootLinksCollapse();
 
     this.entryFootPostsStatus = localStorage.getItem('entry-foot-posts-status');
     if (this.entryFootPostsStatus !== "open" && this.entryFootPostsStatus !== "closed") {
-      this.entryFootPostsStatus = '{{ site.stat_doc_foot_posts_status }}';	
+      this.entryFootPostsStatus = '{{ site.state_foot_posts_status }}';	
     }
     this.entryFootPostsCheckbox.checked = (this.entryFootPostsStatus === "closed"); 
     this.toggleEntryFootPostsCollapse();

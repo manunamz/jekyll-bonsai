@@ -16,7 +16,7 @@ collections:
   entries: 
     output: true
     # permalinks are manually generated -- see local 'prep_note' plugin.
-  stat_docs:
+  states:
     output: true
     permalink: /stat/:title
     order:
@@ -39,10 +39,10 @@ defaults:
     values:
       layout: "entry"
   - scope:
-      path: "_stat_docs/**/*.md"
-      type: "stat_docs"
+      path: "_states/**/*.md"
+      type: "states"
     values:
-      layout: "stat-doc"
+      layout: "state"
 
 sass:
   sass_dir:          _sass
@@ -98,19 +98,19 @@ namespaces:
   exclude:
     - "pages"
     - "posts"
-    - "stat_docs"
+    - "states"
 wikilinks:
   # enabled: true
   exclude:
     - "pages"
-    - "stat_docs"
+    - "states"
 d3_graph_data:
   # enabled: true
   # path: "/assets"
   exclude:
     - "pages"
     - "posts"
-    - "stat_docs"
+    - "states"
 
 
 compress_html:

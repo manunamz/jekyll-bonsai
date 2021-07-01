@@ -2,7 +2,7 @@
 // scss for tag page
 // 
 
-.stat-docs-nav {
+.states-nav {
   @include fs-6;
   display: flex;
   position: absolute;
@@ -11,13 +11,13 @@
   top: 0;
   user-select: none;
   
-  .stat-docs-nav-list {
+  .states-nav-list {
     overflow-x: scroll;
     white-space: nowrap;
     padding-left: 0 !important;
   }
 
-  .stat-docs-list-item {
+  .states-list-item {
     display: inline-block;
     margin-right: $sp-3;
     margin-left: $sp-3;
@@ -45,17 +45,17 @@
   }
 }
 
-.stat-docs-page {
+.states-page {
   padding-top: $sp-10;
 }
 
-.stat-docs-list {
+.states-list {
   padding: $sp-4;
   display: block; // columns require block
   column-count: 2;
   column-width: $content-width / 6;
   
-  .stat-docs-list-item {
+  .states-list-item {
     // display: flex; 
     list-style-type: none !important;
 

@@ -1,37 +1,37 @@
 ---
 layout: default
 ---
-{% assign stat_docs = site.stat_docs  %}
-{% assign index_stat_doc_title = "Plant Tags Page" %}
+{% assign states = site.states  %}
+{% assign index_state_title = "Plant Tags Page" %}
 
-<div id="stat-docs" class="stat-docs-page">
-  <nav class="stat-docs-nav">
-    <ul class="stat-docs-nav-list">
-      {% for stat_doc in stat_docs %}
-        <li class="stat-docs-list-item {% if page.url == stat_doc.url %}active{% endif %}">
-          <a href="{{ stat_doc.url | relative_url }}" class="stat-tag">
-            {{ stat_doc.emoji }}
+<div id="states" class="states-page">
+  <nav class="states-nav">
+    <ul class="states-nav-list">
+      {% for state in states %}
+        <li class="states-list-item {% if page.url == state.url %}active{% endif %}">
+          <a href="{{ state.url | relative_url }}" class="stat-tag">
+            {{ state.emoji }}
           </a>
         </li>
       {% endfor %}
     </ul>
   </nav>
 
-  <!-- all stat_docs -->
-  {% if page.title == index_stat_doc_title %}
+  <!-- all states -->
+  {% if page.title == index_state_title %}
     <h1>🔖 Plant Tags In This Garden</h1>
     {{ content }}
     <p class="small-descr">
       Descriptions only reflect the spirit of this garden. 
       Click <a href="{{ page.emojipedia }}">here</a> for the official emoji description.
     </p>
-    {% for stat_doc in stat_docs %}
-      {% if stat_doc.title != index_stat_doc_title %}
-        <h2>{{ stat_doc.emoji }} <a href="{{ stat_doc.url | relative_url }}" class="wiki-link">{{ stat_doc.title }}</a></h2>
-        <p>{{ stat_doc.content | markdownify }}</p>
+    {% for state in states %}
+      {% if state.title != index_state_title %}
+        <h2>{{ state.emoji }} <a href="{{ state.url | relative_url }}" class="wiki-link">{{ state.title }}</a></h2>
+        <p>{{ state.content | markdownify }}</p>
       {% endif %}
     {% endfor %}
-  <!-- individual stat_docs -->
+  <!-- individual states -->
   {% else %}
     <!-- page == tag (from tag-nav) -->
     {% assign entries_w_stat = site.entries | where: 'tags', page.emoji %}
@@ -47,9 +47,9 @@ layout: default
         There are currently no {{ page.emoji }}s.
       </div>
     {% else %}
-      <ul class="stat-docs-list">
+      <ul class="states-list">
         {% for entry in entries_w_stat %}
-          <li class="stat-docs-list-item">
+          <li class="states-list-item">
             {{ page.emoji }} <a href="{{ entry.url | relative_url }}" class="wiki-link">{{ entry.title }}</a>
           </li>
         {% endfor %}  
