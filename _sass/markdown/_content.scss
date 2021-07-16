@@ -369,6 +369,8 @@
 
   .sidenote-number:after {
     content: counter(sidenote-counter);
+    color: $wiki-link-color;
+    cursor: pointer;
     font-size: $font-size-2;
     top: -$sp-1-75;
     left: $sp-0-75;
