@@ -14,12 +14,14 @@ layout: default
       <ol class="entry-head-breadcrumbs">
         {% for ancestor in page.ancestors %}
           <li class="entry-head-breadcrumb">
+            <span title="Ancestor Entry">{% include bullet-ancestor.svg %}</span>
             <a class="wiki-link {% if ancestor.id == '' %}missing-entry-txt{% endif %} " href="{{ ancestor.url | relative_url }}">
               {{ ancestor.title }}
             </a>
           </li>
         {% endfor %}
         <li class="entry-head-breadcrumb">
+          <span title="Ancestor Link">{% include bullet-ancestor.svg %}</span>
           <span>{{ page.title }}</span>
         </li>
       </ol>
@@ -48,66 +50,73 @@ layout: default
   </div>
 
   <footer class="entry-footer">
-    <!-- Forks on the path -->
+    <!-- Linked Entries -->
     <div class="entry-foot-wrapper">
       <div style="display: flex;"> <!-- extra div so 'entry-foot-selector' animation only effects the emoji label-->
         <label class="entry-foot-selector">
           <input id="entry-foot-links-checkbox" type="checkbox">
-          <span id="entry-foot-link-emoji-span" title="Toggle Links">🚏</span>
+          <span id="entry-foot-link-emoji-span" title="Toggle Linked Entries">🚏</span>
         </label>
         <h3 class="entry-foot-nav-title">Forks On The Path</h3>
       </div>
       <nav id="entry-foot-links-nav" class="entry-foot-nav" role="navigation" aria-label="">
-        <div class="entry-foot-nav-sections">
-          <div class="entry-foot-nav-section">
-            <h4 class="entry-foot-nav-subtitle">Children</h4>
-            <ul class="entry-foot-nav-list">
-              {% for child in page.children %}
-                <li class="entry-foot-nav-list-item">
-                  <a class="wiki-link {% if child.id == '' %}missing-entry-txt{% endif %}" href="{{ child.url | relative_url }}">
-                    {{ child.title }}
-                  </a>
-                </li>
-              {% endfor %}
-            </ul>
+        {% assign linked_entries = page.backlinks | doc_type: "entries" %}
+        {% if page.children.size == 0 and linked_entries.size == 0 %}
+          <p class="entry-foot-nav-empty small-descr">No linked entries.</p>
+        {% else %}
+          <div class="entry-foot-nav-sections">
+            <div class="entry-foot-nav-section">
+              <ul class="entry-foot-nav-list">
+                {% for child in page.children %}
+                  <li class="entry-foot-nav-list-item">
+                    <span style="display: inline-block;" title="Child Entry">{% include bullet-tree.svg %}</span>
+                    <a class="wiki-link {% if child.id == '' %}missing-entry-txt{% endif %}" href="{{ child.url | relative_url }}">
+                      {{ child.title }}
+                    </a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
+            <div class="entry-foot-nav-section">
+              <ul class="entry-foot-nav-list">
+                {% for backlink in linked_entries %}
+                  <li class="entry-foot-nav-list-item">
+                    <span style="display: inline-block;" title="Backlinked Entry">{% include bullet-net-web.svg %}</span>
+                    <a class="wiki-link" href="{{ backlink.doc.url | relative_url }}">{{ backlink.doc.title }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            </div>
           </div>
-          <div class="entry-foot-nav-section">
-            <h4 class="entry-foot-nav-subtitle">Backlinks</h4>
-            <ul class="entry-foot-nav-list">
-              {% assign sem_tag_backlinks = page.backlinks | doc_type: "entries" %}
-              {% for backlink in sem_tag_backlinks %}
-                <li class="entry-foot-nav-list-item">
-                  <a class="wiki-link" href="{{ backlink.doc.url | relative_url }}">{{ backlink.doc.title }}</a>
-                </li>
-              {% endfor %}
-            </ul>
-          </div>
-        </div>
+        {% endif %}
       </nav>
     </div>
-    <!-- Field bLogs -->
+    <!-- Linked Posts -->
     <div class="entry-foot-wrapper">
       <div style="display: flex;"> <!-- extra div so 'entry-foot-selector' animation only effects the emoji label-->
         <label class="entry-foot-selector field-blogs">
           <input id="entry-foot-posts-checkbox" type="checkbox">
-          <span id="entry-foot-posts-emoji-span" title="Toggle Posts">📓</span>
+          <span id="entry-foot-posts-emoji-span" title="Toggle Linked Posts">📓</span>
         </label>
         <h3 class="entry-foot-nav-title">Field bLogs</h3>
       </div>
       <nav id="entry-foot-posts-nav" class="entry-foot-nav" role="navigation" aria-label="">
-        <div class="entry-foot-nav-section">
-          <h4 class="entry-foot-nav-subtitle">Posts</h4>
-          <ul class="entry-foot-nav-list">
-            {% assign semantic_tagged_posts = page.namespace | semantic_tagged_posts %}
-            {% for post in semantic_tagged_posts %}
-              <li class="entry-foot-nav-list-item">
-                <a class="wiki-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-              </li>
-            {% endfor %}
-          </ul>
-        </div>
+        {% assign semantic_tagged_posts = page.namespace | sem_tag_posts %}
+        {% if semantic_tagged_posts.size == 0 %}
+          <p class="entry-foot-nav-empty small-descr">No linked posts.</p>
+        {% else %}
+          <div class="entry-foot-nav-section">
+            <ul class="entry-foot-nav-list">
+              {% for post in semantic_tagged_posts %}
+                <li class="entry-foot-nav-list-item">
+                  <span class="small-descr">📄</span><a class="wiki-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        {% endif %}
       </nav>
-    </div>
+    </div>  
   </footer> 
 
   {% if site.social.enabled %}

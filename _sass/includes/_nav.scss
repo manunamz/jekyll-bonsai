@@ -14,7 +14,8 @@
   white-space: nowrap;  
 
   .entry-head-breadcrumbs {
-    padding: $sp-2;
+    padding-left: 0;
+    padding-top: $sp-2;
     margin-bottom: 0;
     margin-top: 0;
     align-self: center;
@@ -22,22 +23,12 @@
   
     .entry-head-breadcrumb {
       @include fs-2;
+      display: flex;
+      flex-direction: row;
+      padding-left: $sp-2;
       
       &::before {
         display: none;
-      }
-    
-      &::after {
-        margin-right: $sp-2;
-        margin-left: $sp-2;
-        color: $grey-dk-000;
-        content: ">";
-      }
-
-      &:last-child {
-        &::after {
-          content: "";
-        }
       }
     }
   } 
@@ -60,10 +51,13 @@
     color: $entry-foot-text-color;
   }
 
+  .entry-foot-nav-empty {
+    text-align: center;
+  }
+
   .entry-foot-nav {
     display: flex;
     flex-direction: column;
-    width: 80%;
     padding: $sp-3;
     border-radius: 16px;
 
@@ -92,7 +86,7 @@
         text-overflow: ellipsis;
   
         &::before {
-          display: none;
+          display: none; 
         }
       }
     }
