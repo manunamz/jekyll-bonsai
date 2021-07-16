@@ -5,12 +5,6 @@ layout: default
 <div id="post">
 
   <h1>{{ page.title }}</h1>
-  <p>
-    {% assign sem_tags = page.tags | sem_tags %}
-    {% for sem_tag in sem_tags %}
-      <a class="sem-tag" href="{{ sem_tag.url | relative_url }}">{{ sem_tag.tag }}</a>
-    {% endfor %}
-  </p>
   <p class="small-descr">
     {% assign stat_tags = page.tags | stat_tags %}
     {% for stat_tag in stat_tags %}
@@ -20,6 +14,13 @@ layout: default
   </p>
 
   {{ content }}
+
+  <p>
+    {% assign sem_tags = page.tags | sem_tags %}
+    {% for sem_tag in sem_tags %}
+      <a class="sem-tag" href="{{ sem_tag.url | relative_url }}">{{ sem_tag.tag }}</a>
+    {% endfor %}
+  </p>
 
   {% if site.social.enabled %}
     {% include share.html %}
