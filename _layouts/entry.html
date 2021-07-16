@@ -4,7 +4,7 @@ layout: default
 
 <div id="entry">
 
-  <!-- the PATH from root to leaf -->
+  <!-- breadcrumb ancestry path -->
   <header id="entry-header">
     <nav class="entry-head-nav" role="navigation" aria-label="breadcrumb">
       <label class="btn-selector">
@@ -14,14 +14,14 @@ layout: default
       <ol class="entry-head-breadcrumbs">
         {% for ancestor in page.ancestors %}
           <li class="entry-head-breadcrumb">
-            <span title="Ancestor Entry">{% include bullet-ancestor.svg %}</span>
+            <span title="Ancestor Entry">{% include img/bullet-ancestor.svg %}</span>
             <a class="wiki-link {% if ancestor.id == '' %}missing-entry-txt{% endif %} " href="{{ ancestor.url | relative_url }}">
               {{ ancestor.title }}
             </a>
           </li>
         {% endfor %}
         <li class="entry-head-breadcrumb">
-          <span title="Ancestor Link">{% include bullet-ancestor.svg %}</span>
+          <span title="Ancestor Link">{% include img/bullet-ancestor.svg %}</span>
           <span>{{ page.title }}</span>
         </li>
       </ol>
@@ -50,7 +50,7 @@ layout: default
   </div>
 
   <footer class="entry-footer">
-    <!-- Linked Entries -->
+    <!-- linked entries -->
     <div class="entry-foot-wrapper">
       <div style="display: flex;"> <!-- extra div so 'entry-foot-selector' animation only effects the emoji label-->
         <label class="entry-foot-selector">
@@ -69,7 +69,7 @@ layout: default
               <ul class="entry-foot-nav-list">
                 {% for child in page.children %}
                   <li class="entry-foot-nav-list-item">
-                    <span style="display: inline-block;" title="Child Entry">{% include bullet-tree.svg %}</span>
+                    <span style="display: inline-block;" title="Child Entry">{% include img/bullet-tree.svg %}</span>
                     <a class="wiki-link {% if child.id == '' %}missing-entry-txt{% endif %}" href="{{ child.url | relative_url }}">
                       {{ child.title }}
                     </a>
@@ -81,7 +81,7 @@ layout: default
               <ul class="entry-foot-nav-list">
                 {% for backlink in linked_entries %}
                   <li class="entry-foot-nav-list-item">
-                    <span style="display: inline-block;" title="Backlinked Entry">{% include bullet-net-web.svg %}</span>
+                    <span style="display: inline-block;" title="Backlinked Entry">{% include img/bullet-net-web.svg %}</span>
                     <a class="wiki-link" href="{{ backlink.doc.url | relative_url }}">{{ backlink.doc.title }}</a>
                   </li>
                 {% endfor %}
@@ -91,7 +91,7 @@ layout: default
         {% endif %}
       </nav>
     </div>
-    <!-- Linked Posts -->
+    <!-- linked posts -->
     <div class="entry-foot-wrapper">
       <div style="display: flex;"> <!-- extra div so 'entry-foot-selector' animation only effects the emoji label-->
         <label class="entry-foot-selector field-blogs">

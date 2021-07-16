@@ -55,6 +55,17 @@ export default class ThemeColors {
     if (this.homeBonsaiLogo) {
       this.homeBonsaiLogo.setAttribute('src', "{{site.baseurl}}/assets/img/bonsai-" + this.theme + ".svg");
     }
+    // update bullet icon colors
+    let bulletLinks = document.getElementsByClassName('bullet-link');
+    Array.prototype.forEach.call(bulletLinks, (bl) => {
+      // using $link-line-stroke-color
+      if (this.theme == 'dark') {
+        bl.style.stroke = '#5c5962'; // $grey-dk-200
+      } else {
+        bl.style.stroke = '#8C6239'; // $brown-02
+      }
+    });
+    // save to local storage
     window.localStorage.setItem('theme-colors', this.theme);
   }
 }
