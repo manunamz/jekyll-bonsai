@@ -52,14 +52,14 @@ svg {
     filter: brightness($hover-active-brightness);
     font-size: 50%;
     z-index: 10;
-    transition: all 0.1s ease;
+    transition: all 0.1s ease-in-out;
   }
 
   .inactive {
     opacity: $hover-inactive-alpha;
     filter: brightness($hover-inactive-brightness);
     z-index: 0;
-    transition: all 0.1s ease;
+    transition: all 0.1s ease-in-out;
   }
 
   @keyframes pulse {       
