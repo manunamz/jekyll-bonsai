@@ -1,8 +1,8 @@
 ---
-id: 93f6820e-3915-41ae-9a81-ef132e6fc9d1
+id: 95a80b4157
 title: Sidenotes
 desc: ''
-updated: 1623851365957
+updated: 1623870486255
 created: 1620408418339
 tags: "\U0001F331"
 ---
@@ -19,7 +19,7 @@ Which, once rendered, looks like:
 
 * * *
 
-This is what a left-sidenote[<left] and a right-sidenote[>right] look like.
+This is what a right-sidenote[<left] and a left-sidenote[>right] look like.
 
 * * *
 
