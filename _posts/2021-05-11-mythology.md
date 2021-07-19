@@ -1,11 +1,10 @@
 ---
 layout: post
-id: 73afeb94-c353-4593-a92a-ace663f6ed8a 
+id: 23f8262818
 title: Escape
 desc: ''
 updated: 1620755157
 created: 1620755157
-permalink: /post/73afeb94-c353-4593-a92a-ace663f6ed8a/
 tags: 
   - 🥭
   - digital-garden
