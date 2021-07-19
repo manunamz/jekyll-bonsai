@@ -13,8 +13,9 @@ include: ['_pages']
 exclude: ["node_modules/", "*.gemspec", "*.gem", "Gemfile", "Gemfile.lock", "package.json", "package-lock.json",  "script/", "LICENSE.txt", "lib/", "bin/", "README.md", "Rakefile"]
 
 collections:
-  entries: 
+  entries:
     output: true
+    # permalink: /entry/:id
     # permalinks are manually generated -- see local 'prep_note' plugin.
   states:
     output: true

@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+require 'nanoid'
 require 'time'
 
 class EntryVerificationGenerator < Jekyll::Generator
@@ -24,6 +25,10 @@ class EntryVerificationGenerator < Jekyll::Generator
   # verify all entries end with a "\n" so sidenotes works 
   #   (sidenotes don't detect the last definition if there is no ending "\n").
   def prep_entries(site, entry, link_extension)
+    # make sure ids are proper nano id format
+    if !(entry.data['id'] =~ /^[1234567890abcdef]{10}$/)
+      entry.data['id'] = Nanoid.generate(size: 10, alphabet: '1234567890abcdef')
+    end
     # from: https://stackoverflow.com/questions/16235601/what-are-the-steps-to-getting-this-custom-permalink-scheme-in-jekyll
     # Until Jekyll allows me to use :id, I have to resort to this
     entry.data['permalink'] = '/entry/' + entry.data['id'] + '/' + link_extension
