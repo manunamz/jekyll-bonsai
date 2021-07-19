@@ -69,7 +69,7 @@ class Generator < Jekyll::Generator
     
     # setup tree
     root_doc = @md_docs.detect {|doc| doc.data['slug'] == 'root' }
-    root = Node.new(root_doc.data['id'], 'root', site.config['index_doc_title'], root_doc)
+    root = Node.new(root_doc.data['id'], 'root', root_doc.data['title'], root_doc)
 
     # build tree
     @md_docs.each do |cur_doc|
