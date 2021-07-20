@@ -1,0 +1,71 @@
+// 
+// scss for index
+// 
+
+#home {
+  padding: $sp-5;
+}
+
+.lead {
+  text-align: center;
+  padding: $sp-2;
+
+  h1 {
+    padding-top: $sp-3;
+  }
+}
+
+.end {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  padding-left: $sp-5;
+}
+
+.main-columns {
+  @include mq(md) {
+    display: flex;
+  }
+
+  & > * {
+    margin: $sp-1;
+
+    @include mq(md) {
+      flex-basis: 100%;
+    }
+  }
+
+  .column {
+    @include mq(md) {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .column-heading {
+      text-align: left;
+      padding-left: $sp-3;
+    }
+  
+    .column-content {
+      padding: $sp-2;
+  
+      .column-item {
+        display: flex;
+        justify-content: space-between;
+        padding: $sp-2;
+      }
+    }
+  
+    .column-foot {
+      @include fs-2;
+      color: $grey-dk-000;
+      text-align: right;
+      padding-bottom: $sp-3;
+  
+      @include mq(md) {
+        text-align: center;
+        margin-top: auto;
+      }
+    }
+  }
+}

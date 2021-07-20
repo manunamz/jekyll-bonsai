@@ -42,6 +42,10 @@ function initListeners () {
     .addEventListener('click', function(event) {
       goTo('{{ site.baseurl }}/recent');
     }, false);
+  document.getElementById('home-btn')
+    .addEventListener('click', function(event) {
+      goTo('{{ site.baseurl }}/');
+    }, false);
 
   document.getElementById('wiki-link-nav-checkbox')
     .addEventListener('click', function(event) {

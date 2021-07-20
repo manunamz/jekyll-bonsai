@@ -1,15 +1,82 @@
 ---
+layout: default
+title: Home
 ---
-<!doctype html>
-<html>
-  {% include head.html %}
-  <body class="home-seed-body">
-    <div class="home-seed-wrap">
-      <p class="home-seed-left-txt">Click...</p>
-      <a class="wiki-link home-seed" title="💭 🪴" href="{{ '/entry/1de1694a-8ad0-40d0-9e97-195807015a88' | relative_url }}">
-        [[ 🌰 ]]
-      </a>
-      <p class="home-seed-right-txt" style="float: right;">...to grow.</p>
+<div id="home">
+  
+  <div class="lead">
+    <img id="home-bonsai" height="45%" width="45%">
+    <h1><a class="wiki-link" href="{{ '/entry/e4dc466bc6/' | relative_url }}">Jekyll-Bonsai</a></h3>
+  </div>
+  
+  <div class="main-columns">
+
+    <div class="column">
+      <h3 class="column-heading">Notable</h3>
+      <div class="column-content">
+        {% assign notable_entries = site.entries | notable %}
+        {% for entry in notable_entries %}
+          <div class="column-item">
+            <div class="column-name">
+              {% assign stat_tags = entry.tags | stat_tags %}
+              {% for stat_tag in stat_tags %}
+                <a class="stat-tag" href="{{ stat_tag.url | relative_url }}">{{ stat_tag.emoji }}</a>
+              {% endfor %}
+              <a class="wiki-link" href="{{ entry.url | relative_url }}"> {{ entry.title }}</a>
+            </div>
+            <span class="small-descr">{{ entry.updated | date: "%Y-%m-%d" }}</span>
+          </div>
+        {% endfor %}
+        {% assign notable_posts = site.posts | notable %}
+        {% for post in notable_posts %}
+          <div class="column-item">
+            <div class="column-name">
+              {% assign stat_tags = entry.tags | stat_tags %}
+              {% for stat_tag in stat_tags %}
+                <a class="stat-tag" href="{{ stat_tag.url | relative_url }}">{{ stat_tag.emoji }}</a>
+              {% endfor %}
+              <a class="wiki-link" href="{{ post.url | relative_url }}">📄 {{ post.title }}</a>
+            </div>
+            <span class="small-descr">{{ post.updated | date: "%Y-%m-%d" }}</span>
+          </div>
+        {% endfor %}
+      </div>
+      <p class="column-foot">For more, see <a class="wiki-link" href="{{ '/about/' | relative_url }}">about</a></p>
     </div>
-  </body>
-</html>
+
+    <div class="column">
+      <h3 class="column-heading">Recent</h3>
+      <div class="column-content">
+        {% assign recent_entries = site.entries | recent: 5 %}
+        {% for entry in recent_entries %}
+          <div class="column-item">
+            <div class="column-name">
+              {% assign stat_tags = entry.tags | stat_tags %}
+              {% for stat_tag in stat_tags %}
+                <a class="stat-tag" href="{{ stat_tag.url | relative_url }}">{{ stat_tag.emoji }}</a>
+              {% endfor %}
+              <a class="wiki-link" href="{{ entry.url | relative_url }}"> {{ entry.title }}</a>
+            </div>
+            <span class="small-descr">{{ entry.updated | date: "%Y-%m-%d" }}</span>
+          </div>
+        {% endfor %}
+        {% assign recent_posts = site.posts | recent: 5 %}
+        {% for post in recent_posts %}
+          <div class="column-item">
+            <div class="column-name">
+              {% assign stat_tags = entry.tags | stat_tags %}
+              {% for stat_tag in stat_tags %}
+                <a class="stat-tag" href="{{ stat_tag.url | relative_url }}">{{ stat_tag.emoji }}</a>
+              {% endfor %}
+              <a class="wiki-link" href="{{ post.url | relative_url }}">📄 {{ post.title }}</a>
+            </div>
+            <span class="small-descr">{{ post.updated | date: "%Y-%m-%d" }}</span>
+          </div>
+        {% endfor %}
+      </div>
+      <p class="column-foot">For more updates, check the <a class="wiki-link" href="{{ '/recent/' | relative_url }}">weather 🌦</a></p>
+    </div>
+    
+  </div>
+
+</div>

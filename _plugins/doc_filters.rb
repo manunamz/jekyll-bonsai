@@ -2,7 +2,11 @@
 require 'time'
 
 module Jekyll
-  module RecentFilters
+  module DocFilters
+    def notable(docs)
+      return docs.select { |d| d.data.include?('notable') && (d.data['notable'] == true) }
+    end
+
     # returns most recently created/updated docs up to the defined 'num'ber.
     # adds a 'weather' data attribute to render on the page.
     def recent(docs, num=10)
@@ -37,4 +41,4 @@ module Jekyll
   end
 end
   
-Liquid::Template.register_filter(Jekyll::RecentFilters)
+Liquid::Template.register_filter(Jekyll::DocFilters)
