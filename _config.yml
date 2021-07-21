@@ -86,6 +86,7 @@ social:
     github_url: https://github.com/manunamz/
     # linkedin_url:
     # pinterest_url:
+    rss_url: https://manunam.me/feed.xml
     twitter_url: https://twitter.com/manunamz/
   share:
     - 'email'
@@ -122,10 +123,8 @@ compress_html:
   blank_lines: false
   profile: false 
 
-# Google Analytics Tracking (optional)
-# e.g, UA-1234567-89
+# Google Analytics
 ga_tracking: UA-190413040-3
-ga_tracking_anonymize_ip: true # Use GDPR compliant Google Analytics settings (true/nil by default)
 
 # seo
 # tagline: ""
