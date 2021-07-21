@@ -2,7 +2,10 @@
 
 title: jekyll-bonsai
 description: a jekyll theme for digital gardeners.
-baseurl: '/jekyll-bonsai'
+author: manunamz
+# baseurl: '/jekyll-bonsai'
+baseurl: ''
+url: https://manunam.me
 # url: 'https://manunamz.github.io'
 
 # logo: "/assets/images/logo.png"
@@ -59,8 +62,9 @@ plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
 
+# 
 # jekyll-bonsai configs
-
+# 
 # dendron forces the root note-title to be 'root.md' -- this is the replacement title for 'root'
 # (make sure you change the title in root.md file as well)
 index_title: "Jekyll-Bonsai"
@@ -95,6 +99,17 @@ social:
     # - 'pinterest'
     - 'twitter'
 
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  startings: []
+  blank_lines: false
+  profile: false 
+
+# Google Analytics (ip is anonymized by default)
+ga_tracking: UA-190413040-3
+
 # plugins
 namespaces:
   exclude:
@@ -113,18 +128,6 @@ d3_graph_data:
     - "pages"
     - "posts"
     - "states"
-
-
-compress_html:
-  clippings: all
-  comments: all
-  endings: all
-  startings: []
-  blank_lines: false
-  profile: false 
-
-# Google Analytics
-ga_tracking: UA-190413040-3
 
 # seo
 # tagline: ""
