@@ -120,14 +120,14 @@ export default class GraphNav {
                           .selectAll('g')
                           .data(data.nodes)
                           .join("g");
-          // .attr("active", (d) => isCurrentSemDocInNetWeb(d) ? true : null)
+          // .attr("active", (d) => isCurrentEntryInNetWeb(d) ? true : null)
 
           node.append('circle')
               //svg 2.0 not well-supported: https://stackoverflow.com/questions/47381187/svg-not-working-in-firefox
               // add attributes in javascript instead of css.
-              .attr("r", (d) => isMissingSemDocInNetWeb(d) ? theme_attrs["missing-radius"] : theme_attrs["radius"])
+              .attr("r", (d) => isMissingEntryInNetWeb(d) ? theme_attrs["missing-radius"] : theme_attrs["radius"])
               .attr("class", nodeTypeInNetWeb)
-              .on("click", goToSemDocFromNetWeb)
+              .on("click", goToEntryFromNetWeb)
               .on("mouseover", onMouseover)
               .on("mouseout", onMouseout)
               .call(d3.drag()
@@ -140,10 +140,10 @@ export default class GraphNav {
           // use filtering to deal with specific nodes
           // from: https://codepen.io/blackjacques/pen/BaaqKpO
           // add node pulse on the current node
-          node.filter( function(d,i) { return isCurrentSemDocInNetWeb(d); })
+          node.filter( function(d,i) { return isCurrentEntryInNetWeb(d); })
               .append("circle")
               .attr("r", theme_attrs["radius"])
-              .classed("pulse", (d) => isCurrentSemDocInNetWeb(d) ? true : null)
+              .classed("pulse", (d) => isCurrentEntryInNetWeb(d) ? true : null)
               .on("mouseover", onMouseover)
               .on("mouseout", onMouseout)
               .call(d3.drag()
@@ -172,7 +172,7 @@ export default class GraphNav {
                             .attr("font-size", "20%")
                             .attr("dx", 5)
                             .attr("dy", ".05em")
-                            .text((d) => isMissingSemDocInNetWeb(d) ? "Missing SemDoc" : d.label)
+                            .text((d) => isMissingEntryInNetWeb(d) ? "Missing Entry" : d.label)
                             .on("mouseover", onMouseover)
                             .on("mouseout", onMouseout);
     
@@ -192,8 +192,8 @@ export default class GraphNav {
           // helpers
            //
 
-          function isCurrentSemDocInNetWeb(node) {
-            return !isMissingSemDocInNetWeb(node) && window.location.pathname.includes(node.url);
+          function isCurrentEntryInNetWeb(node) {
+            return !isMissingEntryInNetWeb(node) && window.location.pathname.includes(node.url);
           }
 
           function isPostTaggedInNetWeb(node) {
@@ -201,14 +201,14 @@ export default class GraphNav {
             // if (!isPostPage) return false;
             const semTags = Array.from(document.getElementsByClassName("sem-tag"));
             const tagged = semTags.filter((semTag) => 
-              !isMissingSemDocInNetWeb(node) && semTag.href.includes(node.url)
+              !isMissingEntryInNetWeb(node) && semTag.href.includes(node.url)
             );
             return tagged.length !== 0;
           }
 
           function nodeTypeInNetWeb(node) {
-            const isVisited = isVisitedSemDocInNetWeb(node);
-            const isMissing = isMissingSemDocInNetWeb(node);            
+            const isVisited = isVisitedEntryInNetWeb(node);
+            const isMissing = isMissingEntryInNetWeb(node);            
             if (isVisited) {
               return "visited";
             } else if (!isVisited && !isMissing) {
@@ -221,8 +221,8 @@ export default class GraphNav {
             }
           }
 
-          function isVisitedSemDocInNetWeb(node) {
-            if (!isMissingSemDocInNetWeb(node)) {
+          function isVisitedEntryInNetWeb(node) {
+            if (!isMissingEntryInNetWeb(node)) {
               var visited = JSON.parse(localStorage.getItem('visited'));
               for (let i = 0; i < visited.length; i++) {
                 if (visited[i]['url'] === node.url) return true;
@@ -231,14 +231,14 @@ export default class GraphNav {
             return false;
           }
           
-          function isMissingSemDocInNetWeb(node) {
+          function isMissingEntryInNetWeb(node) {
             return node.url === '';
           }
   
           // from: https://stackoverflow.com/questions/63693132/unable-to-get-node-datum-on-mouseover-in-d3-v6
           // d6 now passes events in vanilla javascript fashion
-          function goToSemDocFromNetWeb (e, d) {
-            if (!isMissingSemDocInNetWeb(d)) {
+          function goToEntryFromNetWeb (e, d) {
+            if (!isMissingEntryInNetWeb(d)) {
               window.location.href = d.url;
             } else {
               return null;
@@ -350,9 +350,9 @@ export default class GraphNav {
           node.append('circle')
                 //svg 2.0 not well-supported: https://stackoverflow.com/questions/47381187/svg-not-working-in-firefox
                 // add attributes in javascript instead of css.
-                .attr("r",  (d) => isMissingSemDocInTree(d.data.id) ? theme_attrs["missing-radius"] : theme_attrs["radius"])
+                .attr("r",  (d) => isMissingEntryInTree(d.data.id) ? theme_attrs["missing-radius"] : theme_attrs["radius"])
                 .attr("class", nodeTypeInTree)
-                .on("click", goToSemDocFromTree)
+                .on("click", goToEntryFromTree)
                 .on("mouseover", onMouseover)
                 .on("mouseout", onMouseout)
                 // 🐛 bug: this does not work -- it overtakes clicks (extra lines in "tick" are related).
@@ -366,7 +366,7 @@ export default class GraphNav {
           // use filtering to deal with specific nodes
           // from: https://codepen.io/blackjacques/pen/BaaqKpO
           // add node pulse on the current node
-          node.filter( function(d,i) { return isCurrentSemDocInTree(d); })
+          node.filter( function(d,i) { return isCurrentEntryInTree(d); })
               .append("circle")
               .attr("r",  (d) => theme_attrs["radius"])
               .classed("pulse", true)
@@ -382,7 +382,7 @@ export default class GraphNav {
               .append("circle")
               .attr("r", theme_attrs["radius"])
               .classed("pulse-sem-tag", (d) => isPostTaggedInTree(d) ? true : null)
-              .on("click", goToSemDocFromTree)
+              .on("click", goToEntryFromTree)
               .on("mouseover", onMouseover)
               .on("mouseout", onMouseout)
               .call(d3.drag()
@@ -399,7 +399,7 @@ export default class GraphNav {
                             .attr("font-size", "20%")
                             .attr("dx", 5)
                             .attr("dy", ".05em")
-                            .text((d) => isMissingSemDocInTree(d.data.id) ? "Missing SemDoc" : d.data.label)
+                            .text((d) => isMissingEntryInTree(d.data.id) ? "Missing Entry" : d.data.label)
                             .on("mouseover", onMouseover)
                             .on("mouseout", onMouseout);
 
@@ -427,8 +427,8 @@ export default class GraphNav {
            //
           // helpers
            //
-          function isCurrentSemDocInTree(node) {
-            return !isMissingSemDocInTree(node.data.id) && window.location.pathname.includes(node.data.url);
+          function isCurrentEntryInTree(node) {
+            return !isMissingEntryInTree(node.data.id) && window.location.pathname.includes(node.data.url);
           }
 
           function isPostTaggedInTree(node) {
@@ -436,14 +436,14 @@ export default class GraphNav {
             // if (!isPostPage) return false;
             const semTags = Array.from(document.getElementsByClassName("sem-tag"));
             const tagged = semTags.filter((semTag) => 
-              !isMissingSemDocInTree(node.data.id) && semTag.href.includes(node.data.url)
+              !isMissingEntryInTree(node.data.id) && semTag.href.includes(node.data.url)
             );
             return tagged.length !== 0;
           }
 
           function nodeTypeInTree(node) {
-            const isVisited = isVisitedSemDocInTree(node);
-            const isMissing = isMissingSemDocInTree(node.data.id);            
+            const isVisited = isVisitedEntryInTree(node);
+            const isMissing = isMissingEntryInTree(node.data.id);            
             if (isVisited) {
               return "visited";
             } else if (!isVisited && !isMissing) {
@@ -456,7 +456,7 @@ export default class GraphNav {
             }
           }
 
-          function isVisitedSemDocInTree(node) {
+          function isVisitedEntryInTree(node) {
             var visited = JSON.parse(localStorage.getItem('visited'));
             for (let i = 0; i < visited.length; i++) {
               if (visited[i]['url'] === node.data.url) {
@@ -466,14 +466,14 @@ export default class GraphNav {
             return false;
           }
   
-          function isMissingSemDocInTree(nodeId) {
+          function isMissingEntryInTree(nodeId) {
             return nodeId === "";
           }
   
           // from: https://stackoverflow.com/questions/63693132/unable-to-get-node-datum-on-mouseover-in-d3-v6
           // d6 now passes events in vanilla javascript fashion
-          function goToSemDocFromTree(e, d) {
-            if (!isMissingSemDocInTree(d.data.id)) {
+          function goToEntryFromTree(e, d) {
+            if (!isMissingEntryInTree(d.data.id)) {
               window.location.href = d.data.url;
               return true;
             } else {
