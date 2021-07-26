@@ -56,12 +56,12 @@ enable_mathjax: true
 kramdown:
   math_engine: mathjax
 
-plugins:
-  - jekyll-namespaces
-  - jekyll-wikilinks
-  - jekyll-feed
-  - jekyll-sitemap
-  - jekyll-seo-tag
+# plugins:
+#   - jekyll-namespaces
+#   - jekyll-wikilinks
+#   - jekyll-feed
+#   - jekyll-seo-tag
+#   - jekyll-sitemap
 
 # 
 # jekyll-bonsai configs
