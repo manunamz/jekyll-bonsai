@@ -57,6 +57,7 @@ kramdown:
   math_engine: mathjax
 
 plugins:
+  - jekyll-namespaces
   - jekyll-wikilinks
   - jekyll-feed
   - jekyll-sitemap
@@ -110,12 +111,12 @@ compress_html:
 # Google Analytics (ip is anonymized by default)
 ga_tracking: UA-190413040-3
 
+# 
 # plugins
+# 
 namespaces:
-  exclude:
-    - "pages"
-    - "posts"
-    - "states"
+  include:
+    - "entries"
 wikilinks:
   # enabled: true
   exclude:

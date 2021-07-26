@@ -23,4 +23,5 @@ graph-net-web.json
 graph-tree.json
 
 # ignore files meant for local testing
+_plugins/namespaces.rb
 _plugins/wikilinks.rb
