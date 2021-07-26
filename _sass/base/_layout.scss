@@ -20,8 +20,9 @@
 }
 
 .main {
+  height: 100%;
+
   @include mq(md) {
-    position: relative;
     max-width: $content-width;
     margin-left: $nav-width-md;
   }
@@ -33,8 +34,14 @@
 
 .main-content-wrap { 
   @include container;
+  
+  display: flex;
+  flex-direction: column;
+
   padding-top: $gutter-spacing-sm;
   padding-bottom: $gutter-spacing-sm;
+
+  min-height: 100vh;
 
   @include mq(md) {
     padding-top: $gutter-spacing;

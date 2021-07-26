@@ -15,6 +15,11 @@ layout: table-wrappers
         <div id="main-content" class="main-content" role="main">
           {% include anchor-headings.html html=content anchorBody="<i class='anchor-tag'>🐝</i>" anchorClass="anchor-heading" %}
         </div>
+        <div class="connect">
+          {% if site.social.enabled %}
+            {% include connect.html %}
+          {% endif %}
+        </div>
       </div>
     </div>
 

@@ -40,10 +40,11 @@
 
 .entry-foot-selector {
   @include fs-6;
-  display: block;
+  display: flex;
   cursor: pointer;
   user-select: none;
   padding-right: $sp-3;
+  padding-top: $sp-3;
   transition: all .2s ease-in-out;
 
   &:hover {
@@ -71,11 +72,11 @@
   flex-direction: column;
   position: fixed;
   right: $sp-2;
-  bottom: $sp-2;
-  z-index: 5;
+  bottom: $sp-4;
   cursor: pointer;
   user-select: none;
   filter: drop-shadow(0 0 0.7mm $drop-shadow-green);
+  z-index: 5;
 
   /* Hide the browser's default checkbox */
   input {
@@ -92,4 +93,14 @@
   #nav-bonsai {
     margin-left: 5px;
   }
+}
+
+.connect {
+  // 'sticky footer' from: https://css-tricks.com/couple-takes-sticky-footer/#there-is-flexbox
+  //  ex = local
+  //    footer = connect
+  //    content = main-content
+  //    body = main-content-wrap
+  //    html, body = main
+  flex-shrink: 0;
 }

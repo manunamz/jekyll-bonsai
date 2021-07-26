@@ -39,7 +39,7 @@
 .entry-foot-wrapper {
   margin-top: $sp-6;
   margin-bottom: $sp-6;
-  display: block;
+  display: flex;
 
   .entry-foot-nav-title {
     @include fs-4;
@@ -51,14 +51,9 @@
     color: $entry-foot-text-color;
   }
 
-  .entry-foot-nav-empty {
-    text-align: center;
-  }
-
   .entry-foot-nav {
     display: flex;
     flex-direction: column;
-    padding: $sp-3;
     border-radius: 16px;
 
     .entry-foot-nav-sections {

@@ -23,6 +23,7 @@
 }
 
 .main-columns {
+
   @include mq(md) {
     display: flex;
   }

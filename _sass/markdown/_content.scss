@@ -6,6 +6,8 @@
 // stylelint-disable selector-no-type, max-nesting-depth, selector-max-compound-selectors, selector-max-type
 
 .main-content {
+  flex: 1 0 auto;
+
   line-height: $content-line-height;
   counter-reset: sidenote-counter;
 
