@@ -115,6 +115,7 @@ ga_tracking: UA-190413040-3
 # plugins
 # 
 namespaces:
+  # enabled: true
   include:
     - "entries"
 wikilinks:
