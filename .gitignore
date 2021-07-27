@@ -1,4 +1,8 @@
-# gem-related
+# Ruby Gem
+*.gem
+.bundle
+Gemfile.lock
+**/vendor/bundle
 /pkg
 
 # Sass cache
