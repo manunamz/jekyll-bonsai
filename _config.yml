@@ -1,19 +1,34 @@
 # jekyll configs
 
 title: jekyll-bonsai
-description: a jekyll theme for digital gardeners.
+description: A modern jekyll theme for semantically inclined digital gardeners.
 author: manunamz
-# baseurl: '/jekyll-bonsai'
-baseurl: ''
-url: https://manunam.me
+baseurl: '/jekyll-bonsai'
+# baseurl: ''
+# url: https://manunam.me
 # url: 'https://manunamz.github.io'
 
-# logo: "/assets/images/logo.png"
+# logo-light: "/assets/images/logo-light.png"
+# logo-dark: "/assets/images/logo-dark.png"
 
 permalink: pretty
-# relative_permalinks: false
-include: ['_pages']
-exclude: ["node_modules/", "*.gemspec", "*.gem", "Gemfile", "Gemfile.lock", "package.json", "package-lock.json",  "script/", "LICENSE.txt", "lib/", "bin/", "README.md", "Rakefile"]
+include: 
+  - "_pages"
+exclude: 
+  - "node_modules/"
+  - "package.json"
+  - "package-lock.json"
+  - "*.gemspec"
+  - "*.gem"
+  - "Gemfile"
+  - "Gemfile.lock"
+  - "script/"
+  - "lib/"
+  - "bin/"
+  - "Rakefile"
+  - "README.md"
+  - "CHANGELOG.txt"
+  - "LICENSE.txt"
 
 collections:
   entries:
@@ -69,7 +84,6 @@ kramdown:
 # dendron forces the root note-title to be 'root.md' -- this is the replacement title for 'root'
 # (make sure you change the title in root.md file as well)
 index_title: "Jekyll-Bonsai"
-# index_title: "Root"
 # graph: default graph type in side bar.
 ## may be 'tree' or 'net-web'
 graph_type: "tree"
