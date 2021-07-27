@@ -4,7 +4,8 @@ Gem::Specification.new do |spec|
   spec.authors       = ["manunamz"]
   spec.email         = ["manunamz@pm.me"]
 
-  spec.summary       = "A modern jekyll theme for semantically inclined digital gardeners."
+  spec.summary       = "These are not the gems you're looking for -- just grabbing the gem name for now."
+  # spec.summary       = "A modern jekyll theme for semantically inclined digital gardeners."
   spec.homepage      = "https://manunamz.github.io/jekyll-bonsai/"
   spec.license       = "GPL3"
 
