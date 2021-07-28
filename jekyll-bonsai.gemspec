@@ -1,18 +1,17 @@
 Gem::Specification.new do |spec|
   spec.name          = "jekyll-bonsai"
-  spec.version       = "0.0.3"
+  spec.version       = "0.0.4"
   spec.authors       = ["manunamz"]
   spec.email         = ["manunamz@pm.me"]
 
-  spec.summary       = "These are not the gems you're looking for -- just grabbing the gem name for now."
-  # spec.summary       = "A modern jekyll theme for semantically inclined digital gardeners."
+  spec.summary       = "A modern jekyll theme for semantically inclined digital gardeners."
   spec.homepage      = "https://manunamz.github.io/jekyll-bonsai/"
   spec.license       = "GPL3"
 
   spec.metadata["plugin_type"] = "theme"
 
   spec.files         = `git ls-files -z`.split("\x0").select do |f| 
-    f.match(%r!^(_states|_entries|assets|_layouts|_pages|_includes|_sass|_plugins|LICENSE|README|CHANGELOG|_config\.yml|index\.html)!i)
+    f.match(%r!^(_layouts|_includes|_sass|_plugins|assets|LICENSE|README|CHANGELOG|_config\.yml)!i)
   end
 
   spec.add_runtime_dependency "jekyll", "~> 4.2"
