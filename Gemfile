@@ -13,6 +13,7 @@ group :jekyll_plugins do
   gem 'jekyll-feed'
   gem 'jekyll-seo-tag'
   gem 'jekyll-sitemap'
+  gem 'jekyll-bonsai-util', '~> 0.0.1'
   gem 'jekyll-namespaces', '~> 0.0.2'
   gem 'jekyll-wikilinks', '~> 0.0.6'
 end

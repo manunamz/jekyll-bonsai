@@ -20,6 +20,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "jekyll-feed"
   spec.add_runtime_dependency "jekyll-seo-tag"
 
+  spec.add_runtime_dependency "jekyll-bonsai-util", "~> 0.0.1"
   spec.add_runtime_dependency "jekyll-namespaces", "~> 0.0.2"
   spec.add_runtime_dependency "jekyll-wikilinks", "~> 0.0.6"
 
