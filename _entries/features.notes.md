@@ -5,7 +5,6 @@ desc: ''
 updated: 1623851234604
 created: 1620411880535
 tags: "\U0001F38B"
-notable: true
 ---
 The focus of this template are notes: Atomic concepts and ideas that are, ideally, meaningfully [[features.site-nav.graph.links|linked]]. 
 

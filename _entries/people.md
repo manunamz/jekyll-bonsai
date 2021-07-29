@@ -5,7 +5,6 @@ desc: ''
 updated: 1620685947743
 created: 1620685947743
 tags: 🎋
-notable: true
 ---
 
 This template aims to be as humane and people-friendly as possible.
