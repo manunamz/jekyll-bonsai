@@ -81,6 +81,8 @@ kramdown:
 # 
 # jekyll-bonsai configs
 # 
+logo-light: "/assets/img/bonsai-light.svg"
+logo-dark: "/assets/img/bonsai-dark.svg"
 # dendron forces the root note-title to be 'root.md' -- this is the replacement title for 'root'
 # (make sure you change the title in root.md file as well)
 index_title: "Jekyll-Bonsai"

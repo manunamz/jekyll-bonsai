@@ -53,7 +53,11 @@ export default class ThemeColors {
     this.navBonsai.setAttribute('src', "{{site.baseurl}}/assets/img/nav-bonsai-" + this.theme + ".svg");
     this.navBase.setAttribute('src', "{{site.baseurl}}/assets/img/nav-base-" + this.theme + ".svg");
     if (this.homeBonsaiLogo) {
-      this.homeBonsaiLogo.setAttribute('src', "{{site.baseurl}}/assets/img/bonsai-" + this.theme + ".svg");
+      if (this.theme === "dark") {
+        this.homeBonsaiLogo.setAttribute('src', "{{ site.logo-dark | relative_url }}");
+      } else {
+        this.homeBonsaiLogo.setAttribute('src', "{{ site.logo-light | relative_url }}");
+      }
     }
     // update bullet icon colors
     let bulletLinks = document.getElementsByClassName('bullet-link');
