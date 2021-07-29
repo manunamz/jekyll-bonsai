@@ -350,7 +350,7 @@ export default class GraphNav {
           node.append('circle')
                 //svg 2.0 not well-supported: https://stackoverflow.com/questions/47381187/svg-not-working-in-firefox
                 // add attributes in javascript instead of css.
-                .attr("r",  (d) => isMissingEntryInTree(d.data.id) ? theme_attrs["missing-radius"] : theme_attrs["radius"])
+                .attr("r",  (d) => isMissingEntryInTree(d) ? theme_attrs["missing-radius"] : theme_attrs["radius"])
                 .attr("class", nodeTypeInTree)
                 .on("click", goToEntryFromTree)
                 .on("mouseover", onMouseover)
@@ -399,7 +399,7 @@ export default class GraphNav {
                             .attr("font-size", "20%")
                             .attr("dx", 5)
                             .attr("dy", ".05em")
-                            .text((d) => isMissingEntryInTree(d.data.id) ? "Missing Entry" : d.data.label)
+                            .text((d) => isMissingEntryInTree(d) ? "Missing Entry" : d.data.label)
                             .on("mouseover", onMouseover)
                             .on("mouseout", onMouseout);
 
@@ -428,7 +428,7 @@ export default class GraphNav {
           // helpers
            //
           function isCurrentEntryInTree(node) {
-            return !isMissingEntryInTree(node.data.id) && window.location.pathname.includes(node.data.url);
+            return !isMissingEntryInTree(node) && window.location.pathname.includes(node.data.url);
           }
 
           function isPostTaggedInTree(node) {
@@ -436,14 +436,14 @@ export default class GraphNav {
             // if (!isPostPage) return false;
             const semTags = Array.from(document.getElementsByClassName("sem-tag"));
             const tagged = semTags.filter((semTag) => 
-              !isMissingEntryInTree(node.data.id) && semTag.href.includes(node.data.url)
+              !isMissingEntryInTree(node) && semTag.href.includes(node.data.url)
             );
             return tagged.length !== 0;
           }
 
           function nodeTypeInTree(node) {
             const isVisited = isVisitedEntryInTree(node);
-            const isMissing = isMissingEntryInTree(node.data.id);            
+            const isMissing = isMissingEntryInTree(node);            
             if (isVisited) {
               return "visited";
             } else if (!isVisited && !isMissing) {
@@ -466,14 +466,14 @@ export default class GraphNav {
             return false;
           }
   
-          function isMissingEntryInTree(nodeId) {
-            return nodeId === "";
+          function isMissingEntryInTree(node) {
+            return node.data.url === "";
           }
   
           // from: https://stackoverflow.com/questions/63693132/unable-to-get-node-datum-on-mouseover-in-d3-v6
           // d6 now passes events in vanilla javascript fashion
           function goToEntryFromTree(e, d) {
-            if (!isMissingEntryInTree(d.data.id)) {
+            if (!isMissingEntryInTree(d)) {
               window.location.href = d.data.url;
               return true;
             } else {
