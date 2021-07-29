@@ -34,7 +34,7 @@ collections:
   entries:
     output: true
     # permalink: /entry/:id
-    # permalinks are manually generated -- see local 'prep_note' plugin.
+    # permalinks are manually verified/generated -- see 'jekyll-bonsai-util' plugin.
   states:
     output: true
     permalink: /stat/:title
@@ -144,6 +144,10 @@ d3_graph_data:
     - "pages"
     - "posts"
     - "states"
+bonsai_util:
+  id_format:
+    alpha: 1234567890abcdef
+    size: 10
 
 # seo
 # tagline: ""
