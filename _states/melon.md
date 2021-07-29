@@ -1,5 +1,5 @@
 ---
-title: Melon Tag Page
+title: Melon Tag
 emoji: 🍈
 emojipedia: 'https://emojipedia.org/melon/'
 ---

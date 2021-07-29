@@ -1,5 +1,5 @@
 ---
-title: Bud Tag Page
+title: Bud Tag
 emoji: 🌿
 emojipedia: 'https://emojipedia.org/herb/'
 ---

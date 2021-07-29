@@ -1,5 +1,5 @@
 ---
-title: Seed Tag Page
+title: Seed Tag
 emoji: 🌰
 emojipedia: 'https://emojipedia.org/chestnut/'
 ---

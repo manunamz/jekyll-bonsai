@@ -1,5 +1,5 @@
 ---
-title: Fruit Tag Page
+title: Fruit Tag
 emoji: 🥭
 emojipedia: 'https://emojipedia.org/mango/'
 ---

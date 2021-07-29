@@ -1,5 +1,5 @@
 ---
-title: Berry Tag Page
+title: Berry Tag
 emoji: 🫐
 emojipedia: 'https://emojipedia.org/blueberries/'
 ---
