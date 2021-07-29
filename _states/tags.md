@@ -1,5 +1,5 @@
 ---
-title: Plant Tags Page
+title: Plant Tags In This Garden
 emoji: 🔖
 emojipedia: 'https://emojipedia.org/bookmark/'
 ---

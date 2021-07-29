@@ -18,15 +18,15 @@ layout: default
   </nav>
 
   <!-- all states -->
-  {% if page.title == index_state_title %}
-    <h1>🔖 Plant Tags In This Garden</h1>
+  {% if page.path == site.root_state_path %}
+    <h1>{{ page.emoji }} {{ page.title }}</h1>
     {{ content }}
     <p class="small-descr">
       Descriptions only reflect the spirit of this garden. 
       Click <a href="{{ page.emojipedia }}">here</a> for the official emoji description.
     </p>
     {% for state in states %}
-      {% if state.title != index_state_title %}
+      {% if state.path != site.root_state_path %}
         <h2>{{ state.emoji }} <a href="{{ state.url | relative_url }}" class="wiki-link">{{ state.title }}</a></h2>
         <p>{{ state.content | markdownify }}</p>
       {% endif %}
