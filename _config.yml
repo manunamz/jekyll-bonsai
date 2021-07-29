@@ -78,6 +78,56 @@ kramdown:
 #   - jekyll-seo-tag
 #   - jekyll-sitemap
 
+compress_html:
+  clippings: all
+  comments: all
+  endings: all
+  startings: []
+  blank_lines: false
+  profile: false 
+
+# Google Analytics (ip is anonymized by default)
+ga_tracking: UA-190413040-3
+
+# seo
+# tagline: ""
+# description: ""
+# twitter:
+#   card: summary
+#   username: manunamz
+# author:
+#   twitter: manunamz
+
+# 
+# plugins
+# 
+namespaces:
+  # enabled: true
+  include:
+    - "entries"
+wikilinks:
+  # enabled: true
+  exclude:
+    - "pages"
+    - "states"
+d3_graph_data:
+  # enabled: true
+  # path: "/assets"
+  exclude:
+    - "pages"
+    - "posts"
+    - "states"
+bonsai_util:
+  id_format:
+    alpha: 1234567890abcdef
+    size: 10
+  notable:
+    - digital-garden.bonsai.md
+    - digital-garden.md
+    - features.notes.md
+    - features.site-nav.graph.md
+    - people.md
+
 # 
 # jekyll-bonsai configs
 # 
@@ -115,53 +165,3 @@ social:
     # - 'linkedin'
     # - 'pinterest'
     - 'twitter'
-
-compress_html:
-  clippings: all
-  comments: all
-  endings: all
-  startings: []
-  blank_lines: false
-  profile: false 
-
-# Google Analytics (ip is anonymized by default)
-ga_tracking: UA-190413040-3
-
-# 
-# plugins
-# 
-namespaces:
-  # enabled: true
-  include:
-    - "entries"
-wikilinks:
-  # enabled: true
-  exclude:
-    - "pages"
-    - "states"
-d3_graph_data:
-  # enabled: true
-  # path: "/assets"
-  exclude:
-    - "pages"
-    - "posts"
-    - "states"
-bonsai_util:
-  id_format:
-    alpha: 1234567890abcdef
-    size: 10
-  notable:
-    - digital-garden.bonsai.md
-    - digital-garden.md
-    - features.notes.md
-    - features.site-nav.graph.md
-    - people.md
-
-# seo
-# tagline: ""
-# description: ""
-# twitter:
-#   card: summary
-#   username: manunamz
-# author:
-#   twitter: manunamz
