@@ -1,5 +1,5 @@
 ---
 layout: posts
-title: Field bLogs Page
+title: Field bLogs
 permalink: /posts/
 ---

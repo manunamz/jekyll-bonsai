@@ -1,5 +1,5 @@
 ---
 layout: recent
-title: Recent Weather Page
+title: Recent Weather
 permalink: /recent/
 ---
