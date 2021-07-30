@@ -2,26 +2,38 @@
   <header>
     <span class="dropdown">
       <button id="pages-btn" class="dropdown-btn">
-        <span id="pages-emoji-span">🧭</span>
+        <span id="pages-emoji-span">
+          {{ site.emoji.pages }}
+        </span>
       </button>
       <div class="dropdown-content">
         <!-- using '.first' to test if any results were found -->
         {% assign search_page = site.pages | where: "name", "search.md" %}
         {% if search_page.first %}
-          <span id="search-dropbtn" class="site-nav-btn" href="{{ site.baseurl }}/search" title="Search">🔍</span>
+          <span id="search-dropbtn" class="site-nav-btn" href="{{ site.baseurl }}/search" title="Search">
+            {{ site.emoji.search }}
+          </span>
         {% endif %}
         {% if site.states %}
-          <a id="stat-tags-dropbtn" class="dropbtn drop-1" href="{{ site.baseurl }}/stat/tags" title="Go To Status Tags">🔖</a>
+          <a id="stat-tags-dropbtn" class="dropbtn drop-1" href="{{ site.baseurl }}/stat/tags" title="Go To Status Tags">
+            {{ site.emoji.stat_tags }}
+          </a>
         {% endif %}
         {% assign posts_page = site.pages | where: "name", "posts.md" %}
         {% if posts_page.first %}
-          <a id="posts-dropbtn" class="dropbtn drop-2" href="{{ site.baseurl }}/posts" title="Go To Posts">📓</a>
+          <a id="posts-dropbtn" class="dropbtn drop-2" href="{{ site.baseurl }}/posts" title="Go To Posts">
+            {{ site.emoji.posts }}
+          </a>
         {% endif %}
         {% assign recent_page = site.pages | where: "name", "recent.md" %}
         {% if recent_page.first %}
-          <a id="recent-dropbtn" class="dropbtn drop-3" href="{{ site.baseurl }}/recent" title="Go To Recent Changes">🌦</a>
+          <a id="recent-dropbtn" class="dropbtn drop-3" href="{{ site.baseurl }}/recent" title="Go To Recent Changes">
+          {{ site.emoji.recent }}
+          </a>
         {% endif %}
-        <a id="home-dropbtn" class="dropbtn drop-4" href="{{ site.baseurl }}/" title="Go Home">🏕</a>
+        <a id="home-dropbtn" class="dropbtn drop-4" href="{{ site.baseurl }}/" title="Go Home">
+          {{ site.emoji.home }}
+        </a>
       </div>
     </span>
     <label class="btn-selector">
@@ -44,7 +56,9 @@
   <footer>
     <span class="small-descr">Grown 🪴 with 💚 from a <a href="https://github.com/manunamz/jekyll-bonsai/">jekyll-bonsai</a>.</span>
     <button id="delete-btn" class="delete-btn" title="Delete Visited History">
-      <span id="delete-emoji-span" title="Delete Visited Info">🧹</span>
+      <span id="delete-emoji-span" title="Delete Visited Info">
+        {{ site.emoji.delete }}
+      </span>
     </button>
   </footer>
 </nav>

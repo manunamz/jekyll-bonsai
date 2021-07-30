@@ -9,7 +9,9 @@ layout: default
     <nav class="entry-head-nav" role="navigation" aria-label="breadcrumb">
       <label class="btn-selector">
         <input id="entry-head-checkbox" type="checkbox">
-        <span id="entry-head-emoji-span" title="Toggle Header">🛤</span>
+        <span id="entry-head-emoji-span" title="Toggle Header">
+          {{ site.emoji.breadcrumbs }}
+        </span>
       </label>
       <ol class="entry-head-breadcrumbs">
         {% for ancestor in page.ancestors %}
@@ -59,7 +61,9 @@ layout: default
       <div>
         <label class="entry-foot-selector">
           <input id="entry-foot-links-checkbox" type="checkbox">
-          <span id="entry-foot-link-emoji-span" title="Toggle Linked Entries">🚏</span>
+          <span id="entry-foot-link-emoji-span" title="Toggle Linked Entries">
+            {{ site.emoji.entries }}
+          </span>
         </label>
       </div>
       <nav id="entry-foot-links-nav" class="entry-foot-nav" role="navigation" aria-label="">
@@ -99,7 +103,9 @@ layout: default
       <div>
         <label class="entry-foot-selector">
           <input id="entry-foot-posts-checkbox" type="checkbox">
-          <span id="entry-foot-posts-emoji-span" title="Toggle Linked Posts">📓</span>
+          <span id="entry-foot-posts-emoji-span" title="Toggle Linked Posts">
+            {{ site.emoji.posts }}
+          </span>
         </label>
       </div>
       <nav id="entry-foot-posts-nav" class="entry-foot-nav" role="navigation" aria-label="">
