@@ -15,7 +15,7 @@ layout: default
         {% for ancestor in page.ancestors %}
           <li class="entry-head-breadcrumb">
             <span title="Ancestor Entry">{% include img/bullet-ancestor.svg %}</span>
-            <a class="wiki-link {% if ancestor.permalink == '' %}missing-entry-txt{% endif %} " href="{{ ancestor.url | relative_url }}">
+            <a class="wiki-link {% if ancestor.url == '' %}missing-entry-txt{% endif %} " href="{{ ancestor.url | relative_url }}">
               {{ ancestor.title }}
             </a>
           </li>
@@ -73,7 +73,7 @@ layout: default
                 {% for child in page.children %}
                   <li class="entry-foot-nav-list-item">
                     <span style="display: inline-block;" title="Child Entry">{% include img/bullet-tree.svg %}</span>
-                    <a class="wiki-link {% if child.permalink == '' %}missing-entry-txt{% endif %}" href="{{ child.url | relative_url }}">
+                    <a class="wiki-link {% if child.url == '' %}missing-entry-txt{% endif %}" href="{{ child.url | relative_url }}">
                       {{ child.title }}
                     </a>
                   </li>
