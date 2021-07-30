@@ -10,7 +10,7 @@ layout: default
         <p class="title">Key</p>
         <p>{{ site.emoji.created }} Created</p>
         <p>{{ site.emoji.updated }} Updated</p>
-        <p style="color: grey;"><em>{{ site.emoji.deleted }} Deleted (Currently not active)</em></p>
+        <p class="small-descr"><em>{{ site.emoji.deleted }} Deleted (Currently not active)</em></p>
       </div>
       <p>
         {{ content }}
@@ -19,10 +19,9 @@ layout: default
   </div>
 
   <div>
-    <h2 style="text-align: left; padding-bottom: 24px; padding-top: 24px;">Posts</h2>
-    {% assign recent_posts = site.posts | recent: site.recent_num %}
+    <h2>Posts</h2>
     <ul class="recent-list">
-      {% for post in recent_posts %}
+      {% for post in site.posts limit: site.recent_cap %}
         <li class="recent-list-item">
           <a class="wiki-link" href="{{ post.url | relative_url }}">{{ post | weather }} {{ post.title }}</a>
           <span class="date-updated">{{ post.updated | date: "%Y-%m-%d" }}</span>
@@ -30,10 +29,9 @@ layout: default
       {% endfor %}
     </ul>
     
-    <h2 style="text-align: left; padding-bottom: 12px;">Entries</h2>
-    {% assign recent_entries = site.entries | recent: site.recent_num %}
+    <h2>Entries</h2>
     <ul class="recent-list">
-      {% for entry in recent_entries %}
+      {% for entry in site.entries limit: site.recent_cap %}
         <li class="recent-list-item">
             <a class="wiki-link" href="{{ entry.url | relative_url }}">{{ entry | weather }} {{ entry.title }}</a>
             <span class="date-updated">{{ entry.updated | date: "%Y-%m-%d" }}</span>

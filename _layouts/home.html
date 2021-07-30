@@ -37,7 +37,7 @@ layout: default
               {% for stat_tag in stat_tags %}
                 <a class="stat-tag" href="{{ stat_tag.url | relative_url }}">{{ stat_tag.emoji }}</a>
               {% endfor %}
-              <a class="wiki-link" href="{{ post.url | relative_url }}">📄 {{ post.title }}</a>
+              <a class="wiki-link" href="{{ post.url | relative_url }}">{{ site.emoji.post }} {{ post.title }}</a>
             </div>
             <span class="small-descr">{{ post.updated | date: "%Y-%m-%d" }}</span>
           </div>
@@ -53,30 +53,16 @@ layout: default
     <div class="column">
       <h3 class="column-heading">Recent</h3>
       <div class="column-content">
-        {% assign recent_entries = site.entries | recent: 5 %}
-        {% for entry in recent_entries %}
+        {% for doc in site.documents limit:5 %}
           <div class="column-item">
             <div class="column-name">
-              {% assign stat_tags = entry.tags | stat_tags %}
+              {% assign stat_tags = doc.tags | stat_tags %}
               {% for stat_tag in stat_tags %}
                 <a class="stat-tag" href="{{ stat_tag.url | relative_url }}">{{ stat_tag.emoji }}</a>
               {% endfor %}
-              <a class="wiki-link" href="{{ entry.url | relative_url }}"> {{ entry.title }}</a>
+              <a class="wiki-link" href="{{ doc.url | relative_url }}"> {{ doc.title }}</a>
             </div>
-            <span class="small-descr">{{ entry.updated | date: "%Y-%m-%d" }}</span>
-          </div>
-        {% endfor %}
-        {% assign recent_posts = site.posts | recent: 5 %}
-        {% for post in recent_posts %}
-          <div class="column-item">
-            <div class="column-name">
-              {% assign stat_tags = entry.tags | stat_tags %}
-              {% for stat_tag in stat_tags %}
-                <a class="stat-tag" href="{{ stat_tag.url | relative_url }}">{{ stat_tag.emoji }}</a>
-              {% endfor %}
-              <a class="wiki-link" href="{{ post.url | relative_url }}">📄 {{ post.title }}</a>
-            </div>
-            <span class="small-descr">{{ post.updated | date: "%Y-%m-%d" }}</span>
+            <span class="small-descr">{{ doc.updated | date: "%Y-%m-%d" }}</span>
           </div>
         {% endfor %}
       </div>

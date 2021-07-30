@@ -182,9 +182,8 @@ graph_type: "tree"
 # nav: default nav type in side bar.
 ## may be 'tabs' (visited/path) or graph (bonsai)
 nav_type: "graph"
-# recent (weather): set number of notes to display on recent (weather) page.
-## may be an integer (defaults to 10)
-recent_num: 10 
+# recent (weather): set number of items to display when filtering for recent docs or posts.
+recent_cap: 10 
 # local note-nav component defaults
 ## may be 'open' or 'closed'
 entry_head_status: "open"
