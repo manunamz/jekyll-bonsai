@@ -117,7 +117,8 @@ layout: default
             <ul class="entry-foot-nav-list">
               {% for post in semantic_tagged_posts %}
                 <li class="entry-foot-nav-list-item">
-                  <span class="small-descr">📄</span><a class="wiki-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                  <span class="small-descr">{{ site.emoji.post }}</span>
+                  <a class="wiki-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
                 </li>
               {% endfor %}
             </ul>

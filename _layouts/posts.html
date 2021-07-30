@@ -8,7 +8,7 @@ layout: default
   <ul class="posts-list">
     {% for post in site.posts %}
       <li class="posts-list-item">
-        <a class="wiki-link" href="{{ post.url | relative_url }}">📄 {{ post.title }}</a>
+        <a class="wiki-link" href="{{ post.url | relative_url }}">{{ site.emoji.post }} {{ post.title }}</a>
         <span style="color: grey;">{{ post.updated | date: "%Y-%m-%d" }}</span>
       </li>
     {% endfor %}
