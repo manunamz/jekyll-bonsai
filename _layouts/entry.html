@@ -105,7 +105,7 @@ layout: default
       <nav id="entry-foot-posts-nav" class="entry-foot-nav" role="navigation" aria-label="">
         {% assign semantic_tagged_posts = page.namespace | sem_tag_posts %}
         {% if semantic_tagged_posts.size == 0 %}
-          <span class="small-descr">No linked posts.</span>
+          <p class="small-descr">No linked posts.</p>
         {% else %}
           <div class="entry-foot-nav-section">
             <ul class="entry-foot-nav-list">
