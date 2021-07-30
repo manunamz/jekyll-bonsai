@@ -132,6 +132,10 @@ bonsai_util:
 # jekyll-bonsai configs
 # 
 emoji:
+  # 
+  # the following are emoji buttons
+  #  -- there needs to be something here for buttons to work
+  # 
   # colors
   dark: 🌘
   light: ☀️
@@ -151,9 +155,18 @@ emoji:
   search: 🔍
   stat_tags: 🔖
   visited: 🥾
-  # social (these are safe to set to "" (empty strings))
+  # 
+  # the following are informational emojis
+  #  -- these are safe to set to "" (empty strings)
+  # 
+  # social
   connect: 🌊
   share: 🐝
+  # changes
+  created: 🌤
+  updated: 🌧
+  deleted: 🌩
+
 logo-light: "/assets/img/bonsai-light.svg"
 logo-dark: "/assets/img/bonsai-dark.svg"
 # dendron forces the root note-title to be 'root.md' -- this is the replacement title for 'root'

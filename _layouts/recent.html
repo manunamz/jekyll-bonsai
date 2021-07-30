@@ -4,13 +4,13 @@ layout: default
 <div id="recent">
 
   <div>
-    <h1>🌦 {{ page.title }}</h1>
+    <h1>{{ site.emoji.recent }} {{ page.title }}</h1>
     <div class="leader">
       <div class="infobox">
         <p class="title">Key</p>
-        <p>🌤 Created</p>
-        <p>🌧 Updated</p>
-        <p style="color: grey;"><em>🌩 Deleted (Currently not active)</em></p>
+        <p>{{ site.emoji.created }} Created</p>
+        <p>{{ site.emoji.updated }} Updated</p>
+        <p style="color: grey;"><em>{{ site.emoji.deleted }} Deleted (Currently not active)</em></p>
       </div>
       <p>
         {{ content }}
