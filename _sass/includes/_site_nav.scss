@@ -39,6 +39,8 @@
   }
 }
 
+// site-nav components
+
 .dropdown {
   border: none;
   background: none; 
@@ -55,23 +57,21 @@
 
 .dropdown-btn {
   @include fs-6;
-  display: flex;
   cursor: pointer;
   user-select: none;
   padding: $sp-2;
   border: none;
-  background: none; 
+  background: none;
   display: table-cell;
   vertical-align: middle;
   filter: drop-shadow(0 0 0.8mm $drop-shadow-blue);
 }
 
-.dropbtn {
+.site-nav-btn {
   @include fs-6;
   cursor: pointer;
   user-select: none;
   padding: $sp-2;
-  transition: all .2s ease-in-out;
   border: none;
   background: none;
   display: table-cell;
@@ -81,7 +81,22 @@
   &:hover {
     transform: scale(1.5); 
   }
+
+  input {
+    /* Hide the browser's default checkbox */
+    opacity: 0;
+    height: 0;
+    width: 0;
+  }
 }
+
+// home btn
+
+#home-btn {
+  filter: drop-shadow(0 0 0.8mm $drop-shadow-green);
+}
+
+// page btns
 
 #search-dropbtn {
   filter: drop-shadow(0 0 0.8mm $drop-shadow-brown);
@@ -99,8 +114,22 @@
   filter: drop-shadow(0 0 0.8mm $drop-shadow-blue);
 }
 
-#home-dropbtn {
-  filter: drop-shadow(0 0 0.8mm $drop-shadow-green);
+// site-nav btns
+
+#graph-type-emoji-span {
+  filter: drop-shadow(0 0 0.7mm $drop-shadow-green);
+}
+
+#nav-type-emoji-span {
+  filter: drop-shadow(0 0 0.7mm $drop-shadow-orange);
+}
+
+#theme-colors-emoji-span {
+  filter: drop-shadow(0 0 0.7mm $drop-shadow-yellow);
+}
+
+#entry-head-emoji-span {  
+  filter: drop-shadow(0 0 0.7mm $drop-shadow-brown);  
 }
 
 .site-nav-btn {
@@ -117,10 +146,6 @@
   
   &:hover {
     transform: scale(1.5); 
-  }
-
-  #visited-emoji-span {
-    filter: drop-shadow(0 0 0.8mm $drop-shadow-orange);
   }
 }
 

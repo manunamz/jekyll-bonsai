@@ -1,8 +1,11 @@
 <nav id="site-nav" class="site-nav" role="navigation" aria-label="main">
   <header>
+    <a id="home-btn" class="site-nav-btn" href="{{ site.baseurl }}/" title="Go Home">
+      {{ site.emoji.home }}
+    </a>
     <span class="dropdown">
       <button id="pages-btn" class="dropdown-btn">
-        <span id="pages-emoji-span">
+        <span id="pages-emoji-span" title="Page Navigation">
           {{ site.emoji.pages }}
         </span>
       </button>
@@ -10,44 +13,50 @@
         <!-- using '.first' to test if any results were found -->
         {% assign search_page = site.pages | where: "name", "search.md" %}
         {% if search_page.first %}
-          <span id="search-dropbtn" class="site-nav-btn" href="{{ site.baseurl }}/search" title="Search">
+          <a id="search-dropbtn" class="site-nav-btn drop-1" href="{{ site.baseurl }}/search" title="Search">
             {{ site.emoji.search }}
-          </span>
+          </a>
         {% endif %}
         {% if site.states %}
-          <a id="stat-tags-dropbtn" class="dropbtn drop-1" href="{{ site.baseurl }}/stat/tags" title="Go To Status Tags">
+          <a id="stat-tags-dropbtn" class="site-nav-btn drop-1" href="{{ site.baseurl }}/stat/tags" title="Go To Status Tags">
             {{ site.emoji.stat_tags }}
           </a>
         {% endif %}
         {% assign posts_page = site.pages | where: "name", "posts.md" %}
         {% if posts_page.first %}
-          <a id="posts-dropbtn" class="dropbtn drop-2" href="{{ site.baseurl }}/posts" title="Go To Posts">
+          <a id="posts-dropbtn" class="site-nav-btn drop-2" href="{{ site.baseurl }}/posts" title="Go To Posts">
             {{ site.emoji.posts }}
           </a>
         {% endif %}
         {% assign recent_page = site.pages | where: "name", "recent.md" %}
         {% if recent_page.first %}
-          <a id="recent-dropbtn" class="dropbtn drop-3" href="{{ site.baseurl }}/recent" title="Go To Recent Changes">
+          <a id="recent-dropbtn" class="site-nav-btn drop-3" href="{{ site.baseurl }}/recent" title="Go To Recent Changes">
           {{ site.emoji.recent }}
           </a>
         {% endif %}
-        <a id="home-dropbtn" class="dropbtn drop-4" href="{{ site.baseurl }}/" title="Go Home">
-          {{ site.emoji.home }}
-        </a>
       </div>
     </span>
-    <label class="btn-selector">
-      <input id="theme-colors-checkbox" type="checkbox" checked="checked">
-      <span id="theme-colors-emoji-span" title="Toggle Colors"></span>
-    </label>
-    <label class="btn-selector">
-      <input id="nav-type-checkbox" type="checkbox" checked="checked">
-      <span id="nav-type-emoji-span" title="Toggle Nav Type"></span>
-    </label>
-    <label class="btn-selector">
-      <input id="graph-type-checkbox" type="checkbox" checked="checked">
-      <span id="graph-type-emoji-span" title="Toggle Graph Type"></span>
-    </label>
+    <span class="dropdown">
+      <button id="site-nav-btn" class="dropdown-btn">
+        <span id="site-nav-emoji-span" title="Site-Nav Toggles">
+          {{ site.emoji.site_nav }}
+        </span>
+      </button>
+      <div class="dropdown-content">
+        <label class="site-nav-btn drop-1">
+          <input id="nav-type-checkbox" type="checkbox" checked="checked">
+          <span id="nav-type-emoji-span" title="Toggle Nav Type"></span>
+        </label>
+        <label class="site-nav-btn drop-2">
+          <input id="graph-type-checkbox" type="checkbox" checked="checked">
+          <span id="graph-type-emoji-span" title="Toggle Graph Type"></span>
+        </label>
+        <label class="site-nav-btn drop-3">
+          <input id="theme-colors-checkbox" type="checkbox" checked="checked">
+          <span id="theme-colors-emoji-span" title="Toggle Colors"></span>
+        </label>
+      </div>
+    </span>
   </header>
 
   <nav id="visited-nav" class="visited-nav"></nav>
