@@ -2,6 +2,24 @@
 layout: default
 ---
 
+<!-- capture linked_post info -->
+{% capture linked_posts %}
+  {% assign num_linked_posts = 0 %}
+  <div class="entry-foot-nav-section">
+    <ul class="entry-foot-nav-list">
+      {% for post in site.posts %}
+        {% if post.tags contains page.namespace %}
+          {% assign num_linked_posts = num_linked_posts | plus: 1 %}
+          <li class="entry-foot-nav-list-item">
+            <span class="small-descr">{{ site.emoji.post }}</span>
+            <a class="wiki-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+{% endcapture %}
+
 <div id="entry">
 
   <!-- breadcrumb ancestry path -->
@@ -31,7 +49,6 @@ layout: default
   </header>
 
   <div class="entry-body">
-
     <h1>{{ page.title }}</h1>
     <p class="small-descr">
       {% assign stat_tags = page.tags | stat_tags %}
@@ -40,15 +57,11 @@ layout: default
       {% endfor %}
       <span>Last Tended: {{ page.updated | date: "%Y-%m-%d" }}</span>
     </p>
-
     {% include entry-attrs.html %}
-
     {% if page.path == site.root_entry_path %}
       <img id="home-bonsai" style="float: right; padding: 12px;" height="35%" width="35%">
     {% endif %}
-    
     {{ content }}
-
   </div>
 
   {% if site.social.enabled %}
@@ -108,21 +121,11 @@ layout: default
           </span>
         </label>
       </div>
-      <nav id="entry-foot-posts-nav" class="entry-foot-nav" role="navigation" aria-label="">
-        {% assign semantic_tagged_posts = page.namespace | sem_tag_posts %}
-        {% if semantic_tagged_posts.size == 0 %}
+      <nav id="entry-foot-posts-nav" class="entry-foot-nav" role="navigation" aria-label="">      
+        {% if num_linked_posts == 0 %}
           <p class="small-descr">No linked posts.</p>
         {% else %}
-          <div class="entry-foot-nav-section">
-            <ul class="entry-foot-nav-list">
-              {% for post in semantic_tagged_posts %}
-                <li class="entry-foot-nav-list-item">
-                  <span class="small-descr">{{ site.emoji.post }}</span>
-                  <a class="wiki-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-                </li>
-              {% endfor %}
-            </ul>
-          </div>
+          {{ linked_posts }}
         {% endif %}
       </nav>
     </div>  
