@@ -108,7 +108,6 @@ namespaces:
 wikilinks:
   # enabled: true
   exclude:
-    - "pages"
     - "states"
 d3_graph_data:
   # enabled: true

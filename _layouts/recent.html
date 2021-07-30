@@ -4,17 +4,16 @@ layout: default
 <div id="recent">
 
   <div>
-    <h1>🌦 Recent Weather</h1>
+    <h1>🌦 {{ page.title }}</h1>
     <div class="leader">
       <div class="infobox">
-        <p class="title">Weather Statuses</p>
+        <p class="title">Key</p>
         <p>🌤 Created</p>
         <p>🌧 Updated</p>
         <p style="color: grey;"><em>🌩 Deleted (Currently not active)</em></p>
       </div>
       <p>
-        Instead of a 'forecast' looking into the future, these are 'backcasts' peering into recent history. 
-        It's featured posts, but version controlled. It's a feed, without infinite scroll. It's releases, with a chance of rain.
+        {{ content }}
       </p>
     </div>
   </div>

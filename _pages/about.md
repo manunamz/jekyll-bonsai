@@ -1,7 +1,7 @@
 ---
-layout: default
+layout: about
 title: About
 permalink: /about/
 ---
 
-This is a test -- head to [[root]].
+[[root]] is {{ site.description | downcase }}
