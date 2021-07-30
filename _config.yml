@@ -118,6 +118,7 @@ d3_graph_data:
     - "posts"
     - "states"
 bonsai_util:
+  # id_format uses 'alpha' and 'size' for nanoid: https://github.com/radeno/nanoid.rb#options
   id_format:
     alpha: 1234567890abcdef
     size: 10
