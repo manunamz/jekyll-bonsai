@@ -29,12 +29,12 @@
     filter: drop-shadow(0 0 0.7mm $drop-shadow-orange);
   }
 
-  #entry-head-emoji-span {  
-    filter: drop-shadow(0 0 0.7mm $drop-shadow-brown);  
-  }
-
   #theme-colors-emoji-span {
     filter: drop-shadow(0 0 0.7mm $drop-shadow-yellow);
+  }
+
+  #entry-head-emoji-span {  
+    filter: drop-shadow(0 0 0.7mm $drop-shadow-brown);  
   }
 }
 

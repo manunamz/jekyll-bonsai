@@ -5,21 +5,23 @@
         <span id="pages-emoji-span">🧭</span>
       </button>
       <div class="dropdown-content">
-        <!-- <button id="search-btn" class="site-nav-btn" title="Search">
-          <span id="search-emoji-span">🔍</span>
-        </button> -->
-        <button id="posts-btn" class="dropbtn drop-2" title="Go To Posts">
-          <span id="posts-emoji-span">📓</span>
-        </button>
-        <button id="stat-tags-btn" class="dropbtn drop-1" title="Go To Status Tags">
-          <span id="stat-tags-emoji-span">🔖</span>
-        </button>
-        <button id="recent-btn" class="dropbtn drop-3" title="Go To Recent Changes">
-          <span id="recent-emoji-span">🌦</span>
-        </button>
-        <button id="home-btn" class="dropbtn drop-4" title="Go Home">
-          <span id="home-emoji-span">🛖</span>
-        </button>
+        <!-- using '.first' to test if any results were found -->
+        {% assign search_page = site.pages | where: "name", "search.md" %}
+        {% if search_page.first %}
+          <span id="search-dropbtn" class="site-nav-btn" href="{{ site.baseurl }}/search" title="Search">🔍</span>
+        {% endif %}
+        {% if site.states %}
+          <a id="stat-tags-dropbtn" class="dropbtn drop-1" href="{{ site.baseurl }}/stat/tags" title="Go To Status Tags">🔖</a>
+        {% endif %}
+        {% assign posts_page = site.pages | where: "name", "posts.md" %}
+        {% if posts_page.first %}
+          <a id="posts-dropbtn" class="dropbtn drop-2" href="{{ site.baseurl }}/posts" title="Go To Posts">📓</a>
+        {% endif %}
+        {% assign recent_page = site.pages | where: "name", "recent.md" %}
+        {% if recent_page.first %}
+          <a id="recent-dropbtn" class="dropbtn drop-3" href="{{ site.baseurl }}/recent" title="Go To Recent Changes">🌦</a>
+        {% endif %}
+        <a id="home-dropbtn" class="dropbtn drop-4" href="{{ site.baseurl }}/" title="Go Home">🏕</a>
       </div>
     </span>
     <label class="btn-selector">

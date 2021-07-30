@@ -73,7 +73,7 @@
   padding: $sp-2;
   transition: all .2s ease-in-out;
   border: none;
-  background: none; 
+  background: none;
   display: table-cell;
   vertical-align: middle;
   transition: all .2s ease-in-out;
@@ -81,18 +81,26 @@
   &:hover {
     transform: scale(1.5); 
   }
+}
 
-  #posts-emoji-span {
-    filter: drop-shadow(0 0 0.8mm $drop-shadow-purple);
-  }
+#search-dropbtn {
+  filter: drop-shadow(0 0 0.8mm $drop-shadow-brown);
+}
 
-  #recent-emoji-span {
-    filter: drop-shadow(0 0 0.8mm $drop-shadow-blue);
-  }
+#stat-tags-dropbtn {
+  filter: drop-shadow(0 0 0.8mm $drop-shadow-brown);
+}
 
-  #stat-tags-emoji-span {
-    filter: drop-shadow(0 0 0.8mm $drop-shadow-brown);
-  }
+#posts-dropbtn {
+  filter: drop-shadow(0 0 0.8mm $drop-shadow-purple);
+}
+
+#recent-dropbtn {
+  filter: drop-shadow(0 0 0.8mm $drop-shadow-blue);
+}
+
+#home-dropbtn {
+  filter: drop-shadow(0 0 0.8mm $drop-shadow-green);
 }
 
 .site-nav-btn {
@@ -109,10 +117,6 @@
   
   &:hover {
     transform: scale(1.5); 
-  }
-
-  #search-emoji-span {
-    filter: drop-shadow(0 0 0.8mm $drop-shadow-brown);
   }
 
   #visited-emoji-span {

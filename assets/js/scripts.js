@@ -26,26 +26,9 @@ import SiteNav from './site-nav.js';
  //
 function initListeners () {
   // open external links in new window; wiki-links in current window.
-  document.querySelectorAll("a:not(.wiki-link):not(.wiki-link-embed-link):not(.sem-tag):not(.stat-tag):not(.anchor-heading):not(.footnote):not(.reversefootnote)").forEach(setupLinkOpen);
+  document.querySelectorAll("a:not(.dropbtn):not(.wiki-link):not(.wiki-link-embed-link):not(.sem-tag):not(.stat-tag):not(.anchor-heading):not(.footnote):not(.reversefootnote)").forEach(setupLinkOpen);
   // init hover-preview.html listeners.
-  document.querySelectorAll('{{ include.wrapperQuerySelector }} a:not(.wiki-link-embed-link):not(.stat-tag):not(.anchor-heading)').forEach(setupListeners);
-
-  document.getElementById('stat-tags-btn')
-    .addEventListener('click', function(event) {
-      goTo('{{ site.baseurl }}/stat/tags');
-    }, false);
-  document.getElementById('posts-btn')
-    .addEventListener('click', function(event) {
-      goTo('{{ site.baseurl }}/posts');
-    }, false);
-  document.getElementById('recent-btn')
-    .addEventListener('click', function(event) {
-      goTo('{{ site.baseurl }}/recent');
-    }, false);
-  document.getElementById('home-btn')
-    .addEventListener('click', function(event) {
-      goTo('{{ site.baseurl }}/');
-    }, false);
+  document.querySelectorAll('{{ include.wrapperQuerySelector }} a:not(.dropbtn):not(.wiki-link-embed-link):not(.stat-tag):not(.anchor-heading)').forEach(setupListeners);
 
   document.getElementById('wiki-link-nav-checkbox')
     .addEventListener('click', function(event) {

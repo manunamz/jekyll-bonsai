@@ -40,7 +40,11 @@ layout: default
           </div>
         {% endfor %}
       </div>
-      <p class="column-foot">For more, see <a class="wiki-link" href="{{ '/about/' | relative_url }}">about</a></p>
+      {% assign about_page = site.pages | where: "name", "about.md" %}
+      <!-- using '.first' to test if any results were found -->
+      {% if about_page.first %}
+        <p class="column-foot">For more, see <a class="wiki-link" href="{{ '/about/' | relative_url }}">about</a></p>
+      {% endif %}
     </div>
 
     <div class="column">
@@ -73,7 +77,11 @@ layout: default
           </div>
         {% endfor %}
       </div>
-      <p class="column-foot">For more updates, check the <a class="wiki-link" href="{{ '/recent/' | relative_url }}">weather 🌦</a></p>
+      {% assign recent_page = site.pages | where: "name", "recent.md" %}
+      <!-- using '.first' to test if any results were found -->
+      {% if recent_page.first %}
+        <p class="column-foot">For more updates, check the <a class="wiki-link" href="{{ '/recent/' | relative_url }}">weather 🌦</a></p>
+      {% endif %}
     </div>
     
   </div>
