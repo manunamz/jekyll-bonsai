@@ -2,24 +2,6 @@
 layout: default
 ---
 
-<!-- capture linked_post info -->
-{% capture linked_posts %}
-  {% assign num_linked_posts = 0 %}
-  <div class="entry-foot-nav-section">
-    <ul class="entry-foot-nav-list">
-      {% for post in site.posts %}
-        {% if post.tags contains page.namespace %}
-          {% assign num_linked_posts = num_linked_posts | plus: 1 %}
-          <li class="entry-foot-nav-list-item">
-            <span class="small-descr">{{ site.emoji.post }}</span>
-            <a class="wiki-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-          </li>
-        {% endif %}
-      {% endfor %}
-    </ul>
-  </div>
-{% endcapture %}
-
 <div id="entry">
 
   <!-- breadcrumb ancestry path -->
@@ -122,6 +104,24 @@ layout: default
         </label>
       </div>
       <nav id="entry-foot-posts-nav" class="entry-foot-nav" role="navigation" aria-label="">      
+        <!-- capture linked_post here -->
+        {% capture linked_posts %}
+          {% assign num_linked_posts = 0 %}
+          <div class="entry-foot-nav-section">
+            <ul class="entry-foot-nav-list">
+              {% for post in site.posts %}
+                {% if post.tags contains page.namespace %}
+                  {% assign num_linked_posts = num_linked_posts | plus: 1 %}
+                  <li class="entry-foot-nav-list-item">
+                    <span class="small-descr">{{ site.emoji.post }}</span>
+                    <a class="wiki-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                  </li>
+                {% endif %}
+              {% endfor %}
+            </ul>
+          </div>
+        {% endcapture %}
+        <!-- render linked_posts here (the if statement is why we have to do this) -->
         {% if num_linked_posts == 0 %}
           <p class="small-descr">No linked posts.</p>
         {% else %}
