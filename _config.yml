@@ -189,6 +189,12 @@ recent_cap: 10
 entry_head_status: "open"
 entry_foot_links_status: "open"
 entry_foot_posts_status: "open"
+notable:
+  - digital-garden.bonsai.md
+  - digital-garden.md
+  - features.notes.md
+  - features.site-nav.graph.md
+  - people.md
 social:
   enabled: true
   connect:
