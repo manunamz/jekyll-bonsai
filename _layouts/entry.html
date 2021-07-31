@@ -37,7 +37,7 @@ layout: default
       {% for stat_tag in stat_tags %}
         <a class="stat-tag" href="{{ stat_tag.url | relative_url }}">{{ stat_tag.emoji }}</a>
       {% endfor %}
-      <span>Last Tended: {{ page.updated | date: "%Y-%m-%d" }}</span>
+      <span>Last Tended: {{ page.updated | date: site.date_format }}</span>
     </p>
     {% include entry-attrs.html %}
     {% if page.path == site.root_entry_path %}

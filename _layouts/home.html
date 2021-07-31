@@ -27,7 +27,7 @@ layout: default
               {% endfor %}
               <a class="wiki-link" href="{{ doc.url | relative_url }}"> {{ doc.title }}</a>
             </div>
-            <span class="small-descr">{{ doc.updated | date: "%Y-%m-%d" }}</span>
+            <span class="small-descr">{{ doc.updated | date: site.date_format }}</span>
           </div>
         {% endfor %}
       </div>
@@ -50,7 +50,7 @@ layout: default
               {% endfor %}
               <a class="wiki-link" href="{{ doc.url | relative_url }}"> {{ doc.title }}</a>
             </div>
-            <span class="small-descr">{{ doc.updated | date: "%Y-%m-%d" }}</span>
+            <span class="small-descr">{{ doc.updated | date: site.date_format }}</span>
           </div>
         {% endfor %}
       </div>

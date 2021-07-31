@@ -131,6 +131,7 @@ bonsai_util:
 # 
 # jekyll-bonsai configs
 # 
+date_format: "%Y-%m-%d"
 emoji:
   # 
   # the following are emoji buttons
