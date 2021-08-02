@@ -34,7 +34,7 @@ layout: default
   <!-- individual states -->
   {% else %}
     <!-- page == tag (from tag-nav) -->
-    {% assign entries_w_stat = site.entries | where: 'tags', page.emoji %}
+    {% assign entries_w_stat = site.entries | where: 'status', page.emoji %}
     <h1>{{ page.emoji }} {{ page.title }}</h1>
     {{ content }}
     <p class="small-descr">
