@@ -1,7 +1,7 @@
 <!-- <table class="infobox" style="width: 40%; float: right;">
   <tbody>
     <th style="width: 100%;">{{ page.title }}</th>
-    {% assign attributes = page.attributes | doc_type: "sem_tags" %}
+    {% assign attributes = page.attributes | doc_type: "entries" %}
     {% for attr in attributes %}
       <tr>
         <th>{{ attr.type | capitalize }}</th>
@@ -11,7 +11,7 @@
   </tbody>
 </table> -->
 
-{% assign attributes = page.attributes | doc_type: "sem_tags" %}
+{% assign attributes = page.attributes | doc_type: "entries" %}
 {% if attributes.size > 0 %}
   <div class="infobox" style="padding: 1em; width: 40%; float: right;">
     <p class="title">Attributes</p>
