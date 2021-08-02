@@ -16,9 +16,16 @@ layout: default
   {{ content }}
 
   <p>
-    {% assign sem_tags = page.tags | sem_tags %}
-    {% for sem_tag in sem_tags %}
-      <a class="sem-tag" href="{{ sem_tag.url | relative_url }}">{{ sem_tag.tag }}</a>
+    {% for sem_tag in page.tags %}
+      <!-- build path -->
+      {% assign entry_collection = site.collections | where: "label", "entries" | first %}
+      {% assign entry_collection_path = entry_collection.relative_directory | append: "/" %}
+      {% assign entry_path = sem_tag | prepend: entry_collection_path | append: ".md" %}
+      <!-- extract corresponding entry -->
+      {% assign entry = site.entries | where: "path", entry_path | first %}
+      <a class="sem-tag" href="{{ entry.url | relative_url }}">{{ entry.title }}</a>
+    {% else %}
+      <!-- ...don't render anything -->
     {% endfor %}
   </p>
 
