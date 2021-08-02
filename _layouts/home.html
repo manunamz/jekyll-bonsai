@@ -21,9 +21,9 @@ layout: default
           {% assign doc = site.documents | find_exp: "item", "item.path contains notable" %}
           <div class="column-item">
             <div class="column-name">
-              {% assign stat_tags = doc.tags | stat_tags %}
-              {% for stat_tag in stat_tags %}
-                <a class="stat-tag" href="{{ stat_tag.url | relative_url }}">{{ stat_tag.emoji }}</a>
+              {% for stat_tag in page.status %}
+                {% assign state = site.states | where: "emoji", stat_tag %}
+                <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
               {% endfor %}
               <a class="wiki-link" href="{{ doc.url | relative_url }}"> {{ doc.title }}</a>
             </div>
@@ -44,9 +44,9 @@ layout: default
         {% for doc in site.documents limit:5 %}
           <div class="column-item">
             <div class="column-name">
-              {% assign stat_tags = doc.tags | stat_tags %}
-              {% for stat_tag in stat_tags %}
-                <a class="stat-tag" href="{{ stat_tag.url | relative_url }}">{{ stat_tag.emoji }}</a>
+              {% for stat_tag in page.status %}
+                {% assign state = site.states | where: "emoji", stat_tag %}
+                <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
               {% endfor %}
               <a class="wiki-link" href="{{ doc.url | relative_url }}"> {{ doc.title }}</a>
             </div>

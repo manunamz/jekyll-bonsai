@@ -33,9 +33,9 @@ layout: default
   <div class="entry-body">
     <h1>{{ page.title }}</h1>
     <p class="small-descr">
-      {% assign stat_tags = page.tags | stat_tags %}
-      {% for stat_tag in stat_tags %}
-        <a class="stat-tag" href="{{ stat_tag.url | relative_url }}">{{ stat_tag.emoji }}</a>
+      {% for stat_tag in page.status %}
+        {% assign state = site.states | where: "emoji", stat_tag %}
+        <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
       {% endfor %}
       <span>Last Tended: {{ page.updated | date: site.date_format }}</span>
     </p>
