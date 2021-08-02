@@ -6,8 +6,8 @@ desc: ''
 updated: 1620755157
 created: 1620755157
 tags: 
-  - 🥭
   - digital-garden
+status: 🥭
 ---
 
 > Nothing vast enters the life of mortals without a curse.

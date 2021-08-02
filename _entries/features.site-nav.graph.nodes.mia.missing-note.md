@@ -4,7 +4,7 @@ title: Missing Note
 desc: ''
 updated: 1623851513018
 created: 1620537158307
-tags: "\U0001F331"
+status: "\U0001F331"
 ---
 The [[features.site-nav.graph]] and [[features.notes|note-local]] navigation will properly handle missing links and notes:
 

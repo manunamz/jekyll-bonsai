@@ -4,7 +4,7 @@ title: Type
 desc: ''
 updated: 1623851369547
 created: 1620587309685
-tags: "\U0001F33F"
+status: "\U0001F33F"
 ---
 As [[features.site-nav.graph.links.wikilinks]], networked note-taking apps, and graphs flower in popularity, a debate has also sparked between networks vs hierarchies. 
 

@@ -2,9 +2,9 @@
 id: e170d5e122
 title: People
 desc: ''
-updated: 1620685947743
+updated: 1627576254836
 created: 1620685947743
-tags: 🎋
+status: 🎋
 ---
 
 This template aims to be as humane and people-friendly as possible.

@@ -4,7 +4,7 @@ title: Nodes
 desc: ''
 updated: 1622911529518
 created: 1622911483705
-tags: 🌿
+status: 🌿
 ---
 
 The graph supports several kinds of nodes.

@@ -4,7 +4,7 @@ title: Tree
 desc: ''
 updated: 1620413062589
 created: 1620413062589
-tags: "\U0001F33F"
+status: "\U0001F33F"
 ---
 🌳 The tree graph[^ha] is built from [[features.site-nav.graph.links.namespacing]] from each note. 
 

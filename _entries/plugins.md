@@ -4,7 +4,7 @@ title: Plugins
 desc: ''
 updated: 1620424682705
 created: 1620424682705
-tags: 🎋
+status: 🎋
 ---
 
 See children for jekyll plugins used in this template.

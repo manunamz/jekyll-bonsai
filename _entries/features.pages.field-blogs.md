@@ -4,7 +4,7 @@ title: Field Blogs
 desc: ''
 updated: 1623852679953
 created: 1622846347979
-tags: 🌿
+status: 🌿
 ---
 
 Blogs are kind of like [[digital-garden.field-logs]]. They're posts

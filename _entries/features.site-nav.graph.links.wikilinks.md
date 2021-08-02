@@ -4,7 +4,7 @@ title: Wikilinks
 desc: ''
 updated: 1623851278498
 created: 1620408415248
-tags: "\U0001F38B"
+status: "\U0001F38B"
 ---
 
 \[\[Wikilinks]][>names] are are crucial part of the world of [[digital-garden|digital gardening]]. They are the basic building block of the interlinking accomplished in many gardens, including this one.

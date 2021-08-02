@@ -4,7 +4,7 @@ title: Tags
 desc: ''
 updated: 1622903483325
 created: 1620491278829
-tags: "\U0001F33F"
+status: "\U0001F33F"
 ---
 Tags in this template are used to represents the status of a 
 [note's maturity](https://notes.andymatuschak.org/Taxonomy_of_note_types) and perhaps its

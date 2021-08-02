@@ -4,7 +4,7 @@ title: Note Body
 desc: ''
 updated: 1623851249517
 created: 1620505728158
-tags: "\U0001F33F"
+status: "\U0001F33F"
 ---
 The note body displays the note's title, [[digital-garden.plants|plant]] [[features.tags|tag]], and the time the note was last updated.
 

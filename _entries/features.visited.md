@@ -4,7 +4,7 @@ title: Visited
 desc: ''
 updated: 1624902551630
 created: 1622905430066
-tags: 🌿
+status: 🌿
 ---
 
 As [[people.visitors]] step through the site, previously visited pages are saved[>no-worries]. Those notes are then visible in the [[features.site-nav.graph.nodes.visited-status|graph]] and [[features.site-nav.visited]] site-nav for the visitor's convenience.

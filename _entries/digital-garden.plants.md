@@ -4,7 +4,7 @@ title: Plants
 desc: ''
 updated: 1626296774584
 created: 1620493511415
-tags: "\U0001F33F"
+status: "\U0001F33F"
 ---
 
 Plant types are defined with [[features.tags]]. You can click the 🔖 for more detailed information at the [[features.pages.status-tags]] page. 

@@ -4,7 +4,7 @@ title: Feedback
 desc: ''
 updated: 1620695624628
 created: 1620695624628
-tags: 🌸
+status: 🌸
 ---
 
-Found a 🐛? Want to see something new 🪴? [Let me know.](https://github.com/manunamz/jekyll-bonsai)
+Found a 🐛? Want to see something new 🪴? [Let me know.](https://github.com/short25h0r7/jekyll-bonsai)

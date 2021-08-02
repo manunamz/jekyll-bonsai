@@ -4,7 +4,7 @@ title: Namespacing
 desc: ''
 updated: 1622910329431
 created: 1620433438038
-tags: "\U0001F38B"
+status: "\U0001F38B"
 ---
 Namespaces are defined by '.' delimeters in [[features.notes]]' filenames. For example, the breadcrumb [[features.notes.note-head]] above is formed by the current note's filename, which is `features.site-nav.graph.links.namespacing.md`. 
 

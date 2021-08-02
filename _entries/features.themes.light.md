@@ -4,7 +4,7 @@ title: Light
 desc: ''
 updated: 1620503495243
 created: 1620503495243
-tags: 🌱
+status: 🌱
 ---
 
 ☀️ A nature-inspired light theme.

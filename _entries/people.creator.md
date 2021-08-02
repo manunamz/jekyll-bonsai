@@ -4,7 +4,7 @@ title: Creator
 desc: ''
 updated: 1623851566991
 created: 1620681119055
-tags: "\U0001F33F"
+status: "\U0001F33F"
 ---
 One of the core principles driving this template is that people should be in control of their own content: They own it and have the final say on what is done with it. 
 

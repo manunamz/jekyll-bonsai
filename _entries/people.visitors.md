@@ -4,7 +4,7 @@ title: Visitors
 desc: ''
 updated: 1622903588995
 created: 1620493085857
-tags: 🌿
+status: 🌿
 ---
 
 You know, people. Humans ~~🤖~~...Hopefully ☺️. Not just "users". 

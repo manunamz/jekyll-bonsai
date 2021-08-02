@@ -4,7 +4,7 @@ title: Stream
 desc: ''
 updated: 1624739035593
 created: 1622901056839
-tags: 🌿
+status: 🌿
 ---
 
 🌊 [[features.notes.note-foot.webmentions]] are represented as the stream: It's a flow of social interaction that, if one is not careful, can easily get swept up in. 

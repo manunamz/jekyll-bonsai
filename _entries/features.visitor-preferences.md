@@ -4,7 +4,7 @@ title: Visitor Preferences
 desc: ''
 updated: 1623851544976
 created: 1620414554904
-tags: "\U0001F33F"
+status: "\U0001F33F"
 ---
 Some navigational and display preferences are saved in the [[people.visitors]]' browser to keep the experience consistent across pages[>no-worries]:
 

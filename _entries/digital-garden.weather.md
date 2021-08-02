@@ -4,7 +4,7 @@ title: Weather
 desc: ''
 updated: 1623851207617
 created: 1620492879316
-tags: 🌿
+status: 🌿
 ---
 
 🌦 The [[features.pages.recent]] page gives [[people.visitors]] a sense of what [[features.notes]] have changed[>ha] recently. 

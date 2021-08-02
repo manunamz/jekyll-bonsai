@@ -4,7 +4,7 @@ title: Sidenotes
 desc: ''
 updated: 1623870486255
 created: 1620408418339
-tags: "\U0001F331"
+status: "\U0001F331"
 ---
 Special syntax for sidenotes is supported. Their syntax is reminiscent of traditional markdown footnotes. In markdown files, they look like this (without spaces around the left/right carrots):
 

@@ -4,7 +4,7 @@ title: Bonsai
 desc: ''
 updated: 1624991154120
 created: 1620493859775
-tags: "\U0001F38B"
+status: "\U0001F38B"
 ---
 
 Bonsai literally means "tray planting". It is the art of recreating a realistic picture of nature[>i] in miniaturized form. From the perspective of a site-[[people.creator]], they are seeding and pruning a `jekyll-bonsai` in a small [[features.site-nav.graph|tray-like]] space. The finer details are described well by the wikipedia article on bonsai:
