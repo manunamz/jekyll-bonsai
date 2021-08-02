@@ -6,7 +6,8 @@ layout: default
   
   <div class="lead">
     <img id="home-bonsai" height="45%" width="45%">
-    <h1><a class="wiki-link" href="{{ '/entry/e4dc466bc6/' | relative_url }}">Jekyll-Bonsai</a></h3>
+    {% assign root = site.entries | find_exp: "item", "item.path == site.root_entry_path" %}
+    <h1><a class="wiki-link" href="{{ root.url | relative_url }}">Jekyll-Bonsai</a></h3>
     <p>
       {{ content }}
     </p>
