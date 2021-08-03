@@ -1,5 +1,5 @@
 ---
-title: Tea Tag
+title: Tea
 emoji: 🍵
 emojipedia: 'https://emojipedia.org/teacup-without-handle/'
 ---

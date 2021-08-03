@@ -1,5 +1,5 @@
 ---
-title: Bloom Tag
+title: Bloom
 emoji: 🌸
 emojipedia: 'https://emojipedia.org/cherry-blossom/'
 ---

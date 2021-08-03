@@ -1,5 +1,5 @@
 ---
-title: Pot-Bamboo Tag
+title: Pot-Bamboo
 emoji: 🎍
 emojipedia: 'https://emojipedia.org/pine-decoration/'
 ---
