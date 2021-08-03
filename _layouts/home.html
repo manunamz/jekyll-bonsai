@@ -42,7 +42,9 @@ layout: default
     <div class="column">
       <h3 class="column-heading">Recent</h3>
       <div class="column-content">
-        {% for doc in site.documents limit:5 %}
+        {% assign entries_n_posts = site.entries | concat: site.posts %}
+        {% assign recent_docs = entries_n_posts | sort: 'date' | reverse %}
+        {% for doc in recent_docs limit:5 %}
           <div class="column-item">
             <div class="column-name">
               {% for stat_tag in doc.status %}
