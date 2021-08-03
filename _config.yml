@@ -170,6 +170,8 @@ emoji:
   created: 🌤
   updated: 🌧
   deleted: 🌩
+  # 404
+  missing: 🍂
 
 logo-light: "/assets/img/bonsai-light.svg"
 logo-dark: "/assets/img/bonsai-dark.svg"
