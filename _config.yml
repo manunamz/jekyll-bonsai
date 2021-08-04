@@ -193,7 +193,7 @@ entry_foot_posts_status: "open"
 notable:
   - digital-garden.bonsai.md
   - digital-garden.md
-  - features.notes.md
+  - features.doc-type.entry.md
   - features.site-nav.graph.md
   - people.md
 social:

@@ -1,10 +1,12 @@
 ---
-id: 4605176572
+id: 460517a572
 title: Features
 desc: ''
-updated: 1622910680489
+updated: 1627997104927
 created: 1620408409799
 status: 🎋
 ---
 
-See child notes for available features.
+This theme provides some extra features on top of the jekyll blogging engine, most notably with the [[plugins.jekyll-namespaces]] and [[plugins.jekyll-wikilinks]] plugins.
+
+See child nodes for available features.
