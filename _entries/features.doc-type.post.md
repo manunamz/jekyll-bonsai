@@ -7,4 +7,4 @@ created: 1627994847071
 status: 🎋
 ---
 
-Posts are the typical jekyll [post](https://jekyllrb.com/docs/posts/) meant for ponderings, wonderings, and feel like [[digital-garden.field-logs]].
+Posts are the typical jekyll [post](https://jekyllrb.com/docs/posts/) meant for ponderings and wonderings. They are typically represented by [[digital-garden.fruit]].

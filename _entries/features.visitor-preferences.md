@@ -22,6 +22,6 @@ Some navigational and display preferences are saved in the [[people.visitors]]' 
     - 🛤 [[features.doc-type.entry.head]]
   - Hide/Show the [[features.doc-type.entry.foot]]'s: 
     - 🚏 [[features.doc-type.entry.foot.entries]]
-    - 📓 [[features.doc-type.entry.foot.posts]]
+    - 🧺 [[features.doc-type.entry.foot.posts]]
 - Delete [[features.visited]] data:
   - 🧹 [[features.visited.delete-data]]
