@@ -1,6 +1,6 @@
 <nav id="site-nav" class="site-nav" role="navigation" aria-label="main">
   <header>
-    <a id="home-btn" class="site-nav-btn" href="{{ site.baseurl }}/" title="Go Home">
+    <a id="home-btn" class="site-nav-btn" href="{{ '/' | relative_url }}" title="Go Home">
       {{ site.emoji.home }}
     </a>
     <span class="dropdown">
@@ -13,24 +13,25 @@
         <!-- using '.first' to test if any results were found -->
         {% assign search_page = site.pages | where: "name", "search.md" %}
         {% if search_page.first %}
-          <a id="search-dropbtn" class="site-nav-btn drop-1" href="{{ site.baseurl }}/search" title="Search">
+          <a id="search-dropbtn" class="site-nav-btn drop-1" href="{{ '/search' | relative_url }}" title="Search">
             {{ site.emoji.search }}
           </a>
         {% endif %}
         {% if site.states %}
-          <a id="stat-tags-dropbtn" class="site-nav-btn drop-1" href="{{ site.baseurl }}/stat/tags" title="Go To Status Tags">
+          {% assign root_state = site.states | find_exp: "item", "item.path == site.root_state_path" %}
+          <a id="stat-tags-dropbtn" class="site-nav-btn drop-1" href="{{ root_state.url | relative_url }}" title="Go To States">
             {{ site.emoji.stat_tags }}
           </a>
         {% endif %}
         {% assign posts_page = site.pages | where: "name", "posts.md" %}
         {% if posts_page.first %}
-          <a id="posts-dropbtn" class="site-nav-btn drop-2" href="{{ site.baseurl }}/posts" title="Go To Posts">
+          <a id="posts-dropbtn" class="site-nav-btn drop-2" href="{{ '/posts' |relative_url }}" title="Go To Posts">
             {{ site.emoji.posts }}
           </a>
         {% endif %}
         {% assign recent_page = site.pages | where: "name", "recent.md" %}
         {% if recent_page.first %}
-          <a id="recent-dropbtn" class="site-nav-btn drop-3" href="{{ site.baseurl }}/recent" title="Go To Recent Changes">
+          <a id="recent-dropbtn" class="site-nav-btn drop-3" href="{{ '/recent' | relative_url }}" title="Go To Recent Changes">
           {{ site.emoji.recent }}
           </a>
         {% endif %}
