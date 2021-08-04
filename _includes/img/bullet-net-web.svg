@@ -1,4 +1,4 @@
-<svg class="graph-icon" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 50 50" overflow="visible" stroke-width="5" stroke-linecap="round"> 
+<svg class="graph-icon" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 50 50" overflow="visible" stroke-width="5" stroke-linecap="round"> 
   <line class="bullet-link" x1="25" y1="33" x2="2" y2="50" stroke="#8C6239" />
   <line class="bullet-link" x1="25" y1="33" x2="25" y2="5" stroke="#8C6239" />
   <line class="bullet-link" x1="25" y1="33" x2="47" y2="50" stroke="#8C6239" />

@@ -17,6 +17,10 @@ layout: default
         {% for ancestor in page.ancestors %}
           <li class="entry-head-breadcrumb">
             <span title="Ancestor Entry">{% include img/bullet-ancestor.svg %}</span>
+            {% for stat_tag in ancestor.status %}
+              {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
+              <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
+            {% endfor %}
             <a class="wiki-link {% if ancestor.url == '' %}missing-entry-txt{% endif %} " href="{{ ancestor.url | relative_url }}">
               {{ ancestor.title }}
             </a>
@@ -24,6 +28,10 @@ layout: default
         {% endfor %}
         <li class="entry-head-breadcrumb">
           <span title="Ancestor Entry">{% include img/bullet-ancestor.svg %}</span>
+          {% for stat_tag in page.status %}
+            {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
+            <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
+          {% endfor %}
           <span>{{ page.title }}</span>
         </li>
       </ol>
@@ -62,16 +70,23 @@ layout: default
         </label>
       </div>
       <nav id="entry-foot-links-nav" class="entry-foot-nav" role="navigation" aria-label="">
-        {% assign linked_entries = page.backlinks | doc_type: "entries" %}
-        {% if page.children.size == 0 and linked_entries.size == 0 %}
+        <!-- determine number of 'backlinks' first to see if we need to use the empty message -->
+        {% assign backlinks = page.backlinks | doc_type: "entries" %}
+        {% if page.children.size == 0 and backlinks.size == 0 %}
           <p class="small-descr">No linked entries.</p>
         {% else %}
           <div class="entry-foot-nav-sections">
             <div class="entry-foot-nav-section">
+              <span class="entry-foot-link-type" title="Child Entry">
+                {% include img/bullet-tree.svg %}
+              </span>
               <ul class="entry-foot-nav-list">
                 {% for child in page.children %}
                   <li class="entry-foot-nav-list-item">
-                    <span style="display: inline-block;" title="Child Entry">{% include img/bullet-tree.svg %}</span>
+                    {% for stat_tag in child.status %}
+                      {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
+                      <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
+                    {% endfor %}
                     <a class="wiki-link {% if child.url == '' %}missing-entry-txt{% endif %}" href="{{ child.url | relative_url }}">
                       {{ child.title }}
                     </a>
@@ -80,10 +95,16 @@ layout: default
               </ul>
             </div>
             <div class="entry-foot-nav-section">
+              <span class="entry-foot-link-type" title="Backlinked Entry">
+                {% include img/bullet-net-web.svg %}
+              </span>
               <ul class="entry-foot-nav-list">
-                {% for backlink in linked_entries %}
+                {% for backlink in backlinks %}
                   <li class="entry-foot-nav-list-item">
-                    <span style="display: inline-block;" title="Backlinked Entry">{% include img/bullet-net-web.svg %}</span>
+                    {% for stat_tag in backlink.doc.status %}
+                      {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
+                      <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
+                    {% endfor %}
                     <a class="wiki-link" href="{{ backlink.doc.url | relative_url }}">{{ backlink.doc.title }}</a>
                   </li>
                 {% endfor %}
@@ -113,7 +134,10 @@ layout: default
                 {% if post.tags contains page.namespace %}
                   {% assign num_linked_posts = num_linked_posts | plus: 1 %}
                   <li class="entry-foot-nav-list-item">
-                    <span class="small-descr">{{ site.emoji.post }}</span>
+                    {% for stat_tag in post.status %}
+                      {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
+                      <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
+                    {% endfor %}
                     <a class="wiki-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
                   </li>
                 {% endif %}

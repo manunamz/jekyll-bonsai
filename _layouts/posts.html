@@ -3,12 +3,18 @@ layout: default
 ---
 <div id="posts">
 
-  <h1>{{ site.emoji.posts }} Field bLogs</h1>
+  <h1>{{ site.emoji.posts }} Fruit Basket</h1>
   
   <ul class="posts-list">
     {% for post in site.posts %}
       <li class="posts-list-item">
-        <a class="wiki-link" href="{{ post.url | relative_url }}">{{ site.emoji.post }} {{ post.title }}</a>
+        <span>
+          {% for stat_tag in post.status %}
+            {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
+            <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
+          {% endfor %}
+          <a class="wiki-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+        </span>
         <span style="color: grey;">{{ post.updated | date: site.date_format }}</span>
       </li>
     {% endfor %}

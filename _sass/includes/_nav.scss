@@ -65,6 +65,13 @@
       padding-right: $sp-2;
     }
 
+    .entry-foot-link-type {
+      @include fs-6;
+      display: inline-block;
+      width: 100%;
+      text-align: center;
+    }
+
     .entry-foot-nav-list {
       display: block; // columns require block
       column-count: 2;

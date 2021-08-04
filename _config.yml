@@ -151,7 +151,7 @@ emoji:
   # pages
   home: 🏕
   pages: 🗺
-  posts: 📓 # 🥗
+  posts: 🧺
   recent: 🌦
   search: 🔍
   stat_tags: 🔖
@@ -159,8 +159,6 @@ emoji:
   # the following are informational emojis
   #  -- these are safe to set to "" (empty strings)
   # 
-  # bullet-points
-  post: 📄
   # social
   connect: 🌊
   share: 🐝
