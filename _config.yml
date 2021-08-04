@@ -181,8 +181,6 @@ graph_type: "tree"
 # nav: default nav type in side bar.
 ## may be 'tabs' (visited/path) or graph (bonsai)
 nav_type: "graph"
-# recent (weather): set number of items to display when filtering for recent docs or posts.
-recent_cap: 10 
 # local note-nav component defaults
 ## may be 'open' or 'closed'
 entry_head_status: "open"
@@ -191,12 +189,15 @@ entry_foot_posts_status: "open"
 home:
   notable: true
   recent: true
+# home
 notable:
   - digital-garden.bonsai.md
   - digital-garden.md
   - features.doc-type.entry.md
   - features.site-nav.graph.md
   - people.md
+# recent (weather): set number of items to display when filtering for recent docs or posts.
+recent_cap: 10 
 social:
   enabled: true
   connect:
