@@ -34,7 +34,6 @@ collections:
     # permalinks are manually verified/generated -- see 'jekyll-bonsai-util' plugin.
   states:
     output: true
-    permalink: /stat/:title
     order:
       - tags.md
       - sprout.md
