@@ -1,4 +1,5 @@
 ---
+id: 0e8b1e8be9
 title: Bamboo
 emoji: 🎋
 emojipedia: 'https://emojipedia.org/tanabata-tree/'
