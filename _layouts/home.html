@@ -5,12 +5,14 @@ layout: default
 <div id="home">
   
   <div class="lead">
-    <img id="home-bonsai" height="45%" width="45%">
+    <div class="lead-img">
+      <img id="home-bonsai" height="45%" width="45%">
+    </div>
     {% assign root = site.entries | find_exp: "item", "item.path == site.root_entry_path" %}
-    <h1><a class="wiki-link" href="{{ root.url | relative_url }}">{{ page.title }}</a></h3>
-    <p>
+    <h1 class="lead-title"><a class="wiki-link" href="{{ root.url | relative_url }}">{{ page.title }}</a></h3>
+    <div class="lead-content">
       {{ content }}
-    </p>
+    </div>
   </div>
   
   <div class="main-columns">

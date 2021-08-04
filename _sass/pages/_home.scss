@@ -7,11 +7,21 @@
 }
 
 .lead {
-  text-align: center;
   padding: $sp-2;
 
-  h1 {
-    padding-top: $sp-3;
+  .lead-img {
+    text-align: center;
+    padding: $sp-6;
+  }
+
+  .lead-title {
+    text-align: center;
+    padding: $sp-1;
+  }
+
+  .lead-content {
+    text-align: left;
+    padding: $sp-4;
   }
 }
 

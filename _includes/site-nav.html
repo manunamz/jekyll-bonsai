@@ -25,7 +25,7 @@
         {% endif %}
         {% assign posts_page = site.pages | where: "name", "posts.md" %}
         {% if posts_page.first %}
-          <a id="posts-dropbtn" class="site-nav-btn drop-2" href="{{ '/posts' |relative_url }}" title="Go To Posts">
+          <a id="posts-dropbtn" class="site-nav-btn drop-2" href="{{ '/posts' | relative_url }}" title="Go To Posts">
             {{ site.emoji.posts }}
           </a>
         {% endif %}
