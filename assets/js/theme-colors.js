@@ -3,9 +3,10 @@ export default class ThemeColors {
     // this.theme set in initThemeColors();
     this.cssFile = document.querySelector('[rel="stylesheet"]');
     this.favicon = document.querySelector('[rel="icon"]');
-    this.wikiLinkNavBonsai = document.getElementById('wiki-link-nav-bonsai');
+    this.navBonsai = document.getElementById('nav-bonsai');
+    this.navBase = document.getElementById('nav-base');
     this.themeColorsCheckbox = document.getElementById('theme-colors-checkbox');
-    this.themeColorsEmojiSpan = document.getElementById('colors-emoji-span');
+    this.themeColorsEmojiSpan = document.getElementById('theme-colors-emoji-span');
     // home-page logo
     this.homeBonsaiLogo = document.getElementById('home-bonsai');
     this.init();
@@ -43,13 +44,29 @@ export default class ThemeColors {
     }
     // update css file
     const yesThisReallyIsSupposedToBeCSSNotSCSS = '.css'
-    this.cssFile.setAttribute('href', '/jekyll-bonsai/assets/css/styles-' + this.theme + yesThisReallyIsSupposedToBeCSSNotSCSS);
+    this.cssFile.setAttribute('href', "/jekyll-bonsai/assets/css/styles-" + this.theme + yesThisReallyIsSupposedToBeCSSNotSCSS);
     // update icons and images
     this.favicon.setAttribute('href', "/jekyll-bonsai/assets/img/favicon-" + this.theme + ".png");
-    this.wikiLinkNavBonsai.setAttribute('src', "/jekyll-bonsai/assets/img/bonsai-" + this.theme + ".svg");
+    this.navBonsai.setAttribute('src', "/jekyll-bonsai/assets/img/nav-bonsai-" + this.theme + ".svg");
+    this.navBase.setAttribute('src', "/jekyll-bonsai/assets/img/nav-base-" + this.theme + ".svg");
     if (this.homeBonsaiLogo) {
-      this.homeBonsaiLogo.setAttribute('src', "/jekyll-bonsai/assets/img/logo-bonsai-" + this.theme + ".svg");
+      if (this.theme === "dark") {
+        this.homeBonsaiLogo.setAttribute('src', "/jekyll-bonsai/assets/img/bonsai-dark.svg");
+      } else {
+        this.homeBonsaiLogo.setAttribute('src', "/jekyll-bonsai/assets/img/bonsai-light.svg");
+      }
     }
+    // update bullet icon colors
+    let bulletLinks = document.getElementsByClassName('bullet-link');
+    Array.prototype.forEach.call(bulletLinks, (bl) => {
+      // using $link-line-stroke-color
+      if (this.theme == 'dark') {
+        bl.style.stroke = '#5c5962'; // $grey-dk-200
+      } else {
+        bl.style.stroke = '#8C6239'; // $brown-02
+      }
+    });
+    // save to local storage
     window.localStorage.setItem('theme-colors', this.theme);
   }
 }

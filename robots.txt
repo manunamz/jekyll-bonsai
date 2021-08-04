@@ -1,1 +1,1 @@
-Sitemap: /jekyll-bonsai/sitemap.xml
+Sitemap: https://manunamz.github.io/jekyll-bonsai/sitemap.xml

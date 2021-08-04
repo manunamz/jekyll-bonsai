@@ -1,40 +1,32 @@
 import GraphNav from './graph.js';
 import ThemeColors from './theme-colors.js';
-import NoteController from './note.js';
+import Entry from './entry.js';
+import SiteNav from './site-nav.js';
 
  //
 // go
  //
 // from: https://stackoverflow.com/questions/9899372/pure-javascript-equivalent-of-jquerys-ready-how-to-call-a-function-when-t
-(function() {
+(() => {
   // your page initialization code here
   // the DOM will be available here
   initListeners();
   new ThemeColors();
+  new SiteNav();
   new GraphNav();
-  if (document.getElementById('note')) {
-    new NoteController();
+  if (document.getElementById('entry')) {
+    new Entry();
   }
- })();
+})();
 
  //
 // init
  //
 function initListeners () {
   // open external links in new window; wiki-links in current window.
-  document.querySelectorAll("a:not(.wiki-link):not(.tags-list-item):not(.footnote):not(.reversefootnote)").forEach(setupLinkOpen);
-  // init note-preview.html listeners.
-  document.querySelectorAll(' a:not(.tags-list-item)').forEach(setupListeners);
-
-  // todo: this is hacky, make it a proper button with this styling instead of a checkbox
-  document.getElementById('tags-checkbox')
-    .addEventListener('click', function(event) {
-      goTo('/jekyll-bonsai/tag/tags');
-    }, false);
-  document.getElementById('recent-checkbox')
-    .addEventListener('click', function(event) {
-      goTo('/jekyll-bonsai/recent');
-    }, false);
+  document.querySelectorAll("a:not(.site-nav-btn):not(.wiki-link):not(.wiki-link-embed-link):not(.sem-tag):not(.stat-tag):not(.anchor-heading):not(.footnote):not(.reversefootnote)").forEach(setupLinkOpen);
+  // init hover-preview.html listeners.
+  document.querySelectorAll(' a:not(.site-nav-btn):not(.wiki-link-embed-link):not(.stat-tag):not(.anchor-heading)').forEach(setupListeners);
 
   document.getElementById('wiki-link-nav-checkbox')
     .addEventListener('click', function(event) {
@@ -57,7 +49,7 @@ function setupLinkOpen (link) {
 
 function expandGraphNav() {
   var siteNav = document.getElementById('site-nav');
-  var wikiBonsai = document.getElementById('wiki-link-nav-bonsai');
+  var wikiBonsai = document.getElementById('nav-bonsai');
   
   if (document.getElementById('wiki-link-nav-checkbox').checked) {
     siteNav.classList.add('nav-open');
