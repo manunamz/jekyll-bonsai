@@ -35,7 +35,7 @@ layout: default
       {% assign about_page = site.pages | where: "name", "about.md" %}
       <!-- using '.first' to test if any results were found -->
       {% if about_page.first %}
-        <p class="column-foot">For more, see <a class="wiki-link" href="{{ '/about/' | relative_url }}">about</a></p>
+        <p class="column-foot">For more, see <a class="wiki-link" href="{{ '/about/' | relative_url }}">about {{ site.emoji.about }}</a></p>
       {% endif %}
     </div>
 
