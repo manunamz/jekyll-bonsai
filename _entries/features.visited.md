@@ -7,6 +7,6 @@ created: 1622905430066
 status: 🌿
 ---
 
-As [[people.visitors]] step through the site, previously visited pages are saved[>no-worries]. Those entries are then visible in the [[features.site-nav.graph.nodes.visited-status|graph]] and [[features.site-nav.visited]] site-nav for the visitor's convenience.
+As [[people.visitors]] step through the site, previously visited pages are saved[^no-worries]. Those entries are then visible in the [[features.site-nav.graph.nodes.visited-status|graph]] and [[features.site-nav.visited]] site-nav for the visitor's convenience.
 
-[>no-worries]: No data is collected or sent anywhere else. Visited entries are only saved locally to the visitor's browser.
+[^no-worries]: No data is collected or sent anywhere else. Visited entries are only saved locally to the visitor's browser.

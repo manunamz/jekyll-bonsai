@@ -7,9 +7,7 @@ created: 1620414554904
 status: "\U0001F33F"
 ---
 
-Some navigational and display preferences are saved in the [[people.visitors]]' browser to keep the experience consistent across pages[>no-worries]:
-
-[>no-worries]: No data is collected or sent anywhere else. All data are only saved locally to the visitors' browser.
+Some navigational and display preferences are saved in the [[people.visitors]]' browser to keep the experience consistent across pages[^no-worries]:
 
 - Toggle [[features.themes]] colors: 
   - 🌘 [[features.themes.dark]]
@@ -25,3 +23,5 @@ Some navigational and display preferences are saved in the [[people.visitors]]' 
     - 🧺 [[features.doc-type.entry.foot.posts]]
 - Delete [[features.visited]] data:
   - 🧹 [[features.visited.delete-data]]
+
+[^no-worries]: No data is collected or sent anywhere else. All data are only saved locally to the visitors' browser.
