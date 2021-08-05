@@ -9,17 +9,17 @@
 .lead {
   padding: $sp-2;
 
-  .lead-img {
+  & .lead-img {
     text-align: center;
     padding: $sp-6;
   }
 
-  .lead-title {
+  & .lead-title {
     text-align: center;
     padding: $sp-1;
   }
 
-  .lead-content {
+  & .lead-content {
     text-align: left;
     padding: $sp-4;
   }
@@ -32,6 +32,7 @@
   padding-left: $sp-5;
 }
 
+// very similar to _recent.recent-list
 .main-columns {
 
   @include mq(md) {
@@ -46,28 +47,58 @@
     }
   }
 
-  .column {
+  & .column {
     @include mq(md) {
       display: flex;
       flex-direction: column;
     }
 
-    .column-heading {
+    & .column-heading {
       text-align: left;
       padding-left: $sp-3;
     }
   
-    .column-content {
+    & .column-content {
       padding: $sp-2;
   
-      .column-item {
+      & .column-item {
         display: flex;
         justify-content: space-between;
         padding: $sp-2;
+
+        &::before {
+          content: "" !important;
+        }
+
+        & .column-item-status {
+          @include fs-3;
+          display: flex;
+          justify-content: center;
+          width: 15%;
+        }
+
+        & .column-item-text {
+          // is a flex item
+          flex-grow: 1;
+          align-items: center;
+          // is a flex container
+          display: flex;
+          justify-content: space-between;
+    
+          & .column-item-title {
+            @include fs-5;
+            padding-left: $sp-3;
+          }
+      
+          & .column-item-date {
+            color: $grey-dk-000;
+          }
+
+        }
       }
     }
   
-    .column-foot {
+    & .column-foot {
       @include fs-2;
       color: $grey-dk-000;
       text-align: right;
