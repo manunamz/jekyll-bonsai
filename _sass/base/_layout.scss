@@ -49,6 +49,17 @@
   }
 }
 
+.main-foot {
+  // 'sticky footer' from: https://css-tricks.com/couple-takes-sticky-footer/#there-is-flexbox
+  //  ex = local
+  //    footer = connect
+  //    content = main-content
+  //    body = main-content-wrap
+  //    html, body = main
+  flex-shrink: 0;
+  display: flex;
+}
+
 .entry-body {
   padding: $sp-3;
 }

@@ -79,12 +79,7 @@
   }
 }
 
-.connect {
-  // 'sticky footer' from: https://css-tricks.com/couple-takes-sticky-footer/#there-is-flexbox
-  //  ex = local
-  //    footer = connect
-  //    content = main-content
-  //    body = main-content-wrap
-  //    html, body = main
-  flex-shrink: 0;
+#abt-btn {
+  @include fs-5;
+  filter: drop-shadow(0 0.8mm 0.8mm $drop-shadow-brown);
 }

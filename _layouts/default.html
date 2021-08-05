@@ -15,7 +15,11 @@ layout: table-wrappers
         <div id="main-content" class="main-content" role="main">
           {% include anchor-headings.html html=content anchorClass="anchor-heading" %}
         </div>
-        <div class="connect">
+        <div class="main-foot">
+          {% assign about_page = site.pages | find_exp: "item", "item.name == 'about.md'" %}
+          {% if about_page %}
+            <a id="abt-btn" class="wiki-link site-nav-btn" href="{{ '/about/' | relative_url }}" title="Go To About">{{ site.emoji.about }}</a>
+          {% endif %}
           {% if site.social.enabled %}
             {% include connect.html %}
           {% endif %}
