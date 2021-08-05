@@ -14,7 +14,7 @@
 {% assign attributes = page.attributes | doc_type: "entries" %}
 {% if attributes.size > 0 %}
   <div class="infobox" style="padding: 1em; width: 40%; float: right;">
-    <p class="title">Attributes</p>
+    <p class="title">{% include img/bullet-net-web.svg %}</p>
     <ul>
       {% for attr in attributes %}
         <li style="display: flex; justify-content: space-between;">
