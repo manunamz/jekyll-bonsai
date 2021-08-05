@@ -44,12 +44,22 @@ collections:
       - pot-bamboo.md
 
 defaults:
-  - scope:
+  # permalink: /:type/:id
+  # permalinks are manually verified/generated -- see 'jekyll-bonsai-util' plugin.
+  - 
+    scope:
+      path: "_posts/**/*.md"
+      type: "posts"
+    values:
+      layout: "post"
+  - 
+    scope:
       path: "_entries/**/*.md"
       type: "entries"
     values:
       layout: "entry"
-  - scope:
+  - 
+    scope:
       path: "_states/**/*.md"
       type: "states"
     values:

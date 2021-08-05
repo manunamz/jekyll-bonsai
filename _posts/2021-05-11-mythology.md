@@ -1,5 +1,4 @@
 ---
-layout: post
 id: 23f8262818
 title: Escape
 desc: ''
