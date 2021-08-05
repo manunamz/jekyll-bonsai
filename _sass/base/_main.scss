@@ -165,6 +165,16 @@ hr {
   &:hover {
     background-color: $base-button-color;
   }
+
+  &.disabled {
+    color: $grey-dk-000;
+    border: 1px solid $grey-lt-300;
+
+    &:hover {
+      // how to just disable?
+      background-color: $body-background-color;
+    }
+  }
 }
 
 .stat-tag {

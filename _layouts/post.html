@@ -19,9 +19,11 @@ layout: default
     {% for sem_tag in page.tags %}
       {% assign sem_tag_file = sem_tag | append: ".md" %}
       {% assign entry = site.entries | find_exp: "item", "item.path contains sem_tag_file" %}
-      <a class="sem-tag" href="{{ entry.url | relative_url }}">{{ entry.title }}</a>
-    {% else %}
-      <!-- ...don't render anything -->
+      {% if entry %}
+        <a class="sem-tag" href="{{ entry.url | relative_url }}">{{ entry.title }}</a>
+      {% else %}
+        <span class="sem-tag disabled">{{ sem_tag }}</a>
+      {% endif %}
     {% endfor %}
   </p>
 
