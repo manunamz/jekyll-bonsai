@@ -4,6 +4,7 @@ title: Sprout
 emoji: 🌱
 emojipedia: 'https://emojipedia.org/seedling/'
 ---
+
 Sprouts are the earliest stages of concept growth. An idea has emerged and only time will tell how it will mature.
 
-Often times this means there is a note created for a word or concept, but there is likely no body yet.
+Often times this means there is an entry created for a word or concept, but there is likely no body yet.
