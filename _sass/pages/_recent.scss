@@ -22,5 +22,7 @@
 }
 
 .leader {
+  display: flex;
+  flex-direction: row;
   margin-bottom: $sp-10;
 }

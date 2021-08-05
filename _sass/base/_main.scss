@@ -183,16 +183,16 @@ hr {
 
 .infobox {
   @include fs-2;
-  float: right;
-  margin-left: $sp-2;
-  margin-right: $sp-2;
-  padding-left: $sp-3;
-  padding-right: $sp-3;
-  padding-top: $sp-3;
+  width: 100%;
+  height: 100%;
+  margin: $sp-3;
+  padding: $sp-3;
+  padding-left: $sp-5;
   border: 1px solid $separator-color;
   border-radius: 15px;
 
   .title {
+    @include fs-4;
     text-align: center;
     margin-top: 0;
   }
