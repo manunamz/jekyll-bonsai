@@ -4,8 +4,6 @@ title: jekyll-bonsai
 description: A modern jekyll theme for semantically inclined digital gardeners.
 author: manunamz
 baseurl: '/jekyll-bonsai'
-# baseurl: ''
-# url: https://manunam.me
 # url: 'https://manunamz.github.io'
 
 permalink: pretty
@@ -30,8 +28,6 @@ exclude:
 collections:
   entries:
     output: true
-    # permalink: /entry/:id
-    # permalinks are manually verified/generated -- see 'jekyll-bonsai-util' plugin.
   states:
     output: true
     order:
