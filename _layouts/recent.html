@@ -19,22 +19,35 @@ layout: default
   </div>
 
   <div>
-    <h2>Posts</h2>
     <ul class="recent-list">
-      {% for post in site.posts limit: site.recent_cap %}
+      {% for doc in site.documents limit: site.recent_cap %}
         <li class="recent-list-item">
-          <a class="wiki-link" href="{{ post.url | relative_url }}">{{ post | modified_emoji }} {{ post.title }}</a>
-          <span class="date-updated">{{ post.updated | date: site.date_format }}</span>
-        </li>
-      {% endfor %}
-    </ul>
-    
-    <h2>Entries</h2>
-    <ul class="recent-list">
-      {% for entry in site.entries limit: site.recent_cap %}
-        <li class="recent-list-item">
-            <a class="wiki-link" href="{{ entry.url | relative_url }}">{{ entry | modified_emoji }} {{ entry.title }}</a>
-            <span class="date-updated">{{ entry.updated | date: site.date_format }}</span>
+          
+          <div class="recent-list-item-scene">
+            <!-- weather emoji -->
+            <span class="recent-list-item-change">
+              {{ doc | modified_emoji }}
+            </span>
+            <!-- plant emojis -->
+            <span class="recent-list-item-stat">
+              {% for stat_tag in doc.status %}
+                {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
+                <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>  
+              {% endfor %}
+            </span>
+          </div>
+          
+          <div class="recent-list-item-text">
+            <!-- title -->
+            <span class="recent-list-item-title">
+              <a class="wiki-link" href="{{ doc.url | relative_url }}">{{ doc.title }}</a>  
+            </span>
+            <!-- date updated -->
+            <span class="recent-list-item-date">
+              {{ doc.updated | date: site.date_format }}
+            </span>
+          </div>
+        
         </li>
       {% endfor %}
     </ul>
