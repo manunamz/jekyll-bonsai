@@ -139,6 +139,10 @@ emoji:
   # the following are emoji buttons
   #  -- there needs to be something here for buttons to work
   # 
+  # cookie-consent
+  approve: 👍 
+  consider: 🧐
+  disapprove: 👎
   # colors
   dark: 🌘
   light: ☀️
@@ -154,10 +158,11 @@ emoji:
   site_nav: 🧭 
   visited: 🥾
   # pages
-  about: 🪧 
+  about: 🪧
   home: 🏕
   pages: 🗺
   posts: 🧺
+  privacy: 🛖
   recent: 🌦
   search: 🔍
   stat_tags: 🔖
