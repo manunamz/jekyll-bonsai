@@ -5,14 +5,15 @@
   width: 100%;
 
   &.nav-open {
-    display: flex;
+    display: block;
     height: 100vh;
     width: 100vw;
   }
 
   @include mq(md) {
     display: block;
-    flex: 1 1 auto;
+    // leaving this here for now in case something breaks...(TODO: delete if no 🐛 bugs appear later)
+    // flex: 1 1 auto;
   }
 
   header {
@@ -21,17 +22,14 @@
     justify-content: flex-start;
     position: absolute;
     top: 0;
-    width: 100%;
     z-index: 4;
     padding: $sp-2;
-    color: $grey-dk-000;
     cursor: pointer;
     user-select: none;
   }
 
   footer {
     position: absolute;
-    width: 100%;
     z-index: 4;
     bottom: 0;
     left: 0;
@@ -62,8 +60,6 @@
   padding: $sp-2;
   border: none;
   background: none;
-  display: table-cell;
-  vertical-align: middle;
   filter: drop-shadow(0 0 0.8mm $drop-shadow-blue);
 }
 
@@ -72,11 +68,8 @@
   cursor: pointer;
   user-select: none;
   padding: $sp-2;
-  // border: none;
-  // background: none;
-  // display: table-cell;
-  // vertical-align: middle;
   transition: all .2s ease-in-out;
+  display: flex; // needed for #abt-btn
   
   &:hover {
     transform: scale(1.5); 
@@ -132,19 +125,6 @@
   filter: drop-shadow(0 0 0.8mm $drop-shadow-brown);  
 }
 
-.site-nav-btn {
-  @include fs-6;
-  cursor: pointer;
-  user-select: none;
-  padding: $sp-2;
-  transition: all .2s ease-in-out;
-  display: flex; // needed for #abt-btn
-  
-  &:hover {
-    transform: scale(1.5); 
-  }
-}
-
 .delete-btn {
   @include fs-3;
   display: flex;
@@ -167,9 +147,9 @@
 
 // visited nav (user-path)
 
-.visited-nav {  
-  z-index: 3;
+.visited-nav {
   position:relative;
+  z-index: 3;
   height: 100%;
   width: 100%;
   padding-top: $sp-10;
@@ -177,20 +157,19 @@
   overflow-y: scroll;
 
   .visited-nav-list {
-    padding-left: $sp-1 !important;
     list-style: none;
     
     .visited-nav-list-item {
-      @include fs-4;
+      @include fs-5;
       display: flex;
-      width: 80%;
       padding: $sp-2;
       margin-top: $sp-2;
       margin-bottom: $sp-2;
-      border-radius: 16px;
+      margin-right: 0 !important;
       // both animation and transform rely on this transition setting (according to: https://stackoverflow.com/a/20903041)
       transition: all 0.15s ease-in-out;
-      
+      width: 40%;
+
       &:hover {
         transform: scale(1.1); 
       }
@@ -199,9 +178,12 @@
         content: "🥾";
       }
 
-      button {
-        justify-content: flex-end;
+      @include mq(md) {
+        width: 80%;
       }
+      // button {
+      //   justify-content: flex-end;
+      // }
     }
   } 
 }

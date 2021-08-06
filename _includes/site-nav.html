@@ -1,11 +1,13 @@
 <nav id="site-nav" class="site-nav" role="navigation" aria-label="main">
   <header>
-    <a id="home-btn" class="site-nav-btn" href="{{ '/' | relative_url }}" title="Go Home">
-      {{ site.emoji.home }}
-    </a>
+    <span>
+      <a id="home-btn" class="site-nav-btn" href="{{ '/' | relative_url }}" title="Go Home">
+        {{ site.emoji.home }}
+      </a>
+    </span>
     <span class="dropdown">
-      <button id="pages-btn" class="dropdown-btn">
-        <span id="pages-emoji-span" title="Page Navigation">
+      <button class="dropdown-btn">
+        <span title="Page Navigation">
           {{ site.emoji.pages }}
         </span>
       </button>
@@ -38,8 +40,8 @@
       </div>
     </span>
     <span class="dropdown">
-      <button id="site-nav-btn" class="dropdown-btn">
-        <span id="site-nav-emoji-span" title="Site-Nav Toggles">
+      <button class="dropdown-btn">
+        <span title="Site-Nav Toggles">
           {{ site.emoji.site_nav }}
         </span>
       </button>
