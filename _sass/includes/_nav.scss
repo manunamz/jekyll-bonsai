@@ -41,16 +41,6 @@
   margin-bottom: $sp-6;
   display: flex;
 
-  .entry-foot-nav-title {
-    @include fs-4;
-    color: $entry-foot-text-color;
-  }
-
-  .entry-foot-nav-subtitle {
-    @include fs-2;
-    color: $entry-foot-text-color;
-  }
-
   .entry-foot-nav {
     display: flex;
     flex-direction: column;
