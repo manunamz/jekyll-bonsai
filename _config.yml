@@ -105,13 +105,15 @@ ga_tracking: UA-190413040-4
 # 
 namespaces:
   # enabled: true
-  include:
-    - "entries"
+  exclude:
+    - "pages"
+    - "posts"
+    - "states"
 wikilinks:
   # enabled: true
   exclude:
     - "states"
-d3_graph_data:
+d3:
   # enabled: true
   # path: "/assets"
   exclude:
