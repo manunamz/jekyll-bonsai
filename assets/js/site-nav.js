@@ -49,11 +49,11 @@ export default class SiteNav {
       this.navType = "graph";
       this.visitedNav.classList.remove("show");
       this.visitedNav.classList.add("hide");
-      document.getElementById("svg-graph").classList.remove("hide");
+      document.getElementById("graph").classList.remove("hide");
     } else {
       this.navTypeEmojiSpan.innerText = "{{ site.emoji.graph }}";
       this.navType = "tabs";
-      document.getElementById("svg-graph").classList.add("hide");
+      document.getElementById("graph").classList.add("hide");
       this.visitedNav.classList.remove("hide");
       this.visitedNav.classList.add("show");
     }
@@ -86,7 +86,7 @@ export default class SiteNav {
     this.visited = [];
     localStorage.setItem('visited', JSON.stringify([]));
     // reset visible elements
-    document.getElementById('svg-graph').dispatchEvent(new Event('draw')); // tell graph to redraw itself
+    document.getElementById('graph').dispatchEvent(new Event('draw')); // tell graph to redraw itself
     this.visitedNav.innerHTML = "";
     this.buildVisitedTabs();
   }

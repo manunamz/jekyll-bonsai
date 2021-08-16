@@ -5,7 +5,7 @@ export default class GraphNav {
 
   constructor() {
     // this.graphType set in initGraphType();
-    this.svgWrapper = document.getElementById('svg-graph');
+    this.svgWrapper = document.getElementById('graph');
     this.graphTypeCheckBox = document.getElementById('graph-type-checkbox');
     this.graphTypeEmojiSpan = document.getElementById('graph-type-emoji-span');
     this.init();
@@ -30,7 +30,7 @@ export default class GraphNav {
   }
   
   // how to checkbox: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_display_checkbox_text
-  drawD3Nav() {   
+  drawD3Nav() {
     // destroy old chart   
     d3.select(this.svgWrapper).selectAll('svg > *').remove();
   
@@ -84,7 +84,7 @@ export default class GraphNav {
       .then(function(data) {       
           // console.log('d3 is building a tree');
           // console.log(data);      
-          const svgWrapper = document.getElementById('svg-graph');
+          const svgWrapper = document.getElementById('graph');
           const width = +svgWrapper.getBoundingClientRect().width / 2;
           const height = +svgWrapper.getBoundingClientRect().height / 2;
           const svg = d3.select(svgWrapper)
@@ -298,10 +298,10 @@ export default class GraphNav {
             d.fx = null;
             d.fy = null;
           }
-      })
-      .catch(function(error) {
-          console.log(error);
-      });
+    })
+    .catch(function(error) {
+        console.log(error);
+    });
   }
   
   drawTree (theme_attrs) { 
@@ -310,7 +310,7 @@ export default class GraphNav {
       .then(function(data) {
           // console.log('d3 is building a tree');
           // console.log(data);
-          const svgWrapper = document.getElementById('svg-graph');
+          const svgWrapper = document.getElementById('graph');
           const width = +svgWrapper.getBoundingClientRect().width / 2;
           const height = +svgWrapper.getBoundingClientRect().height / 2;
           const svg = d3.select(svgWrapper)

@@ -23,7 +23,7 @@ export default class ThemeColors {
   bindEvents() {
     this.themeColorsCheckbox.addEventListener('click', () => {
       this.updateThemeColors();
-      document.getElementById('svg-graph').dispatchEvent(new Event('draw')); // tell graph to redraw itself
+      document.getElementById('graph').dispatchEvent(new Event('draw')); // tell graph to redraw itself
     });
   }
 
