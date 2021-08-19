@@ -104,6 +104,7 @@ export default class GraphNav {
       const highlightNodes = new Set();
       const highlightLinks = new Set();
       let hoverNode = null;
+      let hoverLink = null;
 
       const Graph = ForceGraph()
 
@@ -112,7 +113,7 @@ export default class GraphNav {
         .height(document.getElementById('graph').parentElement.clientHeight)
         .width(document.getElementById('graph').parentElement.clientWidth)
         // node
-        .nodeCanvasObject((node, ctx) => nodePaint(node, ctx, theme_attrs, hoverNode))
+        .nodeCanvasObject((node, ctx) => nodePaint(node, ctx, theme_attrs, hoverNode, hoverLink))
         // .nodePointerAreaPaint((node, color, ctx, scale) => nodePaint(node, nodeTypeInNetWeb(node), ctx, theme_attrs))
         .nodeId('id')
         .nodeLabel('label')
@@ -156,6 +157,7 @@ export default class GraphNav {
             highlightNodes.add(link.source);
             highlightNodes.add(link.target);
           }
+          hoverLink = link || null;
         })
         .linkDirectionalParticles(4)
         .linkDirectionalParticleWidth(link => highlightLinks.has(link) ? 2 : 0)
@@ -175,7 +177,7 @@ export default class GraphNav {
         );
       });
 
-      function nodePaint(node, ctx, theme_attrs, hoverNode) {
+      function nodePaint(node, ctx, theme_attrs, hoverNode, hoverLink) {
         const nodeTypeInfo = nodeTypeInNetWeb(node, theme_attrs);
         let fillText = true;
         // draw nodes (canvas circle)
@@ -187,9 +189,15 @@ export default class GraphNav {
           nodeTypeInfo["radius"] *= 2;
           fillText = false; // node label should be active
         } else if (hoverNode !== null && hoverNode.neighbors.includes(node)) {
-          // neighbor
+          // neighbor to hoverNode
         } else if (hoverNode !== null && !hoverNode.neighbors.includes(node)) {
-          // non-neighbor
+          // non-neighbor to hoverNode
+          fillText = false;
+        } else if ((hoverNode === null && hoverLink !== null) && (hoverLink.source === node || hoverLink.target === node)) {
+          // neighbor to hoverLink
+          fillText = true;
+        } else if ((hoverNode === null && hoverLink !== null) && (hoverLink.source !== node && hoverLink.target !== node)) {
+          // non-neighbor to hoverLink
           fillText = false;
         } else {
           // no hover (default)  
@@ -304,6 +312,7 @@ export default class GraphNav {
       const highlightNodes = new Set();
       const highlightLinks = new Set();
       let hoverNode = null;
+      let hoverLink = null;
 
       const Graph = ForceGraph()
 
@@ -316,7 +325,7 @@ export default class GraphNav {
         .height(document.getElementById('graph').parentElement.clientHeight)
         .width(document.getElementById('graph').parentElement.clientWidth)
         // node
-        .nodeCanvasObject((node, ctx) => nodePaint(node, ctx, theme_attrs, hoverNode))
+        .nodeCanvasObject((node, ctx) => nodePaint(node, ctx, theme_attrs, hoverNode, hoverLink))
         // .nodePointerAreaPaint((node, color, ctx, scale) => nodePaint(node, nodeTypeInNetWeb(node), ctx, theme_attrs))
         .nodeId('id')
         .nodeLabel('label')
@@ -360,6 +369,7 @@ export default class GraphNav {
             highlightNodes.add(link.source);
             highlightNodes.add(link.target);
           }
+          hoverLink = link || null;
         })
         .linkDirectionalParticles(4)
         .linkDirectionalParticleWidth(link => highlightLinks.has(link) ? 2 : 0)
@@ -379,21 +389,30 @@ export default class GraphNav {
         );
       });
 
-      function nodePaint(node, ctx, theme_attrs, hoverNode) {
+      function nodePaint(node, ctx, theme_attrs, hoverNode, hoverLink) {
         const nodeTypeInfo = nodeTypeInTree(node, theme_attrs);
         let fillText = true;
         // draw nodes (canvas circle)
         ctx.fillStyle = nodeTypeInfo["color"];
         ctx.beginPath();
+        if (hoverLink !== null) {
+          console.log(hoverLink)
+        }
         // hover
         if (node === hoverNode) {
           // hoverNode
           nodeTypeInfo["radius"] *= 2;
           fillText = false; // node label should be active
         } else if (hoverNode !== null && hoverNode.neighbors.includes(node)) {
-          // neighbor
+          // neighbor to hoverNode
         } else if (hoverNode !== null && !hoverNode.neighbors.includes(node)) {
-          // non-neighbor
+          // non-neighbor to hoverNode
+          fillText = false;
+        } else if ((hoverNode === null && hoverLink !== null) && (hoverLink.source === node || hoverLink.target === node)) {
+          // neighbor to hoverLink
+          fillText = true;
+        } else if ((hoverNode === null && hoverLink !== null) && (hoverLink.source !== node && hoverLink.target !== node)) {
+          // non-neighbor to hoverLink
           fillText = false;
         } else {
           // no hover (default)  
