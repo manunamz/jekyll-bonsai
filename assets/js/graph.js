@@ -202,6 +202,19 @@ export default class GraphNav {
           ctx.strokeStyle = theme_attrs["link-color"];
           ctx.stroke();
         }
+        if (isCurrentEntryInNetWeb(node) || isPostTaggedInNetWeb(node)) {
+          // add peripheral node text
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, nodeTypeInfo["radius"] + 1, 0, 2 * Math.PI, false);
+          ctx.lineWidth = 2;
+          if (isCurrentEntryInNetWeb(node)) {
+            ctx.strokeStyle = "#F0C61F";  // yellow
+          } else if (isPostTaggedInNetWeb(node)) {
+            ctx.strokeStyle = "#F29E3D";  // orange
+          } else {
+          }
+          ctx.stroke();
+        }
         if (fillText) {
           // add peripheral node text
           ctx.fillStyle = theme_attrs["text-color"];
@@ -236,19 +249,19 @@ export default class GraphNav {
       }
     };
 
-    // function isCurrentEntryInNetWeb(node) {
-    //   return !isMissingEntryInNetWeb(node) && window.location.pathname.includes(node.url);
-    // }
+    function isCurrentEntryInNetWeb(node) {
+      return !isMissingEntryInNetWeb(node) && window.location.pathname.includes(node.url);
+    }
 
-    // function isPostTaggedInNetWeb(node) {
-    //   // const isPostPage = window.location.pathname.includes("post");
-    //   // if (!isPostPage) return false;
-    //   const semTags = Array.from(document.getElementsByClassName("sem-tag"));
-    //   const tagged = semTags.filter((semTag) => 
-    //     !isMissingEntryInNetWeb(node) && semTag.href.includes(node.url)
-    //   );
-    //   return tagged.length !== 0;
-    // }
+    function isPostTaggedInNetWeb(node) {
+      // const isPostPage = window.location.pathname.includes("post");
+      // if (!isPostPage) return false;
+      const semTags = Array.from(document.getElementsByClassName("sem-tag"));
+      const tagged = semTags.filter((semTag) => 
+        !isMissingEntryInNetWeb(node) && semTag.href.includes(node.url)
+      );
+      return tagged.length !== 0;
+    }
 
     function isVisitedEntryInNetWeb(node) {
       if (!isMissingEntryInNetWeb(node)) {
@@ -393,6 +406,19 @@ export default class GraphNav {
           ctx.strokeStyle = theme_attrs["link-color"];
           ctx.stroke();
         }
+        if (isCurrentEntryInTree(node) || isPostTaggedInTree(node)) {
+          // add peripheral node text
+          ctx.beginPath();
+          ctx.arc(node.x, node.y, nodeTypeInfo["radius"] + 1, 0, 2 * Math.PI, false);
+          ctx.lineWidth = 2;
+          if (isCurrentEntryInTree(node)) {
+            ctx.strokeStyle = "#F0C61F";  // yellow
+          } else if (isPostTaggedInTree(node)) {
+            ctx.strokeStyle = "#F29E3D";  // orange
+          } else {
+          }
+          ctx.stroke();
+        }
         if (fillText) {
           // add peripheral node text
           ctx.fillStyle = theme_attrs["text-color"];
@@ -427,19 +453,19 @@ export default class GraphNav {
         }
       };
     
-      // function isCurrentEntryInTree(node) {
-      //   return !isMissingEntryInTree(node) && window.location.pathname.includes(node.url);
-      // };
+      function isCurrentEntryInTree(node) {
+        return !isMissingEntryInTree(node) && window.location.pathname.includes(node.url);
+      };
 
-      // function isPostTaggedInTree(node) {
-      //   // const isPostPage = window.location.pathname.includes("post");
-      //   // if (!isPostPage) return false;
-      //   const semTags = Array.from(document.getElementsByClassName("sem-tag"));
-      //   const tagged = semTags.filter((semTag) => 
-      //     !isMissingEntryInTree(node) && semTag.href.includes(node.url)
-      //   );
-      //   return tagged.length !== 0;
-      // };
+      function isPostTaggedInTree(node) {
+        // const isPostPage = window.location.pathname.includes("post");
+        // if (!isPostPage) return false;
+        const semTags = Array.from(document.getElementsByClassName("sem-tag"));
+        const tagged = semTags.filter((semTag) => 
+          !isMissingEntryInTree(node) && semTag.href.includes(node.url)
+        );
+        return tagged.length !== 0;
+      };
 
       function isVisitedEntryInTree(node) {
         var visited = JSON.parse(localStorage.getItem('visited'));
