@@ -177,14 +177,24 @@ export default class GraphNav {
 
       function nodePaint(node, ctx, theme_attrs, hoverNode) {
         const nodeTypeInfo = nodeTypeInNetWeb(node, theme_attrs);
+        let fillText = true;
         // draw nodes (canvas circle)
         ctx.fillStyle = nodeTypeInfo["color"];
         ctx.beginPath();
+        // hover
         if (node === hoverNode) {
-          ctx.arc(node.x, node.y, nodeTypeInfo["radius"] * 2, 0, 2 * Math.PI, false);
+          // hoverNode
+          nodeTypeInfo["radius"] *= 2;
+          fillText = false; // node label should be active
+        } else if (hoverNode !== null && hoverNode.neighbors.includes(node)) {
+          // neighbor
+        } else if (hoverNode !== null && !hoverNode.neighbors.includes(node)) {
+          // non-neighbor
+          fillText = false;
         } else {
-          ctx.arc(node.x, node.y, nodeTypeInfo["radius"], 0, 2 * Math.PI, false);
+          // no hover (default)  
         }
+        ctx.arc(node.x, node.y, nodeTypeInfo["radius"], 0, 2 * Math.PI, false);
         ctx.fill();
         if (theme_attrs["name"] === "dark") {
           // draw node borders
@@ -192,9 +202,11 @@ export default class GraphNav {
           ctx.strokeStyle = theme_attrs["link-color"];
           ctx.stroke();
         }
-        // add peripheral node text
-        ctx.fillStyle = theme_attrs["text-color"];
-        ctx.fillText(node.label, node.x + nodeTypeInfo["radius"] + 1, node.y + nodeTypeInfo["radius"] + 1);
+        if (fillText) {
+          // add peripheral node text
+          ctx.fillStyle = theme_attrs["text-color"];
+          ctx.fillText(node.label, node.x + nodeTypeInfo["radius"] + 1, node.y + nodeTypeInfo["radius"] + 1);
+        }
       };
 
     function nodeTypeInNetWeb(node, theme_attrs) {
@@ -356,14 +368,24 @@ export default class GraphNav {
 
       function nodePaint(node, ctx, theme_attrs, hoverNode) {
         const nodeTypeInfo = nodeTypeInTree(node, theme_attrs);
+        let fillText = true;
         // draw nodes (canvas circle)
         ctx.fillStyle = nodeTypeInfo["color"];
         ctx.beginPath();
+        // hover
         if (node === hoverNode) {
-          ctx.arc(node.x, node.y, nodeTypeInfo["radius"] * 2, 0, 2 * Math.PI, false);
+          // hoverNode
+          nodeTypeInfo["radius"] *= 2;
+          fillText = false; // node label should be active
+        } else if (hoverNode !== null && hoverNode.neighbors.includes(node)) {
+          // neighbor
+        } else if (hoverNode !== null && !hoverNode.neighbors.includes(node)) {
+          // non-neighbor
+          fillText = false;
         } else {
-          ctx.arc(node.x, node.y, nodeTypeInfo["radius"], 0, 2 * Math.PI, false);
+          // no hover (default)  
         }
+        ctx.arc(node.x, node.y, nodeTypeInfo["radius"], 0, 2 * Math.PI, false);
         ctx.fill();
         if (theme_attrs["name"] === "dark") {
           // draw node borders
@@ -371,9 +393,11 @@ export default class GraphNav {
           ctx.strokeStyle = theme_attrs["link-color"];
           ctx.stroke();
         }
-        // add peripheral node text
-        ctx.fillStyle = theme_attrs["text-color"];
-        ctx.fillText(node.label, node.x + nodeTypeInfo["radius"] + 1, node.y + nodeTypeInfo["radius"] + 1);
+        if (fillText) {
+          // add peripheral node text
+          ctx.fillStyle = theme_attrs["text-color"];
+          ctx.fillText(node.label, node.x + nodeTypeInfo["radius"] + 1, node.y + nodeTypeInfo["radius"] + 1);
+        }
       };
 
       function nodeTypeInTree(node) {
