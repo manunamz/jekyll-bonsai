@@ -43,6 +43,7 @@ export default class GraphNav {
         "missing-radius": 5.5,
         "missing-node-color": "#00000000",
         "link-color": "#44434d",
+        "link-pulse-color": "#959396",
         "text-color": "#e6e1e8",
       }
     } else {
@@ -52,6 +53,7 @@ export default class GraphNav {
         "missing-radius": 4,
         "missing-node-color": "#8C6239",
         "link-color": "#8C6239",
+        "link-pulse-color": "#E7D6C5",
         "text-color": "#5c5962",
       }
     }
@@ -244,24 +246,27 @@ export default class GraphNav {
   
   drawTree (theme_attrs) { 
     fetch('{{ site.baseurl }}/assets/graph-tree.json').then(res => res.json()).then(data => {
-      // const graph = ForceGraph()
+      
+      data.links.forEach(link => {
+        // the differing method of access is probably a code-smell
+        // from: https://github.com/vasturiano/force-graph/blob/c3879c0a42f65c7abd15be74069c2599e8f56664/example/highlight/index.html#L26
+        const a = data.nodes.filter(node => node.id === link.source)[0];
+        const b = data.nodes.filter(node => node.id === link.target)[0];
+        !a.neighbors && (a.neighbors = []);
+        !b.neighbors && (b.neighbors = []);
+        a.neighbors.push(b);
+        b.neighbors.push(a);
 
-      // (document.getElementById('graph'))
-      //   .dagMode('td')
-      //   .dagLevelDistance(300)
-      //   .backgroundColor('#101020')
-      //   .linkColor(() => 'rgba(255,255,255,0.2)')
-      //   .nodeRelSize(NODE_REL_SIZE)
-      //   .nodeId('path')
-      //   .nodeVal(node => 100 / (node.level + 1))
-      //   .nodeLabel('path')
-      //   // .nodeAutoColorBy('module')
-      //   .linkDirectionalParticles(2)
-      //   .linkDirectionalParticleWidth(2)
-      //   .d3Force('collision', d3.forceCollide(node => Math.sqrt(100 / (node.level + 1)) * NODE_REL_SIZE))
-      //   .d3VelocityDecay(0.3)
-      // .graphData(data);
-      // console.log(data);
+        !a.links && (a.links = []);
+        !b.links && (b.links = []);
+        a.links.push(link);
+        b.links.push(link);
+      });
+
+      const highlightNodes = new Set();
+      const highlightLinks = new Set();
+      let hoverNode = null;
+
       const Graph = ForceGraph()
 
       (document.getElementById('graph'))
@@ -273,7 +278,7 @@ export default class GraphNav {
         .height(window.innerHeight)
         .width(document.getElementById('graph').parentElement.clientWidth)
         // node
-        .nodeCanvasObject((node, ctx) => nodePaint(node, ctx, theme_attrs))
+        .nodeCanvasObject((node, ctx) => nodePaint(node, ctx, theme_attrs, hoverNode))
         // .nodePointerAreaPaint((node, color, ctx, scale) => nodePaint(node, nodeTypeInNetWeb(node), ctx, theme_attrs))
         .nodeId('id')
         .nodeLabel('label')
@@ -282,7 +287,6 @@ export default class GraphNav {
         .linkSource('source')
         .linkTarget('target')
         .linkColor(() => theme_attrs["link-color"])
-        // .linkCanvasObject((link, ctx) => linkPaint(link, ctx, theme_attrs))
         // forces
         // .d3Force('link',    d3.forceLink()
         //                       .id(function(d) {return d.id;})
@@ -299,29 +303,29 @@ export default class GraphNav {
                              .strength(.1)
                              .y(.9))
         // highlight nodes on hover
-        // .onNodeHover(node => {
-        //   highlightNodes.clear();
-        //   highlightLinks.clear();
-        //   if (node) {
-        //     highlightNodes.add(node);
-        //     node.neighbors.forEach(neighbor => highlightNodes.add(neighbor));
-        //     node.links.forEach(link => highlightLinks.add(link));
-        //   }
-        //   hoverNode = node || null;
-        // })
-        // .onLinkHover(link => {
-        //   highlightNodes.clear();
-        //   highlightLinks.clear();
-        //   if (link) {
-        //     highlightLinks.add(link);
-        //     highlightNodes.add(link.source);
-        //     highlightNodes.add(link.target);
-        //   }
-        // })
-        // .autoPauseRedraw(false) // keep redrawing after engine has stopped
-        // .nodeCanvasObjectMode(node => highlightNodes.has(node) ? 'before' : undefined)
-        // .linkDirectionalParticles(4)
-        // .linkDirectionalParticleWidth(link => highlightLinks.has(link) ? 4 : 0);
+        .autoPauseRedraw(false) // keep redrawing after engine has stopped
+        .onNodeHover(node => {
+          highlightNodes.clear();
+          highlightLinks.clear();
+          if (node) {
+            highlightNodes.add(node);
+            node.neighbors.forEach(neighbor => highlightNodes.add(neighbor));
+            node.links.forEach(link => highlightLinks.add(link));
+          }
+          hoverNode = node || null;
+        })
+        .onLinkHover(link => {
+          highlightNodes.clear();
+          highlightLinks.clear();
+          if (link) {
+            highlightLinks.add(link);
+            highlightNodes.add(link.source);
+            highlightNodes.add(link.target);
+          }
+        })
+        .linkDirectionalParticles(4)
+        .linkDirectionalParticleWidth(link => highlightLinks.has(link) ? 2 : 0)
+        .linkDirectionalParticleColor(theme_attrs["link-pulse-color"])
         // zoom
         // (fit to canvas when engine stops)
         // .onEngineStop(() => Graph.zoomToFit(400))
@@ -337,20 +341,20 @@ export default class GraphNav {
         );
       });
 
-      // function setLevelDistance() {
-      //   return Math.floor(Math.random() * 100);
-      // }
-
-      function nodePaint(node, ctx, theme_attrs) {
+      function nodePaint(node, ctx, theme_attrs, hoverNode) {
         const nodeTypeInfo = nodeTypeInTree(node, theme_attrs);
         // draw nodes (canvas circle)
         ctx.fillStyle = nodeTypeInfo["color"];
         ctx.beginPath();
-        ctx.arc(node.x, node.y, nodeTypeInfo["radius"], 0, 2 * Math.PI, false);
+        if (node === hoverNode) {
+          ctx.arc(node.x, node.y, nodeTypeInfo["radius"] * 2, 0, 2 * Math.PI, false);
+        } else {
+          ctx.arc(node.x, node.y, nodeTypeInfo["radius"], 0, 2 * Math.PI, false);
+        }
         ctx.fill();
         if (theme_attrs["name"] === "dark") {
           // draw node borders
-          ctx.lineWidth = nodeTypeInfo["radius"] / 3;
+          ctx.lineWidth = nodeTypeInfo["radius"] * (2 / 5);
           ctx.strokeStyle = theme_attrs["link-color"];
           ctx.stroke();
         }
@@ -423,6 +427,10 @@ export default class GraphNav {
         } else {
           return false;
         }
-      };    
+      };
+      
+    // function setLevelDistance() {
+    //   return Math.floor(Math.random() * 100);
+    // };
   }
 }
