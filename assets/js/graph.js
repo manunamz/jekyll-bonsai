@@ -41,20 +41,20 @@ export default class GraphNav {
         "name": "dark",
         "radius": 5.5,
         "missing-radius": 5.5,
-        "missing-node-color": "#00000000",
-        "link-color": "#44434d",
-        "link-pulse-color": "#959396",
-        "text-color": "#e6e1e8",
+        "missing-node-color": "#00000000", // => $transparent
+        "link-color": "#44434d",           // => $grey-dk-200 => $link-line-stroke-color
+        "link-pulse-color": "#959396",     // => $grey-dk-000
+        "text-color": "#e6e1e8",           // => $body-text-color => $grey-lt-300
       }
     } else {
         theme_attrs = {
         "name": "light",
         "radius": 6,
         "missing-radius": 4,
-        "missing-node-color": "#8C6239",
-        "link-color": "#8C6239",
-        "link-pulse-color": "#E7D6C5",
-        "text-color": "#5c5962",
+        "missing-node-color": "#8C6239",  // => $node-missing-color => $brown-02 
+        "link-color": "#8C6239",          // => $node-missing-color => $brown-02 
+        "link-pulse-color": "#E7D6C5",    // => $brown-00
+        "text-color": "#5c5962",          // => $body-text-color => $grey-dk-100
       }
     }
     // redraw new chart
