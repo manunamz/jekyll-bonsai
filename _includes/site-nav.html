@@ -54,12 +54,15 @@
           <input id="graph-type-checkbox" type="checkbox" checked="checked">
           <span id="graph-type-emoji-span" title="Toggle Graph Type"></span>
         </label>
-        <label class="site-nav-btn drop-3">
-          <input id="theme-colors-checkbox" type="checkbox" checked="checked">
-          <span id="theme-colors-emoji-span" title="Toggle Colors"></span>
-        </label>
+        <a id="delete-btn" class="site-nav-btn drop-3" title="Delete Visited History">
+          {{ site.emoji.delete }}
+        </a>
       </div>
     </span>
+    <label class="site-nav-btn">
+      <input id="theme-colors-checkbox" type="checkbox" checked="checked">
+      <span id="theme-colors-emoji-span" title="Toggle Colors"></span>
+    </label>
   </header>
 
   <nav id="visited-nav" class="visited-nav"></nav>
@@ -67,10 +70,5 @@
 
   <footer>
     <span class="small-descr">Grown 🪴 with 💚 from a <a href="https://github.com/manunamz/jekyll-bonsai/">jekyll-bonsai</a>.</span>
-    <button id="delete-btn" class="delete-btn" title="Delete Visited History">
-      <span id="delete-emoji-span" title="Delete Visited Info">
-        {{ site.emoji.delete }}
-      </span>
-    </button>
   </footer>
 </nav>

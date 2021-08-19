@@ -125,24 +125,8 @@
   filter: drop-shadow(0 0 0.8mm $drop-shadow-brown);  
 }
 
-.delete-btn {
-  @include fs-3;
-  display: flex;
-  cursor: pointer;
-  user-select: none;
-  transition: all .2s ease-in-out;
-  border: none;
-  background: none; 
-  display: table-cell;
-  vertical-align: middle;
-  
-  &:hover {
-    transform: scale(1.5); 
-  }
-
-  #delete-emoji-span {
-    filter: drop-shadow(0 0 0.8mm $drop-shadow-red);
-  }
+#delete-btn {
+  filter: drop-shadow(0 0 0.8mm $drop-shadow-red);
 }
 
 // visited nav (user-path)
