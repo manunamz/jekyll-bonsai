@@ -53,7 +53,7 @@ export default class GraphNav {
         "missing-radius": 4,
         "missing-node-color": "#8C6239",  // => $node-missing-color => $brown-02 
         "link-color": "#8C6239",          // => $node-missing-color => $brown-02 
-        "link-pulse-color": "#E7D6C5",    // => $brown-00
+        "link-pulse-color": "#5c5962",    // => $body-text-color => $grey-dk-100
         "text-color": "#5c5962",          // => $body-text-color => $grey-dk-100
       }
     }
@@ -113,7 +113,7 @@ export default class GraphNav {
 
       (document.getElementById('graph'))
         // container
-        .height(window.innerHeight)
+        .height(document.getElementById('graph').parentElement.clientHeight)
         .width(document.getElementById('graph').parentElement.clientWidth)
         // node
         .nodeCanvasObject((node, ctx) => nodePaint(node, ctx, theme_attrs, hoverNode))
@@ -163,7 +163,7 @@ export default class GraphNav {
         })
         .linkDirectionalParticles(4)
         .linkDirectionalParticleWidth(link => highlightLinks.has(link) ? 2 : 0)
-        .linkDirectionalParticleColor(theme_attrs["link-pulse-color"])
+        .linkDirectionalParticleColor(() => theme_attrs["link-pulse-color"])
         // zoom
         // (fit to canvas when engine stops)
         // .onEngineStop(() => Graph.zoomToFit(400))
@@ -296,7 +296,7 @@ export default class GraphNav {
         .dagLevelDistance(100)
         // .dagLevelDistance(() => setLevelDistance)
         // container
-        .height(window.innerHeight)
+        .height(document.getElementById('graph').parentElement.clientHeight)
         .width(document.getElementById('graph').parentElement.clientWidth)
         // node
         .nodeCanvasObject((node, ctx) => nodePaint(node, ctx, theme_attrs, hoverNode))
@@ -346,7 +346,7 @@ export default class GraphNav {
         })
         .linkDirectionalParticles(4)
         .linkDirectionalParticleWidth(link => highlightLinks.has(link) ? 2 : 0)
-        .linkDirectionalParticleColor(theme_attrs["link-pulse-color"])
+        .linkDirectionalParticleColor(() => theme_attrs["link-pulse-color"])
         // zoom
         // (fit to canvas when engine stops)
         // .onEngineStop(() => Graph.zoomToFit(400))
