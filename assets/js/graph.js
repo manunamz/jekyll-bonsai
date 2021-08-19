@@ -88,6 +88,23 @@ export default class GraphNav {
   // d3
   drawNetWeb (theme_attrs) {
     fetch('{{ site.baseurl }}/assets/graph-net-web.json').then(res => res.json()).then(data => {
+      
+      data.links.forEach(link => {
+        // the differing method of access is probably a code-smell
+        // from: https://github.com/vasturiano/force-graph/blob/c3879c0a42f65c7abd15be74069c2599e8f56664/example/highlight/index.html#L26
+        const a = data.nodes.filter(node => node.id === link.source)[0];
+        const b = data.nodes.filter(node => node.id === link.target)[0];
+        !a.neighbors && (a.neighbors = []);
+        !b.neighbors && (b.neighbors = []);
+        a.neighbors.push(b);
+        b.neighbors.push(a);
+
+        !a.links && (a.links = []);
+        !b.links && (b.links = []);
+        a.links.push(link);
+        b.links.push(link);
+      });
+      
       const highlightNodes = new Set();
       const highlightLinks = new Set();
       let hoverNode = null;
@@ -99,7 +116,7 @@ export default class GraphNav {
         .height(window.innerHeight)
         .width(document.getElementById('graph').parentElement.clientWidth)
         // node
-        .nodeCanvasObject((node, ctx) => nodePaint(node, ctx, theme_attrs))
+        .nodeCanvasObject((node, ctx) => nodePaint(node, ctx, theme_attrs, hoverNode))
         // .nodePointerAreaPaint((node, color, ctx, scale) => nodePaint(node, nodeTypeInNetWeb(node), ctx, theme_attrs))
         .nodeId('id')
         .nodeLabel('label')
@@ -123,35 +140,35 @@ export default class GraphNav {
         .d3Force('forceY', d3.forceY()
                              .strength(.1)
                              .y(.9))
-        // data
-        .graphData(data);
         // highlight nodes on hover
-        // .onNodeHover(node => {
-        //   highlightNodes.clear();
-        //   highlightLinks.clear();
-        //   if (node) {
-        //     highlightNodes.add(node);
-        //     node.neighbors.forEach(neighbor => highlightNodes.add(neighbor));
-        //     node.links.forEach(link => highlightLinks.add(link));
-        //   }
-        //   hoverNode = node || null;
-        // })
-        // .onLinkHover(link => {
-        //   highlightNodes.clear();
-        //   highlightLinks.clear();
-        //   if (link) {
-        //     highlightLinks.add(link);
-        //     highlightNodes.add(link.source);
-        //     highlightNodes.add(link.target);
-        //   }
-        // })
-        // .autoPauseRedraw(false) // keep redrawing after engine has stopped
-        // .nodeCanvasObjectMode(node => highlightNodes.has(node) ? 'before' : undefined)
-        // .linkDirectionalParticles(4)
-        // .linkDirectionalParticleWidth(link => highlightLinks.has(link) ? 4 : 0);
+        .autoPauseRedraw(false) // keep redrawing after engine has stopped
+        .onNodeHover(node => {
+          highlightNodes.clear();
+          highlightLinks.clear();
+          if (node) {
+            highlightNodes.add(node);
+            node.neighbors.forEach(neighbor => highlightNodes.add(neighbor));
+            node.links.forEach(link => highlightLinks.add(link));
+          }
+          hoverNode = node || null;
+        })
+        .onLinkHover(link => {
+          highlightNodes.clear();
+          highlightLinks.clear();
+          if (link) {
+            highlightLinks.add(link);
+            highlightNodes.add(link.source);
+            highlightNodes.add(link.target);
+          }
+        })
+        .linkDirectionalParticles(4)
+        .linkDirectionalParticleWidth(link => highlightLinks.has(link) ? 2 : 0)
+        .linkDirectionalParticleColor(theme_attrs["link-pulse-color"])
         // zoom
         // (fit to canvas when engine stops)
         // .onEngineStop(() => Graph.zoomToFit(400))
+        // data
+        .graphData(data);
 
         elementResizeDetectorMaker().listenTo(
           document.getElementById('graph'),
@@ -162,12 +179,16 @@ export default class GraphNav {
         );
       });
 
-      function nodePaint(node, ctx, theme_attrs) {
+      function nodePaint(node, ctx, theme_attrs, hoverNode) {
         const nodeTypeInfo = nodeTypeInNetWeb(node, theme_attrs);
         // draw nodes (canvas circle)
         ctx.fillStyle = nodeTypeInfo["color"];
         ctx.beginPath();
-        ctx.arc(node.x, node.y, nodeTypeInfo["radius"], 0, 2 * Math.PI, false);
+        if (node === hoverNode) {
+          ctx.arc(node.x, node.y, nodeTypeInfo["radius"] * 2, 0, 2 * Math.PI, false);
+        } else {
+          ctx.arc(node.x, node.y, nodeTypeInfo["radius"], 0, 2 * Math.PI, false);
+        }
         ctx.fill();
         if (theme_attrs["name"] === "dark") {
           // draw node borders
@@ -179,14 +200,6 @@ export default class GraphNav {
         ctx.fillStyle = theme_attrs["text-color"];
         ctx.fillText(node.label, node.x + nodeTypeInfo["radius"] + 1, node.y + nodeTypeInfo["radius"] + 1);
       };
-
-    function goToEntryFromNetWeb (d, e) {
-      if (!isMissingEntryInNetWeb(d)) {
-        window.location.href = d.url;
-      } else {
-        return null;
-      }
-    };
 
     function nodeTypeInNetWeb(node, theme_attrs) {
       const isVisited = isVisitedEntryInNetWeb(node);
@@ -242,6 +255,14 @@ export default class GraphNav {
     function isMissingEntryInNetWeb(node) {
       return node.url === '';
     }
+
+    function goToEntryFromNetWeb (d, e) {
+      if (!isMissingEntryInNetWeb(d)) {
+        window.location.href = d.url;
+      } else {
+        return null;
+      }
+    };
   }
   
   drawTree (theme_attrs) { 
@@ -362,20 +383,6 @@ export default class GraphNav {
         ctx.fillStyle = theme_attrs["text-color"];
         ctx.fillText(node.label, node.x + nodeTypeInfo["radius"] + 1, node.y + nodeTypeInfo["radius"] + 1);
       };
-    
-      // function isCurrentEntryInTree(node) {
-      //   return !isMissingEntryInTree(node) && window.location.pathname.includes(node.url);
-      // };
-
-      // function isPostTaggedInTree(node) {
-      //   // const isPostPage = window.location.pathname.includes("post");
-      //   // if (!isPostPage) return false;
-      //   const semTags = Array.from(document.getElementsByClassName("sem-tag"));
-      //   const tagged = semTags.filter((semTag) => 
-      //     !isMissingEntryInTree(node) && semTag.href.includes(node.url)
-      //   );
-      //   return tagged.length !== 0;
-      // };
 
       function nodeTypeInTree(node) {
         const isVisited = isVisitedEntryInTree(node);
@@ -403,6 +410,20 @@ export default class GraphNav {
           return null;
         }
       };
+    
+      // function isCurrentEntryInTree(node) {
+      //   return !isMissingEntryInTree(node) && window.location.pathname.includes(node.url);
+      // };
+
+      // function isPostTaggedInTree(node) {
+      //   // const isPostPage = window.location.pathname.includes("post");
+      //   // if (!isPostPage) return false;
+      //   const semTags = Array.from(document.getElementsByClassName("sem-tag"));
+      //   const tagged = semTags.filter((semTag) => 
+      //     !isMissingEntryInTree(node) && semTag.href.includes(node.url)
+      //   );
+      //   return tagged.length !== 0;
+      // };
 
       function isVisitedEntryInTree(node) {
         var visited = JSON.parse(localStorage.getItem('visited'));
