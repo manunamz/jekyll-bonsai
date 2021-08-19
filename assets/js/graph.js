@@ -113,11 +113,11 @@ export default class GraphNav {
         .height(document.getElementById('graph').parentElement.clientHeight)
         .width(document.getElementById('graph').parentElement.clientWidth)
         // node
-        .nodeCanvasObject((node, ctx) => nodePaint(node, ctx, theme_attrs, hoverNode, hoverLink))
+        .nodeCanvasObject((node, ctx) => this.nodePaint(node, ctx, theme_attrs, hoverNode, hoverLink))
         // .nodePointerAreaPaint((node, color, ctx, scale) => nodePaint(node, nodeTypeInNetWeb(node), ctx, theme_attrs))
         .nodeId('id')
         .nodeLabel('label')
-        .onNodeClick(goToEntryFromNetWeb)
+        .onNodeClick((node, event) => this.goToPage(node, event))
         // link
         .linkSource('source')
         .linkTarget('target')
@@ -176,127 +176,23 @@ export default class GraphNav {
           }
         );
       });
-
-      function nodePaint(node, ctx, theme_attrs, hoverNode, hoverLink) {
-        const nodeTypeInfo = nodeTypeInNetWeb(node, theme_attrs);
-        let fillText = true;
-        // draw nodes (canvas circle)
-        ctx.fillStyle = nodeTypeInfo["color"];
-        ctx.beginPath();
-        // hover
-        if (node === hoverNode) {
-          // hoverNode
-          nodeTypeInfo["radius"] *= 2;
-          fillText = false; // node label should be active
-        } else if (hoverNode !== null && hoverNode.neighbors.includes(node)) {
-          // neighbor to hoverNode
-        } else if (hoverNode !== null && !hoverNode.neighbors.includes(node)) {
-          // non-neighbor to hoverNode
-          fillText = false;
-        } else if ((hoverNode === null && hoverLink !== null) && (hoverLink.source === node || hoverLink.target === node)) {
-          // neighbor to hoverLink
-          fillText = true;
-        } else if ((hoverNode === null && hoverLink !== null) && (hoverLink.source !== node && hoverLink.target !== node)) {
-          // non-neighbor to hoverLink
-          fillText = false;
-        } else {
-          // no hover (default)  
-        }
-        ctx.arc(node.x, node.y, nodeTypeInfo["radius"], 0, 2 * Math.PI, false);
-        ctx.fill();
-        if (theme_attrs["name"] === "dark") {
-          // draw node borders
-          ctx.lineWidth = nodeTypeInfo["radius"] * (2 / 5);
-          ctx.strokeStyle = theme_attrs["link-color"];
-          ctx.stroke();
-        }
-        if (isCurrentEntryInNetWeb(node) || isPostTaggedInNetWeb(node)) {
-          // add peripheral node text
-          ctx.beginPath();
-          ctx.arc(node.x, node.y, nodeTypeInfo["radius"] + 1, 0, 2 * Math.PI, false);
-          ctx.lineWidth = 2;
-          if (isCurrentEntryInNetWeb(node)) {
-            ctx.strokeStyle = "#F0C61F";  // yellow
-          } else if (isPostTaggedInNetWeb(node)) {
-            ctx.strokeStyle = "#F29E3D";  // orange
-          } else {
-          }
-          ctx.stroke();
-        }
-        if (fillText) {
-          // add peripheral node text
-          ctx.fillStyle = theme_attrs["text-color"];
-          ctx.fillText(node.label, node.x + nodeTypeInfo["radius"] + 1, node.y + nodeTypeInfo["radius"] + 1);
-        }
-      };
-
-    function nodeTypeInNetWeb(node, theme_attrs) {
-      const isVisited = isVisitedEntryInNetWeb(node);
-      const isMissing = isMissingEntryInNetWeb(node);            
-      if (isVisited) {
-        return {
-          "type": "visited",
-          "color": "#31AF31",
-          "radius": theme_attrs["radius"],
-        }
-      } else if (!isVisited && !isMissing) {
-        return {
-          "type": "unvisited",
-          "color": "#9cbe9c",
-          "radius": theme_attrs["radius"],
-        }
-      } else if (isMissing) {
-        return {
-          "type": "missing",
-          "color": theme_attrs["missing-node-color"],
-          "radius": theme_attrs["missing-radius"],
-        }
-      } else {
-        console.log("WARN: Not a valid node type.");
-        return null;
-      }
-    };
-
-    function isCurrentEntryInNetWeb(node) {
-      return !isMissingEntryInNetWeb(node) && window.location.pathname.includes(node.url);
-    }
-
-    function isPostTaggedInNetWeb(node) {
-      // const isPostPage = window.location.pathname.includes("post");
-      // if (!isPostPage) return false;
-      const semTags = Array.from(document.getElementsByClassName("sem-tag"));
-      const tagged = semTags.filter((semTag) => 
-        !isMissingEntryInNetWeb(node) && semTag.href.includes(node.url)
-      );
-      return tagged.length !== 0;
-    }
-
-    function isVisitedEntryInNetWeb(node) {
-      if (!isMissingEntryInNetWeb(node)) {
-        var visited = JSON.parse(localStorage.getItem('visited'));
-        for (let i = 0; i < visited.length; i++) {
-          if (visited[i]['url'] === node.url) return true;
-        }
-      }
-      return false;
-    }
-
-    function isMissingEntryInNetWeb(node) {
-      return node.url === '';
-    }
-
-    function goToEntryFromNetWeb (d, e) {
-      if (!isMissingEntryInNetWeb(d)) {
-        window.location.href = d.url;
-      } else {
-        return null;
-      }
-    };
   }
   
   drawTree (theme_attrs) { 
     fetch('{{ site.baseurl }}/assets/graph-tree.json').then(res => res.json()).then(data => {
       
+      // data.links.forEach(link => {
+      //   // the differing method of access is probably a code-smell
+      //   // from: https://github.com/vasturiano/force-graph/blob/c3879c0a42f65c7abd15be74069c2599e8f56664/example/highlight/index.html#L26
+      //   const a = data.nodes.filter(node => node.id === link.source)[0];
+      //   const b = data.nodes.filter(node => node.id === link.target)[0];
+      //   a.neighbors.push(b);
+      //   b.neighbors.push(a);
+
+      //   a.links.push(link);
+      //   b.links.push(link);
+      // });
+
       data.links.forEach(link => {
         // the differing method of access is probably a code-smell
         // from: https://github.com/vasturiano/force-graph/blob/c3879c0a42f65c7abd15be74069c2599e8f56664/example/highlight/index.html#L26
@@ -325,11 +221,11 @@ export default class GraphNav {
         .height(document.getElementById('graph').parentElement.clientHeight)
         .width(document.getElementById('graph').parentElement.clientWidth)
         // node
-        .nodeCanvasObject((node, ctx) => nodePaint(node, ctx, theme_attrs, hoverNode, hoverLink))
+        .nodeCanvasObject((node, ctx) => this.nodePaint(node, ctx, theme_attrs, hoverNode, hoverLink))
         // .nodePointerAreaPaint((node, color, ctx, scale) => nodePaint(node, nodeTypeInNetWeb(node), ctx, theme_attrs))
         .nodeId('id')
         .nodeLabel('label')
-        .onNodeClick(goToEntryFromTree)
+        .onNodeClick((node, event) => this.goToPage(node, event))
         // link
         .linkSource('source')
         .linkTarget('target')
@@ -388,131 +284,129 @@ export default class GraphNav {
           }
         );
       });
+  }
 
-      function nodePaint(node, ctx, theme_attrs, hoverNode, hoverLink) {
-        const nodeTypeInfo = nodeTypeInTree(node, theme_attrs);
-        let fillText = true;
-        // draw nodes (canvas circle)
-        ctx.fillStyle = nodeTypeInfo["color"];
-        ctx.beginPath();
-        if (hoverLink !== null) {
-          console.log(hoverLink)
-        }
-        // hover
-        if (node === hoverNode) {
-          // hoverNode
-          nodeTypeInfo["radius"] *= 2;
-          fillText = false; // node label should be active
-        } else if (hoverNode !== null && hoverNode.neighbors.includes(node)) {
-          // neighbor to hoverNode
-        } else if (hoverNode !== null && !hoverNode.neighbors.includes(node)) {
-          // non-neighbor to hoverNode
-          fillText = false;
-        } else if ((hoverNode === null && hoverLink !== null) && (hoverLink.source === node || hoverLink.target === node)) {
-          // neighbor to hoverLink
-          fillText = true;
-        } else if ((hoverNode === null && hoverLink !== null) && (hoverLink.source !== node && hoverLink.target !== node)) {
-          // non-neighbor to hoverLink
-          fillText = false;
-        } else {
-          // no hover (default)  
-        }
-        ctx.arc(node.x, node.y, nodeTypeInfo["radius"], 0, 2 * Math.PI, false);
-        ctx.fill();
-        if (theme_attrs["name"] === "dark") {
-          // draw node borders
-          ctx.lineWidth = nodeTypeInfo["radius"] * (2 / 5);
-          ctx.strokeStyle = theme_attrs["link-color"];
-          ctx.stroke();
-        }
-        if (isCurrentEntryInTree(node) || isPostTaggedInTree(node)) {
-          // add peripheral node text
-          ctx.beginPath();
-          ctx.arc(node.x, node.y, nodeTypeInfo["radius"] + 1, 0, 2 * Math.PI, false);
-          ctx.lineWidth = 2;
-          if (isCurrentEntryInTree(node)) {
-            ctx.strokeStyle = "#F0C61F";  // yellow
-          } else if (isPostTaggedInTree(node)) {
-            ctx.strokeStyle = "#F29E3D";  // orange
-          } else {
-          }
-          ctx.stroke();
-        }
-        if (fillText) {
-          // add peripheral node text
-          ctx.fillStyle = theme_attrs["text-color"];
-          ctx.fillText(node.label, node.x + nodeTypeInfo["radius"] + 1, node.y + nodeTypeInfo["radius"] + 1);
-        }
-      };
+  // draw helpers
 
-      function nodeTypeInTree(node) {
-        const isVisited = isVisitedEntryInTree(node);
-        const isMissing = isMissingEntryInTree(node);            
-        if (isVisited) {
-          return {
-            "type": "visited",
-            "color": "#31AF31",
-            "radius": theme_attrs["radius"],
-          }
-        } else if (!isVisited && !isMissing) {
-          return {
-            "type": "unvisited",
-            "color": "#9cbe9c",
-            "radius": theme_attrs["radius"],
-          }
-        } else if (isMissing) {
-          return {
-            "type": "missing",
-            "color": theme_attrs["missing-node-color"],
-            "radius": theme_attrs["missing-radius"],
-          }
-        } else {
-          console.log("WARN: Not a valid node type.");
-          return null;
-        }
-      };
-    
-      function isCurrentEntryInTree(node) {
-        return !isMissingEntryInTree(node) && window.location.pathname.includes(node.url);
-      };
+  nodePaint(node, ctx, theme_attrs, hoverNode, hoverLink) {
+    const nodeTypeInfo = this.isNodeType(node, theme_attrs);
+    let fillText = true;
+    // draw nodes (canvas circle)
+    ctx.fillStyle = nodeTypeInfo["color"];
+    ctx.beginPath();
+    // hover
+    if (node === hoverNode) {
+      // hoverNode
+      nodeTypeInfo["radius"] *= 2;
+      fillText = false; // node label should be active
+    } else if (hoverNode !== null && hoverNode.neighbors.includes(node)) {
+      // neighbor to hoverNode
+    } else if (hoverNode !== null && !hoverNode.neighbors.includes(node)) {
+      // non-neighbor to hoverNode
+      fillText = false;
+    } else if ((hoverNode === null && hoverLink !== null) && (hoverLink.source === node || hoverLink.target === node)) {
+      // neighbor to hoverLink
+      fillText = true;
+    } else if ((hoverNode === null && hoverLink !== null) && (hoverLink.source !== node && hoverLink.target !== node)) {
+      // non-neighbor to hoverLink
+      fillText = false;
+    } else {
+      // no hover (default)  
+    }
+    ctx.arc(node.x, node.y, nodeTypeInfo["radius"], 0, 2 * Math.PI, false);
+    ctx.fill();
+    if (theme_attrs["name"] === "dark") {
+      // draw node borders
+      ctx.lineWidth = nodeTypeInfo["radius"] * (2 / 5);
+      ctx.strokeStyle = theme_attrs["link-color"];
+      ctx.stroke();
+    }
+    if (this.isCurrentPage(node) || this.isTag(node)) {
+      // add peripheral node text
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, nodeTypeInfo["radius"] + 1, 0, 2 * Math.PI, false);
+      ctx.lineWidth = 2;
+      if (this.isCurrentPage(node)) {
+        ctx.strokeStyle = "#F0C61F";  // yellow
+      } else if (this.isTag(node)) {
+        ctx.strokeStyle = "#F29E3D";  // orange
+      } else {
+      }
+      ctx.stroke();
+    }
+    if (fillText) {
+      // add peripheral node text
+      ctx.fillStyle = theme_attrs["text-color"];
+      ctx.fillText(node.label, node.x + nodeTypeInfo["radius"] + 1, node.y + nodeTypeInfo["radius"] + 1);
+    }
+  }
 
-      function isPostTaggedInTree(node) {
-        // const isPostPage = window.location.pathname.includes("post");
-        // if (!isPostPage) return false;
-        const semTags = Array.from(document.getElementsByClassName("sem-tag"));
-        const tagged = semTags.filter((semTag) => 
-          !isMissingEntryInTree(node) && semTag.href.includes(node.url)
-        );
-        return tagged.length !== 0;
-      };
+  // meta about nodes<=>page relationships
 
-      function isVisitedEntryInTree(node) {
-        var visited = JSON.parse(localStorage.getItem('visited'));
-        for (let i = 0; i < visited.length; i++) {
-          if (visited[i]['url'] === node.url) {
-            return true;
-          }
-        }
-        return false;
-      };
+  isNodeType(node, theme_attrs) {
+    const isVisited = this.isVisitedPage(node);
+    const isMissing = this.isMissingPage(node);            
+    if (isVisited) {
+      return {
+        "type": "visited",
+        "color": "#31AF31", // => $green-05
+        "radius": theme_attrs["radius"],
+      }
+    } else if (!isVisited && !isMissing) {
+      return {
+        "type": "unvisited",
+        "color": "#9cbe9c", // => $green-03
+        "radius": theme_attrs["radius"],
+      }
+    } else if (isMissing) {
+      return {
+        "type": "missing",
+        "color": theme_attrs["missing-node-color"],
+        "radius": theme_attrs["missing-radius"],
+      }
+    } else {
+      console.log("WARN: Not a valid node type.");
+      return null;
+    }
+  }
 
-      function isMissingEntryInTree(node) {
-        return node.url === "";
-      };
+  isCurrentPage(node) {
+    return !this.isMissingPage(node) && window.location.pathname.includes(node.url);
+  }
 
-      // from: https://stackoverflow.com/questions/63693132/unable-to-get-node-datum-on-mouseover-in-d3-v6
-      // d6 now passes events in vanilla javascript fashion
-      function goToEntryFromTree(d, e) {
-        if (!isMissingEntryInTree(d)) {
-          window.location.href = d.url;
-          return true;
-        } else {
-          return false;
-        }
-      };
-      
-    // function setLevelDistance() {
-    //   return Math.floor(Math.random() * 100);
-    // };
+  isTag(node) {
+    // if (!isPostPage) return false;
+    const semTags = Array.from(document.getElementsByClassName("sem-tag"));
+    const tagged = semTags.filter((semTag) => 
+      !this.isMissingPage(node) && semTag.href.includes(node.url)
+    );
+    return tagged.length !== 0;
+  }
+
+  isVisitedPage(node) {
+    if (!this.isMissingPage(node)) {
+      var visited = JSON.parse(localStorage.getItem('visited'));
+      for (let i = 0; i < visited.length; i++) {
+        if (visited[i]['url'] === node.url) return true;
+      }
+    }
+    return false;
+  }
+
+  isMissingPage(node) {
+    return node.url === '';
+  }
+
+  // user-actions
+
+  // from: https://stackoverflow.com/questions/63693132/unable-to-get-node-datum-on-mouseover-in-d3-v6
+  // d3v6 now passes events in vanilla javascript fashion
+  goToPage(node, e) {
+    if (!this.isMissingPage(node)) {
+      window.location.href = node.url;
+      return true;
+    } else {
+      return false;
+    }
   }
 }
