@@ -94,13 +94,9 @@ export default class GraphNav {
         // from: https://github.com/vasturiano/force-graph/blob/c3879c0a42f65c7abd15be74069c2599e8f56664/example/highlight/index.html#L26
         const a = data.nodes.filter(node => node.id === link.source)[0];
         const b = data.nodes.filter(node => node.id === link.target)[0];
-        !a.neighbors && (a.neighbors = []);
-        !b.neighbors && (b.neighbors = []);
         a.neighbors.push(b);
         b.neighbors.push(a);
 
-        !a.links && (a.links = []);
-        !b.links && (b.links = []);
         a.links.push(link);
         b.links.push(link);
       });
@@ -273,13 +269,9 @@ export default class GraphNav {
         // from: https://github.com/vasturiano/force-graph/blob/c3879c0a42f65c7abd15be74069c2599e8f56664/example/highlight/index.html#L26
         const a = data.nodes.filter(node => node.id === link.source)[0];
         const b = data.nodes.filter(node => node.id === link.target)[0];
-        !a.neighbors && (a.neighbors = []);
-        !b.neighbors && (b.neighbors = []);
         a.neighbors.push(b);
         b.neighbors.push(a);
 
-        !a.links && (a.links = []);
-        !b.links && (b.links = []);
         a.links.push(link);
         b.links.push(link);
       });
