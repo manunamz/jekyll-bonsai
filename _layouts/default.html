@@ -20,6 +20,10 @@ layout: table-wrappers
           {% if about_page %}
             <a id="abt-btn" class="wiki-link site-nav-btn" href="{{ '/about/' | relative_url }}" title="Go To About">{{ site.emoji.about }}</a>
           {% endif %}
+          {% assign privacy_page = site.pages | find_exp: "item", "item.name == 'privacy.md'" %}
+          {% if privacy_page %}
+            <a id="prvcy-btn" class="wiki-link site-nav-btn" href="{{ '/privacy/' | relative_url }}" title="Go To About">{{ site.emoji.privacy }}</a>
+          {% endif %}
           {% if site.social.enabled %}
             {% include connect.html %}
           {% endif %}
