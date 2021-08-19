@@ -5,7 +5,7 @@ export default class GraphNav {
 
   constructor() {
     // this.graphType set in initGraphType();
-    this.svgWrapper = document.getElementById('graph');
+    this.canvas = document.getElementById('graph');
     this.graphTypeCheckBox = document.getElementById('graph-type-checkbox');
     this.graphTypeEmojiSpan = document.getElementById('graph-type-emoji-span');
     this.init();
@@ -19,7 +19,7 @@ export default class GraphNav {
   
   bindEvents() {
     // listen for draw event (esp. from theme colors)
-    this.svgWrapper.addEventListener('draw', () => {
+    this.canvas.addEventListener('draw', () => {
       this.updateGraphType();
       this.drawD3Nav();
     });
@@ -32,7 +32,7 @@ export default class GraphNav {
   // how to checkbox: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_display_checkbox_text
   drawD3Nav() {
     // destroy old chart   
-    d3.select(this.svgWrapper).selectAll('svg > *').remove();
+    // d3.select(this.canvas).selectAll('svg > *').remove();
   
     let theme_attrs = {};
     // set theme-dependent graph attributes.
