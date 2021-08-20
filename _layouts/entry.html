@@ -101,12 +101,13 @@ layout: default
               </span>
               <ul class="entry-foot-nav-list">
                 {% for backlink in backlinks %}
+                  {% assign backlink_doc = site.entries | where: "url", backlink.doc_url | first %}
                   <li class="entry-foot-nav-list-item">
-                    {% for stat_tag in backlink.status %}
+                    {% for stat_tag in backlink_doc.status %}
                       {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
                       <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
                     {% endfor %}
-                    <a class="wiki-link" href="{{ backlink.url | relative_url }}">{{ backlink.title }}</a>
+                    <a class="wiki-link" href="{{ backlink_doc.url | relative_url }}">{{ backlink_doc.title }}</a>
                   </li>
                 {% endfor %}
               </ul>
