@@ -197,6 +197,7 @@ nav_type: "graph"
 # local note-nav component defaults
 ## may be 'open' or 'closed'
 entry_head_status: "open"
+entry_head_links_status: "open"
 entry_foot_links_status: "open"
 entry_foot_posts_status: "open"
 home:

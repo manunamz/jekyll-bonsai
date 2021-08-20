@@ -7,7 +7,10 @@ export default class Entry {
     // head
     // this.entryHeadStatus set in initEntryStatus();
     this.entryHeadCheckbox = document.getElementById('entry-head-checkbox');
-    
+    // head links (box)
+    // this.entryHeadLinksStatus set in initEntryStatus();
+    this.entryHeadLinksCheckbox = document.getElementById('entry-head-links-checkbox');
+
     // foot
     // this.entryFootLinksStatus set in initEntryStatus();
     this.entryFootLinksCheckbox = document.getElementById('entry-foot-links-checkbox');
@@ -27,6 +30,10 @@ export default class Entry {
     this.entryHeadCheckbox.addEventListener('click', () => {
       this.toggleEntryHeadCollapse();
     });
+    // head links (box)
+    this.entryHeadLinksCheckbox.addEventListener('click', () => {
+      this.toggleEntryHeadLinksCollapse();
+    });
     // foot
     this.entryFootLinksCheckbox.addEventListener('click', () => {
       this.toggleEntryFootLinksCollapse();
@@ -44,6 +51,14 @@ export default class Entry {
     }
     this.entryHeadCheckbox.checked = (this.entryHeadStatus === "closed"); 
     this.toggleEntryHeadCollapse();
+
+    // head links (box)
+    this.entryHeadLinksStatus = localStorage.getItem('entry-head-links-status');
+    if (this.entryHeadLinksStatus !== "open" && this.entryHeadLinksStatus !== "closed") {
+      this.entryHeadLinksStatus = '{{ site.entry_head_links_status }}';	
+    }
+    this.entryHeadLinksCheckbox.checked = (this.entryHeadLinksStatus === "closed"); 
+    this.toggleEntryHeadLinksCollapse();
 
     // foot
     this.entryFootLinksStatus = localStorage.getItem('entry-foot-links-status');
@@ -73,6 +88,19 @@ export default class Entry {
     }
     localStorage.setItem('entry-head-status', this.entryHeadStatus);
   } 
+
+  toggleEntryHeadLinksCollapse () {
+    // from: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_collapsible
+    var collapsibleEl = document.getElementById('entry-box-link-nav');
+    if (this.entryHeadLinksCheckbox.checked) {
+      collapsibleEl.style.display = "none";
+      this.entryHeadLinksStatus = "closed";
+    } else {
+      collapsibleEl.style.display = "flex";
+      this.entryHeadLinksStatus = "open";
+    }
+    localStorage.setItem('entry-head-links-status', this.entryHeadLinksStatus);
+  }
 
   toggleEntryFootLinksCollapse () {
     // from: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_collapsible
