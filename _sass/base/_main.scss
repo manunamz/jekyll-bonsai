@@ -117,7 +117,21 @@ hr {
 
 .wiki-link { 
   color: $wiki-link-color;
+  text-decoration: none;
+  background-image: linear-gradient($wiki-link-underline-color 0%, $wiki-link-underline-color 100%);
+  background-repeat: repeat-x;
+  background-position: 0 100%;
+  background-size: 1px 1px;
+
+  &:hover {
+    background-image: linear-gradient(
+      rgba($wiki-link-color, 0.45) 0%,
+      rgba($wiki-link-color, 0.45) 100%
+    );
+    background-size: 1px 1px;
+  }  
 }
+
 
 .wiki-link-embed {
   position: relative;
