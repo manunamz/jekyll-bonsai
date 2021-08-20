@@ -53,6 +53,9 @@ layout: default
       <img id="home-bonsai" style="float: right; padding: 12px;" height="35%" width="35%">
     {% endif %}
     {{ content }}
+    {% if site.social.enabled %}
+      {% include share.html %}
+    {% endif %}
   </div>
 
   <footer class="entry-footer">
