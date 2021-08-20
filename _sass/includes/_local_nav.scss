@@ -21,6 +21,15 @@
   //   text-align: center;
   // }
   
+  .entry-box-bar {
+    display: flex;
+    justify-content: center;
+
+    .entry-head-link-emoji-wrapper {
+      align-self: center;
+    }
+  }
+
   .entry-box-wrapper {
     width: 100%;
     // display: flex;

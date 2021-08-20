@@ -6,9 +6,9 @@
     {% endif %}
   {% endif %}
 
-  <div style="display: flex; justify-content: center;">
+  <div class="entry-box-bar">
     {% if include.type == "entry" %}
-      <div>
+      <div class="entry-head-link-emoji-wrapper">
         <label class="btn-selector">
           <input id="entry-head-links-checkbox" type="checkbox">
           <span id="entry-head-link-emoji-span" title="Toggle Linked Entries">
@@ -30,7 +30,7 @@
         <span class="entry-box-link-type-title" title="Attribute Entry">{% include img/bullet-net-web.svg %}</span>
         {% assign attributes = page.attributes | doc_type: "entries" %}
         {% if attributes.size == 0 %}
-          <p class="small-descr" style="text-align: center;">No linked entries.</p>
+          <p class="small-descr" style="text-align: center;">No attribute entries.</p>
         {% else %}
           <table>
             <tbody>
