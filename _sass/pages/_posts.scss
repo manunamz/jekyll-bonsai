@@ -13,5 +13,9 @@
     &::before {
       content: "" !important;
     }
+
+    & .list-item-date {
+      color: $grey-dk-000;
+    }
   }
 }
