@@ -1,12 +1,9 @@
-<nav id="local-nav">
-
-  {% if include.type == "entry" && page.path == site.root_entry_path %}
-    {% if page.path == site.root_entry_path %}
-      <img id="root-logo">
-    {% endif %}
-  {% endif %}
+<div id="local-nav">
 
   <div class="entry-box-bar">
+    {% if site.social.enabled %}
+      {% include share.html %}
+    {% endif %}
     {% if include.type == "entry" %}
       <div class="entry-head-link-emoji-wrapper">
         <label class="btn-selector">
@@ -17,13 +14,12 @@
         </label>
       </div>
     {% endif %}
-    {% if site.social.enabled %}
-      {% include share.html %}
-    {% endif %}
   </div>
   
   {% if include.type == "entry" %}
-    
+    {% if page.path == site.root_entry_path %}
+      <img id="root-logo">
+    {% endif %}
     <!-- linked entries -->
     <div class="entry-box-wrapper">
       <nav id="entry-box-link-nav" class="entry-box-link-nav" role="navigation" aria-label="">
@@ -59,4 +55,4 @@
   {% else %}
     <!-- error -->
   {% endif %}
-</nav>
+</div>

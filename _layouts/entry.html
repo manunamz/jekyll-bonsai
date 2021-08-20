@@ -53,15 +53,15 @@ layout: default
   <div class="entry-body">
 
     <h1>{{ page.title }}</h1>
-    <p class="small-descr">
+
+    <span class="small-descr">
       {% for stat_tag in page.status %}
         {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
         <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
       {% endfor %}
       <span>Last Tended: {{ page.updated | date: site.date_format }}</span>
-    </p>
-    
-    {% include local-nav.html type="entry" %}
+      {% include local-nav.html type="entry" %}
+    </span>
     
     {{ content }}
     

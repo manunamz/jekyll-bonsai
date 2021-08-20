@@ -31,12 +31,12 @@
   }
 
   .entry-box-wrapper {
+    padding-top: $sp-3;
     width: 100%;
 
     .entry-box-link-nav {
       display: flex;
       flex-direction: column;
-      border-radius: 16px;
 
       .entry-box-link-type-title {
         text-align: center;
