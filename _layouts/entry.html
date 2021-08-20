@@ -30,7 +30,7 @@ layout: default
           {% else %}
             <li class="entry-head-breadcrumb">
               <span title="Ancestor Entry">{% include img/bullet-ancestor.svg %}</span>
-              <span class="missing-entry-txt">{{ ancestor | split: "." | last }}</span>
+              <span class="missing-entry-txt">{{ site.emoji.missing }} {{ ancestor | split: "." | last }}</span>
             </li>
           {% endif %}
         {% endfor %}
@@ -75,16 +75,14 @@ layout: default
         </label>
       </div>
       <nav id="entry-foot-links-nav" class="entry-foot-nav" role="navigation" aria-label="">
-        <!-- determine number of 'backlinks' first to see if we need to use the empty message -->
-        {% assign backlinks = page.backlinks | doc_type: "entries" %}
-        {% if page.children.size == 0 and backlinks.size == 0 %}
-          <p class="small-descr">No linked entries.</p>
-        {% else %}
-          <div class="entry-foot-nav-sections">
-            <div class="entry-foot-nav-section">
-              <span class="entry-foot-link-type" title="Child Entry">
-                {% include img/bullet-tree.svg %}
-              </span>
+        <div class="entry-foot-nav-sections">
+          <div class="entry-foot-nav-section">
+            <span class="entry-foot-link-type" title="Child Entry">
+              {% include img/bullet-tree.svg %}
+            </span>
+            {% if page.children.size == 0 %}
+              <p class="small-descr">No child entries.</p>
+            {% else %}
               <ul class="entry-foot-nav-list">
                 {% for child in page.children %}
                   {% assign child_doc = site.entries | where: "url", child | first %}
@@ -100,31 +98,36 @@ layout: default
                     </li>
                   {% else %}
                     <li class="entry-foot-nav-list-item">
-                      <span class="missing-entry-txt">{{ child | split: "." | last }}</span>
+                      <span class="missing-entry-txt">{{ site.emoji.missing }} {{ child | split: "." | last }}</span>
                     </li>
                   {% endif %}
                 {% endfor %}
               </ul>
-            </div>
-            <div class="entry-foot-nav-section">
-              <span class="entry-foot-link-type" title="Backlinked Entry">
-                {% include img/bullet-net-web.svg %}
-              </span>
-              <ul class="entry-foot-nav-list">
-                {% for backlink in backlinks %}
-                  {% assign backlink_doc = site.entries | where: "url", backlink.doc_url | first %}
-                  <li class="entry-foot-nav-list-item">
-                    {% for stat_tag in backlink_doc.status %}
-                      {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
-                      <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
-                    {% endfor %}
-                    <a class="wiki-link" href="{{ backlink_doc.url | relative_url }}">{{ backlink_doc.title }}</a>
-                  </li>
-                {% endfor %}
-              </ul>
-            </div>
+            {% endif %}
           </div>
-        {% endif %}
+          <div class="entry-foot-nav-section">
+            <span class="entry-foot-link-type" title="Backlinked Entry">
+              {% include img/bullet-net-web.svg %}
+            </span>
+            {% assign backlinks = page.backlinks | doc_type: "entries" %}
+            {% if backlinks.size == 0 %}
+              <p class="small-descr">No backlink entries.</p>
+            {% else %}
+            <ul class="entry-foot-nav-list">
+              {% for backlink in backlinks %}
+                {% assign backlink_doc = site.entries | where: "url", backlink.doc_url | first %}
+                <li class="entry-foot-nav-list-item">
+                  {% for stat_tag in backlink_doc.status %}
+                    {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
+                    <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
+                  {% endfor %}
+                  <a class="wiki-link" href="{{ backlink_doc.url | relative_url }}">{{ backlink_doc.title }}</a>
+                </li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </div>
+        </div>
       </nav>
     </div>
     <!-- linked posts -->
