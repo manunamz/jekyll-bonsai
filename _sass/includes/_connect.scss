@@ -1,4 +1,8 @@
 .connect-bar{
   text-align: left;
   padding-left: $sp-3;
+
+  & .connect-icon {
+    user-select: none;
+  }
 }
