@@ -75,14 +75,18 @@
   }
 }
 
-// entry foot
+// entry toggles
 
-#entry-foot-posts-emoji-span {
-  filter: drop-shadow(0 0 0.7mm $drop-shadow-purple);  
+#entry-head-link-emoji-span {
+  filter: drop-shadow(0 0 0.7mm $drop-shadow-brown);
 }
 
 #entry-foot-link-emoji-span {
   filter: drop-shadow(0 0 0.7mm $drop-shadow-brown);
+}
+
+#entry-foot-posts-emoji-span {
+  filter: drop-shadow(0 0 0.7mm $drop-shadow-purple);  
 }
 
 // default/main footer btns
