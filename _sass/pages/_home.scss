@@ -12,6 +12,11 @@
   & .lead-img {
     text-align: center;
     padding: $sp-6;
+
+    & #home-logo {
+      height: 60%; 
+      width: 60%;
+    }
   }
 
   & .lead-title {

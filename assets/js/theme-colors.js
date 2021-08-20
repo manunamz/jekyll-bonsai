@@ -10,8 +10,9 @@ export default class ThemeColors {
     this.navBase = document.getElementById('nav-base');
     this.themeColorsCheckbox = document.getElementById('theme-colors-checkbox');
     this.themeColorsEmojiSpan = document.getElementById('theme-colors-emoji-span');
-    // home-page logo
-    this.homeBonsaiLogo = document.getElementById('home-bonsai');
+    // logo
+    this.homeLogo = document.getElementById('home-logo');
+    this.rootLogo = document.getElementById('root-logo');
     this.init();
   }
 
@@ -52,11 +53,18 @@ export default class ThemeColors {
     this.favicon.setAttribute('href', "{{site.baseurl}}/assets/img/favicon-" + this.theme + ".png");
     this.navBonsai.setAttribute('src', "{{site.baseurl}}/assets/img/nav-bonsai-" + this.theme + ".svg");
     this.navBase.setAttribute('src', "{{site.baseurl}}/assets/img/nav-base-" + this.theme + ".svg");
-    if (this.homeBonsaiLogo) {
+    if (this.rootLogo) {
       if (this.theme === "dark") {
-        this.homeBonsaiLogo.setAttribute('src', "{{ site.logo-dark | relative_url }}");
+        this.rootLogo.setAttribute('src', "{{ site.logo-dark | relative_url }}");
       } else {
-        this.homeBonsaiLogo.setAttribute('src', "{{ site.logo-light | relative_url }}");
+        this.rootLogo.setAttribute('src', "{{ site.logo-light | relative_url }}");
+      }
+    }
+    if (this.homeLogo) {
+      if (this.theme === "dark") {
+        this.homeLogo.setAttribute('src', "{{ site.logo-dark | relative_url }}");
+      } else {
+        this.homeLogo.setAttribute('src', "{{ site.logo-light | relative_url }}");
       }
     }
     // update bullet icon colors

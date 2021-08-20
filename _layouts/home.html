@@ -6,7 +6,7 @@ layout: default
   
   <div class="lead">
     <div class="lead-img">
-      <img id="home-bonsai" height="45%" width="45%">
+      <img id="home-logo">
     </div>
     {% assign root = site.entries | find_exp: "item", "item.path == site.root_entry_path" %}
     <h1 class="lead-title"><a class="wiki-link" href="{{ root.url | relative_url }}">{{ page.title }}</a></h3>
