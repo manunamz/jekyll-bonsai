@@ -29,28 +29,6 @@ $link-color: $blue-200 !default;
 $wiki-link-color: $green-200 !default;
 $invalid-wiki-link-color: $grey-lt-300;
 
-// graph variables
-// (graph attributes had to be set in scripts.js because of poor svg 2.0 support)
-
-$link-line-stroke-color: $brown-02;
-$link-line-stroke-width: 0.5;
-$link-line-dash-val: 0;
-
-$node-stroke-color: $transparent;
-$node-stroke-width: 0;
-
-$node-unvisited-color: $green-03;
-$node-visited-color: $green-05;
-$node-missing-color: $brown-02;
-
-$node-active-color: $yellow-300;
-$node-tagged-color: $orange-300;
-
-$hover-active-brightness: 100%;
-$hover-inactive-brightness: 100%;
-$hover-active-alpha: 100%;
-$hover-inactive-alpha: 25%;
-
 // blockquote
 $blockquote-border-color: rgba($green-07, 0.33) !default;
 $blockquote-quote-color: rgba($green-07, .5) !default;
