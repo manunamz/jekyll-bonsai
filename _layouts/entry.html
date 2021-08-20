@@ -75,58 +75,56 @@ layout: default
         </label>
       </div>
       <nav id="entry-foot-links-nav" class="entry-foot-nav" role="navigation" aria-label="">
-        <div class="entry-foot-nav-sections">
-          <div class="entry-foot-nav-section">
-            <span class="entry-foot-link-type" title="Child Entry">
-              {% include img/bullet-tree.svg %}
-            </span>
-            {% if page.children.size == 0 %}
-              <p class="small-descr">No child entries.</p>
-            {% else %}
-              <ul class="entry-foot-nav-list">
-                {% for child in page.children %}
-                  {% assign child_doc = site.entries | where: "url", child | first %}
-                  {% if child_doc %}
-                    <li class="entry-foot-nav-list-item">
-                      {% for stat_tag in child_doc.status %}
-                        {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
-                        <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
-                      {% endfor %}
-                      <a class="wiki-link {% if child_doc.url == '' %}missing-entry-txt{% endif %}" href="{{ child_doc.url | relative_url }}">
-                        {{ child_doc.title }}
-                      </a>
-                    </li>
-                  {% else %}
-                    <li class="entry-foot-nav-list-item">
-                      <span class="missing-entry-txt">{{ site.emoji.missing }} {{ child | split: "." | last }}</span>
-                    </li>
-                  {% endif %}
-                {% endfor %}
-              </ul>
-            {% endif %}
-          </div>
-          <div class="entry-foot-nav-section">
-            <span class="entry-foot-link-type" title="Backlinked Entry">
-              {% include img/bullet-net-web.svg %}
-            </span>
-            {% assign backlinks = page.backlinks | doc_type: "entries" %}
-            {% if backlinks.size == 0 %}
-              <p class="small-descr">No backlink entries.</p>
-            {% else %}
+        <div class="entry-foot-nav-section">
+          <span class="entry-foot-link-type" title="Child Entry">
+            {% include img/bullet-tree.svg %}
+          </span>
+          {% if page.children.size == 0 %}
+            <p class="small-descr entry-foot-nav-child-none">No child entries.</p>
+          {% else %}
             <ul class="entry-foot-nav-list">
-              {% for backlink in backlinks %}
-                {% assign backlink_doc = site.entries | where: "url", backlink.doc_url | first %}
-                <li class="entry-foot-nav-list-item">
-                  {% for stat_tag in backlink_doc.status %}
-                    {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
-                    <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
-                  {% endfor %}
-                  <a class="wiki-link" href="{{ backlink_doc.url | relative_url }}">{{ backlink_doc.title }}</a>
-                </li>
+              {% for child in page.children %}
+                {% assign child_doc = site.entries | where: "url", child | first %}
+                {% if child_doc %}
+                  <li class="entry-foot-nav-list-item">
+                    {% for stat_tag in child_doc.status %}
+                      {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
+                      <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
+                    {% endfor %}
+                    <a class="wiki-link {% if child_doc.url == '' %}missing-entry-txt{% endif %}" href="{{ child_doc.url | relative_url }}">
+                      {{ child_doc.title }}
+                    </a>
+                  </li>
+                {% else %}
+                  <li class="entry-foot-nav-list-item">
+                    <span class="missing-entry-txt">{{ site.emoji.missing }} {{ child | split: "." | last }}</span>
+                  </li>
+                {% endif %}
               {% endfor %}
             </ul>
-            {% endif %}
-          </div>
+          {% endif %}
+        </div>
+        <div class="entry-foot-nav-section">
+          <span class="entry-foot-link-type" title="Backlinked Entry">
+            {% include img/bullet-net-web.svg %}
+          </span>
+          {% assign backlinks = page.backlinks | doc_type: "entries" %}
+          {% if backlinks.size == 0 %}
+            <p class="small-descr entry-foot-nav-child-none">No backlink entries.</p>
+          {% else %}
+          <ul class="entry-foot-nav-list">
+            {% for backlink in backlinks %}
+              {% assign backlink_doc = site.entries | where: "url", backlink.doc_url | first %}
+              <li class="entry-foot-nav-list-item">
+                {% for stat_tag in backlink_doc.status %}
+                  {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
+                  <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
+                {% endfor %}
+                <a class="wiki-link" href="{{ backlink_doc.url | relative_url }}">{{ backlink_doc.title }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
         </div>
       </nav>
     </div>
@@ -141,10 +139,10 @@ layout: default
         </label>
       </div>
       <nav id="entry-foot-posts-nav" class="entry-foot-nav" role="navigation" aria-label="">      
-        <!-- capture linked_post here -->
-        {% capture linked_posts %}
-          {% assign num_linked_posts = 0 %}
-          <div class="entry-foot-nav-section">
+        <div class="entry-foot-nav-section">
+          <!-- capture linked_post here -->
+          {% capture linked_posts %}
+            {% assign num_linked_posts = 0 %}
             <ul class="entry-foot-nav-list">
               {% for post in site.posts %}
                 {% if post.tags contains page.namespace %}
@@ -159,14 +157,14 @@ layout: default
                 {% endif %}
               {% endfor %}
             </ul>
-          </div>
-        {% endcapture %}
-        <!-- render linked_posts here (the if statement is why we have to do this) -->
-        {% if num_linked_posts == 0 %}
-          <p class="small-descr">No linked posts.</p>
-        {% else %}
-          {{ linked_posts }}
-        {% endif %}
+          {% endcapture %}
+          <!-- render linked_posts here (the if statement is why we have to do this) -->
+          {% if num_linked_posts == 0 %}
+            <p class="small-descr">No linked posts.</p>
+          {% else %}
+            {{ linked_posts }}
+          {% endif %}
+        </div>
       </nav>
     </div>  
   </footer>

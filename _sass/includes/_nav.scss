@@ -42,24 +42,20 @@
   display: flex;
 
   .entry-foot-nav {
-    display: flex;
-    flex-direction: column;
-    border-radius: 16px;
+    width: 100%;
+    display: inline-block;
 
-    .entry-foot-nav-sections {
-      display: flex;
-    }
-    
     .entry-foot-nav-section {
+      width: 100%;
       padding-left: $sp-2;
       padding-right: $sp-2;
-    }
 
-    .entry-foot-link-type {
-      @include fs-6;
-      display: inline-block;
-      width: 100%;
-      text-align: center;
+      .entry-foot-link-type {
+        @include fs-6;
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+      }
     }
 
     .entry-foot-nav-list {
@@ -81,6 +77,10 @@
           display: none; 
         }
       }
+    }
+
+    .entry-foot-nav-child-none {
+      text-align: center;
     }
   }
 }
