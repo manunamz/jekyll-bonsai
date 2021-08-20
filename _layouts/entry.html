@@ -6,44 +6,48 @@ layout: default
 
   <!-- breadcrumb ancestry path -->
   <header id="entry-header">
-    <nav class="entry-head-nav" role="navigation" aria-label="breadcrumb">
-      <label class="btn-selector">
-        <input id="entry-head-checkbox" type="checkbox">
-        <span id="entry-head-emoji-span" title="Toggle Header">
-          {{ site.emoji.breadcrumbs }}
-        </span>
-      </label>
-      <ol class="entry-head-breadcrumbs">
-        {% for ancestor in page.ancestors %}
-          {% assign ancestor_doc = site.entries | where: "url", ancestor | first %}
-          {% if ancestor_doc %}
-            <li class="entry-head-breadcrumb">
-              <span title="Ancestor Entry">{% include img/bullet-ancestor.svg %}</span>
-              {% for stat_tag in ancestor_doc.status %}
-                {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
-                <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
-              {% endfor %}
-              <a class="wiki-link" href="{{ ancestor_doc.url | relative_url }}">
-                {{ ancestor_doc.title }}
-              </a>
-            </li>
-          {% else %}
-            <li class="entry-head-breadcrumb">
-              <span title="Ancestor Entry">{% include img/bullet-ancestor.svg %}</span>
-              <span class="missing-entry-txt">{{ site.emoji.missing }} {{ ancestor | split: "." | last }}</span>
-            </li>
-          {% endif %}
-        {% endfor %}
-        <li class="entry-head-breadcrumb">
-          <span title="Ancestor Entry">{% include img/bullet-ancestor.svg %}</span>
-          {% for stat_tag in page.status %}
-            {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
-            <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
+    <div class="entry-head-wrapper">
+      <div>
+        <label class="btn-selector">
+          <input id="entry-head-checkbox" type="checkbox">
+          <span id="entry-head-emoji-span" title="Toggle Header">
+            {{ site.emoji.breadcrumbs }}
+          </span>
+        </label>
+      </div>
+      <nav id="entry-head-nav" class="entry-head-nav" role="navigation" aria-label="breadcrumb">
+        <ol class="entry-head-breadcrumbs">
+          {% for ancestor in page.ancestors %}
+            {% assign ancestor_doc = site.entries | where: "url", ancestor | first %}
+            {% if ancestor_doc %}
+              <li class="entry-head-breadcrumb">
+                <span title="Ancestor Entry">{% include img/bullet-ancestor.svg %}</span>
+                {% for stat_tag in ancestor_doc.status %}
+                  {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
+                  <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
+                {% endfor %}
+                <a class="wiki-link" href="{{ ancestor_doc.url | relative_url }}">
+                  {{ ancestor_doc.title }}
+                </a>
+              </li>
+            {% else %}
+              <li class="entry-head-breadcrumb">
+                <span title="Ancestor Entry">{% include img/bullet-ancestor.svg %}</span>
+                <span class="missing-entry-txt">{{ site.emoji.missing }} {{ ancestor | split: "." | last }}</span>
+              </li>
+            {% endif %}
           {% endfor %}
-          <span>{{ page.title }}</span>
-        </li>
-      </ol>
-    </nav>
+          <li class="entry-head-breadcrumb">
+            <span title="Ancestor Entry">{% include img/bullet-ancestor.svg %}</span>
+            {% for stat_tag in page.status %}
+              {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
+              <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
+            {% endfor %}
+            <span>{{ page.title }}</span>
+          </li>
+        </ol>
+      </nav>
+    </div>
   </header>
 
   <div class="entry-body">

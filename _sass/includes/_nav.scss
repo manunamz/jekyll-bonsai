@@ -5,33 +5,35 @@
 
 // entry-breadcrumb nav
 
-.entry-head-nav {
-  @include mq(md) {
-    margin-top: -$sp-4;
-  }
+.entry-head-wrapper {
   display: flex;
-  overflow-x: scroll;
-  white-space: nowrap;  
-
-  .entry-head-breadcrumbs {
-    padding-left: 0;
-    padding-top: $sp-2;
-    margin-bottom: 0;
-    margin-top: 0;
-    align-self: center;
-    list-style: none;
   
-    .entry-head-breadcrumb {
-      @include fs-2;
+  .entry-head-nav {
+    display: inline-block;
+    overflow-x: scroll;
+    white-space: nowrap;  
+
+    .entry-head-breadcrumbs {
       display: flex;
-      flex-direction: row;
-      padding-left: $sp-2;
-      
-      &::before {
-        display: none;
+      align-self: center;
+      // remove 'ol' defaults
+      padding-left: 0;
+      margin-bottom: 0;
+      margin-top: 0;
+      list-style: none;
+    
+      .entry-head-breadcrumb {
+        @include fs-2;
+        display: flex;
+        flex-direction: row;
+        padding-left: $sp-2;
+        
+        &::before {
+          display: none;
+        }
       }
-    }
-  } 
+    } 
+  }  
 }
 
 // entry-foot nav

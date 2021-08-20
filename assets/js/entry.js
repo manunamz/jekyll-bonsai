@@ -78,7 +78,7 @@ export default class Entry {
 
   toggleEntryHeadCollapse () {
     // from: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_collapsible
-    var collapsibleEl = document.getElementsByClassName('entry-head-breadcrumbs')[0];
+    var collapsibleEl = document.getElementById('entry-head-nav');
     if (this.entryHeadCheckbox.checked) {
       collapsibleEl.style.display = "none";
       this.entryHeadStatus = "closed";
