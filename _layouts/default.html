@@ -22,7 +22,7 @@ layout: table-wrappers
           {% endif %}
           {% assign privacy_page = site.pages | find_exp: "item", "item.name == 'privacy.md'" %}
           {% if privacy_page %}
-            <a id="prvcy-btn" class="wiki-link site-nav-btn" href="{{ '/privacy/' | relative_url }}" title="Go To About">{{ site.emoji.privacy }}</a>
+            <a id="prvcy-btn" class="wiki-link site-nav-btn" href="{{ '/privacy/' | relative_url }}" title="Go To Privacy">{{ site.emoji.privacy }}</a>
           {% endif %}
           {% if site.social.enabled %}
             {% include connect.html %}
