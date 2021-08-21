@@ -43,6 +43,12 @@
 //   color: $grey-dk-200;
 // }
 
+.last-updated {
+  @include fs-4;
+  margin-top: $sp-1;
+  color: $grey-dk-000;
+}
+
 .missing-entry-txt {
   @include fs-2;
   color: $grey-dk-000 !important;
