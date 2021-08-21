@@ -247,9 +247,6 @@
   blockquote {
     @include fs-3;
     font-family: 'Special Elite', cursive;
-    max-width: $content-width;
-    // line-height: 1.4;
-    position: relative;
     margin: 0;
     padding: $sp-2;
 
@@ -267,7 +264,6 @@
       width: 4rem;
       height: 4rem;
 
-      font-family: 'Special Elite', cursive;
       content: '“';
     }
   }
