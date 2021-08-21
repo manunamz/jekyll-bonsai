@@ -26,9 +26,9 @@ import SiteNav from './site-nav.js';
  //
 function initListeners () {
   // open external links in new window; wiki-links in current window.
-  document.querySelectorAll("a:not(.site-nav-btn):not(.wiki-link):not(.wiki-link-embed-link):not(.sem-tag):not(.stat-tag):not(.anchor-heading):not(.footnote):not(.reversefootnote)").forEach(setupLinkOpen);
+  document.querySelectorAll("a:not(.site-nav-btn):not(.wiki-link):not(.wiki-link-embed-link):not(.sem-tag):not(.stat-tag):not(.anchor-heading):not(.footnote):not(.reversefootnote):not(.toc-list-item-anchor)").forEach(setupLinkOpen);
   // init hover-preview.html listeners.
-  document.querySelectorAll('{{ include.wrapperQuerySelector }} a:not(.site-nav-btn):not(.wiki-link-embed-link):not(.stat-tag):not(.anchor-heading)').forEach(setupListeners);
+  document.querySelectorAll('{{ include.wrapperQuerySelector }} a:not(.site-nav-btn):not(.wiki-link-embed-link):not(.stat-tag):not(.anchor-heading):not(.toc-list-item-anchor)').forEach(setupListeners);
 
   document.getElementById('wiki-link-nav-checkbox')
     .addEventListener('click', function(event) {

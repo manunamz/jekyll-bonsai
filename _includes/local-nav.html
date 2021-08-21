@@ -1,4 +1,14 @@
 <div id="local-nav">
+  
+  {% if include.type == "entry" %}
+    {% if page.path == site.root_entry_path %}
+      <img id="root-logo">
+    {% endif %}
+  {% else if include.type == "post" %}
+    <div class="toc">
+      {% include toc.html html=content class="toc-list" item_class="toc-list-item" anchor_class="toc-list-item-anchor" %}
+    </div>
+  {% endif %}
 
   <div class="entry-box-bar">
     {% if site.social.enabled %}
@@ -15,11 +25,9 @@
       </div>
     {% endif %}
   </div>
-  
+
+  <!-- entry -->
   {% if include.type == "entry" %}
-    {% if page.path == site.root_entry_path %}
-      <img id="root-logo">
-    {% endif %}
     <!-- linked entries -->
     <div class="entry-box-wrapper">
       <nav id="entry-box-link-nav" class="entry-box-link-nav" role="navigation" aria-label="">
@@ -48,11 +56,27 @@
         {% endif %}
       </nav>
     </div>
-
+  <!-- post -->
   {% else if include.type == "post" %}
-    <!-- toc -->
-    <!-- semantic tags -->
+    <div class="tag-pills">
+      {% for sem_tag in page.tags %}
+        {% assign sem_tag_file = sem_tag | append: ".md" %}
+        {% assign entry = site.entries | find_exp: "item", "item.path contains sem_tag_file" %}
+        <span class="tag-pill">
+          {% if entry %}
+            {% for stat_tag in page.status %}
+              {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
+              <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
+            {% endfor %}
+            <a class="sem-tag" href="{{ entry.url | relative_url }}">{{ entry.title }}</a>
+          {% else %}
+            <span class="small-descr disabled">{{ sem_tag }}</span>
+          {% endif %}
+        </span>
+      {% endfor %}
+    </div>
+  <!-- oops -->
   {% else %}
-    <!-- error -->
+      
   {% endif %}
 </div>

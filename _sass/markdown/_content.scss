@@ -26,7 +26,7 @@
     text-overflow: ellipsis;
     white-space: nowrap;
     
-    &:not(.site-nav-btn):not(.wiki-link):not(.wiki-link-embed-link):not(.sem-tag):not(.stat-tag):not(.anchor-heading):not(.footnote):not(.reversefootnote):after {
+    &:not(.site-nav-btn):not(.wiki-link):not(.wiki-link-embed-link):not(.sem-tag):not(.stat-tag):not(.anchor-heading):not(.footnote):not(.reversefootnote):not(.toc-list-item-anchor):after {
       @include fs-3;
       font-family: $mono-font-family;
       position: relative;

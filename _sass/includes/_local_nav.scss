@@ -2,12 +2,12 @@
   width: 50%;
 
   // sm
+
+  // @include mq(md) {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
   float: right;
-
-  // @include mq(md) {
   //   width: $nav-width-md;
   //   flex-wrap: nowrap;
   //   position: fixed;
@@ -54,6 +54,73 @@
 
     td {
       background-color: $transparent;
+    }
+  }
+}
+
+.toc {
+  display: flex;
+  justify-content: center;
+  padding-top: $sp-5;
+  padding-right: $sp-5;
+}
+
+.toc-list {
+  margin-bottom: 0;
+}
+
+.toc-list-item {
+  @include fs-4;
+
+  &::before {
+    display: none; 
+  }
+}
+
+.toc-list-item-anchor {
+  color: $wiki-link-color;
+  text-decoration: none;
+  background-image: linear-gradient($wiki-link-underline-color 0%, $wiki-link-underline-color 100%);
+  background-repeat: repeat-x;
+  background-position: 0 100%;
+  background-size: 1px 1px;
+
+  &:hover {
+    background-image: linear-gradient(
+      rgba($wiki-link-color, 0.45) 0%,
+      rgba($wiki-link-color, 0.45) 100%
+    );
+    background-size: 1px 1px;
+  }
+}
+
+.sem-tag {
+  @include fs-2;
+  color: $wiki-link-color;
+}
+
+.tag-pills {
+  display: flex;
+  justify-content: center;
+}
+
+.tag-pill {
+  padding: $sp-2;
+  margin: $sp-2;
+  border: 1px solid $separator-color;
+  border-radius: 15px;
+  color: $wiki-link-color;
+
+  &:hover {
+    background-color: $base-button-color;
+  }
+
+  &.disabled {
+    color: $grey-dk-000;
+    border: 1px solid $grey-lt-300;
+
+    &:hover {
+      background-color: $body-background-color;
     }
   }
 }

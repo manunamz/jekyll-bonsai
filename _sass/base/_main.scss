@@ -169,28 +169,6 @@ hr {
   height: 50px;
 }
 
-.sem-tag {
-  @include fs-2;
-  padding: $sp-2;
-  border: 1px solid $separator-color;
-  border-radius: 15px;
-  color: $wiki-link-color;
-
-  &:hover {
-    background-color: $base-button-color;
-  }
-
-  &.disabled {
-    color: $grey-dk-000;
-    border: 1px solid $grey-lt-300;
-
-    &:hover {
-      // how to just disable?
-      background-color: $body-background-color;
-    }
-  }
-}
-
 .stat-tag {
   filter: drop-shadow(0 0 0.2mm $drop-shadow-green);
 }
