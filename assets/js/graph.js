@@ -378,7 +378,7 @@ export default class GraphNav {
     // if (!isPostPage) return false;
     const semTags = Array.from(document.getElementsByClassName("sem-tag"));
     const tagged = semTags.filter((semTag) => 
-      !this.isMissingPage(node) && semTag.href.includes(node.url)
+      !this.isMissingPage(node) && semTag.hasAttribute("href") && semTag.href.includes(node.url)
     );
     return tagged.length !== 0;
   }
