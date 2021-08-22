@@ -2,7 +2,7 @@
 <!-- duplicate code with cookie-consent-response.html -->
 <div id="cookie-consent">
   <span>We would like to use third party cookies and scripts to improve the functionality of this website.</span>
-  <a id="cookie-consent-response-accept" class="site-nav-btn" title="Alright!">{{ site.emoji.approve }}</a>
+  <a id="cookie-consent-response-accept-1" class="site-nav-btn" title="Alright!">{{ site.emoji.approve }}</a>
   <a class="site-nav-btn" href="{{ '/privacy' | relative_url }}" title="Hmm...Tell me more...">{{ site.emoji.consider }}</a>
 </div>
 <script>
@@ -42,7 +42,7 @@
   } else {
     document.getElementById('cookie-consent').style.display = 'block';
   }
-  document.getElementById('cookie-consent-response-accept').addEventListener("click",function() {
+  document.getElementById('cookie-consent-response-accept-1').addEventListener("click",function() {
     clearCookies();
     createCookie('cookie-consent-accepted','true',31);
     document.getElementById('cookie-consent').style.display = 'none';
