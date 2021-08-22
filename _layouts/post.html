@@ -6,7 +6,7 @@ layout: default
 
   <h1>{{ page.title }}</h1>
 
-  <div>
+  <div class="doc-status">
     {% for stat_tag in page.status %}
       {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
       <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>  
