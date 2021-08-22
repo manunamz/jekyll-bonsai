@@ -28,15 +28,17 @@
   & a {
     display: inline-block; 
     cursor: pointer; 
-  }  
-}
+  }
 
-#cookie-consent-response {
-  display: flex;
-  justify-content: space-around;
-  padding: $sp-5;
-  
-  & a {
-    @include fs-9;
-  }  
+  #cookie-consent-response-accept {
+    @include fs-6;
+  }
+
+  #cookie-consent-hmm {
+    @include fs-8;
+  }
+
+  #cookie-consent-response-reject {
+    @include fs-2;
+  }
 }
