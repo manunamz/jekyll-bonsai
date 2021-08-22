@@ -59,7 +59,7 @@
   } else if (readCookie('cookie-consent-declined')==='true') {
     /* do nothing (use multi-line comment because compression causes single line to comment out entire file) */
   } else {
-    document.getElementById('cookie-consent').style.display = 'block';
+    document.getElementById('cookie-consent').style.display = 'flex';
   }
   document.getElementById('cookie-consent-response-accept').addEventListener("click",function() {
     clearCookies();
