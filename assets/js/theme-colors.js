@@ -77,6 +77,18 @@ export default class ThemeColors {
         bl.style.stroke = '#8C6239'; // $brown-02
       }
     });
+    // update svg-image pencil color
+    let pencils = document.getElementsByClassName('pencil-default');
+    console.log(pencils);
+    Array.prototype.forEach.call(pencils, (p) => {
+      if (this.theme == 'dark') {
+        p.style.stroke = '#e6e1e8'; // => $body-text-color => $grey-lt-300
+        p.style.fill = '#e6e1e8';
+      } else {
+        p.style.stroke = '#5c5962'; // => $body-text-color => $grey-dk-100
+        p.style.fill = '#5c5962';
+      }
+    });
     // save to local storage
     window.localStorage.setItem('theme-colors', this.theme);
   }

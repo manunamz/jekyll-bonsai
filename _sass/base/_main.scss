@@ -167,10 +167,12 @@ hr {
 .wiki-link-embed-image {
   display: flex;
   justify-content: center;
+  padding-top: $sp-2;
+  padding-bottom: $sp-2;
 
   .wiki-link-img {
-    height: 100%;
-    width: 100%;    
+    height: 50%;
+    width: 50%;    
   }
 }
 
@@ -212,4 +214,37 @@ hr {
       }
     }  
   }
+}
+
+// pencil textured svgs
+
+.pencil-yellow,
+.pencil-blue,
+.pencil-green{
+  fill: none;
+  stroke-miterlimit: 10;
+  stroke-width: 10px;
+}
+
+.pencil-default {
+  stroke: #e6e1e8;
+  fill: #e6e1e8;
+}
+
+.pencil-blue {
+  stroke: #0047aa;
+}
+
+.pencil-green {
+  stroke: #31AF31;
+}
+
+.pencil-yellow {
+  stroke: #dfb600;
+}
+
+.txt {
+  font-size: 52px;
+  font-family: BradleyHandITCTT-Bold, Bradley Hand;
+  font-weight: 700;
 }

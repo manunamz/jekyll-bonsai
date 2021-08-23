@@ -1,0 +1,17 @@
+<!-- due to a chromium bug regarding svg-reuse...: https://bugs.chromium.org/p/chromium/issues/detail?id=109212 -->
+<!-- ...using this hacky off-screen-style from: https://stackoverflow.com/questions/67961573/how-to-hide-reusable-svg-with-filter-that-has-filterunits-userspaceonuse#comment120130719_67961573 -->
+<svg xmlns="http://www.w3.org/2000/svg" height="0" width="0" style="absolute + top:-1000vw;">
+  <!-- from: https://css-tricks.com/creating-a-pencil-effect-in-svg/ -->
+  <filter id="PencilTexture" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox">
+    <feTurbulence type="fractalNoise" baseFrequency="0.5" numOctaves="5" stitchTiles="stitch" result="f1">
+    </feTurbulence>
+    <feColorMatrix type="matrix" values="0 0 0 0 0, 0 0 0 0 0, 0 0 0 0 0, 0 0 0 -1.5 1.5" result="f2">
+    </feColorMatrix>
+    <feComposite operator="in" in2="f2b" in="SourceGraphic" result="f3">
+    </feComposite>
+    <feTurbulence type="fractalNoise" baseFrequency="1.2" numOctaves="3" result="noise">
+    </feTurbulence>
+    <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="2.5" in="f3" result="f4">
+    </feDisplacementMap>
+  </filter>
+</svg>
