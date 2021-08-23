@@ -42,6 +42,8 @@ export default class GraphNav {
         "radius": 5.5,
         "missing-radius": 5.5,
         "missing-node-color": "#00000000", // => $transparent
+        "unvisited-node-color": "#3e5c50", // => $green-400
+        "visited-node-color": "#31AF31",   // => $green-05
         "link-color": "#44434d",           // => $grey-dk-200 => $link-line-stroke-color
         "link-pulse-color": "#959396",     // => $grey-dk-000
         "text-color": "#e6e1e8",           // => $body-text-color => $grey-lt-300
@@ -51,10 +53,12 @@ export default class GraphNav {
         "name": "light",
         "radius": 6,
         "missing-radius": 4,
-        "missing-node-color": "#8C6239",  // => $node-missing-color => $brown-02 
-        "link-color": "#8C6239",          // => $node-missing-color => $brown-02 
-        "link-pulse-color": "#5c5962",    // => $body-text-color => $grey-dk-100
-        "text-color": "#5c5962",          // => $body-text-color => $grey-dk-100
+        "missing-node-color": "#8C6239",   // => $node-missing-color => $brown-02 
+        "unvisited-node-color": "#9cbe9c", // => $green-05
+        "visited-node-color": "#31AF31",   // => $green-03
+        "link-color": "#8C6239",           // => $node-missing-color => $brown-02 
+        "link-pulse-color": "#5c5962",     // => $body-text-color => $grey-dk-100
+        "text-color": "#5c5962",           // => $body-text-color => $grey-dk-100
       }
     }
     // redraw new chart
@@ -314,7 +318,13 @@ export default class GraphNav {
       // no hover (default)  
     }
     ctx.arc(node.x, node.y, nodeTypeInfo["radius"], 0, 2 * Math.PI, false);
+    if (theme_attrs["name"] === "dark" && nodeTypeInfo["type"] === "visited") {
+      ctx.shadowBlur = 20;
+      ctx.shadowColor = "#31AF31";
+    }
     ctx.fill();
+    ctx.shadowBlur = 0;
+    ctx.shadowColor = "";
     if (theme_attrs["name"] === "dark") {
       // draw node borders
       ctx.lineWidth = nodeTypeInfo["radius"] * (2 / 5);
@@ -349,13 +359,13 @@ export default class GraphNav {
     if (isVisited) {
       return {
         "type": "visited",
-        "color": "#31AF31", // => $green-05
+        "color": theme_attrs['visited-node-color'],
         "radius": theme_attrs["radius"],
       }
     } else if (!isVisited && !isMissing) {
       return {
         "type": "unvisited",
-        "color": "#9cbe9c", // => $green-03
+        "color": theme_attrs['unvisited-node-color'],
         "radius": theme_attrs["radius"],
       }
     } else if (isMissing) {
