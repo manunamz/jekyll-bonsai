@@ -322,7 +322,7 @@ export default class GraphNav {
       ctx.stroke();
     }
     if (this.isCurrentPage(node) || this.isTag(node)) {
-      // add peripheral node text
+      // add node highlights
       ctx.beginPath();
       ctx.arc(node.x, node.y, nodeTypeInfo["radius"] + 1, 0, 2 * Math.PI, false);
       ctx.lineWidth = 2;
