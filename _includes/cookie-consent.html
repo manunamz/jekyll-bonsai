@@ -69,10 +69,12 @@
     document.getElementById('cookie-consent').style.display = 'none';
     location.reload();
   });
-  document.getElementById('cookie-consent-response-reject').addEventListener("click",function() {
-    clearCookies();
-    createCookie('cookie-consent-declined','true',10);
-    document.getElementById('cookie-consent').style.display = 'none';
-    location.reload();
-  });
+  {% if site.debug %}
+    document.getElementById('cookie-consent-response-reject').addEventListener("click",function() {
+      clearCookies();
+      createCookie('cookie-consent-declined','true',10);
+      document.getElementById('cookie-consent').style.display = 'none';
+      location.reload();
+    });
+  {% endif %}
 </script>
