@@ -79,7 +79,6 @@ export default class ThemeColors {
     });
     // update svg-image pencil color
     let pencils = document.getElementsByClassName('pencil-default');
-    console.log(pencils);
     Array.prototype.forEach.call(pencils, (p) => {
       if (this.theme == 'dark') {
         p.style.stroke = '#e6e1e8'; // => $body-text-color => $grey-lt-300
