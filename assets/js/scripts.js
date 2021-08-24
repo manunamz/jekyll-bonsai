@@ -35,6 +35,17 @@ function initListeners () {
       expandGraphNav();
       document.getElementById('graph').dispatchEvent(new Event('draw')); // tell graph to redraw itself
     }, false);
+
+  // apply pencil-filter to all svg images
+  let imgElements = document.getElementsByClassName('wiki-link-embed-image');
+  Array.prototype.forEach.call(imgElements, (img) => {
+    if (img.firstElementChild.tagName === "svg") {
+      // attach filter to svg element's parent because of safari/mobile bug
+      // bug from: https://github.com/Fyrd/caniuse/issues/3803
+      // workaround from: https://newbedev.com/why-is-filter-drop-shadow-causing-my-svg-to-disappear-in-safari
+      img.style.filter = "url(#PencilTexture)";
+    }
+  });
 }
 
  //
