@@ -8,9 +8,11 @@
   <a id="cookie-consent-hmm" class="site-nav-btn" href="{{ '/privacy' | relative_url }}" title="Hmm...Tell me more...">
     {{ site.emoji.consider }}
   </a>
-  <a id="cookie-consent-response-reject" class="site-nav-btn" title="Nope!">
-    {{ site.emoji.disapprove }}
-  </a>
+  {% if site.debug %}
+    <a id="cookie-consent-response-reject" class="site-nav-btn" title="Nope!">
+      {{ site.emoji.disapprove }}
+    </a>
+  {% endif %}
 </div>
 <script>
   function createCookie(name,value,days) {

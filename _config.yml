@@ -42,7 +42,7 @@ collections:
       - seed.md
       - tea.md
       - pot-bamboo.md
-
+        
 defaults:
   # permalink: /:type/:id
   # permalinks are manually verified/generated -- see 'jekyll-bonsai-util' plugin.
@@ -135,6 +135,7 @@ bonsai_util:
 # 
 # jekyll-bonsai configs
 # 
+debug: false
 date_format: "%Y-%m-%d"
 emoji:
   # 

@@ -4,12 +4,6 @@ title: Welcome Lodge
 permalink: /privacy/
 ---
 
-👋 Hey there!
+This site stores data locally about which pages have been visited. This data may be deleted at any time by the user by clicking the {{ site.emoji.delete }} under the {{ site.emoji.site_nav }} dropdown.
 
-I want **YOU** to help me make this garden awesome! If you agree 👍 to let me save some info about your visit, I can make this site _even_ better.
-
-If you opt out, please consider giving some [feedback](https://github.com/manunamz/jekyll-bonsai/discussions/) or contributing some [fuel](https://ko-fi.com/manunamz/) for the gardener.
-
-Either way, regardless if you accept or decline, the site will reset occasionally to make sure we're on the same page about your interest in helping out.
-
-Until the alternatives have been more thoroughly investigated, this site will use google analytics with anonymized ip addresses.
+Until the alternatives have been more thoroughly investigated, this site uses google analytics with anonymized ip addresses for metrics collection.
