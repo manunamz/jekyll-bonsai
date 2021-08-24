@@ -1,25 +1,15 @@
 $body-background-color: $green-01 !default;
-$sidebar-color: $grey-lt-000 !default;
-$border-color: $grey-lt-100 !default;
-
 $body-text-color: $grey-dk-100 !default;
-// $body-text-color-highlighted: $grey-lt-300 !default;
 $body-heading-color: $grey-dk-300 !default;
-$nav-child-link-color: $grey-dk-100 !default;
-$search-background-color: $white !default;
 
-$separator-color: $green-02 !default;
+$border-color: $grey-lt-100 !default;
+$separator-color: $green-02 !default; // also used for '.infobox'
 
-$btn-primary-color: $green-200 !default;
-$base-button-color: $green-02 !default;
+$base-button-color: $green-02 !default; // used for tags
 
 $code-background-color: $green-02 !default;
-$search-result-preview-color: $grey-dk-000 !default;
 $table-background-color: $green-01-05 !default;
 $box-shadow-color: $black !default;
-$feedback-color: darken($sidebar-color, 3%) !default;
-
-$infobox-color: $brown-02 !default;
 
 // link variables
 
