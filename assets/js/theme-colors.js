@@ -70,7 +70,6 @@ export default class ThemeColors {
     // update bullet icon colors
     let bulletLinks = document.getElementsByClassName('bullet-link');
     Array.prototype.forEach.call(bulletLinks, (bl) => {
-      // using $link-line-stroke-color
       if (this.theme == 'dark') {
         bl.style.stroke = '#5c5962'; // $grey-dk-200
       } else {

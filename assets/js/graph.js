@@ -46,8 +46,8 @@ export default class GraphNav {
         "missing-node-color": "#00000000", // => $transparent
         "unvisited-node-color": "#3e5c50", // => $green-400
         "visited-node-color": "#31AF31",   // => $green-05
-        "glow-color": "#31AF31",           // == visited-node-color => $green-05
-        "link-color": "#44434d",           // => $grey-dk-200 => $link-line-stroke-color
+        "glow-color": "#31AF31",           // => $green-05
+        "link-color": "#44434d",           // => $grey-dk-200
         "link-pulse-color": "#959396",     // => $grey-dk-000
         "text-color": "#e6e1e8",           // => $body-text-color => $grey-lt-300
       }
@@ -58,11 +58,11 @@ export default class GraphNav {
         "missing-radius": 4,
         "current-node-color": "#F0C61F",   // yellow
         "tagged-node-color": "#a87f32",    // sand/yellow-orange-brown
-        "missing-node-color": "#8C6239",   // => $node-missing-color => $brown-02 
+        "missing-node-color": "#8C6239",   // => $brown-02 
         "unvisited-node-color": "#9cbe9c", // => $green-05
         "visited-node-color": "#31AF31",   // => $green-03
         "glow-color": "#00000000",         // => $transparent
-        "link-color": "#8C6239",           // => $node-missing-color => $brown-02 
+        "link-color": "#8C6239",           // => $brown-02 
         "link-pulse-color": "#5c5962",     // => $body-text-color => $grey-dk-100
         "text-color": "#5c5962",           // => $body-text-color => $grey-dk-100
       }
