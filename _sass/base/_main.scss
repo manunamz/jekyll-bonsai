@@ -243,8 +243,11 @@ hr {
   stroke: #dfb600;
 }
 
-.txt {
-  font-size: 52px;
+.pencil-txt {
   font-family: BradleyHandITCTT-Bold, Bradley Hand;
-  font-weight: 700;
+  font-size: 52px;
+}
+
+.pencil-txt-sm {
+  font-size: 27px;
 }
