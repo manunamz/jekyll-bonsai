@@ -33,7 +33,7 @@ export default class GraphNav {
   drawD3Nav() {
     // destroy old chart   
     // d3.select(this.canvas).selectAll('svg > *').remove();
-  
+    
     let theme_attrs = {};
     // set theme-dependent graph attributes.
     if (document.getElementById('theme-colors-checkbox').checked) {
@@ -41,21 +41,27 @@ export default class GraphNav {
         "name": "dark",
         "radius": 5.5,
         "missing-radius": 5.5,
+        "current-node-color": "#F0C61F",   // yellow
+        "tagged-node-color": "#F29E3D",    // orange
         "missing-node-color": "#00000000", // => $transparent
         "unvisited-node-color": "#3e5c50", // => $green-400
         "visited-node-color": "#31AF31",   // => $green-05
+        "glow-color": "#31AF31",           // == visited-node-color => $green-05
         "link-color": "#44434d",           // => $grey-dk-200 => $link-line-stroke-color
         "link-pulse-color": "#959396",     // => $grey-dk-000
         "text-color": "#e6e1e8",           // => $body-text-color => $grey-lt-300
       }
     } else {
-        theme_attrs = {
+      theme_attrs = {
         "name": "light",
         "radius": 6,
         "missing-radius": 4,
+        "current-node-color": "#F0C61F",   // yellow
+        "tagged-node-color": "#F29E3D",    // orange
         "missing-node-color": "#8C6239",   // => $node-missing-color => $brown-02 
         "unvisited-node-color": "#9cbe9c", // => $green-05
         "visited-node-color": "#31AF31",   // => $green-03
+        "glow-color": "#00000000",         // => $transparent
         "link-color": "#8C6239",           // => $node-missing-color => $brown-02 
         "link-pulse-color": "#5c5962",     // => $body-text-color => $grey-dk-100
         "text-color": "#5c5962",           // => $body-text-color => $grey-dk-100
@@ -319,10 +325,12 @@ export default class GraphNav {
     }
     ctx.arc(node.x, node.y, nodeTypeInfo["radius"], 0, 2 * Math.PI, false);
     if (theme_attrs["name"] === "dark" && nodeTypeInfo["type"] === "visited") {
+      // turn glow on
       ctx.shadowBlur = 20;
-      ctx.shadowColor = "#31AF31";
+      ctx.shadowColor = nodeTypeInfo["glow-color"];
     }
     ctx.fill();
+    // turn glow off
     ctx.shadowBlur = 0;
     ctx.shadowColor = "";
     if (theme_attrs["name"] === "dark") {
@@ -337,9 +345,9 @@ export default class GraphNav {
       ctx.arc(node.x, node.y, nodeTypeInfo["radius"] + 1, 0, 2 * Math.PI, false);
       ctx.lineWidth = 2;
       if (this.isCurrentPage(node)) {
-        ctx.strokeStyle = "#F0C61F";  // yellow
+        ctx.strokeStyle = nodeTypeInfo["current-highlight"];
       } else if (this.isTag(node)) {
-        ctx.strokeStyle = "#F29E3D";  // orange
+        ctx.strokeStyle = nodeTypeInfo["tagged-highlight"];
       } else {
       }
       ctx.stroke();
@@ -359,20 +367,29 @@ export default class GraphNav {
     if (isVisited) {
       return {
         "type": "visited",
-        "color": theme_attrs['visited-node-color'],
         "radius": theme_attrs["radius"],
+        "color": theme_attrs['visited-node-color'],
+        "glow-color": theme_attrs["glow-color"],
+        "current-highlight": theme_attrs['current-node-color'],
+        "tagged-highlight": theme_attrs['tagged-node-color'],
       }
     } else if (!isVisited && !isMissing) {
       return {
         "type": "unvisited",
-        "color": theme_attrs['unvisited-node-color'],
         "radius": theme_attrs["radius"],
+        "color": theme_attrs['unvisited-node-color'],
+        "glow-color": theme_attrs["glow-color"],
+        "current-highlight": theme_attrs['current-node-color'],
+        "tagged-highlight": theme_attrs['tagged-node-color'],
       }
     } else if (isMissing) {
       return {
         "type": "missing",
-        "color": theme_attrs["missing-node-color"],
         "radius": theme_attrs["missing-radius"],
+        "color": theme_attrs["missing-node-color"],
+        "glow-color": theme_attrs["glow-color"],
+        "current-highlight": theme_attrs['current-node-color'],
+        "tagged-highlight": theme_attrs['tagged-node-color'],
       }
     } else {
       console.log("WARN: Not a valid node type.");
