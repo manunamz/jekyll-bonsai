@@ -42,7 +42,7 @@ export default class GraphNav {
         "radius": 5.5,
         "missing-radius": 5.5,
         "current-node-color": "#F0C61F",   // yellow
-        "tagged-node-color": "#F29E3D",    // orange
+        "tagged-node-color": "#a87f32",    // sand/yellow-orange-brown
         "missing-node-color": "#00000000", // => $transparent
         "unvisited-node-color": "#3e5c50", // => $green-400
         "visited-node-color": "#31AF31",   // => $green-05
@@ -57,7 +57,7 @@ export default class GraphNav {
         "radius": 6,
         "missing-radius": 4,
         "current-node-color": "#F0C61F",   // yellow
-        "tagged-node-color": "#F29E3D",    // orange
+        "tagged-node-color": "#a87f32",    // sand/yellow-orange-brown
         "missing-node-color": "#8C6239",   // => $node-missing-color => $brown-02 
         "unvisited-node-color": "#9cbe9c", // => $green-05
         "visited-node-color": "#31AF31",   // => $green-03
@@ -301,10 +301,14 @@ export default class GraphNav {
   nodePaint(node, ctx, theme_attrs, hoverNode, hoverLink) {
     const nodeTypeInfo = this.isNodeType(node, theme_attrs);
     let fillText = true;
+    // 
     // draw nodes (canvas circle)
+    // 
     ctx.fillStyle = nodeTypeInfo["color"];
     ctx.beginPath();
-    // hover
+    // 
+    // hover behavior
+    // 
     if (node === hoverNode) {
       // hoverNode
       nodeTypeInfo["radius"] *= 2;
@@ -324,34 +328,40 @@ export default class GraphNav {
       // no hover (default)  
     }
     ctx.arc(node.x, node.y, nodeTypeInfo["radius"], 0, 2 * Math.PI, false);
-    if (theme_attrs["name"] === "dark" && nodeTypeInfo["type"] === "visited") {
+    // 
+    // glow behavior
+    // 
+    if (this.isCurrentPage(node)) {
+      // turn glow on
+      ctx.shadowBlur = 30;
+      ctx.shadowColor = nodeTypeInfo["current-glow-color"];
+    } else if (this.isTag(node)) {
+      // turn glow on
+      ctx.shadowBlur = 30;
+      ctx.shadowColor = nodeTypeInfo["tagged-glow-color"];
+    } else if (theme_attrs["name"] === "dark" && nodeTypeInfo["type"] === "visited") {
       // turn glow on
       ctx.shadowBlur = 20;
       ctx.shadowColor = nodeTypeInfo["glow-color"];
+    } else {
+      // no glow
     }
     ctx.fill();
     // turn glow off
     ctx.shadowBlur = 0;
     ctx.shadowColor = "";
+    // 
+    // dark customization
+    // 
     if (theme_attrs["name"] === "dark") {
       // draw node borders
       ctx.lineWidth = nodeTypeInfo["radius"] * (2 / 5);
       ctx.strokeStyle = theme_attrs["link-color"];
       ctx.stroke();
     }
-    if (this.isCurrentPage(node) || this.isTag(node)) {
-      // add node highlights
-      ctx.beginPath();
-      ctx.arc(node.x, node.y, nodeTypeInfo["radius"] + 1, 0, 2 * Math.PI, false);
-      ctx.lineWidth = 2;
-      if (this.isCurrentPage(node)) {
-        ctx.strokeStyle = nodeTypeInfo["current-highlight"];
-      } else if (this.isTag(node)) {
-        ctx.strokeStyle = nodeTypeInfo["tagged-highlight"];
-      } else {
-      }
-      ctx.stroke();
-    }
+    // 
+    // node labels
+    // 
     if (fillText) {
       // add peripheral node text
       ctx.fillStyle = theme_attrs["text-color"];
@@ -370,8 +380,8 @@ export default class GraphNav {
         "radius": theme_attrs["radius"],
         "color": theme_attrs['visited-node-color'],
         "glow-color": theme_attrs["glow-color"],
-        "current-highlight": theme_attrs['current-node-color'],
-        "tagged-highlight": theme_attrs['tagged-node-color'],
+        "current-glow-color": theme_attrs['current-node-color'],
+        "tagged-glow-color": theme_attrs['tagged-node-color'],
       }
     } else if (!isVisited && !isMissing) {
       return {
@@ -379,8 +389,8 @@ export default class GraphNav {
         "radius": theme_attrs["radius"],
         "color": theme_attrs['unvisited-node-color'],
         "glow-color": theme_attrs["glow-color"],
-        "current-highlight": theme_attrs['current-node-color'],
-        "tagged-highlight": theme_attrs['tagged-node-color'],
+        "current-glow-color": theme_attrs['current-node-color'],
+        "tagged-glow-color": theme_attrs['tagged-node-color'],
       }
     } else if (isMissing) {
       return {
@@ -388,8 +398,8 @@ export default class GraphNav {
         "radius": theme_attrs["missing-radius"],
         "color": theme_attrs["missing-node-color"],
         "glow-color": theme_attrs["glow-color"],
-        "current-highlight": theme_attrs['current-node-color'],
-        "tagged-highlight": theme_attrs['tagged-node-color'],
+        "current-glow-color": theme_attrs['current-node-color'],
+        "tagged-glow-color": theme_attrs['tagged-node-color'],
       }
     } else {
       console.log("WARN: Not a valid node type.");
