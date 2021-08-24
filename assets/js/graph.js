@@ -2,7 +2,7 @@ export default class GraphNav {
 
   constructor() {
     // this.graphType set in initGraphType();
-    this.svgWrapper = document.getElementById('svg-graph');
+    this.canvas = document.getElementById('graph');
     this.graphTypeCheckBox = document.getElementById('graph-type-checkbox');
     this.graphTypeEmojiSpan = document.getElementById('graph-type-emoji-span');
     this.init();
@@ -16,7 +16,7 @@ export default class GraphNav {
   
   bindEvents() {
     // listen for draw event (esp. from theme colors)
-    this.svgWrapper.addEventListener('draw', () => {
+    this.canvas.addEventListener('draw', () => {
       this.updateGraphType();
       this.drawD3Nav();
     });
@@ -27,23 +27,35 @@ export default class GraphNav {
   }
   
   // how to checkbox: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_display_checkbox_text
-  drawD3Nav() {   
+  drawD3Nav() {
     // destroy old chart   
-    d3.select(this.svgWrapper).selectAll('svg > *').remove();
+    // d3.select(this.canvas).selectAll('svg > *').remove();
   
     let theme_attrs = {};
     // set theme-dependent graph attributes.
     if (document.getElementById('theme-colors-checkbox').checked) {
       theme_attrs = {
         "name": "dark",
-        "radius": 2.5,
-        "missing-radius": 2.5,
+        "radius": 5.5,
+        "missing-radius": 5.5,
+        "missing-node-color": "#00000000", // => $transparent
+        "unvisited-node-color": "#3e5c50", // => $green-400
+        "visited-node-color": "#31AF31",   // => $green-05
+        "link-color": "#44434d",           // => $grey-dk-200 => $link-line-stroke-color
+        "link-pulse-color": "#959396",     // => $grey-dk-000
+        "text-color": "#e6e1e8",           // => $body-text-color => $grey-lt-300
       }
     } else {
         theme_attrs = {
         "name": "light",
-        "radius": 3,
-        "missing-radius": 1.5,
+        "radius": 6,
+        "missing-radius": 4,
+        "missing-node-color": "#8C6239",   // => $node-missing-color => $brown-02 
+        "unvisited-node-color": "#9cbe9c", // => $green-05
+        "visited-node-color": "#31AF31",   // => $green-03
+        "link-color": "#8C6239",           // => $node-missing-color => $brown-02 
+        "link-pulse-color": "#5c5962",     // => $body-text-color => $grey-dk-100
+        "text-color": "#5c5962",           // => $body-text-color => $grey-dk-100
       }
     }
     // redraw new chart
@@ -76,474 +88,332 @@ export default class GraphNav {
 
   // d3
   drawNetWeb (theme_attrs) {
-    // d3.json has been async'd: https://stackoverflow.com/questions/49768165/code-within-d3-json-callback-is-not-executed 
-    d3.json("/jekyll-bonsai/assets/graph-net-web.json")
-      .then(function(data) {       
-          // console.log('d3 is building a tree');
-          // console.log(data);      
-          const svgWrapper = document.getElementById('svg-graph');
-          const width = +svgWrapper.getBoundingClientRect().width / 2;
-          const height = +svgWrapper.getBoundingClientRect().height / 2;
-          const svg = d3.select(svgWrapper)
-              .attr("viewBox", [-width / 2, -height / 2, width, height]);
-
-          const simulation = d3.forceSimulation()
-              .nodes(data.nodes)
-              .force("link", d3.forceLink()
-                  .id(function(d) {return d.id;})
-                  .distance(30)
-                  .iterations(1)
-                  .links(data.links))
-              .force("charge", d3.forceManyBody().strength(-50))
-              .force("collide", d3.forceCollide())
-              .force("center", d3.forceCenter())
-              // see: https://stackoverflow.com/questions/9573178/d3-force-directed-layout-with-bounding-box?answertab=votes#tab-top
-              // 'center of gravity'
-              .force("forceX", d3.forceX()
-                  .strength(.3)
-                  .x(.75))
-              .force("forceY", d3.forceY()
-                  .strength(.1)
-                  .y(.9));
-  
-          const link = svg.append("g")
-                          .attr("class", "links")
-                          .selectAll("line")
-                          .data(data.links)
-                          .enter().append("line");
-
-          const node = svg.append('g')
-                          .attr('class', 'nodes')
-                          .selectAll('g')
-                          .data(data.nodes)
-                          .join("g");
-          // .attr("active", (d) => isCurrentEntryInNetWeb(d) ? true : null)
-
-          node.append('circle')
-              //svg 2.0 not well-supported: https://stackoverflow.com/questions/47381187/svg-not-working-in-firefox
-              // add attributes in javascript instead of css.
-              .attr("r", (d) => isMissingEntryInNetWeb(d) ? theme_attrs["missing-radius"] : theme_attrs["radius"])
-              .attr("class", nodeTypeInNetWeb)
-              .on("click", goToEntryFromNetWeb)
-              .on("mouseover", onMouseover)
-              .on("mouseout", onMouseout)
-              .call(d3.drag()
-                      .on("start", dragstarted)
-                      .on("drag", dragged)
-                      .on("end", dragended)
-                      .touchable(true));
-
-          // from: https://stackoverflow.com/questions/28415005/d3-js-selection-conditional-rendering
-          // use filtering to deal with specific nodes
-          // from: https://codepen.io/blackjacques/pen/BaaqKpO
-          // add node pulse on the current node
-          node.filter( function(d,i) { return isCurrentEntryInNetWeb(d); })
-              .append("circle")
-              .attr("r", theme_attrs["radius"])
-              .classed("pulse", (d) => isCurrentEntryInNetWeb(d) ? true : null)
-              .on("mouseover", onMouseover)
-              .on("mouseout", onMouseout)
-              .call(d3.drag()
-                  .on("start", dragstarted)
-                  .on("drag", dragged)
-                  .on("end", dragended)
-                  .touchable(true));
-  
-          node.filter( function(d,i) { return isPostTaggedInNetWeb(d); })
-              .append("circle")
-              .attr("r", theme_attrs["radius"])
-              .classed("pulse-sem-tag", (d) => isPostTaggedInNetWeb(d) ? true : null)
-              .on("mouseover", onMouseover)
-              .on("mouseout", onMouseout)
-              .call(d3.drag()
-                  .on("start", dragstarted)
-                  .on("drag", dragged)
-                  .on("end", dragended)
-                  .touchable(true));        
-
-          const text = svg.append('g')
-                          .attr('class', 'text')
-                          .selectAll('text')
-                          .data(data.nodes)
-                          .join("text")
-                            .attr("font-size", "20%")
-                            .attr("dx", 5)
-                            .attr("dy", ".05em")
-                            .text((d) => isMissingEntryInNetWeb(d) ? "Missing Entry" : d.label)
-                            .on("mouseover", onMouseover)
-                            .on("mouseout", onMouseout);
-    
-          simulation.on("tick", () => {
-              link
-                .attr("x1", function(d) { return d.source.x; })
-                .attr("y1", function(d) { return d.source.y; })
-                .attr("x2", function(d) { return d.target.x; })
-                .attr("y2", function(d) { return d.target.y; });
-              node
-                .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
-              text
-                .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });  
-          });
-  
-           //
-          // helpers
-           //
-
-          function isCurrentEntryInNetWeb(node) {
-            return !isMissingEntryInNetWeb(node) && window.location.pathname.includes(node.url);
-          }
-
-          function isPostTaggedInNetWeb(node) {
-            // const isPostPage = window.location.pathname.includes("post");
-            // if (!isPostPage) return false;
-            const semTags = Array.from(document.getElementsByClassName("sem-tag"));
-            const tagged = semTags.filter((semTag) => 
-              !isMissingEntryInNetWeb(node) && semTag.href.includes(node.url)
-            );
-            return tagged.length !== 0;
-          }
-
-          function nodeTypeInNetWeb(node) {
-            const isVisited = isVisitedEntryInNetWeb(node);
-            const isMissing = isMissingEntryInNetWeb(node);            
-            if (isVisited) {
-              return "visited";
-            } else if (!isVisited && !isMissing) {
-              return "unvisited";
-            } else if (isMissing) {
-              return "missing";
-            } else {
-              console.log("WARN: Not a valid node type.");
-              return null;
-            }
-          }
-
-          function isVisitedEntryInNetWeb(node) {
-            if (!isMissingEntryInNetWeb(node)) {
-              var visited = JSON.parse(localStorage.getItem('visited'));
-              for (let i = 0; i < visited.length; i++) {
-                if (visited[i]['url'] === node.url) return true;
-              }
-            }
-            return false;
-          }
-          
-          function isMissingEntryInNetWeb(node) {
-            return node.url === '';
-          }
-  
-          // from: https://stackoverflow.com/questions/63693132/unable-to-get-node-datum-on-mouseover-in-d3-v6
-          // d6 now passes events in vanilla javascript fashion
-          function goToEntryFromNetWeb (e, d) {
-            if (!isMissingEntryInNetWeb(d)) {
-              window.location.href = d.url;
-            } else {
-              return null;
-            }
-          };
-
-          function onMouseover(e, d) {
-            const linkedNodesSet = new Set();
-            data.links
-              .filter((n) => n.target.id == d.id || n.source.id == d.id)
-              .forEach((n) => {
-                linkedNodesSet.add(n.target.id);
-                linkedNodesSet.add(n.source.id);
-              });
+    fetch('/jekyll-bonsai/assets/graph-net-web.json').then(res => res.json()).then(data => {
       
-            node.attr("class", (node_d) => {
-              if (node_d.id !== d.id && !linkedNodesSet.has(node_d.id)) {
-                return "inactive";
-              }
-              return "active";
-            });
-      
-            link.attr("class", (link_d) => {
-              if (link_d.source.id !== d.id && link_d.target.id !== d.id) {
-                return "inactive";
-              }
-              return "active";
-            });
-      
-            text.attr("class", (text_d) => {
-              if (text_d.id !== d.id) {
-                return "inactive";
-              }
-              return "active";
-            });
-          };
-      
-          function onMouseout(d) {
-            node.attr("class", "");
-            link.attr("class", "");
-            text.attr("class", "");
-          };
+      data.links.forEach(link => {
+        // the differing method of access is probably a code-smell
+        // from: https://github.com/vasturiano/force-graph/blob/c3879c0a42f65c7abd15be74069c2599e8f56664/example/highlight/index.html#L26
+        const a = data.nodes.filter(node => node.id === link.source)[0];
+        const b = data.nodes.filter(node => node.id === link.target)[0];
+        a.neighbors.push(b);
+        b.neighbors.push(a);
 
-          function dragstarted(event, d) {
-            if (!event.active) simulation.alphaTarget(0.3).restart();
-            d.fx = d.x;
-            d.fy = d.y;
-          }
+        a.links.push(link);
+        b.links.push(link);
+      });
+      
+      const highlightNodes = new Set();
+      const highlightLinks = new Set();
+      let hoverNode = null;
+      let hoverLink = null;
 
-          function dragged(event, d) {
-            d.fx = event.x;
-            d.fy = event.y;
-          }
+      const Graph = ForceGraph()
 
-          function dragended(event, d) {
-            if (!event.active) simulation.alphaTarget(0);
-            d.fx = null;
-            d.fy = null;
+      (document.getElementById('graph'))
+        // container
+        .height(document.getElementById('graph').parentElement.clientHeight)
+        .width(document.getElementById('graph').parentElement.clientWidth)
+        // node
+        .nodeCanvasObject((node, ctx) => this.nodePaint(node, ctx, theme_attrs, hoverNode, hoverLink))
+        // .nodePointerAreaPaint((node, color, ctx, scale) => nodePaint(node, nodeTypeInNetWeb(node), ctx, theme_attrs))
+        .nodeId('id')
+        .nodeLabel('label')
+        .onNodeClick((node, event) => this.goToPage(node, event))
+        // link
+        .linkSource('source')
+        .linkTarget('target')
+        .linkColor(() => theme_attrs["link-color"])
+        // forces
+        // .d3Force('link',    d3.forceLink()
+        //                       .id(function(d) {return d.id;})
+        //                       .distance(30)
+        //                       .iterations(1))
+        //                       .links(data.links))
+        .d3Force('charge',  d3.forceManyBody().strength(-300))
+        // .d3Force('collide', d3.forceCollide())
+        // .d3Force('center',  d3.forceCenter())
+        .d3Force('forceX',  d3.forceX()
+                              .strength(.3)
+                              .x(.75))
+        .d3Force('forceY', d3.forceY()
+                             .strength(.1)
+                             .y(.9))
+        // highlight nodes on hover
+        .autoPauseRedraw(false) // keep redrawing after engine has stopped
+        .onNodeHover(node => {
+          highlightNodes.clear();
+          highlightLinks.clear();
+          if (node) {
+            highlightNodes.add(node);
+            node.neighbors.forEach(neighbor => highlightNodes.add(neighbor));
+            node.links.forEach(link => highlightLinks.add(link));
           }
-      })
-      .catch(function(error) {
-          console.log(error);
+          hoverNode = node || null;
+        })
+        .onLinkHover(link => {
+          highlightNodes.clear();
+          highlightLinks.clear();
+          if (link) {
+            highlightLinks.add(link);
+            highlightNodes.add(link.source);
+            highlightNodes.add(link.target);
+          }
+          hoverLink = link || null;
+        })
+        .linkDirectionalParticles(4)
+        .linkDirectionalParticleWidth(link => highlightLinks.has(link) ? 2 : 0)
+        .linkDirectionalParticleColor(() => theme_attrs["link-pulse-color"])
+        // zoom
+        // (fit to canvas when engine stops)
+        // .onEngineStop(() => Graph.zoomToFit(400))
+        // data
+        .graphData(data);
+
+        elementResizeDetectorMaker().listenTo(
+          document.getElementById('graph'),
+          function(el) {
+            Graph.width(el.offsetWidth);
+            Graph.height(el.offsetHeight);
+          }
+        );
       });
   }
   
   drawTree (theme_attrs) { 
-    // d3.json has been async'd: https://stackoverflow.com/questions/49768165/code-within-d3-json-callback-is-not-executed 
-    d3.json("/jekyll-bonsai/assets/graph-tree.json")
-      .then(function(data) {
-          // console.log('d3 is building a tree');
-          // console.log(data);
-          const svgWrapper = document.getElementById('svg-graph');
-          const width = +svgWrapper.getBoundingClientRect().width / 2;
-          const height = +svgWrapper.getBoundingClientRect().height / 2;
-          const svg = d3.select(svgWrapper)
-              .attr("viewBox", [-width / 2, -height / 2, width, height]);
-
-          const root = d3.hierarchy(data);
-          const links = root.links();
-          flatten(root);
-          const nodes = root.descendants();
-  
-          const simulation = d3.forceSimulation(nodes)
-              .force("link", d3.forceLink(links).id(d => d.id).distance(0).strength(1))
-              .force("charge", d3.forceManyBody().strength(-50))
-              .force("collide", d3.forceCollide())
-              .force("center", d3.forceCenter())
-              // see: https://stackoverflow.com/questions/9573178/d3-force-directed-layout-with-bounding-box?answertab=votes#tab-top
-              // 'center of gravity'            
-              .force("forceX", d3.forceX()
-                  .strength(.3)
-                  .x(.9))
-              .force("forceY", d3.forceY()
-                  .strength(.1)
-                  .y(.9));
-
-          const link = svg.append("g")
-              .attr("class", "links")
-              .selectAll("line")
-              .data(links)
-              .join("line");
-        
-          const node = svg.append('g')
-              .attr('class', 'nodes')
-              .selectAll('g')
-              .data(nodes)
-              .join("g");
-
-          node.append('circle')
-                //svg 2.0 not well-supported: https://stackoverflow.com/questions/47381187/svg-not-working-in-firefox
-                // add attributes in javascript instead of css.
-                .attr("r",  (d) => isMissingEntryInTree(d) ? theme_attrs["missing-radius"] : theme_attrs["radius"])
-                .attr("class", nodeTypeInTree)
-                .on("click", goToEntryFromTree)
-                .on("mouseover", onMouseover)
-                .on("mouseout", onMouseout)
-                // 🐛 bug: this does not work -- it overtakes clicks (extra lines in "tick" are related).
-                .call(d3.drag()
-                    .on("start", dragstarted)
-                    .on("drag", dragged)
-                    .on("end", dragended)
-                    .touchable(true));
-          
-          // from: https://stackoverflow.com/questions/28415005/d3-js-selection-conditional-rendering
-          // use filtering to deal with specific nodes
-          // from: https://codepen.io/blackjacques/pen/BaaqKpO
-          // add node pulse on the current node
-          node.filter( function(d,i) { return isCurrentEntryInTree(d); })
-              .append("circle")
-              .attr("r",  (d) => theme_attrs["radius"])
-              .classed("pulse", true)
-              .on("mouseover", onMouseover)
-              .on("mouseout", onMouseout)
-              .call(d3.drag()
-                .on("start", dragstarted)
-                .on("drag", dragged)
-                .on("end", dragended)
-                .touchable(true));
-  
-          node.filter( function(d,i) { return isPostTaggedInTree(d); })
-              .append("circle")
-              .attr("r", theme_attrs["radius"])
-              .classed("pulse-sem-tag", (d) => isPostTaggedInTree(d) ? true : null)
-              .on("click", goToEntryFromTree)
-              .on("mouseover", onMouseover)
-              .on("mouseout", onMouseout)
-              .call(d3.drag()
-                  .on("start", dragstarted)
-                  .on("drag", dragged)
-                  .on("end", dragended)
-                  .touchable(true));  
-
-          const text = svg.append('g')
-                          .attr('class', 'text')
-                          .selectAll('text')
-                          .data(nodes)
-                          .join("text")
-                            .attr("font-size", "20%")
-                            .attr("dx", 5)
-                            .attr("dy", ".05em")
-                            .text((d) => isMissingEntryInTree(d) ? "Missing Entry" : d.data.label)
-                            .on("mouseover", onMouseover)
-                            .on("mouseout", onMouseout);
-
-          simulation.on("tick", () => {
-              // from: https://mbostock.github.io/d3/talk/20110921/parent-foci.html
-              // preserve hierarchical shape via link positioning
-              var kx = .2 * simulation.alpha();
-              var ky = 1.3 * simulation.alpha();
-              links.forEach(function(d, i) {
-                d.target.x += (d.source.x - d.target.x) * kx;
-                d.target.y += (d.source.y + (height * .35) - d.target.y) * ky;
-              });
-
-              link
-                .attr("x1", d => d.source.x)
-                .attr("y1", d => d.source.y)
-                .attr("x2", d => d.target.x)
-                .attr("y2", d => d.target.y);
-              node
-                .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });  
-              text
-                .attr("transform", function(d) { return "translate(" + d.x + "," + d.y + ")"; });
-          });
-  
-           //
-          // helpers
-           //
-          function isCurrentEntryInTree(node) {
-            return !isMissingEntryInTree(node) && window.location.pathname.includes(node.data.url);
-          }
-
-          function isPostTaggedInTree(node) {
-            // const isPostPage = window.location.pathname.includes("post");
-            // if (!isPostPage) return false;
-            const semTags = Array.from(document.getElementsByClassName("sem-tag"));
-            const tagged = semTags.filter((semTag) => 
-              !isMissingEntryInTree(node) && semTag.href.includes(node.data.url)
-            );
-            return tagged.length !== 0;
-          }
-
-          function nodeTypeInTree(node) {
-            const isVisited = isVisitedEntryInTree(node);
-            const isMissing = isMissingEntryInTree(node);            
-            if (isVisited) {
-              return "visited";
-            } else if (!isVisited && !isMissing) {
-              return "unvisited";
-            } else if (isMissing) {
-              return "missing";
-            } else {
-              console.log("WARN: Not a valid node type.");
-              return null;
-            }
-          }
-
-          function isVisitedEntryInTree(node) {
-            var visited = JSON.parse(localStorage.getItem('visited'));
-            for (let i = 0; i < visited.length; i++) {
-              if (visited[i]['url'] === node.data.url) {
-                return true;
-              }
-            }
-            return false;
-          }
-  
-          function isMissingEntryInTree(node) {
-            return node.data.url === "";
-          }
-  
-          // from: https://stackoverflow.com/questions/63693132/unable-to-get-node-datum-on-mouseover-in-d3-v6
-          // d6 now passes events in vanilla javascript fashion
-          function goToEntryFromTree(e, d) {
-            if (!isMissingEntryInTree(d)) {
-              window.location.href = d.data.url;
-              return true;
-            } else {
-              return false;
-            }
-          };    
-
-          function onMouseover(e, d) {
-            const linkedNodesSet = new Set();
-            links
-              .filter((n) => n.target.data.id == d.data.id || n.source.data.id == d.data.id)
-              .forEach((n) => {
-                linkedNodesSet.add(n.target.data.id);
-                linkedNodesSet.add(n.source.data.id);
-              });
+    fetch('/jekyll-bonsai/assets/graph-tree.json').then(res => res.json()).then(data => {
       
-            node.attr("class", (node_d) => {
-              if (node_d.data.id !== d.data.id && !linkedNodesSet.has(node_d.data.id)) {
-                return "inactive";
-              }
-              return "active";
-            });
-      
-            link.attr("class", (link_d) => {
-              if (link_d.source.data.id !== d.data.id && link_d.target.data.id !== d.data.id) {
-                return "inactive";
-              }
-              return "active";
-            });
-      
-            text.attr("class", (text_d) => {
-              if (text_d.data.id !== d.data.id) {
-                return "inactive";
-              }
-              return "active";
-            });
-          };
-      
-          function onMouseout(d) {
-            node.attr("class", "");
-            link.attr("class", "");
-            text.attr("class", "");
-          };
+      // data.links.forEach(link => {
+      //   // the differing method of access is probably a code-smell
+      //   // from: https://github.com/vasturiano/force-graph/blob/c3879c0a42f65c7abd15be74069c2599e8f56664/example/highlight/index.html#L26
+      //   const a = data.nodes.filter(node => node.id === link.source)[0];
+      //   const b = data.nodes.filter(node => node.id === link.target)[0];
+      //   a.neighbors.push(b);
+      //   b.neighbors.push(a);
 
-          function dragstarted(event, d) {
-            if (!event.active) simulation.alphaTarget(0.3).restart();
-            d.fx = d.x;
-            d.fy = d.y;
-          }
-  
-          function dragged(event, d) {
-            d.fx = event.x;
-            d.fy = event.y;
-          }
-  
-          function dragended(event, d) {
-            if (!event.active) simulation.alphaTarget(0);
-            d.fx = null;
-            d.fy = null;
-          }
-                            
-          function flatten(root) {
-            var nodes = [];
-            function recurse(node) {
-              if (node.descendents) node.descendents.forEach(recurse);
-              nodes.push(node);
-            }
-            recurse(root);
-            return nodes;
-          }
-      })
-      .catch(function(error) {
-          console.log(error);
+      //   a.links.push(link);
+      //   b.links.push(link);
+      // });
+
+      data.links.forEach(link => {
+        // the differing method of access is probably a code-smell
+        // from: https://github.com/vasturiano/force-graph/blob/c3879c0a42f65c7abd15be74069c2599e8f56664/example/highlight/index.html#L26
+        const a = data.nodes.filter(node => node.id === link.source)[0];
+        const b = data.nodes.filter(node => node.id === link.target)[0];
+        a.neighbors.push(b);
+        b.neighbors.push(a);
+
+        a.links.push(link);
+        b.links.push(link);
       });
+
+      const highlightNodes = new Set();
+      const highlightLinks = new Set();
+      let hoverNode = null;
+      let hoverLink = null;
+
+      const Graph = ForceGraph()
+
+      (document.getElementById('graph'))
+        // dag-mode (tree) 
+        .dagMode('td')
+        .dagLevelDistance(100)
+        // .dagLevelDistance(() => setLevelDistance)
+        // container
+        .height(document.getElementById('graph').parentElement.clientHeight)
+        .width(document.getElementById('graph').parentElement.clientWidth)
+        // node
+        .nodeCanvasObject((node, ctx) => this.nodePaint(node, ctx, theme_attrs, hoverNode, hoverLink))
+        // .nodePointerAreaPaint((node, color, ctx, scale) => nodePaint(node, nodeTypeInNetWeb(node), ctx, theme_attrs))
+        .nodeId('id')
+        .nodeLabel('label')
+        .onNodeClick((node, event) => this.goToPage(node, event))
+        // link
+        .linkSource('source')
+        .linkTarget('target')
+        .linkColor(() => theme_attrs["link-color"])
+        // forces
+        // .d3Force('link',    d3.forceLink()
+        //                       .id(function(d) {return d.id;})
+        //                       .distance(30)
+        //                       .iterations(1))
+        //                       .links(data.links))
+        .d3Force('charge',  d3.forceManyBody().strength(-100))
+        // .d3Force('collide', d3.forceCollide())
+        // .d3Force('center',  d3.forceCenter())
+        .d3Force('forceX',  d3.forceX()
+                              .strength(.3)
+                              .x(.9))
+        .d3Force('forceY', d3.forceY()
+                             .strength(.1)
+                             .y(.9))
+        // highlight nodes on hover
+        .autoPauseRedraw(false) // keep redrawing after engine has stopped
+        .onNodeHover(node => {
+          highlightNodes.clear();
+          highlightLinks.clear();
+          if (node) {
+            highlightNodes.add(node);
+            node.neighbors.forEach(neighbor => highlightNodes.add(neighbor));
+            node.links.forEach(link => highlightLinks.add(link));
+          }
+          hoverNode = node || null;
+        })
+        .onLinkHover(link => {
+          highlightNodes.clear();
+          highlightLinks.clear();
+          if (link) {
+            highlightLinks.add(link);
+            highlightNodes.add(link.source);
+            highlightNodes.add(link.target);
+          }
+          hoverLink = link || null;
+        })
+        .linkDirectionalParticles(4)
+        .linkDirectionalParticleWidth(link => highlightLinks.has(link) ? 2 : 0)
+        .linkDirectionalParticleColor(() => theme_attrs["link-pulse-color"])
+        // zoom
+        // (fit to canvas when engine stops)
+        // .onEngineStop(() => Graph.zoomToFit(400))
+        // data
+        .graphData(data);
+        
+        elementResizeDetectorMaker().listenTo(
+          document.getElementById('graph'),
+          function(el) {
+            Graph.width(el.offsetWidth);
+            Graph.height(el.offsetHeight);
+          }
+        );
+      });
+  }
+
+  // draw helpers
+
+  nodePaint(node, ctx, theme_attrs, hoverNode, hoverLink) {
+    const nodeTypeInfo = this.isNodeType(node, theme_attrs);
+    let fillText = true;
+    // draw nodes (canvas circle)
+    ctx.fillStyle = nodeTypeInfo["color"];
+    ctx.beginPath();
+    // hover
+    if (node === hoverNode) {
+      // hoverNode
+      nodeTypeInfo["radius"] *= 2;
+      fillText = false; // node label should be active
+    } else if (hoverNode !== null && hoverNode.neighbors.includes(node)) {
+      // neighbor to hoverNode
+    } else if (hoverNode !== null && !hoverNode.neighbors.includes(node)) {
+      // non-neighbor to hoverNode
+      fillText = false;
+    } else if ((hoverNode === null && hoverLink !== null) && (hoverLink.source === node || hoverLink.target === node)) {
+      // neighbor to hoverLink
+      fillText = true;
+    } else if ((hoverNode === null && hoverLink !== null) && (hoverLink.source !== node && hoverLink.target !== node)) {
+      // non-neighbor to hoverLink
+      fillText = false;
+    } else {
+      // no hover (default)  
+    }
+    ctx.arc(node.x, node.y, nodeTypeInfo["radius"], 0, 2 * Math.PI, false);
+    if (theme_attrs["name"] === "dark" && nodeTypeInfo["type"] === "visited") {
+      ctx.shadowBlur = 20;
+      ctx.shadowColor = "#31AF31";
+    }
+    ctx.fill();
+    ctx.shadowBlur = 0;
+    ctx.shadowColor = "";
+    if (theme_attrs["name"] === "dark") {
+      // draw node borders
+      ctx.lineWidth = nodeTypeInfo["radius"] * (2 / 5);
+      ctx.strokeStyle = theme_attrs["link-color"];
+      ctx.stroke();
+    }
+    if (this.isCurrentPage(node) || this.isTag(node)) {
+      // add node highlights
+      ctx.beginPath();
+      ctx.arc(node.x, node.y, nodeTypeInfo["radius"] + 1, 0, 2 * Math.PI, false);
+      ctx.lineWidth = 2;
+      if (this.isCurrentPage(node)) {
+        ctx.strokeStyle = "#F0C61F";  // yellow
+      } else if (this.isTag(node)) {
+        ctx.strokeStyle = "#F29E3D";  // orange
+      } else {
+      }
+      ctx.stroke();
+    }
+    if (fillText) {
+      // add peripheral node text
+      ctx.fillStyle = theme_attrs["text-color"];
+      ctx.fillText(node.label, node.x + nodeTypeInfo["radius"] + 1, node.y + nodeTypeInfo["radius"] + 1);
+    }
+  }
+
+  // meta about nodes<=>page relationships
+
+  isNodeType(node, theme_attrs) {
+    const isVisited = this.isVisitedPage(node);
+    const isMissing = this.isMissingPage(node);            
+    if (isVisited) {
+      return {
+        "type": "visited",
+        "color": theme_attrs['visited-node-color'],
+        "radius": theme_attrs["radius"],
+      }
+    } else if (!isVisited && !isMissing) {
+      return {
+        "type": "unvisited",
+        "color": theme_attrs['unvisited-node-color'],
+        "radius": theme_attrs["radius"],
+      }
+    } else if (isMissing) {
+      return {
+        "type": "missing",
+        "color": theme_attrs["missing-node-color"],
+        "radius": theme_attrs["missing-radius"],
+      }
+    } else {
+      console.log("WARN: Not a valid node type.");
+      return null;
+    }
+  }
+
+  isCurrentPage(node) {
+    return !this.isMissingPage(node) && window.location.pathname.includes(node.url);
+  }
+
+  isTag(node) {
+    // if (!isPostPage) return false;
+    const semTags = Array.from(document.getElementsByClassName("sem-tag"));
+    const tagged = semTags.filter((semTag) => 
+      !this.isMissingPage(node) && semTag.hasAttribute("href") && semTag.href.includes(node.url)
+    );
+    return tagged.length !== 0;
+  }
+
+  isVisitedPage(node) {
+    if (!this.isMissingPage(node)) {
+      var visited = JSON.parse(localStorage.getItem('visited'));
+      for (let i = 0; i < visited.length; i++) {
+        if (visited[i]['url'] === node.url) return true;
+      }
+    }
+    return false;
+  }
+
+  isMissingPage(node) {
+    return node.url === '';
+  }
+
+  // user-actions
+
+  // from: https://stackoverflow.com/questions/63693132/unable-to-get-node-datum-on-mouseover-in-d3-v6
+  // d3v6 now passes events in vanilla javascript fashion
+  goToPage(node, e) {
+    if (!this.isMissingPage(node)) {
+      window.location.href = node.url;
+      return true;
+    } else {
+      return false;
+    }
   }
 }

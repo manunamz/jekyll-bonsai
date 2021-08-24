@@ -7,8 +7,9 @@ export default class ThemeColors {
     this.navBase = document.getElementById('nav-base');
     this.themeColorsCheckbox = document.getElementById('theme-colors-checkbox');
     this.themeColorsEmojiSpan = document.getElementById('theme-colors-emoji-span');
-    // home-page logo
-    this.homeBonsaiLogo = document.getElementById('home-bonsai');
+    // logo
+    this.homeLogo = document.getElementById('home-logo');
+    this.rootLogo = document.getElementById('root-logo');
     this.init();
   }
 
@@ -20,7 +21,7 @@ export default class ThemeColors {
   bindEvents() {
     this.themeColorsCheckbox.addEventListener('click', () => {
       this.updateThemeColors();
-      document.getElementById('svg-graph').dispatchEvent(new Event('draw')); // tell graph to redraw itself
+      document.getElementById('graph').dispatchEvent(new Event('draw')); // tell graph to redraw itself
     });
   }
 
@@ -49,11 +50,18 @@ export default class ThemeColors {
     this.favicon.setAttribute('href', "/jekyll-bonsai/assets/img/favicon-" + this.theme + ".png");
     this.navBonsai.setAttribute('src', "/jekyll-bonsai/assets/img/nav-bonsai-" + this.theme + ".svg");
     this.navBase.setAttribute('src', "/jekyll-bonsai/assets/img/nav-base-" + this.theme + ".svg");
-    if (this.homeBonsaiLogo) {
+    if (this.rootLogo) {
       if (this.theme === "dark") {
-        this.homeBonsaiLogo.setAttribute('src', "/jekyll-bonsai/assets/img/bonsai-dark.svg");
+        this.rootLogo.setAttribute('src', "/jekyll-bonsai/assets/img/bonsai-dark.svg");
       } else {
-        this.homeBonsaiLogo.setAttribute('src', "/jekyll-bonsai/assets/img/bonsai-light.svg");
+        this.rootLogo.setAttribute('src', "/jekyll-bonsai/assets/img/bonsai-light.svg");
+      }
+    }
+    if (this.homeLogo) {
+      if (this.theme === "dark") {
+        this.homeLogo.setAttribute('src', "/jekyll-bonsai/assets/img/bonsai-dark.svg");
+      } else {
+        this.homeLogo.setAttribute('src', "/jekyll-bonsai/assets/img/bonsai-light.svg");
       }
     }
     // update bullet icon colors
@@ -64,6 +72,17 @@ export default class ThemeColors {
         bl.style.stroke = '#5c5962'; // $grey-dk-200
       } else {
         bl.style.stroke = '#8C6239'; // $brown-02
+      }
+    });
+    // update svg-image pencil color
+    let pencils = document.getElementsByClassName('pencil-default');
+    Array.prototype.forEach.call(pencils, (p) => {
+      if (this.theme == 'dark') {
+        p.style.stroke = '#e6e1e8'; // => $body-text-color => $grey-lt-300
+        p.style.fill = '#e6e1e8';
+      } else {
+        p.style.stroke = '#5c5962'; // => $body-text-color => $grey-dk-100
+        p.style.fill = '#5c5962';
       }
     });
     // save to local storage
