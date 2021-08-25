@@ -74,10 +74,10 @@ theme:
     link: 
       external: 
         valid: "#264caf"   # $blue-200
-        underline: "#5c5962"  # $grey-lt-100
+        underline: "#e1e8e3"  # $grey-lt-300
       internal: 
         valid: "#009c7b"    # $green-200
-        underline: "#E7D6C5" # $brown-00
+        underline: "#ede5dd" # super-light-brown
         invalid: "#959396" # $grey-dk-000
     blockquote: "rgba(160, 228, 160, 0.33)" # $green-07 => #A0E4A0
     tag:
