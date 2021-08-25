@@ -34,6 +34,7 @@ export default class GraphNav {
     // destroy old chart   
     // d3.select(this.canvas).selectAll('svg > *').remove();
     
+    // let colorConfigs = '{{ site.data.colors.graph }}';
     let theme_attrs = {};
     // set theme-dependent graph attributes.
     if (document.getElementById('theme-colors-checkbox').checked) {
@@ -41,30 +42,30 @@ export default class GraphNav {
         "name": "dark",
         "radius": 5.5,
         "missing-radius": 5.5,
-        "current-node-color": "#F0C61F",   // yellow
-        "tagged-node-color": "#a87f32",    // sand/yellow-orange-brown
-        "missing-node-color": "#00000000", // => $transparent
-        "unvisited-node-color": "#3e5c50", // => $green-400
-        "visited-node-color": "#31AF31",   // => $green-05
-        "glow-color": "#31AF31",           // => $green-05
-        "link-color": "#44434d",           // => $grey-dk-200
-        "link-pulse-color": "#959396",     // => $grey-dk-000
-        "text-color": "#e6e1e8",           // => $body-text-color => $grey-lt-300
+        "current-node-color": '{{ site.data.colors.graph.dark.node.current }}',
+        "tagged-node-color":  '{{ site.data.colors.graph.dark.node.tagged }}',
+        "missing-node-color": '{{ site.data.colors.graph.dark.node.missing }}',
+        "unvisited-node-color": '{{ site.data.colors.graph.dark.node.unvisited }}',
+        "visited-node-color": '{{ site.data.colors.graph.dark.node.visited }}',
+        "glow-color": '{{ site.data.colors.graph.dark.node.glow }}',
+        "link-color": '{{ site.data.colors.graph.dark.link }}',
+        "link-particles-color": '{{ site.data.colors.graph.dark.particles }}',
+        "text-color": '{{ site.data.colors.graph.dark.text }}',
       }
     } else {
       theme_attrs = {
         "name": "light",
         "radius": 6,
         "missing-radius": 4,
-        "current-node-color": "#F0C61F",   // yellow
-        "tagged-node-color": "#a87f32",    // sand/yellow-orange-brown
-        "missing-node-color": "#8C6239",   // => $brown-02 
-        "unvisited-node-color": "#9cbe9c", // => $green-05
-        "visited-node-color": "#31AF31",   // => $green-03
-        "glow-color": "#00000000",         // => $transparent
-        "link-color": "#8C6239",           // => $brown-02 
-        "link-pulse-color": "#5c5962",     // => $body-text-color => $grey-dk-100
-        "text-color": "#5c5962",           // => $body-text-color => $grey-dk-100
+        "current-node-color": '{{ site.data.colors.graph.light.node.current }}',
+        "tagged-node-color":  '{{ site.data.colors.graph.light.node.tagged }}',
+        "missing-node-color": '{{ site.data.colors.graph.light.node.missing }}',
+        "unvisited-node-color": '{{ site.data.colors.graph.light.node.unvisited }}',
+        "visited-node-color": '{{ site.data.colors.graph.light.node.visited }}',
+        "glow-color": '{{ site.data.colors.graph.light.node.glow }}',
+        "link-color": '{{ site.data.colors.graph.light.link }}',
+        "link-particles-color": '{{ site.data.colors.graph.light.particles }}',
+        "text-color": '{{ site.data.colors.graph.light.text }}',
       }
     }
     // redraw new chart
@@ -171,7 +172,7 @@ export default class GraphNav {
         })
         .linkDirectionalParticles(4)
         .linkDirectionalParticleWidth(link => highlightLinks.has(link) ? 2 : 0)
-        .linkDirectionalParticleColor(() => theme_attrs["link-pulse-color"])
+        .linkDirectionalParticleColor(() => theme_attrs["link-particles-color"])
         // zoom
         // (fit to canvas when engine stops)
         // .onEngineStop(() => Graph.zoomToFit(400))
@@ -279,7 +280,7 @@ export default class GraphNav {
         })
         .linkDirectionalParticles(4)
         .linkDirectionalParticleWidth(link => highlightLinks.has(link) ? 2 : 0)
-        .linkDirectionalParticleColor(() => theme_attrs["link-pulse-color"])
+        .linkDirectionalParticleColor(() => theme_attrs["link-particles-color"])
         // zoom
         // (fit to canvas when engine stops)
         // .onEngineStop(() => Graph.zoomToFit(400))

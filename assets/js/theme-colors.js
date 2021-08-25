@@ -71,20 +71,20 @@ export default class ThemeColors {
     let bulletLinks = document.getElementsByClassName('bullet-link');
     Array.prototype.forEach.call(bulletLinks, (bl) => {
       if (this.theme == 'dark') {
-        bl.style.stroke = '#5c5962'; // $grey-dk-200
+        bl.style.stroke = '{{ site.data.colors.svg.branch.dark }}';
       } else {
-        bl.style.stroke = '#8C6239'; // $brown-02
+        bl.style.stroke = '{{ site.data.colors.svg.branch.light }}';
       }
     });
     // update svg-image pencil color
     let pencils = document.getElementsByClassName('pencil-default');
     Array.prototype.forEach.call(pencils, (p) => {
       if (this.theme == 'dark') {
-        p.style.stroke = '#e6e1e8'; // => $body-text-color => $grey-lt-300
-        p.style.fill = '#e6e1e8';
+        p.style.stroke = '{{ site.data.colors.pencil.dark.default }}';
+        p.style.fill = '{{ site.data.colors.pencil.dark.default }}';
       } else {
-        p.style.stroke = '#5c5962'; // => $body-text-color => $grey-dk-100
-        p.style.fill = '#5c5962';
+        p.style.stroke = '{{ site.data.colors.svg.pencil.light.default }}';
+        p.style.fill = '{{ site.data.colors.svg.pencil.light.default }}';
       }
     });
     // save to local storage

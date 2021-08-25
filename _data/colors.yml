@@ -1,0 +1,78 @@
+graph:
+  dark:
+    node:
+      current: "#F0C61F"    # yellow
+      glow: "#31AF31"       # $green-05
+      missing: "#00000000"  # $transparent
+      tagged: "#a87f32"     # sand/yellow-orange-brown
+      unvisited: "#3e5c50"  # $green-400
+      visited: "#31AF31"    # $green-05
+    link: "#44434d"         # $grey-dk-200
+    particles: "#959396"    # $grey-dk-000
+    text: "#e6e1e8"         # $body-text-color => $grey-lt-300
+  light:
+    node:
+      current: "#F0C61F"    # yellow
+      glow: "#00000000"     # $transparent
+      missing: "#8C6239"    # sand/yellow-orange-brown
+      tagged: "#a87f32"     # $brown-02
+      unvisited: "#9cbe9c"  # $green-05
+      visited: "#31AF31"    # $green-05
+    link: "#8C6239"         # $brown-02 
+    particles: "#5c5962"    # $grey-dk-000
+    text: "#5c5962"         # $body-text-color => $grey-dk-100
+svg:
+  pencil:
+    blue: "#0047aa"         # blue
+    green: "#31AF31"        # $green-05
+    yellow: "#dfb600"       # yellow
+    dark:
+      default: "#e1e8e3"    # $body-text-color => $grey-lt-300
+    light:
+      default: "#5c5962"    # $body-text-color => $grey-dk-100
+  branch:
+    dark: "#44434d"         # $grey-dk-200
+    light: "#8C6239"        # $brown-02
+theme:
+  dark:
+    body:
+      background: "#27262b" #$grey-dk-300
+      text: "#e1e8e3"       # $grey-lt-300
+      heading: "#f5f6fa"    # $grey-lt-000
+    border: "#44434d"       # $grey-dk-200
+    separator: "#44434d"    # $grey-dk-200
+    btn: "#302d36"          # $grey-dk-250
+    code: "#302d36"         # $grey-dk-250
+    table:
+      background: "#302d36" # $grey-dk-250
+    box_shadow: "#fff"      # $white
+    link: 
+      external: 
+        valid: "#89B8D8"   # $blue-000
+        underline: "#44434d"  # $grey-dk-200
+      internal: 
+        valid: "#A0E4A0"    # $green-07
+        underline: "#44434d" # $grey-dk-200
+        invalid: "#44434d" # $grey-dk-200
+    blockquote: "rgba($grey-dk-200, 0.33)" # $grey-dk-200
+  light:
+    body:
+      background: "#E4f3EA" # $green-01
+      text: "#5c5962"       # $grey-dk-100
+      heading: "#27262b"    # $grey-dk-300
+    border: "#eeebee"       # $grey-lt-100
+    separator: "#C7E6D3"    # $green-02 
+    btn: "#C7E6D3" # $green-02
+    code: "#C7E6D3"         # $green-02
+    table:
+      background: "#D5ECDE" # $green-01-05
+    box_shadow: "#000"      # $black
+    link: 
+      external: 
+        valid: "#264caf"   # $blue-200
+        underline: "#5c5962"  # $grey-lt-100
+      internal: 
+        valid: "#009c7b"    # $green-200
+        underline: "#E7D6C5" # $brown-00
+        invalid: "#e1e8e3" # $grey-lt-300
+    blockquote: "rgba($green-07, 0.33)" # $green-07

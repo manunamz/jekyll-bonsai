@@ -65,7 +65,7 @@ a {
 
 a:not([class]) {
   text-decoration: none;
-  background-image: linear-gradient($border-color 0%, $border-color 100%);
+  background-image: linear-gradient($link-underline-color 0%, $link-underline-color 100%);
   background-repeat: repeat-x;
   background-position: 0 100%;
   background-size: 1px 1px;
@@ -220,28 +220,28 @@ hr {
 
 .pencil-yellow,
 .pencil-blue,
-.pencil-green{
+.pencil-green {
   fill: none;
   stroke-miterlimit: 10;
   stroke-width: 10px;
 }
 
-.pencil-default {
-  stroke: #e6e1e8;
-  fill: #e6e1e8;
-}
+// .pencil-default {
+//   stroke: #e6e1e8;
+//   fill: #e6e1e8;
+// }
 
-.pencil-blue {
-  stroke: #0047aa;
-}
+// .pencil-blue {
+//   stroke: #0047aa;
+// }
 
-.pencil-green {
-  stroke: #31AF31;
-}
+// .pencil-green {
+//   stroke: #31AF31;
+// }
 
-.pencil-yellow {
-  stroke: #dfb600;
-}
+// .pencil-yellow {
+//   stroke: #dfb600;
+// }
 
 .pencil-txt {
   font-family: BradleyHandITCTT-Bold, Bradley Hand;

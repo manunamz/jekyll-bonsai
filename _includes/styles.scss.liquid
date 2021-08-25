@@ -1,3 +1,49 @@
 @import "./support/support";
-@import "./color/{{ include.theme_colors }}";
-@import "./modules";  
+
+{% if include.theme_colors == "dark" %}
+  $body-background-color: {{ site.data.colors.theme.dark.body.background }};
+  $body-text-color: {{ site.data.colors.theme.dark.body.text }};
+  $body-heading-color: {{ site.data.colors.theme.dark.body.heading }};
+  
+  $border-color: {{ site.data.colors.theme.dark.border }};
+  $separator-color:  {{ site.data.colors.theme.dark.separator }};
+
+  $base-button-color: {{ site.data.colors.theme.dark.btn }};
+
+  $code-background-color: {{ site.data.colors.theme.dark.code }};
+  $table-background-color: {{ site.data.colors.theme.dark.table.background }};
+  $box-shadow-color: {{ site.data.colors.theme.dark.box_shadow }};
+
+  $link-color: {{ site.data.colors.theme.dark.link.external.valid }};
+  $link-underline-color: {{ site.data.colors.theme.dark.link.external.underline }};
+  $wiki-link-color: {{ site.data.colors.theme.dark.link.internal.valid }};
+  $wiki-link-underline-color: {{ site.data.colors.theme.dark.link.internal.underline }};
+  $invalid-wiki-link-color: {{ site.data.colors.theme.dark.link.internal.invalid }};
+
+  $blockquote-border-color: {{ site.data.colors.theme.dark.blockquote }};
+  $blockquote-quote-color: {{ site.data.colors.theme.dark.blockquote }};
+{% else %}
+  $body-background-color: {{ site.data.colors.theme.light.body.background }};
+  $body-text-color: {{ site.data.colors.theme.light.body.text }};
+  $body-heading-color: {{ site.data.colors.theme.light.body.heading }};
+  
+  $border-color: {{ site.data.colors.theme.light.border }};
+  $separator-color:  {{ site.data.colors.theme.light.separator }};
+
+  $base-button-color: {{ site.data.colors.theme.light.btn }};
+
+  $code-background-color: {{ site.data.colors.theme.light.code }};
+  $table-background-color: {{ site.data.colors.theme.light.table.background }};
+  $box-shadow-color: {{ site.data.colors.theme.light.box_shadow }};
+
+  $link-color: {{ site.data.colors.theme.light.link.external.valid }};
+  $link-underline-color: {{ site.data.colors.theme.light.link.external.underline }};
+  $wiki-link-color: {{ site.data.colors.theme.light.link.internal.valid }};
+  $wiki-link-underline-color: {{ site.data.colors.theme.light.link.internal.underline }};
+  $invalid-wiki-link-color: {{ site.data.colors.theme.light.link.internal.invalid }};
+
+  $blockquote-border-color: {{ site.data.colors.theme.light.blockquote }};
+  $blockquote-quote-color: {{ site.data.colors.theme.light.blockquote }};
+{% endif %}
+
+@import "./modules";
