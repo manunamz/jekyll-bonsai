@@ -1,10 +1,10 @@
-@import "./support/support";
-
+// Colors
 $transparent: #00000000;
 
 $accent-txt-color: #959396;   // $grey-dk-000
 $date-txt-color: #959396;     // $grey-dk-000
 
+// shadows (mostly for btns)
 $drop-shadow-purple: rgba(114, 83, 237, 0.9) !default; 
 $drop-shadow-blue: rgba(31, 141, 192, 0.9) !default;
 $drop-shadow-brown: rgba(146, 102, 7, 0.9) !default;
@@ -67,4 +67,6 @@ $drop-shadow-red: rgba(233, 76, 76, 0.9) !default;
   $tag-disabled-color:  {{ site.data.colors.theme.light.tag.disabled }};
 {% endif %}
 
+// Imports
+@import "./support/support";
 @import "./modules";
