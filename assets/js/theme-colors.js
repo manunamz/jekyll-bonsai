@@ -40,10 +40,10 @@ export default class ThemeColors {
   updateThemeColors () {
     // toggle theme colors
     if (this.themeColorsCheckbox.checked) {
-      this.themeColorsEmojiSpan.innerHTML = "{{ site.emoji.light }}";
+      this.themeColorsEmojiSpan.innerHTML = "{{ site.data.emoji.light }}";
       this.theme = "dark";
     } else {
-      this.themeColorsEmojiSpan.innerHTML = "{{ site.emoji.dark }}";
+      this.themeColorsEmojiSpan.innerHTML = "{{ site.data.emoji.dark }}";
       this.theme = "light";
     }
     // update css file

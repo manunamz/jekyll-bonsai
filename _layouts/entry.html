@@ -11,7 +11,7 @@ layout: default
         <label class="btn-selector">
           <input id="entry-head-checkbox" type="checkbox">
           <span id="entry-head-emoji-span" title="Toggle Header">
-            {{ site.emoji.breadcrumbs }}
+            {{ site.data.emoji.breadcrumbs }}
           </span>
         </label>
       </div>
@@ -33,7 +33,7 @@ layout: default
             {% else %}
               <li class="entry-head-breadcrumb">
                 <span title="Ancestor Entry">{% include img/bullet-ancestor.svg %}</span>
-                <span class="missing-entry-txt">{{ site.emoji.missing }} {{ ancestor | split: "." | last }}</span>
+                <span class="missing-entry-txt">{{ site.data.emoji.missing }} {{ ancestor | split: "." | last }}</span>
               </li>
             {% endif %}
           {% endfor %}
@@ -74,7 +74,7 @@ layout: default
         <label class="btn-selector">
           <input id="entry-foot-links-checkbox" type="checkbox">
           <span id="entry-foot-link-emoji-span" title="Toggle Linked Entries">
-            {{ site.emoji.entries }}
+            {{ site.data.emoji.entries }}
           </span>
         </label>
       </div>
@@ -101,7 +101,7 @@ layout: default
                   </li>
                 {% else %}
                   <li class="entry-foot-nav-list-item">
-                    <span class="missing-entry-txt">{{ site.emoji.missing }} {{ child | split: "." | last }}</span>
+                    <span class="missing-entry-txt">{{ site.data.emoji.missing }} {{ child | split: "." | last }}</span>
                   </li>
                 {% endif %}
               {% endfor %}
@@ -138,7 +138,7 @@ layout: default
         <label class="btn-selector">
           <input id="entry-foot-posts-checkbox" type="checkbox">
           <span id="entry-foot-posts-emoji-span" title="Toggle Linked Posts">
-            {{ site.emoji.posts }}
+            {{ site.data.emoji.posts }}
           </span>
         </label>
       </div>

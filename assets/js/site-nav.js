@@ -45,13 +45,13 @@ export default class SiteNav {
 
   updateNavType() {
     if (this.navTypeCheckBox.checked) {
-      this.navTypeEmojiSpan.innerText = "{{ site.emoji.visited }}";
+      this.navTypeEmojiSpan.innerText = "{{ site.data.emoji.visited }}";
       this.navType = "graph";
       this.visitedNav.classList.remove("show");
       this.visitedNav.classList.add("hide");
       document.getElementById("graph").classList.remove("hide");
     } else {
-      this.navTypeEmojiSpan.innerText = "{{ site.emoji.graph }}";
+      this.navTypeEmojiSpan.innerText = "{{ site.data.emoji.graph }}";
       this.navType = "tabs";
       document.getElementById("graph").classList.add("hide");
       this.visitedNav.classList.remove("hide");

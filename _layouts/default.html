@@ -17,11 +17,11 @@
         <div class="main-foot">
           {% assign about_page = site.pages | find_exp: "item", "item.name == 'about.md'" %}
           {% if about_page %}
-            <a id="abt-btn" class="site-nav-btn" href="{{ '/about/' | relative_url }}" title="Go To About">{{ site.emoji.about }}</a>
+            <a id="abt-btn" class="site-nav-btn" href="{{ '/about/' | relative_url }}" title="Go To About">{{ site.data.emoji.about }}</a>
           {% endif %}
           {% assign privacy_page = site.pages | find_exp: "item", "item.name == 'privacy.md'" %}
           {% if privacy_page %}
-            <a id="prvcy-btn" class="site-nav-btn" href="{{ '/privacy/' | relative_url }}" title="Go To Privacy">{{ site.emoji.privacy }}</a>
+            <a id="prvcy-btn" class="site-nav-btn" href="{{ '/privacy/' | relative_url }}" title="Go To Privacy">{{ site.data.emoji.privacy }}</a>
           {% endif %}
           {% if site.social.enabled %}
             {% include connect.html %}

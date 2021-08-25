@@ -3,14 +3,14 @@
 <div id="cookie-consent">
   <span>We would like to use third party cookies and scripts to improve the functionality of this website.</span>
   <a id="cookie-consent-response-accept" class="site-nav-btn" title="Alright!">
-    {{ site.emoji.approve }}
+    {{ site.data.emoji.approve }}
   </a>
   <a id="cookie-consent-hmm" class="site-nav-btn" href="{{ '/privacy' | relative_url }}" title="Hmm...Tell me more...">
-    {{ site.emoji.consider }}
+    {{ site.data.emoji.consider }}
   </a>
   {% if site.debug %}
     <a id="cookie-consent-response-reject" class="site-nav-btn" title="Nope!">
-      {{ site.emoji.disapprove }}
+      {{ site.data.emoji.disapprove }}
     </a>
   {% endif %}
 </div>

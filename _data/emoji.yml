@@ -1,0 +1,44 @@
+# 
+# the following are emoji buttons
+#  -- there needs to be something here for buttons to work
+# 
+# cookie-consent
+approve:     👍 
+consider:    🧐
+disapprove:  👎
+# colors
+dark:        🌘
+light:       ☀️
+# entry-only
+breadcrumbs: 🛤
+entries:     🚏
+# graph
+net-web:     🕸
+tree:        🌳
+# site-nav
+delete:      🧹
+graph:       🪴
+site_nav:    🧭 
+visited:     🥾
+# pages
+about:       🪧
+home:        🏕
+pages:       🗺
+posts:       🧺
+privacy:     🛖
+recent:      🌦
+search:      🔍
+stat_tags:   🔖
+# 
+# the following are informational emojis
+#  -- these are safe to set to "" (empty strings)
+# 
+# social
+connect:     🌊
+share:       🐝
+# changes
+created:     🌤
+updated:     🌧
+deleted:     🌩
+# 404
+missing:     🍂

@@ -117,8 +117,8 @@
         {% capture anchor %}{{ anchor }} {{ include.anchorAttrs | replace: '%heading%', escaped_header | replace: '%html_id%', html_id }}{% endcapture %}
       {% endif %}
 
-      {% if site.emoji.share %}
-        {% capture anchor %}<a {{ anchor }}><i class='anchor-tag'>{{ site.emoji.share }}</i></a>{% endcapture %}
+      {% if site.data.emoji.share %}
+        {% capture anchor %}<a {{ anchor }}><i class='anchor-tag'>{{ site.data.emoji.share }}</i></a>{% endcapture %}
       {% else %}
         {% capture anchor %}<a {{ anchor }}>{{ include.anchorBody | replace: '%heading%', escaped_header | default: '' }}</a>{% endcapture %}
       {% endif %}

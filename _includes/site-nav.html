@@ -2,13 +2,13 @@
   <header>
     <span>
       <a id="home-btn" class="site-nav-btn" href="{{ '/' | relative_url }}" title="Go Home">
-        {{ site.emoji.home }}
+        {{ site.data.emoji.home }}
       </a>
     </span>
     <span class="dropdown">
       <button class="dropdown-btn">
         <span title="Page Navigation">
-          {{ site.emoji.pages }}
+          {{ site.data.emoji.pages }}
         </span>
       </button>
       <div class="dropdown-content">
@@ -16,25 +16,25 @@
         {% assign search_page = site.pages | where: "name", "search.md" %}
         {% if search_page.first %}
           <a id="search-dropbtn" class="site-nav-btn drop-1" href="{{ '/search' | relative_url }}" title="Search">
-            {{ site.emoji.search }}
+            {{ site.data.emoji.search }}
           </a>
         {% endif %}
         {% if site.states %}
           {% assign root_state = site.states | find_exp: "item", "item.path == site.root_state_path" %}
           <a id="stat-tags-dropbtn" class="site-nav-btn drop-1" href="{{ root_state.url | relative_url }}" title="Go To States">
-            {{ site.emoji.stat_tags }}
+            {{ site.data.emoji.stat_tags }}
           </a>
         {% endif %}
         {% assign posts_page = site.pages | where: "name", "posts.md" %}
         {% if posts_page.first %}
           <a id="posts-dropbtn" class="site-nav-btn drop-2" href="{{ '/posts' | relative_url }}" title="Go To Posts">
-            {{ site.emoji.posts }}
+            {{ site.data.emoji.posts }}
           </a>
         {% endif %}
         {% assign recent_page = site.pages | where: "name", "recent.md" %}
         {% if recent_page.first %}
           <a id="recent-dropbtn" class="site-nav-btn drop-3" href="{{ '/recent' | relative_url }}" title="Go To Recent Changes">
-          {{ site.emoji.recent }}
+          {{ site.data.emoji.recent }}
           </a>
         {% endif %}
       </div>
@@ -42,7 +42,7 @@
     <span class="dropdown">
       <button class="dropdown-btn">
         <span title="Site-Nav Toggles">
-          {{ site.emoji.site_nav }}
+          {{ site.data.emoji.site_nav }}
         </span>
       </button>
       <div class="dropdown-content">
@@ -55,7 +55,7 @@
           <span id="graph-type-emoji-span" title="Toggle Graph Type"></span>
         </label>
         <a id="delete-btn" class="site-nav-btn drop-3" title="Delete Visited History">
-          {{ site.emoji.delete }}
+          {{ site.data.emoji.delete }}
         </a>
       </div>
     </span>
