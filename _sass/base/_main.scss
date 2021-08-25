@@ -8,8 +8,7 @@
 }
 
 ::selection {
-  color: $grey-dk-100;
-  background: #E6E09E;
+  background: $selection-color;
 }
 
 html {
@@ -110,8 +109,7 @@ hr {
 // wiki-link classes
 
 .invalid-wiki-link {
-  color: $grey-dk-000;
-  background: $invalid-wiki-link-color;
+  color: $invalid-wiki-link-color;
   cursor: help;
 }
 

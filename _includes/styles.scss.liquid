@@ -1,6 +1,21 @@
 @import "./support/support";
 
+$transparent: #00000000;
+
+$accent-txt-color: #959396;   // $grey-dk-000
+$date-txt-color: #959396;     // $grey-dk-000
+
+$drop-shadow-purple: rgba(114, 83, 237, 0.9) !default; 
+$drop-shadow-blue: rgba(31, 141, 192, 0.9) !default;
+$drop-shadow-brown: rgba(146, 102, 7, 0.9) !default;
+$drop-shadow-green: rgba(49, 175, 49, 0.9) !default;
+$drop-shadow-yellow: rgba(228, 225, 31, 0.9) !default;
+$drop-shadow-orange: rgba(231, 175, 6, 0.9) !default;
+$drop-shadow-red: rgba(233, 76, 76, 0.9) !default;
+
 {% if include.theme_colors == "dark" %}
+  $selection-color: {{ site.data.colors.theme.dark.selection }};
+
   $body-background-color: {{ site.data.colors.theme.dark.body.background }};
   $body-text-color: {{ site.data.colors.theme.dark.body.text }};
   $body-heading-color: {{ site.data.colors.theme.dark.body.heading }};
@@ -22,7 +37,11 @@
 
   $blockquote-border-color: {{ site.data.colors.theme.dark.blockquote }};
   $blockquote-quote-color: {{ site.data.colors.theme.dark.blockquote }};
+
+  $tag-disabled-color:  {{ site.data.colors.theme.dark.tag.disabled }};
 {% else %}
+  $selection-color: {{ site.data.colors.theme.light.selection }};
+
   $body-background-color: {{ site.data.colors.theme.light.body.background }};
   $body-text-color: {{ site.data.colors.theme.light.body.text }};
   $body-heading-color: {{ site.data.colors.theme.light.body.heading }};
@@ -44,6 +63,8 @@
 
   $blockquote-border-color: {{ site.data.colors.theme.light.blockquote }};
   $blockquote-quote-color: {{ site.data.colors.theme.light.blockquote }};
+
+  $tag-disabled-color:  {{ site.data.colors.theme.light.tag.disabled }};
 {% endif %}
 
 @import "./modules";

@@ -89,7 +89,7 @@
           }
       
           & .column-item-date {
-            color: $grey-dk-000;
+            color: $date-txt-color;
           }
 
         }
@@ -98,7 +98,7 @@
   
     & .column-foot {
       @include fs-2;
-      color: $grey-dk-000;
+      color: $accent-txt-color;
       text-align: right;
       padding-bottom: $sp-3;
   

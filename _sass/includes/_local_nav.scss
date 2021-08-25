@@ -102,25 +102,27 @@
 .tag-pills {
   display: flex;
   justify-content: center;
-}
 
-.tag-pill {
-  padding: $sp-2;
-  margin: $sp-2;
-  border: 1px solid $separator-color;
-  border-radius: 15px;
-  color: $wiki-link-color;
-
-  &:hover {
-    background-color: $base-button-color;
-  }
-
-  &.disabled {
-    color: $grey-dk-000;
-    border: 1px solid $grey-lt-300;
-
+  .tag-pill {
+    padding: $sp-2;
+    margin: $sp-2;
+    border-radius: 15px;
+    color: $wiki-link-color;
+    border: 1px solid $separator-color;
+  
     &:hover {
-      background-color: $body-background-color;
+      background-color: $base-button-color;
+    }
+    
+    // TODO: fix disabled behavior 
+    // (probably should switch tags to be btns anyway...)
+    &.disabled {
+      color: $tag-disabled-color;
+      border: 1px solid $tag-disabled-color;
+  
+      &:hover {
+        background-color: $body-background-color !important;
+      }
     }
   }
 }

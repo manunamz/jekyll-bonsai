@@ -35,6 +35,7 @@ svg:
     light: "#8C6239"        # $brown-02
 theme:
   dark:
+    selection: "#ad9b4b"
     body:
       background: "#27262b" #$grey-dk-300
       text: "#e1e8e3"       # $grey-lt-300
@@ -53,9 +54,12 @@ theme:
       internal: 
         valid: "#A0E4A0"    # $green-07
         underline: "#44434d" # $grey-dk-200
-        invalid: "#44434d" # $grey-dk-200
-    blockquote: "rgba($grey-dk-200, 0.33)" # $grey-dk-200
+        invalid: "#959396" # $grey-dk-000
+    blockquote: "rgba(68, 67, 77, 0.33)" # $grey-dk-200 => #44434d
+    tag:
+      disabled: "#e1e8e3" # $grey-lt-300
   light:
+    selection: "#E6E09E"
     body:
       background: "#E4f3EA" # $green-01
       text: "#5c5962"       # $grey-dk-100
@@ -74,5 +78,7 @@ theme:
       internal: 
         valid: "#009c7b"    # $green-200
         underline: "#E7D6C5" # $brown-00
-        invalid: "#e1e8e3" # $grey-lt-300
-    blockquote: "rgba($green-07, 0.33)" # $green-07
+        invalid: "#959396" # $grey-dk-000
+    blockquote: "rgba(160, 228, 160, 0.33)" # $green-07 => #A0E4A0
+    tag:
+      disabled: "#e1e8e3" # $grey-lt-300

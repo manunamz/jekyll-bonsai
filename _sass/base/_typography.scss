@@ -33,29 +33,29 @@ h4 code {
 h5,
 .text-epsilon {
   @include fs-3;
-  color: $grey-dk-200;
+  color: $accent-txt-color;
 }
 
 h6,
 .text-zeta {
   @include fs-2;
-  color: $grey-dk-200;
+  color: $accent-txt-color;
 }
 
 .last-updated {
   @include fs-4;
-  color: $grey-dk-000;
+  color: $date-txt-color;
 }
 
 .missing-entry-txt {
   @include fs-2;
-  color: $grey-dk-000 !important;
+  color: $accent-txt-color !important;
   pointer-events: none;
 }
 
 .small-descr {
   @include fs-2;
-  color: $grey-dk-000;
+  color: $accent-txt-color;
 }
 
 // .text-small {
