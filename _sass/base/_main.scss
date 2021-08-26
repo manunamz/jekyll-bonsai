@@ -58,11 +58,11 @@ p {
 }
 
 a {
-  color: $link-color;
   text-decoration: none;
 }
 
-a:not([class]) {
+a.web-link {
+  color: $link-color;
   text-decoration: none;
   background-image: linear-gradient($link-underline-color 0%, $link-underline-color 100%);
   background-repeat: repeat-x;
@@ -129,7 +129,6 @@ hr {
     background-size: 1px 1px;
   }  
 }
-
 
 .wiki-link-embed {
   position: relative;

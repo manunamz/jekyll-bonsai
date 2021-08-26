@@ -113,6 +113,16 @@ wikilinks:
   # enabled: true
   exclude:
     - "states"
+  css:
+    exclude:
+      - "site-nav-btn"
+      - "wiki-link-emebed-link"
+      - "sem-tag"
+      - "stat-tag"
+      - "anchor-heading"
+      - "footnote"
+      - "reversefootnote"
+      - "toc-list-item-anchor"
 d3:
   # enabled: true
   # path: "/assets"
@@ -136,6 +146,7 @@ bonsai_util:
 # jekyll-bonsai configs
 # 
 debug: false
+# theme_colors: "dark"
 date_format: "%Y-%m-%d"
 logo-light: "/assets/img/bonsai-light.svg"
 logo-dark: "/assets/img/bonsai-dark.svg"
