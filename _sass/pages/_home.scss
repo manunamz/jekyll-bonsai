@@ -62,7 +62,7 @@
       & .column-item {
         display: flex;
         justify-content: space-between;
-        padding: $sp-2;
+        padding: $sp-2;        
 
         &::before {
           content: "" !important;
@@ -82,13 +82,9 @@
           // is a flex container
           display: flex;
           justify-content: space-between;
-    
-          & .column-item-title {
-            @include fs-5;
-            padding-left: $sp-3;
-          }
       
           & .column-item-date {
+            @include fs-2;
             color: $date-txt-color;
           }
 
