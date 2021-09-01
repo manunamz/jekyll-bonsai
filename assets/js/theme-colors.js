@@ -71,20 +71,20 @@ export default class ThemeColors {
     let bulletLinks = document.getElementsByClassName('bullet-link');
     Array.prototype.forEach.call(bulletLinks, (bl) => {
       if (this.theme == 'dark') {
-        bl.style.stroke = '{{ site.data.colors.svg.branch.dark }}';
+        bl.style.stroke = '{{ site.data.colors.dark.svg.branch }}';
       } else {
-        bl.style.stroke = '{{ site.data.colors.svg.branch.light }}';
+        bl.style.stroke = '{{ site.data.colors.light.svg.branch }}';
       }
     });
     // update svg-image pencil color
     let pencils = document.getElementsByClassName('pencil-default');
     Array.prototype.forEach.call(pencils, (p) => {
       if (this.theme == 'dark') {
-        p.style.stroke = '{{ site.data.colors.pencil.dark.default }}';
-        p.style.fill = '{{ site.data.colors.pencil.dark.default }}';
+        p.style.stroke = '{{ site.data.colors.dark.pencil.default }}';
+        p.style.fill = '{{ site.data.colors.dark.pencil.default }}';
       } else {
-        p.style.stroke = '{{ site.data.colors.svg.pencil.light.default }}';
-        p.style.fill = '{{ site.data.colors.svg.pencil.light.default }}';
+        p.style.stroke = '{{ site.data.colors.light.svg.pencil.default }}';
+        p.style.fill = '{{ site.data.colors.light.svg.pencil.default }}';
       }
     });
     // save to local storage
