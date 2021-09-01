@@ -15,62 +15,9 @@ $drop-shadow-yellow: rgba(228, 225, 31, 0.9) !default;
 $drop-shadow-orange: rgba(231, 175, 6, 0.9) !default;
 $drop-shadow-red: rgba(233, 76, 76, 0.9) !default;
 
-// theme colors
-[data-theme='dark'] {
-  --selection-color: {{ site.data.themes.dark.selection }}; 
-
-  --body-background-color: {{ site.data.themes.dark.body.background }};
-  --body-text-color: {{ site.data.themes.dark.body.text }};
-  --body-heading-color: {{ site.data.themes.dark.body.heading }};
-
-  --border-color: {{ site.data.themes.dark.border }};
-  --separator-color:  {{ site.data.themes.dark.separator }};
-
-  --base-button-color: {{ site.data.themes.dark.btn }};
-
-  --code-background-color: {{ site.data.themes.dark.code }};
-  --table-background-color: {{ site.data.themes.dark.table.background }};
-  --box-shadow-color: {{ site.data.themes.dark.box_shadow }};
-
-  --link-color: {{ site.data.themes.dark.link.external.valid }};
-  --link-underline-color: {{ site.data.themes.dark.link.external.underline }};
-  --wiki-link-color: {{ site.data.themes.dark.link.internal.valid }};
-  --wiki-link-underline-color: {{ site.data.themes.dark.link.internal.underline }};
-  --invalid-wiki-link-color: {{ site.data.themes.dark.link.internal.invalid }};
-
-  --blockquote-border-color: {{ site.data.themes.dark.blockquote }};
-  --blockquote-quote-color: {{ site.data.themes.dark.blockquote }};
-
-  --tag-disabled-color: {{ site.data.themes.dark.tag.disabled }};
-}
-
-[data-theme='light'] {
-  --selection-color: {{ site.data.themes.light.selection }}; 
-
-  --body-background-color: {{ site.data.themes.light.body.background }};
-  --body-text-color: {{ site.data.themes.light.body.text }};
-  --body-heading-color: {{ site.data.themes.light.body.heading }};
-
-  --border-color: {{ site.data.themes.light.border }};
-  --separator-color:  {{ site.data.themes.light.separator }};
-
-  --base-button-color: {{ site.data.themes.light.btn }};
-
-  --code-background-color: {{ site.data.themes.light.code }};
-  --table-background-color: {{ site.data.themes.light.table.background }};
-  --box-shadow-color: {{ site.data.themes.light.box_shadow }};
-
-  --link-color: {{ site.data.themes.light.link.external.valid }};
-  --link-underline-color: {{ site.data.themes.light.link.external.underline }};
-  --wiki-link-color: {{ site.data.themes.light.link.internal.valid }};
-  --wiki-link-underline-color: {{ site.data.themes.light.link.internal.underline }};
-  --invalid-wiki-link-color: {{ site.data.themes.light.link.internal.invalid }};
-
-  --blockquote-border-color: {{ site.data.themes.light.blockquote }};
-  --blockquote-quote-color: {{ site.data.themes.light.blockquote }};
-
-  --tag-disabled-color: {{ site.data.themes.light.tag.disabled }};
-}
+{% for theme in site.data.themes %}
+  {% include themes.scss.liquid id=theme.id colors=theme.colors %}
+{% endfor %}
 
 // Imports
 @import "./support/support";

@@ -1,0 +1,33 @@
+// theme colors
+[data-theme='{{ include.id }}'] {
+  // colors
+  --selection-color: {{ include.colors.selection }}; 
+
+  --body-background-color: {{ include.colors.body.background }};
+  --body-text-color: {{ include.colors.body.text }};
+  --body-heading-color: {{ include.colors.body.heading }};
+
+  --border-color: {{ include.colors.border }};
+  --separator-color:  {{ include.colors.separator }};
+
+  --base-button-color: {{ include.colors.btn }};
+
+  --code-background-color: {{ include.colors.code }};
+  --table-background-color: {{ include.colors.table.background }};
+  --box-shadow-color: {{ include.colors.box_shadow }};
+
+  --link-color: {{ include.colors.link.external.valid }};
+  --link-underline-color: {{ include.colors.link.external.underline }};
+  --wiki-link-color: {{ include.colors.link.internal.valid }};
+  --wiki-link-underline-color: {{ include.colors.link.internal.underline }};
+  --invalid-wiki-link-color: {{ include.colors.link.internal.invalid }};
+
+  --blockquote-border-color: {{ include.colors.blockquote }};
+  --blockquote-quote-color: {{ include.colors.blockquote }};
+
+  --tag-disabled-color: {{ include.colors.tag.disabled }};
+
+  // svg
+
+  // graph
+}

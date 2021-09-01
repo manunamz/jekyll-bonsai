@@ -1,0 +1,14 @@
+dark:
+  pencil:
+    blue: "#0047aa"         # blue
+    green: "#31AF31"        # $green-05
+    yellow: "#dfb600"       # yellow
+    default: "#e1e8e3"    # $body-text-color => $grey-lt-300
+  branch: "#44434d"         # $grey-dk-200
+light:
+  pencil:
+    default: "#5c5962"    # $body-text-color => $grey-dk-100
+    blue: "#0047aa"         # blue
+    green: "#31AF31"        # $green-05
+    yellow: "#dfb600"       # yellow
+  branch: "#8C6239"        # $brown-02

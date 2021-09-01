@@ -1,0 +1,22 @@
+dark:
+  node:
+    current: "#F0C61F"    # yellow
+    glow: "#31AF31"       # $green-05
+    missing: "#00000000"  # $transparent
+    tagged: "#a87f32"     # sand/yellow-orange-brown
+    unvisited: "#3e5c50"  # $green-400
+    visited: "#31AF31"    # $green-05
+  link: "#44434d"         # $grey-dk-200
+  particles: "#959396"    # $grey-dk-000
+  text: "#e6e1e8"         # $body-text-color => $grey-lt-300
+light:
+  node:
+    current: "#F0C61F"    # yellow
+    glow: "#00000000"     # $transparent
+    missing: "#8C6239"    # sand/yellow-orange-brown
+    tagged: "#a87f32"     # $brown-02
+    unvisited: "#9cbe9c"  # $green-05
+    visited: "#31AF31"    # $green-05
+  link: "#8C6239"         # $brown-02 
+  particles: "#5c5962"    # $grey-dk-000
+  text: "#5c5962"         # $body-text-color => $grey-dk-100
