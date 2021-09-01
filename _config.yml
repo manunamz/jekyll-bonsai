@@ -116,7 +116,6 @@ wikilinks:
   css:
     exclude:
       - "site-nav-btn"
-      - "wiki-link-emebed-link"
       - "sem-tag"
       - "stat-tag"
       - "anchor-heading"
@@ -135,12 +134,6 @@ bonsai_util:
   id_format:
     alpha: 1234567890abcdef
     size: 10
-  notable:
-    - digital-garden.bonsai.md
-    - digital-garden.md
-    - features.notes.md
-    - features.site-nav.graph.md
-    - people.md
 
 # 
 # jekyll-bonsai configs

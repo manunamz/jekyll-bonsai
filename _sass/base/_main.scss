@@ -130,23 +130,23 @@ hr {
   }  
 }
 
-.wiki-link-embed {
+.embed-wrapper {
   position: relative;
   border: 1px solid $separator-color;
   border-radius: 15px;
   padding: $sp-3;
 
-  .wiki-link-embed-title {
+  .embed-title {
     @include fs-6;
     padding-top: $sp-3;
     padding-left: $sp-3;
   }
 
-  .wiki-link-embed-content {
+  .embed-content {
     padding: $sp-3;
   }
   
-  .wiki-link-embed-link {
+  .embed-wiki-link {
     position: absolute;
     top: 1em;
     right: 1em;
@@ -161,15 +161,15 @@ hr {
   }
 }
 
-.wiki-link-embed-image {
+.embed-image-wrapper {
   display: flex;
   justify-content: center;
   padding-top: $sp-2;
   padding-bottom: $sp-2;
 
-  .wiki-link-img {
+  .embed-image {
     height: 50%;
-    width: 50%;    
+    width: 50%;
   }
 }
 

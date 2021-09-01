@@ -38,19 +38,21 @@
         {% else %}
           <table>
             <tbody>
-              {% for attr in attributes %}
-                {% assign attr_doc = site.entries | where: "url", attr.doc_url | first %}
-                <tr>
-                  <th>{{ attr.type | capitalize }}</th>
-                  <td>
-                    {% for stat_tag in attr_doc.status %}
-                      {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
-                      <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
+                {% for attr in attributes %}
+                  <tr>
+                    <th rowspan="{{ attr.urls | size }}" scope="rowgroup">{{ attr.type | capitalize }}</th>
+                    {% for doc_url in attr.urls %}
+                      {% assign attr_doc = site.entries | where: "url", doc_url | first %}
+                      <td>
+                        {% for stat_tag in attr_doc.status %}
+                          {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
+                          <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
+                        {% endfor %}
+                        <a class="wiki-link" href="{{ attr_doc.url | relative_url }}">{{ attr_doc.title }}</a>
+                      </td>
+                  </tr>
                     {% endfor %}
-                    <a class="wiki-link" href="{{ attr_doc.url | relative_url }}">{{ attr_doc.title }}</a>
-                  </td>
-                </tr>
-              {% endfor %}
+                {% endfor %}
             </tbody>
           </table>
         {% endif %}

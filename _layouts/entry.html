@@ -118,7 +118,7 @@ layout: default
           {% else %}
           <ul class="entry-foot-nav-list">
             {% for backlink in backlinks %}
-              {% assign backlink_doc = site.entries | where: "url", backlink.doc_url | first %}
+              {% assign backlink_doc = site.entries | where: "url", backlink.url | first %}
               <li class="entry-foot-nav-list-item">
                 {% for stat_tag in backlink_doc.status %}
                   {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}

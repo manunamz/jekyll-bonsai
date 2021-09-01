@@ -23,7 +23,7 @@ layout: default
     {{ content }}
     <p class="small-descr">
       Descriptions only reflect the spirit of this garden. 
-      Click <a href="{{ page.emojipedia }}">here</a> for the official emoji description.
+      Click <a class="web-link" href="{{ page.emojipedia }}">here</a> for the official emoji description.
     </p>
     {% for state in states %}
       {% if state.path != site.root_state_path %}
