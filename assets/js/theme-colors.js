@@ -47,8 +47,8 @@ export default class ThemeColors {
       this.theme = "light";
     }
     // update css file
-    const yesThisReallyIsSupposedToBeCSSNotSCSS = '.css'
-    this.cssFile.setAttribute('href', "{{site.baseurl}}/assets/css/styles-" + this.theme + yesThisReallyIsSupposedToBeCSSNotSCSS);
+    // const yesThisReallyIsSupposedToBeCSSNotSCSS = '.css'
+    // this.cssFile.setAttribute('href', "{{site.baseurl}}/assets/css/styles-" + this.theme + yesThisReallyIsSupposedToBeCSSNotSCSS);
     // update icons and images
     this.favicon.setAttribute('href', "{{site.baseurl}}/assets/img/favicon-" + this.theme + ".png");
     this.navBonsai.setAttribute('src', "{{site.baseurl}}/assets/img/nav-bonsai-" + this.theme + ".svg");
