@@ -11,11 +11,11 @@
     height: 250px;
     z-index: 5;
     padding: 2em; // don't use sass spacing variables -- it makes hover preview buggy.
-    border: 1px solid $border-color;
+    border: 1px solid var(--border-color);
     border-radius: 15px;
-    background: $body-background-color;
+    background: var(--body-background-color);
     opacity: 0;
-    box-shadow: 0 1px 2px rgba($box-shadow-color, 0.12), 0 3px 10px rgba($box-shadow-color, 0.08);
+    box-shadow: 0 1px 2px rgba(var(--box-shadow-color), 0.12), 0 3px 10px rgba(var(--box-shadow-color), 0.08);
 }
 
 .tooltip-wrapper:after {
@@ -27,7 +27,7 @@
   height: 75px;
   z-index: 5;
   pointer-events: none;
-  background-image: linear-gradient(to bottom, rgba(0,0,0,0), $body-background-color 90%);
+  background-image: linear-gradient(to bottom, rgba(0,0,0,0), var(--body-background-color) 90%);
 }
 
 #hover-preview-iframe {

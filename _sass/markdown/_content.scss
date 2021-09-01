@@ -112,7 +112,7 @@
   }
 
   hr {
-    background-color: $separator-color;
+    background-color: var(--separator-color);
 
     + * {
       margin-top: 0;
@@ -246,7 +246,7 @@
     margin: 0;
     padding: $sp-2;
 
-    border-left: $sp-1 solid $blockquote-border-color;
+    border-left: $sp-1 solid var(--blockquote-border-color);
 
     & p {
       padding-left: $sp-6;
@@ -256,7 +256,7 @@
       @include fs-10;
       font-family: 'Special Elite', cursive;
       position: absolute;
-      color: $blockquote-quote-color;
+      color: var(--blockquote-quote-color);
       width: 4rem;
       height: 4rem;
 
@@ -265,11 +265,11 @@
   }
 
   .footnotes {
-    border-top: double $separator-color;
+    border-top: double var(--separator-color);
   }
 
   .footnote, .reversefootnote {
-    color: $wiki-link-color;
+    color: var(--wiki-link-color);
   }
 
   // Sidenotes
@@ -361,7 +361,7 @@
 
   .sidenote-number:after {
     content: counter(sidenote-counter);
-    color: $wiki-link-color;
+    color: var(--wiki-link-color);
     cursor: pointer;
     font-size: $font-size-2;
     top: -$sp-1-75;

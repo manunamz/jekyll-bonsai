@@ -15,60 +15,62 @@ $drop-shadow-yellow: rgba(228, 225, 31, 0.9) !default;
 $drop-shadow-orange: rgba(231, 175, 6, 0.9) !default;
 $drop-shadow-red: rgba(233, 76, 76, 0.9) !default;
 
-{% if site.theme_colors == "light" %}
-  $selection-color: {{ site.data.colors.light.selection }};
+// theme colors
+[data-theme='dark'] {
+  --selection-color: {{ site.data.colors.dark.selection }}; 
 
-  $body-background-color: {{ site.data.colors.light.body.background }};
-  $body-text-color: {{ site.data.colors.light.body.text }};
-  $body-heading-color: {{ site.data.colors.light.body.heading }};
+  --body-background-color: {{ site.data.colors.dark.body.background }};
+  --body-text-color: {{ site.data.colors.dark.body.text }};
+  --body-heading-color: {{ site.data.colors.dark.body.heading }};
 
-  $border-color: {{ site.data.colors.light.border }};
-  $separator-color:  {{ site.data.colors.light.separator }};
+  --border-color: {{ site.data.colors.dark.border }};
+  --separator-color:  {{ site.data.colors.dark.separator }};
 
-  $base-button-color: {{ site.data.colors.light.btn }};
+  --base-button-color: {{ site.data.colors.dark.btn }};
 
-  $code-background-color: {{ site.data.colors.light.code }};
-  $table-background-color: {{ site.data.colors.light.table.background }};
-  $box-shadow-color: {{ site.data.colors.light.box_shadow }};
+  --code-background-color: {{ site.data.colors.dark.code }};
+  --table-background-color: {{ site.data.colors.dark.table.background }};
+  --box-shadow-color: {{ site.data.colors.dark.box_shadow }};
 
-  $link-color: {{ site.data.colors.light.link.external.valid }};
-  $link-underline-color: {{ site.data.colors.light.link.external.underline }};
-  $wiki-link-color: {{ site.data.colors.light.link.internal.valid }};
-  $wiki-link-underline-color: {{ site.data.colors.light.link.internal.underline }};
-  $invalid-wiki-link-color: {{ site.data.colors.light.link.internal.invalid }};
+  --link-color: {{ site.data.colors.dark.link.external.valid }};
+  --link-underline-color: {{ site.data.colors.dark.link.external.underline }};
+  --wiki-link-color: {{ site.data.colors.dark.link.internal.valid }};
+  --wiki-link-underline-color: {{ site.data.colors.dark.link.internal.underline }};
+  --invalid-wiki-link-color: {{ site.data.colors.dark.link.internal.invalid }};
 
-  $blockquote-border-color: {{ site.data.colors.light.blockquote }};
-  $blockquote-quote-color: {{ site.data.colors.light.blockquote }};
+  --blockquote-border-color: {{ site.data.colors.dark.blockquote }};
+  --blockquote-quote-color: {{ site.data.colors.dark.blockquote }};
 
-  $tag-disabled-color: {{ site.data.colors.light.tag.disabled }};
-{% else %}
-  $selection-color: {{ site.data.colors.dark.selection }};
+  --tag-disabled-color: {{ site.data.colors.dark.tag.disabled }};
+}
 
-  $body-background-color: {{ site.data.colors.dark.body.background }};
-  $body-text-color: {{ site.data.colors.dark.body.text }};
-  $body-heading-color: {{ site.data.colors.dark.body.heading }};
+[data-theme='light'] {
+  --selection-color: {{ site.data.colors.light.selection }}; 
 
-  $border-color: {{ site.data.colors.dark.border }};
-  $separator-color:  {{ site.data.colors.dark.separator }};
+  --body-background-color: {{ site.data.colors.light.body.background }};
+  --body-text-color: {{ site.data.colors.light.body.text }};
+  --body-heading-color: {{ site.data.colors.light.body.heading }};
 
-  $base-button-color: {{ site.data.colors.dark.btn }};
+  --border-color: {{ site.data.colors.light.border }};
+  --separator-color:  {{ site.data.colors.light.separator }};
 
-  $code-background-color: {{ site.data.colors.dark.code }};
-  $table-background-color: {{ site.data.colors.dark.table.background }};
-  $box-shadow-color: {{ site.data.colors.dark.box_shadow }};
+  --base-button-color: {{ site.data.colors.light.btn }};
 
-  $link-color: {{ site.data.colors.dark.link.external.valid }};
-  $link-underline-color: {{ site.data.colors.dark.link.external.underline }};
-  $wiki-link-color: {{ site.data.colors.dark.link.internal.valid }};
-  $wiki-link-underline-color: {{ site.data.colors.dark.link.internal.underline }};
-  $invalid-wiki-link-color: {{ site.data.colors.dark.link.internal.invalid }};
+  --code-background-color: {{ site.data.colors.light.code }};
+  --table-background-color: {{ site.data.colors.light.table.background }};
+  --box-shadow-color: {{ site.data.colors.light.box_shadow }};
 
-  $blockquote-border-color: {{ site.data.colors.dark.blockquote }};
-  $blockquote-quote-color: {{ site.data.colors.dark.blockquote }};
+  --link-color: {{ site.data.colors.light.link.external.valid }};
+  --link-underline-color: {{ site.data.colors.light.link.external.underline }};
+  --wiki-link-color: {{ site.data.colors.light.link.internal.valid }};
+  --wiki-link-underline-color: {{ site.data.colors.light.link.internal.underline }};
+  --invalid-wiki-link-color: {{ site.data.colors.light.link.internal.invalid }};
 
-  $tag-disabled-color: {{ site.data.colors.dark.tag.disabled }};
-{% endif %}
+  --blockquote-border-color: {{ site.data.colors.light.blockquote }};
+  --blockquote-quote-color: {{ site.data.colors.light.blockquote }};
 
+  --tag-disabled-color: {{ site.data.colors.light.tag.disabled }};
+}
 
 // Imports
 @import "./support/support";

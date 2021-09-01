@@ -11,7 +11,7 @@
 //   margin-bottom: $sp-5;
 //   overflow-x: auto;
 //   border-radius: $border-radius;
-//   box-shadow: 0 1px 2px rgba($box-shadow-color, 0.12), 0 3px 10px rgba($box-shadow-color, 0.08);
+//   box-shadow: 0 1px 2px rgba(var(--box-shadow-color), 0.12), 0 3px 10px rgba(var(--box-shadow-color), 0.08);
 //   font-family: $click-font-family; 
 // }
 
@@ -29,9 +29,9 @@ td {
   padding-right: $sp-3;
   padding-bottom: $sp-2;
   padding-left: $sp-3;
-  background-color: $table-background-color;
-  border-bottom: $border rgba($border-color, 0.5);
-  border-left: $border $border-color;
+  background-color: var(--table-background-color);
+  border-bottom: $border rgba(var(--border-color), 0.5);
+  border-left: $border var(--border-color);
 
   &:first-of-type {
     border-left: 0;
@@ -55,6 +55,6 @@ tbody {
 
 thead {
   th {
-    border-bottom: $border $border-color;
+    border-bottom: $border var(--border-color);
   }
 }

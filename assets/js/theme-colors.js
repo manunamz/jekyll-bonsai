@@ -4,7 +4,6 @@
 export default class ThemeColors {
   constructor() {
     // this.theme set in initThemeColors();
-    this.cssFile = document.querySelector('[rel="stylesheet"]');
     this.favicon = document.querySelector('[rel="icon"]');
     this.navBonsai = document.getElementById('nav-bonsai');
     this.navBase = document.getElementById('nav-base');
@@ -46,9 +45,8 @@ export default class ThemeColors {
       this.themeColorsEmojiSpan.innerHTML = "{{ site.data.emoji.dark }}";
       this.theme = "light";
     }
-    // update css file
-    // const yesThisReallyIsSupposedToBeCSSNotSCSS = '.css'
-    // this.cssFile.setAttribute('href', "{{site.baseurl}}/assets/css/styles-" + this.theme + yesThisReallyIsSupposedToBeCSSNotSCSS);
+    // update theme color data
+    document.documentElement.setAttribute('data-theme', this.theme);
     // update icons and images
     this.favicon.setAttribute('href', "{{site.baseurl}}/assets/img/favicon-" + this.theme + ".png");
     this.navBonsai.setAttribute('src', "{{site.baseurl}}/assets/img/nav-bonsai-" + this.theme + ".svg");

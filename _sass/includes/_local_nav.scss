@@ -85,17 +85,17 @@
 }
 
 .toc-list-item-anchor {
-  color: $wiki-link-color;
+  color: var(--wiki-link-color);
   text-decoration: none;
-  background-image: linear-gradient($wiki-link-underline-color 0%, $wiki-link-underline-color 100%);
+  background-image: linear-gradient(var(--wiki-link-underline-color) 0%, var(--wiki-link-underline-color) 100%);
   background-repeat: repeat-x;
   background-position: 0 100%;
   background-size: 1px 1px;
 
   &:hover {
     background-image: linear-gradient(
-      rgba($wiki-link-color, 0.45) 0%,
-      rgba($wiki-link-color, 0.45) 100%
+      rgba(var(--wiki-link-color), 0.45) 0%,
+      rgba(var(--wiki-link-color), 0.45) 100%
     );
     background-size: 1px 1px;
   }
@@ -103,7 +103,7 @@
 
 .sem-tag {
   @include fs-2;
-  color: $wiki-link-color;
+  color: var(--wiki-link-color);
 }
 
 .tag-pills {
@@ -114,21 +114,21 @@
     padding: $sp-2;
     margin: $sp-2;
     border-radius: 15px;
-    color: $wiki-link-color;
-    border: 1px solid $separator-color;
+    color: var(--wiki-link-color);
+    border: 1px solid var(--separator-color);
   
     &:hover {
-      background-color: $base-button-color;
+      background-color: var(--base-button-color);
     }
     
     // TODO: fix disabled behavior 
     // (probably should switch tags to be btns anyway...)
     &.disabled {
-      color: $tag-disabled-color;
-      border: 1px solid $tag-disabled-color;
+      color: var(--tag-disabled-color);
+      border: 1px solid var(--tag-disabled-color);
   
       &:hover {
-        background-color: $body-background-color !important;
+        background-color: var(--body-background-color) !important;
       }
     }
   }
