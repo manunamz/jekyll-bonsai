@@ -34,7 +34,7 @@ export default class GraphNav {
     // destroy old chart   
     // d3.select(this.canvas).selectAll('svg > *').remove();
     
-    // let colorConfigs = '{{ site.data.colors.graph }}';
+    // let colorConfigs = '{{ site.data.themes.graph }}';
     let theme_attrs = {};
     // set theme-dependent graph attributes.
     if (document.getElementById('theme-colors-checkbox').checked) {
@@ -42,30 +42,30 @@ export default class GraphNav {
         "name": "dark",
         "radius": 5.5,
         "missing-radius": 5.5,
-        "current-node-color": '{{ site.data.colors.dark.graph.node.current }}',
-        "tagged-node-color":  '{{ site.data.colors.dark.graph.node.tagged }}',
-        "missing-node-color": '{{ site.data.colors.dark.graph.node.missing }}',
-        "unvisited-node-color": '{{ site.data.colors.dark.graph.node.unvisited }}',
-        "visited-node-color": '{{ site.data.colors.dark.graph.node.visited }}',
-        "glow-color": '{{ site.data.colors.dark.graph.node.glow }}',
-        "link-color": '{{ site.data.colors.dark.graph.link }}',
-        "link-particles-color": '{{ site.data.colors.dark.graph.particles }}',
-        "text-color": '{{ site.data.colors.dark.graph.text }}',
+        "current-node-color": '{{ site.data.themes.dark.graph.node.current }}',
+        "tagged-node-color":  '{{ site.data.themes.dark.graph.node.tagged }}',
+        "missing-node-color": '{{ site.data.themes.dark.graph.node.missing }}',
+        "unvisited-node-color": '{{ site.data.themes.dark.graph.node.unvisited }}',
+        "visited-node-color": '{{ site.data.themes.dark.graph.node.visited }}',
+        "glow-color": '{{ site.data.themes.dark.graph.node.glow }}',
+        "link-color": '{{ site.data.themes.dark.graph.link }}',
+        "link-particles-color": '{{ site.data.themes.dark.graph.particles }}',
+        "text-color": '{{ site.data.themes.dark.graph.text }}',
       }
     } else {
       theme_attrs = {
         "name": "light",
         "radius": 6,
         "missing-radius": 4,
-        "current-node-color": '{{ site.data.colors.light.graph.node.current }}',
-        "tagged-node-color":  '{{ site.data.colors.light.graph.node.tagged }}',
-        "missing-node-color": '{{ site.data.colors.light.graph.node.missing }}',
-        "unvisited-node-color": '{{ site.data.colors.light.graph.node.unvisited }}',
-        "visited-node-color": '{{ site.data.colors.light.graph.node.visited }}',
-        "glow-color": '{{ site.data.colors.light.graph.node.glow }}',
-        "link-color": '{{ site.data.colors.light.graph.link }}',
-        "link-particles-color": '{{ site.data.colors.light.graph.particles }}',
-        "text-color": '{{ site.data.colors.light.graph.text }}',
+        "current-node-color": '{{ site.data.themes.light.graph.node.current }}',
+        "tagged-node-color":  '{{ site.data.themes.light.graph.node.tagged }}',
+        "missing-node-color": '{{ site.data.themes.light.graph.node.missing }}',
+        "unvisited-node-color": '{{ site.data.themes.light.graph.node.unvisited }}',
+        "visited-node-color": '{{ site.data.themes.light.graph.node.visited }}',
+        "glow-color": '{{ site.data.themes.light.graph.node.glow }}',
+        "link-color": '{{ site.data.themes.light.graph.link }}',
+        "link-particles-color": '{{ site.data.themes.light.graph.particles }}',
+        "text-color": '{{ site.data.themes.light.graph.text }}',
       }
     }
     // redraw new chart

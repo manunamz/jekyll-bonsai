@@ -17,59 +17,59 @@ $drop-shadow-red: rgba(233, 76, 76, 0.9) !default;
 
 // theme colors
 [data-theme='dark'] {
-  --selection-color: {{ site.data.colors.dark.selection }}; 
+  --selection-color: {{ site.data.themes.dark.selection }}; 
 
-  --body-background-color: {{ site.data.colors.dark.body.background }};
-  --body-text-color: {{ site.data.colors.dark.body.text }};
-  --body-heading-color: {{ site.data.colors.dark.body.heading }};
+  --body-background-color: {{ site.data.themes.dark.body.background }};
+  --body-text-color: {{ site.data.themes.dark.body.text }};
+  --body-heading-color: {{ site.data.themes.dark.body.heading }};
 
-  --border-color: {{ site.data.colors.dark.border }};
-  --separator-color:  {{ site.data.colors.dark.separator }};
+  --border-color: {{ site.data.themes.dark.border }};
+  --separator-color:  {{ site.data.themes.dark.separator }};
 
-  --base-button-color: {{ site.data.colors.dark.btn }};
+  --base-button-color: {{ site.data.themes.dark.btn }};
 
-  --code-background-color: {{ site.data.colors.dark.code }};
-  --table-background-color: {{ site.data.colors.dark.table.background }};
-  --box-shadow-color: {{ site.data.colors.dark.box_shadow }};
+  --code-background-color: {{ site.data.themes.dark.code }};
+  --table-background-color: {{ site.data.themes.dark.table.background }};
+  --box-shadow-color: {{ site.data.themes.dark.box_shadow }};
 
-  --link-color: {{ site.data.colors.dark.link.external.valid }};
-  --link-underline-color: {{ site.data.colors.dark.link.external.underline }};
-  --wiki-link-color: {{ site.data.colors.dark.link.internal.valid }};
-  --wiki-link-underline-color: {{ site.data.colors.dark.link.internal.underline }};
-  --invalid-wiki-link-color: {{ site.data.colors.dark.link.internal.invalid }};
+  --link-color: {{ site.data.themes.dark.link.external.valid }};
+  --link-underline-color: {{ site.data.themes.dark.link.external.underline }};
+  --wiki-link-color: {{ site.data.themes.dark.link.internal.valid }};
+  --wiki-link-underline-color: {{ site.data.themes.dark.link.internal.underline }};
+  --invalid-wiki-link-color: {{ site.data.themes.dark.link.internal.invalid }};
 
-  --blockquote-border-color: {{ site.data.colors.dark.blockquote }};
-  --blockquote-quote-color: {{ site.data.colors.dark.blockquote }};
+  --blockquote-border-color: {{ site.data.themes.dark.blockquote }};
+  --blockquote-quote-color: {{ site.data.themes.dark.blockquote }};
 
-  --tag-disabled-color: {{ site.data.colors.dark.tag.disabled }};
+  --tag-disabled-color: {{ site.data.themes.dark.tag.disabled }};
 }
 
 [data-theme='light'] {
-  --selection-color: {{ site.data.colors.light.selection }}; 
+  --selection-color: {{ site.data.themes.light.selection }}; 
 
-  --body-background-color: {{ site.data.colors.light.body.background }};
-  --body-text-color: {{ site.data.colors.light.body.text }};
-  --body-heading-color: {{ site.data.colors.light.body.heading }};
+  --body-background-color: {{ site.data.themes.light.body.background }};
+  --body-text-color: {{ site.data.themes.light.body.text }};
+  --body-heading-color: {{ site.data.themes.light.body.heading }};
 
-  --border-color: {{ site.data.colors.light.border }};
-  --separator-color:  {{ site.data.colors.light.separator }};
+  --border-color: {{ site.data.themes.light.border }};
+  --separator-color:  {{ site.data.themes.light.separator }};
 
-  --base-button-color: {{ site.data.colors.light.btn }};
+  --base-button-color: {{ site.data.themes.light.btn }};
 
-  --code-background-color: {{ site.data.colors.light.code }};
-  --table-background-color: {{ site.data.colors.light.table.background }};
-  --box-shadow-color: {{ site.data.colors.light.box_shadow }};
+  --code-background-color: {{ site.data.themes.light.code }};
+  --table-background-color: {{ site.data.themes.light.table.background }};
+  --box-shadow-color: {{ site.data.themes.light.box_shadow }};
 
-  --link-color: {{ site.data.colors.light.link.external.valid }};
-  --link-underline-color: {{ site.data.colors.light.link.external.underline }};
-  --wiki-link-color: {{ site.data.colors.light.link.internal.valid }};
-  --wiki-link-underline-color: {{ site.data.colors.light.link.internal.underline }};
-  --invalid-wiki-link-color: {{ site.data.colors.light.link.internal.invalid }};
+  --link-color: {{ site.data.themes.light.link.external.valid }};
+  --link-underline-color: {{ site.data.themes.light.link.external.underline }};
+  --wiki-link-color: {{ site.data.themes.light.link.internal.valid }};
+  --wiki-link-underline-color: {{ site.data.themes.light.link.internal.underline }};
+  --invalid-wiki-link-color: {{ site.data.themes.light.link.internal.invalid }};
 
-  --blockquote-border-color: {{ site.data.colors.light.blockquote }};
-  --blockquote-quote-color: {{ site.data.colors.light.blockquote }};
+  --blockquote-border-color: {{ site.data.themes.light.blockquote }};
+  --blockquote-quote-color: {{ site.data.themes.light.blockquote }};
 
-  --tag-disabled-color: {{ site.data.colors.light.tag.disabled }};
+  --tag-disabled-color: {{ site.data.themes.light.tag.disabled }};
 }
 
 // Imports
