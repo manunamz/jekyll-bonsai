@@ -8,6 +8,12 @@
   <link rel="icon" type="image/png">    
   <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
 
+  <script>
+    // from: https://mxb.dev/blog/color-theme-switcher/
+    // if there's a theme id in localstorage, use it on the
+    localStorage.getItem('theme') && 
+    document.documentElement.setAttribute('data-theme', localStorage.getItem('theme'))
+  </script>
   <script src="//unpkg.com/element-resize-detector/dist/element-resize-detector.min.js"></script>
   <script src="//unpkg.com/force-graph"></script>
 
