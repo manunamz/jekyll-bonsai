@@ -1,6 +1,6 @@
 - 
   id: dark
-  name: Dark
+  emoji: 🌘
   src:
     favicon: "/assets/img/favicon-dark.png"
     logo: "/assets/img/bonsai-dark.svg"
@@ -51,7 +51,7 @@
     text: "#e6e1e8"         # $body-text-color => $grey-lt-300
 - 
   id: light
-  name: Light
+  emoji: ☀️
   src:
     favicon: "/assets/img/favicon-light.png"
     logo: "/assets/img/bonsai-light.svg"

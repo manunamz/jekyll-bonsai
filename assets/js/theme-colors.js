@@ -7,8 +7,7 @@ export default class ThemeColors {
     this.favicon = document.querySelector('[rel="icon"]');
     this.navBonsai = document.getElementById('nav-bonsai');
     this.navBase = document.getElementById('nav-base');
-    this.themeColorsCheckbox = document.getElementById('theme-colors-checkbox');
-    this.themeColorsEmojiSpan = document.getElementById('theme-colors-emoji-span');
+    this.themeColorBtns = document.querySelectorAll('a[data-theme-id]');
     // logo
     this.homeLogo = document.getElementById('home-logo');
     this.rootLogo = document.getElementById('root-logo');
@@ -21,9 +20,11 @@ export default class ThemeColors {
   }
 
   bindEvents() {
-    this.themeColorsCheckbox.addEventListener('click', () => {
-      this.updateThemeColors();
-      document.getElementById('graph').dispatchEvent(new Event('draw')); // tell graph to redraw itself
+    Array.prototype.forEach.call(this.themeColorBtns, (btn) => {
+      btn.addEventListener('click', (event) => {
+        this.updateThemeColors(event);
+        document.getElementById('graph').dispatchEvent(new Event('draw')); // tell graph to redraw itself
+      });
     });
   }
 
@@ -32,18 +33,12 @@ export default class ThemeColors {
     if (this.theme !== "dark" && this.theme !== "light") {
       this.theme = getComputedStyle(document.documentElement).getPropertyValue('content');	
     }
-    this.themeColorsCheckbox.checked = (this.theme === "dark");
     this.updateThemeColors();
   }
 
-  updateThemeColors () {
-    // toggle theme colors
-    if (this.themeColorsCheckbox.checked) {
-      this.themeColorsEmojiSpan.innerHTML = "{{ site.data.emoji.light }}";
-      this.theme = "dark";
-    } else {
-      this.themeColorsEmojiSpan.innerHTML = "{{ site.data.emoji.dark }}";
-      this.theme = "light";
+  updateThemeColors (event) {
+    if (event) {
+      this.theme = event.target.dataset.themeId;
     }
     // update theme color data
     document.documentElement.setAttribute('data-theme', this.theme);

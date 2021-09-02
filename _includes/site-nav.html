@@ -59,10 +59,20 @@
         </a>
       </div>
     </span>
-    <label class="site-nav-btn">
-      <input id="theme-colors-checkbox" type="checkbox" checked="checked">
-      <span id="theme-colors-emoji-span" title="Toggle Colors"></span>
-    </label>
+    <span class="dropdown">
+      <button class="dropdown-btn">
+        <span title="Theme Color Toggles">
+          {{ site.data.emoji.colors }}
+        </span>
+      </button>
+      <div class="dropdown-content">
+        {% for theme in site.data.themes %}
+          <a data-theme-id="{{ theme.id }}" class="site-nav-btn drop-{{ forloop.index }}" title="{{ theme.id }}">
+            {{ theme.emoji }}
+          </a>
+        {% endfor %}
+      </div>
+    </span>
   </header>
 
   <nav id="visited-nav" class="visited-nav"></nav>
