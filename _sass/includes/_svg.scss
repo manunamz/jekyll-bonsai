@@ -1,0 +1,49 @@
+// 
+// svg imgs
+// 
+
+// bullet icons
+
+.bullet-link {
+  stroke: var(--bullet-link);
+}
+
+.bullet-node {
+  fill: var(--bullet-node);
+}
+
+// pencil textured svgs
+
+.pencil-yellow,
+.pencil-blue,
+.pencil-green {
+  fill: none;
+  stroke-miterlimit: 10;
+  stroke-width: 10px;
+}
+
+.pencil-default {
+  stroke: var(--pencil-default);
+  fill: var(--pencil-default);
+}
+
+.pencil-blue {
+  stroke: var(--pencil-blue);
+}
+
+.pencil-green {
+  stroke: var(--pencil-green);
+}
+
+.pencil-yellow {
+  stroke: var(--pencil-yellow);
+}
+
+.pencil-txt {
+  font-family: BradleyHandITCTT-Bold, Bradley Hand;
+  font-size: 52px;
+}
+
+.pencil-txt-sm {
+  font-size: 27px;
+}
