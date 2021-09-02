@@ -37,7 +37,7 @@ function initListeners () {
     }, false);
 
   // apply pencil-filter to all svg images
-  let imgElements = document.getElementsByClassName('wiki-link-embed-image');
+  let imgElements = document.getElementsByClassName('embed-image-wrapper');
   Array.prototype.forEach.call(imgElements, (img) => {
     if (img.firstElementChild.tagName === "svg") {
       // attach filter to svg element's parent because of safari/mobile bug
