@@ -20,7 +20,7 @@
     table:
       background: "#302d36" # $grey-dk-250
     box_shadow: "#fff"      # $white
-    link: 
+    link:
       external: 
         valid: "#89B8D8"   # $blue-000
         underline: "#44434d"  # $grey-dk-200
@@ -33,22 +33,26 @@
       disabled: "#e1e8e3" # $grey-lt-300
   svg:
     pencil:
+      default: "#e1e8e3"    # $body-text-color => $grey-lt-300
       blue: "#0047aa"         # blue
       green: "#31AF31"        # $green-05
       yellow: "#dfb600"       # yellow
-      default: "#e1e8e3"    # $body-text-color => $grey-lt-300
     branch: "#44434d"         # $grey-dk-200
   graph:
     node:
-      current: "#F0C61F"    # yellow
-      glow: "#31AF31"       # $green-05
-      missing: "#00000000"  # $transparent
-      tagged: "#a87f32"     # sand/yellow-orange-brown
-      unvisited: "#3e5c50"  # $green-400
-      visited: "#31AF31"    # $green-05
-    link: "#44434d"         # $grey-dk-200
-    particles: "#959396"    # $grey-dk-000
-    text: "#e6e1e8"         # $body-text-color => $grey-lt-300
+      color:
+        current: "#F0C61F"    # yellow
+        glow: "#31AF31"       # $green-05
+        missing: "#00000000"  # $transparent
+        tagged: "#a87f32"     # sand/yellow-orange-brown
+        unvisited: "#3e5c50"  # $green-400
+        visited: "#31AF31"    # $green-05
+    link:
+      color: "#44434d"         # $grey-dk-200
+    particles: 
+      color: "#959396"    # $grey-dk-000
+    text: 
+      color: "#e6e1e8"         # $body-text-color => $grey-lt-300
 - 
   id: light
   emoji: ☀️
@@ -71,32 +75,91 @@
     table:
       background: "#D5ECDE" # $green-01-05
     box_shadow: "#000"      # $black
-    link: 
+    link:
       external: 
-        valid: "#264caf"   # $blue-200
+        valid: "#264caf"      # $blue-200
         underline: "#e1e8e3"  # $grey-lt-300
       internal: 
-        valid: "#009c7b"    # $green-200
-        underline: "#ede5dd" # super-light-brown
-        invalid: "#959396" # $grey-dk-000
+        valid: "#009c7b"      # $green-200
+        underline: "#ede5dd"  # super-light-brown
+        invalid: "#959396"    # $grey-dk-000
     blockquote: "rgba(160, 228, 160, 0.33)" # $green-07 => #A0E4A0
+    tag:
+      disabled: "#e1e8e3"     # $grey-lt-300
+  svg:
+    pencil:
+      default: "#5c5962"      # $body-text-color => $grey-dk-100
+      blue: "#0047aa"         # blue
+      green: "#31AF31"        # $green-05
+      yellow: "#dfb600"       # yellow
+    branch: "#8C6239"         # $brown-02
+  graph:
+    node:
+      color:
+        current: "#F0C61F"    # yellow
+        glow: "#00000000"     # $transparent
+        missing: "#8C6239"    # sand/yellow-orange-brown
+        tagged: "#a87f32"     # $brown-02
+        unvisited: "#9cbe9c"  # $green-05
+        visited: "#31AF31"    # $green-05
+    link:
+      color: "#8C6239"        # $brown-02 
+    particles: 
+      color: "#5c5962"        # $grey-dk-000
+    text:
+      color: "#5c5962"           # $body-text-color => $grey-dk-100
+- 
+  id: star
+  emoji: ✨
+  src:
+    favicon: "/assets/img/favicon-dark.png"
+    logo: "/assets/img/bonsai-dark.svg"
+    nav_burger:
+      base: "/assets/img/nav-base-dark.svg"
+      bonsai: "/assets/img/nav-bonsai-dark.svg"
+  colors:
+    selection: "#F3F0CE"
+    body:
+      background: "#1C2C36" #
+      text: "#e1e8e3"       # $grey-lt-300
+      heading: "#f5f6fa"    # $grey-lt-000
+    border: "#44434d"       # $grey-dk-200
+    separator: "#44434d"    # $grey-dk-200
+    btn: "#302d36"          # $grey-dk-250
+    code: "#302d36"         # $grey-dk-250
+    table:
+      background: "#302d36" # $grey-dk-250
+    box_shadow: "#fff"      # $white
+    link:
+      external: 
+        valid: "#89B8D8"   # $blue-000
+        underline: "#44434d"  # $grey-dk-200
+      internal: 
+        valid: "#F3EEBB"    # 
+        underline: "#FBFAEF" # 
+        invalid: "#959396" # $grey-dk-000
+    blockquote: "rgba(68, 67, 77, 0.33)" # $grey-dk-200 => #44434d
     tag:
       disabled: "#e1e8e3" # $grey-lt-300
   svg:
     pencil:
-      default: "#5c5962"    # $body-text-color => $grey-dk-100
+      default: "#e1e8e3"     # $body-text-color => $grey-lt-300
       blue: "#0047aa"         # blue
       green: "#31AF31"        # $green-05
       yellow: "#dfb600"       # yellow
-    branch: "#8C6239"        # $brown-02
+    branch: "#315E72"         #
   graph:
     node:
-      current: "#F0C61F"    # yellow
-      glow: "#00000000"     # $transparent
-      missing: "#8C6239"    # sand/yellow-orange-brown
-      tagged: "#a87f32"     # $brown-02
-      unvisited: "#9cbe9c"  # $green-05
-      visited: "#31AF31"    # $green-05
-    link: "#8C6239"         # $brown-02 
-    particles: "#5c5962"    # $grey-dk-000
-    text: "#5c5962"         # $body-text-color => $grey-dk-100
+      color:
+        current: "#F0C61F"    # yellow
+        glow: "#ffffff"       # 
+        missing: "#00000000"  # $transparent
+        tagged: "#0096FF"     # blue
+        unvisited: "#1C2C36"  #
+        visited: "#F3F0CF"    # 
+    link:
+      color: "#254756"         #
+    particles: 
+      color: "#F3F0CF"         # 
+    text: 
+      color: "#e6e1e8"         # $body-text-color => $grey-lt-300

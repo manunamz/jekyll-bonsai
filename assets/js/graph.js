@@ -33,7 +33,7 @@ export default class GraphNav {
   drawD3Nav() {
     // destroy old chart   
     // d3.select(this.canvas).selectAll('svg > *').remove();
-    
+
     // css vars are set in styles.scss -> themes.scss.liquid
     let theme_attrs = {
       "name": document.documentElement.dataset.theme,
@@ -202,7 +202,7 @@ export default class GraphNav {
       const highlightLinks = new Set();
       let hoverNode = null;
       let hoverLink = null;
-
+      
       const Graph = ForceGraph()
 
       (document.getElementById('graph'))
@@ -322,7 +322,7 @@ export default class GraphNav {
       // turn glow on
       ctx.shadowBlur = 30;
       ctx.shadowColor = nodeTypeInfo["tagged-glow-color"];
-    } else if (theme_attrs["name"] === "dark" && nodeTypeInfo["type"] === "visited") {
+    } else if ((theme_attrs["name"] === "dark" || theme_attrs["name"] === "star") && nodeTypeInfo["type"] === "visited") {
       // turn glow on
       ctx.shadowBlur = 20;
       ctx.shadowColor = nodeTypeInfo["glow-color"];
@@ -337,6 +337,12 @@ export default class GraphNav {
     // dark customization
     // 
     if (theme_attrs["name"] === "dark") {
+      // draw node borders
+      ctx.lineWidth = nodeTypeInfo["radius"] * (2 / 5);
+      ctx.strokeStyle = theme_attrs["link-color"];
+      ctx.stroke();
+    }
+    if (theme_attrs["name"] === "star" && nodeTypeInfo["type"] === "unvisited") {
       // draw node borders
       ctx.lineWidth = nodeTypeInfo["radius"] * (2 / 5);
       ctx.strokeStyle = theme_attrs["link-color"];
