@@ -16,7 +16,7 @@ $drop-shadow-orange: rgba(231, 175, 6, 0.9) !default;
 $drop-shadow-red: rgba(233, 76, 76, 0.9) !default;
 
 {% for theme in site.data.themes %}
-  {% include themes.scss.liquid id=theme.id colors=theme.colors svg=theme.svg graph=theme.graph %}
+  {% include themes.scss.liquid id=theme.id src=theme.src colors=theme.colors svg=theme.svg graph=theme.graph %}
 {% endfor %}
 
 // Imports

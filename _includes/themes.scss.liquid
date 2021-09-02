@@ -12,6 +12,12 @@
 
 // theme colors
 [data-theme='{{ include.id }}'] {
+  // logo images
+  --favicon-src: {{ include.src.favicon }};
+  --logo-src: {{ include.src.logo }};
+  --nav-burger-base: {{ include.src.nav_burger.base }};
+  --nav-burger-bonsai: {{ include.src.nav_burger.bonsai }};
+
   // theme colors
   --selection-color: {{ include.colors.selection }}; 
 

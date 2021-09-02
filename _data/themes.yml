@@ -1,6 +1,12 @@
 - 
   id: dark
   name: Dark
+  src:
+    favicon: "/assets/img/favicon-dark.png"
+    logo: "/assets/img/bonsai-dark.svg"
+    nav_burger:
+      base: "/assets/img/nav-base-dark.svg"
+      bonsai: "/assets/img/nav-bonsai-dark.svg"
   colors:
     selection: "#ad9b4b"
     body:
@@ -46,6 +52,12 @@
 - 
   id: light
   name: Light
+  src:
+    favicon: "/assets/img/favicon-light.png"
+    logo: "/assets/img/bonsai-light.svg"
+    nav_burger:
+      base: "/assets/img/nav-base-light.svg"
+      bonsai: "/assets/img/nav-bonsai-light.svg"
   colors:
     selection: "#E6E09E"
     body:

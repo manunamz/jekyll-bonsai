@@ -48,22 +48,14 @@ export default class ThemeColors {
     // update theme color data
     document.documentElement.setAttribute('data-theme', this.theme);
     // update icons and images
-    this.favicon.setAttribute('href', "{{site.baseurl}}/assets/img/favicon-" + this.theme + ".png");
-    this.navBonsai.setAttribute('src', "{{site.baseurl}}/assets/img/nav-bonsai-" + this.theme + ".svg");
-    this.navBase.setAttribute('src', "{{site.baseurl}}/assets/img/nav-base-" + this.theme + ".svg");
-    if (this.rootLogo) {
-      if (this.theme === "dark") {
-        this.rootLogo.setAttribute('src', "{{ site.logo-dark | relative_url }}");
-      } else {
-        this.rootLogo.setAttribute('src', "{{ site.logo-light | relative_url }}");
-      }
-    }
+    this.favicon.setAttribute('href', `{{site.baseurl}}${getComputedStyle(document.documentElement).getPropertyValue('--favicon-src')}`.replaceAll(/\s/g,''));
+    this.navBase.setAttribute('src', `{{site.baseurl}}${getComputedStyle(document.documentElement).getPropertyValue('--nav-burger-base')}`.replaceAll(/\s/g,''));
+    this.navBonsai.setAttribute('src', `{{site.baseurl}}${getComputedStyle(document.documentElement).getPropertyValue('--nav-burger-bonsai')}`.replaceAll(/\s/g,''));
     if (this.homeLogo) {
-      if (this.theme === "dark") {
-        this.homeLogo.setAttribute('src', "{{ site.logo-dark | relative_url }}");
-      } else {
-        this.homeLogo.setAttribute('src', "{{ site.logo-light | relative_url }}");
-      }
+      this.homeLogo.setAttribute('src', `{{site.baseurl}}${getComputedStyle(document.documentElement).getPropertyValue('--logo-src')}`.replaceAll(/\s/g,''));
+    }
+    if (this.rootLogo) {
+      this.rootLogo.setAttribute('src', `{{site.baseurl}}${getComputedStyle(document.documentElement).getPropertyValue('--logo-src')}`.replaceAll(/\s/g,''));
     }
     // save to local storage
     window.localStorage.setItem('theme-colors', this.theme);
