@@ -6,20 +6,17 @@
 approve:     👍 
 consider:    🧐
 disapprove:  👎
-# colors
+# nav-bar
 colors:      🌈
-# entry-only
-breadcrumbs: 🛤
-entries:     🚏
-# graph
+## graph
 net-web:     🕸
 tree:        🌳
-# site-nav
+## site-nav
 delete:      🧹
 graph:       🪴
 site_nav:    🧭 
 visited:     🥾
-# pages
+## pages
 about:       🪧
 home:        🏕
 pages:       🗺
@@ -28,6 +25,9 @@ privacy:     🛖
 recent:      🌦
 search:      🔍
 stat_tags:   🔖
+# entry-only
+breadcrumbs: 🛤
+entries:     🚏
 # 
 # the following are informational emojis
 #  -- these are safe to set to "" (empty strings)
