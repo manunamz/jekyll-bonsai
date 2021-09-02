@@ -1,6 +1,18 @@
+{% comment %}
+  
+  Usage:
+    {% include themes.scss.liquid id=theme.id colors=theme.colors svg=theme.svg graph=theme.graph %}
+
+  Parameters:
+    * colors         (object) - collection of color values for css theming
+    * svg            (object) - collection of color values for svg images
+    * graph          (object) - collection of graph/size values for d3 graph
+
+{% endcomment %}
+
 // theme colors
 [data-theme='{{ include.id }}'] {
-  // colors
+  // theme colors
   --selection-color: {{ include.colors.selection }}; 
 
   --body-background-color: {{ include.colors.body.background }};
@@ -27,7 +39,7 @@
 
   --tag-disabled-color: {{ include.colors.tag.disabled }};
 
-  // svg
+  // svg colors
   --bullet-link: {{ include.svg.branch }};
   --bullet-node: {{ include.graph.node.color.visited }};
 
@@ -35,4 +47,18 @@
   --pencil-blue: {{include.svg.pencil.blue }};
   --pencil-green: {{include.svg.pencil.green }};
   --pencil-yellow: {{include.svg.pencil.yellow }};
+
+  // graph colors (these don't get toggled, they are all loaded at once in graph.js)
+  --graph-node-color-current: {{ include.graph.node.color.current }};
+  --graph-node-color-glow: {{ include.graph.node.color.glow }};
+  --graph-node-color-missing: {{ include.graph.node.color.missing }};
+  --graph-node-color-tagged: {{ include.graph.node.color.tagged }};
+  --graph-node-color-unvisited: {{ include.graph.node.color.unvisited }};
+  --graph-node-color-visited: {{ include.graph.node.color.visited }};
+
+  --graph-link-color: {{ include.graph.link.color }};
+
+  --graph-particles-color: {{ include.graph.particles.color }};
+
+  --graph-text-color: {{ include.graph.text.color }};
 }

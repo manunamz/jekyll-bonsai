@@ -34,40 +34,22 @@ export default class GraphNav {
     // destroy old chart   
     // d3.select(this.canvas).selectAll('svg > *').remove();
     
-    // let colorConfigs = '{{ site.data.themes.graph }}';
-    let theme_attrs = {};
-    // set theme-dependent graph attributes.
-    if (document.getElementById('theme-colors-checkbox').checked) {
-      theme_attrs = {
-        "name": "dark",
-        "radius": 5.5,
-        "missing-radius": 5.5,
-        "current-node-color": '{{ site.data.graph.dark.node.current }}',
-        "tagged-node-color":  '{{ site.data.graph.dark.node.tagged }}',
-        "missing-node-color": '{{ site.data.graph.dark.node.missing }}',
-        "unvisited-node-color": '{{ site.data.graph.dark.node.unvisited }}',
-        "visited-node-color": '{{ site.data.graph.dark.node.visited }}',
-        "glow-color": '{{ site.data.graph.dark.node.glow }}',
-        "link-color": '{{ site.data.graph.dark.link }}',
-        "link-particles-color": '{{ site.data.graph.dark.particles }}',
-        "text-color": '{{ site.data.graph.dark.text }}',
-      }
-    } else {
-      theme_attrs = {
-        "name": "light",
-        "radius": 6,
-        "missing-radius": 4,
-        "current-node-color": '{{ site.data.graph.light.node.current }}',
-        "tagged-node-color":  '{{ site.data.graph.light.node.tagged }}',
-        "missing-node-color": '{{ site.data.graph.light.node.missing }}',
-        "unvisited-node-color": '{{ site.data.graph.light.node.unvisited }}',
-        "visited-node-color": '{{ site.data.graph.light.node.visited }}',
-        "glow-color": '{{ site.data.graph.light.node.glow }}',
-        "link-color": '{{ site.data.graph.light.link }}',
-        "link-particles-color": '{{ site.data.graph.light.particles }}',
-        "text-color": '{{ site.data.graph.light.text }}',
-      }
+    // css vars are set in styles.scss -> themes.scss.liquid
+    let theme_attrs = {
+      "name": document.documentElement.dataset.theme,
+      "radius": 6,
+      "missing-radius": 6,
+      "current-node-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-color-current'),
+      "tagged-node-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-color-tagged'),
+      "missing-node-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-color-missing'),
+      "unvisited-node-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-color-unvisited'),
+      "visited-node-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-color-visited'),
+      "glow-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-color-glow'),
+      "link-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-link-color'),
+      "link-particles-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-particles-color'),
+      "text-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-text-color'),
     }
+
     // redraw new chart
     if (this.graphTypeCheckBox.checked) {
       this.drawTree(theme_attrs);
