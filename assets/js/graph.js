@@ -5,7 +5,7 @@ export default class GraphNav {
 
   constructor() {
     // this.graphType set in initGraphType();
-    this.canvas = document.getElementById('graph');
+    this.graphDiv = document.getElementById('graph');
     this.graphTypeCheckBox = document.getElementById('graph-type-checkbox');
     this.graphTypeEmojiSpan = document.getElementById('graph-type-emoji-span');
     this.init();
@@ -19,7 +19,7 @@ export default class GraphNav {
   
   bindEvents() {
     // listen for draw event (esp. from theme colors)
-    this.canvas.addEventListener('draw', () => {
+    this.graphDiv.addEventListener('draw', () => {
       this.updateGraphType();
       this.drawD3Nav();
     });
@@ -31,9 +31,6 @@ export default class GraphNav {
   
   // how to checkbox: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_display_checkbox_text
   drawD3Nav() {
-    // destroy old chart   
-    // d3.select(this.canvas).selectAll('svg > *').remove();
-
     // css vars are set in styles.scss -> themes.scss.liquid
     let theme_attrs = {
       "name": document.documentElement.dataset.theme,
@@ -101,7 +98,7 @@ export default class GraphNav {
 
       const Graph = ForceGraph()
 
-      (document.getElementById('graph'))
+      (this.graphDiv)
         // container
         .height(document.getElementById('graph').parentElement.clientHeight)
         .width(document.getElementById('graph').parentElement.clientWidth)
@@ -205,7 +202,7 @@ export default class GraphNav {
       
       const Graph = ForceGraph()
 
-      (document.getElementById('graph'))
+      (this.graphDiv)
         // dag-mode (tree) 
         .dagMode('td')
         .dagLevelDistance(100)
