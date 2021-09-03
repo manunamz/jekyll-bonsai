@@ -109,13 +109,15 @@
 .tag-pills {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 
   .tag-pill {
+    white-space: nowrap;
     padding: $sp-2;
     margin: $sp-2;
     border-radius: 15px;
     color: var(--wiki-link-color);
-    border: 1px solid var(--separator-color);
+    border: 1px solid var(--border-color);
   
     &:hover {
       background-color: var(--base-button-color);
