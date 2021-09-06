@@ -64,15 +64,18 @@ a {
 a.web-link {
   color: var(--link-color);
   text-decoration: none;
-  background-image: linear-gradient(var(--link-underline-color) 0%, var(--link-underline-color) 100%);
+  background-image: linear-gradient(
+    var(--link-underline-color) 0%,
+    var(--link-underline-color) 100%
+  );
   background-repeat: repeat-x;
   background-position: 0 100%;
   background-size: 1px 1px;
 
   &:hover {
     background-image: linear-gradient(
-      rgba(var(--link-color), 0.45) 0%,
-      rgba(var(--link-color), 0.45) 100%
+      var(--link-color) 0%,
+      var(--link-color) 100%
     );
     background-size: 1px 1px;
   }
@@ -116,15 +119,18 @@ hr {
 .wiki-link { 
   color: var(--wiki-link-color);
   text-decoration: none;
-  background-image: linear-gradient(var(--wiki-link-underline-color) 0%, var(--wiki-link-underline-color) 100%);
+  background-image: linear-gradient(
+    var(--wiki-link-underline-color) 0%, 
+    var(--wiki-link-underline-color) 100%
+  );
   background-repeat: repeat-x;
   background-position: 0 100%;
   background-size: 1px 1px;
 
   &:hover {
     background-image: linear-gradient(
-      rgba(var(--wiki-link-color), 0.45) 0%,
-      rgba(var(--wiki-link-color), 0.45) 100%
+      var(--wiki-link-color) 0%,
+      var(--wiki-link-color) 100%
     );
     background-size: 1px 1px;
   }  
