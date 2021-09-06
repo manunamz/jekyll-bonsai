@@ -23,7 +23,6 @@ export default class ThemeColors {
     Array.prototype.forEach.call(this.themeColorBtns, (btn) => {
       btn.addEventListener('click', (event) => {
         this.updateThemeColors(event);
-        document.getElementById('graph').dispatchEvent(new Event('draw')); // tell graph to redraw itself
       });
     });
   }
