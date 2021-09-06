@@ -117,6 +117,7 @@
     margin: $sp-2;
     border-radius: 15px;
     color: var(--wiki-link-color);
+    background-color: $transparent;
     border: 1px solid var(--border-color);
   
     &:hover {
@@ -130,7 +131,7 @@
       border: 1px solid var(--tag-disabled-color);
   
       &:hover {
-        background-color: var(--body-background-color) !important;
+        background-color: var(--tag-disabled-color) !important;
       }
     }
   }

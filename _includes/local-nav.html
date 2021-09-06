@@ -64,7 +64,7 @@
       {% for sem_tag in page.tags %}
         {% assign sem_tag_file = sem_tag | append: ".md" %}
         {% assign entry = site.entries | find_exp: "item", "item.path contains sem_tag_file" %}
-        <span class="tag-pill">
+        <button class="tag-pill">
           {% if entry %}
             {% for stat_tag in page.status %}
               {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
@@ -74,7 +74,7 @@
           {% else %}
             <span class="small-descr disabled">{{ sem_tag }}</span>
           {% endif %}
-        </span>
+        </button>
       {% endfor %}
     </div>
   <!-- oops -->
