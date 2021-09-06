@@ -122,15 +122,15 @@
   colors:
     selection: "#f5ec8eA6"
     body:
-      background: "#1b2733" # hey world -- https://world.hey.com/dhh/ (well that was a coincidence)
+      background: "#1b2733" # hey world -- https://world.hey.com/dhh/ (what a coincidence)
       text: "#e1e8e3"       # $grey-lt-300
       heading: "#f5f6fa"    # $grey-lt-000
     border: "#44434d"       # $grey-dk-200
     separator: "#254756"    # 
     btn: "#254756"          # 
-    code: "#151E28"         # $grey-dk-250
+    code: "#151E28"         # dark bg
     table:
-      background: "#302d36" # $grey-dk-250
+      background: "#151E28" # dark bg
     box_shadow: "#fff"      # $white
     link:
       external: 
@@ -140,7 +140,7 @@
         valid: "#F3EEBB"     # 
         underline: "#44434d" # $grey-dk-200
         invalid: "#959396"   # $grey-dk-000
-    blockquote: "#254756" # $grey-dk-200 => #44434d
+    blockquote: "#254756"    # $grey-dk-200 => #44434d
     tag:
       disabled: "#254756"    #
   svg:
@@ -152,11 +152,11 @@
     branch: "#315E72"         #
   graph:
     node:
-      stroke: "#254756"         # 
+      stroke: "#00000000"  # $transparent
       current: "#F0C61F"    # yellow
-      missing: "#414e5c"    #
+      missing: "#586069"    #
       tagged: "#0096FF"     # blue
-      unvisited: "#1C2C36"  #
+      unvisited: "#2A3D50"  #
       visited:
         color: "#F3F0CF"     # 
         glow: "#ffffff"       # 
