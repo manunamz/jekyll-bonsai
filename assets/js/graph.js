@@ -31,26 +31,13 @@ export default class GraphNav {
   
   // how to checkbox: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_display_checkbox_text
   drawD3Nav() {
-    // css vars are set in styles.scss -> themes.scss.liquid
-    let theme_attrs = {
-      "name": document.documentElement.dataset.theme,
-      "node-stroke": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-stroke'),
-      "current-node-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-current'),
-      "tagged-node-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-tagged'),
-      "missing-node-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-missing'),
-      "unvisited-node-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-unvisited'),
-      "visited-node-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-visited-color'),
-      "visited-node-glow": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-visited-glow'),
-      "link-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-link-color'),
-      "link-particles-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-particles-color'),
-      "text-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-text-color'),
-    }
 
+    
     // redraw new chart
     if (this.graphTypeCheckBox.checked) {
-      this.drawTree(theme_attrs);
+      this.drawTree();
     } else {
-      this.drawNetWeb(theme_attrs);
+      this.drawNetWeb();
     }
   }
   
@@ -75,7 +62,7 @@ export default class GraphNav {
   } 
 
   // d3
-  drawNetWeb (theme_attrs) {
+  drawNetWeb () {
     fetch('{{ site.baseurl }}/assets/graph-net-web.json').then(res => res.json()).then(data => {
       
       data.links.forEach(link => {
@@ -102,15 +89,15 @@ export default class GraphNav {
         .height(document.getElementById('graph').parentElement.clientHeight)
         .width(document.getElementById('graph').parentElement.clientWidth)
         // node
-        .nodeCanvasObject((node, ctx) => this.nodePaint(node, ctx, theme_attrs, hoverNode, hoverLink))
-        // .nodePointerAreaPaint((node, color, ctx, scale) => nodePaint(node, nodeTypeInNetWeb(node), ctx, theme_attrs))
+        .nodeCanvasObject((node, ctx) => this.nodePaint(node, ctx, hoverNode, hoverLink))
+        // .nodePointerAreaPaint((node, color, ctx, scale) => nodePaint(node, nodeTypeInNetWeb(node), ctx))
         .nodeId('id')
         .nodeLabel('label')
         .onNodeClick((node, event) => this.goToPage(node, event))
         // link
         .linkSource('source')
         .linkTarget('target')
-        .linkColor(() => theme_attrs["link-color"])
+        .linkColor(() => getComputedStyle(document.documentElement).getPropertyValue('--graph-link-color'))
         // forces
         // .d3Force('link',    d3.forceLink()
         //                       .id(function(d) {return d.id;})
@@ -150,7 +137,7 @@ export default class GraphNav {
         })
         .linkDirectionalParticles(4)
         .linkDirectionalParticleWidth(link => highlightLinks.has(link) ? 2 : 0)
-        .linkDirectionalParticleColor(() => theme_attrs["link-particles-color"])
+        .linkDirectionalParticleColor(() => getComputedStyle(document.documentElement).getPropertyValue('--graph-particles-color'))
         // zoom
         // (fit to canvas when engine stops)
         // .onEngineStop(() => Graph.zoomToFit(400))
@@ -167,7 +154,7 @@ export default class GraphNav {
       });
   }
   
-  drawTree (theme_attrs) { 
+  drawTree () { 
     fetch('{{ site.baseurl }}/assets/graph-tree.json').then(res => res.json()).then(data => {
       
       // data.links.forEach(link => {
@@ -210,15 +197,15 @@ export default class GraphNav {
         .height(document.getElementById('graph').parentElement.clientHeight)
         .width(document.getElementById('graph').parentElement.clientWidth)
         // node
-        .nodeCanvasObject((node, ctx) => this.nodePaint(node, ctx, theme_attrs, hoverNode, hoverLink))
-        // .nodePointerAreaPaint((node, color, ctx, scale) => nodePaint(node, nodeTypeInNetWeb(node), ctx, theme_attrs))
+        .nodeCanvasObject((node, ctx) => this.nodePaint(node, ctx, hoverNode, hoverLink))
+        // .nodePointerAreaPaint((node, color, ctx, scale) => nodePaint(node, nodeTypeInNetWeb(node), ctx))
         .nodeId('id')
         .nodeLabel('label')
         .onNodeClick((node, event) => this.goToPage(node, event))
         // link
         .linkSource('source')
         .linkTarget('target')
-        .linkColor(() => theme_attrs["link-color"])
+        .linkColor(() => getComputedStyle(document.documentElement).getPropertyValue('--graph-link-color'))
         // forces
         // .d3Force('link',    d3.forceLink()
         //                       .id(function(d) {return d.id;})
@@ -258,7 +245,7 @@ export default class GraphNav {
         })
         .linkDirectionalParticles(4)
         .linkDirectionalParticleWidth(link => highlightLinks.has(link) ? 2 : 0)
-        .linkDirectionalParticleColor(() => theme_attrs["link-particles-color"])
+        .linkDirectionalParticleColor(() => getComputedStyle(document.documentElement).getPropertyValue('--graph-particles-color'))
         // zoom
         // (fit to canvas when engine stops)
         // .onEngineStop(() => Graph.zoomToFit(400))
@@ -277,8 +264,8 @@ export default class GraphNav {
 
   // draw helpers
 
-  nodePaint(node, ctx, theme_attrs, hoverNode, hoverLink) {
-    const nodeTypeInfo = this.isNodeType(node, theme_attrs);
+  nodePaint(node, ctx, hoverNode, hoverLink) {
+    const nodeTypeInfo = this.isNodeType(node);
     let fillText = true;
     let radius = 6;
     // 
@@ -341,42 +328,45 @@ export default class GraphNav {
     // 
     if (fillText) {
       // add peripheral node text
-      ctx.fillStyle = theme_attrs["text-color"];
+      ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--graph-text-color');
       ctx.fillText(node.label, node.x + radius + 1, node.y + radius + 1);
     }
   }
 
   // meta about nodes<=>page relationships
 
-  isNodeType(node, theme_attrs) {
+  isNodeType(node) {
     const isVisited = this.isVisitedPage(node);
-    const isMissing = this.isMissingPage(node);          
+    const isMissing = this.isMissingPage(node);
     if (isVisited) {
       return {
         "type": "visited",
-        "stroke": theme_attrs["node-stroke"],
-        "color": theme_attrs['visited-node-color'],
-        "visited-glow-color": theme_attrs["visited-node-glow"],
-        "current-glow-color": theme_attrs['current-node-color'],
-        "tagged-glow-color": theme_attrs['tagged-node-color'],
+        "color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-visited-color'),
+
+        "stroke": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-stroke'),
+        "visited-glow-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-visited-glow'),
+        "current-glow-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-current'),
+        "tagged-glow-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-tagged'),
       }
     } else if (!isVisited && !isMissing) {
       return {
         "type": "unvisited",
-        "stroke": theme_attrs["node-stroke"],
-        "color": theme_attrs['unvisited-node-color'],
-        "visited-glow-color": theme_attrs["visited-node-glow"],
-        "current-glow-color": theme_attrs['current-node-color'],
-        "tagged-glow-color": theme_attrs['tagged-node-color'],
+        "color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-unvisited'),
+
+        "stroke": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-stroke'),
+        "visited-glow-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-visited-glow'),
+        "current-glow-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-current'),
+        "tagged-glow-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-tagged'),
       }
     } else if (isMissing) {
       return {
         "type": "missing",
-        "stroke": theme_attrs["node-stroke"],
-        "color": theme_attrs["missing-node-color"],
-        "visited-glow-color": theme_attrs["visited-node-glow"],
-        "current-glow-color": theme_attrs['current-node-color'],
-        "tagged-glow-color": theme_attrs['tagged-node-color'],
+        "color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-missing'),
+
+        "stroke": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-stroke'),
+        "visited-glow-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-visited-glow'),
+        "current-glow-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-current'),
+        "tagged-glow-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-tagged'),
       }
     } else {
       console.log("WARN: Not a valid node type.");
