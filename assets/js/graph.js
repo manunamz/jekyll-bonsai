@@ -265,13 +265,20 @@ export default class GraphNav {
   // draw helpers
 
   nodePaint(node, ctx, hoverNode, hoverLink) {
-    const nodeTypeInfo = this.isNodeType(node);
     let fillText = true;
     let radius = 6;
     // 
-    // draw nodes (canvas circle)
+    // nodes color
     // 
-    ctx.fillStyle = nodeTypeInfo["color"];
+    if (this.isVisitedPage(node)) {
+      ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--graph-node-visited-color');
+    } else if (this.isMissingPage(node)) {
+      ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--graph-node-missing')
+    } else if (!this.isVisitedPage(node) && !this.isMissingPage(node)) {
+      ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--graph-node-unvisited');
+    } else {
+      console.log("WARN: Not a valid base node type.");
+    }
     ctx.beginPath();
     // 
     // hover behavior
@@ -301,15 +308,15 @@ export default class GraphNav {
     if (this.isCurrentPage(node)) {
       // turn glow on
       ctx.shadowBlur = 30;
-      ctx.shadowColor = nodeTypeInfo["current-glow-color"];
+      ctx.shadowColor = getComputedStyle(document.documentElement).getPropertyValue('--graph-node-current');
     } else if (this.isTag(node)) {
       // turn glow on
       ctx.shadowBlur = 30;
-      ctx.shadowColor = nodeTypeInfo["tagged-glow-color"];
-    } else if (nodeTypeInfo["type"] === "visited") {
+      ctx.shadowColor = getComputedStyle(document.documentElement).getPropertyValue('--graph-node-tagged');
+    } else if (this.isVisitedPage(node)) {
       // turn glow on
       ctx.shadowBlur = 20;
-      ctx.shadowColor = nodeTypeInfo["visited-glow-color"];
+      ctx.shadowColor = getComputedStyle(document.documentElement).getPropertyValue('--graph-node-visited-glow');
     } else {
       // no glow
     }
@@ -321,7 +328,7 @@ export default class GraphNav {
     // draw node borders
     // 
     ctx.lineWidth = radius * (2 / 5);
-    ctx.strokeStyle = nodeTypeInfo["stroke"];
+    ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--graph-node-stroke');
     ctx.stroke();
     // 
     // node labels
@@ -330,47 +337,6 @@ export default class GraphNav {
       // add peripheral node text
       ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--graph-text-color');
       ctx.fillText(node.label, node.x + radius + 1, node.y + radius + 1);
-    }
-  }
-
-  // meta about nodes<=>page relationships
-
-  isNodeType(node) {
-    const isVisited = this.isVisitedPage(node);
-    const isMissing = this.isMissingPage(node);
-    if (isVisited) {
-      return {
-        "type": "visited",
-        "color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-visited-color'),
-
-        "stroke": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-stroke'),
-        "visited-glow-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-visited-glow'),
-        "current-glow-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-current'),
-        "tagged-glow-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-tagged'),
-      }
-    } else if (!isVisited && !isMissing) {
-      return {
-        "type": "unvisited",
-        "color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-unvisited'),
-
-        "stroke": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-stroke'),
-        "visited-glow-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-visited-glow'),
-        "current-glow-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-current'),
-        "tagged-glow-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-tagged'),
-      }
-    } else if (isMissing) {
-      return {
-        "type": "missing",
-        "color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-missing'),
-
-        "stroke": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-stroke'),
-        "visited-glow-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-visited-glow'),
-        "current-glow-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-current'),
-        "tagged-glow-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-tagged'),
-      }
-    } else {
-      console.log("WARN: Not a valid node type.");
-      return null;
     }
   }
 
