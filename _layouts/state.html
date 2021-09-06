@@ -9,7 +9,7 @@ layout: default
     <ul class="states-nav-list">
       {% for state in states %}
         <li class="states-list-item {% if page.url == state.url %}active{% endif %}">
-          <a href="{{ state.url | relative_url }}" class="stat-tag">
+          <a class="stat-tag" href="{{ state.url | relative_url }}">
             {{ state.emoji }}
           </a>
         </li>
@@ -17,17 +17,17 @@ layout: default
     </ul>
   </nav>
 
+  <h1>{{ page.emoji }} {{ page.title }}</h1>
+  {{ content }}
+  <p class="small-descr">
+    Descriptions only reflect the spirit of this garden. 
+    Click <a class="web-link" href="{{ page.emojipedia }}">here</a> for the official emoji description.
+  </p>
   <!-- all states -->
   {% if page.path == site.root_state_path %}
-    <h1>{{ page.emoji }} {{ page.title }}</h1>
-    {{ content }}
-    <p class="small-descr">
-      Descriptions only reflect the spirit of this garden. 
-      Click <a class="web-link" href="{{ page.emojipedia }}">here</a> for the official emoji description.
-    </p>
     {% for state in states %}
       {% if state.path != site.root_state_path %}
-        <h2>{{ state.emoji }} <a href="{{ state.url | relative_url }}" class="wiki-link">{{ state.title }}</a></h2>
+        <h2>{{ state.emoji }} <a class="wiki-link" href="{{ state.url | relative_url }}">{{ state.title }}</a></h2>
         <p>{{ state.content | markdownify }}</p>
       {% endif %}
     {% endfor %}
@@ -35,12 +35,6 @@ layout: default
   {% else %}
     <!-- page == tag (from tag-nav) -->
     {% assign docs_w_stat = site.documents | where: 'status', page.emoji %}
-    <h1>{{ page.emoji }} {{ page.title }}</h1>
-    {{ content }}
-    <p class="small-descr">
-      Descriptions only reflect the spirit of this garden. 
-      Click <a href="{{ page.emojipedia }}">here</a> for the official emoji description.
-    </p>
     {% if docs_w_stat.size == 0 %}
       <div class="no-results">
         There are currently no {{ page.emoji }}s.
@@ -49,7 +43,7 @@ layout: default
       <ul class="states-list">
         {% for entry in docs_w_stat %}
           <li class="states-list-item">
-            {{ page.emoji }} <a href="{{ entry.url | relative_url }}" class="wiki-link">{{ entry.title }}</a>
+            {{ page.emoji }} <a class="wiki-link" href="{{ entry.url | relative_url }}">{{ entry.title }}</a>
           </li>
         {% endfor %}  
       </ul>
