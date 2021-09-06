@@ -16,7 +16,7 @@
     border: "#44434d"       # $grey-dk-200
     separator: "#44434d"    # $grey-dk-200
     btn: "#302d36"          # $grey-dk-250
-    code: "#302d36"         # $grey-dk-250
+    code: "#1E1C21"         # 
     table:
       background: "#302d36" # $grey-dk-250
     box_shadow: "#fff"      # $white
@@ -118,29 +118,29 @@
       base: "/assets/img/nav-base-dark.svg"
       bonsai: "/assets/img/nav-bonsai-dark.svg"
   colors:
-    selection: "#F3F0CE"
+    selection: "#f5ec8eA6"
     body:
-      background: "#1C2C36" #
+      background: "#1b2733" # hey world -- https://world.hey.com/dhh/ (well that was a coincidence)
       text: "#e1e8e3"       # $grey-lt-300
       heading: "#f5f6fa"    # $grey-lt-000
     border: "#44434d"       # $grey-dk-200
-    separator: "#44434d"    # $grey-dk-200
-    btn: "#302d36"          # $grey-dk-250
-    code: "#302d36"         # $grey-dk-250
+    separator: "#254756"    # 
+    btn: "#254756"          # 
+    code: "#151E28"         # $grey-dk-250
     table:
       background: "#302d36" # $grey-dk-250
     box_shadow: "#fff"      # $white
     link:
       external: 
-        valid: "#89B8D8"   # $blue-000
+        valid: "#3D87B8"     # 
         underline: "#44434d"  # $grey-dk-200
       internal: 
-        valid: "#F3EEBB"    # 
-        underline: "#FBFAEF" # 
-        invalid: "#959396" # $grey-dk-000
-    blockquote: "rgba(68, 67, 77, 0.33)" # $grey-dk-200 => #44434d
+        valid: "#F3EEBB"     # 
+        underline: "#44434d" # $grey-dk-200
+        invalid: "#959396"   # $grey-dk-000
+    blockquote: "#254756" # $grey-dk-200 => #44434d
     tag:
-      disabled: "#e1e8e3" # $grey-lt-300
+      disabled: "#254756"    #
   svg:
     pencil:
       default: "#e1e8e3"     # $body-text-color => $grey-lt-300
@@ -153,7 +153,7 @@
       color:
         current: "#F0C61F"    # yellow
         glow: "#ffffff"       # 
-        missing: "#00000000"  # $transparent
+        missing: "#414e5c"    #
         tagged: "#0096FF"     # blue
         unvisited: "#1C2C36"  #
         visited: "#F3F0CF"    # 
