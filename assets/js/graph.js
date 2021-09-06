@@ -36,6 +36,7 @@ export default class GraphNav {
       "name": document.documentElement.dataset.theme,
       "radius": 6,
       "missing-radius": 6,
+      "node-stroke": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-stroke'),
       "current-node-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-current'),
       "tagged-node-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-tagged'),
       "missing-node-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-missing'),
@@ -330,21 +331,10 @@ export default class GraphNav {
     // turn glow off
     ctx.shadowBlur = 0;
     ctx.shadowColor = "";
-    // 
-    // dark customization
-    // 
-    if (theme_attrs["name"] === "dark") {
-      // draw node borders
-      ctx.lineWidth = nodeTypeInfo["radius"] * (2 / 5);
-      ctx.strokeStyle = theme_attrs["link-color"];
-      ctx.stroke();
-    }
-    if (theme_attrs["name"] === "star" && nodeTypeInfo["type"] === "unvisited") {
-      // draw node borders
-      ctx.lineWidth = nodeTypeInfo["radius"] * (2 / 5);
-      ctx.strokeStyle = theme_attrs["link-color"];
-      ctx.stroke();
-    }
+    // draw node borders
+    ctx.lineWidth = nodeTypeInfo["radius"] * (2 / 5);
+    ctx.strokeStyle = nodeTypeInfo["stroke"];
+    ctx.stroke();
     // 
     // node labels
     // 
@@ -359,11 +349,12 @@ export default class GraphNav {
 
   isNodeType(node, theme_attrs) {
     const isVisited = this.isVisitedPage(node);
-    const isMissing = this.isMissingPage(node);            
+    const isMissing = this.isMissingPage(node);          
     if (isVisited) {
       return {
         "type": "visited",
         "radius": theme_attrs["radius"],
+        "stroke": theme_attrs["node-stroke"],
         "color": theme_attrs['visited-node-color'],
         "visited-glow-color": theme_attrs["visited-node-glow"],
         "current-glow-color": theme_attrs['current-node-color'],
@@ -373,6 +364,7 @@ export default class GraphNav {
       return {
         "type": "unvisited",
         "radius": theme_attrs["radius"],
+        "stroke": theme_attrs["node-stroke"],
         "color": theme_attrs['unvisited-node-color'],
         "visited-glow-color": theme_attrs["visited-node-glow"],
         "current-glow-color": theme_attrs['current-node-color'],
@@ -382,6 +374,7 @@ export default class GraphNav {
       return {
         "type": "missing",
         "radius": theme_attrs["missing-radius"],
+        "stroke": theme_attrs["node-stroke"],
         "color": theme_attrs["missing-node-color"],
         "visited-glow-color": theme_attrs["visited-node-glow"],
         "current-glow-color": theme_attrs['current-node-color'],

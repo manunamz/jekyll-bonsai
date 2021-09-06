@@ -40,6 +40,7 @@
     branch: "#44434d"         # $grey-dk-200
   graph:
     node:
+      stroke: "#44434d"     # $grey-dk-200
       current: "#F0C61F"    # yellow
       missing: "#00000000"  # $transparent
       tagged: "#a87f32"     # sand/yellow-orange-brown
@@ -95,6 +96,7 @@
     branch: "#8C6239"         # $brown-02
   graph:
     node:
+      stroke: "#00000000"     # $transparent
       current: "#F0C61F"    # yellow
       missing: "#8C6239"    # sand/yellow-orange-brown
       tagged: "#a87f32"     # $brown-02
@@ -150,6 +152,7 @@
     branch: "#315E72"         #
   graph:
     node:
+      stroke: "#254756"         # 
       current: "#F0C61F"    # yellow
       missing: "#414e5c"    #
       tagged: "#0096FF"     # blue
