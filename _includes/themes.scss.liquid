@@ -47,7 +47,7 @@
 
   // svg colors
   --bullet-link: {{ include.svg.branch }};
-  --bullet-node: {{ include.graph.node.color.visited }};
+  --bullet-node: {{ include.graph.node.visited.color }};
 
   --pencil-default: {{include.svg.pencil.default }};
   --pencil-blue: {{include.svg.pencil.blue }};
@@ -55,12 +55,12 @@
   --pencil-yellow: {{include.svg.pencil.yellow }};
 
   // graph colors (these don't get toggled, they are all loaded at once in graph.js)
-  --graph-node-color-current: {{ include.graph.node.color.current }};
-  --graph-node-color-glow: {{ include.graph.node.color.glow }};
-  --graph-node-color-missing: {{ include.graph.node.color.missing }};
-  --graph-node-color-tagged: {{ include.graph.node.color.tagged }};
-  --graph-node-color-unvisited: {{ include.graph.node.color.unvisited }};
-  --graph-node-color-visited: {{ include.graph.node.color.visited }};
+  --graph-node-current: {{ include.graph.node.current }};
+  --graph-node-missing: {{ include.graph.node.missing }};
+  --graph-node-tagged: {{ include.graph.node.tagged }};
+  --graph-node-unvisited: {{ include.graph.node.unvisited }};
+  --graph-node-visited-color: {{ include.graph.node.visited.color }};
+  --graph-node-visited-glow: {{ include.graph.node.visited.glow }};
 
   --graph-link-color: {{ include.graph.link.color }};
 

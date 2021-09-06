@@ -40,13 +40,13 @@
     branch: "#44434d"         # $grey-dk-200
   graph:
     node:
-      color:
-        current: "#F0C61F"    # yellow
+      current: "#F0C61F"    # yellow
+      missing: "#00000000"  # $transparent
+      tagged: "#a87f32"     # sand/yellow-orange-brown
+      unvisited: "#3e5c50"  # $green-400
+      visited: 
+        color: "#31AF31"    # $green-05
         glow: "#31AF31"       # $green-05
-        missing: "#00000000"  # $transparent
-        tagged: "#a87f32"     # sand/yellow-orange-brown
-        unvisited: "#3e5c50"  # $green-400
-        visited: "#31AF31"    # $green-05
     link:
       color: "#44434d"         # $grey-dk-200
     particles: 
@@ -95,13 +95,13 @@
     branch: "#8C6239"         # $brown-02
   graph:
     node:
-      color:
-        current: "#F0C61F"    # yellow
+      current: "#F0C61F"    # yellow
+      missing: "#8C6239"    # sand/yellow-orange-brown
+      tagged: "#a87f32"     # $brown-02
+      unvisited: "#9cbe9c"  # $green-05
+      visited: 
+        color: "#31AF31"    # $green-05
         glow: "#00000000"     # $transparent
-        missing: "#8C6239"    # sand/yellow-orange-brown
-        tagged: "#a87f32"     # $brown-02
-        unvisited: "#9cbe9c"  # $green-05
-        visited: "#31AF31"    # $green-05
     link:
       color: "#8C6239"        # $brown-02 
     particles: 
@@ -150,13 +150,13 @@
     branch: "#315E72"         #
   graph:
     node:
-      color:
-        current: "#F0C61F"    # yellow
+      current: "#F0C61F"    # yellow
+      missing: "#414e5c"    #
+      tagged: "#0096FF"     # blue
+      unvisited: "#1C2C36"  #
+      visited:
+        color: "#F3F0CF"     # 
         glow: "#ffffff"       # 
-        missing: "#414e5c"    #
-        tagged: "#0096FF"     # blue
-        unvisited: "#1C2C36"  #
-        visited: "#F3F0CF"    # 
     link:
       color: "#254756"         #
     particles: 

@@ -36,12 +36,12 @@ export default class GraphNav {
       "name": document.documentElement.dataset.theme,
       "radius": 6,
       "missing-radius": 6,
-      "current-node-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-color-current'),
-      "tagged-node-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-color-tagged'),
-      "missing-node-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-color-missing'),
-      "unvisited-node-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-color-unvisited'),
-      "visited-node-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-color-visited'),
-      "glow-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-color-glow'),
+      "current-node-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-current'),
+      "tagged-node-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-tagged'),
+      "missing-node-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-missing'),
+      "unvisited-node-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-unvisited'),
+      "visited-node-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-visited-color'),
+      "visited-node-glow": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-visited-glow'),
       "link-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-link-color'),
       "link-particles-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-particles-color'),
       "text-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-text-color'),
@@ -319,10 +319,10 @@ export default class GraphNav {
       // turn glow on
       ctx.shadowBlur = 30;
       ctx.shadowColor = nodeTypeInfo["tagged-glow-color"];
-    } else if ((theme_attrs["name"] === "dark" || theme_attrs["name"] === "star") && nodeTypeInfo["type"] === "visited") {
+    } else if (nodeTypeInfo["type"] === "visited") {
       // turn glow on
       ctx.shadowBlur = 20;
-      ctx.shadowColor = nodeTypeInfo["glow-color"];
+      ctx.shadowColor = nodeTypeInfo["visited-glow-color"];
     } else {
       // no glow
     }
@@ -365,7 +365,7 @@ export default class GraphNav {
         "type": "visited",
         "radius": theme_attrs["radius"],
         "color": theme_attrs['visited-node-color'],
-        "glow-color": theme_attrs["glow-color"],
+        "visited-glow-color": theme_attrs["visited-node-glow"],
         "current-glow-color": theme_attrs['current-node-color'],
         "tagged-glow-color": theme_attrs['tagged-node-color'],
       }
@@ -374,7 +374,7 @@ export default class GraphNav {
         "type": "unvisited",
         "radius": theme_attrs["radius"],
         "color": theme_attrs['unvisited-node-color'],
-        "glow-color": theme_attrs["glow-color"],
+        "visited-glow-color": theme_attrs["visited-node-glow"],
         "current-glow-color": theme_attrs['current-node-color'],
         "tagged-glow-color": theme_attrs['tagged-node-color'],
       }
@@ -383,7 +383,7 @@ export default class GraphNav {
         "type": "missing",
         "radius": theme_attrs["missing-radius"],
         "color": theme_attrs["missing-node-color"],
-        "glow-color": theme_attrs["glow-color"],
+        "visited-glow-color": theme_attrs["visited-node-glow"],
         "current-glow-color": theme_attrs['current-node-color'],
         "tagged-glow-color": theme_attrs['tagged-node-color'],
       }
