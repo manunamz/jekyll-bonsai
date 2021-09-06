@@ -34,8 +34,6 @@ export default class GraphNav {
     // css vars are set in styles.scss -> themes.scss.liquid
     let theme_attrs = {
       "name": document.documentElement.dataset.theme,
-      "radius": 6,
-      "missing-radius": 6,
       "node-stroke": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-stroke'),
       "current-node-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-current'),
       "tagged-node-color": getComputedStyle(document.documentElement).getPropertyValue('--graph-node-tagged'),
@@ -282,6 +280,7 @@ export default class GraphNav {
   nodePaint(node, ctx, theme_attrs, hoverNode, hoverLink) {
     const nodeTypeInfo = this.isNodeType(node, theme_attrs);
     let fillText = true;
+    let radius = 6;
     // 
     // draw nodes (canvas circle)
     // 
@@ -292,7 +291,7 @@ export default class GraphNav {
     // 
     if (node === hoverNode) {
       // hoverNode
-      nodeTypeInfo["radius"] *= 2;
+      radius *= 2;
       fillText = false; // node label should be active
     } else if (hoverNode !== null && hoverNode.neighbors.includes(node)) {
       // neighbor to hoverNode
@@ -308,7 +307,7 @@ export default class GraphNav {
     } else {
       // no hover (default)  
     }
-    ctx.arc(node.x, node.y, nodeTypeInfo["radius"], 0, 2 * Math.PI, false);
+    ctx.arc(node.x, node.y, radius, 0, 2 * Math.PI, false);
     // 
     // glow behavior
     // 
@@ -331,8 +330,10 @@ export default class GraphNav {
     // turn glow off
     ctx.shadowBlur = 0;
     ctx.shadowColor = "";
+    // 
     // draw node borders
-    ctx.lineWidth = nodeTypeInfo["radius"] * (2 / 5);
+    // 
+    ctx.lineWidth = radius * (2 / 5);
     ctx.strokeStyle = nodeTypeInfo["stroke"];
     ctx.stroke();
     // 
@@ -341,7 +342,7 @@ export default class GraphNav {
     if (fillText) {
       // add peripheral node text
       ctx.fillStyle = theme_attrs["text-color"];
-      ctx.fillText(node.label, node.x + nodeTypeInfo["radius"] + 1, node.y + nodeTypeInfo["radius"] + 1);
+      ctx.fillText(node.label, node.x + radius + 1, node.y + radius + 1);
     }
   }
 
@@ -353,7 +354,6 @@ export default class GraphNav {
     if (isVisited) {
       return {
         "type": "visited",
-        "radius": theme_attrs["radius"],
         "stroke": theme_attrs["node-stroke"],
         "color": theme_attrs['visited-node-color'],
         "visited-glow-color": theme_attrs["visited-node-glow"],
@@ -363,7 +363,6 @@ export default class GraphNav {
     } else if (!isVisited && !isMissing) {
       return {
         "type": "unvisited",
-        "radius": theme_attrs["radius"],
         "stroke": theme_attrs["node-stroke"],
         "color": theme_attrs['unvisited-node-color'],
         "visited-glow-color": theme_attrs["visited-node-glow"],
@@ -373,7 +372,6 @@ export default class GraphNav {
     } else if (isMissing) {
       return {
         "type": "missing",
-        "radius": theme_attrs["missing-radius"],
         "stroke": theme_attrs["node-stroke"],
         "color": theme_attrs["missing-node-color"],
         "visited-glow-color": theme_attrs["visited-node-glow"],
