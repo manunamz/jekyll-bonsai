@@ -64,17 +64,19 @@ export default class GraphNav {
   // d3
   drawNetWeb () {
     fetch('{{ site.baseurl }}/assets/graph-net-web.json').then(res => res.json()).then(data => {
-      
-      data.links.forEach(link => {
-        // the differing method of access is probably a code-smell
-        // from: https://github.com/vasturiano/force-graph/blob/c3879c0a42f65c7abd15be74069c2599e8f56664/example/highlight/index.html#L26
-        const a = data.nodes.filter(node => node.id === link.source)[0];
-        const b = data.nodes.filter(node => node.id === link.target)[0];
-        a.neighbors.push(b);
-        b.neighbors.push(a);
 
-        a.links.push(link);
-        b.links.push(link);
+      // neighbors: replace ids with full object
+      data.nodes.forEach(node => {
+        let neighborNodes = [];
+        node.neighbors.nodes.forEach(nNodeId => {
+          neighborNodes.push(data.nodes.find(node => node.id === nNodeId));
+        });
+        let neighborLinks = [];
+        node.neighbors.links.forEach(nLink => {
+          neighborLinks.push(data.links.find(link => link.source === nLink.source && link.target === nLink.target));
+        });
+        node.neighbors.nodes = neighborNodes;
+        node.neighbors.links = neighborLinks;
       });
       
       const highlightNodes = new Set();
@@ -89,7 +91,7 @@ export default class GraphNav {
         .height(document.getElementById('graph').parentElement.clientHeight)
         .width(document.getElementById('graph').parentElement.clientWidth)
         // node
-        .nodeCanvasObject((node, ctx) => this.nodePaint(node, ctx, hoverNode, hoverLink))
+        .nodeCanvasObject((node, ctx) => this.nodePaint(node, ctx, hoverNode, hoverLink, "net-web"))
         // .nodePointerAreaPaint((node, color, ctx, scale) => nodePaint(node, nodeTypeInNetWeb(node), ctx))
         .nodeId('id')
         .nodeLabel('label')
@@ -120,8 +122,8 @@ export default class GraphNav {
           highlightLinks.clear();
           if (node) {
             highlightNodes.add(node);
-            node.neighbors.forEach(neighbor => highlightNodes.add(neighbor));
-            node.links.forEach(link => highlightLinks.add(link));
+            node.neighbors.nodes.forEach(node => highlightNodes.add(node));
+            node.neighbors.links.forEach(link => highlightLinks.add(link));
           }
           hoverNode = node || null;
         })
@@ -154,31 +156,21 @@ export default class GraphNav {
       });
   }
   
-  drawTree () { 
+  drawTree () {
     fetch('{{ site.baseurl }}/assets/graph-tree.json').then(res => res.json()).then(data => {
-      
-      // data.links.forEach(link => {
-      //   // the differing method of access is probably a code-smell
-      //   // from: https://github.com/vasturiano/force-graph/blob/c3879c0a42f65c7abd15be74069c2599e8f56664/example/highlight/index.html#L26
-      //   const a = data.nodes.filter(node => node.id === link.source)[0];
-      //   const b = data.nodes.filter(node => node.id === link.target)[0];
-      //   a.neighbors.push(b);
-      //   b.neighbors.push(a);
 
-      //   a.links.push(link);
-      //   b.links.push(link);
-      // });
-
-      data.links.forEach(link => {
-        // the differing method of access is probably a code-smell
-        // from: https://github.com/vasturiano/force-graph/blob/c3879c0a42f65c7abd15be74069c2599e8f56664/example/highlight/index.html#L26
-        const a = data.nodes.filter(node => node.id === link.source)[0];
-        const b = data.nodes.filter(node => node.id === link.target)[0];
-        a.neighbors.push(b);
-        b.neighbors.push(a);
-
-        a.links.push(link);
-        b.links.push(link);
+      // relatives: replace ids with full object
+      data.nodes.forEach(node => {
+        let relativeNodes = [];
+        node.relatives.nodes.forEach(nNodeId => {
+          relativeNodes.push(data.nodes.find(node => node.id === nNodeId));
+        });
+        let relativeLinks = [];
+        node.relatives.links.forEach(nLink => {
+          relativeLinks.push(data.links.find(link => link.source === nLink.source && link.target === nLink.target));
+        });
+        node.relatives.nodes = relativeNodes;
+        node.relatives.links = relativeLinks;
       });
 
       const highlightNodes = new Set();
@@ -197,7 +189,7 @@ export default class GraphNav {
         .height(document.getElementById('graph').parentElement.clientHeight)
         .width(document.getElementById('graph').parentElement.clientWidth)
         // node
-        .nodeCanvasObject((node, ctx) => this.nodePaint(node, ctx, hoverNode, hoverLink))
+        .nodeCanvasObject((node, ctx) => this.nodePaint(node, ctx, hoverNode, hoverLink, "tree"))
         // .nodePointerAreaPaint((node, color, ctx, scale) => nodePaint(node, nodeTypeInNetWeb(node), ctx))
         .nodeId('id')
         .nodeLabel('label')
@@ -228,8 +220,8 @@ export default class GraphNav {
           highlightLinks.clear();
           if (node) {
             highlightNodes.add(node);
-            node.neighbors.forEach(neighbor => highlightNodes.add(neighbor));
-            node.links.forEach(link => highlightLinks.add(link));
+            node.relatives.nodes.forEach(node => highlightNodes.add(node));
+            node.relatives.links.forEach(link => highlightLinks.add(link));
           }
           hoverNode = node || null;
         })
@@ -264,7 +256,7 @@ export default class GraphNav {
 
   // draw helpers
 
-  nodePaint(node, ctx, hoverNode, hoverLink) {
+  nodePaint(node, ctx, hoverNode, hoverLink, gType) {
     let fillText = true;
     let radius = 6;
     // 
@@ -282,14 +274,19 @@ export default class GraphNav {
     ctx.beginPath();
     // 
     // hover behavior
-    // 
+    //
     if (node === hoverNode) {
       // hoverNode
       radius *= 2;
       fillText = false; // node label should be active
-    } else if (hoverNode !== null && hoverNode.neighbors.includes(node)) {
+    } else if (hoverNode !== null && gType === "net-web" && hoverNode.neighbors.nodes.includes(node)) {
       // neighbor to hoverNode
-    } else if (hoverNode !== null && !hoverNode.neighbors.includes(node)) {
+    } else if (hoverNode !== null && gType === "net-web" && !hoverNode.neighbors.nodes.includes(node)) {
+      // non-neighbor to hoverNode
+      fillText = false;
+    } else if (hoverNode !== null && gType === "tree" && hoverNode.relatives.nodes.includes(node)) {
+      // neighbor to hoverNode
+    } else if (hoverNode !== null && gType === "tree" && !hoverNode.relatives.nodes.includes(node)) {
       // non-neighbor to hoverNode
       fillText = false;
     } else if ((hoverNode === null && hoverLink !== null) && (hoverLink.source === node || hoverLink.target === node)) {
