@@ -54,18 +54,20 @@
   --pencil-green: {{include.svg.pencil.green }};
   --pencil-yellow: {{include.svg.pencil.yellow }};
 
-  // graph colors (these don't get toggled, they are all loaded at once in graph.js)
-  --graph-node-stroke: {{ include.graph.node.stroke }};
-  --graph-node-current: {{ include.graph.node.current }};
-  --graph-node-missing: {{ include.graph.node.missing }};
-  --graph-node-tagged: {{ include.graph.node.tagged }};
-  --graph-node-unvisited: {{ include.graph.node.unvisited }};
-  --graph-node-visited-color: {{ include.graph.node.visited.color }};
+  // graph colors
+  // nodes
+  //  glow
+  --graph-node-current-glow: {{ include.graph.node.current }};
+  --graph-node-tagged-glow: {{ include.graph.node.tagged }};
   --graph-node-visited-glow: {{ include.graph.node.visited.glow }};
-
+  //  color
+  --graph-node-stroke-color: {{ include.graph.node.stroke }};
+  --graph-node-missing-color: {{ include.graph.node.missing }};
+  --graph-node-unvisited-color: {{ include.graph.node.unvisited }};
+  --graph-node-visited-color: {{ include.graph.node.visited.color }};
+  // links
   --graph-link-color: {{ include.graph.link.color }};
-
   --graph-particles-color: {{ include.graph.particles.color }};
-
+  // label text
   --graph-text-color: {{ include.graph.text.color }};
 }
