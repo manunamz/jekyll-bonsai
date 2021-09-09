@@ -124,7 +124,8 @@ wikilinks:
       - "toc-list-item-anchor"
 d3:
   # enabled: true
-  # path: "/assets"
+  assets_path: "/assets"
+  scripts_path: "/assets/js"
   exclude:
     - "pages"
     - "posts"
