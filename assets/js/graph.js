@@ -6,7 +6,7 @@ export default class GraphNav {
 
   constructor() {
     // this.graphType set in initGraphType();
-    this.graphDiv = document.getElementById('graph');
+    this.graphDiv = document.getElementById('jekyll-graph');
     this.graphTypeCheckBox = document.getElementById('graph-type-checkbox');
     this.graphTypeEmojiSpan = document.getElementById('graph-type-emoji-span');
     this.init();
