@@ -76,6 +76,7 @@ kramdown:
 # plugins:
 #   - jekyll-namespaces
 #   - jekyll-wikilinks
+#   - jekyll-graph
 #   - jekyll-feed
 #   - jekyll-seo-tag
 #   - jekyll-sitemap
@@ -119,10 +120,9 @@ wikilinks:
       - "sem-tag"
       - "stat-tag"
       - "anchor-heading"
-      - "footnote"
-      - "reversefootnote"
       - "toc-list-item-anchor"
-d3:
+
+graph:
   # enabled: true
   assets_path: "/assets"
   scripts_path: "/assets/js"
