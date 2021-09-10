@@ -115,10 +115,10 @@
   emoji: ✨
   src:
     favicon: "/assets/img/favicon-dark.png"
-    logo: "/assets/img/bonsai-dark.svg"
+    logo: "/assets/img/bonsai-star.svg"
     nav_burger:
-      base: "/assets/img/nav-base-dark.svg"
-      bonsai: "/assets/img/nav-bonsai-dark.svg"
+      base: "/assets/img/nav-base-star.svg"
+      bonsai: "/assets/img/nav-bonsai-star.svg"
   colors:
     selection: "#f5ec8eA6"
     body:
@@ -152,7 +152,7 @@
     branch: "#315E72"         #
   graph:
     node:
-      stroke: "#00000000"  # $transparent
+      stroke: "#00000000"   # $transparent
       current: "#F0C61F"    # yellow
       missing: "#586069"    #
       tagged: "#0096FF"     # blue
