@@ -33,7 +33,7 @@ function initListeners () {
   document.getElementById('wiki-link-nav-checkbox')
     .addEventListener('click', function(event) {
       expandGraphNav();
-      document.getElementById('graph').dispatchEvent(new Event('draw')); // tell graph to redraw itself
+      document.getElementById('jekyll-graph').dispatchEvent(new Event('draw')); // tell graph to redraw itself
     }, false);
 
   // apply pencil-filter to all svg images
