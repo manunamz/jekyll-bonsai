@@ -29,8 +29,8 @@ export default class ThemeColors {
 
   initThemeColors() {
     this.theme = localStorage.getItem("theme-colors");
-    if (this.theme !== "dark" && this.theme !== "light") {
-      this.theme = getComputedStyle(document.documentElement).getPropertyValue('content');	
+    if (!this.theme) {
+      this.theme = '{{ site.data.themes[0].id }}';
     }
     this.updateThemeColors();
   }
