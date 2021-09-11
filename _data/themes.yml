@@ -37,7 +37,6 @@
       blue: "#0047aa"         # blue
       green: "#31AF31"        # $green-05
       yellow: "#dfb600"       # yellow
-    branch: "#44434d"         # $grey-dk-200
   graph:
     node:
       stroke: "#44434d"     # $grey-dk-200
