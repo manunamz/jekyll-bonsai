@@ -9,50 +9,42 @@
       bonsai: "/assets/img/nav-bonsai-dark.svg"
   colors:
     selection: "#ad9b4b"
-    body:
-      background: "#27262b" #$grey-dk-300
-      text: "#e1e8e3"       # $grey-lt-300
-      heading: "#f5f6fa"    # $grey-lt-000
-    border: "#44434d"       # $grey-dk-200
-    separator: "#44434d"    # $grey-dk-200
-    btn: "#302d36"          # $grey-dk-250
-    code: "#1E1C21"         # 
-    table:
-      background: "#302d36" # $grey-dk-250
-    box_shadow: "#fff"      # $white
+    background: "#27262b"
+    text: "#e1e8e3"
+    text_grey: "#f5f6fa"
+    accent_dark: "#1E1C21"
+    accent_light: "#44434d"
+    shadow: "#fff"
     link:
-      external: 
-        valid: "#89B8D8"   # $blue-000
-        underline: "#44434d"  # $grey-dk-200
-      internal: 
-        valid: "#A0E4A0"    # $green-07
-        underline: "#44434d" # $grey-dk-200
-        invalid: "#959396" # $grey-dk-000
-    blockquote: "rgba(68, 67, 77, 0.33)" # $grey-dk-200 => #44434d
-    tag:
-      disabled: "#e1e8e3" # $grey-lt-300
+      web:
+        underline: "#44434d"
+        valid: "#89B8D8"
+      wiki:
+        underline: "#44434d"
+        valid: "#A0E4A0"
+        invalid: "#959396"
   svg:
     pencil:
-      default: "#e1e8e3"    # $body-text-color => $grey-lt-300
-      blue: "#0047aa"         # blue
-      green: "#31AF31"        # $green-05
-      yellow: "#dfb600"       # yellow
+      default: "#e1e8e3"
+      blue: "#0047aa"
+      green: "#31AF31"
+      yellow: "#dfb600"
   graph:
     node:
-      stroke: "#44434d"     # $grey-dk-200
-      current: "#F0C61F"    # yellow
-      missing: "#00000000"  # $transparent
-      tagged: "#a87f32"     # sand/yellow-orange-brown
-      unvisited: "#3e5c50"  # $green-400
+      stroke: "#44434d"
+      current: "#F0C61F"
+      missing: "#00000000"
+      tagged: "#a87f32"
+      unvisited: "#3e5c50"
       visited: 
-        color: "#31AF31"    # $green-05
-        glow: "#31AF31"       # $green-05
+        color: "#31AF31"
+        glow: "#31AF31"
     link:
-      color: "#44434d"         # $grey-dk-200
+      color: "#44434d"
     particles: 
-      color: "#959396"    # $grey-dk-000
+      color: "#959396"
     text: 
-      color: "#e6e1e8"         # $body-text-color => $grey-lt-300
+      color: "#e6e1e8"
 - 
   id: light
   emoji: ☀️
@@ -64,51 +56,42 @@
       bonsai: "/assets/img/nav-bonsai-light.svg"
   colors:
     selection: "#E6E09E"
-    body:
-      background: "#E4f3EA" # $green-01
-      text: "#5c5962"       # $grey-dk-100
-      heading: "#27262b"    # $grey-dk-300
-    border: "#eeebee"       # $grey-lt-100
-    separator: "#C7E6D3"    # $green-02 
-    btn: "#C7E6D3" # $green-02
-    code: "#C7E6D3"         # $green-02
-    table:
-      background: "#D5ECDE" # $green-01-05
-    box_shadow: "#000"      # $black
+    background: "#E4f3EA"
+    text: "#5c5962"
+    text_grey: "#27262b"
+    accent_dark: "#C7E6D3"
+    accent_light: "#b8d9b8"
+    shadow: "#000"
     link:
-      external: 
-        valid: "#264caf"      # $blue-200
-        underline: "#e1e8e3"  # $grey-lt-300
-      internal: 
-        valid: "#009c7b"      # $green-200
-        underline: "#ede5dd"  # super-light-brown
-        invalid: "#959396"    # $grey-dk-000
-    blockquote: "rgba(160, 228, 160, 0.33)" # $green-07 => #A0E4A0
-    tag:
-      disabled: "#e1e8e3"     # $grey-lt-300
+      web:
+        underline: "#e1e8e3"
+        valid: "#264caf"
+      wiki:
+        underline: "#ede5dd"
+        valid: "#009c7b"
+        invalid: "#959396" 
   svg:
     pencil:
-      default: "#5c5962"      # $body-text-color => $grey-dk-100
-      blue: "#0047aa"         # blue
-      green: "#31AF31"        # $green-05
-      yellow: "#dfb600"       # yellow
-    branch: "#8C6239"         # $brown-02
+      default: "#5c5962"
+      blue: "#0047aa"
+      green: "#31AF31"
+      yellow: "#dfb600"
   graph:
     node:
-      stroke: "#00000000"     # $transparent
-      current: "#F0C61F"    # yellow
-      missing: "#8C6239"    # sand/yellow-orange-brown
-      tagged: "#a87f32"     # $brown-02
-      unvisited: "#9cbe9c"  # $green-05
+      stroke: "#00000000"
+      current: "#F0C61F"
+      missing: "#8C6239"
+      tagged: "#a87f32"
+      unvisited: "#9cbe9c"
       visited: 
-        color: "#31AF31"    # $green-05
-        glow: "#00000000"     # $transparent
+        color: "#31AF31"
+        glow: "#00000000"
     link:
-      color: "#8C6239"        # $brown-02 
+      color: "#8C6239"
     particles: 
-      color: "#5c5962"        # $grey-dk-000
+      color: "#5c5962"
     text:
-      color: "#5c5962"           # $body-text-color => $grey-dk-100
+      color: "#5c5962"
 - 
   id: star
   emoji: ✨
@@ -120,48 +103,39 @@
       bonsai: "/assets/img/nav-bonsai-star.svg"
   colors:
     selection: "#f5ec8eA6"
-    body:
-      background: "#1b2733" # hey world -- https://world.hey.com/dhh/ (what a coincidence)
-      text: "#e1e8e3"       # $grey-lt-300
-      heading: "#f5f6fa"    # $grey-lt-000
-    border: "#44434d"       # $grey-dk-200
-    separator: "#254756"    # 
-    btn: "#254756"          # 
-    code: "#151E28"         # dark bg
-    table:
-      background: "#151E28" # dark bg
-    box_shadow: "#fff"      # $white
+    background: "#1b2733"
+    text: "#e1e8e3"
+    text_grey: "#f5f6fa"
+    accent_dark: "#151E28"
+    accent_light: "#254756"
+    shadow: "#fff"
     link:
-      external: 
-        valid: "#3D87B8"     # 
-        underline: "#44434d"  # $grey-dk-200
-      internal: 
-        valid: "#F3EEBB"     # 
-        underline: "#44434d" # $grey-dk-200
-        invalid: "#959396"   # $grey-dk-000
-    blockquote: "#254756"    # $grey-dk-200 => #44434d
-    tag:
-      disabled: "#254756"    #
+      web:
+        underline: "#44434d"
+        valid: "#3D87B8"
+      wiki:
+        underline: "#44434d"
+        valid: "#F3EEBB"
+        invalid: "#959396"
   svg:
     pencil:
-      default: "#e1e8e3"     # $body-text-color => $grey-lt-300
-      blue: "#0047aa"         # blue
-      green: "#31AF31"        # $green-05
-      yellow: "#dfb600"       # yellow
-    branch: "#315E72"         #
+      default: "#e1e8e3"
+      blue: "#0047aa"
+      green: "#31AF31"
+      yellow: "#dfb600"
   graph:
     node:
-      stroke: "#00000000"   # $transparent
-      current: "#F0C61F"    # yellow
-      missing: "#586069"    #
-      tagged: "#0096FF"     # blue
-      unvisited: "#2A3D50"  #
+      stroke: "#00000000"
+      current: "#F0C61F"
+      missing: "#586069"
+      tagged: "#0096FF"
+      unvisited: "#2A3D50"
       visited:
-        color: "#F3F0CF"     # 
-        glow: "#ffffff"       # 
+        color: "#F3F0CF"
+        glow: "#ffffff"
     link:
-      color: "#254756"         #
+      color: "#254756"
     particles: 
-      color: "#F3F0CF"         # 
+      color: "#F3F0CF"
     text: 
-      color: "#e6e1e8"         # $body-text-color => $grey-lt-300
+      color: "#e6e1e8"
