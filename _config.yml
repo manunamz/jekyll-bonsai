@@ -139,9 +139,9 @@ bonsai_util:
 # 
 # jekyll-bonsai configs
 # 
-debug: false
-# theme_colors: "dark"
+default_theme: "light"
 date_format: "%Y-%m-%d"
+svg_filter: false
 # dendron forces the root note-title to be 'root.md' -- this is the replacement title for 'root'
 # (make sure you change the title in root.md file as well)
 root_entry_path: "_entries/root.md"
