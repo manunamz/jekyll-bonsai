@@ -128,12 +128,29 @@ wikilinks:
       - "toc-list-item-anchor"
 graph:
   # enabled: true
-  assets_path: "/assets"
-  scripts_path: "/assets/js"
+  # assets_path: "/assets"
+  # scripts_path: "/assets/js"
   exclude:
     - "pages"
     - "posts"
     - "states"
+  tree:
+    # enabled: true
+    dag_lvl_dist: 100
+    force:
+      charge: -100
+      strength_x: 0.3
+      x_val: 0.9
+      strength_y: 0.1
+      y_val: 0.9
+  net_web:
+    # enabled: true
+    force:
+      charge: -300
+      strength_x: 0.3
+      x_val: 0.75
+      strength_y: 0.1
+      y_val: 0.9
 bonsai_util:
   # id_format uses 'alpha' and 'size' for nanoid: https://github.com/radeno/nanoid.rb#options
   id_format:
