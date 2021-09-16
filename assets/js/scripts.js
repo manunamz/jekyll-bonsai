@@ -39,11 +39,13 @@ function initListeners () {
   // apply pencil-filter to all svg images
   let imgElements = document.getElementsByClassName('embed-image-wrapper');
   Array.prototype.forEach.call(imgElements, (img) => {
-    if (img.firstElementChild.tagName === "svg" && '{{ site.config.svg_filter }}') {
-      // attach filter to svg element's parent because of safari/mobile bug
-      // bug from: https://github.com/Fyrd/caniuse/issues/3803
-      // workaround from: https://newbedev.com/why-is-filter-drop-shadow-causing-my-svg-to-disappear-in-safari
-      img.style.filter = "url(#PencilTexture)";
+    if (img.firstElementChild.tagName === "svg" && !isSafari) {
+      if ('{{ site.svg.filter }}') {
+        // attach filter to svg element's parent because of safari/mobile bug
+        // bug from: https://github.com/Fyrd/caniuse/issues/3803
+        // workaround from: https://newbedev.com/why-is-filter-drop-shadow-causing-my-svg-to-disappear-in-safari
+        img.style.filter = "url(#PencilTexture)";
+      }
     }
   });
 }

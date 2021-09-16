@@ -22,21 +22,61 @@
   stroke-width: 10px;
 }
 
-.pencil-default {
-  stroke: var(--pencil-default);
-  fill: var(--pencil-default);
+// fill
+
+.pencil-fill-default {
+  fill: var(--pencil-fill-default);
 }
 
-.pencil-blue {
-  stroke: var(--pencil-blue);
+.pencil-fill-default {
+  fill: var(--pencil-fill-default);
 }
 
-.pencil-green {
-  stroke: var(--pencil-green);
+.pencil-fill-blue {
+  fill: var(--pencil-fill-blue);
 }
 
-.pencil-yellow {
-  stroke: var(--pencil-yellow);
+.pencil-fill-green {
+  fill: var(--pencil-fill-green);
+}
+
+.pencil-fill-red {
+  fill: var(--pencil-fill-red);
+}
+
+.pencil-fill-yellow {
+  fill: var(--pencil-fill-yellow);
+}
+
+// stroke
+.pencil-stroke {
+  fill: none;
+  stroke-miterlimit: 10;
+  stroke-width: 10px;
+}
+
+.pencil-stroke-dash {
+  stroke-dasharray: 12.50 12.50;
+}
+
+.pencil-stroke-default {
+  stroke: var(--pencil-stroke-default);
+}
+
+.pencil-stroke-blue {
+  stroke: var(--pencil-stroke-blue);
+}
+
+.pencil-stroke-green {
+  stroke: var(--pencil-stroke-green);
+}
+
+.pencil-stroke-red {
+  stroke: var(--pencil-stroke-red);
+}
+
+.pencil-stroke-yellow {
+  stroke: var(--pencil-stroke-yellow);
 }
 
 .pencil-txt {
