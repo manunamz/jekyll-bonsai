@@ -116,12 +116,16 @@ wikilinks:
     - "states"
   css:
     exclude:
+      # markdown
+      - "footnote"
+      - "reversefootnote"
+      # local-theme-related
       - "site-nav-btn"
       - "sem-tag"
       - "stat-tag"
+      # includes
       - "anchor-heading"
       - "toc-list-item-anchor"
-
 graph:
   # enabled: true
   assets_path: "/assets"
