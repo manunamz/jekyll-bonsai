@@ -23,30 +23,19 @@ layout: default
     Descriptions only reflect the spirit of this garden. 
     Click <a class="web-link" href="{{ page.emojipedia }}">here</a> for the official emoji description.
   </p>
-  <!-- all states -->
-  {% if page.path == site.root_state_path %}
-    {% for state in states %}
-      {% if state.path != site.root_state_path %}
-        <h2>{{ state.emoji }} <a class="wiki-link" href="{{ state.url | relative_url }}">{{ state.title }}</a></h2>
-        <p>{{ state.content | markdownify }}</p>
-      {% endif %}
-    {% endfor %}
-  <!-- individual states -->
+  <!-- page == tag (from tag-nav) -->
+  {% assign docs_w_stat = site.documents | where: 'status', page.emoji %}
+  {% if docs_w_stat.size == 0 and page.path != site.root_state_path %}
+    <div class="no-results">
+      There are currently no {{ page.emoji }}s.
+    </div>
   {% else %}
-    <!-- page == tag (from tag-nav) -->
-    {% assign docs_w_stat = site.documents | where: 'status', page.emoji %}
-    {% if docs_w_stat.size == 0 %}
-      <div class="no-results">
-        There are currently no {{ page.emoji }}s.
-      </div>
-    {% else %}
-      <ul class="states-list">
-        {% for entry in docs_w_stat %}
-          <li class="states-list-item">
-            {{ page.emoji }} <a class="wiki-link" href="{{ entry.url | relative_url }}">{{ entry.title }}</a>
-          </li>
-        {% endfor %}  
-      </ul>
-      {% endif %}
+    <ul class="states-list">
+      {% for entry in docs_w_stat %}
+        <li class="states-list-item">
+          {{ page.emoji }} <a class="wiki-link" href="{{ entry.url | relative_url }}">{{ entry.title }}</a>
+        </li>
+      {% endfor %}  
+    </ul>
   {% endif %}
 </div>
