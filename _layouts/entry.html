@@ -109,25 +109,34 @@ layout: default
           {% endif %}
         </div>
         <div class="entry-foot-nav-section">
-          <span class="entry-foot-link-type" title="Backlinked Entry">
+          <span class="entry-foot-link-type" title="Attributed Entry">
             {% include img/bullet-net-web.svg %}
           </span>
-          {% assign backlinks = page.backlinks | doc_type: "entries" %}
-          {% if backlinks.size == 0 %}
-            <p class="small-descr entry-foot-nav-child-none">No backlink entries.</p>
+          {% if page.attributed.size == 0 %}
+            <p class="small-descr entry-foot-nav-child-none">No attributed entries.</p>
           {% else %}
-          <ul class="entry-foot-nav-list">
-            {% for backlink in backlinks %}
-              {% assign backlink_doc = site.entries | where: "url", backlink.url | first %}
-              <li class="entry-foot-nav-list-item">
-                {% for stat_tag in backlink_doc.status %}
-                  {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
-                  <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
+            <ul class="entry-foot-nav-list">
+              {% for attr in page.attributed %}
+                {% for attr_url in attr.urls %}
+                  {% assign attr_doc = site.entries | where: "url", attr_url | first %}
+                  {% if attr_doc %}
+                    <li class="entry-foot-nav-list-item">
+                      {% for stat_tag in attr_doc.status %}
+                        {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
+                        <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
+                      {% endfor %}
+                      <a class="wiki-link {% if attr_doc.url == '' %}missing-entry-txt{% endif %}" href="{{ attr_doc.url | relative_url }}">
+                        {{ attr_doc.title }}
+                      </a>
+                    </li>
+                  {% else %}
+                    <li class="entry-foot-nav-list-item">
+                      <span class="missing-entry-txt">{{ site.data.emoji.missing }} {{ child | split: "." | last }}</span>
+                    </li>
+                  {% endif %}
                 {% endfor %}
-                <a class="wiki-link" href="{{ backlink_doc.url | relative_url }}">{{ backlink_doc.title }}</a>
-              </li>
-            {% endfor %}
-          </ul>
+              {% endfor %}
+            </ul>
           {% endif %}
         </div>
       </nav>
