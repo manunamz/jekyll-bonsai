@@ -20,7 +20,8 @@ layout: default
 
   <div>
     <ul class="recent-list">
-      {% for doc in site.documents limit: site.recent_cap %}
+      {% assign recent_docs = site.documents | sort: 'updated' | reverse %}
+      {% for doc in recent_docs | limit: site.recent_cap %}
         <li class="recent-list-item">
           
           <div class="recent-list-item-scene">
