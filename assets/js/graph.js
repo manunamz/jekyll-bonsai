@@ -31,9 +31,7 @@ export default class GraphNav {
   }
   
   // how to checkbox: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_display_checkbox_text
-  drawD3Nav() {
-
-    
+  drawD3Nav() { 
     // redraw new chart
     if (this.graphTypeCheckBox.checked) {
       this.drawTree();
@@ -45,7 +43,7 @@ export default class GraphNav {
   initGraphType() {
     this.graphType = localStorage.getItem('graph-type');
     if (this.graphType !== "tree" && this.graphType !== "net-web") {
-      this.graphType = '{{ site.bonsai.graph_type }}';	
+      this.graphType = '{{ site.bonsai.nav.graph_type }}';	
     }
     this.graphTypeCheckBox.checked = (this.graphType === "tree");
     this.updateGraphType();
