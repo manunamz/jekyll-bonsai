@@ -9,10 +9,7 @@ layout: default
     {% for post in site.posts %}
       <li class="posts-list-item">
         <span>
-          {% for stat_tag in post.status %}
-            {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
-            <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
-          {% endfor %}
+          {% include btn_state.html states=post.status %}
           <a class="wiki-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
         </span>
         <span class="list-item-date">{{ post.updated | date: site.bonsai.date_format }}</span>

@@ -31,10 +31,7 @@ layout: default
             </span>
             <!-- plant emojis -->
             <span class="recent-list-item-stat">
-              {% for stat_tag in doc.status %}
-                {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
-                <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>  
-              {% endfor %}
+              {% include btn_state.html states=doc.status %}
             </span>
           </div>
           

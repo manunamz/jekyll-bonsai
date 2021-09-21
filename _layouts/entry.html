@@ -22,10 +22,7 @@ layout: default
             {% if ancestor_doc %}
               <li class="entry-head-breadcrumb">
                 <span title="Ancestor Entry">{% include img/bullet-ancestor.svg %}</span>
-                {% for stat_tag in ancestor_doc.status %}
-                  {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
-                  <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
-                {% endfor %}
+                {% include btn_state.html states=ancestor_doc.status %}
                 <a class="wiki-link" href="{{ ancestor_doc.url | relative_url }}">
                   {{ ancestor_doc.title }}
                 </a>
@@ -39,10 +36,7 @@ layout: default
           {% endfor %}
           <li class="entry-head-breadcrumb">
             <span title="Ancestor Entry">{% include img/bullet-ancestor.svg %}</span>
-            {% for stat_tag in page.status %}
-              {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
-              <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
-            {% endfor %}
+            {% include btn_state.html states=page.status %}
             <span>{{ page.title }}</span>
           </li>
         </ol>
@@ -55,10 +49,7 @@ layout: default
     <h1>{{ page.title }}</h1>
 
     <div class="doc-status">
-      {% for stat_tag in page.status %}
-        {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
-        <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
-      {% endfor %}
+      {% include btn_state.html states=page.status %}
       <span class="last-updated">Last Tended: {{ page.updated | date: site.bonsai.date_format }}</span>
     </div>
 
@@ -97,10 +88,7 @@ layout: default
                       {% for doc_url in attr.urls %}
                         {% assign attr_doc = site.entries | where: "url", doc_url | first %}
                         <td>
-                          {% for stat_tag in attr_doc.status %}
-                            {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
-                            <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
-                          {% endfor %}
+                          {% include btn_state.html states=attr_doc.status %}
                           <a class="wiki-link" href="{{ attr_doc.url | relative_url }}">{{ attr_doc.title }}</a>
                         </td>
                     </tr>
@@ -141,10 +129,7 @@ layout: default
                 {% assign child_doc = site.entries | where: "url", child | first %}
                 {% if child_doc %}
                   <li class="entry-foot-nav-list-item">
-                    {% for stat_tag in child_doc.status %}
-                      {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
-                      <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
-                    {% endfor %}
+                    {% include btn_state.html states=child_doc.status %}
                     <a class="wiki-link {% if child_doc.url == '' %}missing-entry-txt{% endif %}" href="{{ child_doc.url | relative_url }}">
                       {{ child_doc.title }}
                     </a>
@@ -171,10 +156,7 @@ layout: default
                   {% assign attr_doc = site.entries | where: "url", attr_url | first %}
                   {% if attr_doc %}
                     <li class="entry-foot-nav-list-item">
-                      {% for stat_tag in attr_doc.status %}
-                        {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
-                        <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
-                      {% endfor %}
+                      {% include btn_state.html states=attr_doc.status %}
                       <a class="wiki-link {% if attr_doc.url == '' %}missing-entry-txt{% endif %}" href="{{ attr_doc.url | relative_url }}">
                         {{ attr_doc.title }}
                       </a>
@@ -211,10 +193,7 @@ layout: default
                 {% if post.tags contains page.namespace %}
                   {% assign num_linked_posts = num_linked_posts | plus: 1 %}
                   <li class="entry-foot-nav-list-item">
-                    {% for stat_tag in post.status %}
-                      {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
-                      <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
-                    {% endfor %}
+                    {% include btn_state.html states=post.status %}
                     <a class="wiki-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
                   </li>
                 {% endif %}

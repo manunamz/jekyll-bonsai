@@ -25,10 +25,7 @@ layout: default
             {% assign doc = site.documents | find_exp: "item", "item.path contains notable" %}
             <li class="column-item">
               <div class="column-item-status">
-                {% for stat_tag in doc.status %}
-                  {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
-                  <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
-                {% endfor %}
+                {% include btn_state.html states=doc.status %}
               </div>
               <div class="column-item-text">
                 <span>
@@ -57,10 +54,7 @@ layout: default
           {% for doc in recent_docs limit: site.bonsai.home.recent.cap %}
             <li class="column-item">
               <div class="column-item-status">
-                {% for stat_tag in doc.status %}
-                  {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
-                  <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
-                {% endfor %}
+                {% include btn_state.html states=doc.status %}
               </div>
               <div class="column-item-text">
                 <span>
