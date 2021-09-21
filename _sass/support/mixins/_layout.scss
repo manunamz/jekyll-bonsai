@@ -38,19 +38,3 @@
     padding-left: $gutter-spacing;
   }
 }
-
-@mixin sidenote-container {
-  padding-right: $gutter-spacing-sm;
-  padding-left: $gutter-spacing-sm;
-  
-  // @include mq(md) {
-  //   // padding-right: $gutter-spacing;
-  //   // margin-right: $content-width / 3;
-  //   margin-right: -$content-width / 2;
-  //   width: $content-width / 4;
-  // }
-  @include mq(lg) {
-    padding-left: $gutter-spacing;
-    padding-right: $gutter-spacing;
-  }
-}

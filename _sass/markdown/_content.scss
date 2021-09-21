@@ -9,7 +9,6 @@
   flex: 1 0 auto;
 
   line-height: $content-line-height;
-  counter-reset: sidenote-counter;
 
   ol,
   ul,
@@ -270,121 +269,5 @@
 
   .footnote, .reversefootnote {
     color: var(--wiki-link-color);
-  }
-
-  // Sidenotes
-  // more on sidenote implementation: https://www.gwern.net/Sidenotes
-
-  // right-sidenote
-  .rsn {
-    @include sidenote-container;
-    display: none;
-    word-wrap: break-word;
-
-    @include mq(lg) {
-      display: block;
-      float: right;
-      clear: right;
-
-      margin-right: -$content-sidenote-width;
-      width: $content-sidenote-width;
-      margin-top: $sp-1;
-      margin-bottom: 0;
-      font-size: $font-size-2;
-      // line-height: 1.3;
-      vertical-align: baseline;
-      position: relative;
-    }
-  }
-
-  // left-sidenote
-  .lsn {
-    @include sidenote-container;
-    display: none;
-    word-wrap: break-word;
-
-    @include mq(lg) {
-      display: block;
-      float: left;
-      clear: left;
-
-      margin-left: -$content-sidenote-width;
-      width: $content-sidenote-width;
-      margin-top: $sp-1;
-      margin-bottom: 0;
-      font-size: $font-size-2;
-      // line-height: 1.3;
-      vertical-align: baseline;
-      position: relative;
-    }
-  }
-
-  // all sidenotes
-  .sidenote-toggle:checked + .rsn,
-  .sidenote-toggle:checked + .lsn {
-    display: block;
-    float: left;
-    left: 1rem;
-    clear: both;
-    width: 95%;
-    margin: 1rem 2.5%;
-    vertical-align: baseline;
-    position: relative;
-  }
-
-  label.sidenote-toggle:not(.sidenote-number) {
-    display: inline;
-  }
-
-  .sidenote-number {
-    counter-increment: sidenote-counter;
-  }
-
-  input.sidenote-toggle {
-    display: none;
-  }
-
-  label.sidenote-number {
-    display: inline;
-  }
-
-  label.sidenote-toggle:not(.sidenote-number) {
-    display: none;
-  }
-
-  .sidenote-number:after,
-  .rsn:before,
-  .lsn:before {
-    position: relative;
-    vertical-align: baseline;
-  }
-
-  .sidenote-number:after {
-    content: counter(sidenote-counter);
-    color: var(--wiki-link-color);
-    cursor: pointer;
-    font-size: $font-size-2;
-    top: -$sp-1-75;
-    left: $sp-0-75;
-    padding-right: $sp-0-75;
-  }
-
-  .rsn:before,
-  .lsn:before {
-    content: counter(sidenote-counter) " ";
-    font-size: $font-size-2;
-    top: -$sp-2;
-  }
-
-  // blockquote .rsn,
-  // blockquote .lsn {
-  //   margin-right: -82%;
-  //   min-width: 59%;
-  //   text-align: left;
-  // }
-
-  .rsn > code,
-  .lsn > code {
-    font-size: $font-size-2;
   }
 }
