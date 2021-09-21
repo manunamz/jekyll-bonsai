@@ -1,0 +1,64 @@
+// post page styles
+
+#post {
+
+  .info-box {
+    width: 50%;
+
+    // sm
+  
+    // @include mq(md) {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    float: right;
+    //   width: $nav-width-md;
+    //   flex-wrap: nowrap;
+    //   position: fixed;
+    //   height: 100%;
+    // }
+  
+    // @include mq(lg) {
+    //   width: $nav-width-lg;
+    // }
+    // .local-nav-title {
+    //   text-align: center;
+    // }
+    
+    .sem-tag {
+      @include fs-2;
+      color: var(--wiki-link-color);
+    }
+  
+    .tag-pills {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+  
+      .tag-pill {
+        white-space: nowrap;
+        padding: $sp-2;
+        margin: $sp-2;
+        border-radius: 15px;
+        color: var(--wiki-link-color);
+        background-color: $transparent;
+        border: 1px solid var(--border-color);
+      
+        &:hover {
+          background-color: var(--base-button-color);
+        }
+        
+        // TODO: fix disabled behavior 
+        // (probably should switch tags to be btns anyway...)
+        &.disabled {
+          color: var(--tag-disabled-color);
+          border: 1px solid var(--tag-disabled-color);
+      
+          &:hover {
+            background-color: var(--tag-disabled-color) !important;
+          }
+        }
+      }
+    }
+  }
+}
