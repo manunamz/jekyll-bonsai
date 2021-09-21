@@ -17,11 +17,11 @@ layout: default
   
   <div class="main-columns">
 
-    {% if site.home.notable %}
+    {% if site.home.notable.enabled %}
       <div class="column">
         <h3 class="column-heading">Notable</h3>
         <ul class="column-content">
-          {% for notable in site.notable %}
+          {% for notable in site.home.notable.entries %}
             {% assign doc = site.documents | find_exp: "item", "item.path contains notable" %}
             <li class="column-item">
               <div class="column-item-status">
@@ -49,12 +49,12 @@ layout: default
       </div>
     {% endif %}
 
-    {% if site.home.recent %}
+    {% if site.home.recent.enabled %}
       <div class="column">
         <h3 class="column-heading">Recent</h3>
         <ul class="column-content">
           {% assign recent_docs = site.documents | sort: 'updated' | reverse %}
-          {% for doc in recent_docs limit:5 %}
+          {% for doc in recent_docs limit: site.home.recent.cap %}
             <li class="column-item">
               <div class="column-item-status">
                 {% for stat_tag in doc.status %}

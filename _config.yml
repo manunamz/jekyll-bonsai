@@ -182,15 +182,17 @@ entry_head_links_status: "open"
 entry_foot_links_status: "open"
 entry_foot_posts_status: "open"
 home:
-  notable: true
-  recent: true
-# home
-notable:
-  - digital-garden.bonsai.md
-  - digital-garden.md
-  - features.doc-type.entry.md
-  - features.site-nav.graph.md
-  - people.md
+  notable: 
+    enabled: true
+    entries:
+      - digital-garden.bonsai.md
+      - digital-garden.md
+      - features.doc-type.entry.md
+      - features.site-nav.graph.md
+      - people.md
+  recent: 
+    enabled: true
+    cap: 5
 # recent (weather): set number of items to display when filtering for recent docs or posts.
 recent_cap: 10 
 social:
