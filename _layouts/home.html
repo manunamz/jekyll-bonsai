@@ -8,7 +8,7 @@ layout: default
     <div class="lead-img">
       <img id="home-logo">
     </div>
-    {% assign root = site.entries | find_exp: "item", "item.path == site.root_entry_path" %}
+    {% assign root = site.entries | find_exp: "item", "item.path == site.entries.root_path" %}
     <h1 class="lead-title"><a class="wiki-link" href="{{ root.url | relative_url }}">{{ page.title }}</a></h3>
     <div class="lead-content">
       {{ content }}
