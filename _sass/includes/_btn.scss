@@ -21,6 +21,30 @@
     width: 0;
   }
 
+  &--blue {
+    filter: drop-shadow(0 0 0.8mm $drop-shadow-blue);
+  }
+
+  &--brown {
+    filter: drop-shadow(0 0 0.8mm $drop-shadow-brown);
+  }
+
+  &--green {
+    filter: drop-shadow(0 0 0.8mm $drop-shadow-green);
+  }
+
+  &--orange {
+    filter: drop-shadow(0 0 0.8mm $drop-shadow-orange);
+  }
+
+  &--purple {
+    filter: drop-shadow(0 0 0.8mm $drop-shadow-purple);
+  }
+
+  &--red {
+    filter: drop-shadow(0 0 0.8mm $drop-shadow-red);
+  }
+
   // &>.pad-right {
   //   padding-right: $sp-3;
   // }

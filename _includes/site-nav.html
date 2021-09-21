@@ -1,7 +1,7 @@
 <nav id="site-nav" class="site-nav" role="navigation" aria-label="main">
   <header>
     <span>
-      <a id="home-btn" class="site-nav-btn" href="{{ '/' | relative_url }}" title="Go Home">
+      <a id="home-btn" class="btn-selector btn-selector--green" href="{{ '/' | relative_url }}" title="Go Home">
         {{ site.data.emoji.home }}
       </a>
     </span>
@@ -15,25 +15,25 @@
         <!-- using '.first' to test if any results were found -->
         {% assign search_page = site.pages | where: "name", "search.md" %}
         {% if search_page.first %}
-          <a id="search-dropbtn" class="site-nav-btn drop-1" href="{{ '/search' | relative_url }}" title="Search">
+          <a class="btn-selector btn-selector--brown drop-1" href="{{ '/search' | relative_url }}" title="Search">
             {{ site.data.emoji.search }}
           </a>
         {% endif %}
         {% if site.states %}
           {% assign root_state = site.states | find_exp: "item", "item.path == site.bonsai.states.root_path" %}
-          <a id="stat-tags-dropbtn" class="site-nav-btn drop-1" href="{{ root_state.url | relative_url }}" title="Go To States">
+          <a class="btn-selector btn-selector--brown drop-1" href="{{ root_state.url | relative_url }}" title="Go To States">
             {{ site.data.emoji.stat_tags }}
           </a>
         {% endif %}
         {% assign posts_page = site.pages | where: "name", "posts.md" %}
         {% if posts_page.first %}
-          <a id="posts-dropbtn" class="site-nav-btn drop-2" href="{{ '/posts' | relative_url }}" title="Go To Posts">
+          <a class="btn-selector btn-selector--purple drop-2" href="{{ '/posts' | relative_url }}" title="Go To Posts">
             {{ site.data.emoji.posts }}
           </a>
         {% endif %}
         {% assign recent_page = site.pages | where: "name", "recent.md" %}
         {% if recent_page.first %}
-          <a id="recent-dropbtn" class="site-nav-btn drop-3" href="{{ '/recent' | relative_url }}" title="Go To Recent Changes">
+          <a class="btn-selector btn-selector--blue drop-3" href="{{ '/recent' | relative_url }}" title="Go To Recent Changes">
           {{ site.data.emoji.recent }}
           </a>
         {% endif %}
@@ -46,15 +46,15 @@
         </span>
       </button>
       <div class="dropdown-content">
-        <label class="site-nav-btn drop-1">
+        <label class="btn-selector btn-selector--orange drop-1">
           <input id="nav-type-checkbox" type="checkbox" checked="checked">
           <span id="nav-type-emoji-span" title="Toggle Nav Type"></span>
         </label>
-        <label class="site-nav-btn drop-2">
+        <label class="btn-selector btn-selector--green drop-2">
           <input id="graph-type-checkbox" type="checkbox" checked="checked">
           <span id="graph-type-emoji-span" title="Toggle Graph Type"></span>
         </label>
-        <a id="delete-btn" class="site-nav-btn drop-3" title="Delete Visited History">
+        <a id="delete-btn" class="btn-selector btn-selector--red drop-3" title="Delete Visited History">
           {{ site.data.emoji.delete }}
         </a>
       </div>
@@ -67,7 +67,7 @@
       </button>
       <div class="dropdown-content">
         {% for theme in site.data.themes %}
-          <a data-theme-id="{{ theme.id }}" class="site-nav-btn drop-{{ forloop.index }}" title="{{ theme.id }}">
+          <a data-theme-id="{{ theme.id }}" class="btn-selector drop-{{ forloop.index }}" title="{{ theme.id }}">
             {{ theme.emoji }}
           </a>
         {% endfor %}
