@@ -47,12 +47,6 @@ h6,
   color: $date-txt-color;
 }
 
-.missing-entry-txt {
-  @include fs-2;
-  color: $accent-txt-color !important;
-  pointer-events: none;
-}
-
 .small-descr {
   @include fs-2;
   color: $accent-txt-color;

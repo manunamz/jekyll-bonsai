@@ -1,0 +1,96 @@
+// entry page styles
+
+#entry {
+  .entry-body {
+    padding: $sp-3;
+  }
+
+  .missing-entry-txt {
+    @include fs-2;
+    color: $accent-txt-color !important;
+    pointer-events: none;
+  }
+
+  .entry-head-wrapper {
+    display: flex;
+    
+    .entry-head-nav {
+      display: inline-block;
+      overflow-x: scroll;
+      white-space: nowrap;  
+  
+      .entry-head-breadcrumbs {
+        display: flex;
+        align-self: center;
+        // remove 'ol' defaults
+        padding-left: 0;
+        margin-bottom: 0;
+        margin-top: 0;
+        list-style: none;
+      
+        .entry-head-breadcrumb {
+          @include fs-2;
+          display: flex;
+          flex-direction: row;
+          padding-left: $sp-2;
+          
+          &::before {
+            display: none;
+          }
+        }
+      } 
+    }  
+  }
+  
+  // entry-foot nav
+  
+  .entry-foot-wrapper {
+    margin-top: $sp-6;
+    margin-bottom: $sp-6;
+    display: flex;
+  
+    .entry-foot-nav {
+      width: 100%;
+      display: inline-block;
+  
+      .entry-foot-nav-section {
+        width: 100%;
+        padding-left: $sp-2;
+        padding-right: $sp-2;
+  
+        .entry-foot-link-type {
+          @include fs-6;
+          display: inline-block;
+          width: 100%;
+          text-align: center;
+        }
+      }
+  
+      .entry-foot-nav-list {
+        display: block; // columns require block
+        column-count: 2;
+        column-width: $content-width / 6;
+        padding-left: 0;
+        list-style: none;
+    
+        .entry-foot-nav-list-item {
+          border-radius: 16px;
+          padding: $sp-1;
+          max-width: $content-width / 4;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+    
+          &::before {
+            display: none; 
+          }
+        }
+      }
+  
+      .entry-foot-nav-child-none {
+        text-align: center;
+      }
+    }
+  }
+  
+}
