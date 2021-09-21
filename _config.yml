@@ -194,7 +194,8 @@ home:
     enabled: true
     cap: 5
 # recent (weather): set number of items to display when filtering for recent docs or posts.
-recent_cap: 10 
+recent:
+  cap: 10 
 social:
   enabled: true
   connect:

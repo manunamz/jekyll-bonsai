@@ -21,7 +21,7 @@ layout: default
   <div>
     <ul class="recent-list">
       {% assign recent_docs = site.documents | sort: 'updated' | reverse %}
-      {% for doc in recent_docs | limit: site.recent_cap %}
+      {% for doc in recent_docs limit: site.recent.cap %}
         <li class="recent-list-item">
           
           <div class="recent-list-item-scene">
