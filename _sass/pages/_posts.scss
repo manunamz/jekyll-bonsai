@@ -2,20 +2,23 @@
 // scss for posts page
 // 
 
-.posts-list {
-  padding: $sp-4;
-
-  .posts-list-item {
-    display: flex; 
-    justify-content: space-between;
-    list-style-type: none !important;
-    
-    &::before {
-      content: "" !important;
+#posts {
+  
+  .posts-list {
+    padding: $sp-4;
+  
+    .posts-list-item {
+      display: flex; 
+      justify-content: space-between;
+      list-style-type: none !important;
+      
+      &::before {
+        content: "" !important;
+      }
+  
+      & .list-item-date {
+        color: $date-txt-color;
+      }
     }
-
-    & .list-item-date {
-      color: $date-txt-color;
-    }
-  }
+  }  
 }
