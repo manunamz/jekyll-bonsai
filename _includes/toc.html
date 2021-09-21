@@ -166,6 +166,11 @@
 
     {% if jekyll_toc != '' %}
         {% assign rootAttributes = '' %}
+
+        {% if include.wrap_class and include.wrap_class != blank %}
+            {% capture wrapperAttributes %} class="{{ include.wrap_class | split: '.' | join: ' '  }}"{% endcapture %} %}
+        {% endif %}
+
         {% if include.class and include.class != blank %}
             {% capture rootAttributes %} class="{{ include.class | split: '.' | join: ' ' }}"{% endcapture %}
         {% endif %}
@@ -176,7 +181,7 @@
 
         {% if rootAttributes %}
             {% assign nodes = jekyll_toc | split: '>' %}
-            {% capture jekyll_toc %}<{{ listModifier }}{{ rootAttributes }}>{{ nodes | shift | join: '>' }}>{% endcapture %}
+            {% capture jekyll_toc %}<div {{ wrapperAttributes }}><{{ listModifier }}{{ rootAttributes }}>{{ nodes | shift | join: '>' }}></div>{% endcapture %}
         {% endif %}
     {% endif %}
 {% endcapture %}{% assign tocWorkspace = '' %}{{ deprecation_warnings }}{{ jekyll_toc }}

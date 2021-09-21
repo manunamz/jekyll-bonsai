@@ -5,9 +5,7 @@
       <img id="root-logo">
     {% endif %}
   {% else if include.type == "post" %}
-    <div class="toc">
-      {% include toc.html html=content class="toc-list" item_class="toc-list-item" anchor_class="toc-list-item-anchor" %}
-    </div>
+    {% include toc.html html=content wrap_class="toc-wrapper" class="toc-list" item_class="toc-list-item" anchor_class="toc-list-item-anchor" %}
   {% endif %}
 
   <div class="entry-box-bar">
