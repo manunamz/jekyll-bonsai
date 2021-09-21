@@ -15,7 +15,7 @@ layout: default
           </span>
         </label>
       </div>
-      <nav id="entry-head-nav" class="entry-head-nav" role="navigation" aria-label="breadcrumb">
+      <nav id="entry-head-nav" class="entry-head-nav" role="navigation" aria-label="entry's ancestry">
         <ol class="entry-head-breadcrumbs">
           {% for ancestor in page.ancestors %}
             {% assign ancestor_doc = site.entries | where: "url", ancestor | first %}
@@ -128,7 +128,7 @@ layout: default
           </span>
         </label>
       </div>
-      <nav id="entry-foot-links-nav" class="entry-foot-nav" role="navigation" aria-label="">
+      <nav id="entry-foot-links-nav" class="entry-foot-nav" role="navigation" aria-label="linked entries">
         <div class="entry-foot-nav-section">
           <span class="entry-foot-link-type" title="Child Entry">
             {% include img/bullet-tree.svg %}
@@ -201,7 +201,7 @@ layout: default
           </span>
         </label>
       </div>
-      <nav id="entry-foot-nav" class="entry-foot-nav" role="navigation" aria-label="">      
+      <nav id="entry-foot-posts-nav" class="entry-foot-nav" role="navigation" aria-label="linked posts">      
         <div class="entry-foot-nav-section">
           <!-- capture linked_post here -->
           {% capture linked_posts %}
