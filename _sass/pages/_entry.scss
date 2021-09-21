@@ -1,9 +1,6 @@
 // entry page styles
 
 #entry {
-  .entry-body {
-    padding: $sp-3;
-  }
 
   .missing-entry-txt {
     @include fs-2;
@@ -41,8 +38,64 @@
       } 
     }  
   }
-  
-  // entry-foot nav
+
+  .entry-body-wrapper {
+    padding: $sp-3;
+
+    .attr-box {
+      width: 50%;
+
+      // sm
+    
+      // @include mq(md) {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      float: right;
+      //   width: $nav-width-md;
+      //   flex-wrap: nowrap;
+      //   position: fixed;
+      //   height: 100%;
+      // }
+    
+      // @include mq(lg) {
+      //   width: $nav-width-lg;
+      // }
+      // .local-nav-title {
+      //   text-align: center;
+      // }
+
+      #root-logo {
+        height: 70%;
+        width: 70%;
+        align-self: center;
+        padding: $sp-3;
+      }
+
+      .entry-box-bar {
+        display: flex;
+        justify-content: center;
+    
+        .entry-head-link-emoji-wrapper {
+          align-self: center;
+        }
+      }
+
+      .entry-box-wrapper {
+        padding-top: $sp-3;
+        width: 100%;
+    
+        .entry-box-link-nav {
+          display: flex;
+          flex-direction: column;
+    
+          .entry-box-link-type-title {
+            text-align: center;
+          }
+        }
+      }
+    }
+  }
   
   .entry-foot-wrapper {
     margin-top: $sp-6;

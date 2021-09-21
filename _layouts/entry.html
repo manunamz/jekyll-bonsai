@@ -50,7 +50,7 @@ layout: default
     </div>
   </header>
 
-  <div class="entry-body">
+  <div class="entry-body-wrapper">
 
     <h1>{{ page.title }}</h1>
 
@@ -60,7 +60,57 @@ layout: default
         <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
       {% endfor %}
       <span class="last-updated">Last Tended: {{ page.updated | date: site.bonsai.date_format }}</span>
-      {% include local-nav.html type="entry" %}
+    </div>
+
+    <div class="attr-box">
+      {% if page.path == site.bonsai.entries.root_path %}
+        <img id="root-logo">
+      {% endif %}
+
+      <div class="entry-box-bar">
+        {% if site.social.enabled %}
+          {% include share.html %}
+        {% endif %}
+        
+        <div class="entry-head-link-emoji-wrapper">
+          <label class="btn">
+            <input id="entry-head-links-checkbox" type="checkbox">
+            <span class="btn--brown" title="Toggle Linked Entries">
+              {{ site.data.emoji.entries }}
+            </span>
+          </label>
+        </div>
+      </div>
+
+      <div class="entry-box-wrapper">
+        <nav id="entry-box-link-nav" class="entry-box-link-nav">
+          <span class="entry-box-link-type-title" title="Attribute Entry">{% include img/bullet-net-web.svg %}</span>
+          {% assign attributes = page.attributes | doc_type: "entries" %}
+          {% if attributes.size == 0 %}
+            <p class="small-descr" style="text-align: center;">No attribute entries.</p>
+          {% else %}
+            <table>
+              <tbody>
+                  {% for attr in attributes %}
+                    <tr>
+                      <th rowspan="{{ attr.urls | size }}" scope="rowgroup">{{ attr.type | capitalize }}</th>
+                      {% for doc_url in attr.urls %}
+                        {% assign attr_doc = site.entries | where: "url", doc_url | first %}
+                        <td>
+                          {% for stat_tag in attr_doc.status %}
+                            {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
+                            <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
+                          {% endfor %}
+                          <a class="wiki-link" href="{{ attr_doc.url | relative_url }}">{{ attr_doc.title }}</a>
+                        </td>
+                    </tr>
+                      {% endfor %}
+                  {% endfor %}
+              </tbody>
+            </table>
+          {% endif %}
+        </nav>
+      </div>
     </div>
     
     {{ content }}
