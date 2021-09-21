@@ -2,7 +2,7 @@
 // Buttons and things that look like buttons
 //
 
-.btn-selector {
+.btn {
   @include fs-6;
   display: flex; // transform animation breaks without this on theme-colors and graph-type...
   cursor: pointer;
@@ -19,6 +19,10 @@
     opacity: 0;
     height: 0;
     width: 0;
+  }
+
+  &--small {
+    @include fs-5;
   }
 
   &--blue {
@@ -97,30 +101,4 @@
   #nav-bonsai {
     margin-left: 5px;
   }
-}
-
-// entry toggles
-
-#entry-head-link-emoji-span {
-  filter: drop-shadow(0 0 0.7mm $drop-shadow-brown);
-}
-
-#entry-foot-link-emoji-span {
-  filter: drop-shadow(0 0 0.7mm $drop-shadow-brown);
-}
-
-#entry-foot-posts-emoji-span {
-  filter: drop-shadow(0 0 0.7mm $drop-shadow-purple);  
-}
-
-// default/main footer btns
-
-#abt-btn {
-  @include fs-5;
-  filter: drop-shadow(0 0.8mm 0.8mm $drop-shadow-brown);
-}
-
-#prvcy-btn {
-  @include fs-5;
-  filter: drop-shadow(0 0.8mm 0.8mm $drop-shadow-brown);
 }
