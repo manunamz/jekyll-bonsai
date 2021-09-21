@@ -25,7 +25,7 @@ layout: default
   </p>
   <!-- page == tag (from tag-nav) -->
   {% assign docs_w_stat = site.documents | where: 'status', page.emoji %}
-  {% if docs_w_stat.size == 0 and page.path != site.root_state_path %}
+  {% if docs_w_stat.size == 0 and page.path != site.bonsai.states.root_path %}
     <div class="no-results">
       There are currently no {{ page.emoji }}s.
     </div>

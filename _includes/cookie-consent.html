@@ -8,7 +8,7 @@
   <a id="cookie-consent-hmm" class="site-nav-btn" href="{{ '/privacy' | relative_url }}" title="Hmm...Tell me more...">
     {{ site.data.emoji.consider }}
   </a>
-  {% if site.debug %}
+  {% if site.bonsai.debug %}
     <a id="cookie-consent-response-reject" class="site-nav-btn" title="Nope!">
       {{ site.data.emoji.disapprove }}
     </a>
@@ -69,7 +69,7 @@
     document.getElementById('cookie-consent').style.display = 'none';
     location.reload();
   });
-  {% if site.debug %}
+  {% if site.bonsai.debug %}
     document.getElementById('cookie-consent-response-reject').addEventListener("click",function() {
       clearCookies();
       createCookie('cookie-consent-declined','true',10);

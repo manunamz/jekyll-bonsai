@@ -45,7 +45,7 @@ export default class GraphNav {
   initGraphType() {
     this.graphType = localStorage.getItem('graph-type');
     if (this.graphType !== "tree" && this.graphType !== "net-web") {
-      this.graphType = '{{ site.graph_type }}';	
+      this.graphType = '{{ site.bonsai.graph_type }}';	
     }
     this.graphTypeCheckBox.checked = (this.graphType === "tree");
     this.updateGraphType();

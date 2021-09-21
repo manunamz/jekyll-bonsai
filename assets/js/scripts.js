@@ -42,7 +42,7 @@ function initListeners () {
     // Safari 3.0+ "[object HTMLElementConstructor]" 
     var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && window['safari'].pushNotification));
     if (img.firstElementChild.tagName === "svg" && !isSafari) {
-      if ('{{ site.svg.filter }}') {
+      if ('{{ site.bonsai.svg.filter }}') {
         // attach filter to svg element's parent because of safari/mobile bug
         // bug from: https://github.com/Fyrd/caniuse/issues/3803
         // workaround from: https://newbedev.com/why-is-filter-drop-shadow-causing-my-svg-to-disappear-in-safari

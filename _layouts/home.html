@@ -8,7 +8,7 @@ layout: default
     <div class="lead-img">
       <img id="home-logo">
     </div>
-    {% assign root = site.entries | find_exp: "item", "item.path == site.entries.root_path" %}
+    {% assign root = site.entries | find_exp: "item", "item.path == site.bonsai.entries.root_path" %}
     <h1 class="lead-title"><a class="wiki-link" href="{{ root.url | relative_url }}">{{ page.title }}</a></h3>
     <div class="lead-content">
       {{ content }}
@@ -17,11 +17,11 @@ layout: default
   
   <div class="main-columns">
 
-    {% if site.home.notable.enabled %}
+    {% if site.bonsai.home.notable.enabled %}
       <div class="column">
         <h3 class="column-heading">Notable</h3>
         <ul class="column-content">
-          {% for notable in site.home.notable.entries %}
+          {% for notable in site.bonsai.home.notable.entries %}
             {% assign doc = site.documents | find_exp: "item", "item.path contains notable" %}
             <li class="column-item">
               <div class="column-item-status">
@@ -35,7 +35,7 @@ layout: default
                   <a class="wiki-link" href="{{ doc.url | relative_url }}"> {{ doc.title }}</a>
                 </span>
                 <span class="column-item-date">
-                  {{ doc.updated | date: site.date_format }}
+                  {{ doc.updated | date: site.bonsai.date_format }}
                 </span>
               </div>
             </li>
@@ -49,12 +49,12 @@ layout: default
       </div>
     {% endif %}
 
-    {% if site.home.recent.enabled %}
+    {% if site.bonsai.home.recent.enabled %}
       <div class="column">
         <h3 class="column-heading">Recent</h3>
         <ul class="column-content">
           {% assign recent_docs = site.documents | sort: 'updated' | reverse %}
-          {% for doc in recent_docs limit: site.home.recent.cap %}
+          {% for doc in recent_docs limit: site.bonsai.home.recent.cap %}
             <li class="column-item">
               <div class="column-item-status">
                 {% for stat_tag in doc.status %}
@@ -67,7 +67,7 @@ layout: default
                   <a class="wiki-link" href="{{ doc.url | relative_url }}"> {{ doc.title }}</a>
                 </span>
                 <span class="column-item-date">
-                  {{ doc.updated | date: site.date_format }}
+                  {{ doc.updated | date: site.bonsai.date_format }}
                 </span>
               </div>
             </li>

@@ -11,7 +11,7 @@ layout: default
       {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
       <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>  
     {% endfor %}
-    <span class="last-updated">Last Tended: {{ page.updated | date: site.date_format }}</span>
+    <span class="last-updated">Last Tended: {{ page.updated | date: site.bonsai.date_format }}</span>
     {% include local-nav.html type="post" %}
   </div>
 

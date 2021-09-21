@@ -20,7 +20,7 @@
           </a>
         {% endif %}
         {% if site.states %}
-          {% assign root_state = site.states | find_exp: "item", "item.path == site.root_state_path" %}
+          {% assign root_state = site.states | find_exp: "item", "item.path == site.bonsai.states.root_path" %}
           <a id="stat-tags-dropbtn" class="site-nav-btn drop-1" href="{{ root_state.url | relative_url }}" title="Go To States">
             {{ site.data.emoji.stat_tags }}
           </a>

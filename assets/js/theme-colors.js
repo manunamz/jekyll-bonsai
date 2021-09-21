@@ -30,7 +30,7 @@ export default class ThemeColors {
   initThemeColors() {
     this.theme = localStorage.getItem("theme-colors");
     if (!this.theme) {
-      this.theme = '{{ site.data.default_theme }}' !== "" ? '{{ site.data.default_theme }}' : '{{ site.data.themes[0].id }}';
+      this.theme = '{{ site.bonsai.default_theme }}' !== "" ? '{{ site.bonsai.default_theme }}' : '{{ site.data.themes[0].id }}';
     }
     this.updateThemeColors();
   }

@@ -15,7 +15,7 @@ layout: default
           {% endfor %}
           <a class="wiki-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
         </span>
-        <span class="list-item-date">{{ post.updated | date: site.date_format }}</span>
+        <span class="list-item-date">{{ post.updated | date: site.bonsai.date_format }}</span>
       </li>
     {% endfor %}
   </ul>

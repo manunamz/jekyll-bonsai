@@ -1,7 +1,7 @@
 <div id="local-nav">
   
   {% if include.type == "entry" %}
-    {% if page.path == site.entries.root_path %}
+    {% if page.path == site.bonsai.entries.root_path %}
       <img id="root-logo">
     {% endif %}
   {% else if include.type == "post" %}
