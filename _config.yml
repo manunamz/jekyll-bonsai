@@ -1,5 +1,3 @@
-# jekyll configs
-
 title: jekyll-bonsai
 description: A modern jekyll theme for semantically inclined digital gardeners.
 author: manunamz
@@ -42,7 +40,8 @@ collections:
       - seed.md
       - tea.md
       - pot-bamboo.md
-        
+
+# frontmatter
 defaults:
   # permalink: /:type/:id
   # permalinks are manually verified/generated -- see 'jekyll-bonsai-util' plugin.
