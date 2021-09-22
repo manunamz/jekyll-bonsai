@@ -103,9 +103,10 @@
             }
         
             td {
+              padding: $sp-1;
               background-color: $transparent;
               border-bottom: 0;
-              padding: $sp-1;
+              text-align: center;
             }
         
             // .attribute-row {
