@@ -3,6 +3,21 @@
 //
 // stylelint-disable primer/selector-no-utility, primer/no-override, selector-no-type, selector-max-type
 
+body {
+  line-height: $content-line-height;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+}
+
 h1,
 .text-alpha {
   @include fs-9;
