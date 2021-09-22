@@ -57,12 +57,10 @@ layout: default
       {% if page.path == site.bonsai.entries.root_path %}
         <img id="root-logo">
       {% endif %}
-
-      <div class="entry-box-bar">
+      <div class="attr-box-bar">
         {% if site.social.enabled %}
           {% include share.html %}
         {% endif %}
-        
         <div class="entry-head-link-emoji-wrapper">
           <label class="btn">
             <input id="entry-head-links-checkbox" type="checkbox">
@@ -72,10 +70,9 @@ layout: default
           </label>
         </div>
       </div>
-
-      <div class="entry-box-wrapper">
-        <nav id="entry-box-link-nav" class="entry-box-link-nav">
-          <span class="entry-box-link-type-title" title="Attribute Entry">{% include img/bullet-net-web.svg %}</span>
+      <div class="attr-box-wrapper">
+        <nav id="attr-box-link-nav" class="attr-box-link-nav">
+          <span class="attr-box-link-type-title" title="Attribute Entry">{% include img/bullet-net-web.svg %}</span>
           {% assign attributes = page.attributes | doc_type: "entries" %}
           {% if attributes.size == 0 %}
             <p class="small-descr" style="text-align: center;">No attribute entries.</p>

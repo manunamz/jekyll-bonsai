@@ -43,27 +43,30 @@
     padding: $sp-3;
 
     .attr-box {
-      width: 50%;
+      width: 100%;
 
       // sm
     
-      // @include mq(md) {
-      display: flex;
-      flex-direction: column;
-      flex-wrap: wrap;
-      float: right;
-      //   width: $nav-width-md;
+      @include mq(md) {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        float: right;
+
+        width: $nav-width-md;
       //   flex-wrap: nowrap;
       //   position: fixed;
       //   height: 100%;
-      // }
+      }
     
-      // @include mq(lg) {
-      //   width: $nav-width-lg;
-      // }
-      // .local-nav-title {
-      //   text-align: center;
-      // }
+      @include mq(lg) {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        float: right;
+
+        width: $nav-width-lg;
+      }
 
       #root-logo {
         height: 70%;
@@ -72,7 +75,7 @@
         padding: $sp-3;
       }
 
-      .entry-box-bar {
+      .attr-box-bar {
         display: flex;
         justify-content: center;
     
@@ -81,15 +84,15 @@
         }
       }
 
-      .entry-box-wrapper {
+      .attr-box-wrapper {
         padding-top: $sp-3;
         width: 100%;
     
-        .entry-box-link-nav {
+        .attr-box-link-nav {
           display: flex;
           flex-direction: column;
     
-          .entry-box-link-type-title {
+          .attr-box-link-type-title {
             text-align: center;
           }
 

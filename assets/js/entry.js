@@ -91,7 +91,7 @@ export default class Entry {
 
   toggleEntryHeadLinksCollapse () {
     // from: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_collapsible
-    var collapsibleEl = document.getElementById('entry-box-link-nav');
+    var collapsibleEl = document.getElementById('attr-box-link-nav');
     if (this.entryHeadLinksCheckbox.checked) {
       collapsibleEl.style.display = "none";
       this.entryHeadLinksStatus = "closed";
