@@ -25,15 +25,21 @@
 // Responsive container
 
 @mixin container {
+  padding-top: $gutter-spacing-sm;
+  padding-bottom: $gutter-spacing-sm;
   padding-right: $gutter-spacing-sm;
   padding-left: $gutter-spacing-sm;
 
   @include mq(md) {
+    padding-top: $gutter-spacing;
+    padding-bottom: $gutter-spacing;
     padding-right: $gutter-spacing;
     padding-left: $gutter-spacing;
   }
 
   @include mq(lg) {
+    padding-top: $gutter-spacing;
+    padding-bottom: $gutter-spacing;
     padding-right: $gutter-spacing;
     padding-left: $gutter-spacing;
   }
