@@ -233,4 +233,49 @@
   .footnote, .reversefootnote {
     color: var(--wiki-link-color);
   }
+
+  // tables
+  table {
+    display: table;
+    width: 100%;
+    border-collapse: separate;
+  }
+
+  th,
+  td {
+    @include fs-3;
+    min-width: 120px;
+    padding-top: $sp-2;
+    padding-bottom: $sp-2;
+    padding-right: $sp-3;
+    padding-left: $sp-3;
+    background-color: var(--table-background-color);
+    border-bottom: $border rgba(var(--border-color), 0.5);
+    border-left: $border var(--border-color);
+
+    &:first-of-type {
+      border-left: 0;
+    }
+  }
+
+  tbody {
+    tr {
+      &:last-of-type {
+        th,
+        td {
+          border-bottom: 0;
+        }
+
+        td {
+          padding-bottom: $sp-3;
+        }
+      }
+    }
+  }
+
+  thead {
+    th {
+      border-bottom: $border var(--border-color);
+    }
+  }
 }
