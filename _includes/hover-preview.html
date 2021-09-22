@@ -38,7 +38,7 @@
     if (event.target.host === window.location.host) {
       iframe.src = event.target.href;
       iframe.onload = function() {
-        tooltipContent.innerHTML = iframe.contentWindow.document.querySelector('.main-content').innerHTML;
+        tooltipContent.innerHTML = iframe.contentWindow.document.querySelector('.main').innerHTML;
         tooltipWrapper.style.display = 'block';
         setTimeout(function() {
             tooltipWrapper.style.opacity = 1;

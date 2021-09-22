@@ -14,7 +14,7 @@
   
     <script>
       // from: https://mxb.dev/blog/color-theme-switcher/
-      // if there's a theme id in localstorage, use it on the
+      // if there's a theme id in localstorage, use it on initia load
       localStorage.getItem('theme-colors') && 
       document.documentElement.setAttribute('data-theme', localStorage.getItem('theme-colors'))
     </script>
@@ -26,29 +26,27 @@
   </head>  
   <body>
 
-    <div class="side-bar">
+    <div class="site-nav-container">
       {% include site-nav.html %}
     </div>
     
-    <div class="main" id="top">
-      <div id="main-content-wrap" class="main-content-wrap">
-        <div id="main-content" class="main-content" role="main">
-          {% include anchor-headings.html html=content anchorClass="anchor-heading" %}
-        </div>
-        <div class="main-foot">
-          {% assign about_page = site.pages | find_exp: "item", "item.name == 'about.md'" %}
-          {% if about_page %}
-            <a class="btn btn--small btn--brown" href="{{ '/about/' | relative_url }}" title="Go To About">{{ site.data.emoji.about }}</a>
-          {% endif %}
-          {% assign privacy_page = site.pages | find_exp: "item", "item.name == 'privacy.md'" %}
-          {% if privacy_page %}
-            <a class="btn btn--small btn--brown" href="{{ '/privacy/' | relative_url }}" title="Go To Privacy">{{ site.data.emoji.privacy }}</a>
-          {% endif %}
-          {% if site.social.enabled %}
-            {% include connect.html %}
-          {% endif %}
-        </div>
-      </div>
+    <div class="main-container">
+      <main id="main" class="main">
+        {% include anchor-headings.html html=content anchorClass="anchor-heading" %}
+      </main>
+      <footer class="main-foot">
+        {% assign about_page = site.pages | find_exp: "item", "item.name == 'about.md'" %}
+        {% if about_page %}
+          <a class="btn btn--small btn--brown" href="{{ '/about/' | relative_url }}" title="Go To About">{{ site.data.emoji.about }}</a>
+        {% endif %}
+        {% assign privacy_page = site.pages | find_exp: "item", "item.name == 'privacy.md'" %}
+        {% if privacy_page %}
+          <a class="btn btn--small btn--brown" href="{{ '/privacy/' | relative_url }}" title="Go To Privacy">{{ site.data.emoji.privacy }}</a>
+        {% endif %}
+        {% if site.social.enabled %}
+          {% include connect.html %}
+        {% endif %}
+      </footer>
     </div>
 
     <label class="bonsai-burger">
