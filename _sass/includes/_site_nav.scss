@@ -58,8 +58,11 @@
   cursor: pointer;
   user-select: none;
   padding: $sp-2;
+  
+  // suppress default html button attributes
   border: none;
   background: none;
+  
   filter: drop-shadow(0 0 0.8mm $drop-shadow-blue);
 }
 

@@ -10,6 +10,10 @@
   padding: $sp-2;
   transition: all .2s ease-in-out;
 
+  // suppress default html button attributes
+  border: none;
+  background: none;
+
   &:hover {
     transform: scale(1.5); 
   }
@@ -48,32 +52,7 @@
   &--red {
     filter: drop-shadow(0 0 0.8mm $drop-shadow-red);
   }
-
-  // &>.pad-right {
-  //   padding-right: $sp-3;
-  // }
 }
-
-// .entry-foot-selector {
-//   @include fs-6;
-//   display: flex;
-//   cursor: pointer;
-//   user-select: none;
-//   padding-right: $sp-3;
-//   padding-top: $sp-2;
-//   transition: all .2s ease-in-out;
-
-//   &:hover {
-//     transform: scale(1.5); 
-//   }
-
-//   /* Hide the browser's default checkbox */
-//   input {
-//     opacity: 0;
-//     height: 0;
-//     width: 0;
-//   }
-// }
 
 .bonsai-burger {
   display: flex;
