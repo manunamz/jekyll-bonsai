@@ -1,48 +1,17 @@
 // post page styles
 
-#post {
+.post {
 
-  .post-title {
+  .post__title {
     @include container-narrow;
     margin-bottom: $sp-2;
   }
 
-  .info-box {
+  .post__info-box {
     @include infobox-container;
-  
-    .tag-pills {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-  
-      .tag-pill {
-        white-space: nowrap;
-        padding: $sp-2;
-        margin: $sp-2;
-        border-radius: 15px;
-        color: var(--wiki-link-color);
-        background-color: $transparent;
-        border: 1px solid var(--border-color);
-      
-        &:hover {
-          background-color: var(--base-button-color);
-        }
-        
-        // TODO: fix disabled behavior 
-        // (probably should switch tags to be btns anyway...)
-        &.disabled {
-          color: var(--tag-disabled-color);
-          border: 1px solid var(--tag-disabled-color);
-      
-          &:hover {
-            background-color: var(--tag-disabled-color) !important;
-          }
-        }
-      }
-    }
   }
 
-  .post-content {
+  .post__content {
     @include container-narrow;
   }
 }

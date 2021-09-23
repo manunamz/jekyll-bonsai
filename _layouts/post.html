@@ -2,9 +2,9 @@
 layout: default
 ---
 
-<div id="post">
+<div id="post" class="post">
 
-  <div class="hp-title post-title">
+  <div class="post__title hp-title">
     <h1>{{ page.title }}</h1>
     <div>
       {% include btn_state.html states=page.status %}
@@ -12,7 +12,7 @@ layout: default
     </div>
   </div>
 
-  <section class="info-box">
+  <section class="post__info-box">
     {% include toc.html html=content wrap_class="toc-wrapper" class="toc-list" item_class="toc-list-item" anchor_class="toc-list-item-anchor" %}
 
     {% if site.social.enabled %}
@@ -35,7 +35,7 @@ layout: default
     </div>
   </section>
 
-  <div class="hp-content post-content markdown">
+  <div class="post__content markdown hp-content">
     {{ content }}
   </div>
 
