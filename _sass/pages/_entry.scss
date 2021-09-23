@@ -1,6 +1,11 @@
 // entry page styles
 
-#entry {
+.entry {
+  max-width: 100%; // override base layout's max-width
+  
+  &--narrow {
+    max-width: $content-width;
+  }
 
   .missing-entry-txt {
     @include fs-2;
@@ -12,13 +17,12 @@
     display: flex;
     
     .entry-head-nav {
-      display: inline-block;
+      align-self: center;
       overflow-x: scroll;
       white-space: nowrap;  
   
       .entry-head-breadcrumbs {
         display: flex;
-        align-self: center;
         // remove 'ol' defaults
         padding-left: 0;
         margin-bottom: 0;
@@ -42,46 +46,39 @@
   .entry-body-wrapper {
     padding: $sp-3;
 
-    .attr-box {
+    .entry-infobox {
+      display: flex;
+      flex-direction: column;
       width: 100%;
-
-      // sm
     
       @include mq(md) {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        float: right;
-
         width: $nav-width-md;
-      //   flex-wrap: nowrap;
-      //   position: fixed;
-      //   height: 100%;
+        float: right;
       }
     
       @include mq(lg) {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        float: right;
-
-        width: $nav-width-lg;
+        width: $nav-width-md;
+        // from: https://www.bram.us/2020/01/10/smooth-scrolling-sticky-scrollspy-navigation/
+        position: sticky;
+        top: $sp-2;
+        // right: $sp-10;
+        padding: $sp-2;
+        // left: $sp-2;
+        align-self: center;
+        overflow-y: scroll;
       }
 
-      #root-logo {
+      .entry-infobox-img {
         height: 70%;
         width: 70%;
         align-self: center;
         padding: $sp-3;
       }
 
-      .attr-box-bar {
+      .entry-infobox-bar {
         display: flex;
         justify-content: center;
-    
-        .entry-head-link-emoji-wrapper {
-          align-self: center;
-        }
+        align-items: center;
       }
 
       .attr-box-wrapper {
@@ -91,10 +88,7 @@
         .attr-box-link-nav {
           display: flex;
           flex-direction: column;
-    
-          .attr-box-link-type-title {
-            text-align: center;
-          }
+          text-align: center;
 
           table {
             padding: $sp-1;
@@ -128,7 +122,7 @@
   
     .entry-foot-nav {
       width: 100%;
-      display: inline-block;
+      display: flex;
   
       .entry-foot-nav-section {
         width: 100%;

@@ -7,6 +7,10 @@ created: 1620408350557
 status: 🍈
 ---
 
+test::[[people]]
+test2::[[people]]
+test3::[[people]]
+
 Welcome to Jekyll-Bonsai.
 
 This template is about discovering new ways of structuring knowledge and navigating the internet. 

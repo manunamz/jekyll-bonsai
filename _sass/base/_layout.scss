@@ -21,12 +21,9 @@
 
 .main-container {
   @include container;
-  display: flex;
-  flex-direction: column;
   min-height: 100vh;
 
   @include mq(md) {
-    max-width: $content-width;
     margin-left: $nav-width-md;
   }
 
