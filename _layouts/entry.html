@@ -6,7 +6,7 @@ layout: default
 
   <!-- breadcrumb ancestry path -->
   <header id="entry-header">
-    <div class="entry-head-wrapper entry--narrow">
+    <div class="entry-head-wrapper">
       <div>
         <label class="btn">
           <input id="entry-head-checkbox" type="checkbox">
@@ -44,62 +44,64 @@ layout: default
     </div>
   </header>
   
-  <div class="entry-body-wrapper">
+  <div class="entry-title">
     <h1>{{ page.title }}</h1>
     <div class="doc-status">
       {% include btn_state.html states=page.status %}
       <span class="last-updated">Last Tended: {{ page.updated | date: site.bonsai.date_format }}</span>
     </div>
-    <div class="entry-infobox">
-      {% if page.path == site.bonsai.entries.root_path %}
-        <img id="root-logo" class="entry-infobox-img">
+  </div>
+
+  <div class="entry-infobox">
+    {% if page.path == site.bonsai.entries.root_path %}
+      <img id="root-logo" class="entry-infobox-img">
+    {% endif %}
+    <div class="entry-infobox-bar">
+      <div>
+        <label class="btn">
+          <input id="entry-head-links-checkbox" type="checkbox">
+          <span class="btn--brown" title="Toggle Linked Entries">
+            {{ site.data.emoji.entries }}
+          </span>
+        </label>
+      </div>
+      {% if site.social.enabled %}
+        {% include share.html %}
       {% endif %}
-      <div class="entry-infobox-bar">
-        <div>
-          <label class="btn">
-            <input id="entry-head-links-checkbox" type="checkbox">
-            <span class="btn--brown" title="Toggle Linked Entries">
-              {{ site.data.emoji.entries }}
-            </span>
-          </label>
-        </div>
-        {% if site.social.enabled %}
-          {% include share.html %}
-        {% endif %}
-      </div>
-      <div class="attr-box-wrapper">
-        <nav id="attr-box-link-nav" class="attr-box-link-nav">
-          <span title="Attribute Entry">{% include img/bullet-net-web.svg %}</span>
-          {% assign attributes = page.attributes | doc_type: "entries" %}
-          {% if attributes.size == 0 %}
-            <p class="small-descr" style="text-align: center;">No attribute entries.</p>
-          {% else %}
-            <table>
-              <tbody>
-                  {% for attr in attributes %}
-                    <tr>
-                      <th rowspan="{{ attr.urls | size }}" scope="rowgroup">{{ attr.type | capitalize }}</th>
-                      {% for doc_url in attr.urls %}
-                        {% assign attr_doc = site.entries | where: "url", doc_url | first %}
-                        <td>
-                          {% include btn_state.html states=attr_doc.status %}
-                          <a class="wiki-link" href="{{ attr_doc.url | relative_url }}">{{ attr_doc.title }}</a>
-                        </td>
-                    </tr>
-                      {% endfor %}
-                  {% endfor %}
-              </tbody>
-            </table>
-          {% endif %}
-        </nav>
-      </div>
     </div>
-    <div class="entry--narrow markdown">
-      {{ content }}
+    <div class="attr-box-wrapper">
+      <nav id="attr-box-link-nav" class="attr-box-link-nav">
+        <span title="Attribute Entry">{% include img/bullet-net-web.svg %}</span>
+        {% assign attributes = page.attributes | doc_type: "entries" %}
+        {% if attributes.size == 0 %}
+          <p class="small-descr" style="text-align: center;">No attribute entries.</p>
+        {% else %}
+          <table>
+            <tbody>
+                {% for attr in attributes %}
+                  <tr>
+                    <th rowspan="{{ attr.urls | size }}" scope="rowgroup">{{ attr.type | capitalize }}</th>
+                    {% for doc_url in attr.urls %}
+                      {% assign attr_doc = site.entries | where: "url", doc_url | first %}
+                      <td>
+                        {% include btn_state.html states=attr_doc.status %}
+                        <a class="wiki-link" href="{{ attr_doc.url | relative_url }}">{{ attr_doc.title }}</a>
+                      </td>
+                  </tr>
+                    {% endfor %}
+                {% endfor %}
+            </tbody>
+          </table>
+        {% endif %}
+      </nav>
     </div>
   </div>
 
-  <footer class="entry-footer entry--narrow">
+  <div class="entry-body-wrapper markdown">
+    {{ content }}
+  </div>
+
+  <footer class="entry-footer">
     <!-- linked entries -->
     <div class="entry-foot-wrapper">
       <div>

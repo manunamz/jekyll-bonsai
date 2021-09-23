@@ -1,11 +1,6 @@
 // entry page styles
 
 .entry {
-  max-width: 100%; // override base layout's max-width
-  
-  &--narrow {
-    max-width: $content-width;
-  }
 
   .missing-entry-txt {
     @include fs-2;
@@ -14,6 +9,7 @@
   }
 
   .entry-head-wrapper {
+    @include container-narrow;
     display: flex;
     
     .entry-head-nav {
@@ -43,72 +39,56 @@
     }  
   }
 
+  .entry-title {
+    @include container-narrow;
+  }
+
   .entry-body-wrapper {
+    @include container-narrow;
     padding: $sp-3;
+  }
 
-    .entry-infobox {
+  .entry-infobox {
+    @include infobox-container;
+    display: flex;
+    flex-direction: column;
+
+    .entry-infobox-img {
+      height: 70%;
+      width: 70%;
+      align-self: center;
+      padding: $sp-3;
+    }
+
+    .entry-infobox-bar {
       display: flex;
-      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .attr-box-wrapper {
+      padding-top: $sp-3;
       width: 100%;
-    
-      @include mq(md) {
-        width: $nav-width-md;
-        float: right;
-      }
-    
-      @include mq(lg) {
-        width: $nav-width-md;
-        // from: https://www.bram.us/2020/01/10/smooth-scrolling-sticky-scrollspy-navigation/
-        position: sticky;
-        top: $sp-2;
-        // right: $sp-10;
-        padding: $sp-2;
-        // left: $sp-2;
-        align-self: center;
-        overflow-y: scroll;
-      }
-
-      .entry-infobox-img {
-        height: 70%;
-        width: 70%;
-        align-self: center;
-        padding: $sp-3;
-      }
-
-      .entry-infobox-bar {
+  
+      .attr-box-link-nav {
         display: flex;
-        justify-content: center;
-        align-items: center;
-      }
+        flex-direction: column;
+        text-align: center;
 
-      .attr-box-wrapper {
-        padding-top: $sp-3;
-        width: 100%;
-    
-        .attr-box-link-nav {
-          display: flex;
-          flex-direction: column;
-          text-align: center;
-
-          table {
+        table {
+          padding: $sp-1;
+          background-color: $transparent;
+      
+          th {
+            background-color: $transparent;
+            border-bottom: 0;
+          }
+      
+          td {
             padding: $sp-1;
             background-color: $transparent;
-        
-            th {
-              background-color: $transparent;
-              border-bottom: 0;
-            }
-        
-            td {
-              padding: $sp-1;
-              background-color: $transparent;
-              border-bottom: 0;
-              text-align: center;
-            }
-        
-            // .attribute-row {
-            //   padding-top: $sp-5;
-            // }
+            border-bottom: 0;
+            text-align: center;
           }
         }
       }
@@ -116,6 +96,7 @@
   }
   
   .entry-foot-wrapper {
+    @include container-narrow;
     margin-top: $sp-6;
     margin-bottom: $sp-6;
     display: flex;

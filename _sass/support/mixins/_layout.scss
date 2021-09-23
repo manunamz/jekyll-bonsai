@@ -22,7 +22,7 @@
   }
 }
 
-// Responsive container
+// Responsive containers
 
 @mixin container {
   padding: $gutter-spacing-sm;
@@ -33,5 +33,49 @@
 
   @include mq(lg) {
     padding: $gutter-spacing;
+  }
+}
+
+@mixin container-narrow {
+  max-width: $content-width;
+
+  // note: the following 'margin-right' are for the 
+  //       infobox-container's consideration.
+
+  @include mq(lg) {
+    margin-right: $nav-width-md;
+  }
+
+  @include mq(xl) {
+    margin-right: $nav-width-md x 2;
+  }
+}
+
+@mixin infobox-container {
+  width: 100%;
+  
+  @include mq(md) {
+    max-width: $nav-width-md;
+    float: right;
+  }
+
+  @include mq(lg) {
+    max-width: $nav-width-md;
+    // from: https://www.bram.us/2020/01/10/smooth-scrolling-sticky-scrollspy-navigation/
+    position: sticky;
+    top: $sp-2;
+    padding: $sp-2;
+    overflow-y: scroll;
+  }
+
+  @include mq(xl) {
+    max-width: $nav-width-md;
+    // from: https://www.bram.us/2020/01/10/smooth-scrolling-sticky-scrollspy-navigation/
+    position: sticky;
+    top: $sp-2;
+    padding: $sp-2;
+    overflow-y: scroll;
+
+    margin-right: $nav-width-md;
   }
 }
