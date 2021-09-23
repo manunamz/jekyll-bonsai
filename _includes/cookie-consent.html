@@ -2,14 +2,14 @@
 <!-- duplicate code with cookie-consent-response.html -->
 <div id="cookie-consent">
   <span>We would like to use third party cookies and scripts to improve the functionality of this website.</span>
-  <a id="cookie-consent-response-accept" class="site-nav-btn" title="Alright!">
+  <a id="cookie-consent-response-accept" class="btn" title="Alright!">
     {{ site.data.emoji.approve }}
   </a>
-  <a id="cookie-consent-hmm" class="site-nav-btn" href="{{ '/privacy' | relative_url }}" title="Hmm...Tell me more...">
+  <a id="cookie-consent-hmm" class="btn" href="{{ '/privacy' | relative_url }}" title="Hmm...Tell me more...">
     {{ site.data.emoji.consider }}
   </a>
   {% if site.bonsai.debug %}
-    <a id="cookie-consent-response-reject" class="site-nav-btn" title="Nope!">
+    <a id="cookie-consent-response-reject" class="btn" title="Nope!">
       {{ site.data.emoji.disapprove }}
     </a>
   {% endif %}
