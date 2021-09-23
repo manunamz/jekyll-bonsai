@@ -3,7 +3,7 @@
 // 
 
 #home {
-  max-width: $content-width;
+  @include container-narrow;
   padding: $sp-5;
 
   .lead {

@@ -1,7 +1,8 @@
 // post page styles
 
 #post {
-
+  @include container-narrow;
+  
   .info-box {
     width: 50%;
 

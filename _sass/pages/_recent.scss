@@ -3,6 +3,8 @@
 //
 
 #recent {
+  @include container-narrow;
+  
   .leader {
     display: flex;
     flex-direction: row;
