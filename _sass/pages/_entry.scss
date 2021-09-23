@@ -1,5 +1,37 @@
 // entry page styles
 
+// make styles accessible to hover-preview
+// todo: clean this up...
+.entry-head-wrapper {
+  display: flex;
+  
+  .entry-head-nav {
+    align-self: center;
+    overflow-x: scroll;
+    white-space: nowrap;  
+
+    .entry-head-breadcrumbs {
+      display: flex;
+      // remove 'ol' defaults
+      padding-left: 0;
+      margin-bottom: 0;
+      margin-top: 0;
+      list-style: none;
+    
+      .entry-head-breadcrumb {
+        @include fs-2;
+        display: flex;
+        flex-direction: row;
+        padding-left: $sp-2;
+        
+        &::before {
+          display: none;
+        }
+      }
+    } 
+  }  
+}
+
 .entry {
 
   .missing-entry-txt {

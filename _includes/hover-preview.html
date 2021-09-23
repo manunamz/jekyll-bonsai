@@ -1,3 +1,11 @@
+<!-- for hover-preview to work, every page should define...
+- at a minimum:
+  - 'hp-title'
+  - 'hp-content'
+- optionally
+  - 'hp-header' 
+...so the hover-preview can properly build the content to display  -->
+
 <style>  
   /* leave id for opacity toggle */
   #tooltip-wrapper {
@@ -38,7 +46,16 @@
     if (event.target.host === window.location.host) {
       iframe.src = event.target.href;
       iframe.onload = function() {
-        tooltipContent.innerHTML = iframe.contentWindow.document.querySelector('.main').innerHTML;
+        let title = iframe.contentWindow.document.querySelector('.hp-title').innerHTML;
+        let content = iframe.contentWindow.document.querySelector('.hp-content').innerHTML;
+        // preserve entries' header breadcrumbs
+        if (iframe.contentWindow.document.querySelector('.hp-header')) {
+          let header = iframe.contentWindow.document.querySelector('.hp-header').innerHTML;
+          tooltipContent.innerHTML = header + title + content;
+        // everything else (doesn't have header breadcrumbs)
+        } else {
+          tooltipContent.innerHTML = title + content;
+        }
         tooltipWrapper.style.display = 'block';
         setTimeout(function() {
             tooltipWrapper.style.opacity = 1;

@@ -3,18 +3,22 @@ layout: default
 ---
 <div id="posts">
 
-  <h1>{{ site.data.emoji.posts }} Fruit Basket</h1>
+  <div class="hp-title">
+    <h1>{{ site.data.emoji.posts }} Fruit Basket</h1>
+  </div>
   
-  <ul class="posts-list">
-    {% for post in site.posts %}
-      <li class="posts-list-item">
-        <span>
-          {% include btn_state.html states=post.status %}
-          <a class="wiki-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
-        </span>
-        <span class="list-item-date">{{ post.updated | date: site.bonsai.date_format }}</span>
-      </li>
-    {% endfor %}
-  </ul>
+  <div class="hp-content">
+    <ul class="posts-list">
+      {% for post in site.posts %}
+        <li class="posts-list-item">
+          <span>
+            {% include btn_state.html states=post.status %}
+            <a class="wiki-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          </span>
+          <span class="list-item-date">{{ post.updated | date: site.bonsai.date_format }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
 
 </div>

@@ -10,7 +10,7 @@
   width: 400px;
   height: 250px;
   z-index: 5;
-  padding: 1em; // don't use sass spacing variables -- it makes hover preview buggy.
+  padding: 2em; // don't use sass spacing variables -- it makes hover preview buggy.
   border: 1px solid var(--border-color);
   border-radius: 15px;
   background: var(--body-background-color);

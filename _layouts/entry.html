@@ -5,7 +5,7 @@ layout: default
 <div class="entry">
 
   <!-- breadcrumb ancestry path -->
-  <header id="entry-header">
+  <header id="entry-header" class="hp-header">
     <div class="entry-head-wrapper">
       <div>
         <label class="btn">
@@ -44,7 +44,7 @@ layout: default
     </div>
   </header>
   
-  <div class="entry-title">
+  <div class="hp-title entry-title">
     <h1>{{ page.title }}</h1>
     <div class="doc-status">
       {% include btn_state.html states=page.status %}
@@ -97,7 +97,7 @@ layout: default
     </div>
   </div>
 
-  <div class="entry-body-wrapper markdown">
+  <div class="hp-content entry-body-wrapper markdown">
     {{ content }}
   </div>
 
