@@ -32,7 +32,7 @@ function initListeners () {
 
   document.getElementById('wiki-link-nav-checkbox')
     .addEventListener('click', function(event) {
-      expandGraphNav();
+      expandSiteNav();
       document.getElementById('jekyll-graph').dispatchEvent(new Event('draw')); // tell graph to redraw itself
     }, false);
 
@@ -64,15 +64,18 @@ function setupLinkOpen (link) {
   link.setAttribute("rel", "noopener");  // for security: https://css-tricks.com/use-target_blank/#correct-html
 }
 
-function expandGraphNav() {
-  var siteNav = document.getElementById('site-nav');
+function expandSiteNav() {
+  var sideBar = document.getElementById('side-bar-container');
+  var mainView = document.getElementById('main-container');
   var wikiBonsai = document.getElementById('nav-bonsai');
   
   if (document.getElementById('wiki-link-nav-checkbox').checked) {
-    siteNav.classList.add('nav-open');
+    sideBar.classList.add('nav-open');
+    mainView.classList.add('hide');
     wikiBonsai.hidden = false;
   } else {
-    siteNav.classList.remove('nav-open');
+    sideBar.classList.remove('nav-open');
+    mainView.classList.remove('hide');
     wikiBonsai.hidden = true;
   }
 }

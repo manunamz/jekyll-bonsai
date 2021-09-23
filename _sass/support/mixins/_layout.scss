@@ -61,21 +61,19 @@
 
   @include mq(lg) {
     max-width: $nav-width-md;
+    padding: $sp-2;
     // from: https://www.bram.us/2020/01/10/smooth-scrolling-sticky-scrollspy-navigation/
     position: sticky;
     top: $sp-2;
-    padding: $sp-2;
     overflow-y: scroll;
   }
 
   @include mq(xl) {
     max-width: $nav-width-md;
+    padding: $sp-2;
     // from: https://www.bram.us/2020/01/10/smooth-scrolling-sticky-scrollspy-navigation/
     position: sticky;
     top: $sp-2;
-    padding: $sp-2;
     overflow-y: scroll;
-
-    margin-right: $nav-width-md;
   }
 }

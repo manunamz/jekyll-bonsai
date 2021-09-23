@@ -1,29 +1,15 @@
 // site nav (bonsai/garden) -- which houses the 'jekyll-graph'
 
 .site-nav {
-  display: none;
-  width: 100%;
-
-  &.nav-open {
-    display: block;
-    height: 100vh;
-    width: 100vw;
-  }
-
-  @include mq(md) {
-    display: block;
-    // leaving this here for now in case something breaks...(TODO: delete if no 🐛 bugs appear later)
-    // flex: 1 1 auto;
-  }
 
   header {
+    position: absolute;
+    z-index: 4;
+    top: 0;
+    padding: $sp-2;
     @include fs-5;
     display: flex;
     justify-content: flex-start;
-    position: absolute;
-    top: 0;
-    z-index: 4;
-    padding: $sp-2;
     cursor: pointer;
     user-select: none;
   }

@@ -26,11 +26,11 @@
   </head>  
   <body>
 
-    <div class="site-nav-container">
+    <div id="side-bar-container" class="side-bar-container">
       {% include site-nav.html %}
     </div>
     
-    <div class="main-container">
+    <div id="main-container" class="main-container">
       <main id="main" class="main">
         {% include anchor-headings.html html=content anchorClass="anchor-heading" %}
       </main>

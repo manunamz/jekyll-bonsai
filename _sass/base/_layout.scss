@@ -1,21 +1,28 @@
-//
 // two column layout
-//
 
-.site-nav-container {
-  z-index: 1;
+body {
   display: flex;
-  flex-wrap: wrap;
+}
+
+.side-bar-container {
+  position: fixed;
+  z-index: 1;
+  display: none;
+  height: 100vh;
 
   @include mq(md) {
+    display: block;
     width: $nav-width-md;
-    flex-wrap: nowrap;
-    position: fixed;
-    height: 100%;
   }
 
   @include mq(lg) {
+    display: block;
     width: $nav-width-lg;
+  }
+
+  &.nav-open {
+    display: block;
+    width: 100vw;
   }
 }
 
