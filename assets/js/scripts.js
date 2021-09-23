@@ -5,9 +5,7 @@ import ThemeColors from './theme-colors.js';
 import Entry from './entry.js';
 import SiteNav from './site-nav.js';
 
- //
 // go
- //
 // from: https://stackoverflow.com/questions/9899372/pure-javascript-equivalent-of-jquerys-ready-how-to-call-a-function-when-t
 (() => {
   // your page initialization code here
@@ -21,9 +19,7 @@ import SiteNav from './site-nav.js';
   }
 })();
 
- //
 // init
- //
 function initListeners () {
   // open external links in new window; wiki-links in current window.
   document.querySelectorAll("a.web-link").forEach(setupLinkOpen);
@@ -52,12 +48,7 @@ function initListeners () {
   });
 }
 
- //
 // helpers
- //
-function goTo (location) {
-  window.location.href = location;
-}
 
 function setupLinkOpen (link) {
   link.setAttribute("target", "_blank");
