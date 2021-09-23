@@ -73,11 +73,11 @@
 
   .entry-title {
     @include container-narrow;
+    margin-bottom: $sp-2;
   }
 
   .entry-body-wrapper {
     @include container-narrow;
-    padding: $sp-3;
   }
 
   .entry-infobox {

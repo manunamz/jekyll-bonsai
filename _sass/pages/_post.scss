@@ -4,6 +4,7 @@
 
   .post-title {
     @include container-narrow;
+    margin-bottom: $sp-2;
   }
 
   .info-box {

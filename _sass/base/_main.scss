@@ -183,11 +183,6 @@ hr {
   filter: drop-shadow(0 0 0.2mm $drop-shadow-green);
 }
 
-.doc-status {
-  margin-top: $sp-2;
-  margin-bottom: $sp-2;
-}
-
 .infobox {
   @include fs-2;
   width: 100%;
