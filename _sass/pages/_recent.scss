@@ -9,6 +9,37 @@
     display: flex;
     flex-direction: row;
   }
+
+  .infobox {
+    @include fs-2;
+    width: 100%;
+    height: 100%;
+    margin: $sp-3;
+    padding: $sp-3;
+    padding-left: $sp-5;
+    border: 1px solid var(--separator-color);
+    border-radius: 15px;
+  
+    .title {
+      @include fs-4;
+      text-align: center;
+      margin-top: 0;
+    }
+  
+    ul {
+      padding: 0 !important;
+      padding-left: $sp-2 !important;
+      padding-right: $sp-2 !important;
+  
+      li {
+        list-style-type: none !important;
+    
+        &::before {
+          content: "" !important;
+        }
+      }  
+    }
+  }  
   
   // very similar to _home.main-columns
   .recent-list {

@@ -9,11 +9,6 @@
 
   .info-box {
     @include infobox-container;
-    
-    .sem-tag {
-      @include fs-2;
-      color: var(--wiki-link-color);
-    }
   
     .tag-pills {
       display: flex;
