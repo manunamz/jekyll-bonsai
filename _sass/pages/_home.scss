@@ -8,22 +8,22 @@
   .lead {
     padding: $sp-2;
 
-    & .lead-img {
+    .lead-img-wrapper {
       text-align: center;
       padding: $sp-6;
 
-      & #home-logo {
+      .lead-img {
         height: 45%; 
         width: 45%;
       }
     }
 
-    & .lead-title {
+    .lead-title {
       text-align: center;
       padding: $sp-1;
     }
 
-    & .lead-content {
+    .lead-content {
       text-align: left;
       padding: $sp-4;
     }
