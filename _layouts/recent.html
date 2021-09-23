@@ -1,41 +1,43 @@
 ---
 layout: default
 ---
-<div id="recent">
+<div id="recent" class="recent">
 
-  <div>
+  <div class="leader">
     <h1 class="hp-title">{{ site.data.emoji.recent }} {{ page.title }}</h1>
-    <div class="hp-content leader">
-      <div>
+    <div class="leader__content">
+      <div class="hp-content">
         {{ content }}
       </div>
-      <div class="infobox">
-        <p class="title">Key</p>
-        <p>{{ site.data.emoji.created }} Created</p>
-        <p>{{ site.data.emoji.updated }} Updated</p>
-        <p class="small-descr"><em>{{ site.data.emoji.deleted }} Deleted (Inactive)</em></p>
-      </div>
+      <aside class="infobox">
+        <span class="infobox__title">Key</span>
+        <div class="infobox__content">
+          <p>{{ site.data.emoji.created }} Created</p>
+          <p>{{ site.data.emoji.updated }} Updated</p>
+          <p class="small-descr"><em>{{ site.data.emoji.deleted }} Deleted (Inactive)</em></p>
+        </div>
+      </aside>
     </div>
   </div>
 
   <div>
-    <ul class="recent-list">
+    <ul class="recent__list">
       {% assign recent_docs = site.documents | sort: 'updated' | reverse %}
       {% for doc in recent_docs limit: site.bonsai.recent.cap %}
-        <li class="recent-list-item">
+        <li class="recent__list-item">
           
-          <div class="recent-list-item-scene">
+          <div class="bullet-scene">
             <!-- weather emoji -->
-            <span class="recent-list-item-change">
+            <span class="bullet-scene__change-type">
               {{ doc | modified_emoji }}
             </span>
             <!-- plant emojis -->
-            <span class="recent-list-item-stat">
+            <span class="bullet-scene__status">
               {% include btn_state.html states=doc.status %}
             </span>
           </div>
           
-          <div class="recent-list-item-text">
+          <div class="recent__list-item__text">
             <!-- title -->
             <span class="recent-list-item-title">
               <a class="wiki-link" href="{{ doc.url | relative_url }}">{{ doc.title }}</a>  

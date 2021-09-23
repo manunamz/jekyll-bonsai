@@ -2,50 +2,14 @@
 // scss for recent page
 //
 
-#recent {
+.recent {
   @include container-narrow;
   
-  .leader {
-    display: flex;
-    flex-direction: row;
-  }
-
-  .infobox {
-    @include fs-2;
-    width: 100%;
-    height: 100%;
-    margin: $sp-3;
-    padding: $sp-3;
-    padding-left: $sp-5;
-    border: 1px solid var(--separator-color);
-    border-radius: 15px;
-  
-    .title {
-      @include fs-4;
-      text-align: center;
-      margin-top: 0;
-    }
-  
-    ul {
-      padding: 0 !important;
-      padding-left: $sp-2 !important;
-      padding-right: $sp-2 !important;
-  
-      li {
-        list-style-type: none !important;
-    
-        &::before {
-          content: "" !important;
-        }
-      }  
-    }
-  }  
-  
   // very similar to _home.main-columns
-  .recent-list {
+  ul.recent__list {
     padding: $sp-4;
     
-    .recent-list-item {
+    li.recent__list-item {
       display: flex; 
       justify-content: space-around;
       padding: $sp-2;
@@ -55,31 +19,7 @@
         content: "" !important;
       }
   
-      & .recent-list-item-scene {
-        // is a flex item
-        align-self: center;
-        // is a flex container
-        display: flex;
-        flex-direction: column;
-        width: 10%;
-        padding: $sp-1;
-  
-        & .recent-list-item-change {
-          @include fs-6;
-          width: 100%;
-          display: flex;
-          justify-content: center;
-        }
-  
-        & .recent-list-item-stat {
-          @include fs-3;
-          width: 100%;
-          display: flex;
-          justify-content: center;
-        }
-      }
-  
-      & .recent-list-item-text {
+      & .recent__list-item__text {
         // is a flex item
         flex-grow: 1;
         align-items: center;
@@ -98,4 +38,45 @@
       }
     }
   }  
+}
+
+.leader {
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    margin: $sp-2;
+    padding: $sp-2;
+  }
+}
+
+.infobox {
+  @include fs-3;
+  display: flex;
+  flex-direction: column;
+  padding: $sp-4;
+  border: 1px solid var(--separator-color);
+  border-radius: 15px;
+
+  width: 90%;
+
+  @include mq(md) {
+    width: 50%;
+  }
+
+  &--right {
+    float: right;
+  }
+
+  .infobox__title {
+    @include fs-5;
+    text-align: center;
+  }
+
+  .infobox__content {
+    white-space: nowrap;
+
+    width: 100%;
+    padding-left: $sp-4;
+  }
 }
