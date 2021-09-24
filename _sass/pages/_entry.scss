@@ -161,6 +161,7 @@
           border-radius: 16px;
           padding: $sp-1;
           max-width: $content-width / 4;
+          // hide overflowing text
           overflow: hidden;
           white-space: nowrap;
           text-overflow: ellipsis;
