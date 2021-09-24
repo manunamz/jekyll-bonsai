@@ -34,7 +34,7 @@
       <main id="main" class="main__content">
         {% include anchor-headings.html html=content anchorClass="anchor-heading" %}
       </main>
-      <footer class="main__foot">
+      <footer class="main__footer">
         {% assign about_page = site.pages | find_exp: "item", "item.name == 'about.md'" %}
         {% if about_page %}
           <a class="btn btn--small btn--brown" href="{{ '/about/' | relative_url }}" title="Go To About">{{ site.data.emoji.about }}</a>
