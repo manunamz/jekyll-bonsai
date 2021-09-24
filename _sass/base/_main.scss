@@ -24,6 +24,19 @@ body {
   background-color: var(--body-background-color);
 }
 
+ul {
+  padding: $sp-4;
+
+  li {
+    list-style-type: none !important;
+    padding: $sp-1;
+  
+    &::before {
+      content: "" !important;
+    }
+  }
+}
+
 ol,
 ul,
 dl,

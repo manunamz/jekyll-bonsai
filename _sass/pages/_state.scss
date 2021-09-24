@@ -1,72 +1,57 @@
-// 
-// scss for tag page
-// 
+// state page styles
 
-#states {
-  @include container-narrow;
-  
-  .states-nav {
+.state {
+
+  &__nav {
     @include fs-6;
     width: 100%;
     z-index: 2;
     top: 0;
     user-select: none;
     margin: $sp-2;
+  }
+
+  &__content {
+    @include container-narrow;
+  }
+
+  &__list-wrap {
+    display: block; // columns require block
+    column-count: 3;
+    column-width: $content-width / 6;
+  }
+
+  &__empty-list-wrap {
+    padding: $sp-10;
+    text-align: center;
+  }
+
+  .states-list {
+    overflow-x: scroll;      // horizontal scroll on overflow
+    white-space: nowrap;     // horizontal scroll on overflow
+
+    padding: 0 !important;
+    margin-bottom: 0;
     
-    .states-nav-list {
-      overflow-x: scroll;
-      white-space: nowrap;
-      padding: 0 !important;
-      margin-bottom: 0;
-    }
-  
-    .states-list-item {
-      display: inline-block;
+    &__item {
+      display: inline-block; // horizontal scroll on overflow
+
       margin-right: $sp-3;
       margin-left: $sp-3;
-      margin-top: 0;
-      padding-top: $sp-2;
-      padding-bottom: $sp-5;
       transition: all .2s ease-in-out;
     
       &::before {
         content: "";
       }
-  
+
       &.active {
         filter: drop-shadow(0 2mm 2mm $drop-shadow-green);
       }
-  
+
       &:hover {
         transform: scale(1.5); 
         filter: drop-shadow(0 2mm 2mm $drop-shadow-brown);
       }
-    }
-  
-    @include mq(md) {
-      padding-right: $gutter-spacing-sm;
-    }
+    }  
   }
-  
-  .states-list {
-    padding: $sp-4;
-    display: block; // columns require block
-    column-count: 2;
-    column-width: $content-width / 6;
-    
-    .states-list-item {
-      // display: flex; 
-      list-style-type: none !important;
-  
-      &::before {
-        content: "" !important;
-      }
-    }
-  }
-  
-  .no-results {
-    padding: $sp-5;
-    text-align: center;
-    color: grey;
-  }  
 }

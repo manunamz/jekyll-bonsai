@@ -4,80 +4,70 @@
 
 .recent {
   @include container-narrow;
-  
-  // very similar to _home.main-columns
-  ul.recent__list {
-    padding: $sp-4;
-    
-    li.recent__list-item {
-      display: flex; 
-      justify-content: space-around;
+
+  .leader {
+
+    &__content {
+      display: flex;
+      flex-direction: row;
+      margin: $sp-2;
       padding: $sp-2;
-      list-style-type: none !important;
-      
-      &::before {
-        content: "" !important;
-      }
+    }
+  }
   
-      & .recent__list-item__text {
-        // is a flex item
-        flex-grow: 1;
-        align-items: center;
-        // is a flex container
-        display: flex;
-        justify-content: space-between;
+  .infobox {
+    @include fs-3;
+    display: flex;
+    flex-direction: column;
+    padding: $sp-4;
+    border: 1px solid var(--separator-color);
+    border-radius: 15px;
   
-        & .recent-list-item-title {
-          @include fs-5;
-          padding-left: $sp-3;
-        }
-    
-        & .recent-list-item-date {
-          color: $date-txt-color;
-        }
-      }
+    width: 90%;
+  
+    @include mq(md) {
+      width: 50%;
+    }
+  
+    &--right {
+      float: right;
+    }
+  
+    .infobox__title {
+      @include fs-5;
+      text-align: center;
+    }
+  
+    .infobox__content {
+      white-space: nowrap;
+  
+      width: 100%;
+      padding-left: $sp-4;
     }
   }  
-}
 
-.leader {
-
-  &__content {
-    display: flex;
-    flex-direction: row;
-    margin: $sp-2;
+  .changes-wrap {
+    display: flex; 
+    justify-content: space-around;
     padding: $sp-2;
-  }
-}
 
-.infobox {
-  @include fs-3;
-  display: flex;
-  flex-direction: column;
-  padding: $sp-4;
-  border: 1px solid var(--separator-color);
-  border-radius: 15px;
+    &__text {
+      // is a flex item
+      flex-grow: 1;
+      align-items: center;
+      // is a flex container
+      display: flex;
+      justify-content: space-between;
+    }
 
-  width: 90%;
+    &__title {
+      @include fs-5;
+      padding-left: $sp-3;
+    }
 
-  @include mq(md) {
-    width: 50%;
-  }
-
-  &--right {
-    float: right;
-  }
-
-  .infobox__title {
-    @include fs-5;
-    text-align: center;
-  }
-
-  .infobox__content {
-    white-space: nowrap;
-
-    width: 100%;
-    padding-left: $sp-4;
+    &__date {
+      color: $date-txt-color;
+    }
   }
 
   .bullet-scene {
