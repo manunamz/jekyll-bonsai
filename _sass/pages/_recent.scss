@@ -46,28 +46,8 @@
     }
   }  
 
-  .changes-wrap {
-    display: flex; 
-    justify-content: space-around;
-    padding: $sp-2;
-
-    &__text {
-      // is a flex item
-      flex-grow: 1;
-      align-items: center;
-      // is a flex container
-      display: flex;
-      justify-content: space-between;
-    }
-
-    &__title {
-      @include fs-5;
-      padding-left: $sp-3;
-    }
-
-    &__date {
-      color: $date-txt-color;
-    }
+  &__content {
+    padding: $sp-4;
   }
 
   .bullet-scene {

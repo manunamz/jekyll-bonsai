@@ -174,7 +174,7 @@ bonsai:
   home:
     notable: 
       enabled: true
-      entries:
+      docs:
         - digital-garden.bonsai.md
         - digital-garden.md
         - features.doc-type.entry.md

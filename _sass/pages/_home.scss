@@ -2,36 +2,35 @@
 // scss for index
 // 
 
-#home {
+.home {
   @include container-narrow;
   padding: $sp-5;
 
   .lead {
     padding: $sp-2;
 
-    .lead-img-wrapper {
+    &__img-wrapper {
       text-align: center;
       padding: $sp-6;
 
-      .lead-img {
+      &__img {
         height: 45%; 
         width: 45%;
       }
     }
 
-    .lead-title {
+    &__title {
       text-align: center;
       padding: $sp-1;
     }
 
-    .lead-content {
+    &__content {
       text-align: left;
       padding: $sp-4;
     }
   }
 
-  // very similar to _recent.recent-list
-  .main-columns {
+  .featured-wrap {
 
     @include mq(md) {
       display: flex;
@@ -44,65 +43,33 @@
         flex-basis: 100%;
       }
     }
+  }
+}
 
-    & .column {
-      @include mq(md) {
-        display: flex;
-        flex-direction: column;
-      }
+.featured {
+  @include mq(md) {
+    display: flex;
+    flex-direction: column;
+  }
 
-      & .column-heading {
-        text-align: left;
-        padding-left: $sp-3;
-      }
-    
-      & .column-content {
-        padding: $sp-2;
-    
-        & .column-item {
-          display: flex;
-          justify-content: space-between;
-          padding: $sp-2;        
+  &__head {
+    text-align: left;
+    padding-left: $sp-3;
+  }
 
-          &::before {
-            content: "" !important;
-          }
+  &__content {
+    padding: $sp-2;
+  }
 
-          & .column-item-status {
-            @include fs-3;
-            display: flex;
-            justify-content: center;
-            width: 15%;
-          }
+  &__foot {
+    @include fs-2;
+    color: $accent-txt-color;
+    text-align: right;
+    padding-bottom: $sp-3;
 
-          & .column-item-text {
-            // is a flex item
-            flex-grow: 1;
-            align-items: center;
-            // is a flex container
-            display: flex;
-            justify-content: space-between;
-        
-            & .column-item-date {
-              @include fs-2;
-              color: $date-txt-color;
-            }
-
-          }
-        }
-      }
-    
-      & .column-foot {
-        @include fs-2;
-        color: $accent-txt-color;
-        text-align: right;
-        padding-bottom: $sp-3;
-    
-        @include mq(md) {
-          text-align: center;
-          margin-top: auto;
-        }
-      }
+    @include mq(md) {
+      text-align: center;
+      margin-top: auto;
     }
   }
 }

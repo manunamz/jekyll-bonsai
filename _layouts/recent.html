@@ -22,12 +22,12 @@ layout: default
     </div>
   </section>
 
-  <section>
+  <section class="recent__content">
     <ul>
       {% assign recent_docs = site.documents | sort: 'updated' | reverse %}
       {% for doc in recent_docs limit: site.bonsai.recent.cap %}
         <li>
-          <div class="changes-wrap">
+          <div class="item-wrap">
             <div class="bullet-scene">
               <!-- weather emoji -->
               <span class="bullet-scene__change-type">
@@ -38,13 +38,13 @@ layout: default
                 {% include btn_state.html states=doc.status %}
               </span>
             </div>
-            <div class="changes-wrap__text">
+            <div class="item-wrap__text">
               <!-- title -->
-              <span class="changes-wrap__title">
+              <span class="item-wrap__text--big">
                 <a class="wiki-link" href="{{ doc.url | relative_url }}">{{ doc.title }}</a>  
               </span>
               <!-- date updated -->
-              <span class="changes-wrap__date">
+              <span class="item-wrap__text--accent">
                 {{ doc.updated | date: site.bonsai.date_format }}
               </span>
             </div>
