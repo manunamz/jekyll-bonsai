@@ -65,24 +65,31 @@ h6,
 .small-descr {
   @include fs-2;
   color: $accent-txt-color;
+
+  &--center {
+    text-align: center;
+  }
 }
 
-// .text-small {
-//   @include fs-2;
-// }
+// .text {
+  
+//   &--small {
+//     @include fs-2;
+//   }
 
-// .text-mono {
-//   font-family: $mono-font-family !important;
-// }
+//   &--left {
+//     text-align: left !important;
+//   }
 
-// .text-left {
-//   text-align: left !important;
-// }
+//   &--center {
+//     text-align: center !important;
+//   }
 
-// .text-center {
-//   text-align: center !important;
-// }
+//   &--right {
+//     text-align: right !important;
+//   }
 
-// .text-right {
-//   text-align: right !important;
+//   &--mono {
+//     font-family: $mono-font-family !important;
+//   }
 // }

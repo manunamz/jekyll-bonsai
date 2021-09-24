@@ -74,7 +74,7 @@ layout: default
         <span title="Attribute Entry">{% include img/bullet-net-web.svg %}</span>
         {% assign attributes = page.attributes | doc_type: "entries" %}
         {% if attributes.size == 0 %}
-          <p class="small-descr" style="text-align: center;">No attribute entries.</p>
+          <p class="small-descr small-descr--center">No attribute entries.</p>
         {% else %}
           <table>
             <tbody>
@@ -118,7 +118,7 @@ layout: default
             {% include img/bullet-tree.svg %}
           </span>
           {% if page.children.size == 0 %}
-            <p class="small-descr entry-foot-nav-child-none">No child entries.</p>
+            <p class="small-descr small-descr--center">No child entries.</p>
           {% else %}
             <ul class="entry-foot-nav-list">
               {% for child in page.children %}
@@ -144,7 +144,7 @@ layout: default
             {% include img/bullet-net-web.svg %}
           </span>
           {% if page.attributed.size == 0 %}
-            <p class="small-descr entry-foot-nav-child-none">No attributed entries.</p>
+            <p class="small-descr small-descr--center">No attributed entries.</p>
           {% else %}
             <ul class="entry-foot-nav-list">
               {% for attr in page.attributed %}
