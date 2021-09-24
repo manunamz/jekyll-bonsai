@@ -56,8 +56,8 @@ function setupLinkOpen (link) {
 }
 
 function expandSiteNav() {
-  var sideBar = document.getElementById('side-bar-container');
-  var mainView = document.getElementById('main-container');
+  var sideBar = document.getElementById('side-bar');
+  var mainView = document.getElementById('main');
   var wikiBonsai = document.getElementById('nav-bonsai');
   
   if (document.getElementById('wiki-link-nav-checkbox').checked) {

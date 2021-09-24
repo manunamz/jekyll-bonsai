@@ -26,15 +26,15 @@
   </head>  
   <body>
 
-    <div id="side-bar-container" class="side-bar-container">
+    <div id="side-bar" class="side-bar__container">
       {% include site-nav.html %}
     </div>
     
-    <div id="main-container" class="main-container">
-      <main id="main" class="main">
+    <div id="main" class="main__container">
+      <main id="main" class="main__content">
         {% include anchor-headings.html html=content anchorClass="anchor-heading" %}
       </main>
-      <footer class="main-foot">
+      <footer class="main__foot">
         {% assign about_page = site.pages | find_exp: "item", "item.name == 'about.md'" %}
         {% if about_page %}
           <a class="btn btn--small btn--brown" href="{{ '/about/' | relative_url }}" title="Go To About">{{ site.data.emoji.about }}</a>

@@ -1,46 +1,52 @@
 // two column layout
 
-.side-bar-container {
-  position: fixed;
-  z-index: 1;
-  display: none;
-  height: 100vh;
+.side-bar {
+  
+  &__container {
+    position: fixed;
+    z-index: 1;
+    display: none;
+    height: 100vh;
 
-  @include mq(md) {
-    display: block;
-    width: $nav-width-md;
-  }
+    @include mq(md) {
+      display: block;
+      width: $nav-width-md;
+    }
 
-  @include mq(lg) {
-    display: block;
-    width: $nav-width-lg;
-  }
+    @include mq(lg) {
+      display: block;
+      width: $nav-width-lg;
+    }
 
-  &.nav-open {
-    display: block;
-    width: 100vw;
+    &.nav-open {
+      display: block;
+      width: 100vw;
+    }
   }
 }
 
-.main-container {
-  @include container;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+.main {
+  
+  &__container {
+    @include container;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 
-  @include mq(md) {
-    margin-left: $nav-width-md;
+    @include mq(md) {
+      margin-left: $nav-width-md;
+    }
+
+    @include mq(lg) {
+      margin-left: $nav-width-lg;
+    }
   }
 
-  @include mq(lg) {
-    margin-left: $nav-width-lg;
-  }
-
-  .main {
+  &__content {
     flex: 1 0 auto;
   }
 
-  .main-foot {
+  &__foot {
     // 'sticky footer' from: https://css-tricks.com/couple-takes-sticky-footer/#there-is-flexbox
     //  ex = local
     //    footer = main-foot
@@ -49,5 +55,5 @@
     //    html, body = main-container (height is min-height)
     flex-shrink: 0;
     display: flex;
-  }  
+  }
 }
