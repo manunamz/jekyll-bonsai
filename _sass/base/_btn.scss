@@ -55,16 +55,19 @@
 }
 
 .bonsai-burger {
-  display: flex;
-  flex-direction: column;
+  // fix in corner
   position: fixed;
+  z-index: 5;
   right: $sp-2;
   bottom: $sp-4;
+  // flex contents
+  display: flex;
+  flex-direction: column;
+  // interaction
   cursor: pointer;
   user-select: none;
   filter: drop-shadow(0 0 0.7mm $drop-shadow-green);
-  z-index: 5;
-
+  
   /* Hide the browser's default checkbox */
   input {
     opacity: 0;
@@ -72,12 +75,12 @@
     width: 0;
   }
 
-  #nav-base {
+  #nav-bonsai {
     margin-left: 10px;
-    margin-right: 10px;
   }
 
-  #nav-bonsai {
-    margin-left: 5px;
+  #nav-base {
+    margin-left: 20px;
+    margin-right: 20px;
   }
 }
