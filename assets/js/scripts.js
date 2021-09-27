@@ -26,7 +26,7 @@ function initListeners () {
   // init hover-preview.html listeners.
   document.querySelectorAll('{{ include.wrapperQuerySelector }} a.wiki-link').forEach(setupListeners);
 
-  document.getElementById('wiki-link-nav-checkbox')
+  document.getElementById('bonsai-burger-nav-checkbox')
     .addEventListener('click', function(event) {
       expandSiteNav();
       document.getElementById('jekyll-graph').dispatchEvent(new Event('draw')); // tell graph to redraw itself
@@ -58,15 +58,15 @@ function setupLinkOpen (link) {
 function expandSiteNav() {
   var sideBar = document.getElementById('side-bar');
   var mainView = document.getElementById('main');
-  var wikiBonsai = document.getElementById('nav-bonsai');
+  var bonsai = document.getElementById('nav-bonsai');
   
-  if (document.getElementById('wiki-link-nav-checkbox').checked) {
+  if (document.getElementById('bonsai-burger-nav-checkbox').checked) {
     sideBar.classList.add('nav-open');
     mainView.classList.add('hide');
-    wikiBonsai.hidden = false;
+    bonsai.hidden = false;
   } else {
     sideBar.classList.remove('nav-open');
     mainView.classList.remove('hide');
-    wikiBonsai.hidden = true;
+    bonsai.hidden = true;
   }
 }
