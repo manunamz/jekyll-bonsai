@@ -8,9 +8,9 @@ layout: default
 <div id="state" class="state">
 
   <nav class="state__nav">
-    <ul class="states-list">
+    <ul>
       {% for state in states %}
-        <li class="states-list__item {% if page.url == state.url %}active{% endif %}">
+        <li class="{% if page.url == state.url %}active{% endif %}">
           <a class="stat-tag" href="{{ state.url | relative_url }}">
             {{ state.emoji }}
           </a>
