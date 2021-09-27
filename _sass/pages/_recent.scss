@@ -15,7 +15,6 @@
 
   .leader {
     display: flex;
-    flex-direction: row;
     margin: $sp-2;
     padding: $sp-2;
   }
@@ -40,10 +39,10 @@
     }
   
     &__content {
+      @include fs-4;
       white-space: nowrap;
   
       width: 100%;
-      padding-left: $sp-4;
     }
 
     &--right {

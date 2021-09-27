@@ -2,16 +2,16 @@
 
 .post {
 
-  .post__title {
+  &__title {
     @include container-narrow;
     margin-bottom: $sp-2;
   }
 
-  .post__infobox {
+  &__infobox {
     @include infobox-container;
   }
 
-  .post__content {
+  &__content {
     @include container-narrow;
   }
 }
