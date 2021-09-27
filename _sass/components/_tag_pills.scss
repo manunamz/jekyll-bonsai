@@ -13,17 +13,14 @@
     border: 1px solid var(--border-color);
   
     &:hover {
-      background-color: var(--base-button-color);
+      background-color: var(--accent-light-color);
     }
-    
-    // TODO: fix disabled behavior 
-    // (probably should switch tags to be btns anyway...)
+
     &.disabled {
       color: var(--tag-disabled-color);
-      border: 1px solid var(--tag-disabled-color);
   
       &:hover {
-        background-color: var(--tag-disabled-color) !important;
+        background-color: var(--accent-dark-color);
       }
     }
   }
