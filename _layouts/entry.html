@@ -69,27 +69,30 @@ layout: default
       </div>
       <div class="infobox__link-nav">
         <nav id="attr-box-link-nav" class="link-map">
-          <span title="Attribute Entry">{% include img/bullet-net-web.svg %}</span>
+          <span class="link-map__type" title="Attribute Entry">{% include img/bullet-net-web.svg %}</span>
           {% assign attributes = page.attributes | doc_type: "entries" %}
+
           {% if attributes.size == 0 %}
             <p class="text--small text--center">No attribute entries.</p>
           {% else %}
-            <table>
-              <tbody>
-                  {% for attr in attributes %}
-                    <tr>
-                      <th rowspan="{{ attr.urls | size }}" scope="rowgroup">{{ attr.type | capitalize }}</th>
-                      {% for doc_url in attr.urls %}
-                        {% assign attr_doc = site.entries | where: "url", doc_url | first %}
-                        <td>
-                          {% include btn_state.html states=attr_doc.status %}
-                          <a class="wiki-link" href="{{ attr_doc.url | relative_url }}">{{ attr_doc.title }}</a>
-                        </td>
-                    </tr>
-                      {% endfor %}
-                  {% endfor %}
-              </tbody>
-            </table>
+            <div class="link-map__wrapper">
+              {% for attr in attributes %}
+                <div class="link-map__key">
+                  {{ attr.type | capitalize }}
+                </div>
+                <div class="link-map__value">
+                  <ul>
+                    {% for doc_url in attr.urls %}
+                      {% assign attr_doc = site.entries | where: "url", doc_url | first %}
+                      <li>
+                        {% include btn_state.html states=attr_doc.status %}
+                        <a class="wiki-link" href="{{ attr_doc.url | relative_url }}">{{ attr_doc.title }}</a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </div>
+              {% endfor %}
+            </div>
           {% endif %}
         </nav>
       </div>
@@ -99,7 +102,7 @@ layout: default
   <div class="entry__body markdown hp-content">
     {{ content }}
   </div>
-    
+
   <footer class="entry__footer">
     <!-- linked entries -->
     <div class="entry__section-wrapper">

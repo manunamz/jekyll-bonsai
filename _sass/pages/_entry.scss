@@ -61,7 +61,7 @@
       display: flex;
       flex-direction: row;
       padding-left: $sp-2;
-      
+
       &::before {
         display: none;
       }
@@ -74,6 +74,7 @@
 .infobox {
   display: flex;
   flex-direction: column;
+  padding: $sp-2;
   // todo: separate scroll for infobox...
   //       ...but it didn't feel quite right...
   //       ...commenting out for now.
@@ -104,21 +105,24 @@
   flex-direction: column;
   text-align: center;
 
-  table {
-    padding: $sp-1;
-    background-color: $transparent;
+  &__type {
+    text-align: center;
+  }
 
-    th {
-      background-color: $transparent;
-      border-bottom: 0;
-    }
+  &__wrapper {
+    display: grid;
+  }
 
-    td {
-      padding: $sp-1;
-      background-color: $transparent;
-      border-bottom: 0;
-      text-align: center;
-    }
+  &__key {
+    grid-column-start: 1;
+    align-self: center;
+    text-align: right;
+  }
+
+  &__value {
+    grid-column-start: 2;
+    align-self: center;
+    text-align: left;
   }
 }
 
@@ -131,22 +135,6 @@
     width: 100%;
     padding-left: $sp-2;
     padding-right: $sp-2;
-
-    ul {
-      display: block; // columns require block
-      column-count: 2;
-      column-width: $content-width / 6;
-      padding-left: 0;
-      
-      li {
-        padding: $sp-1;
-        max-width: $content-width / 4;
-        // hide overflowing text
-        overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-      }
-    }
   }
 
   &__type {
@@ -154,5 +142,21 @@
     display: inline-block;
     width: 100%;
     text-align: center;
+  }
+
+  ul {
+    display: block; // columns require block
+    column-count: 2;
+    column-width: $content-width / 6;
+    padding-left: 0;
+    
+    li {
+      padding: $sp-1;
+      max-width: $content-width / 4;
+      // hide overflowing text
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
   }
 }
