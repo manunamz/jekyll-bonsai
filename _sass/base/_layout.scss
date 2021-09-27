@@ -49,10 +49,10 @@
   &__footer {
     // 'sticky footer' from: https://css-tricks.com/couple-takes-sticky-footer/#there-is-flexbox
     //  ex = local
-    //    footer = main-foot
+    //    footer = main__footer
     //    content = main
-    //    body = main-container
-    //    html, body = main-container (height is min-height)
+    //    body = main__container
+    //    html, body = main__container (height is min-height)
     flex-shrink: 0;
     display: flex;
   }
