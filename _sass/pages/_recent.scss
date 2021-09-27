@@ -5,17 +5,22 @@
 .recent {
   @include container-narrow;
 
-  .leader {
+  // &__leader {
+    
+  // }
 
-    &__content {
-      display: flex;
-      flex-direction: row;
-      margin: $sp-2;
-      padding: $sp-2;
-    }
+  &__content {
+    padding: $sp-4;
+  }
+
+  .leader {
+    display: flex;
+    flex-direction: row;
+    margin: $sp-2;
+    padding: $sp-2;
   }
   
-  .infobox {
+  .key {
     @include fs-3;
     display: flex;
     flex-direction: column;
@@ -29,25 +34,21 @@
       width: 50%;
     }
   
-    &--right {
-      float: right;
-    }
-  
-    .infobox__title {
+    &__title {
       @include fs-5;
       text-align: center;
     }
   
-    .infobox__content {
+    &__content {
       white-space: nowrap;
   
       width: 100%;
       padding-left: $sp-4;
     }
-  }  
 
-  &__content {
-    padding: $sp-4;
+    &--right {
+      float: right;
+    }
   }
 
   .bullet-scene {

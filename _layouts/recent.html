@@ -3,17 +3,17 @@ layout: default
 ---
 <div id="recent" class="recent">
 
-  <section class="leader">
+  <section class="recent__leader">
     <div class="hp-title">
       <h1>{{ site.data.emoji.recent }} {{ page.title }}</h1>
     </div>
-    <div class="leader__content">
+    <div class="leader">
       <div class="hp-content">
         {{ content }}
       </div>
-      <aside class="infobox">
-        <span class="infobox__title">Key</span>
-        <div class="infobox__content">
+      <aside class="key">
+        <span class="key__title">Key</span>
+        <div class="key__content">
           <p>{{ site.data.emoji.created }} Created</p>
           <p>{{ site.data.emoji.updated }} Updated</p>
           <p class="small-descr"><em>{{ site.data.emoji.deleted }} Deleted (Inactive)</em></p>
@@ -29,21 +29,17 @@ layout: default
         <li>
           <div class="item-wrap">
             <div class="bullet-scene">
-              <!-- weather emoji -->
               <span class="bullet-scene__change-type">
                 {{ doc | modified_emoji }}
               </span>
-              <!-- plant emojis -->
               <span class="bullet-scene__status">
                 {% include btn_state.html states=doc.status %}
               </span>
             </div>
             <div class="item-wrap__text">
-              <!-- title -->
               <span class="item-wrap__text--big">
                 <a class="wiki-link" href="{{ doc.url | relative_url }}">{{ doc.title }}</a>  
               </span>
-              <!-- date updated -->
               <span class="item-wrap__text--accent">
                 {{ doc.updated | date: site.bonsai.date_format }}
               </span>
