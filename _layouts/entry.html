@@ -4,23 +4,22 @@ layout: default
 
 <div id="entry" class="entry">
 
-  <!-- breadcrumb ancestry path -->
-  <header id="entry-header" class="hp-header">
-    <div class="entry-head-wrapper">
-      <div>
-        <label class="btn">
-          <input id="entry-head-checkbox" type="checkbox">
-          <span class="btn--brown" title="Toggle Header">
-            {{ site.data.emoji.breadcrumbs }}
-          </span>
-        </label>
-      </div>
-      <nav id="entry-head-nav" class="entry-head-nav" role="navigation" aria-label="entry's ancestry">
-        <ol class="entry-head-breadcrumbs">
+  <!-- header -->
+  
+  <header class="entry__header">
+    <label class="btn">
+      <input id="entry-head-checkbox" type="checkbox">
+      <span class="btn--brown" title="Toggle Header">
+        {{ site.data.emoji.breadcrumbs }}
+      </span>
+    </label>
+    <div class="entry__header--fix-hrz-scroll hp-header">
+      <nav id="entry-head-nav" class="breadcrumb" role="navigation" aria-label="entry's ancestry">
+        <ol>
           {% for ancestor in page.ancestors %}
             {% assign ancestor_doc = site.entries | where: "url", ancestor | first %}
             {% if ancestor_doc %}
-              <li class="entry-head-breadcrumb">
+              <li>
                 <span title="Ancestor Entry">{% include img/bullet-ancestor.svg %}</span>
                 {% include btn_state.html states=ancestor_doc.status %}
                 <a class="wiki-link" href="{{ ancestor_doc.url | relative_url }}">
@@ -28,13 +27,13 @@ layout: default
                 </a>
               </li>
             {% else %}
-              <li class="entry-head-breadcrumb">
+              <li>
                 <span title="Ancestor Entry">{% include img/bullet-ancestor.svg %}</span>
-                <span class="missing-entry-txt">{{ site.data.emoji.missing }} {{ ancestor | split: "." | last }}</span>
+                <span class="small-descr small-descr--no-point">{{ site.data.emoji.missing }} {{ ancestor | split: "." | last }}</span>
               </li>
             {% endif %}
           {% endfor %}
-          <li class="entry-head-breadcrumb">
+          <li>
             <span title="Ancestor Entry">{% include img/bullet-ancestor.svg %}</span>
             {% include btn_state.html states=page.status %}
             <span>{{ page.title }}</span>
@@ -44,7 +43,7 @@ layout: default
     </div>
   </header>
   
-  <div class="hp-title entry-title">
+  <div class="entry__title hp-title">
     <h1>{{ page.title }}</h1>
     <div>
       {% include btn_state.html states=page.status %}
@@ -52,114 +51,112 @@ layout: default
     </div>
   </div>
 
-  <div class="entry-infobox">
-    {% if page.path == site.bonsai.entries.root_path %}
-      <img id="root-logo" class="entry-infobox-img">
-    {% endif %}
-    <div class="entry-infobox-bar">
-      <div>
+  <div class="entry__infobox">
+    <div class="infobox">
+      {% if page.path == site.bonsai.entries.root_path %}
+        <img id="root-logo" class="infobox__img">
+      {% endif %}
+      <div class="infobox__bar">
         <label class="btn">
           <input id="entry-head-links-checkbox" type="checkbox">
           <span class="btn--brown" title="Toggle Linked Entries">
             {{ site.data.emoji.entries }}
           </span>
         </label>
-      </div>
-      {% if site.social.enabled %}
-        {% include share.html %}
-      {% endif %}
-    </div>
-    <div class="attr-box-wrapper">
-      <nav id="attr-box-link-nav" class="attr-box-link-nav">
-        <span title="Attribute Entry">{% include img/bullet-net-web.svg %}</span>
-        {% assign attributes = page.attributes | doc_type: "entries" %}
-        {% if attributes.size == 0 %}
-          <p class="small-descr small-descr--center">No attribute entries.</p>
-        {% else %}
-          <table>
-            <tbody>
-                {% for attr in attributes %}
-                  <tr>
-                    <th rowspan="{{ attr.urls | size }}" scope="rowgroup">{{ attr.type | capitalize }}</th>
-                    {% for doc_url in attr.urls %}
-                      {% assign attr_doc = site.entries | where: "url", doc_url | first %}
-                      <td>
-                        {% include btn_state.html states=attr_doc.status %}
-                        <a class="wiki-link" href="{{ attr_doc.url | relative_url }}">{{ attr_doc.title }}</a>
-                      </td>
-                  </tr>
-                    {% endfor %}
-                {% endfor %}
-            </tbody>
-          </table>
+        {% if site.social.enabled %}
+          {% include share.html %}
         {% endif %}
-      </nav>
+      </div>
+      <div class="infobox__link-nav">
+        <nav id="attr-box-link-nav" class="link-map">
+          <span title="Attribute Entry">{% include img/bullet-net-web.svg %}</span>
+          {% assign attributes = page.attributes | doc_type: "entries" %}
+          {% if attributes.size == 0 %}
+            <p class="small-descr small-descr--center">No attribute entries.</p>
+          {% else %}
+            <table>
+              <tbody>
+                  {% for attr in attributes %}
+                    <tr>
+                      <th rowspan="{{ attr.urls | size }}" scope="rowgroup">{{ attr.type | capitalize }}</th>
+                      {% for doc_url in attr.urls %}
+                        {% assign attr_doc = site.entries | where: "url", doc_url | first %}
+                        <td>
+                          {% include btn_state.html states=attr_doc.status %}
+                          <a class="wiki-link" href="{{ attr_doc.url | relative_url }}">{{ attr_doc.title }}</a>
+                        </td>
+                    </tr>
+                      {% endfor %}
+                  {% endfor %}
+              </tbody>
+            </table>
+          {% endif %}
+        </nav>
+      </div>
     </div>
   </div>
 
-  <div class="hp-content entry-body-wrapper markdown">
+  <div class="entry__body markdown hp-content">
     {{ content }}
   </div>
-
-  <footer class="entry-footer">
+    
+  <footer class="entry__footer">
     <!-- linked entries -->
-    <div class="entry-foot-wrapper">
-      <div>
-        <label class="btn">
-          <input id="entry-foot-links-checkbox" type="checkbox">
-          <span class="btn--brown" title="Toggle Linked Entries">
-            {{ site.data.emoji.entries }}
-          </span>
-        </label>
-      </div>
-      <nav id="entry-foot-links-nav" class="entry-foot-nav" role="navigation" aria-label="linked entries">
-        <div class="entry-foot-nav-section">
-          <span class="entry-foot-link-type" title="Child Entry">
+    <div class="entry__section-wrapper">
+      <label class="btn">
+        <input id="entry-foot-links-checkbox" type="checkbox">
+        <span class="btn--brown" title="Toggle Linked Entries">
+          {{ site.data.emoji.entries }}
+        </span>
+      </label>
+      <nav id="entry-foot-links-nav" class="link-box" role="navigation" aria-label="linked entries">
+        <div class="link-box__partition">
+          <span class="link-box__type" title="Child Entry">
             {% include img/bullet-tree.svg %}
           </span>
           {% if page.children.size == 0 %}
             <p class="small-descr small-descr--center">No child entries.</p>
           {% else %}
-            <ul class="entry-foot-nav-list">
+            <ul>
               {% for child in page.children %}
                 {% assign child_doc = site.entries | where: "url", child | first %}
                 {% if child_doc %}
-                  <li class="entry-foot-nav-list-item">
+                  <li>
                     {% include btn_state.html states=child_doc.status %}
-                    <a class="wiki-link {% if child_doc.url == '' %}missing-entry-txt{% endif %}" href="{{ child_doc.url | relative_url }}">
+                    <a class="wiki-link {% if child_doc.url == '' %}small-descr small-descr--no-point{% endif %}" href="{{ child_doc.url | relative_url }}">
                       {{ child_doc.title }}
                     </a>
                   </li>
                 {% else %}
-                  <li class="entry-foot-nav-list-item">
-                    <span class="missing-entry-txt">{{ site.data.emoji.missing }} {{ child | split: "." | last }}</span>
+                  <li>
+                    <span class="small-descr small-descr--no-point">{{ site.data.emoji.missing }} {{ child | split: "." | last }}</span>
                   </li>
                 {% endif %}
               {% endfor %}
             </ul>
           {% endif %}
         </div>
-        <div class="entry-foot-nav-section">
-          <span class="entry-foot-link-type" title="Attributed Entry">
+        <div class="link-box__partition">
+          <span class="link-box__type" title="Attributed Entry">
             {% include img/bullet-net-web.svg %}
           </span>
           {% if page.attributed.size == 0 %}
             <p class="small-descr small-descr--center">No attributed entries.</p>
           {% else %}
-            <ul class="entry-foot-nav-list">
+            <ul>
               {% for attr in page.attributed %}
                 {% for attr_url in attr.urls %}
                   {% assign attr_doc = site.entries | where: "url", attr_url | first %}
                   {% if attr_doc %}
-                    <li class="entry-foot-nav-list-item">
+                    <li>
                       {% include btn_state.html states=attr_doc.status %}
-                      <a class="wiki-link {% if attr_doc.url == '' %}missing-entry-txt{% endif %}" href="{{ attr_doc.url | relative_url }}">
+                      <a class="wiki-link {% if attr_doc.url == '' %}small-descr small-descr--no-point{% endif %}" href="{{ attr_doc.url | relative_url }}">
                         {{ attr_doc.title }}
                       </a>
                     </li>
                   {% else %}
-                    <li class="entry-foot-nav-list-item">
-                      <span class="missing-entry-txt">{{ site.data.emoji.missing }} {{ child | split: "." | last }}</span>
+                    <li>
+                      <span class="small-descr small-descr--no-point">{{ site.data.emoji.missing }} {{ child | split: "." | last }}</span>
                     </li>
                   {% endif %}
                 {% endfor %}
@@ -170,25 +167,23 @@ layout: default
       </nav>
     </div>
     <!-- linked posts -->
-    <div class="entry-foot-wrapper">
-      <div>
-        <label class="btn">
-          <input id="entry-foot-posts-checkbox" type="checkbox">
-          <span class="btn--purple" title="Toggle Linked Posts">
-            {{ site.data.emoji.posts }}
-          </span>
-        </label>
-      </div>
-      <nav id="entry-foot-posts-nav" class="entry-foot-nav" role="navigation" aria-label="linked posts">      
-        <div class="entry-foot-nav-section">
+    <div class="entry__section-wrapper">
+      <label class="btn">
+        <input id="entry-foot-posts-checkbox" type="checkbox">
+        <span class="btn--purple" title="Toggle Linked Posts">
+          {{ site.data.emoji.posts }}
+        </span>
+      </label>
+      <nav id="entry-foot-posts-nav" class="link-box" role="navigation" aria-label="linked posts">      
+        <div class="link-box__partition">
           <!-- capture linked_post here -->
           {% capture linked_posts %}
             {% assign num_linked_posts = 0 %}
-            <ul class="entry-foot-nav-list">
+            <ul>
               {% for post in site.posts %}
                 {% if post.tags contains page.namespace %}
                   {% assign num_linked_posts = num_linked_posts | plus: 1 %}
-                  <li class="entry-foot-nav-list-item">
+                  <li>
                     {% include btn_state.html states=post.status %}
                     <a class="wiki-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
                   </li>

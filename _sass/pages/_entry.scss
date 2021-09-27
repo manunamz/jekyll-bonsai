@@ -1,177 +1,153 @@
 // entry page styles
-
-// make styles accessible to hover-preview
-// todo: clean this up...
-.entry-head-wrapper {
-  display: flex;
   
-  .entry-head-nav {
-    align-self: center;
-    overflow-x: scroll;
-    white-space: nowrap;  
-
-    .entry-head-breadcrumbs {
-      display: flex;
-      // remove 'ol' defaults
-      padding-left: 0;
-      margin-bottom: 0;
-      margin-top: 0;
-      list-style: none;
-    
-      .entry-head-breadcrumb {
-        @include fs-2;
-        display: flex;
-        flex-direction: row;
-        padding-left: $sp-2;
-        
-        &::before {
-          display: none;
-        }
-      }
-    } 
-  }  
-}
-
 .entry {
 
-  .missing-entry-txt {
-    @include fs-2;
-    color: $accent-txt-color !important;
-    pointer-events: none;
-  }
-
-  .entry-head-wrapper {
+  // this container duplication is necessary so the infobox behavior works
+  // (...i think)
+  &__header {
     @include container-narrow;
     display: flex;
-    
-    .entry-head-nav {
-      align-self: center;
-      overflow-x: scroll;
-      white-space: nowrap;  
-  
-      .entry-head-breadcrumbs {
-        display: flex;
-        // remove 'ol' defaults
-        padding-left: 0;
-        margin-bottom: 0;
-        margin-top: 0;
-        list-style: none;
-      
-        .entry-head-breadcrumb {
-          @include fs-2;
-          display: flex;
-          flex-direction: row;
-          padding-left: $sp-2;
-          
-          &::before {
-            display: none;
-          }
-        }
-      } 
-    }  
+    align-items: center;
+
+    &--fix-hrz-scroll {
+      // fixes horizontal scroll
+      // from: https://stackoverflow.com/questions/45280943/horizontal-scroll-breaks-when-using-css-flexbox
+      overflow:hidden;
+    }
   }
 
-  .entry-title {
+  &__title {
     @include container-narrow;
     margin-bottom: $sp-2;
   }
 
-  .entry-body-wrapper {
-    @include container-narrow;
-  }
-
-  .entry-infobox {
+  &__infobox {
     @include infobox-container;
-    display: flex;
-    flex-direction: column;
-
-    .entry-infobox-img {
-      height: 70%;
-      width: 70%;
-      align-self: center;
-      padding: $sp-3;
-    }
-
-    .entry-infobox-bar {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .attr-box-wrapper {
-      padding-top: $sp-3;
-      width: 100%;
-  
-      .attr-box-link-nav {
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-
-        table {
-          padding: $sp-1;
-          background-color: $transparent;
-      
-          th {
-            background-color: $transparent;
-            border-bottom: 0;
-          }
-      
-          td {
-            padding: $sp-1;
-            background-color: $transparent;
-            border-bottom: 0;
-            text-align: center;
-          }
-        }
-      }
-    }
   }
-  
-  .entry-foot-wrapper {
+
+  &__body {
     @include container-narrow;
+  }
+
+  &__footer {
+    @include container-narrow;
+  }
+
+  &__section-wrapper { // specifically for the footer sections...
     margin-top: $sp-6;
     margin-bottom: $sp-6;
     display: flex;
+  }
+}
+
+// header
+
+.breadcrumb {
+  align-self: center;
+  // horizontal scroll on overflow
+  overflow-x: scroll;
+  white-space: nowrap;
+
+  ol {
+    display: flex;
+    // remove 'ol' defaults
+    padding-left: 0;
+    margin-bottom: 0;
+    margin-top: 0;
+    list-style: none;
   
-    .entry-foot-nav {
-      width: 100%;
+    li {
+      @include fs-2;
       display: flex;
-  
-      .entry-foot-nav-section {
-        width: 100%;
-        padding-left: $sp-2;
-        padding-right: $sp-2;
-  
-        .entry-foot-link-type {
-          @include fs-6;
-          display: inline-block;
-          width: 100%;
-          text-align: center;
-        }
+      flex-direction: row;
+      padding-left: $sp-2;
+      
+      &::before {
+        display: none;
       }
-  
-      .entry-foot-nav-list {
-        display: block; // columns require block
-        column-count: 2;
-        column-width: $content-width / 6;
-        padding-left: 0;
-        list-style: none;
-    
-        .entry-foot-nav-list-item {
-          border-radius: 16px;
-          padding: $sp-1;
-          max-width: $content-width / 4;
-          // hide overflowing text
-          overflow: hidden;
-          white-space: nowrap;
-          text-overflow: ellipsis;
-    
-          &::before {
-            display: none; 
-          }
-        }
+    }
+  } 
+}
+
+// aside
+
+.infobox {
+  display: flex;
+  flex-direction: column;
+
+  &__img {
+    height: 70%;
+    width: 70%;
+    align-self: center;
+    padding: $sp-3;
+  }
+
+  &__bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__link-nav {
+    padding-top: $sp-3;
+    width: 100%; 
+  }
+}
+
+.link-map {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  table {
+    padding: $sp-1;
+    background-color: $transparent;
+
+    th {
+      background-color: $transparent;
+      border-bottom: 0;
+    }
+
+    td {
+      padding: $sp-1;
+      background-color: $transparent;
+      border-bottom: 0;
+      text-align: center;
+    }
+  }
+}
+
+// footer
+
+.link-box {
+  width: 100%;
+
+  &__partition {
+    width: 100%;
+    padding-left: $sp-2;
+    padding-right: $sp-2;
+
+    ul {
+      display: block; // columns require block
+      column-count: 2;
+      column-width: $content-width / 6;
+      padding-left: 0;
+      
+      li {
+        padding: $sp-1;
+        max-width: $content-width / 4;
+        // hide overflowing text
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
     }
   }
-  
+
+  &__type {
+    @include fs-6;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+  }
 }
