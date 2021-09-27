@@ -27,7 +27,7 @@ layout: default
       {% assign recent_docs = site.documents | sort: 'updated' | reverse %}
       {% for doc in recent_docs limit: site.bonsai.recent.cap %}
         <li>
-          <div class="item-wrap">
+          <div class="item">
             <div class="bullet-scene">
               <span class="bullet-scene__change-type">
                 {{ doc | modified_emoji }}
@@ -36,11 +36,11 @@ layout: default
                 {% include btn_state.html states=doc.status %}
               </span>
             </div>
-            <div class="item-wrap__text">
-              <span class="item-wrap__text--big">
+            <div class="item__text">
+              <span class="item__text--big">
                 <a class="wiki-link" href="{{ doc.url | relative_url }}">{{ doc.title }}</a>  
               </span>
-              <span class="item-wrap__text--accent">
+              <span class="item__text--accent">
                 {{ doc.updated | date: site.bonsai.date_format }}
               </span>
             </div>
