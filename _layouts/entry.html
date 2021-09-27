@@ -103,12 +103,14 @@ layout: default
   <footer class="entry__footer">
     <!-- linked entries -->
     <div class="entry__section-wrapper">
-      <label class="btn">
-        <input id="entry-foot-links-checkbox" type="checkbox">
-        <span class="btn--brown" title="Toggle Linked Entries">
-          {{ site.data.emoji.entries }}
-        </span>
-      </label>
+      <div> <!-- still need a nesting div for the checkbox -->
+        <label class="btn">
+          <input id="entry-foot-links-checkbox" type="checkbox">
+          <span class="btn--brown" title="Toggle Linked Entries">
+            {{ site.data.emoji.entries }}
+          </span>
+        </label>
+      </div>
       <nav id="entry-foot-links-nav" class="link-box" role="navigation" aria-label="linked entries">
         <div class="link-box__partition">
           <span class="link-box__type" title="Child Entry">
@@ -168,12 +170,14 @@ layout: default
     </div>
     <!-- linked posts -->
     <div class="entry__section-wrapper">
-      <label class="btn">
-        <input id="entry-foot-posts-checkbox" type="checkbox">
-        <span class="btn--purple" title="Toggle Linked Posts">
-          {{ site.data.emoji.posts }}
-        </span>
-      </label>
+      <div> <!-- still need a nesting div for the checkbox -->
+        <label class="btn">
+          <input id="entry-foot-posts-checkbox" type="checkbox">
+          <span class="btn--purple" title="Toggle Linked Posts">
+            {{ site.data.emoji.posts }}
+          </span>
+        </label>
+      </div>
       <nav id="entry-foot-posts-nav" class="link-box" role="navigation" aria-label="linked posts">      
         <div class="link-box__partition">
           <!-- capture linked_post here -->
