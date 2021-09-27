@@ -57,39 +57,35 @@ h6,
   color: $accent-txt-color;
 }
 
-.last-updated {
-  @include fs-4;
-  color: $date-txt-color;
-}
-
-.small-descr {
-  @include fs-2;
-  color: $accent-txt-color;
+.text {
 
   &--center {
-    text-align: center;
+    text-align: center !important;
   }
-}
 
-// .text {
-  
-//   &--small {
-//     @include fs-2;
-//   }
+  &--date {
+    @include fs-4;
+    color: $accent-txt-color;
+  }
+
+  &--small {
+    @include fs-2;
+    color: $accent-txt-color;
+  }
 
 //   &--left {
 //     text-align: left !important;
 //   }
 
-//   &--center {
-//     text-align: center !important;
+//   &--mono {
+//     font-family: $mono-font-family !important;
 //   }
+
+  &--no-point {
+    pointer-events: none;
+  }
 
 //   &--right {
 //     text-align: right !important;
 //   }
-
-//   &--mono {
-//     font-family: $mono-font-family !important;
-//   }
-// }
+}

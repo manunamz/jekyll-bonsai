@@ -29,7 +29,7 @@ layout: default
             {% else %}
               <li>
                 <span title="Ancestor Entry">{% include img/bullet-ancestor.svg %}</span>
-                <span class="small-descr small-descr--no-point">{{ site.data.emoji.missing }} {{ ancestor | split: "." | last }}</span>
+                <span class="text--small text--no-point">{{ site.data.emoji.missing }} {{ ancestor | split: "." | last }}</span>
               </li>
             {% endif %}
           {% endfor %}
@@ -47,7 +47,7 @@ layout: default
     <h1>{{ page.title }}</h1>
     <div>
       {% include btn_state.html states=page.status %}
-      <span class="last-updated">Last Tended: {{ page.updated | date: site.bonsai.date_format }}</span>
+      <span class="text--date">Last Tended: {{ page.updated | date: site.bonsai.date_format }}</span>
     </div>
   </div>
 
@@ -72,7 +72,7 @@ layout: default
           <span title="Attribute Entry">{% include img/bullet-net-web.svg %}</span>
           {% assign attributes = page.attributes | doc_type: "entries" %}
           {% if attributes.size == 0 %}
-            <p class="small-descr small-descr--center">No attribute entries.</p>
+            <p class="text--small text--center">No attribute entries.</p>
           {% else %}
             <table>
               <tbody>
@@ -117,7 +117,7 @@ layout: default
             {% include img/bullet-tree.svg %}
           </span>
           {% if page.children.size == 0 %}
-            <p class="small-descr small-descr--center">No child entries.</p>
+            <p class="text--small text--center">No child entries.</p>
           {% else %}
             <ul>
               {% for child in page.children %}
@@ -125,13 +125,13 @@ layout: default
                 {% if child_doc %}
                   <li>
                     {% include btn_state.html states=child_doc.status %}
-                    <a class="wiki-link {% if child_doc.url == '' %}small-descr small-descr--no-point{% endif %}" href="{{ child_doc.url | relative_url }}">
+                    <a class="wiki-link {% if child_doc.url == '' %}text--small text--no-point{% endif %}" href="{{ child_doc.url | relative_url }}">
                       {{ child_doc.title }}
                     </a>
                   </li>
                 {% else %}
                   <li>
-                    <span class="small-descr small-descr--no-point">{{ site.data.emoji.missing }} {{ child | split: "." | last }}</span>
+                    <span class="text--small text--no-point">{{ site.data.emoji.missing }} {{ child | split: "." | last }}</span>
                   </li>
                 {% endif %}
               {% endfor %}
@@ -143,7 +143,7 @@ layout: default
             {% include img/bullet-net-web.svg %}
           </span>
           {% if page.attributed.size == 0 %}
-            <p class="small-descr small-descr--center">No attributed entries.</p>
+            <p class="text--small text--center">No attributed entries.</p>
           {% else %}
             <ul>
               {% for attr in page.attributed %}
@@ -152,13 +152,13 @@ layout: default
                   {% if attr_doc %}
                     <li>
                       {% include btn_state.html states=attr_doc.status %}
-                      <a class="wiki-link {% if attr_doc.url == '' %}small-descr small-descr--no-point{% endif %}" href="{{ attr_doc.url | relative_url }}">
+                      <a class="wiki-link {% if attr_doc.url == '' %}text--small text--no-point{% endif %}" href="{{ attr_doc.url | relative_url }}">
                         {{ attr_doc.title }}
                       </a>
                     </li>
                   {% else %}
                     <li>
-                      <span class="small-descr small-descr--no-point">{{ site.data.emoji.missing }} {{ child | split: "." | last }}</span>
+                      <span class="text--small text--no-point">{{ site.data.emoji.missing }} {{ child | split: "." | last }}</span>
                     </li>
                   {% endif %}
                 {% endfor %}
@@ -197,7 +197,7 @@ layout: default
           {% endcapture %}
           <!-- render linked_posts here (the if statement is why we have to do this) -->
           {% if num_linked_posts == 0 %}
-            <p class="small-descr">No linked posts.</p>
+            <p class="text--small">No linked posts.</p>
           {% else %}
             {{ linked_posts }}
           {% endif %}

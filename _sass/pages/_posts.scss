@@ -12,14 +12,6 @@
       display: flex; 
       justify-content: space-between;
       list-style-type: none !important;
-      
-      // &::before {
-      //   content: "" !important;
-      // }
-  
-      & .list-item-date {
-        color: $date-txt-color;
-      }
     }
   }  
 }
