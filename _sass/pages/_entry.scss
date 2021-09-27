@@ -74,6 +74,11 @@
 .infobox {
   display: flex;
   flex-direction: column;
+  // todo: separate scroll for infobox...
+  //       ...but it didn't feel quite right...
+  //       ...commenting out for now.
+  // max-height: 100vh;
+  // overflow-y: scroll;
 
   &__img {
     height: 70%;
