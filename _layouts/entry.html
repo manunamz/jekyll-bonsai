@@ -45,10 +45,6 @@ layout: default
   
   <div class="entry__title hp-title">
     <h1>{{ page.title }}</h1>
-    <div>
-      {% include btn_state.html states=page.status %}
-      <span class="text--date">Last Tended: {{ page.updated | date: site.bonsai.date_format }}</span>
-    </div>
   </div>
 
   <div class="entry__infobox">
@@ -56,6 +52,7 @@ layout: default
       {% if page.path == site.bonsai.entries.root_path %}
         <img id="root-logo" class="infobox__img">
       {% endif %}
+      {% include dates.html updated=page.updated date=page.date %}
       <div class="infobox__bar">
         <label class="btn">
           <input id="entry-head-links-checkbox" type="checkbox">
@@ -63,6 +60,7 @@ layout: default
             {{ site.data.emoji.entries }}
           </span>
         </label>
+        {% include btn_state.html states=page.status %}
         {% if site.social.enabled %}
           {% include share.html %}
         {% endif %}
