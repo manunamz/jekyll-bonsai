@@ -2,7 +2,7 @@
 {% if include.pageurl != nil and include.pageurl != '' %}
     {% assign pageurl = include.pageurl %}
 {% else %}
-    {% assign pageurl = page.url %}
+    {% assign pageurl = page.url | relative_url %}
 {% endif %}
 
 <style>
