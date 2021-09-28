@@ -7,7 +7,7 @@
   position: absolute;
   width: 400px;
   height: 250px;
-  z-index: 5;
+  z-index: $z-tooltip;
   padding: 2em; // don't use sass spacing variables -- it makes hover preview buggy.
   border: 1px solid var(--accent-light-color);
   border-radius: 15px;

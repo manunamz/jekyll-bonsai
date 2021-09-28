@@ -4,7 +4,7 @@
 
   header {
     position: absolute;
-    z-index: 4;
+    z-index: $z-nav-component;
     top: 0;
     padding: $sp-2;
     @include fs-5;
@@ -16,7 +16,7 @@
 
   footer {
     position: absolute;
-    z-index: 4;
+    z-index: $z-nav-component;
     bottom: 0;
     left: 0;
     padding: $sp-3;
@@ -61,7 +61,7 @@
 
 .visited-nav {
   position:relative;
-  z-index: 3;
+  z-index: $z-nav-content;
   height: 100%;
   width: 100%;
   padding-top: $sp-10;

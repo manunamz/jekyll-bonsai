@@ -99,3 +99,16 @@ $media-queries: (
   lg: $content-width + $nav-width,
   xl: 1600px,
 ) !default;
+
+// 
+// Z-Indeces
+// 
+
+$z-nav: 10;
+$z-nav-content: 20;
+$z-nav-components: 30;
+
+$z-tooltip: 40;
+$z-modal: 50;
+
+$z-burger: 100;

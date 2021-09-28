@@ -57,7 +57,7 @@
 .bonsai-burger-nav {
   // fix in corner
   position: fixed;
-  z-index: 5;
+  z-index: $z-burger;
   right: $sp-2;
   bottom: $sp-4;
   // flex contents
