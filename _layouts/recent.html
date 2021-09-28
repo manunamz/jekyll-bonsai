@@ -52,9 +52,9 @@ layout: base
               <span class="item__text--big">
                 <a class="wiki-link" href="{{ doc.url | relative_url }}">{{ doc.title }}</a>  
               </span>
-              <span class="item__text--accent">
+              <time class="text--date dt-updated">
                 {{ doc.updated | date: site.bonsai.date_format }}
-              </span>
+              </time>
             </div>
           </div>
         </li>
