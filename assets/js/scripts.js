@@ -21,10 +21,16 @@ import SiteNav from './site-nav.js';
 
 // init
 function initListeners () {
+  // link handling //
+
+  // web
   // open external links in new window; wiki-links in current window.
-  document.querySelectorAll("a.web-link").forEach(setupLinkOpen);
-  // init hover-preview.html listeners.
+  document.querySelectorAll('a.web-link').forEach(setupLinkOpen);
+  // wiki
+  //  init hover-preview.html listeners.
   document.querySelectorAll('{{ include.wrapperQuerySelector }} a.wiki-link').forEach(setupListeners);
+  //  add microdata to wiki links
+  document.querySelectorAll('a.wiki-link').forEach((wikiLink) => wikiLink.classList.add('u-url'));
 
   document.getElementById('bonsai-burger-nav-checkbox')
     .addEventListener('click', function(event) {

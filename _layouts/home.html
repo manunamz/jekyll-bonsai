@@ -10,7 +10,7 @@ layout: default
     </div>
     {% assign root = site.entries | find_exp: "item", "item.path == site.bonsai.entries.root_path" %}
     <div class="lead__title hp-title">
-      <h1><a class="wiki-link" href="{{ root.url | relative_url }}">{{ page.title }}</a></h3>
+      <h1 class="p-name"><a class="wiki-link" href="{{ root.url | relative_url }}">{{ page.title }}</a></h3>
     </div>
     <div class="lead__content hp-content">
       {{ content }}

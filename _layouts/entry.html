@@ -2,9 +2,12 @@
 layout: default
 ---
 
-<article id="entry" class="entry">
-
-  <!-- header -->
+<article id="entry" 
+  class="entry h-entry"
+  role="article" 
+  itemscope
+  itemtype="http://schema.org/Article" 
+  aria-labelledby="{{ title | slug }}-title">
   
   <header class="entry__header">
     <label class="btn">
@@ -44,7 +47,7 @@ layout: default
   </header>
   
   <div class="entry__title hp-title">
-    <h1>{{ page.title }}</h1>
+    <h1 class="p-name">{{ page.title }}</h1>
   </div>
 
   <div class="entry__infobox">
@@ -97,7 +100,7 @@ layout: default
     </div>
   </div>
 
-  <div class="entry__body markdown hp-content">
+  <div class="entry__body markdown hp-content e-content p-name">
     {{ content }}
   </div>
 
