@@ -5,8 +5,8 @@ layout: base
 <div id="home" class="home">
   
   <section class="lead">
-    <div class="lead__img-wrapper">
-      <img id="home-logo" class="lead__img-wrapper__img">
+    <div class="lead__img">
+      <img id="home-logo" class="lead__img--size">
     </div>
     {% assign root = site.entries | find_exp: "item", "item.path == site.bonsai.entries.root_path" %}
     <div class="lead__title hp-title">

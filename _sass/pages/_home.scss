@@ -9,11 +9,11 @@
   .lead {
     padding: $sp-2;
 
-    &__img-wrapper {
+    &__img {
       text-align: center;
       padding: $sp-6;
 
-      &__img {
+      &--size {
         height: 45%; 
         width: 45%;
       }
