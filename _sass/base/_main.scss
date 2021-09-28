@@ -24,20 +24,6 @@ body {
   background-color: var(--body-background-color);
 }
 
-ul {
-  padding: $sp-2;
-  margin-bottom: 0;
-
-  li {
-    list-style-type: none !important;
-    padding: $sp-1;
-  
-    &::before {
-      content: "" !important;
-    }
-  }
-}
-
 ol,
 ul,
 dl,
@@ -82,8 +68,19 @@ pre {
   margin: 0;
 }
 
+ul {
+  margin-bottom: 0;
+  padding: $sp-2;
+}
+
 li {
   margin: 0.25em 0;
+  padding: $sp-1;
+  list-style-type: none !important;
+
+  &::before {
+    content: "" !important;
+  }
 }
 
 img {
