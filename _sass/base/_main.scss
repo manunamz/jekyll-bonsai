@@ -63,7 +63,7 @@ h6 {
   // margin-bottom: 1em;
   font-weight: 500;
   line-height: $body-heading-line-height;
-  color: var(--body-heading-color);
+  color: var(--small-heading-color);
 }
 
 p {
@@ -95,6 +95,6 @@ hr {
   height: 1px;
   padding: 0;
   margin: $sp-6 0;
-  background-color: var(--border-color);
+  background-color: var(--accent-light-color);
   border: 0;
 }

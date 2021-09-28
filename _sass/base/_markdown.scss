@@ -109,7 +109,7 @@
   }
 
   hr {
-    background-color: var(--separator-color);
+    background-color: var(--accent-light-color);
 
     + * {
       margin-top: 0;
@@ -208,7 +208,7 @@
     margin: 0;
     padding: $sp-2;
 
-    border-left: $sp-1 solid var(--blockquote-border-color);
+    border-left: $sp-1 solid var(--accent-light-color);
 
     & p {
       padding-left: $sp-6;
@@ -218,7 +218,7 @@
       @include fs-10;
       font-family: 'Special Elite', cursive;
       position: absolute;
-      color: var(--blockquote-quote-color);
+      color: var(--accent-light-color);
       width: 4rem;
       height: 4rem;
 
@@ -227,7 +227,7 @@
   }
 
   .footnotes {
-    border-top: double var(--separator-color);
+    border-top: double var(--accent-light-color);
   }
 
   .footnote, .reversefootnote {
@@ -249,9 +249,9 @@
     padding-bottom: $sp-2;
     padding-right: $sp-3;
     padding-left: $sp-3;
-    background-color: var(--table-background-color);
-    border-bottom: $border rgba(var(--border-color), 0.5);
-    border-left: $border var(--border-color);
+    background-color: var(--accent-dark-color);
+    border-bottom: $border rgba(var(--accent-light-color), 0.5);
+    border-left: $border var(--accent-light-color);
 
     &:first-of-type {
       border-left: 0;
@@ -275,7 +275,7 @@
 
   thead {
     th {
-      border-bottom: $border var(--border-color);
+      border-bottom: $border var(--accent-light-color);
     }
   }
 }
