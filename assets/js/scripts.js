@@ -27,7 +27,7 @@ function initListeners () {
   // open external links in new window; wiki-links in current window.
   document.querySelectorAll('a.web-link').forEach(setupLinkOpen);
   // wiki
-  //  init hover-preview.html listeners.
+  //  init hp-tooltip.html listeners.
   document.querySelectorAll('{{ include.wrapperQuerySelector }} a.wiki-link').forEach(setupListeners);
   //  add microdata to wiki links
   document.querySelectorAll('a.wiki-link').forEach((wikiLink) => wikiLink.classList.add('u-url'));

@@ -1,39 +1,43 @@
-<!-- for hover-preview to work, every page should define...
+<!-- "hover-preview tooltip"
+
+for hover-preview to work, every page should define...
 - at a minimum:
   - 'hp-title'
   - 'hp-content'
 - optionally
   - 'hp-header' 
-...in a div that wraps the desired element, so the hover-preview can properly build the content to display  -->
+...in a div that wraps the desired element, so the hover-preview can properly build the content to display
+
+-->
 
 <style>  
   /* leave id for opacity toggle */
-  #tooltip-wrapper {
+  #hp-tooltip {
     opacity: 0;
     transition: opacity 100ms;
   }
 </style>
   
-<div class="tooltip-wrapper" id="tooltip-wrapper">
-  <div id='tooltip-content'></div>
+<div id="hp-tooltip" class="hp-tooltip">
+  <div id='hp-tooltip-content'></div>
 </div>
-<iframe id="hover-preview-iframe" src=""></iframe>
+<iframe id="hp-iframe" src=""></iframe>
   
 <script>
   var opacityTimeout;
   var contentTimeout;
   var transitionDurationMs = 100;
 
-  var iframe = document.getElementById('hover-preview-iframe');
-  var tooltipWrapper = document.getElementById('tooltip-wrapper');
-  var tooltipContent = document.getElementById('tooltip-content');
+  var iframe = document.getElementById('hp-iframe');
+  var tooltip = document.getElementById('hp-tooltip');
+  var tooltipContent = document.getElementById('hp-tooltip-content');
 
   function hideTooltip() {
     opacityTimeout = setTimeout(function() {
-    tooltipWrapper.style.opacity = 0;
+    tooltip.style.opacity = 0;
     contentTimeout = setTimeout(function() {
         tooltipContent.innerHTML = '';
-        tooltipWrapper.style.display = 'none';
+        tooltip.style.display = 'none';
     }, transitionDurationMs + 1);
     }, transitionDurationMs)
   }
@@ -48,7 +52,7 @@
       iframe.onload = function() {
         let title = iframe.contentWindow.document.querySelector('.hp-title').innerHTML;
         let content = iframe.contentWindow.document.querySelector('.hp-content').innerHTML;
-        // preserve entries' header breadcrumbs
+        // populate header breadcrumbs if they exist
         if (iframe.contentWindow.document.querySelector('.hp-header')) {
           let header = iframe.contentWindow.document.querySelector('.hp-header').innerHTML;
           tooltipContent.innerHTML = header + title + content;
@@ -56,23 +60,23 @@
         } else {
           tooltipContent.innerHTML = title + content;
         }
-        tooltipWrapper.style.display = 'block';
+        tooltip.style.display = 'block';
         setTimeout(function() {
-            tooltipWrapper.style.opacity = 1;
+            tooltip.style.opacity = 1;
         }, 1);
       };
 
-      tooltipWrapper.style.left = elem_props.left - (tooltipWrapper.offsetWidth / 2) + (elem_props.width / 2) + "px";
-      if ((window.innerHeight - elem_props.top) < (tooltipWrapper.offsetHeight)) {
-        tooltipWrapper.style.top = elem_props.top + top - tooltipWrapper.offsetHeight - 10 + "px";
-      } else if ((window.innerHeight - elem_props.top) > (tooltipWrapper.offsetHeight)) {
-        tooltipWrapper.style.top = elem_props.top + top + 35 + "px";
+      tooltip.style.left = elem_props.left - (tooltip.offsetWidth / 2) + (elem_props.width / 2) + "px";
+      if ((window.innerHeight - elem_props.top) < (tooltip.offsetHeight)) {
+        tooltip.style.top = elem_props.top + top - tooltip.offsetHeight - 10 + "px";
+      } else if ((window.innerHeight - elem_props.top) > (tooltip.offsetHeight)) {
+        tooltip.style.top = elem_props.top + top + 35 + "px";
       }
 
-      if ((elem_props.left + (elem_props.width / 2)) < (tooltipWrapper.offsetWidth / 2)) {
-        tooltipWrapper.style.left = "10px";
-      } else if ((document.body.clientWidth - elem_props.left - (elem_props.width / 2)) < (tooltipWrapper.offsetWidth / 2)) {
-        tooltipWrapper.style.left = document.body.clientWidth - tooltipWrapper.offsetWidth - 20 + "px";
+      if ((elem_props.left + (elem_props.width / 2)) < (tooltip.offsetWidth / 2)) {
+        tooltip.style.left = "10px";
+      } else if ((document.body.clientWidth - elem_props.left - (elem_props.width / 2)) < (tooltip.offsetWidth / 2)) {
+        tooltip.style.left = document.body.clientWidth - tooltip.offsetWidth - 20 + "px";
       }
     }   
   }
@@ -82,7 +86,7 @@
       hideTooltip();
     });
 
-    tooltipWrapper.addEventListener('mouseleave', function(_event) {
+    tooltip.addEventListener('mouseleave', function(_event) {
       hideTooltip();
     });
 
@@ -92,7 +96,7 @@
       showTooltip(event);
     });
 
-    tooltipWrapper.addEventListener('mouseenter', function(event) {
+    tooltip.addEventListener('mouseenter', function(event) {
       clearTimeout(opacityTimeout);
       clearTimeout(contentTimeout);
     });

@@ -1,8 +1,6 @@
-//
-// hover-preview tooltip
-//
+// "hover-preview tooltip"
 
-.tooltip-wrapper {
+.hp-tooltip {
   @include fs-2;
   display: none;
   overflow: hidden;
@@ -36,7 +34,7 @@
   }
 }
 
-#hover-preview-iframe {
+#hp-iframe {
   display: none; 
   height: 0; 
   width: 0;
