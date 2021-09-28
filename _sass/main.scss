@@ -1,6 +1,7 @@
 //
 // util
 //
+
 @import "./util/variables";
 @import "./util/functions";
 // mixins
@@ -8,18 +9,17 @@
 @import "./util/mixins/buttons";
 @import "./util/mixins/typography";
 
-
 // 
 // external dependencies
 // 
 
 @import "./vendor/normalize.scss/normalize.scss";
-
 @import url('https://fonts.googleapis.com/css?family=Special+Elite');
 
 // 
 // base styles
 // 
+
 @import "./base/code";
 @import "./base/layout";
 @import "./base/link";
@@ -30,6 +30,7 @@
 // 
 // component styles
 //
+
 @import "./components/btn";
 @import "./components/infobox";
 @import "./components/item";
@@ -39,6 +40,7 @@
 // includes styles
 // (each file corresponds with an include)
 // 
+
 @import "./includes/anchor_headings";
 @import "./includes/cookie_consent";
 @import "./includes/connect";
@@ -48,7 +50,6 @@
 @import "./includes/share";
 @import "./includes/svg";
 @import "./includes/toc";
-
 
 //
 // layouts styles
