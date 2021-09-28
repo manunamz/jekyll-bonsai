@@ -6,12 +6,12 @@
       </a>
     </span>
     <span class="dropdown">
-      <button class="dropdown-btn">
+      <button class="dropdown__btn">
         <span title="Page Navigation">
           {{ site.data.emoji.pages }}
         </span>
       </button>
-      <div class="dropdown-content">
+      <div class="dropdown__content">
         <!-- using '.first' to test if any results were found -->
         {% assign search_page = site.pages | where: "name", "search.md" %}
         {% if search_page.first %}
@@ -40,12 +40,12 @@
       </div>
     </span>
     <span class="dropdown">
-      <button class="dropdown-btn">
+      <button class="dropdown__btn">
         <span title="Site-Nav Toggles">
           {{ site.data.emoji.site_nav }}
         </span>
       </button>
-      <div class="dropdown-content">
+      <div class="dropdown__content">
         <label class="btn btn--orange drop-1">
           <input id="nav-type-checkbox" type="checkbox" checked="checked">
           <span id="nav-type-emoji-span" title="Toggle Nav Type"></span>
@@ -60,12 +60,12 @@
       </div>
     </span>
     <span class="dropdown">
-      <button class="dropdown-btn">
+      <button class="dropdown__btn">
         <span title="Theme Color Toggles">
           {{ site.data.emoji.colors }}
         </span>
       </button>
-      <div class="dropdown-content">
+      <div class="dropdown__content">
         {% for theme in site.data.themes %}
           <a data-theme-id="{{ theme.id }}" class="btn drop-{{ forloop.index }}" title="{{ theme.id }}">
             {{ theme.emoji }}

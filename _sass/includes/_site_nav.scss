@@ -28,28 +28,33 @@
 .dropdown {
   border: none;
   background: none; 
-}
 
-.dropdown:hover .dropdown-content {
-  display: flex;
-  flex-direction: column;
-}
+  &:hover {
+    display: flex;
+    flex-direction: column;
 
-.dropdown-content {
-  display: none;
-}
+    .dropdown__content {
+      display: flex;
+      flex-direction: column;
+    }
+  }
 
-.dropdown-btn {
-  @include fs-6;
-  cursor: pointer;
-  user-select: none;
-  padding: $sp-2;
+  &__btn {
+    @include fs-6;
+    cursor: pointer;
+    user-select: none;
+    padding: $sp-2;
+    
+    // suppress default html button attributes
+    border: none;
+    background: none;
+    
+    filter: drop-shadow(0 0 0.8mm $drop-shadow-blue);
+  }
   
-  // suppress default html button attributes
-  border: none;
-  background: none;
-  
-  filter: drop-shadow(0 0 0.8mm $drop-shadow-blue);
+  &__content {
+    display: none;
+  }
 }
 
 // visited nav (user-path)
@@ -63,36 +68,36 @@
   padding-bottom: $sp-10;
   overflow-y: scroll;
 
-  .visited-nav-list {
+  &__list {
     list-style: none;
-    
-    .visited-nav-list-item {
-      @include fs-5;
-      display: flex;
-      padding: $sp-2;
-      margin-top: $sp-2;
-      margin-bottom: $sp-2;
-      margin-right: 0 !important;
-      // both animation and transform rely on this transition setting (according to: https://stackoverflow.com/a/20903041)
-      transition: all 0.15s ease-in-out;
-      width: 40%;
+  }
 
-      &:hover {
-        transform: scale(1.1); 
-      }
-      
-      &::before {
-        content: "🥾";
-      }
+  &__list-item {
+    @include fs-5;
+    display: flex;
+    padding: $sp-2;
+    margin-top: $sp-2;
+    margin-bottom: $sp-2;
+    margin-right: 0 !important;
+    // both animation and transform rely on this transition setting (according to: https://stackoverflow.com/a/20903041)
+    transition: all 0.15s ease-in-out;
+    width: 40%;
 
-      @include mq(md) {
-        width: 80%;
-      }
-      // button {
-      //   justify-content: flex-end;
-      // }
+    &:hover {
+      transform: scale(1.1); 
     }
-  } 
+    
+    &::before {
+      content: "🥾";
+    }
+
+    @include mq(md) {
+      width: 80%;
+    }
+    // button {
+    //   justify-content: flex-end;
+    // }
+  }
 }
 
 .hide {
