@@ -70,34 +70,6 @@
 
 // aside
 
-.infobox {
-  display: flex;
-  flex-direction: column;
-  padding: $sp-2;
-  // todo: separate scroll for infobox...
-  //       ...but it didn't feel quite right...
-  //       ...commenting out for now.
-  // max-height: 100vh;
-  // overflow-y: scroll;
-
-  &__img {
-    height: 70%;
-    width: 70%;
-    align-self: center;
-    padding: $sp-3;
-  }
-
-  &__bar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  &__link-nav {
-    width: 100%; 
-  }
-}
-
 .link-map {
   display: flex;
   flex-direction: column;
