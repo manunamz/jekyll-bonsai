@@ -105,15 +105,15 @@ export default class SiteNav {
 
   buildNavList() {
     var visitedNavList = document.createElement('ul');
-    visitedNavList.classList.add('visited-nav__list');
     return visitedNavList;
   }
 
   buildNavListItem(i, o) {
     var visitedNavListItem = document.createElement('li');
-    visitedNavListItem.classList.add('visited-nav__list-item');
-    visitedNavListItem.classList.add('show');
-    visitedNavListItem.setAttribute('style', `--animation-show-order: ${i};`);
+    var visitedNavListItemBullet = document.createElement('span');
+    visitedNavListItemBullet.innerText = '{{ site.data.emoji.visited }}';
+    visitedNavListItem.appendChild(visitedNavListItemBullet);
+    // visitedNavListItem.setAttribute('style', `--animation-show-order: ${i};`);
     // visitedNavListItem.setAttribute('style', `--animation-hide-order: ${o};`);
     return visitedNavListItem;
   }

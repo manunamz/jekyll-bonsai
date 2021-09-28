@@ -68,35 +68,31 @@
   padding-bottom: $sp-10;
   overflow-y: scroll;
 
-  &__list {
+  ul {
     list-style: none;
-  }
 
-  &__list-item {
-    @include fs-5;
-    display: flex;
-    padding: $sp-2;
-    margin-top: $sp-2;
-    margin-bottom: $sp-2;
-    margin-right: 0 !important;
-    // both animation and transform rely on this transition setting (according to: https://stackoverflow.com/a/20903041)
-    transition: all 0.15s ease-in-out;
-    width: 40%;
-
-    &:hover {
-      transform: scale(1.1); 
+    li {
+      @include fs-5;
+      display: flex;
+      padding: $sp-2;
+      margin-top: $sp-2;
+      margin-bottom: $sp-2;
+      margin-right: 0 !important;
+      // both animation and transform rely on this transition setting (according to: https://stackoverflow.com/a/20903041)
+      transition: all 0.15s ease-in-out;
+      width: 40%;
+  
+      &:hover {
+        transform: scale(1.1); 
+      }
+  
+      @include mq(md) {
+        width: 80%;
+      }
+      // button {
+      //   justify-content: flex-end;
+      // }
     }
-    
-    &::before {
-      content: "🥾";
-    }
-
-    @include mq(md) {
-      width: 80%;
-    }
-    // button {
-    //   justify-content: flex-end;
-    // }
   }
 }
 
