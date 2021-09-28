@@ -1,38 +1,38 @@
 // table-of-contents styles
 // (not nesting due to include's format)
 
-.toc-wrapper {
+.toc {
   display: flex;
   justify-content: center;
   padding-top: $sp-5;
   padding-right: $sp-5;
 
-  .toc-list {
+  &__list {
     margin-bottom: 0;
+  }
 
-    .toc-list-item {
-      @include fs-4;
-    
-      &::before {
-        display: none; 
-      }
+  &__list-item {
+    @include fs-4;
+  
+    &::before {
+      display: none; 
+    }
+  }
 
-      .toc-list-item-anchor {
-        color: var(--wiki-link-color);
-        text-decoration: none;
-        background-image: linear-gradient(var(--wiki-link-underline-color) 0%, var(--wiki-link-underline-color) 100%);
-        background-repeat: repeat-x;
-        background-position: 0 100%;
-        background-size: 1px 1px;
-      
-        &:hover {
-          background-image: linear-gradient(
-            rgba(var(--wiki-link-color), 0.45) 0%,
-            rgba(var(--wiki-link-color), 0.45) 100%
-          );
-          background-size: 1px 1px;
-        }
-      }
+  &__anchor {
+    color: var(--wiki-link-color);
+    text-decoration: none;
+    background-image: linear-gradient(var(--wiki-link-underline-color) 0%, var(--wiki-link-underline-color) 100%);
+    background-repeat: repeat-x;
+    background-position: 0 100%;
+    background-size: 1px 1px;
+  
+    &:hover {
+      background-image: linear-gradient(
+        rgba(var(--wiki-link-color), 0.45) 0%,
+        rgba(var(--wiki-link-color), 0.45) 100%
+      );
+      background-size: 1px 1px;
     }
   }
 }
