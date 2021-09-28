@@ -4,8 +4,10 @@ source "https://rubygems.org"
 
 git_source(:github) {|repo_name| "https://github.com/#{repo_name}" }
 
+# run
 gem 'jekyll', '~> 4.2'
-gem 'nanoid', '~> 2.0.0'
+gem 'rouge', '~> 3.26.1'
+# dev
 gem 'rake', '~> 13.0.6'
 gem 'rspec', '~> 3.10.0'
 

@@ -12,7 +12,8 @@
     background: "#E4f3EA"
     text: "#5c5962"
     text_grey: "#27262b"
-    accent_dark: "#b8d9b8"
+    # accent_dark: "#b8d9b8"
+    accent_dark: "#335C33"
     accent_light: "#C7E6D3"
     shadow: "#000"
     link:
