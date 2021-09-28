@@ -1,14 +1,66 @@
 //
-// Import external dependencies
+// util
 //
+@import "./util/variables";
+@import "./util/functions";
+// mixins
+@import "./util/mixins/layout";
+@import "./util/mixins/buttons";
+@import "./util/mixins/typography";
+
+
+// 
+// external dependencies
+// 
+
 @import "./vendor/normalize.scss/normalize.scss";
 
 @import url('https://fonts.googleapis.com/css?family=Special+Elite');
 
+// 
+// base styles
+// 
+@import "./base/code";
+@import "./base/layout";
+@import "./base/link";
+@import "./base/main";
+@import "./base/markdown";
+@import "./base/typography";
+
+// 
+// component styles
 //
-// Modules
+@import "./components/btn";
+@import "./components/infobox";
+@import "./components/item";
+@import "./components/tag_pills";
+
+// 
+// includes styles
+// (each file corresponds with an include)
+// 
+@import "./includes/anchor_headings";
+@import "./includes/cookie_consent";
+@import "./includes/connect";
+@import "./includes/dates";
+@import "./includes/hp_tooltip";
+@import "./includes/site_nav";
+@import "./includes/share";
+@import "./includes/svg";
+@import "./includes/toc";
+
+
 //
-@import "./base/base";
-@import "./components/components";
-@import "./includes/includes";
-@import "./layouts/layouts";
+// layouts styles
+// (each file corresponds with a layouts)
+//
+
+@import "./layouts/404";
+@import "./layouts/about";
+@import "./layouts/entry";
+@import "./layouts/home";
+@import "./layouts/post";
+@import "./layouts/posts";
+@import "./layouts/privacy";
+@import "./layouts/recent";
+@import "./layouts/state";
