@@ -48,6 +48,7 @@
     display: block; // columns require block
     column-count: 3;
     column-width: $content-width / 6;
+    padding: $sp-4;
   }
 
   &__empty-list-wrap {
