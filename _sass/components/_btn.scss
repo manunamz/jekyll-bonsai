@@ -82,5 +82,10 @@
   #nav-base {
     margin-left: 20px;
     margin-right: 20px;
+    transition: all .2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.25); 
+    }
   }
 }
