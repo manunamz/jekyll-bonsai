@@ -17,6 +17,10 @@
     display: flex;
     margin: $sp-2;
     padding: $sp-2;
+
+    &__content {
+      padding: $sp-2;
+    }
   }
   
   .key {
