@@ -69,13 +69,13 @@
   }
 
   @include mq(xl) {
-    max-width: $nav-width-md;
+    max-width: $nav-width-md * 1.5;
     padding: $sp-2;
     
     // from: https://www.bram.us/2020/01/10/smooth-scrolling-sticky-scrollspy-navigation/
     position: sticky;
     top: $sp-2;
 
-    margin-right: $nav-width-md;
+    margin-right: $nav-width-md * (3/5);
   }
 }
