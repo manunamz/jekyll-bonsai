@@ -25,9 +25,7 @@ layout: base
               <li>
                 <span title="Ancestor Entry">{% include img/bullet-ancestor.svg %}</span>
                 {% include btn_state.html states=ancestor_doc.status %}
-                <a class="wiki-link" href="{{ ancestor_doc.url | relative_url }}">
-                  {{ ancestor_doc.title }}
-                </a>
+                <a class="wiki-link" href="{{ ancestor_doc.url | relative_url }}">{{ ancestor_doc.title }}</a>
               </li>
             {% else %}
               <li>
