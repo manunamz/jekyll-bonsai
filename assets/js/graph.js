@@ -2,14 +2,13 @@
 ---
 import JekyllGraph from './jekyll-graph.js';
 
-export default class GraphNav {
+export default class GraphNav extends JekyllGraph {
 
   constructor() {
-    // this.graphType set in initGraphType();
-    this.graphDiv = document.getElementById('jekyll-graph');
+    super(); // this.graphDiv set in JekyllGraph
     this.graphTypeCheckBox = document.getElementById('graph-type-checkbox');
     this.graphTypeEmojiSpan = document.getElementById('graph-type-emoji-span');
-    this.init();
+    this.init(); // this.graphType set in initGraphType();
   }
 
   init() {
@@ -31,7 +30,7 @@ export default class GraphNav {
   }
   
   // how to checkbox: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_display_checkbox_text
-  drawD3Nav() { 
+  drawD3Nav() {
     // redraw new chart
     if (this.graphTypeCheckBox.checked) {
       this.drawTree();
@@ -60,11 +59,3 @@ export default class GraphNav {
     localStorage.setItem('graph-type', this.graphType);
   } 
 }
-
-// subclassing from: https://hacks.mozilla.org/2015/08/es6-in-depth-subclassing/
-
-// Hook up the instance properties
-Object.setPrototypeOf(GraphNav.prototype, JekyllGraph.prototype);
-
-// Hook up the static properties
-Object.setPrototypeOf(GraphNav, JekyllGraph);
