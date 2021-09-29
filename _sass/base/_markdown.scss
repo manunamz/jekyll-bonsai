@@ -79,14 +79,15 @@
   }
 
   ul {
-    list-style: none;
+    margin-top: 0;
+    list-style: none !important;
 
     > li {
       &::before {
         position: absolute;
         margin-left: -1.4em;
         color: $accent-txt-color;
-        content: "•";
+        content: "•" !important;
       }
     }
   }
