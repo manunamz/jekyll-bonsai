@@ -2,20 +2,16 @@
 id: e4dc466bc6
 title: Jekyll-Bonsai
 desc: ''
-updated: 1628187368040
+updated: 1632144283187
 created: 1620408350557
 status: 🍈
 ---
 
-test::[[people]]
-test2::[[people]]
-test3::[[people]]
-
 Welcome to Jekyll-Bonsai.
 
-This template is about discovering new ways of structuring knowledge and navigating the internet. 
+This template is about (re)discovering old-new ways of structuring knowledge and navigating the internet. 
 
-It's about discovering and crafting digital tools that are meant to help us, that wait patiently as we do our human thing. It's about leveraging the things we as people are good at, like visual navigation over walls of menu-text, or speaking in story and metaphor instead of trudging through countless bits of minutae.
+It's about crafting digital tools that are meant to help us, that wait patiently as we do our human thing. It's about leveraging the things we as people are good at, like visual navigation over walls of menu-text, or speaking in story and metaphor instead of trudging through countless bits of minutae.
 
 It's a [[digital-garden.bonsai]]. It's a [[digital-garden]]. The [[features]] herein are meant to investigate how we might explore the internet differently: By organizing knowledge efficiently and humanizing digital interactions with other people.
 
