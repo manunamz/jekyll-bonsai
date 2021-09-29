@@ -9,7 +9,7 @@
 @import './code_themes/monokai';
 
 code {
-  padding: 0.2em 0.15em;
+  padding: $sp-1 $sp-1;
   font-weight: 400;
   border-radius: $border-radius;
   background-color: var(--accent-dark-color);
@@ -52,10 +52,10 @@ a:visited code {
 
 // ```[LANG]...```
 div.highlighter-rouge {
-  padding: $sp-3;
-  margin-top: 0;
-  margin-bottom: $sp-3;
   overflow-x: auto;
+  padding: $sp-3;
+  margin-top: $sp-3;
+  margin-bottom: $sp-3;
   background-color: var(--accent-dark-color);
   border-radius: $border-radius;
   box-shadow: none;
