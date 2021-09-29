@@ -38,7 +38,7 @@ $spacing-unit: 1rem; // 1rem == 16px
 $spacers: (
   sp-0: 0,
   sp-0-75: $spacing-unit * 0.15,
-  sp-1-: $spacing-unit * 0.25,
+  sp-1: $spacing-unit * 0.25,
   sp-1-75: $spacing-unit * 0.4,
   sp-2: $spacing-unit * 0.5,
   sp-3: $spacing-unit * 0.75,
@@ -101,7 +101,7 @@ $media-queries: (
 ) !default;
 
 // 
-// Z-Indeces
+// Z-Indices
 // 
 
 $z-nav: 10;

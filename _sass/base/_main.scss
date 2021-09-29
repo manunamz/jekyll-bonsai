@@ -71,15 +71,15 @@ pre {
 ul {
   margin-bottom: 0;
   padding: $sp-2;
-}
-
-li {
-  margin: 0.25em 0;
-  padding: $sp-1;
-  list-style-type: none !important;
-
-  &::before {
-    content: "" !important;
+  
+  li {
+    margin: 0.25em 0;
+    padding: $sp-1;
+    list-style-type: none !important;
+  
+    &::before {
+      content: "" !important;
+    }
   }
 }
 
