@@ -4,6 +4,7 @@ title: Plants
 desc: ''
 updated: 1628002364056
 created: 1620493511415
+date: 2021-08-04
 status: 🌿
 ---
 

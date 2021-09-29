@@ -4,6 +4,7 @@ title: Delete Data
 desc: ''
 updated: 1628009340132
 created: 1622910819153
+date: 2021-08-04
 status: 🌱
 ---
 

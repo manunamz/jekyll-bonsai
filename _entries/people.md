@@ -4,6 +4,7 @@ title: People
 desc: ''
 updated: 1627997142916
 created: 1620685947743
+date: 2021-08-04
 status: 🎋
 ---
 

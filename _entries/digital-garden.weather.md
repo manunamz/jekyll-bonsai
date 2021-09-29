@@ -4,6 +4,7 @@ title: Weather
 desc: ''
 updated: 1627996077533
 created: 1620492879316
+date: 2021-08-04
 status: 🌿
 ---
 

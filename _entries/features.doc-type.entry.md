@@ -4,6 +4,7 @@ title: Entry
 desc: ''
 updated: 1627998680681
 created: 1620411880535
+date: 2021-08-04
 status: 🎋
 ---
 

@@ -4,6 +4,7 @@ title: Missing Entry
 desc: ''
 updated: 1632851814301
 created: 1620537158307
+date: 2021-08-04
 status: "\U0001F331"
 ---
 The [[features.site-nav.graph]] and [[features.doc-type.entry|entry-local]] navigation will properly handle missing links and entries:
