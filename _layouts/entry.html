@@ -69,13 +69,11 @@ layout: base
       <div class="infobox__link-nav">
         <nav id="attr-box-link-nav" class="link-map">
           <span class="link-map__type" title="Attribute Entry">{% include img/bullet-net-web.svg %}</span>
-          {% assign attributes = page.attributes | doc_type: "entries" %}
-
-          {% if attributes.size == 0 %}
+          {% if page.attributes.size == 0 %}
             <p class="text--small text--center">No attribute entries.</p>
           {% else %}
             <div class="link-map__wrapper">
-              {% for attr in attributes %}
+              {% for attr in page.attributes %}
                 <div class="link-map__key">
                   {{ attr.type | capitalize }}
                 </div>
