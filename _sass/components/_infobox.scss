@@ -16,10 +16,17 @@
   // overflow-y: scroll;
 
   &__img {
-    height: 70%;
-    width: 70%;
     align-self: center;
     padding: $sp-3;
+    height: 70%;
+    width: 70%;
+
+    &--cover {
+      align-self: center;
+      padding: $sp-3;
+      height: 225px;
+      width: 150px;
+    }
   }
 
   &__bar {

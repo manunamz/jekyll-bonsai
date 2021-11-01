@@ -24,6 +24,8 @@ exclude:
   - "LICENSE.txt"
 
 collections:
+  books:
+    output: true
   entries:
     output: true
   states:
@@ -43,20 +45,27 @@ collections:
 
 # frontmatter
 defaults:
+  - 
+    permalink: /:collection/:name
+    scope:
+      # path: "_books/**/*.md"
+      type: "books"
+    values:
+      layout: "book"
+  - 
   # permalink: /:type/:id
   # permalinks are manually verified/generated -- see 'jekyll-bonsai-util' plugin.
+    scope:
+      # path: "_entries/**/*.md"
+      type: "entries"
+    values:
+      layout: "entry"
   - 
     scope:
       # path: "_posts/**/*.md"
       type: "posts"
     values:
       layout: "post"
-  - 
-    scope:
-      # path: "_entries/**/*.md"
-      type: "entries"
-    values:
-      layout: "entry"
   - 
     scope:
       # path: "_states/**/*.md"
@@ -107,6 +116,7 @@ ga_tracking: UA-190413040-4
 namespaces:
   # enabled: true
   exclude:
+    - "books"
     - "pages"
     - "posts"
     - "states"
@@ -131,6 +141,7 @@ graph:
   # assets_path: "/assets"
   # scripts_path: "/assets/js"
   exclude:
+    - "books"
     - "pages"
     - "posts"
     - "states"

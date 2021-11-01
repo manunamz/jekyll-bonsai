@@ -178,28 +178,29 @@ layout: base
           </span>
         </label>
       </div>
-      <nav id="entry-foot-posts-nav" class="link-box" role="navigation" aria-label="linked posts">      
+      <nav id="entry-foot-posts-nav" class="link-box" role="navigation" aria-label="linked posts">
         <div class="link-box__partition">
-          <!-- capture linked_post here -->
-          {% capture linked_posts %}
-            {% assign num_linked_posts = 0 %}
+          <!-- capture linked_docs here -->
+          {% capture linked_docs %}
+            {% assign num_linked_docs = 0 %}
             <ul>
-              {% for post in site.posts %}
-                {% if post.tags contains page.namespace %}
-                  {% assign num_linked_posts = num_linked_posts | plus: 1 %}
+              <!-- posts and books -->
+              {% for doc in site.documents %}
+                {% if doc.tags contains page.namespace %}
+                  {% assign num_linked_docs = num_linked_docs | plus: 1 %}
                   <li>
-                    {% include btn_state.html states=post.status %}
-                    <a class="wiki-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                    {% include btn_state.html states=doc.status %}
+                    <a class="wiki-link" href="{{ doc.url | relative_url }}">{{ doc.title }}</a>
                   </li>
                 {% endif %}
               {% endfor %}
             </ul>
           {% endcapture %}
-          <!-- render linked_posts here (the if statement is why we have to do this) -->
-          {% if num_linked_posts == 0 %}
-            <p class="text--small">No linked posts.</p>
+          <!-- render linked_docs here (the if statement is why we have to do this) -->
+          {% if num_linked_docs == 0 %}
+            <p class="text--small">No linked posts or books.</p>
           {% else %}
-            {{ linked_posts }}
+            {{ linked_docs }}
           {% endif %}
         </div>
       </nav>
