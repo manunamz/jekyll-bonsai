@@ -26,7 +26,7 @@ Gem::Specification.new do |spec|
   # local plugins
   spec.add_runtime_dependency "jekyll-bonsai-util", "~> 0.0.1"
   spec.add_runtime_dependency "jekyll-namespaces", "~> 0.0.3"
-  spec.add_runtime_dependency "jekyll-wikilinks", "~> 0.0.7"
+  spec.add_runtime_dependency "jekyll-wikilinks", "~> 0.0.8"
   spec.add_runtime_dependency "jekyll-graph", "~> 0.0.3"
   # dev
   spec.add_development_dependency "rake", "~> 13.0.6"

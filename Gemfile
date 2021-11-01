@@ -21,7 +21,7 @@ group :jekyll_plugins do
   # local
   gem 'jekyll-bonsai-util', '~> 0.0.1'
   gem 'jekyll-namespaces', '~> 0.0.3'
-  gem 'jekyll-wikilinks', '~> 0.0.7'
+  gem 'jekyll-wikilinks', '~> 0.0.8'
   gem 'jekyll-graph', '~> 0.0.3'
 end
 
