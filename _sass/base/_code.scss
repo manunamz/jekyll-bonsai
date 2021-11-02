@@ -5,17 +5,14 @@
 
 // from: https://bnhr.xyz/2017/03/25/add-syntax-highlighting-to-your-jekyll-site-with-rouge.html
 // @import './code_themes/gruvbox';
-// @import './code_themes/solarized';
-@import './code_themes/monokai';
+@import './code_themes/solarized';
+// @import './code_themes/monokai';
 
 code {
   padding: $sp-1 $sp-1;
   font-weight: 400;
   border-radius: $border-radius;
   background-color: var(--accent-dark-color);
-  color: #f8f8f2; // to make inline-code visible on light themes 
-                    // (but will set the color for all themes...
-                    //  so watch out for that body-text-color)
 }
 
 // Avoid appearance of dark border around visited code links in Safari

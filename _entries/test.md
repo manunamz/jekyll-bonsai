@@ -46,7 +46,22 @@ Lists:
 
 Code Block:
 ```javascript
-console.log("hello world!")
+// javascript
+for (var i=1; i < 101; i++){
+    if (i % 15 == 0) console.log("FizzBuzz");
+    else if (i % 3 == 0) console.log("Fizz");
+    else if (i % 5 == 0) console.log("Buzz");
+    else console.log(i);
+}
+```
+```ruby
+# ruby
+ 1.upto 100 do |i|
+  string = ""
+  string += "Fizz" if i % 3 == 0
+  string += "Buzz" if i % 5 == 0
+  puts "#{i} = #{string}"
+end
 ```
 
 Inline Code:
