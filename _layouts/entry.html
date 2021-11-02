@@ -68,7 +68,7 @@ layout: base
       </div>
       <div class="infobox__link-nav">
         <nav id="attr-box-link-nav" class="link-map">
-          <span class="link-map__type" title="Attribute Entry">{% include img/bullet-net-web.svg %}</span>
+          <span class="link-map__type" title="Attribute Entries">{% include img/bullet-net-web.svg %}</span>
           {% if page.attributes.size == 0 %}
             <p class="text--small text--center">No attribute entries.</p>
           {% else %}
@@ -113,7 +113,7 @@ layout: base
       </div>
       <nav id="entry-foot-links-nav" class="link-box" role="navigation" aria-label="linked entries">
         <div class="link-box__partition">
-          <span class="link-box__type" title="Child Entry">
+          <span class="link-box__type" title="Child Entries">
             {% include img/bullet-tree.svg %}
           </span>
           {% if page.children.size == 0 %}
@@ -139,12 +139,13 @@ layout: base
           {% endif %}
         </div>
         <div class="link-box__partition">
-          <span class="link-box__type" title="Attributed Entry">
+          <span class="link-box__type" title="Attributed and Backlink Entries">
             {% include img/bullet-net-web.svg %}
           </span>
-          {% if page.attributed.size == 0 %}
-            <p class="text--small text--center">No attributed entries.</p>
+          {% if page.attributed.size == 0 and page.backlinks.size == 0 %}
+            <p class="text--small text--center">No attributed or backlinked entries.</p>
           {% else %}
+            <!-- attributed -->
             <ul>
               {% for attr in page.attributed %}
                 {% for attr_url in attr.urls %}
@@ -152,16 +153,36 @@ layout: base
                   {% if attr_doc %}
                     <li>
                       {% include btn_state.html states=attr_doc.status %}
-                      <a class="wiki-link {% if attr_doc.url == '' %}text--small text--no-point{% endif %}" href="{{ attr_doc.url | relative_url }}">
+                      <a class="wiki-link {% if attr_doc.url == '' %}text--small text--no-point{% endif %}" href="{{ attr_doc.url | relative_url }}" title="{{ attr.type }}">
                         {{ attr_doc.title }}
                       </a>
                     </li>
                   {% else %}
                     <li>
+                      {{child}}
                       <span class="text--small text--no-point">{{ site.data.emoji.missing }} {{ child | split: "." | last }}</span>
                     </li>
                   {% endif %}
                 {% endfor %}
+              {% endfor %}
+            </ul>
+            <!-- backlinks -->
+            <ul>
+              {% assign entry_blinks = page.backlinks | doc_type: "entries" %}
+              {% for blink in entry_blinks %}
+                {% assign blink_doc = site.entries | where: "url", blink.url | first %}
+                {% if blink_doc %}
+                  <li>
+                    {% include btn_state.html states=blink_doc.status %}
+                    <a class="wiki-link {% if blink_doc.url == '' %}text--small text--no-point{% endif %}" href="{{ blink_doc.url | relative_url }}" title="{% if blink.type %}{{ blink.type }}{% endif %}">
+                      {{ blink_doc.title }}
+                    </a>
+                  </li>
+                {% else %}
+                  <li>
+                    <span class="text--small text--no-point">{{ site.data.emoji.missing }} {{ child | split: "." | last }}</span>
+                  </li>
+                {% endif %}
               {% endfor %}
             </ul>
           {% endif %}
