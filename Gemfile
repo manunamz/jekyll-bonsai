@@ -20,6 +20,7 @@ group :jekyll_plugins do
   gem 'jekyll-data', '~> 1.1.1'
   # local
   gem 'jekyll-bonsai-util', '~> 0.0.1'
+  gem 'jekyll-id', '~> 0.0.2'
   gem 'jekyll-namespaces', '~> 0.0.3'
   gem 'jekyll-wikilinks', '~> 0.0.8'
   gem 'jekyll-graph', '~> 0.0.3'

@@ -25,6 +25,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency "jekyll-data", "1.1.1"
   # local plugins
   spec.add_runtime_dependency "jekyll-bonsai-util", "~> 0.0.1"
+  spec.add_runtime_dependency "jekyll-id", "~> 0.0.2"
   spec.add_runtime_dependency "jekyll-namespaces", "~> 0.0.3"
   spec.add_runtime_dependency "jekyll-wikilinks", "~> 0.0.8"
   spec.add_runtime_dependency "jekyll-graph", "~> 0.0.3"

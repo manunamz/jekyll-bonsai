@@ -113,6 +113,11 @@ ga_tracking: UA-190413040-4
 # 
 # plugins
 # 
+ids:
+  # ids.format uses 'alpha' and 'size' for nanoid: https://github.com/radeno/nanoid.rb#options
+  format:
+    alpha: '1234567890abcdef'
+    size: 10
 namespaces:
   # enabled: true
   exclude:
@@ -162,11 +167,6 @@ graph:
       x_val: 0.75
       strength_y: 0.1
       y_val: 0.9
-bonsai_util:
-  # id_format uses 'alpha' and 'size' for nanoid: https://github.com/radeno/nanoid.rb#options
-  id_format:
-    alpha: 1234567890abcdef
-    size: 10
 
 # 
 # jekyll-bonsai configs
