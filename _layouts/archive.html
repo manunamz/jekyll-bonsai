@@ -10,9 +10,9 @@ layout: base
   <div class="hp-content">
 
     
-    <h3 class="archive__title">
+    <h4 class="archive__title">
       🫐 🥭 🍈 Produce
-    </h3>
+    </h4>
 
     <ul class="archive__list">
       {% assign post_items = site.posts | sort: "date" %}
@@ -31,9 +31,9 @@ layout: base
       {% endfor %}
     </ul>
 
-    <h3 class="archive__title">
+    <h4 class="archive__title">
       🌰 🍵 🎍 Cross Pollinated
-    </h3>
+    </h4>
     <ul class="archive__list">
       {% assign book_items = site.books | sort %}
       {% for book in book_items %}
@@ -51,9 +51,9 @@ layout: base
       {% endfor %}
     </ul>
 
-    <h3 class="archive__title">
+    <h4 class="archive__title">
       🌱 🌿 🎋 Foliage
-    </h3>
+    </h4>
     <ul class="archive__list">
       {% assign entry_items = site.entries | sort: "title" %}
       {% for entry in entry_items %}
