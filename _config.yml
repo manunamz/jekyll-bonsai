@@ -82,14 +82,6 @@ kramdown:
   syntax_highlighter: rouge
   math_engine: mathjax
 
-# plugins:
-#   - jekyll-namespaces
-#   - jekyll-wikilinks
-#   - jekyll-graph
-#   - jekyll-feed
-#   - jekyll-seo-tag
-#   - jekyll-sitemap
-
 compress_html:
   clippings: all
   comments: all
@@ -169,7 +161,7 @@ graph:
       y_val: 0.9
 
 # 
-# jekyll-bonsai configs
+# bonsai template configs
 # 
 bonsai:
   debug: false
