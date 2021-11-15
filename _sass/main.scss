@@ -56,13 +56,15 @@
 // (each file corresponds with a layouts)
 //
 
-@import "./layouts/404";
-@import "./layouts/about";
+// templates
 @import "./layouts/book";
 @import "./layouts/entry";
-@import "./layouts/home";
 @import "./layouts/post";
-@import "./layouts/posts";
+// pages
+@import "./layouts/404";
+@import "./layouts/about";
+@import "./layouts/archive";
+@import "./layouts/home";
 @import "./layouts/privacy";
 @import "./layouts/recent";
 @import "./layouts/state";

@@ -20,7 +20,7 @@ visited:     🥾
 about:       🪧
 home:        🏕
 pages:       🗺
-posts:       🧺
+archive:     ⛲️
 privacy:     🛖
 recent:      🌦
 search:      🔍
@@ -28,6 +28,7 @@ stat_tags:   🔖
 # entry-only
 breadcrumbs: 🛤
 entries:     🚏
+posts:       🧺
 # 
 # the following are informational emojis
 #  -- these are safe to set to "" (empty strings)

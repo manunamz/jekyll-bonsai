@@ -1,0 +1,26 @@
+// 
+// scss for posts page
+// 
+
+.archive {
+  @include container-narrow;
+
+  &__title {
+    display: flex;
+    justify-content: space-around;
+    padding: $sp-3;
+    // text-align: center;
+  }
+
+  &__list {
+    padding-bottom: $sp-3;
+    padding-top: $sp-3;
+    padding-left: $sp-6;
+    padding-right: $sp-6;
+  }
+
+  &__item {
+    display: flex; 
+    justify-content: space-between;
+  }
+}
