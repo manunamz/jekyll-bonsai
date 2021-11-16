@@ -10,5 +10,5 @@
 
 {% for stat_tag in include.states %}
   {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
-  <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>
+  <a class="stat-tag" href="{{ state.url | relative_url }}" title={{ state.title }}>{{ state.emoji }}</a>
 {% endfor %}
