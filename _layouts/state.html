@@ -34,23 +34,36 @@ layout: base
       </div>
     </section>
 
-    <section>
-      <!-- page == tag (from tag-nav) -->
-      {% assign docs_w_stat = site.documents | where: 'status', page.emoji %}
-      {% if docs_w_stat.size == 0 and page.path != site.bonsai.states.root_path %}
-        <div class="state__empty-list-wrap">
-          <span>There are currently no {{ page.emoji }}s.</span>
-        </div>
-      {% else %}
-        <ul class="state__list-wrap">
-          {% for entry in docs_w_stat %}
-            <li>
-              {{ page.emoji }} <a class="wiki-link" href="{{ entry.url | relative_url }}">{{ entry.title }}</a>
-            </li>
-          {% endfor %}  
-        </ul>
-      {% endif %}
-    </section>
+    <!-- display all states on root state -->
+    {% if page.path == site.bonsai.states.root_path %}
+      <section class="has-web-links">
+        {% for state in states %}
+          {% if state.path != site.bonsai.states.root_path %}
+            <h4>{{ state.emoji }} {{ state.title }}</h4>
+            {{ state.content | markdownify }}
+          {% endif %}
+      {% endfor %}
+      </section>
+    <!-- display entries with that state as its status -->
+    {% else %}
+      <section>
+        <!-- page == tag (from tag-nav) -->
+        {% assign docs_w_stat = site.documents | where: 'status', page.emoji %}
+        {% if docs_w_stat.size == 0 and page.path != site.bonsai.states.root_path %}
+          <div class="state__empty-list-wrap">
+            <span>There are currently no {{ page.emoji }}s.</span>
+          </div>
+        {% else %}
+          <ul class="state__list-wrap">
+            {% for entry in docs_w_stat %}
+              <li>
+                {{ page.emoji }} <a class="wiki-link" href="{{ entry.url | relative_url }}">{{ entry.title }}</a>
+              </li>
+            {% endfor %}  
+          </ul>
+        {% endif %}
+      </section>
+    {% endif %}
 
   </div>
 

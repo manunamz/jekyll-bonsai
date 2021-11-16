@@ -48,11 +48,35 @@
     display: block; // columns require block
     column-count: 3;
     column-width: $content-width / 6;
-    padding: $sp-4;
+    // padding: $sp-4;
   }
 
   &__empty-list-wrap {
     padding: $sp-10;
     text-align: center;
+  }
+}
+
+// note: this is a hacky workaround for the fact that 'markdownify' 
+//       doesn't seem to be calling jekyll-wikilink's custom web-link
+//       converter.
+// (styles should match the 'web-link' class)
+.has-web-links a {
+  color: var(--link-color);
+  text-decoration: none;
+  background-image: linear-gradient(
+    var(--link-underline-color) 0%,
+    var(--link-underline-color) 100%
+  );
+  background-repeat: repeat-x;
+  background-position: 0 100%;
+  background-size: 1px 1px;
+
+  &:hover {
+    background-image: linear-gradient(
+      var(--link-color) 0%,
+      var(--link-color) 100%
+    );
+    background-size: 1px 1px;
   }
 }
