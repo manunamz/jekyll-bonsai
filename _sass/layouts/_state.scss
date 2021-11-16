@@ -1,6 +1,9 @@
 // state page styles
 
 .state {
+  display: flex;
+  flex-direction: column;
+  min-height: 90vh;
 
   &__nav {
     @include fs-6;
@@ -42,6 +45,7 @@
 
   &__content {
     @include container-narrow;
+    flex: 1 0 auto;
   }
 
   &__list-wrap {
@@ -54,6 +58,19 @@
   &__empty-list-wrap {
     padding: $sp-10;
     text-align: center;
+  }
+
+  &__footer {
+    // 'sticky footer' from: https://css-tricks.com/couple-takes-sticky-footer/#there-is-flexbox
+    //  ex = local
+    //    footer = state__footer
+    //    content = state__content
+    //    body = state
+    //    html, body = state (height is min-height)
+    flex-shrink: 0;
+    display: flex;
+
+    padding: $sp-3;
   }
 }
 

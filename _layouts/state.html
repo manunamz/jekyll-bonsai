@@ -28,10 +28,6 @@ layout: base
       <div class="markdown hp-content e-content p-name">
         {{ content }}
       </div>
-      <div class="text--small">
-        Descriptions only reflect the spirit of this garden. 
-        Click <a class="web-link" href="{{ page.emojipedia }}">here</a> for the official emoji description.
-      </div>
     </section>
 
     <!-- display all states on root state -->
@@ -66,5 +62,9 @@ layout: base
     {% endif %}
 
   </div>
+
+  <footer class="state__footer text--small">
+    Descriptions only reflect the spirit of this garden. Check out the official description: <a class="web-link" href="{{ page.emojipedia }}"> here </a>.
+  </footer>
 
 </div>
