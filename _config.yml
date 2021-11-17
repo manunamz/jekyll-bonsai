@@ -187,6 +187,11 @@ bonsai:
     recent: 
       enabled: true
       cap: 5
+  archive:
+    section:
+      posts: "🫐 🥭 🍈 Fruits"
+      books: "🌰 🍵 🎍 Germs"
+      entries: "🌱 🌿 🎋 🌸 Foliage"
   states:
     root_path: "_states/tags.md"
   entries:

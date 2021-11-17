@@ -11,7 +11,7 @@ layout: base
 
     
     <h4 class="archive__title">
-      🫐 🥭 🍈 Produce
+      {{ site.bonsai.archive.section.posts }}
     </h4>
 
     <ul class="archive__list">
@@ -32,7 +32,7 @@ layout: base
     </ul>
 
     <h4 class="archive__title">
-      🌰 🍵 🎍 Cross Pollinated
+      {{ site.bonsai.archive.section.books }}
     </h4>
     <ul class="archive__list">
       {% assign book_items = site.books | sort %}
@@ -52,7 +52,7 @@ layout: base
     </ul>
 
     <h4 class="archive__title">
-      🌱 🌿 🎋 Foliage
+      {{ site.bonsai.archive.section.entries }}
     </h4>
     <ul class="archive__list">
       {% assign entry_items = site.entries | sort: "title" %}
