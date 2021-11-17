@@ -21,19 +21,19 @@
         {% endif %}
         {% assign recent_page = site.pages | where: "name", "recent.md" %}
         {% if recent_page.first %}
-          <a class="btn btn--blue drop-3" href="{{ '/recent' | relative_url }}" title="Go To Recent Changes">
+          <a class="btn btn--blue drop-1" href="{{ '/recent' | relative_url }}" title="Go To Recent Changes">
           {{ site.data.emoji.recent }}
           </a>
         {% endif %}
         {% if site.states %}
           {% assign root_state = site.states | find_exp: "item", "item.path == site.bonsai.states.root_path" %}
-          <a class="btn btn--brown drop-1" href="{{ root_state.url | relative_url }}" title="Go To States">
+          <a class="btn btn--brown drop-2" href="{{ root_state.url | relative_url }}" title="Go To States">
             {{ site.data.emoji.stat_tags }}
           </a>
         {% endif %}
         {% assign archive_page = site.pages | where: "name", "archive.md" %}
         {% if archive_page.first %}
-          <a class="btn btn--purple drop-2" href="{{ '/archive' | relative_url }}" title="Go To Archive">
+          <a class="btn btn--purple drop-3" href="{{ '/archive' | relative_url }}" title="Go To Archive">
             {{ site.data.emoji.archive }}
           </a>
         {% endif %}
