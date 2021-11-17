@@ -57,7 +57,7 @@
   }
 }
 
-// visited nav (user-path)
+// visited nav (user-steps)
 
 .visited-nav {
   position: relative;
@@ -76,7 +76,8 @@
       padding-left: $sp-4;
       margin-top: $sp-3;
       margin-bottom: $sp-3;
-      margin-right: 0 !important;
+      margin-left: auto;
+      margin-right: auto;
       // both animation and transform rely on this transition setting (according to: https://stackoverflow.com/a/20903041)
       transition: all 0.15s ease-in-out;
       width: 40%;
