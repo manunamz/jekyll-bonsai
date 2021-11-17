@@ -52,6 +52,10 @@
   &--red {
     filter: drop-shadow(0 0 0.8mm $drop-shadow-red);
   }
+
+  &--yellow {
+    filter: drop-shadow(0 0 0.8mm $drop-shadow-yellow);
+  }
 }
 
 .bonsai-burger-nav {

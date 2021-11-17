@@ -67,7 +67,7 @@
       </button>
       <div class="dropdown__content">
         {% for theme in site.data.themes %}
-          <a data-theme-id="{{ theme.id }}" class="btn drop-{{ forloop.index }}" title="{{ theme.id }}">
+          <a data-theme-id="{{ theme.id }}" class="btn btn--yellow drop-{{ forloop.index }}" title="{{ theme.id }}">
             {{ theme.emoji }}
           </a>
         {% endfor %}
