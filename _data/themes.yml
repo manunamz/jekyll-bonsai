@@ -4,9 +4,6 @@
   src:
     favicon: "/assets/img/favicon-light.png"
     logo: "/assets/img/bonsai-light.svg"
-    nav_burger:
-      base: "/assets/img/nav-base-light.svg"
-      bonsai: "/assets/img/nav-bonsai-light.svg"
   colors:
     selection: "#E6E09E"
     background: "#E4f3EA"
@@ -53,9 +50,6 @@
   src:
     favicon: "/assets/img/favicon-dark.png"
     logo: "/assets/img/bonsai-dark.svg"
-    nav_burger:
-      base: "/assets/img/nav-base-dark.svg"
-      bonsai: "/assets/img/nav-bonsai-dark.svg"
   colors:
     selection: "#ad9b4b"
     background: "#27262b"
@@ -101,9 +95,6 @@
   src:
     favicon: "/assets/img/favicon-dark.png"
     logo: "/assets/img/bonsai-star.svg"
-    nav_burger:
-      base: "/assets/img/nav-base-star.svg"
-      bonsai: "/assets/img/nav-bonsai-star.svg"
   colors:
     selection: "#f5ec8eA6"
     background: "#1b2733"
