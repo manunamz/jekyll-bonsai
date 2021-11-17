@@ -46,7 +46,7 @@ layout: base
         <!-- page == tag (from tag-nav) -->
         {% assign docs_w_stat = site.documents | where: 'status', page.emoji %}
         {% if docs_w_stat.size == 0 and page.path != site.bonsai.states.root_path %}
-          <div class="state__empty-list-wrap">
+          <div class="state__list-wrap--empty">
             <span>There are currently no {{ page.emoji }}s.</span>
           </div>
         {% else %}

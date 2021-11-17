@@ -11,7 +11,6 @@
     z-index: $z-nav;
     top: 0;
     user-select: none;
-    margin: $sp-2;
 
     ul {
       overflow-x: scroll;      // horizontal scroll on overflow
@@ -53,11 +52,11 @@
     column-count: 3;
     column-width: $content-width / 6;
     // padding: $sp-4;
-  }
 
-  &__empty-list-wrap {
-    padding: $sp-10;
-    text-align: center;
+    &--empty {
+      padding: $sp-10;
+      text-align: center;
+    }
   }
 
   &__footer {
