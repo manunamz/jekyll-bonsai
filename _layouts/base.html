@@ -43,7 +43,7 @@
         {% if privacy_page %}
           <a class="btn btn--small btn--brown" href="{{ '/privacy/' | relative_url }}" title="Go To Privacy">{{ site.data.emoji.privacy }}</a>
         {% endif %}
-        {% if site.social.enabled %}
+        {% if site.social.connect.enabled %}
           {% include connect.html %}
         {% endif %}
       </footer>

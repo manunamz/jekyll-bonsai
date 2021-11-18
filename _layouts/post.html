@@ -19,7 +19,7 @@ layout: base
       {% include dates.html updated=page.updated date=page.date %}
       <div class="infobox__bar">
         {% include btn_state.html states=page.status %}
-        {% if site.social.enabled %}
+        {% if site.social.share.enabled %}
           {% include share.html %}
         {% endif %}
       </div>

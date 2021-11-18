@@ -204,19 +204,21 @@ bonsai:
       foot_links: "open"
       foot_posts: "open"
 
-
 social:
-  enabled: true
   connect:
-    # facebook_url:
-    github_url: https://github.com/manunamz/
-    # linkedin_url:
-    # pinterest_url:
-    rss_url: https://manunam.me/feed.xml
-    twitter_url: https://twitter.com/manunamz/
+    enabled: true
+    url:
+      # facebook:
+      github: https://github.com/manunamz/
+      # linkedin:
+      # pinterest:
+      rss: https://manunam.me/feed.xml
+      twitter: https://twitter.com/manunamz/
   share:
-    - 'email'
-    # - 'facebook'
-    # - 'linkedin'
-    # - 'pinterest'
-    - 'twitter'
+    enabled: true
+    type:
+      - 'email'
+      # - 'facebook'
+      # - 'linkedin'
+      # - 'pinterest'
+      - 'twitter'
