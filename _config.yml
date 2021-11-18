@@ -192,6 +192,9 @@ bonsai:
       posts: "🫐 🥭 🍈 Fruits"
       books: "🌰 🍵 🎍 Germs"
       entries: "🌱 🌿 🎋 🌸 Foliage"
+  recent:
+    cap: 10 
+  # documents
   states:
     root_path: "_states/tags.md"
   entries:
@@ -201,8 +204,7 @@ bonsai:
       attr_box: "open"
       foot_links: "open"
       foot_posts: "open"
-  recent:
-    cap: 10 
+
 
 social:
   enabled: true
