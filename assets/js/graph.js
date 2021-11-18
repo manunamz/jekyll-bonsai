@@ -5,7 +5,7 @@ import JekyllGraph from './jekyll-graph.js';
 export default class GraphNav extends JekyllGraph {
 
   constructor() {
-    super(); // this.graphDiv set in JekyllGraph
+    super(); // 'this.graphDiv' set in JekyllGraph
     this.graphTypeCheckBox = document.getElementById('graph-type-checkbox');
     this.graphTypeEmojiSpan = document.getElementById('graph-type-emoji-span');
     this.init(); // this.graphType set in initGraphType();
@@ -18,7 +18,7 @@ export default class GraphNav extends JekyllGraph {
   }
   
   bindEvents() {
-    // listen for draw event (esp. from theme colors)
+    // listen for draw event (for graph type redraw)
     this.graphDiv.addEventListener('draw', () => {
       this.updateGraphType();
       this.drawD3Nav();
