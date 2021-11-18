@@ -15,7 +15,8 @@
     @include fs-4;
   
     &::before {
-      display: none; 
+      content: "•" !important;
+      padding-right: $sp-3;
     }
   }
 
