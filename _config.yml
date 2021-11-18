@@ -209,16 +209,16 @@ social:
     enabled: true
     url:
       # facebook:
-      github: https://github.com/manunamz/
+      github: https://github.com/manunamz/jekyll-bonsai/
       # linkedin:
       # pinterest:
-      rss: https://manunam.me/feed.xml
-      twitter: https://twitter.com/manunamz/
+      # rss:
+      # twitter:
   share:
     enabled: true
     type:
       - 'email'
       # - 'facebook'
-      # - 'linkedin'
+      - 'linkedin'
       # - 'pinterest'
       - 'twitter'
