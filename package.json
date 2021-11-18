@@ -1,10 +1,10 @@
 {
   "name": "jekyll-bonsai",
-  "version": "0.0.1",
-  "description": "A modern Jekyll theme for digital gardening",
-  "repository": "shorty25h0r7/jekyll-bonsai",
+  "version": "0.0.4",
+  "description": "A modern jekyll theme for semantically inclined digital gardeners.",
+  "repository": "manunamz/jekyll-bonsai",
   "license": "GPL-3.0-or-later",
-  "bugs": "https://github.com/shorty25h0r7/jekyll-bonsai/issues",
+  "bugs": "https://github.com/manunamz/jekyll-bonsai/issues",
   "devDependencies": {
     "@primer/css": "^15.2.0",
     "prettier": "^2.1.2",
