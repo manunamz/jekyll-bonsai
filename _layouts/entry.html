@@ -142,7 +142,9 @@ layout: base
           <span class="link-box__type" title="Attributed and Backlink Entries">
             {% include img/bullet-net-web.svg %}
           </span>
-          {% if page.attributed.size == 0 and page.backlinks.size == 0 %}
+          {% assign entry_attrd = page.attributed | doc_type: "entries" %}
+          {% assign entry_blinks = page.backlinks | doc_type: "entries" %}
+          {% if entry_attrd.size == 0 and entry_blinks.size == 0 %}
             <p class="text--small text--center">No attributed or backlinked entries.</p>
           {% else %}
             <!-- attributed -->
