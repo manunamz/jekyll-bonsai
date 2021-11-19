@@ -160,9 +160,8 @@ layout: base
                       </a>
                     </li>
                   {% else %}
-                    <li>
-                      {{child}}
-                      <span class="text--small text--no-point">{{ site.data.emoji.missing }} {{ child | split: "." | last }}</span>
+                    <li>]
+                      <span class="text--small text--no-point">{{ site.data.emoji.missing }} {{ attr_url }}</span>
                     </li>
                   {% endif %}
                 {% endfor %}
@@ -170,7 +169,6 @@ layout: base
             </ul>
             <!-- backlinks -->
             <ul>
-              {% assign entry_blinks = page.backlinks | doc_type: "entries" %}
               {% for blink in entry_blinks %}
                 {% assign blink_doc = site.entries | where: "url", blink.url | first %}
                 {% if blink_doc %}
@@ -182,7 +180,7 @@ layout: base
                   </li>
                 {% else %}
                   <li>
-                    <span class="text--small text--no-point">{{ site.data.emoji.missing }} {{ child | split: "." | last }}</span>
+                    <span class="text--small text--no-point">{{ site.data.emoji.missing }} {{ blink.url }}</span>
                   </li>
                 {% endif %}
               {% endfor %}
@@ -203,11 +201,13 @@ layout: base
       </div>
       <nav id="entry-foot-posts-nav" class="link-box" role="navigation" aria-label="linked posts">
         <div class="link-box__partition">
-          <!-- capture linked_docs here -->
+          
+          <!-- capture tagged linked_docs here -->
           {% capture linked_docs %}
+            <!-- track number of linked docs -->
             {% assign num_linked_docs = 0 %}
+            <!-- tagged posts/books -->
             <ul>
-              <!-- posts and books -->
               {% for doc in site.documents %}
                 {% if doc.tags contains page.namespace %}
                   {% assign num_linked_docs = num_linked_docs | plus: 1 %}
@@ -218,7 +218,22 @@ layout: base
                 {% endif %}
               {% endfor %}
             </ul>
+            <!-- backlinked posts/books -->
+            <ul>
+              {% assign post_blinks = page.backlinks | doc_type: "posts" %}
+              {% assign book_blinks = page.backlinks | doc_type: "books" %}
+              {% assign pb_blinks = post_blinks | concat: book_blinks %}
+              {% for blink in pb_blinks %}
+                {% assign num_linked_docs = num_linked_docs | plus: 1 %}
+                {% assign doc = site.documents | where: "url", blink.url | first %}
+                <li>
+                  {% include btn_state.html states=doc.status %}
+                  <a class="wiki-link" href="{{ doc.url | relative_url }}">{{ doc.title }}</a>
+                </li>
+              {% endfor %}
+            </ul>
           {% endcapture %}
+
           <!-- render linked_docs here (the if statement is why we have to do this) -->
           {% if num_linked_docs == 0 %}
             <p class="text--small">No linked posts or books.</p>
