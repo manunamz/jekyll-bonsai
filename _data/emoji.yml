@@ -27,8 +27,8 @@ search:      🔍
 stat_tags:   🔖
 # entry-only
 breadcrumbs: 🛤
-entries:     🚏
-posts:       🧺
+links:       🚏
+tags:        🧺
 # 
 # the following are informational emojis
 #  -- these are safe to set to "" (empty strings)
