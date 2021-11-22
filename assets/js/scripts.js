@@ -3,6 +3,7 @@
 import GraphNav from './graph.js';
 import ThemeColors from './theme-colors.js';
 import Entry from './entry.js';
+import Search from './search.js';
 import SiteNav from './site-nav.js';
 
 // go
@@ -21,6 +22,9 @@ import SiteNav from './site-nav.js';
   }
 
   new ThemeColors();
+  {% if site.bonsai.nav.search.enabled %}
+    new Search();
+  {% endif %}
   new SiteNav();
   new GraphNav();
   if (document.getElementById('entry')) {

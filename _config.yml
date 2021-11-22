@@ -173,6 +173,10 @@ bonsai:
     type: "graph"  # may be 'tabs' (visited/path) or 'graph' (bonsai)
     graph:
       type: "tree" # may be 'tree' or 'net-web'
+    search: 
+      enabled: true
+      exclude:
+        - "states"
   # pages
   home:
     notable: 

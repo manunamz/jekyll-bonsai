@@ -12,13 +12,6 @@
         </span>
       </button>
       <div class="dropdown__content">
-        <!-- using '.first' to test if any results were found -->
-        {% assign search_page = site.pages | where: "name", "search.md" %}
-        {% if search_page.first %}
-          <a class="btn btn--brown drop-1" href="{{ '/search' | relative_url }}" title="Search">
-            {{ site.data.emoji.search }}
-          </a>
-        {% endif %}
         {% assign recent_page = site.pages | where: "name", "recent.md" %}
         {% if recent_page.first %}
           <a class="btn btn--blue drop-1" href="{{ '/recent' | relative_url }}" title="Go To Recent Changes">
@@ -73,10 +66,23 @@
         {% endfor %}
       </div>
     </span>
+    {% if site.bonsai.nav.search.enabled %}
+      <a id="search-btn" class="btn btn--brown" href="#" title="Search (cmd/ctrl+k)">
+        {{ site.data.emoji.search }}
+      </a>
+    {% endif %}
   </header>
 
-  <nav id="visited-nav" class="visited-nav"></nav>
-  <div id="jekyll-graph"></div>
+  {% if site.bonsai.nav.search.enabled %}
+    <div id="search">
+      <input id="search-input" class="search__input hide"></input>
+      <div id="search-results" class="search__results"></div>
+    </div>
+  {% endif %}
+  <div id="site-nav-content">
+    <div id="jekyll-graph"></div>
+    <nav id="visited-nav" class="visited-nav"></nav>
+  </div>
 
   <footer>
     <span class="text--small">🪴 Grown with 💚 from a <a class="web-link" href="https://manunamz.github.io/jekyll-bonsai/">jekyll-bonsai</a></span>
