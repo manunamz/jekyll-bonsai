@@ -208,7 +208,7 @@ bonsai:
     # smaller: false
   # site-nav
   nav:
-    type: "graph"  # may be 'tabs' (visited/path) or 'graph' (bonsai)
+    type: "graph"  # may be 'visited' (steps) or 'graph' (bonsai)
     graph:
       type: "tree" # may be 'tree' or 'net-web'
     search: 

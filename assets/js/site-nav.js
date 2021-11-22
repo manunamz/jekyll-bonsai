@@ -30,7 +30,7 @@ export default class SiteNav {
 
   initNavType() {
     this.navType = localStorage.getItem('nav-type');
-    if (this.navType !== "graph" && this.navType !== "tabs") {
+    if (this.navType !== "graph" && this.navType !== "visited") {
       this.navType = '{{ site.bonsai.nav.type }}';	
     }
     this.navTypeCheckBox.checked = (this.navType === "graph");
