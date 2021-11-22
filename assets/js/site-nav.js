@@ -1,6 +1,5 @@
 ---
 ---
-
 export default class SiteNav {
 
   constructor() {
@@ -38,11 +37,6 @@ export default class SiteNav {
     this.updateNavType();
   }
 
-  initVisited() {
-    this.visited = JSON.parse(localStorage.getItem('visited'));
-    if (!this.visited) this.visited = [];
-  }
-
   updateNavType() {
     if (this.navTypeCheckBox.checked) {
       this.navTypeEmojiSpan.innerText = "{{ site.data.emoji.visited }}";
@@ -63,6 +57,11 @@ export default class SiteNav {
   //
   // visited
   //
+
+  initVisited() {
+    this.visited = JSON.parse(localStorage.getItem('visited'));
+    if (!this.visited) this.visited = [];
+  }
 
   addVisited() {
     if (this.visited) {
