@@ -70,7 +70,7 @@ export default class Entry {
 
     this.entryFootPostsStatus = localStorage.getItem('entry-foot-posts-status');
     if (this.entryFootPostsStatus !== "open" && this.entryFootPostsStatus !== "closed") {
-      this.entryFootPostsStatus = '{{ site.bonsai.entries.toggles.foot_posts }}';	
+      this.entryFootPostsStatus = '{{ site.bonsai.entries.toggles.foot_tagged }}';	
     }
     this.entryFootPostsCheckbox.checked = (this.entryFootPostsStatus === "closed"); 
     this.toggleEntryFootPostsCollapse();
