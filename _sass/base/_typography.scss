@@ -16,6 +16,7 @@ h6 {
   position: relative;
   margin-top: 0.25em;
   margin-bottom: 0.25em;
+  padding-top: $sp-2;
 }
 
 h1,
@@ -25,12 +26,12 @@ h1,
 
 h2,
 .text-beta {
-  @include fs-9;
+  @include fs-8;
 }
 
 h3,
 .text-gamma {
-  @include fs-8;
+  @include fs-7;
 }
 
 h4,

@@ -89,6 +89,10 @@ compress_html:
   blank_lines: false
   profile: false 
 
+# 
+# plugins
+# 
+
 # Google Analytics (ip is anonymized by default)
 ga_tracking: UA-190413040-4
 
@@ -102,7 +106,7 @@ ga_tracking: UA-190413040-4
 #   twitter: manunamz
 
 # 
-# plugins
+# bonsai plugins
 # 
 ids:
   # ids.format uses 'alpha' and 'size' for nanoid: https://github.com/radeno/nanoid.rb#options
@@ -160,6 +164,29 @@ graph:
       y_val: 0.9
 
 # 
+# includes
+# 
+
+social:
+  connect:
+    enabled: true
+    url:
+      # facebook:
+      github: https://github.com/manunamz/jekyll-bonsai/
+      # linkedin:
+      # pinterest:
+      # rss:
+      # twitter:
+  share:
+    enabled: true
+    type:
+      - 'email'
+      # - 'facebook'
+      - 'linkedin'
+      # - 'pinterest'
+      - 'twitter'
+
+# 
 # bonsai template configs
 # 
 bonsai:
@@ -169,6 +196,7 @@ bonsai:
   svg: 
     filter: false
     # smaller: false
+  # site-nav
   nav:
     type: "graph"  # may be 'tabs' (visited/path) or 'graph' (bonsai)
     graph:
@@ -201,28 +229,9 @@ bonsai:
   states:
     root_path: "_states/tags.md"
   entries:
-    root_path: "_entries/root.md"  
+    root_path: "_entries/root.md"
     toggles:  # may be 'open' or 'closed'
       breadcrumb: "open"
       attr_box: "open"
       foot_links: "open"
       foot_posts: "open"
-
-social:
-  connect:
-    enabled: true
-    url:
-      # facebook:
-      github: https://github.com/manunamz/jekyll-bonsai/
-      # linkedin:
-      # pinterest:
-      # rss:
-      # twitter:
-  share:
-    enabled: true
-    type:
-      - 'email'
-      # - 'facebook'
-      - 'linkedin'
-      # - 'pinterest'
-      - 'twitter'
