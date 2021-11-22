@@ -34,6 +34,20 @@
     </span>
     <span class="dropdown">
       <button class="dropdown__btn">
+        <span title="Theme Color Toggles">
+          {{ site.data.emoji.colors }}
+        </span>
+      </button>
+      <div class="dropdown__content">
+        {% for theme in site.data.themes %}
+          <a data-theme-id="{{ theme.id }}" class="btn btn--yellow drop-{{ forloop.index }}" title="{{ theme.id }}">
+            {{ theme.emoji }}
+          </a>
+        {% endfor %}
+      </div>
+    </span>
+    <span class="dropdown">
+      <button class="dropdown__btn">
         <span title="Site-Nav Toggles">
           {{ site.data.emoji.site_nav }}
         </span>
@@ -50,20 +64,6 @@
         <a id="delete-btn" class="btn btn--red drop-3" title="Delete Visited History">
           {{ site.data.emoji.delete }}
         </a>
-      </div>
-    </span>
-    <span class="dropdown">
-      <button class="dropdown__btn">
-        <span title="Theme Color Toggles">
-          {{ site.data.emoji.colors }}
-        </span>
-      </button>
-      <div class="dropdown__content">
-        {% for theme in site.data.themes %}
-          <a data-theme-id="{{ theme.id }}" class="btn btn--yellow drop-{{ forloop.index }}" title="{{ theme.id }}">
-            {{ theme.emoji }}
-          </a>
-        {% endfor %}
       </div>
     </span>
     {% if site.bonsai.nav.search.enabled %}
