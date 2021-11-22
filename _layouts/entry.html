@@ -145,7 +145,7 @@ layout: base
           {% assign entry_attrd = page.attributed | doc_type: "entries" %}
           {% assign entry_blinks = page.backlinks | doc_type: "entries" %}
           {% if entry_attrd.size == 0 and entry_blinks.size == 0 %}
-            <p class="text--small text--center">No attributed or backlinked entries.</p>
+            <p class="text--small text--center">No attributed {% if site.bonsai.entries.backlinks %}or backlinked{% endif %} entries.</p>
           {% else %}
             <!-- attributed -->
             <ul>
@@ -167,24 +167,26 @@ layout: base
                 {% endfor %}
               {% endfor %}
             </ul>
-            <!-- backlinks -->
-            <ul>
-              {% for blink in entry_blinks %}
-                {% assign blink_doc = site.entries | where: "url", blink.url | first %}
-                {% if blink_doc %}
-                  <li>
-                    {% include btn_state.html states=blink_doc.status %}
-                    <a class="wiki-link {% if blink_doc.url == '' %}text--small text--no-point{% endif %}" href="{{ blink_doc.url | relative_url }}" title="{% if blink.type %}{{ blink.type }}{% endif %}">
-                      {{ blink_doc.title }}
-                    </a>
-                  </li>
-                {% else %}
-                  <li>
-                    <span class="text--small text--no-point">{{ site.data.emoji.missing }} {{ blink.url }}</span>
-                  </li>
-                {% endif %}
-              {% endfor %}
-            </ul>
+            {% if site.bonsai.entries.backlinks %}
+              <!-- backlinks -->
+              <ul>
+                {% for blink in entry_blinks %}
+                  {% assign blink_doc = site.entries | where: "url", blink.url | first %}
+                  {% if blink_doc %}
+                    <li>
+                      {% include btn_state.html states=blink_doc.status %}
+                      <a class="wiki-link {% if blink_doc.url == '' %}text--small text--no-point{% endif %}" href="{{ blink_doc.url | relative_url }}" title="{% if blink.type %}{{ blink.type }}{% endif %}">
+                        {{ blink_doc.title }}
+                      </a>
+                    </li>
+                  {% else %}
+                    <li>
+                      <span class="text--small text--no-point">{{ site.data.emoji.missing }} {{ blink.url }}</span>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              </ul>
+            {% endif %}
           {% endif %}
         </div>
       </nav>
@@ -218,20 +220,22 @@ layout: base
                 {% endif %}
               {% endfor %}
             </ul>
-            <!-- backlinked posts/books -->
-            <ul>
-              {% assign post_blinks = page.backlinks | doc_type: "posts" %}
-              {% assign book_blinks = page.backlinks | doc_type: "books" %}
-              {% assign pb_blinks = post_blinks | concat: book_blinks %}
-              {% for blink in pb_blinks %}
-                {% assign num_linked_docs = num_linked_docs | plus: 1 %}
-                {% assign doc = site.documents | where: "url", blink.url | first %}
-                <li>
-                  {% include btn_state.html states=doc.status %}
-                  <a class="wiki-link" href="{{ doc.url | relative_url }}">{{ doc.title }}</a>
-                </li>
-              {% endfor %}
-            </ul>
+            {% if site.bonsai.entries.backlinks %}
+              <!-- backlinked posts/books -->
+              <ul>
+                {% assign post_blinks = page.backlinks | doc_type: "posts" %}
+                {% assign book_blinks = page.backlinks | doc_type: "books" %}
+                {% assign pb_blinks = post_blinks | concat: book_blinks %}
+                {% for blink in pb_blinks %}
+                  {% assign num_linked_docs = num_linked_docs | plus: 1 %}
+                  {% assign doc = site.documents | where: "url", blink.url | first %}
+                  <li>
+                    {% include btn_state.html states=doc.status %}
+                    <a class="wiki-link" href="{{ doc.url | relative_url }}">{{ doc.title }}</a>
+                  </li>
+                {% endfor %}
+              </ul>
+            {% endif %}
           {% endcapture %}
 
           <!-- render linked_docs here (the if statement is why we have to do this) -->

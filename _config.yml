@@ -167,6 +167,8 @@ graph:
       y_val: 0.9
   net_web:
     # enabled: true
+    exclude:
+      links: true
     force:
       charge: -300
       strength_x: 0.3
@@ -245,3 +247,4 @@ bonsai:
       attr_box: "open"
       foot_links: "open"
       foot_tagged: "open"
+    backlinks: false
