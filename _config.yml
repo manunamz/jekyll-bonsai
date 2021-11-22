@@ -148,8 +148,9 @@ wikilinks:
       - "toc-list-item-anchor"
 graph:
   # enabled: true
-  # assets_path: "/assets"
-  # scripts_path: "/assets/js"
+  # path:
+  #   assets: "/assets"
+  #   scripts: "/assets/js"
   exclude:
     - "books"
     - "pages"
