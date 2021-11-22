@@ -1,32 +1,18 @@
 ---
 ---
-import GraphNav from './graph.js';
-import ThemeColors from './theme-colors.js';
 import Entry from './entry.js';
-import Search from './search.js';
 import SiteNav from './site-nav.js';
 
 // go
 // from: https://stackoverflow.com/questions/9899372/pure-javascript-equivalent-of-jquerys-ready-how-to-call-a-function-when-t
 (() => {
   initLinks();
-  
-  document.getElementById('bonsai-burger-nav-checkbox')
-    .addEventListener('click', function(event) {
-      expandSiteNav();
-      document.getElementById('jekyll-graph').dispatchEvent(new Event('draw')); // tell graph to redraw itself
-    }, false);
 
   if (!isSafari() && !isMobile()) {
     applyPencilFilter();
   }
 
-  new ThemeColors();
-  {% if site.bonsai.nav.search.enabled %}
-    new Search();
-  {% endif %}
   new SiteNav();
-  new GraphNav();
   if (document.getElementById('entry')) {
     new Entry();
   }
@@ -48,22 +34,6 @@ function initLinks() {
 function setupLinkOpen (link) {
   link.setAttribute("target", "_blank");
   link.setAttribute("rel", "noopener");  // for security: https://css-tricks.com/use-target_blank/#correct-html
-}
-
-function expandSiteNav() {
-  var sideBar = document.getElementById('side-bar');
-  var mainView = document.getElementById('main');
-  var bonsai = document.getElementById('nav-bonsai');
-  
-  if (document.getElementById('bonsai-burger-nav-checkbox').checked) {
-    sideBar.classList.add('nav-open');
-    mainView.classList.add('hide');
-    bonsai.hidden = false;
-  } else {
-    sideBar.classList.remove('nav-open');
-    mainView.classList.remove('hide');
-    bonsai.hidden = true;
-  }
 }
 
 function applyPencilFilter() {
