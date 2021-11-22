@@ -1,29 +1,21 @@
 ---
 ---
 
-// import './vendor/lunr';
-
-// with help from: https://github.com/pmarsceill/just-the-docs/blob/e8424986370bef104e680e1443a83e475d2fead7/assets/js/just-the-docs.js#L68
-
 window.store = {
-  {% assign searchable_pages = site.pages | where_exp: "page", "page.menu == 'main'" %}
-  {% assign searchable_documents = site.documents %}
-  {% for page in searchable_pages %}
-    {% assign searchable_documents = searchable_documents | push: page %}
-  {% endfor %}
-  {% for doc in searchable_documents %}
-    "{{ doc.url | slugify }}": {
-      "title": "{{ doc.title | xml_escape }}",
-      "content": {{ doc.content | strip_html | strip_newlines | jsonify }},
-      "status": "{{ doc.status | xml_escape }}",
-      "tags": "{{ doc.tags | xml_escape }}",
-      "emoji": "{{ doc.emoji | xml_escape }}",
-      "url": "{{ doc.url | xml_escape }}"
-    }
-    {% unless forloop.last %},{% endunless %}
+  {% for doc in site.documents %}
+    {% unless site.bonsai.nav.search.exclude contains doc.type %}
+      "{{ doc.url | slugify }}": {
+        "title": "{{ doc.title | xml_escape }}",
+        "content": {{ doc.content | strip_html | strip_newlines | jsonify }},
+        "status": "{{ doc.status | xml_escape }}",
+        "tags": "{{ doc.tags | xml_escape }}",
+        "emoji": "{{ doc.emoji | xml_escape }}",
+        "url": "{{ doc.url | xml_escape }}",
+      }
+      {% unless forloop.last %},{% endunless %}
+    {% endunless %}
   {% endfor %}
 };
-
 export default class Search {
 
   constructor() {
