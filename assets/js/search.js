@@ -71,6 +71,7 @@ export default class Search {
   }
 
   initIndex() {
+    // lunr: https://lunrjs.com/
     // from: https://learn.cloudcannon.com/jekyll/jekyll-search-using-lunr-js/
     // Initalize lunr with the fields it will be searching on. I've given title
     // a boost of 10 to indicate matches on this field are more important.
@@ -79,7 +80,7 @@ export default class Search {
       this.field('title', { boost: 10 });
       this.field('status');
       // this.field('tags');
-      // this.field('emoji');
+      this.field('emoji');
       this.field('content');
 
       for (var key in window.store) { // Add the data to lunr
@@ -88,7 +89,7 @@ export default class Search {
           'title': window.store[key].title,
           'status': window.store[key].status,
           // 'tags': window.store[key].tags,
-          // 'emoji': window.store[key].emoji,
+          'emoji': window.store[key].emoji,
           'content': window.store[key].content
         });
       }
@@ -129,7 +130,13 @@ export default class Search {
         var item = store[results[i].ref];
         appendString += '<li>'
         appendString +=   '<a href="' + '{{ site.baseurl }}' + item.url + '">';
-        appendString +=     '<h6> ' + item.status + ' ' + item.title + '</h6>';
+        if (item.status) {
+          appendString +=     '<h6> ' + item.status + ' ' + item.title + '</h6>';
+        } else if (item.emoji) {
+          appendString +=     '<h6> ' + item.emoji + ' ' + item.title + '</h6>';
+        } else {
+          appendString +=     '<h6> ' + item.title + '</h6>';
+        }
         appendString +=     '<p>' + item.content.substring(0, 150) + '...</p>';
         appendString +=   '</a>';
         appendString += '</li>';
