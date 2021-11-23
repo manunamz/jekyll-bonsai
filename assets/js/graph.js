@@ -14,23 +14,20 @@ export default class GraphNav extends JekyllGraph {
   init() {
     this.initGraphType();
     this.bindEvents();
-    this.drawD3Nav();
+    this.draw();
   }
   
   bindEvents() {
-    // listen for draw event (for graph type redraw)
-    this.graphDiv.addEventListener('draw', () => {
-      this.updateGraphType();
-      this.drawD3Nav();
-    });
     this.graphTypeCheckBox.addEventListener('click', () => {
       this.updateGraphType();
-      this.drawD3Nav();
+      this.draw();
     });
   }
+
+  // draw
   
   // how to checkbox: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_display_checkbox_text
-  drawD3Nav() {
+  draw() {
     // redraw new chart
     if (this.graphTypeCheckBox.checked) {
       this.drawTree();
@@ -38,6 +35,13 @@ export default class GraphNav extends JekyllGraph {
       this.drawNetWeb();
     }
   }
+
+  redraw() {
+    this.updateGraphType();
+    this.draw();
+  }
+
+  // type
   
   initGraphType() {
     this.graphType = localStorage.getItem('graph-type');

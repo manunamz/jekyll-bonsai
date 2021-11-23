@@ -35,7 +35,7 @@ export default class SiteNav {
   bindEvents() {
     this.bonsaiBurger.addEventListener('click', () => {
       this.toggleSiteNav();
-      this.graph.graphDiv.dispatchEvent(new Event('draw')); // tell graph to redraw itself
+      this.graph.redraw();
     });
     this.navTypeCheckBox.addEventListener('click', () => {
       this.updateNavType();
