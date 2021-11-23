@@ -217,6 +217,8 @@ bonsai:
     search: 
       enabled: true
       exclude: []
+    visited:
+      enabled: true
   # pages
   home:
     notable: 

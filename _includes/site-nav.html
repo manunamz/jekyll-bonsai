@@ -53,11 +53,13 @@
         </span>
       </button>
       <div class="dropdown__content">
-        <label class="btn btn--orange drop-1">
-          <input id="nav-type-checkbox" type="checkbox" checked="checked">
-          <span id="nav-type-emoji-span" title="Toggle Nav Type"></span>
-        </label>
-        <label class="btn btn--green drop-2">
+        {% if site.bonsai.nav.visited.enabled %}
+          <label class="btn btn--orange">
+            <input id="nav-type-checkbox" type="checkbox" checked="checked">
+            <span id="nav-type-emoji-span" title="Toggle Nav Type"></span>
+          </label>
+        {% endif %}
+        <label class="btn btn--green">
           <input id="graph-type-checkbox" type="checkbox" checked="checked">
           <span id="graph-type-emoji-span" title="Toggle Graph Type"></span>
         </label>
@@ -81,7 +83,9 @@
   {% endif %}
   <div id="site-nav-content">
     <div id="jekyll-graph"></div>
-    <nav id="visited-nav" class="visited-nav"></nav>
+    {% if site.bonsai.nav.visited.enabled %}
+      <nav id="visited-nav" class="visited-nav"></nav>
+    {% endif %}
   </div>
 
   <footer>
