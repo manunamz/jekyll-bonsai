@@ -167,8 +167,8 @@ graph:
       y_val: 0.9
   net_web:
     # enabled: true
-    exclude:
-      links: true
+    # exclude:
+    #   links: true
     force:
       charge: -300
       strength_x: 0.3
@@ -224,11 +224,11 @@ bonsai:
     notable: 
       enabled: true
       docs:
-        - digital-garden.bonsai.md
-        - digital-garden.md
-        - features.doc-type.entry.md
-        - features.site-nav.graph.md
-        - people.md
+        - digi-gard.orient.bonsai.md
+        - website-type.wiki-blog.md
+        - feat.md
+        - 2021-11-18-setup.md
+        - 2021-05-11-origin-myth.md
     recent: 
       enabled: true
       cap: 5
@@ -249,4 +249,4 @@ bonsai:
       attr_box: "open"
       foot_links: "open"
       foot_tagged: "open"
-    backlinks: false
+    backlinks: true
