@@ -1,8 +1,8 @@
 ---
 id: a05a1d6b40
-title: Lodge
+title: 🛖 Welcome Lodge
 desc: ''
-updated: 1637091069322
+updated: 1637705463997
 created: 1637090775988
 status: "\U0001F331"
 ---

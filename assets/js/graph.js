@@ -26,7 +26,6 @@ export default class GraphNav extends JekyllGraph {
 
   // draw
   
-  // how to checkbox: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_display_checkbox_text
   draw() {
     // redraw new chart
     if (this.graphTypeCheckBox.checked) {
@@ -46,7 +45,7 @@ export default class GraphNav extends JekyllGraph {
   initGraphType() {
     this.graphType = localStorage.getItem('graph-type');
     if (this.graphType !== "tree" && this.graphType !== "net-web") {
-      this.graphType = '{{ site.bonsai.nav.graph_type }}';	
+      this.graphType = '{{ site.bonsai.nav.graph.type }}';	
     }
     this.graphTypeCheckBox.checked = (this.graphType === "tree");
     this.updateGraphType();

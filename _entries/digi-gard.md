@@ -1,8 +1,8 @@
 ---
 id: e002fd0f60
-title: "\U0001FAB4 Digital Garden"
+title: 🪴 Digital Garden
 desc: ''
-updated: 1637626021627
+updated: 1637705637674
 created: 1620492305910
 date: '2021-08-04'
 status: "\U0001F38B"

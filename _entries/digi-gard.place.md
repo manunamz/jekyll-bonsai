@@ -1,8 +1,8 @@
 ---
 id: a1b835183a
-title: Place
+title: 🗺 Place
 desc: ''
-updated: 1637360693527
+updated: 1637705472040
 created: 1637086504874
 status: "\U0001F33F"
 ---
