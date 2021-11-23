@@ -71,7 +71,7 @@ export default class SiteNav {
       this.graph.graphDiv.classList.remove("hide");
     } else {
       this.navTypeEmojiSpan.innerText = "{{ site.data.emoji.graph }}";
-      this.navType = "tabs";
+      this.navType = "visited";
       this.graph.graphDiv.classList.add("hide");
       this.visited.show();
     }
