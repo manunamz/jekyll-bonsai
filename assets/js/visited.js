@@ -50,8 +50,7 @@ export default class VisitedNav {
     this.visitedURLs = [];
     localStorage.setItem('visited', JSON.stringify([]));
     // reset visible elements
-    // access graph via element id for event dispatch due to graph construction/deconstruction
-    document.getElementById('jekyll-graph').dispatchEvent(new Event('draw')); // tell graph to redraw itself
+    // (there used to be a graph redraw here -- in case that is needed again)
     this.nav.innerHTML = "";
     this.buildVisitedTabs();
   }

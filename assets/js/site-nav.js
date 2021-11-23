@@ -35,8 +35,7 @@ export default class SiteNav {
   bindEvents() {
     this.bonsaiBurger.addEventListener('click', () => {
       this.toggleSiteNav();
-      // access graph via element id for event dispatch due to graph construction/deconstruction
-      document.getElementById('jekyll-graph').dispatchEvent(new Event('draw')); // tell graph to redraw itself
+      this.graph.graphDiv.dispatchEvent(new Event('draw')); // tell graph to redraw itself
     });
     this.navTypeCheckBox.addEventListener('click', () => {
       this.updateNavType();
