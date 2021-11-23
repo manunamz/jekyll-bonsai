@@ -45,7 +45,7 @@ export default class GraphNav extends JekyllGraph {
   initGraphType() {
     this.graphType = localStorage.getItem('graph-type');
     if (this.graphType !== "tree" && this.graphType !== "net-web") {
-      this.graphType = '{{ site.bonsai.nav.graph_type }}';	
+      this.graphType = '{{ site.bonsai.nav.graph.type }}';	
     }
     this.graphTypeCheckBox.checked = (this.graphType === "tree");
     this.updateGraphType();
