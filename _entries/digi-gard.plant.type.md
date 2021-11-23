@@ -1,8 +1,8 @@
 ---
 id: 4ec7e9ab2f
-title: Type
+title: 🔖 Type
 desc: ''
-updated: 1637091490598
+updated: 1637705553490
 created: 1637086695592
 status: "\U0001F33F"
 ---

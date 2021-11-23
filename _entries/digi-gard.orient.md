@@ -1,8 +1,8 @@
 ---
 id: f3d8693ebd
-title: Orient
+title: 🧭 Orient
 desc: ''
-updated: 1637624409494
+updated: 1637705423008
 created: 1637087403333
 status: "\U0001F33F"
 ---

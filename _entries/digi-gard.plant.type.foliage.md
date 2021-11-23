@@ -1,8 +1,8 @@
 ---
 id: 50dae41b61
-title: Foliage
+title: 🌿 Foliage
 desc: ''
-updated: 1637090047765
+updated: 1637705524180
 created: 1637086881459
 status: "\U0001F331"
 ---

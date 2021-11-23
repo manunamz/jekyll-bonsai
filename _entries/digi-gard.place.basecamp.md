@@ -1,8 +1,8 @@
 ---
 id: fd7a3f40fe
-title: Basecamp
+title: 🏕 Basecamp
 desc: ''
-updated: 1637089547217
+updated: 1637705448282
 created: 1628095871280
 date: '2021-08-04'
 status: "\U0001F331"
