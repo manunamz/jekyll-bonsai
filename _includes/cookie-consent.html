@@ -1,15 +1,15 @@
 <!-- from: https://jekyllcodex.org/without-plugin/cookie-consent/ -->
 <!-- duplicate code with cookie-consent-response.html -->
 <div id="cookie-consent">
-  <span>We would like to use third party cookies and scripts to improve the functionality of this website.</span>
-  <a id="cookie-consent-response-accept" class="site-nav-btn" title="Alright!">
+  <span>This site uses third party cookies and scripts to improve the functionality of this website.</span>
+  <a id="cookie-consent-response-accept" class="btn" title="Ok">
     {{ site.data.emoji.approve }}
   </a>
-  <a id="cookie-consent-hmm" class="site-nav-btn" href="{{ '/privacy' | relative_url }}" title="Hmm...Tell me more...">
+  <a id="cookie-consent-hmm" class="btn" href="{{ '/privacy' | relative_url }}" title="Hmm...Tell me more...">
     {{ site.data.emoji.consider }}
   </a>
-  {% if site.debug %}
-    <a id="cookie-consent-response-reject" class="site-nav-btn" title="Nope!">
+  {% if site.bonsai.debug %}
+    <a id="cookie-consent-response-reject" class="btn" title="Nope!">
       {{ site.data.emoji.disapprove }}
     </a>
   {% endif %}
@@ -43,8 +43,21 @@
       eraseCookie(cookies[i].split("=")[0]);
     }
   }
+  document.getElementById('cookie-consent-response-accept').addEventListener("click",function() {
+    clearCookies();
+    createCookie('cookie-consent-accepted','true',31);
+    document.getElementById('cookie-consent').style.display = 'none';
+    location.reload();
+  });
 
-  if (readCookie('cookie-consent-accepted')==='true') {
+  {% if site.bonsai.debug %}
+    document.getElementById('cookie-consent-response-reject').addEventListener("click",function() {
+      clearCookies();
+      createCookie('cookie-consent-declined','true',10);
+      document.getElementById('cookie-consent').style.display = 'none';
+      location.reload();
+    });
+  {% else %}
     /** 
      * from: https://jekyllcodex.org/without-plugin/metrics/Z 
      * (use multi-line comment because compression causes single line to comment out entire file)
@@ -58,23 +71,9 @@
     var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
     ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  } else if (readCookie('cookie-consent-declined')==='true') {
-    /* do nothing (use multi-line comment because compression causes single line to comment out entire file) */
-  } else {
+  {% endif %}
+
+  if ((readCookie('cookie-consent-accepted')!=='true') && (readCookie('cookie-consent-declined')!=='true')) {
     document.getElementById('cookie-consent').style.display = 'flex';
   }
-  document.getElementById('cookie-consent-response-accept').addEventListener("click",function() {
-    clearCookies();
-    createCookie('cookie-consent-accepted','true',31);
-    document.getElementById('cookie-consent').style.display = 'none';
-    location.reload();
-  });
-  {% if site.debug %}
-    document.getElementById('cookie-consent-response-reject').addEventListener("click",function() {
-      clearCookies();
-      createCookie('cookie-consent-declined','true',10);
-      document.getElementById('cookie-consent').style.display = 'none';
-      location.reload();
-    });
-  {% endif %}
 </script>

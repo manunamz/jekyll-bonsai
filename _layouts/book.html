@@ -1,0 +1,49 @@
+---
+layout: base
+---
+
+<article id="book" 
+  class="book h-entry"
+  role="article" 
+  itemscope 
+  itemtype="http://schema.org/BlogPosting"
+  aria-labelledby="{{ title | slug }}-title">
+
+  <div class="book__title hp-title">
+    <h1 class="p-name">{{ page.title }}</h1>
+  </div>
+
+  <section class="book__infobox">
+    <div class="infobox">
+      {% assign book_cover_img_src = site.baseurl | append: "/" | append: page.collection | append: "/" | append: page.slug | append: "/" | append: page.slug | append: ".png" %}
+      <img src='{{ book_cover_img_src }}' class="infobox__img--cover">
+      {% include toc.html html=content wrap_class="toc" class="toc__list" item_class="toc__list-item" anchor_class="toc__anchor" %}
+      {% include dates.html updated=page.updated date=page.date %}
+      <div class="infobox__bar">
+        {% include btn_state.html states=page.status %}
+        {% if site.social.share.enabled %}
+          {% include share.html %}
+        {% endif %}
+      </div>
+      <div class="infobox__sem-tags p-category">
+        {% for sem_tag in page.tags %}
+          {% assign sem_tag_file = sem_tag | append: ".md" %}
+          {% assign entry = site.entries | find_exp: "item", "item.path contains sem_tag_file" %}
+          <button class="tag-pill {% if entry %}{% else %}disabled{% endif %}">
+            {% if entry %}
+              {% include btn_state.html states=entry.status %}
+              <a class="sem-tag" href="{{ entry.url | relative_url }}">{{ entry.title }}</a>
+            {% else %}
+              <span class="text--small">{{ site.data.emoji.missing }} {{ sem_tag }}</span>
+            {% endif %}
+          </button>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+
+  <div class="book__content markdown hp-content e-content p-name">
+    {{ content }}
+  </div>
+
+</article>

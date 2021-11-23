@@ -1,0 +1,14 @@
+{% comment %}
+  
+  Usage: (where 'status' in 'page.status' is a yml list of strings)
+    {% include btn_state.html states=page.status %}
+
+  Parameters:
+    * states         (array) - a page's status which maps to a state document.
+
+{% endcomment %}
+
+{% for stat_tag in include.states %}
+  {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
+  <a class="stat-tag" href="{{ state.url | relative_url }}" title={{ state.title }}>{{ state.emoji }}</a>
+{% endfor %}

@@ -1,0 +1,81 @@
+// Media query
+
+// 'mobile first' design (as opposed to 'desktop first'): https://css-tricks.com/logic-in-media-queries/
+// Media query mixin
+// Usage:
+// @include mq(md) {
+//   ..medium and up styles
+// }
+@mixin mq($name) {
+  // Retrieves the value from the key
+  $value: map-get($media-queries, $name);
+
+  // If the key exists in the map
+  @if $value != null {
+    // Prints a media query based on the value
+    @media (min-width: rem($value)) {
+      @content;
+    }
+  } @else {
+    @warn "No value could be retrieved from `#{$media-query}`. "
+      + "Please make sure it is defined in `$media-queries` map.";
+  }
+}
+
+// Responsive containers
+
+@mixin container {
+  padding: $gutter-spacing-sm;
+
+  @include mq(md) {
+    padding: $gutter-spacing;
+  }
+
+  @include mq(lg) {
+    padding: $gutter-spacing;
+  }
+}
+
+@mixin container-narrow {
+  max-width: $content-width;
+
+  // note: the following 'margin-right' are for the 
+  //       infobox-container's consideration.
+
+  @include mq(lg) {
+    margin-right: $nav-width-md;
+  }
+
+  @include mq(xl) {
+    margin-right: $nav-width-md x 2;
+  }
+}
+
+@mixin infobox-container {
+  width: 100%;
+  
+  @include mq(md) {
+    max-width: $nav-width-md;
+    float: right;
+  }
+
+  @include mq(lg) {
+    max-width: $nav-width-md;
+    padding: $sp-2;
+    
+    // from: https://www.bram.us/2020/01/10/smooth-scrolling-sticky-scrollspy-navigation/
+    position: sticky;
+    top: $sp-2;
+  }
+
+  @include mq(xl) {
+    max-width: $nav-width-md * 1.5;
+    padding: $sp-2;
+    
+    // from: https://www.bram.us/2020/01/10/smooth-scrolling-sticky-scrollspy-navigation/
+    position: sticky;
+    top: $sp-2;
+
+    margin-right: $nav-width-md * (3/5);
+  }
+}

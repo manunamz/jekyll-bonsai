@@ -1,0 +1,38 @@
+// table-of-contents styles
+// (not nesting due to include's format)
+
+.toc {
+  display: flex;
+  justify-content: center;
+  padding: $sp-3;
+
+  &__list {
+    margin-bottom: 0;
+  }
+
+  &__list-item {
+    @include fs-4;
+  
+    &::before {
+      content: "•" !important;
+      padding-right: $sp-3;
+    }
+  }
+
+  &__anchor {
+    color: var(--wiki-link-color);
+    text-decoration: none;
+    background-image: linear-gradient(var(--wiki-link-underline-color) 0%, var(--wiki-link-underline-color) 100%);
+    background-repeat: repeat-x;
+    background-position: 0 100%;
+    background-size: 1px 1px;
+  
+    &:hover {
+      background-image: linear-gradient(
+        rgba(var(--wiki-link-color), 0.45) 0%,
+        rgba(var(--wiki-link-color), 0.45) 100%
+      );
+      background-size: 1px 1px;
+    }
+  }
+}

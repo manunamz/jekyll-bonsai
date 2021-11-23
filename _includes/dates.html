@@ -1,0 +1,22 @@
+{% comment %}
+  
+  Usage:
+    {% include dates.html updated=page.updated date=page.date %}
+
+  Parameters:
+    * updated         (seconds)  - unix epoch time of page update.
+    * published       (datetime) - datetime of page publish.
+
+{% endcomment %}
+
+<div class="dates text--date">
+  <div>
+    <a class="stat-tag btn--blue" href="{{ '/recent' | relative_url }}" title="Published">{{ site.data.emoji.published }}</a>
+    <time class="dt-published">{{ include.date | date: site.bonsai.date_format }}</time>
+  </div>
+  <div>
+    <a class="stat-tag btn--blue" href="{{ '/recent' | relative_url }}" title="Updated">{{ site.data.emoji.updated }}</a> 
+    <!-- 'slice' because epoch timestamps currently use milliseconds -->
+    <time class="dt-updated">{{ include.updated | slice: 0, 10 |  date: site.bonsai.date_format }}</time>
+  </div>
+</div>

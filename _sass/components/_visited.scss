@@ -1,0 +1,42 @@
+// 
+// Visited Nav
+// 
+
+// visited nav (user-steps)
+
+.visited-nav {
+  position: relative;
+  z-index: $z-nav-content;
+  height: 100vh;
+  width: 100%;
+  padding-top: $sp-10;
+  padding-bottom: $sp-10;
+  overflow-y: scroll;
+
+  ul {
+
+    li {
+      @include fs-5;
+      padding-left: $sp-4;
+      padding-left: $sp-4;
+      margin-top: $sp-3;
+      margin-bottom: $sp-3;
+      margin-left: auto;
+      margin-right: auto;
+      // both animation and transform rely on this transition setting (according to: https://stackoverflow.com/a/20903041)
+      transition: all 0.15s ease-in-out;
+      width: 40%;
+  
+      &:hover {
+        transform: scale(1.1);
+      }
+  
+      @include mq(md) {
+        width: 80%;
+      }
+      // button {
+      //   justify-content: flex-end;
+      // }
+    }
+  }
+}

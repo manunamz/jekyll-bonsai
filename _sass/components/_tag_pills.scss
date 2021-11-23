@@ -1,0 +1,24 @@
+// tag pill styles 
+// (for semantic tags)
+
+.tag-pill {
+  white-space: nowrap;
+  padding: $sp-2;
+  margin: $sp-2;
+  border-radius: 15px;
+  color: var(--wiki-link-color);
+  background-color: $transparent;
+  border: 1px solid var(--accent-light-color);
+
+  &:hover {
+    background-color: var(--accent-light-color);
+  }
+
+  &.disabled {
+    color: var(--tag-disabled-color);
+
+    &:hover {
+      background-color: var(--accent-dark-color);
+    }
+  }
+}

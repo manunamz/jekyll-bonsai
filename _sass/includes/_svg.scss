@@ -1,0 +1,89 @@
+// 
+// svg imgs
+// 
+
+// bullet icons
+
+.bullet-link {
+  stroke: var(--bullet-link);
+}
+
+.bullet-node {
+  fill: var(--bullet-node);
+}
+
+// pencil textured svgs
+
+.pencil-yellow,
+.pencil-blue,
+.pencil-green {
+  fill: none;
+  stroke-miterlimit: 10;
+  stroke-width: 10px;
+}
+
+// fill
+
+.pencil-fill-default {
+  fill: var(--pencil-fill-default);
+}
+
+.pencil-fill-default {
+  fill: var(--pencil-fill-default);
+}
+
+.pencil-fill-blue {
+  fill: var(--pencil-fill-blue);
+}
+
+.pencil-fill-green {
+  fill: var(--pencil-fill-green);
+}
+
+.pencil-fill-red {
+  fill: var(--pencil-fill-red);
+}
+
+.pencil-fill-yellow {
+  fill: var(--pencil-fill-yellow);
+}
+
+// stroke
+.pencil-stroke {
+  fill: none;
+  stroke-miterlimit: 10;
+  stroke-width: 10px;
+}
+
+.pencil-stroke-dash {
+  stroke-dasharray: 12.50 12.50;
+}
+
+.pencil-stroke-default {
+  stroke: var(--pencil-stroke-default);
+}
+
+.pencil-stroke-blue {
+  stroke: var(--pencil-stroke-blue);
+}
+
+.pencil-stroke-green {
+  stroke: var(--pencil-stroke-green);
+}
+
+.pencil-stroke-red {
+  stroke: var(--pencil-stroke-red);
+}
+
+.pencil-stroke-yellow {
+  stroke: var(--pencil-stroke-yellow);
+}
+
+.pencil-txt {
+  font-family: BradleyHandITCTT-Bold, Bradley Hand;
+  font-size: 52px;
+}
+
+.pencil-txt-sm {
+  font-size: 27px;
+}

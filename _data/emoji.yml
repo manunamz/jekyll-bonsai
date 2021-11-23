@@ -6,29 +6,29 @@
 approve:     👍 
 consider:    🧐
 disapprove:  👎
-# colors
-dark:        🌘
-light:       ☀️
-# entry-only
-breadcrumbs: 🛤
-entries:     🚏
-# graph
+# nav-bar
+colors:      🌈
+## graph
 net-web:     🕸
 tree:        🌳
-# site-nav
+## site-nav
 delete:      🧹
 graph:       🪴
+search:      🔍
 site_nav:    🧭 
 visited:     🥾
-# pages
+## pages
 about:       🪧
+archive:     ⛲️
 home:        🏕
 pages:       🗺
-posts:       🧺
 privacy:     🛖
 recent:      🌦
-search:      🔍
 stat_tags:   🔖
+# entry-only
+breadcrumbs: 🛤
+links:       🚏
+tags:        🧺
 # 
 # the following are informational emojis
 #  -- these are safe to set to "" (empty strings)
@@ -37,8 +37,9 @@ stat_tags:   🔖
 connect:     🌊
 share:       🐝
 # changes
-created:     🌤
+created:     🌩
+published:   🌤
 updated:     🌧
-deleted:     🌩
+deleted:     🌨
 # 404
 missing:     🍂

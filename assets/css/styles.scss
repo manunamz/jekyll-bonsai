@@ -1,8 +1,31 @@
 ---
 ---
-{% if site.theme_colors and site.theme_colors != "nil" %}
-  {% assign theme_colors = site.theme_colors %}
-{% else %}
-  {% assign theme_colors = "dark" %}
-{% endif %}
-{% include styles.scss.liquid theme_colors=theme_colors %}
+// Colors
+$transparent: #00000000;
+
+$accent-txt-color: #959396;   // $grey-dk-000
+
+// shadows (mostly for btns)
+$drop-shadow-purple: rgba(114, 83, 237, 0.9) !default; 
+$drop-shadow-blue: rgba(31, 141, 192, 0.9) !default;
+$drop-shadow-brown: rgba(146, 102, 7, 0.9) !default;
+$drop-shadow-green: rgba(49, 175, 49, 0.9) !default;
+$drop-shadow-yellow: rgba(228, 225, 31, 0.9) !default;
+$drop-shadow-orange: rgba(231, 175, 6, 0.9) !default;
+$drop-shadow-red: rgba(233, 76, 76, 0.9) !default;
+
+// set theme colors
+{% for theme in site.data.themes %}
+  {% include themes.scss.liquid id=theme.id src=theme.src colors=theme.colors svg=theme.svg graph=theme.graph %}
+{% endfor %}
+
+// import styles
+@import "./main";
+
+// microdata / microformats currently in-use:
+// - dt-published
+// - dt-updated
+// - e-content
+// - h-entry
+// - p-name
+// - u-url

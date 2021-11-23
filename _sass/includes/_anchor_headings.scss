@@ -1,0 +1,36 @@
+// anchor heading styles
+
+.anchor-heading {
+  position: absolute;
+  width: $sp-5;
+  height: 100%;
+  padding-right: $sp-1;
+  padding-left: $sp-2;
+  overflow: visible;
+
+  @include mq(md) {
+    padding-left: $sp-2;
+  }
+
+  .anchor-tag {
+    @include fs-3;
+    display: flex;
+    opacity: 0;
+
+    &:hover {
+      filter: drop-shadow(0 0 0.7mm $drop-shadow-yellow);
+    }
+  }
+}
+
+.anchor-heading:hover,
+h1:hover > .anchor-heading,
+h2:hover > .anchor-heading,
+h3:hover > .anchor-heading,
+h4:hover > .anchor-heading,
+h5:hover > .anchor-heading,
+h6:hover > .anchor-heading {
+  .anchor-tag {
+    opacity: 1;
+  }
+}

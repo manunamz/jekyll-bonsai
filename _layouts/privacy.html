@@ -1,11 +1,15 @@
 ---
-layout: default
+layout: base
 ---
 
-<div id="privacy">
+<div id="privacy" class="privacy">
 
-  <h1>{{ site.data.emoji.privacy }} {{ page.title }}</h1>
+  <div class="hp-title">
+    <h1 class="p-name">{{ site.data.emoji.privacy }} {{ page.title }}</h1>
+  </div>
 
-  {{ content }}
+  <div class="hp-content markdown e-content p-name">
+    {{ content }}
+  </div>
 
 </div>

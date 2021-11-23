@@ -1,74 +1,94 @@
-<nav id="site-nav" class="site-nav" role="navigation" aria-label="main">
+<nav id="site-nav" class="site-nav" role="navigation">
   <header>
     <span>
-      <a id="home-btn" class="site-nav-btn" href="{{ '/' | relative_url }}" title="Go Home">
+      <a id="home-btn" class="btn btn--green" href="{{ '/' | relative_url }}" title="Go Home">
         {{ site.data.emoji.home }}
       </a>
     </span>
     <span class="dropdown">
-      <button class="dropdown-btn">
+      <button class="dropdown__btn">
         <span title="Page Navigation">
           {{ site.data.emoji.pages }}
         </span>
       </button>
-      <div class="dropdown-content">
-        <!-- using '.first' to test if any results were found -->
-        {% assign search_page = site.pages | where: "name", "search.md" %}
-        {% if search_page.first %}
-          <a id="search-dropbtn" class="site-nav-btn drop-1" href="{{ '/search' | relative_url }}" title="Search">
-            {{ site.data.emoji.search }}
+      <div class="dropdown__content">
+        {% assign recent_page = site.pages | where: "name", "recent.md" %}
+        {% if recent_page.first %}
+          <a class="btn btn--blue drop-1" href="{{ '/recent' | relative_url }}" title="Go To Recent Changes">
+          {{ site.data.emoji.recent }}
           </a>
         {% endif %}
         {% if site.states %}
-          {% assign root_state = site.states | find_exp: "item", "item.path == site.root_state_path" %}
-          <a id="stat-tags-dropbtn" class="site-nav-btn drop-1" href="{{ root_state.url | relative_url }}" title="Go To States">
+          {% assign root_state = site.states | find_exp: "item", "item.path == site.bonsai.states.root_path" %}
+          <a class="btn btn--brown drop-2" href="{{ root_state.url | relative_url }}" title="Go To States">
             {{ site.data.emoji.stat_tags }}
           </a>
         {% endif %}
-        {% assign posts_page = site.pages | where: "name", "posts.md" %}
-        {% if posts_page.first %}
-          <a id="posts-dropbtn" class="site-nav-btn drop-2" href="{{ '/posts' | relative_url }}" title="Go To Posts">
-            {{ site.data.emoji.posts }}
-          </a>
-        {% endif %}
-        {% assign recent_page = site.pages | where: "name", "recent.md" %}
-        {% if recent_page.first %}
-          <a id="recent-dropbtn" class="site-nav-btn drop-3" href="{{ '/recent' | relative_url }}" title="Go To Recent Changes">
-          {{ site.data.emoji.recent }}
+        {% assign archive_page = site.pages | where: "name", "archive.md" %}
+        {% if archive_page.first %}
+          <a class="btn btn--purple drop-3" href="{{ '/archive' | relative_url }}" title="Go To Archive">
+            {{ site.data.emoji.archive }}
           </a>
         {% endif %}
       </div>
     </span>
     <span class="dropdown">
-      <button class="dropdown-btn">
+      <button class="dropdown__btn">
+        <span title="Theme Color Toggles">
+          {{ site.data.emoji.colors }}
+        </span>
+      </button>
+      <div class="dropdown__content">
+        {% for theme in site.data.themes %}
+          <a data-theme-id="{{ theme.id }}" class="btn btn--yellow drop-{{ forloop.index }}" title="{{ theme.id }}">
+            {{ theme.emoji }}
+          </a>
+        {% endfor %}
+      </div>
+    </span>
+    <span class="dropdown">
+      <button class="dropdown__btn">
         <span title="Site-Nav Toggles">
           {{ site.data.emoji.site_nav }}
         </span>
       </button>
-      <div class="dropdown-content">
-        <label class="site-nav-btn drop-1">
-          <input id="nav-type-checkbox" type="checkbox" checked="checked">
-          <span id="nav-type-emoji-span" title="Toggle Nav Type"></span>
-        </label>
-        <label class="site-nav-btn drop-2">
+      <div class="dropdown__content">
+        {% if site.bonsai.nav.visited.enabled %}
+          <label class="btn btn--orange">
+            <input id="nav-type-checkbox" type="checkbox" checked="checked">
+            <span id="nav-type-emoji-span" title="Toggle Nav Type"></span>
+          </label>
+        {% endif %}
+        <label class="btn btn--green">
           <input id="graph-type-checkbox" type="checkbox" checked="checked">
           <span id="graph-type-emoji-span" title="Toggle Graph Type"></span>
         </label>
-        <a id="delete-btn" class="site-nav-btn drop-3" title="Delete Visited History">
+        <a id="delete-btn" class="btn btn--red drop-3" title="Delete Visited History">
           {{ site.data.emoji.delete }}
         </a>
       </div>
     </span>
-    <label class="site-nav-btn">
-      <input id="theme-colors-checkbox" type="checkbox" checked="checked">
-      <span id="theme-colors-emoji-span" title="Toggle Colors"></span>
-    </label>
+    {% if site.bonsai.nav.search.enabled %}
+      <a id="search-btn" class="btn btn--brown" href="#" title="Search (cmd/ctrl+k)">
+        {{ site.data.emoji.search }}
+      </a>
+    {% endif %}
   </header>
 
-  <nav id="visited-nav" class="visited-nav"></nav>
-  <div id="graph"></div>
+  {% if site.bonsai.nav.search.enabled %}
+    <div id="search">
+      <input id="search-input" class="search__input hide"></input>
+      <div id="search-results" class="search__results"></div>
+    </div>
+  {% endif %}
+  <div id="site-nav-content">
+    <div id="jekyll-graph"></div>
+    {% if site.bonsai.nav.visited.enabled %}
+      <nav id="visited-nav" class="visited-nav"></nav>
+    {% endif %}
+  </div>
 
   <footer>
-    <span class="small-descr">Grown 🪴 with 💚 from a <a class="web-link" href="https://github.com/manunamz/jekyll-bonsai/">jekyll-bonsai</a>.</span>
+    <span class="text--small">🪴 Grown with 💚 from a <a class="web-link" href="https://manunamz.github.io/jekyll-bonsai/">jekyll-bonsai</a></span>
   </footer>
 </nav>

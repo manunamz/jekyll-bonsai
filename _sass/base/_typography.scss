@@ -3,27 +3,40 @@
 //
 // stylelint-disable primer/selector-no-utility, primer/no-override, selector-no-type, selector-max-type
 
+body {
+  line-height: $content-line-height;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  position: relative;
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
+  padding-top: $sp-2;
+}
+
 h1,
 .text-alpha {
-  @include fs-9;
+  @include fs-10;
 }
 
 h2,
 .text-beta {
-  @include fs-7;
+  @include fs-8;
 }
 
 h3,
 .text-gamma {
-  @include fs-5;
+  @include fs-7;
 }
 
 h4,
 .text-delta {
-  @include fs-3;
-  font-weight: 400;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
+  @include fs-6;
 }
 
 h4 code {
@@ -32,48 +45,45 @@ h4 code {
 
 h5,
 .text-epsilon {
-  @include fs-3;
+  @include fs-5;
   color: $accent-txt-color;
 }
 
 h6,
 .text-zeta {
-  @include fs-2;
-  color: $accent-txt-color;
-}
-
-.last-updated {
   @include fs-4;
-  color: $date-txt-color;
-}
-
-.missing-entry-txt {
-  @include fs-2;
-  color: $accent-txt-color !important;
-  pointer-events: none;
-}
-
-.small-descr {
-  @include fs-2;
   color: $accent-txt-color;
 }
 
-// .text-small {
-//   @include fs-2;
-// }
+.text {
 
-// .text-mono {
-//   font-family: $mono-font-family !important;
-// }
+  &--center {
+    text-align: center !important;
+  }
 
-// .text-left {
-//   text-align: left !important;
-// }
+  &--date {
+    @include fs-4;
+    color: $accent-txt-color;
+  }
 
-// .text-center {
-//   text-align: center !important;
-// }
+  &--small {
+    @include fs-2;
+    color: $accent-txt-color;
+  }
 
-// .text-right {
-//   text-align: right !important;
-// }
+//   &--left {
+//     text-align: left !important;
+//   }
+
+//   &--mono {
+//     font-family: $mono-font-family !important;
+//   }
+
+  &--no-point {
+    pointer-events: none;
+  }
+
+//   &--right {
+//     text-align: right !important;
+//   }
+}

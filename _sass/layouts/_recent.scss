@@ -1,0 +1,77 @@
+//
+// scss for recent page
+//
+
+.recent {
+  @include container-narrow;
+
+  // &__leader {
+    
+  // }
+
+  &__content {
+    padding: $sp-4;
+  }
+
+  .leader {
+    display: flex;
+    margin: $sp-2;
+    padding: $sp-2;
+
+    &__content {
+      padding: $sp-2;
+    }
+  }
+  
+  .key {
+    @include fs-3;
+    display: flex;
+    flex-direction: column;
+    padding: $sp-4;
+    border: 1px solid var(--accent-light-color);
+    border-radius: 15px;
+  
+    width: 90%;
+  
+    @include mq(md) {
+      width: 50%;
+    }
+  
+    &__title {
+      @include fs-5;
+      text-align: center;
+    }
+  
+    &__content {
+      @include fs-4;
+      white-space: nowrap;
+  
+      width: 100%;
+    }
+
+    &--right {
+      float: right;
+    }
+  }
+
+  .bullet-scene {
+    display: flex;
+    flex-direction: column;
+    width: 10%;
+    padding: $sp-1;
+  
+    &__change-type {
+      @include fs-6;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  
+    &__status {
+      @include fs-3;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  }  
+}

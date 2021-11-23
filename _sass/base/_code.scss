@@ -1,0 +1,133 @@
+//
+// Code and syntax highlighting
+//
+// stylelint-disable selector-no-qualifying-type, declaration-block-semicolon-newline-after,declaration-block-single-line-max-declarations, selector-no-type, selector-max-type
+
+// from: https://bnhr.xyz/2017/03/25/add-syntax-highlighting-to-your-jekyll-site-with-rouge.html
+// @import './code_themes/gruvbox';
+@import './code_themes/solarized';
+// @import './code_themes/monokai';
+
+code {
+  padding: $sp-1 $sp-1;
+  font-weight: 400;
+  border-radius: $border-radius;
+  background-color: var(--accent-dark-color);
+}
+
+// Avoid appearance of dark border around visited code links in Safari
+a:visited code {
+  border-color: var(--accent-light-color);
+}
+
+// Content structure for highlighted code blocks using fences or Liquid
+//
+// ```[LANG]...```, no kramdown line_numbers:
+//   div.[language-LANG.]highlighter-rouge > div.highlight > pre.highlight > code
+//
+// ```[LANG]...```, kramdown line_numbers = true:
+//   div.[language-LANG.]highlighter-rouge > div.highlight > pre.highlight > code
+//   > div.table-wrapper > table.rouge-table > tbody > tr
+//   > td.rouge-gutter.gl > pre.lineno
+//   | td.rouge-code > pre
+//
+// {% highlight LANG %}...{% endhighlight %}:
+//   figure.highlight > pre > code.language-LANG
+//
+// {% highlight LANG linenos %}...{% endhighlight %}:
+//   figure.highlight > pre > code.language-LANG
+//   > div.table-wrapper > table.rouge-table > tbody > tr
+//   > td.gutter.gl > pre.lineno
+//   | td.code > pre
+//
+// fix_linenos removes the outermost pre when it encloses table.rouge-table
+//
+// See docs/index-test.md for some tests.
+//
+// No kramdown line_numbers: fences and Liquid highlighting look the same.
+// Kramdown line_numbers = true: fences have a wider gutter than with Liquid?
+
+// ```[LANG]...```
+div.highlighter-rouge {
+  overflow-x: auto;
+  padding: $sp-3;
+  margin-top: $sp-3;
+  margin-bottom: $sp-3;
+  background-color: var(--accent-dark-color);
+  border-radius: $border-radius;
+  box-shadow: none;
+  -webkit-overflow-scrolling: touch;
+
+  div.highlight,
+  pre.highlight,
+  code {
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+}
+
+// {% highlight LANG %}...{% endhighlight %},
+// {% highlight LANG linenos %}...{% endhighlight %}:
+figure.highlight {
+  padding: $sp-3;
+  margin-top: 0;
+  margin-bottom: $sp-3;
+  background-color: var(--accent-dark-color);
+  border-radius: $border-radius;
+  box-shadow: none;
+  -webkit-overflow-scrolling: touch;
+
+  pre,
+  code {
+    padding: 0;
+    margin: 0;
+    border: 0;
+  }
+}
+
+// ```[LANG]...```, kramdown line_numbers = true,
+// {% highlight LANG linenos %}...{% endhighlight %}:
+.highlight .table-wrapper {
+  padding: 0;
+  margin: 0;
+  border: 0;
+  box-shadow: none;
+
+  td,
+  pre {
+    @include fs-2;
+    min-width: 0;
+    padding: 0;
+    background-color: var(--accent-dark-color);
+    border: 0;
+  }
+
+  td.gl {
+    padding-right: $sp-3;
+  }
+
+  pre {
+    margin: 0;
+    line-height: 2;
+  }
+}
+
+.code-example {
+  padding: $sp-3;
+  margin-bottom: $sp-3;
+  overflow: auto;
+  border: 1px solid var(--accent-light-color);
+  border-radius: $border-radius;
+
+  + .highlighter-rouge,
+  + figure.highlight {
+    position: relative;
+    margin-top: -$sp-4;
+    border-right: 1px solid var(--accent-light-color);
+    border-bottom: 1px solid var(--accent-light-color);
+    border-left: 1px solid var(--accent-light-color);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}

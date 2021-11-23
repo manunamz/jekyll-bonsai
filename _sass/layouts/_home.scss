@@ -1,0 +1,75 @@
+// 
+// scss for index
+// 
+
+.home {
+  @include container-narrow;
+  padding: $sp-5;
+
+  .lead {
+    padding: $sp-2;
+
+    &__img {
+      text-align: center;
+      padding: $sp-6;
+
+      &--size {
+        height: 45%; 
+        width: 45%;
+      }
+    }
+
+    &__title {
+      text-align: center;
+      padding: $sp-1;
+    }
+
+    &__content {
+      text-align: left;
+      padding: $sp-4;
+    }
+  }
+
+  .featured-wrap {
+
+    @include mq(md) {
+      display: flex;
+    }
+
+    & > * {
+      margin: $sp-1;
+
+      @include mq(md) {
+        flex-basis: 100%;
+      }
+    }
+  }
+}
+
+.featured {
+  @include mq(md) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__header {
+    text-align: left;
+    padding-left: $sp-3;
+  }
+
+  &__content {
+    padding: $sp-2;
+  }
+
+  &__footer {
+    @include fs-2;
+    color: $accent-txt-color;
+    text-align: right;
+    padding-bottom: $sp-3;
+
+    @include mq(md) {
+      text-align: center;
+      margin-top: auto;
+    }
+  }
+}

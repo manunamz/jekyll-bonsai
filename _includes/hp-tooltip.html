@@ -1,0 +1,106 @@
+<!-- "hover-preview tooltip"
+
+with help from: https://github.com/maximevaillancourt/digital-garden-jekyll-template/blob/master/_includes/link-previews.html
+
+for hover-preview to work, every page should define...
+- at a minimum:
+  - 'hp-title'
+  - 'hp-content'
+- optionally
+  - 'hp-header' 
+...in a div that wraps the desired element, so the hover-preview can properly build the content to display
+
+-->
+
+<style>  
+  /* leave id for opacity toggle */
+  #hp-tooltip {
+    opacity: 0;
+    transition: opacity 100ms;
+  }
+</style>
+  
+<div id="hp-tooltip" class="hp-tooltip">
+  <div id='hp-tooltip-content'></div>
+</div>
+<iframe id="hp-iframe" src=""></iframe>
+  
+<script>
+  var opacityTimeout;
+  var contentTimeout;
+  var transitionDurationMs = 100;
+
+  var iframe = document.getElementById('hp-iframe');
+  var tooltip = document.getElementById('hp-tooltip');
+  var tooltipContent = document.getElementById('hp-tooltip-content');
+
+  function hideTooltip() {
+    opacityTimeout = setTimeout(function() {
+    tooltip.style.opacity = 0;
+    contentTimeout = setTimeout(function() {
+        tooltipContent.innerHTML = '';
+        tooltip.style.display = 'none';
+    }, transitionDurationMs + 1);
+    }, transitionDurationMs)
+  }
+
+  function showTooltip(event) {
+    var elem = event.target;
+    var elem_props = elem.getClientRects()[elem.getClientRects().length - 1];
+    var top = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (event.target.host === window.location.host) {
+      iframe.src = event.target.href;
+      iframe.onload = function() {
+        let title = iframe.contentWindow.document.querySelector('.hp-title').innerHTML;
+        let content = iframe.contentWindow.document.querySelector('.hp-content').innerHTML;
+        // populate header breadcrumbs if they exist
+        if (iframe.contentWindow.document.querySelector('.hp-header')) {
+          let header = iframe.contentWindow.document.querySelector('.hp-header').innerHTML;
+          tooltipContent.innerHTML = header + title + content;
+        // everything else (doesn't have header breadcrumbs)
+        } else {
+          tooltipContent.innerHTML = title + content;
+        }
+        tooltip.style.display = 'block';
+        setTimeout(function() {
+            tooltip.style.opacity = 1;
+        }, 1);
+      };
+
+      tooltip.style.left = elem_props.left - (tooltip.offsetWidth / 2) + (elem_props.width / 2) + "px";
+      if ((window.innerHeight - elem_props.top) < (tooltip.offsetHeight)) {
+        tooltip.style.top = elem_props.top + top - tooltip.offsetHeight - 10 + "px";
+      } else if ((window.innerHeight - elem_props.top) > (tooltip.offsetHeight)) {
+        tooltip.style.top = elem_props.top + top + 35 + "px";
+      }
+
+      if ((elem_props.left + (elem_props.width / 2)) < (tooltip.offsetWidth / 2)) {
+        tooltip.style.left = "10px";
+      } else if ((document.body.clientWidth - elem_props.left - (elem_props.width / 2)) < (tooltip.offsetWidth / 2)) {
+        tooltip.style.left = document.body.clientWidth - tooltip.offsetWidth - 20 + "px";
+      }
+    }   
+  }
+
+  function setupListeners(linkElement) {
+    linkElement.addEventListener('mouseleave', function(_event) {
+      hideTooltip();
+    });
+
+    tooltip.addEventListener('mouseleave', function(_event) {
+      hideTooltip();
+    });
+
+    linkElement.addEventListener('mouseenter', function(event) {
+      clearTimeout(opacityTimeout);
+      clearTimeout(contentTimeout);
+      showTooltip(event);
+    });
+
+    tooltip.addEventListener('mouseenter', function(event) {
+      clearTimeout(opacityTimeout);
+      clearTimeout(contentTimeout);
+    });
+  }
+</script>

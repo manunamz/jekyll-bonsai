@@ -1,0 +1,145 @@
+- 
+  id: light
+  emoji: ☀️
+  src:
+    favicon: "/assets/img/favicon-light.png"
+    logo: "/assets/img/bonsai-light.svg"
+    nav_burger:
+      base: "/assets/img/nav-base-light.svg"
+      bonsai: "/assets/img/nav-bonsai-light.svg"
+  colors:
+    selection: "#E6E09E"
+    background: "#E4f3EA"
+    text: "#5c5962"
+    text_grey: "#27262b"
+    accent_dark: "#b8d9b8"
+    # accent_dark: "#335C33"
+    accent_light: "#C7E6D3"
+    shadow: "#000"
+    link:
+      web:
+        underline: "#e1e8e3"
+        valid: "#264caf"
+      wiki:
+        underline: "#ede5dd"
+        valid: "#009c7b"
+        invalid: "#959396" 
+  svg:
+    pencil:
+      default: "#5c5962"
+      blue: "#0047aa"
+      green: "#31AF31"
+      red: "#eb3023"
+      yellow: "#dfb600"
+  graph:
+    node:
+      stroke: "#00000000"
+      current: "#F0C61F"
+      missing: "#8C6239"
+      tagged: "#a87f32"
+      unvisited: "#9cbe9c"
+      visited: 
+        color: "#31AF31"
+        glow: "#00000000"
+    link:
+      color: "#8C6239"
+    particles: 
+      color: "#5c5962"
+    text:
+      color: "#5c5962"
+- 
+  id: dark
+  emoji: 🌘
+  src:
+    favicon: "/assets/img/favicon-dark.png"
+    logo: "/assets/img/bonsai-dark.svg"
+    nav_burger:
+      base: "/assets/img/nav-base-dark.svg"
+      bonsai: "/assets/img/nav-bonsai-dark.svg"
+  colors:
+    selection: "#ad9b4b"
+    background: "#27262b"
+    text: "#e1e8e3"
+    text_grey: "#f5f6fa"
+    accent_dark: "#1E1C21"
+    accent_light: "#44434d"
+    shadow: "#fff"
+    link:
+      web:
+        underline: "#44434d"
+        valid: "#89B8D8"
+      wiki:
+        underline: "#44434d"
+        valid: "#A0E4A0"
+        invalid: "#959396"
+  svg:
+    pencil:
+      default: "#e1e8e3"
+      blue: "#0047aa"
+      green: "#31AF31"
+      red: "#eb3023"
+      yellow: "#dfb600"
+  graph:
+    node:
+      stroke: "#44434d"
+      current: "#F0C61F"
+      missing: "#00000000"
+      tagged: "#a87f32"
+      unvisited: "#3e5c50"
+      visited: 
+        color: "#31AF31"
+        glow: "#31AF31"
+    link:
+      color: "#44434d"
+    particles: 
+      color: "#959396"
+    text: 
+      color: "#e6e1e8"
+- 
+  id: star
+  emoji: ✨
+  src:
+    favicon: "/assets/img/favicon-dark.png"
+    logo: "/assets/img/bonsai-star.svg"
+    nav_burger:
+      base: "/assets/img/nav-base-star.svg"
+      bonsai: "/assets/img/nav-bonsai-star.svg"
+  colors:
+    selection: "#f5ec8eA6"
+    background: "#1b2733"
+    text: "#e1e8e3"
+    text_grey: "#f5f6fa"
+    accent_dark: "#151E28"
+    accent_light: "#254756"
+    shadow: "#fff"
+    link:
+      web:
+        underline: "#44434d"
+        valid: "#3D87B8"
+      wiki:
+        underline: "#44434d"
+        valid: "#F3EEBB"
+        invalid: "#959396"
+  svg:
+    pencil:
+      default: "#e1e8e3"
+      blue: "#0047aa"
+      green: "#31AF31"
+      red: "#eb3023"
+      yellow: "#dfb600"
+  graph:
+    node:
+      stroke: "#00000000"
+      current: "#F0C61F"
+      missing: "#586069"
+      tagged: "#0096FF"
+      unvisited: "#2A3D50"
+      visited:
+        color: "#F3F0CF"
+        glow: "#ffffff"
+    link:
+      color: "#254756"
+    particles: 
+      color: "#F3F0CF"
+    text: 
+      color: "#e6e1e8"

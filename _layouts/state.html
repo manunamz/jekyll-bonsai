@@ -1,58 +1,70 @@
 ---
-layout: default
+layout: base
 ---
+
 {% assign states = site.states  %}
 {% assign index_state_title = "Plant Tags Page" %}
 
-<div id="states">
-  <nav class="states-nav">
-    <ul class="states-nav-list">
+<div id="state" class="state">
+
+  <nav class="state__nav">
+    <ul>
       {% for state in states %}
-        <li class="states-list-item {% if page.url == state.url %}active{% endif %}">
-          <a href="{{ state.url | relative_url }}" class="stat-tag">
+        <li class="{% if page.url == state.url %}active{% endif %}">
+          <a class="stat-tag" href="{{ state.url | relative_url }}">
             {{ state.emoji }}
           </a>
         </li>
       {% endfor %}
     </ul>
   </nav>
+  
+  <div class="state__content">
 
-  <!-- all states -->
-  {% if page.path == site.root_state_path %}
-    <h1>{{ page.emoji }} {{ page.title }}</h1>
-    {{ content }}
-    <p class="small-descr">
-      Descriptions only reflect the spirit of this garden. 
-      Click <a class="web-link" href="{{ page.emojipedia }}">here</a> for the official emoji description.
-    </p>
-    {% for state in states %}
-      {% if state.path != site.root_state_path %}
-        <h2>{{ state.emoji }} <a href="{{ state.url | relative_url }}" class="wiki-link">{{ state.title }}</a></h2>
-        <p>{{ state.content | markdownify }}</p>
-      {% endif %}
-    {% endfor %}
-  <!-- individual states -->
-  {% else %}
-    <!-- page == tag (from tag-nav) -->
-    {% assign docs_w_stat = site.documents | where: 'status', page.emoji %}
-    <h1>{{ page.emoji }} {{ page.title }}</h1>
-    {{ content }}
-    <p class="small-descr">
-      Descriptions only reflect the spirit of this garden. 
-      Click <a href="{{ page.emojipedia }}">here</a> for the official emoji description.
-    </p>
-    {% if docs_w_stat.size == 0 %}
-      <div class="no-results">
-        There are currently no {{ page.emoji }}s.
+    <section>
+      <div class="hp-title">
+        <h1 class="p-name">{{ page.emoji }} {{ page.title }}</h1>
       </div>
+      <div class="markdown hp-content e-content p-name">
+        {{ content }}
+      </div>
+    </section>
+
+    <!-- display all states on root state -->
+    {% if page.path == site.bonsai.states.root_path %}
+      <section class="has-web-links">
+        {% for state in states %}
+          {% if state.path != site.bonsai.states.root_path %}
+            <h4>{{ state.emoji }} {{ state.title }}</h4>
+            {{ state.content | markdownify }}
+          {% endif %}
+      {% endfor %}
+      </section>
+    <!-- display entries with that state as its status -->
     {% else %}
-      <ul class="states-list">
-        {% for entry in docs_w_stat %}
-          <li class="states-list-item">
-            {{ page.emoji }} <a href="{{ entry.url | relative_url }}" class="wiki-link">{{ entry.title }}</a>
-          </li>
-        {% endfor %}  
-      </ul>
-      {% endif %}
-  {% endif %}
+      <section>
+        <!-- page == tag (from tag-nav) -->
+        {% assign docs_w_stat = site.documents | where: 'status', page.emoji %}
+        {% if docs_w_stat.size == 0 and page.path != site.bonsai.states.root_path %}
+          <div class="state__list-wrap--empty">
+            <span>There are currently no {{ page.emoji }}s.</span>
+          </div>
+        {% else %}
+          <ul class="state__list-wrap">
+            {% for entry in docs_w_stat %}
+              <li>
+                {{ page.emoji }} <a class="wiki-link" href="{{ entry.url | relative_url }}">{{ entry.title }}</a>
+              </li>
+            {% endfor %}  
+          </ul>
+        {% endif %}
+      </section>
+    {% endif %}
+
+  </div>
+
+  <footer class="state__footer text--small">
+    Descriptions only reflect the spirit of this garden. Check out the official description: <a class="web-link" href="{{ page.emojipedia }}"> here </a>.
+  </footer>
+
 </div>

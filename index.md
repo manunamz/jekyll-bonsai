@@ -7,4 +7,4 @@ Jekyll-Bonsai is a jekyll theme built for digital gardeners. Most of the site's 
 
 It is still being built, but feel free to poke around.
 
-You can learn more about the [[people.creator]] [here](https://manunam.me).
+You can learn more about the creator [here](https://manunam.me).

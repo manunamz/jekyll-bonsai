@@ -1,0 +1,48 @@
+// infobox styles
+//    the infobox is meant to be placed inside of a container of the 
+//    parent layout. (often named &__infobox)
+// 
+// appears in:
+//  - entry
+//  - post
+
+.infobox {
+  display: flex;
+  flex-direction: column;
+  // todo: separate scroll for infobox...
+  //       ...but it didn't feel quite right...
+  //       ...commenting out for now.
+  // max-height: 100vh;
+  // overflow-y: scroll;
+
+  &__img {
+    align-self: center;
+    padding: $sp-3;
+    height: 70%;
+    width: 70%;
+
+    &--cover {
+      align-self: center;
+      padding: $sp-3;
+      height: 300px;
+      width: 200px;
+    }
+  }
+
+  &__bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__link-nav {
+    width: 100%; 
+  }
+
+  &__sem-tags {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding: $sp-2;
+  }
+}

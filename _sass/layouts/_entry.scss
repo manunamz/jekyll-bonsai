@@ -1,0 +1,140 @@
+// entry page styles
+  
+.entry {
+
+  &__header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    &--fix-hrz-scroll {
+      // fixes horizontal scroll
+      // from: https://stackoverflow.com/questions/45280943/horizontal-scroll-breaks-when-using-css-flexbox
+      overflow:hidden;
+    }
+  }
+
+  // this container duplication is necessary so the infobox behavior works
+  // (...i think)
+
+  &__title {
+    @include container-narrow;
+    margin-bottom: $sp-2;
+  }
+
+  &__infobox {
+    @include infobox-container;
+    padding: $sp-3;
+    margin-bottom: $sp-3;
+  }
+
+  &__body {
+    @include container-narrow;
+  }
+
+  &__footer {
+    @include container-narrow;
+  }
+
+  &__section-wrapper { // specifically for the footer sections...
+    margin-top: $sp-6;
+    margin-bottom: $sp-6;
+    display: flex;
+  }
+}
+
+// header
+
+.breadcrumb {
+  align-self: center;
+  // horizontal scroll on overflow
+  overflow-x: scroll;
+  white-space: nowrap;
+
+  ol {
+    display: flex;
+    // remove 'ol' defaults
+    padding-left: 0;
+    margin-bottom: 0;
+    margin-top: 0;
+    list-style: none;
+  
+    li {
+      @include fs-2;
+      display: flex;
+      padding-left: $sp-1;
+      padding-right: $sp-1;
+
+      &::before {
+        display: none;
+      }
+
+      .stat-tag {
+        padding-right: $sp-1;
+      }
+    }
+  } 
+}
+
+// aside
+
+.link-map {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  &__type {
+    text-align: center;
+  }
+
+  &__wrapper {
+    display: grid;
+  }
+
+  &__key {
+    grid-column-start: 1;
+    align-self: center;
+    text-align: right;
+  }
+
+  &__value {
+    grid-column-start: 2;
+    align-self: center;
+    text-align: left;
+  }
+}
+
+// footer
+
+.link-box {
+  width: 100%;
+
+  &__partition {
+    width: 100%;
+    padding-left: $sp-2;
+    padding-right: $sp-2;
+  }
+
+  &__type {
+    @include fs-6;
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+  }
+
+  ul {
+    display: block; // columns require block
+    column-count: 2;
+    column-width: $content-width / 6;
+    padding-left: 0;
+    
+    li {
+      padding: $sp-1;
+      max-width: $content-width / 4;
+      // hide overflowing text
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}

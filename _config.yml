@@ -1,16 +1,12 @@
-# jekyll configs
-
 title: jekyll-bonsai
 description: A modern jekyll theme for semantically inclined digital gardeners.
 author: manunamz
 baseurl: '/jekyll-bonsai'
 # url: 'https://manunamz.github.io'
 
-permalink: pretty
 include: 
   - "_pages"
 exclude:
-  - "node_modules/"
   - "package.json"
   - "package-lock.json"
   - "*.gemspec"
@@ -26,6 +22,8 @@ exclude:
   - "LICENSE.txt"
 
 collections:
+  books:
+    output: true
   entries:
     output: true
   states:
@@ -42,28 +40,47 @@ collections:
       - seed.md
       - tea.md
       - pot-bamboo.md
-        
+
+# frontmatter
+# ('type' is explicitly set for search exclusion to work)
 defaults:
-  # permalink: /:type/:id
-  # permalinks are manually verified/generated -- see 'jekyll-bonsai-util' plugin.
+  - 
+    scope:
+      type: "pages"
+    values:
+      type: "pages"
   - 
     scope:
       # path: "_posts/**/*.md"
       type: "posts"
     values:
+      type: "posts"
       layout: "post"
+      permalink: "/post/:id/"
+  - 
+    scope:
+      # path: "_books/**/*.md"
+      type: "books"
+    values:
+      type: "books"
+      layout: "book"
+      permalink: "/book/:id/"
   - 
     scope:
       # path: "_entries/**/*.md"
       type: "entries"
     values:
+      type: "entries"
       layout: "entry"
+      permalink: "/entry/:id/"
   - 
     scope:
       # path: "_states/**/*.md"
       type: "states"
     values:
+      type: "states"
       layout: "state"
+      permalink: "/stat/:id/"
 
 sass:
   sass_dir:          _sass
@@ -71,14 +88,8 @@ sass:
 
 enable_mathjax: true
 kramdown:
+  syntax_highlighter: rouge
   math_engine: mathjax
-
-# plugins:
-#   - jekyll-namespaces
-#   - jekyll-wikilinks
-#   - jekyll-feed
-#   - jekyll-seo-tag
-#   - jekyll-sitemap
 
 compress_html:
   clippings: all
@@ -87,6 +98,10 @@ compress_html:
   startings: []
   blank_lines: false
   profile: false 
+
+# 
+# plugins
+# 
 
 # Google Analytics (ip is anonymized by default)
 ga_tracking: UA-190413040-4
@@ -101,11 +116,17 @@ ga_tracking: UA-190413040-4
 #   twitter: manunamz
 
 # 
-# plugins
+# bonsai plugins
 # 
+ids:
+  # from: https://github.com/radeno/nanoid.rb#options
+  format:
+    alpha: '1234567890abcdef'
+    size: 10
 namespaces:
   # enabled: true
   exclude:
+    - "books"
     - "pages"
     - "posts"
     - "states"
@@ -115,74 +136,117 @@ wikilinks:
     - "states"
   css:
     exclude:
+      # markdown
+      - "footnote"
+      - "reversefootnote"
+      # local-theme-related
       - "site-nav-btn"
       - "sem-tag"
       - "stat-tag"
+      # includes
       - "anchor-heading"
-      - "footnote"
-      - "reversefootnote"
       - "toc-list-item-anchor"
-d3:
+graph:
   # enabled: true
-  # path: "/assets"
+  # path:
+  #   assets: "/assets"
+  #   scripts: "/assets/js"
   exclude:
+    - "books"
     - "pages"
     - "posts"
     - "states"
-bonsai_util:
-  # id_format uses 'alpha' and 'size' for nanoid: https://github.com/radeno/nanoid.rb#options
-  id_format:
-    alpha: 1234567890abcdef
-    size: 10
+  tree:
+    # enabled: true
+    dag_lvl_dist: 100
+    force:
+      charge: -100
+      strength_x: 0.3
+      x_val: 0.9
+      strength_y: 0.1
+      y_val: 0.9
+  net_web:
+    # enabled: true
+    # exclude:
+    #   links: true
+    force:
+      charge: -300
+      strength_x: 0.3
+      x_val: 0.75
+      strength_y: 0.1
+      y_val: 0.9
 
 # 
-# jekyll-bonsai configs
+# includes
 # 
-debug: false
-# theme_colors: "dark"
-date_format: "%Y-%m-%d"
-logo-light: "/assets/img/bonsai-light.svg"
-logo-dark: "/assets/img/bonsai-dark.svg"
-# dendron forces the root note-title to be 'root.md' -- this is the replacement title for 'root'
-# (make sure you change the title in root.md file as well)
-root_entry_path: "_entries/root.md"
-root_state_path: "_states/tags.md"
-# graph: default graph type in side bar.
-## may be 'tree' or 'net-web'
-graph_type: "tree"
-# nav: default nav type in side bar.
-## may be 'tabs' (visited/path) or graph (bonsai)
-nav_type: "graph"
-# local note-nav component defaults
-## may be 'open' or 'closed'
-entry_head_status: "open"
-entry_head_links_status: "open"
-entry_foot_links_status: "open"
-entry_foot_posts_status: "open"
-home:
-  notable: true
-  recent: true
-# home
-notable:
-  - digital-garden.bonsai.md
-  - digital-garden.md
-  - features.doc-type.entry.md
-  - features.site-nav.graph.md
-  - people.md
-# recent (weather): set number of items to display when filtering for recent docs or posts.
-recent_cap: 10 
+
 social:
-  enabled: true
   connect:
-    # facebook_url:
-    github_url: https://github.com/manunamz/
-    # linkedin_url:
-    # pinterest_url:
-    rss_url: https://manunam.me/feed.xml
-    twitter_url: https://twitter.com/manunamz/
+    enabled: true
+    url:
+      # facebook:
+      github: https://github.com/manunamz/jekyll-bonsai/
+      # linkedin:
+      # pinterest:
+      # rss:
+      # twitter:
   share:
-    - 'email'
-    # - 'facebook'
-    # - 'linkedin'
-    # - 'pinterest'
-    - 'twitter'
+    enabled: true
+    type:
+      - 'email'
+      # - 'facebook'
+      - 'linkedin'
+      # - 'pinterest'
+      - 'twitter'
+
+# 
+# bonsai template configs
+# 
+bonsai:
+  debug: false
+  default_theme: "light"
+  date_format: "%Y-%m-%d"
+  svg: 
+    filter: false
+    # smaller: false
+  # site-nav
+  nav:
+    type: "graph"  # may be 'visited' (steps) or 'graph' (bonsai)
+    graph:
+      type: "tree" # may be 'tree' or 'net-web'
+    search: 
+      enabled: true
+      exclude: []
+    visited:
+      enabled: true
+  # pages
+  home:
+    notable: 
+      enabled: true
+      docs:
+        - digi-gard.orient.bonsai.md
+        - website-type.wiki-blog.md
+        - feat.md
+        - 2021-11-18-setup.md
+        - 2021-05-11-origin-myth.md
+    recent: 
+      enabled: true
+      cap: 5
+  archive:
+    section:
+      posts: "🫐 🥭 🍈 Fruits"
+      books: "🌰 🍵 🎍 Germs"
+      entries: "🌱 🌿 🎋 🌸 Foliage"
+  recent:
+    cap: 10 
+  # documents
+  states:
+    root_path: "_states/tags.md"
+  entries:
+    root_path: "_entries/root.md"
+    toggles:  # may be 'open' or 'closed'
+      breadcrumb: "open"
+      attr_box: "open"
+      foot_links: "open"
+      foot_tagged: "open"
+    backlinks: true

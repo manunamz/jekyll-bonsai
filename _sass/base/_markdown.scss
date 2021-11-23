@@ -1,0 +1,281 @@
+@charset "UTF-8";
+
+//
+// Styles for rendered markdown in the .main-content container
+//
+// stylelint-disable selector-no-type, max-nesting-depth, selector-max-compound-selectors, selector-max-type
+
+.markdown {
+  line-height: $content-line-height;
+
+  ol,
+  ul,
+  dl,
+  pre,
+  address,
+  blockquote,
+  .table-wrapper {
+    margin-top: 0.5em;
+  }
+
+  a {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    
+    &.web-link:after {
+      @include fs-3;
+      font-family: $mono-font-family;
+      position: relative;
+      top: -0.5em; // sass variable not working here
+      content: "↗";
+      color: #aaaaaa;
+    }
+  }
+
+  ul,
+  ol {
+    padding-left: 1.5em;
+  }
+
+  li {
+    .highlight {
+      margin-top: $sp-1;
+    }
+  }
+
+  ol {
+    list-style-type: none;
+    counter-reset: step-counter;
+
+    > li {
+      position: relative;
+
+      &::before {
+        position: absolute;
+        top: 0.2em;
+        left: -1.6em;
+        color: $accent-txt-color;
+        content: counter(step-counter);
+        counter-increment: step-counter;
+        @include fs-3;
+
+        @include mq(sm) {
+          top: 0.11em;
+        }
+      }
+
+      ol {
+        counter-reset: sub-counter;
+
+        li {
+          &::before {
+            content: counter(sub-counter, lower-alpha);
+            counter-increment: sub-counter;
+          }
+        }
+      }
+    }
+  }
+
+  ul {
+    margin-top: 0;
+    list-style: none !important;
+
+    > li {
+      &::before {
+        position: absolute;
+        margin-left: -1.4em;
+        color: $accent-txt-color;
+        content: "•" !important;
+      }
+    }
+  }
+
+  .task-list {
+    padding-left: 0;
+  }
+
+  .task-list-item {
+    display: flex;
+    align-items: center;
+
+    &::before {
+      content: "";
+    }
+  }
+
+  .task-list-item-checkbox {
+    margin-right: 0.6em;
+  }
+
+  hr {
+    background-color: var(--accent-light-color);
+
+    + * {
+      margin-top: 0;
+    }
+  }
+
+  dl {
+    display: grid;
+    grid-template: auto / 10em 1fr;
+  }
+
+  dt,
+  dd {
+    margin: 0.25em 0;
+  }
+
+  dt {
+    grid-column: 1;
+    font-weight: 500;
+    text-align: right;
+    &::after {
+      content: ":";
+    }
+  }
+
+  dd {
+    grid-column: 2;
+    margin-bottom: 0;
+    margin-left: 1em;
+    blockquote,
+    div,
+    dl,
+    dt,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    li,
+    ol,
+    p,
+    pre,
+    table,
+    ul,
+    .table-wrapper {
+      &:first-child {
+        margin-top: 0;
+      }
+    }
+  }
+
+  dd,
+  ol,
+  ul {
+    dl:first-child {
+      dt:first-child,
+      dd:nth-child(2) {
+        margin-top: 0;
+      }
+    }
+  }
+
+  summary {
+    cursor: pointer;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    position: relative;
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+
+    // &:first-child {
+    //   margin-top: $sp-2;
+    // }
+
+    + table,
+    + .table-wrapper,
+    + .code-example,
+    + .highlighter-rouge {
+      margin-top: 1em;
+    }
+  }
+
+  // from: 
+  //  - https://codepen.io/jimmycow/pen/LmjVaz
+  //  - https://codepen.io/JoeHastings/pen/MOdRVm
+  blockquote {
+    @include fs-3;
+    margin: 0;
+    padding: $sp-2;
+
+    border-left: $sp-1 solid var(--accent-light-color);
+
+    & p {
+      padding-left: $sp-6;
+    }
+
+    &:before {
+      @include fs-10;
+      font-family: 'Special Elite', cursive;
+      position: absolute;
+      color: var(--accent-light-color);
+      width: 4rem;
+      height: 4rem;
+
+      content: '“';
+    }
+  }
+
+  .footnotes {
+    border-top: double var(--accent-light-color);
+  }
+
+  .footnote, .reversefootnote {
+    color: var(--wiki-link-color);
+  }
+
+  // tables
+  table {
+    display: table;
+    width: 100%;
+    border-collapse: separate;
+  }
+
+  th,
+  td {
+    @include fs-3;
+    min-width: 120px;
+    padding-top: $sp-2;
+    padding-bottom: $sp-2;
+    padding-right: $sp-3;
+    padding-left: $sp-3;
+    background-color: var(--accent-dark-color);
+    border-bottom: $border rgba(var(--accent-light-color), 0.5);
+    border-left: $border var(--accent-light-color);
+
+    &:first-of-type {
+      border-left: 0;
+    }
+  }
+
+  tbody {
+    tr {
+      &:last-of-type {
+        th,
+        td {
+          border-bottom: 0;
+        }
+
+        td {
+          padding-bottom: $sp-3;
+        }
+      }
+    }
+  }
+
+  thead {
+    th {
+      border-bottom: $border var(--accent-light-color);
+    }
+  }
+}

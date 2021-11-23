@@ -1,0 +1,28 @@
+// complex list item styles
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  padding: $sp-2;
+
+  &__status {
+    @include fs-3;
+    display: flex;
+    justify-content: center;
+    width: 15%;
+  }
+  
+  &__text {
+    // is a flex item
+    flex-grow: 1;
+    align-items: center;
+    // is a flex container
+    display: flex;
+    justify-content: space-between;
+
+    &--big {
+      @include fs-5;
+      padding-left: $sp-3;
+    }
+  }
+}

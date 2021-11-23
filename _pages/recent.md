@@ -1,6 +1,6 @@
 ---
 layout: recent
-title: Recent Weather
+title: Weather
 permalink: /recent/
 ---
 

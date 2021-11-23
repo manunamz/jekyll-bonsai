@@ -1,36 +1,22 @@
-// site (bonsai/garden) nav -- which houses the 'svg-graph'
+// site nav (bonsai/garden) -- which houses the 'jekyll-graph'
 
 .site-nav {
-  display: none;
-  width: 100%;
-
-  &.nav-open {
-    display: block;
-    height: 100vh;
-    width: 100vw;
-  }
-
-  @include mq(md) {
-    display: block;
-    // leaving this here for now in case something breaks...(TODO: delete if no 🐛 bugs appear later)
-    // flex: 1 1 auto;
-  }
 
   header {
+    position: absolute;
+    z-index: $z-nav-component;
+    top: 0;
+    padding: $sp-2;
     @include fs-5;
     display: flex;
     justify-content: flex-start;
-    position: absolute;
-    top: 0;
-    z-index: 4;
-    padding: $sp-2;
     cursor: pointer;
     user-select: none;
   }
 
   footer {
     position: absolute;
-    z-index: 4;
+    z-index: $z-nav-component;
     bottom: 0;
     left: 0;
     padding: $sp-3;
@@ -42,134 +28,33 @@
 .dropdown {
   border: none;
   background: none; 
-}
 
-.dropdown:hover .dropdown-content {
-  display: flex;
-  flex-direction: column;
-}
-
-.dropdown-content {
-  display: none;
-}
-
-.dropdown-btn {
-  @include fs-6;
-  cursor: pointer;
-  user-select: none;
-  padding: $sp-2;
-  border: none;
-  background: none;
-  filter: drop-shadow(0 0 0.8mm $drop-shadow-blue);
-}
-
-.site-nav-btn {
-  @include fs-6;
-  cursor: pointer;
-  user-select: none;
-  padding: $sp-2;
-  transition: all .2s ease-in-out;
-  display: flex; // needed for #abt-btn
-  
   &:hover {
-    transform: scale(1.5); 
-  }
+    display: flex;
+    flex-direction: column;
 
-  input {
-    /* Hide the browser's default checkbox */
-    opacity: 0;
-    height: 0;
-    width: 0;
-  }
-}
-
-// home btn
-
-#home-btn {
-  filter: drop-shadow(0 0 0.8mm $drop-shadow-green);
-}
-
-// page btns
-
-#search-dropbtn {
-  filter: drop-shadow(0 0 0.8mm $drop-shadow-brown);
-}
-
-#stat-tags-dropbtn {
-  filter: drop-shadow(0 0 0.8mm $drop-shadow-brown);
-}
-
-#posts-dropbtn {
-  filter: drop-shadow(0 0 0.8mm $drop-shadow-purple);
-}
-
-#recent-dropbtn {
-  filter: drop-shadow(0 0 0.8mm $drop-shadow-blue);
-}
-
-// site-nav btns
-
-#graph-type-emoji-span {
-  filter: drop-shadow(0 0 0.8mm $drop-shadow-green);
-}
-
-#nav-type-emoji-span {
-  filter: drop-shadow(0 0 0.8mm $drop-shadow-orange);
-}
-
-#theme-colors-emoji-span {
-  filter: drop-shadow(0 0 0.8mm $drop-shadow-yellow);
-}
-
-#entry-head-emoji-span {  
-  filter: drop-shadow(0 0 0.8mm $drop-shadow-brown);  
-}
-
-#delete-btn {
-  filter: drop-shadow(0 0 0.8mm $drop-shadow-red);
-}
-
-// visited nav (user-path)
-
-.visited-nav {
-  position:relative;
-  z-index: 3;
-  height: 100%;
-  width: 100%;
-  padding-top: $sp-10;
-  padding-bottom: $sp-10;
-  overflow-y: scroll;
-
-  .visited-nav-list {
-    list-style: none;
-    
-    .visited-nav-list-item {
-      @include fs-5;
+    .dropdown__content {
       display: flex;
-      padding: $sp-2;
-      margin-top: $sp-2;
-      margin-bottom: $sp-2;
-      margin-right: 0 !important;
-      // both animation and transform rely on this transition setting (according to: https://stackoverflow.com/a/20903041)
-      transition: all 0.15s ease-in-out;
-      width: 40%;
-
-      &:hover {
-        transform: scale(1.1); 
-      }
-      
-      &::before {
-        content: "🥾";
-      }
-
-      @include mq(md) {
-        width: 80%;
-      }
-      // button {
-      //   justify-content: flex-end;
-      // }
+      flex-direction: column;
     }
-  } 
+  }
+
+  &__btn {
+    @include fs-6;
+    cursor: pointer;
+    user-select: none;
+    padding: $sp-2;
+    
+    // suppress default html button attributes
+    border: none;
+    background: none;
+    
+    filter: drop-shadow(0 0 0.8mm $drop-shadow-blue);
+  }
+  
+  &__content {
+    display: none;
+  }
 }
 
 .hide {

@@ -1,0 +1,68 @@
+---
+---
+<!doctype html>
+<html>
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  
+    <title>{{ page.title }}</title>
+    
+    <link rel="icon" type="image/png">    
+    <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
+  
+    <script>
+      // from: https://mxb.dev/blog/color-theme-switcher/
+      // if there's a theme id in localstorage, use it on initia load
+      localStorage.getItem('theme-colors') && 
+      document.documentElement.setAttribute('data-theme', localStorage.getItem('theme-colors'))
+    </script>
+    
+    <!-- search -->
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
+    {% jekyll_graph %}
+    {% feed_meta %}
+    {% seo %}
+  
+  </head>  
+  <body>
+
+    <div id="side-bar" class="side-bar">
+      {% include site-nav.html %}
+    </div>
+    
+    <div id="main" class="main">
+      <main class="main__content">
+        {% include anchor-headings.html html=content anchorClass="anchor-heading" %}
+      </main>
+      <footer class="main__footer">
+        {% assign about_page = site.pages | find_exp: "item", "item.name == 'about.md'" %}
+        {% if about_page %}
+          <a class="btn btn--small btn--brown" href="{{ '/about/' | relative_url }}" title="Go To About">{{ site.data.emoji.about }}</a>
+        {% endif %}
+        {% assign privacy_page = site.pages | find_exp: "item", "item.name == 'privacy.md'" %}
+        {% if privacy_page %}
+          <a class="btn btn--small btn--brown" href="{{ '/privacy/' | relative_url }}" title="Go To Privacy">{{ site.data.emoji.privacy }}</a>
+        {% endif %}
+        {% if site.social.connect.enabled %}
+          {% include connect.html %}
+        {% endif %}
+      </footer>
+    </div>
+
+    <label class="bonsai-burger-nav">
+      <input id="bonsai-burger-nav-checkbox" type="checkbox">
+      <img id="nav-bonsai" height="75" width="75" hidden></img>
+      <img id="nav-base" height="50" width="50"></img>
+    </label>
+
+    {% include hp-tooltip.html wrapperQuerySelector="content" %}
+    <!-- modules: https://stackoverflow.com/questions/58211880/uncaught-syntaxerror-cannot-use-import-statement-outside-a-module-when-import -->
+    <script type="module" src="{{ '/assets/js/scripts.js' | relative_url }}"></script> 
+    {% include img/pencil-filter.svg %}
+    {% if site.ga_tracking != nil %}
+      {% include cookie-consent.html %}
+    {% endif %}
+  </body>
+</html>

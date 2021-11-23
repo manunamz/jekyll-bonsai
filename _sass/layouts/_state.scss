@@ -1,0 +1,98 @@
+// state page styles
+
+.state {
+  display: flex;
+  flex-direction: column;
+  min-height: 90vh;
+
+  &__nav {
+    @include fs-6;
+    width: 100%;
+    z-index: $z-nav;
+    top: 0;
+    user-select: none;
+
+    ul {
+      overflow-x: scroll;      // horizontal scroll on overflow
+      white-space: nowrap;     // horizontal scroll on overflow
+  
+      padding: 0 !important;
+      margin-bottom: 0;
+      
+      li {
+        display: inline-block; // horizontal scroll on overflow
+  
+        margin-right: $sp-3;
+        margin-left: $sp-3;
+        transition: all .2s ease-in-out;
+      
+        &::before {
+          content: "";
+        }
+  
+        &.active {
+          filter: drop-shadow(0 2mm 2mm $drop-shadow-green);
+        }
+  
+        &:hover {
+          transform: scale(1.5); 
+          filter: drop-shadow(0 2mm 2mm $drop-shadow-brown);
+        }
+      }  
+    }
+  }
+
+  &__content {
+    @include container-narrow;
+    flex: 1 0 auto;
+  }
+
+  &__list-wrap {
+    display: block; // columns require block
+    column-count: 3;
+    column-width: $content-width / 6;
+    // padding: $sp-4;
+
+    &--empty {
+      padding: $sp-10;
+      text-align: center;
+    }
+  }
+
+  &__footer {
+    // 'sticky footer' from: https://css-tricks.com/couple-takes-sticky-footer/#there-is-flexbox
+    //  ex = local
+    //    footer = state__footer
+    //    content = state__content
+    //    body = state
+    //    html, body = state (height is min-height)
+    flex-shrink: 0;
+    display: flex;
+
+    padding: $sp-3;
+  }
+}
+
+// note: this is a hacky workaround for the fact that 'markdownify' 
+//       doesn't seem to be calling jekyll-wikilink's custom web-link
+//       converter.
+// (styles should match the 'web-link' class)
+.has-web-links a {
+  color: var(--link-color);
+  text-decoration: none;
+  background-image: linear-gradient(
+    var(--link-underline-color) 0%,
+    var(--link-underline-color) 100%
+  );
+  background-repeat: repeat-x;
+  background-position: 0 100%;
+  background-size: 1px 1px;
+
+  &:hover {
+    background-image: linear-gradient(
+      var(--link-color) 0%,
+      var(--link-color) 100%
+    );
+    background-size: 1px 1px;
+  }
+}

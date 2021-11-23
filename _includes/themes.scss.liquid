@@ -1,0 +1,80 @@
+{% comment %}
+  
+  Usage:
+    {% include themes.scss.liquid id=theme.id colors=theme.colors svg=theme.svg graph=theme.graph %}
+
+  Parameters:
+    * colors         (object) - collection of color values for css theming
+    * svg            (object) - collection of color values for svg images
+    * graph          (object) - collection of graph/size values for d3 graph
+
+{% endcomment %}
+
+// theme colors
+[data-theme='{{ include.id }}'] {
+  // logo images //
+  
+  --favicon-src: {{ include.src.favicon }};
+  --logo-src: {{ include.src.logo }};
+  --nav-burger-base: {{ include.src.nav_burger.base }};
+  --nav-burger-bonsai: {{ include.src.nav_burger.bonsai }};
+
+  // theme colors //
+
+  // singles
+  --selection-color: {{ include.colors.selection }};
+  --body-background-color: {{ include.colors.background }};
+  --box-shadow-color: {{ include.colors.shadow }};
+  --body-text-color: {{ include.colors.text }};
+  --small-heading-color: {{ include.colors.text_grey }};
+  --accent-dark-color: {{ include.colors.accent_dark }};
+  --accent-light-color: {{ include.colors.accent_light }};
+
+  // link colors
+  --link-color: {{ include.colors.link.web.valid }};
+  --link-underline-color: {{ include.colors.link.web.underline }};
+  --wiki-link-color: {{ include.colors.link.wiki.valid }};
+  --wiki-link-underline-color: {{ include.colors.link.wiki.underline }};
+  --invalid-wiki-link-color: {{ include.colors.link.wiki.invalid }};
+
+  // svg colors //
+
+  // bullets
+  --bullet-link: {{ include.graph.link.color }};
+  --bullet-node: {{ include.graph.node.visited.color }};
+
+  // pencil
+
+  // fill
+  --pencil-fill-default: {{ include.svg.pencil.default }};
+  --pencil-fill-blue: {{ include.svg.pencil.blue }};
+  --pencil-fill-green: {{ include.svg.pencil.green }};
+  --pencil-fill-red: {{ include.svg.pencil.red }};
+  --pencil-fill-yellow: {{ include.svg.pencil.yellow }};
+  // stroke
+  --pencil-stroke-default: {{ include.svg.pencil.default }};
+  --pencil-stroke-blue: {{ include.svg.pencil.blue }};
+  --pencil-stroke-green: {{ include.svg.pencil.green }};
+  --pencil-stroke-red: {{ include.svg.pencil.red }};
+  --pencil-stroke-yellow: {{ include.svg.pencil.yellow }};
+
+  // graph colors //
+
+  // nodes
+  //  glow
+  --graph-node-current-glow: {{ include.graph.node.current }};
+  --graph-node-tagged-glow: {{ include.graph.node.tagged }};
+  --graph-node-visited-glow: {{ include.graph.node.visited.glow }};
+  //  color
+  --graph-node-stroke-color: {{ include.graph.node.stroke }};
+  --graph-node-missing-color: {{ include.graph.node.missing }};
+  --graph-node-unvisited-color: {{ include.graph.node.unvisited }};
+  --graph-node-visited-color: {{ include.graph.node.visited.color }};
+  
+  // links
+  --graph-link-color: {{ include.graph.link.color }};
+  --graph-particles-color: {{ include.graph.particles.color }};
+  
+  // label text
+  --graph-text-color: {{ include.graph.text.color }};
+}

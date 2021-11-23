@@ -47,7 +47,7 @@ export default class Entry {
     // head
     this.entryHeadStatus = localStorage.getItem('entry-head-status');
     if (this.entryHeadStatus !== "open" && this.entryHeadStatus !== "closed") {
-      this.entryHeadStatus = '{{ site.state_head_status }}';	
+      this.entryHeadStatus = '{{ site.bonsai.entries.toggles.breadcrumbs }}';	
     }
     this.entryHeadCheckbox.checked = (this.entryHeadStatus === "closed"); 
     this.toggleEntryHeadCollapse();
@@ -55,7 +55,7 @@ export default class Entry {
     // head links (box)
     this.entryHeadLinksStatus = localStorage.getItem('entry-head-links-status');
     if (this.entryHeadLinksStatus !== "open" && this.entryHeadLinksStatus !== "closed") {
-      this.entryHeadLinksStatus = '{{ site.entry_head_links_status }}';	
+      this.entryHeadLinksStatus = '{{ site.bonsai.entries.toggles.attr_box }}';	
     }
     this.entryHeadLinksCheckbox.checked = (this.entryHeadLinksStatus === "closed"); 
     this.toggleEntryHeadLinksCollapse();
@@ -63,14 +63,14 @@ export default class Entry {
     // foot
     this.entryFootLinksStatus = localStorage.getItem('entry-foot-links-status');
     if (this.entryFootLinksStatus !== "open" && this.entryFootLinksStatus !== "closed") {
-      this.entryFootLinksStatus = '{{ site.state_foot_links_status }}';	
+      this.entryFootLinksStatus = '{{ site.bonsai.entries.toggles.foot_links }}';	
     }
     this.entryFootLinksCheckbox.checked = (this.entryFootLinksStatus === "closed"); 
     this.toggleEntryFootLinksCollapse();
 
     this.entryFootPostsStatus = localStorage.getItem('entry-foot-posts-status');
     if (this.entryFootPostsStatus !== "open" && this.entryFootPostsStatus !== "closed") {
-      this.entryFootPostsStatus = '{{ site.state_foot_posts_status }}';	
+      this.entryFootPostsStatus = '{{ site.bonsai.entries.toggles.foot_tagged }}';	
     }
     this.entryFootPostsCheckbox.checked = (this.entryFootPostsStatus === "closed"); 
     this.toggleEntryFootPostsCollapse();
@@ -91,7 +91,7 @@ export default class Entry {
 
   toggleEntryHeadLinksCollapse () {
     // from: https://www.w3schools.com/howto/tryit.asp?filename=tryhow_js_collapsible
-    var collapsibleEl = document.getElementById('entry-box-link-nav');
+    var collapsibleEl = document.getElementById('attr-box-link-nav');
     if (this.entryHeadLinksCheckbox.checked) {
       collapsibleEl.style.display = "none";
       this.entryHeadLinksStatus = "closed";

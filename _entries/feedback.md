@@ -2,9 +2,10 @@
 id: 9ced1b66d5
 title: Feedback
 desc: ''
-updated: 1620695624628
+updated: 1637275175915
 created: 1620695624628
+date: 2021-08-04
 status: 🌸
 ---
 
-Found a 🐛? Want to see something new 🪴? [Let me know.](https://github.com/manunamz/jekyll-bonsai)
+Let me know if you found a [🐛 bug](https://github.com/manunamz/jekyll-bonsai/issues/) or want to see something new [🪴 grow](https://github.com/manunamz/jekyll-bonsai/discussions/).

@@ -1,0 +1,17 @@
+// book page styles
+
+.book {
+
+  &__title {
+    @include container-narrow;
+    margin-bottom: $sp-2;
+  }
+
+  &__infobox {
+    @include infobox-container;
+  }
+
+  &__content {
+    @include container-narrow;
+  }
+}

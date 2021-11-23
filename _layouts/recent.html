@@ -1,56 +1,65 @@
 ---
-layout: default
+layout: base
 ---
-<div id="recent">
+<div id="recent" class="recent">
 
-  <div>
-    <h1>{{ site.data.emoji.recent }} {{ page.title }}</h1>
+  <section class="recent__leader">
+    <div class="hp-title">
+      <h1 class="p-name">{{ site.data.emoji.recent }} {{ page.title }}</h1>
+    </div>
     <div class="leader">
-      <div>
+      <div class="leader__content markdown hp-content e-content p-name">
         {{ content }}
       </div>
-      <div class="infobox">
-        <p class="title">Key</p>
-        <p>{{ site.data.emoji.created }} Created</p>
-        <p>{{ site.data.emoji.updated }} Updated</p>
-        <p class="small-descr"><em>{{ site.data.emoji.deleted }} Deleted (Inactive)</em></p>
-      </div>
+      <aside class="key">
+        <span class="key__title">Key</span>
+        <div class="key__content">
+          <p class="text--small"><em>{{ site.data.emoji.created }} Planted (Created) (Inactive)</em></p>
+          <p>{{ site.data.emoji.published }} Transplanted (Published)</p>
+          <p>{{ site.data.emoji.updated }} Last Tended (Updated)</p>
+          <p class="text--small"><em>{{ site.data.emoji.deleted }} Uprooted (Deleted) (Inactive)</em></p>
+        </div>
+      </aside>
     </div>
-  </div>
+  </section>
 
-  <div>
-    <ul class="recent-list">
-      {% for doc in site.documents limit: site.recent_cap %}
-        <li class="recent-list-item">
-          
-          <div class="recent-list-item-scene">
-            <!-- weather emoji -->
-            <span class="recent-list-item-change">
-              {{ doc | modified_emoji }}
-            </span>
-            <!-- plant emojis -->
-            <span class="recent-list-item-stat">
-              {% for stat_tag in doc.status %}
-                {% assign state = site.states | find_exp: "item", "item.emoji == stat_tag" %}
-                <a class="stat-tag" href="{{ state.url | relative_url }}">{{ state.emoji }}</a>  
-              {% endfor %}
-            </span>
+  <section class="recent__content">
+    <ul>
+      {% assign recent_docs = site.documents | sort: 'updated' | reverse %}
+      {% for doc in recent_docs limit: site.bonsai.recent.cap %}
+        <!-- determine if doc's recent status -->
+        <!-- from: https://stackoverflow.com/questions/37340705/shopify-liquid-find-number-of-days-between-two-dates -->
+        <!-- {% assign ctime = doc.created | date: '%s' %} -->
+        {% assign ptime = doc.date | date: '%s' %}
+        {% assign mtime = doc.updated | date: '%s' %}
+        {% assign sec_diff = mtime | minus: ptime %}
+        {% assign is_same_day = sec_diff | divided_by: 3600 | divided_by: 24 %}
+        <li>
+          <div class="item">
+            <div class="bullet-scene">
+              <span class="bullet-scene__change-type">
+                {% if is_same_day == 0 %}
+                  {{ site.data.emoji.published }}
+                {% else %}
+                  {{ site.data.emoji.updated }}
+                {% endif %}
+              </span>
+              <span class="bullet-scene__status">
+                {% include btn_state.html states=doc.status %}
+              </span>
+            </div>
+            <div class="item__text">
+              <span class="item__text--big">
+                <a class="wiki-link" href="{{ doc.url | relative_url }}">{{ doc.title }}</a>  
+              </span>
+              <time class="text--date dt-updated">
+                {{ doc.updated | slice: 0, 10 | date: site.bonsai.date_format }}
+              </time>
+            </div>
           </div>
-          
-          <div class="recent-list-item-text">
-            <!-- title -->
-            <span class="recent-list-item-title">
-              <a class="wiki-link" href="{{ doc.url | relative_url }}">{{ doc.title }}</a>  
-            </span>
-            <!-- date updated -->
-            <span class="recent-list-item-date">
-              {{ doc.updated | date: site.date_format }}
-            </span>
-          </div>
-        
         </li>
       {% endfor %}
     </ul>
-  </div>
+  </section>
 
 </div>

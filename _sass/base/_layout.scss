@@ -1,65 +1,55 @@
-//
 // two column layout
-//
 
 .side-bar {
-  z-index: 1;
-  display: flex;
-  flex-wrap: wrap;
+  position: fixed;
+  z-index: $z-nav;
+  display: none;
+  height: 100vh;
 
   @include mq(md) {
+    display: block;
     width: $nav-width-md;
-    flex-wrap: nowrap;
-    position: fixed;
-    height: 100%;
   }
 
   @include mq(lg) {
+    display: block;
     width: $nav-width-lg;
+  }
+
+  &.nav-open {
+    display: block;
+    width: 100vw;
   }
 }
 
 .main {
-  height: 100%;
+  @include container;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 
   @include mq(md) {
-    max-width: $content-width;
     margin-left: $nav-width-md;
   }
 
   @include mq(lg) {
     margin-left: $nav-width-lg;
   }
-}
 
-.main-content-wrap { 
-  @include container;
-  
-  display: flex;
-  flex-direction: column;
-
-  padding-top: $gutter-spacing-sm;
-  padding-bottom: $gutter-spacing-sm;
-
-  min-height: 100vh;
-
-  @include mq(md) {
-    padding-top: $gutter-spacing;
-    padding-bottom: $gutter-spacing;
+  &__content {
+    flex: 1 0 auto;
   }
-}
 
-.main-foot {
-  // 'sticky footer' from: https://css-tricks.com/couple-takes-sticky-footer/#there-is-flexbox
-  //  ex = local
-  //    footer = connect
-  //    content = main-content
-  //    body = main-content-wrap
-  //    html, body = main
-  flex-shrink: 0;
-  display: flex;
-}
+  &__footer {
+    // 'sticky footer' from: https://css-tricks.com/couple-takes-sticky-footer/#there-is-flexbox
+    //  ex = local
+    //    footer = main__footer
+    //    content = main__content
+    //    body = main
+    //    html, body = main (height is min-height)
+    flex-shrink: 0;
+    display: flex;
 
-.entry-body {
-  padding: $sp-3;
+    padding-top: $sp-10;
+  }
 }
