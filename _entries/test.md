@@ -2,10 +2,10 @@
 id: 75e5216b0e
 title: Test
 desc: ''
-updated: 1636989974443
+updated: 1637168427694
 created: 1632841425746
-date: 2021-08-04
-status: 🎋
+date: '2021-08-04'
+status: "\U0001F38B"
 ---
 
 This is a page is for testing and showcasing the markdown styles in this template.
@@ -16,18 +16,18 @@ This is a page is for testing and showcasing the markdown styles in this templat
 
 ## Links
 
-Untyped Wikilink: [[digital-garden]]
+Untyped Wikilink: [[digi-gard]]
 
-Typed Wikilink: the-main-metaphor::[[digital-garden]] (difference is in html, check with dev tools).
+Typed Wikilink: the-main-metaphor::[[digi-gard]] (difference is in html, check with dev tools).
 
 Block Wikilink: See sidebar for rendered output (first entry).
 
-block-wikilink::[[digital-garden]]
+block-wikilink::[[feat.doc.ext-synt]]
 
 Block Lists: See sidebar for rendered output (second entry).
 
 block-list-wikilinks :: 
-- [[digital-garden]]
+- [[feat.doc.ext-synt]]
 - [[feedback]]
 
 Invalid Wikilink: [[not-jekyll-bonsai]]
