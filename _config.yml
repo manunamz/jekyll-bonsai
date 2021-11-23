@@ -119,7 +119,7 @@ ga_tracking: UA-190413040-4
 # bonsai plugins
 # 
 ids:
-  # ids.format uses 'alpha' and 'size' for nanoid: https://github.com/radeno/nanoid.rb#options
+  # from: https://github.com/radeno/nanoid.rb#options
   format:
     alpha: '1234567890abcdef'
     size: 10
