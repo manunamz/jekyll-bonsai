@@ -1,7 +1,7 @@
 title: jekyll-bonsai
 description: A modern jekyll theme for semantically inclined digital gardeners.
 author: manunamz
-baseurl: '/jekyll-bonsai'
+# baseurl: '/jekyll-bonsai'
 # url: 'https://manunamz.github.io'
 
 include: 

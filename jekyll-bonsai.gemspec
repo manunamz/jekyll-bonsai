@@ -5,7 +5,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["manunamz@pm.me"]
 
   spec.summary       = "A modern jekyll theme for semantically inclined digital gardeners."
-  spec.homepage      = "https://manunamz.github.io/jekyll-bonsai/"
+  spec.homepage      = "https://github.com/manunamz/jekyll-bonsai/"
   spec.license       = "GPL3"
 
   spec.metadata["plugin_type"] = "theme"
