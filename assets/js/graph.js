@@ -5,7 +5,7 @@ import JekyllGraph from './jekyll-graph.js';
 export default class GraphNav extends JekyllGraph {
 
   constructor() {
-    super(); // 'this.graphDiv' set in JekyllGraph
+    super(); // 'this.graph' + 'this.graphDiv' set in JekyllGraph
     this.graphTypeCheckBox = document.getElementById('graph-type-checkbox');
     this.graphTypeEmojiSpan = document.getElementById('graph-type-emoji-span');
     this.init(); // this.graphType set in initGraphType();
