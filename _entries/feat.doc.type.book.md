@@ -2,7 +2,7 @@
 id: af42b9d08b
 title: Book
 desc: ''
-updated: 1637695936370
+updated: 1637776398163
 created: 1637082183313
 status: "\U0001F331"
 ---
@@ -22,7 +22,7 @@ Book documents are a type of post that discusses a book. They display the book's
 
 ### Navigate
 
-- The [[feat.doc.type.page.archive]].
+- Via other [[feat.doc#navigate]] methods.
 - Via [[feat.doc.type.entry.links]].
 
 ### Markdown
@@ -31,7 +31,7 @@ Books live in the `_books/` directory. Each book should be a directory that cont
 
 ```
 _books/
-  on-liberty/
-    on-liberty.md
-    on-liberty.png
+  the-ancient-art-of-bonsai/
+    the-ancient-art-of-bonsai.md
+    the-ancient-art-of-bonsai.png
 ```

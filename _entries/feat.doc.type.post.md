@@ -2,7 +2,7 @@
 id: e1ca88d323
 title: Post
 desc: ''
-updated: 1637696127021
+updated: 1637776402907
 created: 1627994847071
 date: '2021-08-04'
 status: "\U0001F38B"
@@ -25,7 +25,7 @@ Tagged [[feat.doc.type.entry|entries]] will [[feat.site-nav.graph.node.current|g
 
 ### Navigate
 
-- The [[feat.doc.type.page.archive]].
+- Via other [[feat.doc#navigate]] methods.
 - Via [[feat.doc.type.entry.links]].
 
 ### Markdown

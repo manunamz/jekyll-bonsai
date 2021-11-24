@@ -2,7 +2,7 @@
 id: cdcbb9313c
 title: Config
 desc: ''
-updated: 1637696515183
+updated: 1637773036862
 created: 1637179335585
 status: "\U0001F38B"
 ---
@@ -53,7 +53,7 @@ bonsai:
       breadcrumb: "open"
       attr_box: "open"
       foot_links: "open"
-      foot_posts: "open"
+      foot_tagged: "open"
 
 social:
   enabled: true

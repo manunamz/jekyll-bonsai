@@ -2,7 +2,7 @@
 id: 70247653ab
 title: Emojis
 desc: ''
-updated: 1637625306436
+updated: 1637775978067
 created: 1637179577180
 status: "\U0001F33F"
 ---
@@ -11,7 +11,7 @@ Emojis are used heavily in this template to give it a more natural feel. But all
 
 ### Stat
 
-Whatever [[feat.doc.type.state]]s are defined will determine what emojis are a valid for [[feat.doc]][[feat.doc.fm.status]] attribute.
+Whatever [[feat.doc.type.state]]s are defined will determine what emojis are a valid for [[feat.doc]][[feat.doc.fm.status]] frontmatter attribute.
 
 ### Data
 
