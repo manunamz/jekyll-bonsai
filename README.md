@@ -4,4 +4,4 @@
 
 ⚠️ This template is newly sprouted ⚠️
 
-Consider this a beta. Expect things to change, for there to be bugs, and for the code to be pretty messy.
+Consider this a beta.
