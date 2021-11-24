@@ -80,4 +80,4 @@ bonsai:
 
 `root_path` refers to which document should act as the root of the [[feat.doc.ext-synt.namespaces]] hierarchy (and the [[feat.site-nav.graph.type.tree]] graph).
 
-`toggles`: refer to the [[feat.doc.type.entry.head]] and  [[feat.doc.type.entry.links]] which may be toggled `open` or `closed`.
+`toggles`: refer to the [[feat.doc.type.entry.head]] and [[feat.doc.type.entry.links]] which may be toggled `open` or `closed`.
