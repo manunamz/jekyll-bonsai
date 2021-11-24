@@ -4,6 +4,7 @@ title: Anchor Heading
 desc: ''
 updated: 1637623222404
 created: 1637623169427
+status: 🌱
 ---
 
 metaphor::[[digi-gard.pollinate]]
