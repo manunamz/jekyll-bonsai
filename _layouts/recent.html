@@ -31,7 +31,7 @@ layout: base
         <!-- from: https://stackoverflow.com/questions/37340705/shopify-liquid-find-number-of-days-between-two-dates -->
         <!-- {% assign ctime = doc.created | date: '%s' %} -->
         {% assign ptime = doc.date | date: '%s' %}
-        {% assign mtime = doc.updated | date: '%s' %}
+        {% assign mtime = doc.updated | date: '%Y-%m-%d' %}
         {% assign sec_diff = mtime | minus: ptime %}
         {% assign is_same_day = sec_diff | divided_by: 3600 | divided_by: 24 %}
         <li>
