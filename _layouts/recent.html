@@ -29,9 +29,10 @@ layout: base
       {% for doc in recent_docs limit: site.bonsai.recent.cap %}
         <!-- determine if doc's recent status -->
         <!-- from: https://stackoverflow.com/questions/37340705/shopify-liquid-find-number-of-days-between-two-dates -->
-        <!-- {% assign ctime = doc.created | date: '%s' %} -->
-        {% assign ptime = doc.date | date: '%s' %}
-        {% assign mtime = doc.updated | date: '%s' %}
+        <!-- note: slicing off milliseconds -->
+        <!-- {% assign ctime = doc.created | date: '%s' | slice: 0, 10 %} -->
+        {% assign ptime = doc.date | date: '%s' | slice: 0, 10 %}
+        {% assign mtime = doc.updated | date: '%s' | slice: 0, 10 %}
         {% assign sec_diff = mtime | minus: ptime %}
         {% assign is_same_day = sec_diff | divided_by: 3600 | divided_by: 24 %}
         <li>

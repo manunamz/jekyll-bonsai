@@ -41,6 +41,7 @@ export default class Search {
       const macKeys = (event.metaKey && (event.key === 'k'));
       const winKeys = (event.ctrlKey && (event.key === 'k'));
       if (macKeys || winKeys) {
+        event.preventDefault();
         this.toggleSearch();
       }
     });
