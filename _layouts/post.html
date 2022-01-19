@@ -25,7 +25,7 @@ layout: base
       </div>
       <div class="infobox__sem-tags p-category">
         <!-- 'tags' attribute -->
-        {% assign tag_attrs = page.attributes | rel_type: "tags" %}
+        {% assign tag_attrs = page.attributes | link_type: "tags" %}
         {% for tag_attrs in tag_attrs %}
           {% for url in tag_attrs.urls %}
             {% assign entry = site.entries | where: "url", url | first %}

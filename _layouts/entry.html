@@ -225,7 +225,7 @@ layout: base
               {% assign post_attrds = page.attributed | doc_type: "posts" %}
               {% assign book_attrds = page.attributed | doc_type: "books" %}
               {% assign pb_attrds = post_attrds | concat: book_attrds %}
-              {% assign tag_attrds = pb_attrds | rel_type: "tags" %}
+              {% assign tag_attrds = pb_attrds | link_type: "tags" %}
               {% for tag_attrd in tag_attrds %}
                 {% for url in tag_attrd.urls %}
                   {% assign num_linked_docs = num_linked_docs | plus: 1 %}
