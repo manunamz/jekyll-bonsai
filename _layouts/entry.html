@@ -149,7 +149,7 @@ layout: base
           {% else %}
             <!-- attributed -->
             <ul>
-              {% for attr in page.attributed %}
+              {% for attr in entry_attrd %}
                 {% for attr_url in attr.urls %}
                   {% assign attr_doc = site.entries | where: "url", attr_url | first %}
                   {% if attr_doc %}
@@ -160,7 +160,7 @@ layout: base
                       </a>
                     </li>
                   {% else %}
-                    <li>]
+                    <li>
                       <span class="text--small text--no-point">{{ site.data.emoji.missing }} {{ attr_url }}</span>
                     </li>
                   {% endif %}
