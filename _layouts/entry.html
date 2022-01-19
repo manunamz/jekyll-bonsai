@@ -220,6 +220,23 @@ layout: base
                 {% endif %}
               {% endfor %}
             </ul>
+            <!-- 'tags' attributed posts/books -->
+            <ul>
+              {% assign post_attrds = page.attributed | doc_type: "posts" %}
+              {% assign book_attrds = page.attributed | doc_type: "books" %}
+              {% assign pb_attrds = post_attrds | concat: book_attrds %}
+              {% assign tag_attrds = pb_attrds | rel_type: "tags" %}
+              {% for tag_attrd in tag_attrds %}
+                {% for url in tag_attrd.urls %}
+                  {% assign num_linked_docs = num_linked_docs | plus: 1 %}
+                  {% assign doc = site.documents | where: "url", url | first %}
+                  <li>
+                    {% include btn_state.html states=doc.status %}
+                    <a class="wiki-link" href="{{ doc.url | relative_url }}">{{ doc.title }}</a>
+                  </li>
+                {% endfor %}
+              {% endfor %}
+            </ul>
             {% if site.bonsai.entries.backlinks %}
               <!-- backlinked posts/books -->
               <ul>
