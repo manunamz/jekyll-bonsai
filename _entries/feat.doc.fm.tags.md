@@ -15,3 +15,5 @@ doc-types ::
 
 
 Some documents use a traditional `tags` frontmatter attribute, like [jekyll tags](https://jekyllrb.com/docs/plugins/tags/), with the added bonus that they map to an [[feat.doc.type.entry]] where the filename matches the tag text.
+
+Tags are also supported as [[feat.doc.type.entry#markdown|attributes]] (see [[plugin.jekyll-wikilinks]] documentation for more details).
