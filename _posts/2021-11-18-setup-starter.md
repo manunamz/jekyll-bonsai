@@ -4,10 +4,11 @@ title: "Setup: Fork The Starter Template"
 desc: ''
 updated: 1637264389000
 created: 1637264389000
-tags: 
-  - feat
 status: 🥭
 ---
+
+tags::[[feat]]
+
 
 If you are here, I presume you want to get straight to writing and potentially don't know much about `git`, `jekyll`, or the underlying technologies related to setting up this template.
 

@@ -4,10 +4,11 @@ title: "Escape: An Origin Myth"
 desc: ''
 updated: 1637265357000
 created: 1620755157000
-tags: 
-  - digi-gard
 status: 🥭
 ---
+
+tags::[[digi-gard]]
+
 
 > Nothing vast enters the life of mortals without a curse.
 
