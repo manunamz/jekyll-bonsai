@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = "jekyll-bonsai"
-  spec.version       = "0.0.5"
+  spec.version       = "0.0.6"
   spec.authors       = ["manunamz"]
   spec.email         = ["manunamz@pm.me"]
 
