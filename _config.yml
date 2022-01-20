@@ -104,7 +104,7 @@ compress_html:
 # 
 
 # Google Analytics (ip is anonymized by default)
-# ga_tracking: UA-190413040-4
+ga_tracking: UA-190413040-4
 
 # seo
 # tagline: ""
