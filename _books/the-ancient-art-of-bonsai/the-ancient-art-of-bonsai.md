@@ -5,10 +5,11 @@ desc: ''
 updated: 1635782766000
 created: 1635782766000
 date: 2021-11-01
-tags: 
-  - digi-gard.orient.bonsai
 status: 🌰
 ---
+
+tags::[[digi-gard.orient.bonsai]]
+
 
 > "The word **[[digi-gard.orient.bonsai]]** simply means 'a plant in a [[feat.site-nav|tray]]'...
 > 

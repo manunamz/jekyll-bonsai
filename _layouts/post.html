@@ -24,18 +24,8 @@ layout: base
         {% endif %}
       </div>
       <div class="infobox__sem-tags p-category">
-        {% for sem_tag in page.tags %}
-          {% assign sem_tag_file = sem_tag | append: ".md" %}
-          {% assign entry = site.entries | find_exp: "item", "item.path contains sem_tag_file" %}
-          <button class="tag-pill {% if entry %}{% else %}disabled{% endif %}">
-            {% if entry %}
-              {% include btn_state.html states=entry.status %}
-              <a class="sem-tag" href="{{ entry.url | relative_url }}">{{ entry.title }}</a>
-            {% else %}
-              <span class="text--small">{{ site.data.emoji.missing }} {{ sem_tag }}</span>
-            {% endif %}
-          </button>
-        {% endfor %}
+        {% assign tag_attrs = page.attributes | link_type: "tags" %}
+        {% include tags.html tag_attr=tag_attrs tag_fm=page.tags %}
       </div>
     </div>
   </section>

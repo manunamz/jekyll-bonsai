@@ -21,7 +21,7 @@ group :jekyll_plugins do
   # local
   gem 'jekyll-id', '~> 0.0.2'
   gem 'jekyll-namespaces', '~> 0.0.3'
-  gem 'jekyll-wikilinks', '~> 0.0.8'
+  gem 'jekyll-wikilinks', '~> 0.0.9'
   gem 'jekyll-graph', '~> 0.0.5'
 end
 
