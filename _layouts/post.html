@@ -24,8 +24,8 @@ layout: base
         {% endif %}
       </div>
       <div class="infobox__sem-tags p-category">
-        {% assign tag_attrs = page.attributes | link_type: "tags" %}
-        {% include tags.html tag_attr=tag_attrs tag_fm=page.tags %}
+        {% assign tags_attrs = page.attributes | link_type: "tags" %}
+        {% include tags.html tags_attrs=tags_attrs tag_fm=page.tags %}
       </div>
     </div>
   </section>
