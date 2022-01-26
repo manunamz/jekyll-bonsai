@@ -18,7 +18,7 @@ required ::
 metaphor::[[digi-gard.plant.type.germ]]
 
 
-Book documents are a type of post that discusses a book. They display the book's cover and connect to [[feat.doc.type.entry]] via [[feat.doc.fm.tags]].
+Book documents are a type of post that discusses a book. They display the book's cover and connect to [[feat.doc.type.entry|entries]] via [[feat.doc.fm.tags]].
 
 ### Navigate
 
@@ -30,8 +30,13 @@ Book documents are a type of post that discusses a book. They display the book's
 Books live in the `_books/` directory. Each book should be a directory that contains a markdown file and a cover (`.png`) image. All three should have the same name:
 
 ```
+// book markdown file
 _books/
-  the-ancient-art-of-bonsai/
     the-ancient-art-of-bonsai.md
-    the-ancient-art-of-bonsai.png
+
+// book cover image
+assets/
+  img/
+    books/
+      the-ancient-art-of-bonsai.png
 ```
