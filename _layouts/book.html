@@ -11,11 +11,12 @@ layout: base
 
   <div class="book__title hp-title">
     <h1 class="p-name">{{ page.title }}</h1>
+    <h4>{{ page.subtitle }}</h4>
   </div>
 
   <section class="book__infobox">
     <div class="infobox">
-      {% assign book_cover_img_src = site.baseurl | append: "/" | append: page.collection | append: "/" | append: page.slug | append: "/" | append: page.slug | append: ".png" %}
+      {% assign book_cover_img_src = site.baseurl | append: "/assets/img/books/" | append: page.slug | append: ".png" %}
       <img src='{{ book_cover_img_src }}' class="infobox__img--cover">
       {% include toc.html html=content wrap_class="toc" class="toc__list" item_class="toc__list-item" anchor_class="toc__anchor" %}
       {% include dates.html updated=page.updated date=page.date %}
@@ -26,8 +27,8 @@ layout: base
         {% endif %}
       </div>
       <div class="infobox__sem-tags p-category">
-        {% assign tag_attrs = page.attributes | link_type: "tags" %}
-        {% include tags.html tag_attr=tag_attrs tag_fm=page.tags %}
+        {% assign tags_attrs = page.attributes | link_type: "tags" %}
+        {% include tags.html tags_attrs=tags_attrs tags_fm=page.tags %}
       </div>
     </div>
   </section>

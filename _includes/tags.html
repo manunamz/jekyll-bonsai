@@ -2,14 +2,14 @@
   
   Usage: 
     {% assign tag_attr = page.attributes | link_type: "tags" %}
-    {% include tags.html tag_attr=tag_attr tag_fm=page.tags %}
+    {% include tags.html tags_attrs=tag_attr tags_fms=page.tags %}
 
   Parameters:
-    * tag_attr          (array) - array of attributes that are hashes with keys 
+    * tags_attrs          (array) - array of attributes that are hashes with keys 
                                   'type' and 'urls'
                                   (which correspond to `jekyll-wikilinks` 
                                    attributes and attributed metadata)
-    * tag_fm            (array) - array of strings that are tag names 
+    * tags_fms            (array) - array of strings that are tag names 
                                   (which correspond to entry filenames)
 
   Note:
@@ -20,9 +20,8 @@
 
 
 <!-- 'tags' attribute -->
-{% assign tag_attrs = page.attributes | link_type: "tags" %}
-{% for tag_attrs in tag_attrs %}
-  {% for url in tag_attrs.urls %}
+{% for tag_attr in tags_attrs %}
+  {% for url in tag_attr.urls %}
     {% assign entry = site.entries | where: "url", url | first %}
     <button class="tag-pill {% if entry %}{% else %}disabled{% endif %}">
       {% if entry %}
@@ -35,7 +34,7 @@
   {% endfor %}
 {% endfor %}
 <!-- 'tags' frontmatter -->
-{% for sem_tag in page.tags %}
+{% for sem_tag in tags_fms %}
   <!-- prefix with '/' to prevent matching subhierarchies -->
   {% assign sem_tag_path = "/" | append: sem_tag | append: ".md" %}
   {% assign entry = site.entries | find_exp: "item", "item.path contains sem_tag_path" %}

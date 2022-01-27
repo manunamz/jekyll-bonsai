@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = "jekyll-bonsai"
-  spec.version       = "0.0.5"
+  spec.version       = "0.0.7"
   spec.authors       = ["manunamz"]
   spec.email         = ["manunamz@pm.me"]
 
@@ -26,8 +26,8 @@ Gem::Specification.new do |spec|
   # local plugins
   spec.add_runtime_dependency "jekyll-id", "~> 0.0.2"
   spec.add_runtime_dependency "jekyll-namespaces", "~> 0.0.3"
-  spec.add_runtime_dependency "jekyll-wikilinks", "~> 0.0.9"
-  spec.add_runtime_dependency "jekyll-graph", "~> 0.0.5"
+  spec.add_runtime_dependency "jekyll-wikilinks", "~> 0.0.11"
+  spec.add_runtime_dependency "jekyll-graph", "~> 0.0.7"
   # dev
   spec.add_development_dependency "rake", "~> 13.0.6"
   spec.add_development_dependency "rspec", "3.10.0"
