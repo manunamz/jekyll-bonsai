@@ -2,8 +2,21 @@
   
 .entry {
 
+  @include mq(md) {
+  }
+
+  @include mq(lg) {
+    display: grid;
+    grid-template-areas:
+    "header header header"
+    "title title title"
+    "body body infobox"
+    ". . infobox"
+    "footer footer footer";
+  }
+
   &__header {
-    width: 100%;
+    grid-area: header;
     display: flex;
     align-items: center;
 
@@ -14,26 +27,29 @@
     }
   }
 
-  // this container duplication is necessary so the infobox behavior works
-  // (...i think)
-
   &__title {
-    @include container-narrow;
-    margin-bottom: $sp-2;
+    grid-area: title;
   }
 
   &__infobox {
-    @include infobox-container;
+    grid-area: infobox;
     padding: $sp-3;
     margin-bottom: $sp-3;
+
+    @include mq(md) {
+      @include infobox-container;
+    }
+    @include mq(lg) {
+      // grid
+    }
   }
 
   &__body {
-    @include container-narrow;
+    grid-area: body;
   }
 
   &__footer {
-    @include container-narrow;
+    grid-area: footer;
   }
 
   &__section-wrapper { // specifically for the footer sections...
