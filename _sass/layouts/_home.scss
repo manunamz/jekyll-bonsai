@@ -30,7 +30,7 @@
     }
   }
 
-  .featured-wrap {
+  &__content {
 
     @include mq(md) {
       display: flex;
