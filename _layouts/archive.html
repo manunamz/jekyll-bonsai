@@ -25,7 +25,7 @@ layout: base
               <a class="wiki-link" href="{{ post.url | relative_url }}">{{ post.title }}</a>
             </span>
             <time class="text--date dt-published">
-              {{ post.updated | slice: 0, 10 | date: site.bonsai.date_format }}
+              {{ post.updated | date: '%s' | date: '%s' | slice: 0, 10 | date: site.bonsai.date_format }}
             </time>
           </div>
         </li>
@@ -45,7 +45,7 @@ layout: base
               <a class="wiki-link" href="{{ book.url | relative_url }}">{{ book.title }}</a>
             </span>
             <time class="text--date dt-published">
-              {{ book.updated | slice: 0, 10 | date: site.bonsai.date_format }}
+              {{ book.updated | date: '%s' | date: '%s' | slice: 0, 10 | date: site.bonsai.date_format }}
             </time>
           </div>
         </li>
@@ -65,7 +65,7 @@ layout: base
               <a class="wiki-link" href="{{ entry.url | relative_url }}">{{ entry.title }}</a>
             </span>
             <time class="text--date dt-published">
-              {{ entry.updated | slice: 0, 10 | date: site.bonsai.date_format }}
+              {{ entry.updated | date: '%s' | date: '%s' | slice: 0, 10 | date: site.bonsai.date_format }}
             </time>
           </div>
         </li>
