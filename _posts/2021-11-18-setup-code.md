@@ -1,13 +1,13 @@
 ---
 id: e7e22a4da8
-title: "Setup: Tinker With The Template"
-desc: ''
-updated: 1637264389000
 created: 1637264389000
-tags:
-  - feat.config
+updated: 1637264389000
+title: "Setup: Tinker With The Template"
 status: 🥭
 ---
+
+tags::[[feat.config]]
+
 
 If you're here, I presume you have already setup `git`, `jekyll`, `ruby`, and the underlying technologies required to get a `jekyll` project up and running.
 

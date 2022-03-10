@@ -1,9 +1,8 @@
 ---
 id: 23f8262818
-title: "Escape: An Origin Myth"
-desc: ''
-updated: 1637265357000
 created: 1620755157000
+updated: 1637265357000
+title: "Escape: An Origin Myth"
 status: 🥭
 ---
 

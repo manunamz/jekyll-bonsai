@@ -1,9 +1,8 @@
 ---
 id: 827a3e6d12
-title: "Setup: Fork The Starter Template"
-desc: ''
-updated: 1637264389000
 created: 1637264389000
+updated: 1637264389000
+title: "Setup: Fork The Starter Template"
 status: 🥭
 ---
 
