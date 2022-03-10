@@ -3,11 +3,11 @@ layout: base
 ---
 
 <article id="post" 
-  class="post h-entry"
-  role="article" 
-  itemscope 
-  itemtype="http://schema.org/BlogPosting"
-  aria-labelledby="{{ title | slug }}-title">
+         class="post h-entry"
+         role="article" 
+         itemscope 
+         itemtype="http://schema.org/BlogPosting"
+         aria-labelledby="{{ page.title | slugify }}-title">
 
   <div class="post__title hp-title">
     <h1 class="p-name">{{ page.title }}</h1>
